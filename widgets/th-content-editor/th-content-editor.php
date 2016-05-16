@@ -14,7 +14,7 @@ class Themovation_SO_WB_Editor_Widget extends SiteOrigin_Widget {
 
 			'th-editor',
 
-			__('Themovation Editor', 'themovation-widgets'),
+			__('Themovation Content Editor', 'themovation-widgets'),
 
 			array(
 				'description' => __('', 'themovation-widgets'),
