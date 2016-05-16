@@ -14,10 +14,10 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 
 			'th-link',
 
-			__('Themovation Link', 'themovation-widgets'),
+			__( 'Themovation Link', 'themovation-widgets' ),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __( '', 'themovation-widgets' ),
 				'help'        => '',
 			),
 
@@ -25,7 +25,43 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				// TO DO : State emitter for lightbox checkbox
+				'link' => array(
+					'type' => 'section',
+					'label' => __( 'Link' , 'themovation-widgets' ),
+					'hide' => true,
+					'fields' => array(
+
+						'url' => array(
+							'type' => 'link',
+							'label' => __( 'Link URL', 'themovation-widgets' ),
+						),
+
+						'text' => array(
+							'type' => 'text',
+							'label' => __( 'Link text', 'themovation-widgets' ),
+							'placeholder' => __( 'Enter text', 'themovation-widgets' ),
+						),
+
+						'new_window' => array(
+							'type' => 'checkbox',
+							'default' => false,
+							'label' => __( 'Open in a new window', 'themovation-widgets' ),
+						),
+
+						'lightbox' => array(
+							'type' => 'checkbox',
+							'default' => false,
+							'label' => __( 'Open in lightbox', 'themovation-widgets' ),
+						),
+
+						'lightbox_width' => array(
+							'type' => 'number',
+							'label' => __( 'Lightbox width', 'themovation-widgets' ),
+						),
+
+					)
+				)
 			),
 
 			plugin_dir_path(__FILE__)

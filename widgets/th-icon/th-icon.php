@@ -25,6 +25,7 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
+				// TO DO : Add glyphicon to icon field
 				'icon' => array(
 					'type' => 'section',
 					'label' => __( 'Icon' , 'themovation-widgets' ),
