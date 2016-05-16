@@ -25,7 +25,23 @@ class Themovation_SO_WB_CallToAction_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				'text' => array(
+					'type' => 'text',
+					'label' => __('Text', 'themovation-widgets'),
+					'placeholder' => __('Enter text here', 'themovation-widgets'),
+				),
+
+				'button_1' => array(
+					'type' => 'widget',
+					'class' => 'Themovation_SO_WB_Button_Widget',
+					'label' => __('Button 1', 'themovation-widgets'),
+				),
+
+				'button_2' => array(
+					'type' => 'widget',
+					'class' => 'Themovation_SO_WB_Button_Widget',
+					'label' => __('Button 2', 'themovation-widgets'),
+				),
 			),
 
 			plugin_dir_path(__FILE__)
