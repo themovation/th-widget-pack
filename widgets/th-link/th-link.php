@@ -59,7 +59,6 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 							'type' => 'number',
 							'label' => __('Lightbox width', 'themovation-widgets'),
 						),
-
 					)
 				)
 			),
