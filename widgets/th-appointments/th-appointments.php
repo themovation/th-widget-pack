@@ -25,7 +25,28 @@ class Themovation_SO_WB_Appointments_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				'shortcode' => array(
+					'type' => 'text',
+					'label' => __('Form Shortcode', 'themovation-widgets'),
+					'placeholder' => __('[add_shortcode_here]', 'themovation-widgets'),
+				),
+
+				'tooltip' => array(
+					'type' => 'text',
+					'label' => __('Tooltip Text', 'themovation-widgets'),
+					'placeholder' => __('Book here', 'themovation-widgets'),
+				),
+
+				'size' => array(
+					'type' => 'select',
+					'label' => __('Styling Size', 'themovation-widgets'),
+					'default' => 'large',
+					'options' => array(
+						'large' => __('Large', 'themovation-widgets'),
+						'medium' => __('Medium', 'themovation-widgets'),
+						'small' => __('Small', 'themovation-widgets'),
+					)
+				),
 			),
 
 			plugin_dir_path(__FILE__)

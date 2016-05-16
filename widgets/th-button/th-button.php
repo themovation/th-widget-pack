@@ -14,10 +14,10 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 
 			'th-button',
 
-			__( 'Themovation Button', 'themovation-widgets' ),
+			__('Themovation Button', 'themovation-widgets'),
 
 			array(
-				'description' => __( '', 'themovation-widgets' ),
+				'description' => __('', 'themovation-widgets'),
 				'help'        => '',
 			),
 
@@ -27,29 +27,29 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 			array(
 				'button' => array(
 					'type' => 'section',
-					'label' => __( 'Button' , 'themovation-widgets' ),
+					'label' => __('Button' , 'themovation-widgets'),
 					'hide' => true,
 					'fields' => array(
 
 						'button_type'    => array(
 							'type'    => 'select',
 							'default' => 'button',
-							'label'   => __( 'Button Type', 'themovation-widgets' ),
+							'label'   => __('Button Type', 'themovation-widgets'),
 							'state_emitter' => array(
 								'callback' => 'select',
 								'args' => array( 'button_type' )
 							),
 							'options' => array(
-								'button' => __( 'Button', 'themovation-widgets' ),
-								'add-to-cart' => __( 'Add to Cart', 'themovation-widgets' ),
-								'graphic' => __( 'Graphic Button', 'themovation-widgets' ),
+								'button' => __('Button', 'themovation-widgets'),
+								'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
+								'graphic' => __('Graphic Button', 'themovation-widgets'),
 							),
 						),
 
 						'button_text' => array(
 							'type' => 'text',
-							'label' => __( 'Button Text', 'themovation-widgets' ),
-							'placeholder' => __( 'Click here', 'themovation-widgets' ),
+							'label' => __('Button Text', 'themovation-widgets'),
+							'placeholder' => __('Click here', 'themovation-widgets'),
 							'state_handler' => array(
 								'button_type[button]' => array('show'),
 								'button_type[add-to-cart]' => array('hide'),
@@ -60,11 +60,11 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 						'button_style'    => array(
 							'type'    => 'radio',
 							'default' => 'standard',
-							'label'   => __( 'Button Style', 'themovation-widgets' ),
+							'label'   => __('Button Style', 'themovation-widgets'),
 							'options' => array(
-								'standard' => __( 'Standard', 'themovation-widgets' ),
-								'ghost' => __( 'Ghost', 'themovation-widgets' ),
-								'cta' => __( 'Call to Action', 'themovation-widgets' ),
+								'standard' => __('Standard', 'themovation-widgets'),
+								'ghost' => __('Ghost', 'themovation-widgets'),
+								'cta' => __('Call to Action', 'themovation-widgets'),
 							),
 							'state_handler' => array(
 								'button_type[button]' => array('show'),
@@ -98,7 +98,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 						'product_button'    => array(
 							'type'    => 'select',
 							'default' => 'standard',
-							'label'   => __( 'Products', 'themovation-widgets' ),
+							'label'   => __('Products', 'themovation-widgets'),
 							'options' => array(),
 							'state_handler' => array(
 								'button_type[button]' => array('hide'),
@@ -109,8 +109,8 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 
 						'product_sku' => array(
 							'type' => 'text',
-							'label' => __( 'Product Sku', 'themovation-widgets' ),
-							'placeholder' => __( 'sku-123', 'themovation-widgets' ),
+							'label' => __('Product Sku', 'themovation-widgets'),
+							'placeholder' => __('sku-123', 'themovation-widgets'),
 							'state_handler' => array(
 								'button_type[button]' => array('hide'),
 								'button_type[add-to-cart]' => array('show'),
@@ -121,7 +121,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 						'button_graphic' => array(
 							'type' => 'media',
 							'library' => 'image',
-							'label' => __( 'Button Graphic', 'themovation-widgets' ),
+							'label' => __('Button Graphic', 'themovation-widgets'),
 							'state_handler' => array(
 								'button_type[button]' => array('hide'),
 								'button_type[add-to-cart]' => array('hide'),

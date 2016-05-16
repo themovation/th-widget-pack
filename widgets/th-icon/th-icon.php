@@ -14,10 +14,10 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 
 			'th-icon',
 
-			__( 'Themovation Icon', 'themovation-widgets' ),
+			__('Themovation Icon', 'themovation-widgets'),
 
 			array(
-				'description' => __( '', 'themovation-widgets' ),
+				'description' => __('', 'themovation-widgets'),
 				'help'        => '',
 			),
 
@@ -28,22 +28,22 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 				// TO DO : Add glyphicon to icon field
 				'icon' => array(
 					'type' => 'section',
-					'label' => __( 'Icon' , 'themovation-widgets' ),
+					'label' => __('Icon' , 'themovation-widgets'),
 					'hide' => true,
 					'fields' => array(
 
 						'icon' => array(
 							'type' => 'icon',
-							'label' => __( 'Icon', 'themovation-widgets' ),
+							'label' => __('Icon', 'themovation-widgets'),
 						),
 
 						'style'    => array(
 							'type'    => 'radio',
 							'default' => 'standard',
-							'label'   => __( 'Icon Style', 'themovation-widgets' ),
+							'label'   => __('Icon Style', 'themovation-widgets'),
 							'options' => array(
-								'standard' => __( 'Standard', 'themovation-widgets' ),
-								'circle' => __( 'Circle', 'themovation-widgets' ),
+								'standard' => __('Standard', 'themovation-widgets'),
+								'circle' => __('Circle', 'themovation-widgets'),
 							),
 						),
 
