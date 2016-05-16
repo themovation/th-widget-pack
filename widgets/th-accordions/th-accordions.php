@@ -74,7 +74,6 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'class' => 'Themovation_SO_WB_Icon_Widget',
 							'label' => __('Icon', 'themovation-widgets'),
 						),
-
 					)
 				),
 			),
