@@ -25,7 +25,33 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				// TO DO : State emitter for lightbox checkbox
+				'icon' => array(
+					'type' => 'widget',
+					'class' => 'SiteOrigin_Widget_Icon_Widget',
+					'label' => __('SiteOrigin Icon Widget', 'themovation-widgets'),
+				),
+
+				'lightbox' => array(
+					'type' => 'checkbox',
+					'default' => false,
+					'label' => __('Open in lightbox', 'themovation-widgets'),
+				),
+
+				'lightbox_width' => array(
+					'type' => 'number',
+					'label' => __('Lightbox width', 'themovation-widgets'),
+				),
+
+				'style'    => array(
+					'type'    => 'radio',
+					'default' => 'standard',
+					'label'   => __('Icon Style', 'themovation-widgets'),
+					'options' => array(
+						'standard' => __('Standard', 'themovation-widgets'),
+						'circle' => __('Circle', 'themovation-widgets'),
+					),
+				),
 			),
 
 			plugin_dir_path(__FILE__)
