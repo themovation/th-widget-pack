@@ -25,7 +25,11 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				'map' => array(
+					'type' => 'widget',
+					'class' => 'SiteOrigin_Widget_GoogleMap_Widget',
+					'label' => __('SiteOrigin Google Maps Widget', 'themovation-widgets'),
+				),
 			),
 
 			plugin_dir_path(__FILE__)
