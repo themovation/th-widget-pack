@@ -53,11 +53,22 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 							'type' => 'checkbox',
 							'default' => false,
 							'label' => __('Open in lightbox', 'themovation-widgets'),
+							'state_emitter' => array(
+							    'callback' => 'conditional',
+							    'args' => array(
+							        'group[active]: val',
+							        'group[inactive]: !val',
+							    )
+							),
 						),
 
 						'lightbox_width' => array(
 							'type' => 'number',
 							'label' => __('Lightbox width', 'themovation-widgets'),
+							'state_handler' => array(
+							    'group[active]' => array( 'show' ),
+							    'group[inactive]' => array( 'hide' ),
+							),
 						),
 					)
 				)

@@ -25,7 +25,35 @@ class Themovation_SO_WB_Video_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				'video' => array(
+					'type' => 'widget',
+					'class' => 'SiteOrigin_Widget_Video_Widget',
+					'label' => __('SiteOrigin Video Widget', 'themovation-widgets'),
+				),
+
+				'webm' => array(
+					'type' => 'media',
+					'fallback' => false,
+					'label' => __('Select webm video', 'themovation-widgets'),
+					'default'     => '',
+					'library' => 'file',
+					'state_handler' => array(
+						'video_type[self]' => array('show'),
+						'video_type[external]' => array('hide'),
+					)
+				),
+
+				'ovg' => array(
+					'type' => 'media',
+					'fallback' => false,
+					'label' => __('Select ogv video', 'themovation-widgets'),
+					'default'     => '',
+					'library' => 'file',
+					'state_handler' => array(
+						'video_type[self]' => array('show'),
+						'video_type[external]' => array('hide'),
+					)
+				),
 			),
 
 			plugin_dir_path(__FILE__)
