@@ -98,7 +98,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 						'product_button'    => array(
 							'type'    => 'select',
 							'default' => 'standard',
-							'label'   => __('Products', 'themovation-widgets'),
+							'label'   => __('Product Button', 'themovation-widgets'),
 							'options' => array(),
 							'state_handler' => array(
 								'button_type[button]' => array('hide'),
@@ -132,7 +132,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 						'graphic_link' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Link_Widget',
-							'label' => __('Button Link', 'themovation-widgets'),
+							'label' => __('Link', 'themovation-widgets'),
 							'state_handler' => array(
 								'button_type[button]' => array('hide'),
 								'button_type[add-to-cart]' => array('hide'),
