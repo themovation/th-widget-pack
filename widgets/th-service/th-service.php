@@ -17,7 +17,7 @@ class Themovation_SO_WB_Service_Widget extends SiteOrigin_Widget {
 			__('Themovation Service Blocks', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Icons with heading, text and link support.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

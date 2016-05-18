@@ -17,7 +17,7 @@ class Themovation_SO_WB_CallToAction_Widget extends SiteOrigin_Widget {
 			__('Themovation Call to Action', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('A text and button call-to-action widget.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

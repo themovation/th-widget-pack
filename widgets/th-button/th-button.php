@@ -17,7 +17,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 			__('Themovation Button', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('A button with different styles including graphic and add to cart.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

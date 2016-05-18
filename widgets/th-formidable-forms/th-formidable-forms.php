@@ -17,7 +17,7 @@ class Themovation_SO_WB_Forms_Widget extends SiteOrigin_Widget {
 			__('Themovation Formidable Forms', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('A Formidable form widget with inline styling options.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

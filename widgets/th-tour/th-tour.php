@@ -17,7 +17,7 @@ class Themovation_SO_WB_Tour_Widget extends SiteOrigin_Widget {
 			__('Themovation Tour', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Stylized service or product showcase with photo, heading, text and button support.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

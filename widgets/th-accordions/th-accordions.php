@@ -17,7 +17,7 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 			__('Themovation Accordion', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Collapsible, expandable content blocks.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

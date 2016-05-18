@@ -17,7 +17,7 @@ class Themovation_SO_WB_MasterSlider_Widget extends SiteOrigin_Widget {
 			__('Themovation Master Slider', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Master Slider widget.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

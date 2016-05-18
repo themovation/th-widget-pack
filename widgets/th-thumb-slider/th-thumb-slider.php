@@ -17,7 +17,7 @@ class Themovation_SO_WB_ThumbSlider_Widget extends SiteOrigin_Widget {
 			__('Themovation Thumbnail Slider', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Inline thumbnail images inside a moving slider / carousel.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

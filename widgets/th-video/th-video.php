@@ -17,7 +17,7 @@ class Themovation_SO_WB_Video_Widget extends SiteOrigin_Widget {
 			__('Themovation Video Player', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Embed Youtube, Vimeo or self hosted videos.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

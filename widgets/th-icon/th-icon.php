@@ -17,7 +17,7 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 			__('Themovation Icon', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Special use widget. Use the Enhanced Icon Widget for standalone use.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

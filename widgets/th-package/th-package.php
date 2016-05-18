@@ -17,7 +17,7 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 			__('Themovation Package', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Package widget, great for promotions, specials and deals.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

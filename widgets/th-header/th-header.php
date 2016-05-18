@@ -17,7 +17,7 @@ class Themovation_SO_WB_Header_Widget extends SiteOrigin_Widget {
 			__('Themovation Header', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Heading widget with subtext and icon support.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

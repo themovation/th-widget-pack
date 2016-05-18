@@ -17,7 +17,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 			__('Themovation Portfolio', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Displays portfolio items with column and sort layout options.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

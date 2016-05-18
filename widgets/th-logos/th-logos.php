@@ -17,7 +17,7 @@ class Themovation_SO_WB_Logos_Widget extends SiteOrigin_Widget {
 			__('Themovation Logos', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('An inline band of small images, ideal for logos.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

@@ -17,7 +17,7 @@ class Themovation_SO_WB_Pricing_Widget extends SiteOrigin_Widget {
 			__('Themovation Pricing Plans', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Pricing chart widget, great for showcasing multiple pricing options and details.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

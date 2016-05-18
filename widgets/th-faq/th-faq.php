@@ -17,7 +17,7 @@ class Themovation_SO_WB_FAQ_Widget extends SiteOrigin_Widget {
 			__('Themovation FAQ', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('An styled question and answer list. Ideal for FAQs.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

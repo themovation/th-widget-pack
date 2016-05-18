@@ -17,7 +17,7 @@ class Themovation_SO_WB_Testimonials_Widget extends SiteOrigin_Widget {
 			__('Themovation Testimonials', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Display testimonials, reviews and quotes.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

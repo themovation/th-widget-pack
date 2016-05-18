@@ -17,7 +17,7 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 			__('Themovation Icon Enhanced', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Icon widget with link and lightbox support.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

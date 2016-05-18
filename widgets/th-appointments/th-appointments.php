@@ -17,7 +17,7 @@ class Themovation_SO_WB_Appointments_Widget extends SiteOrigin_Widget {
 			__('Themovation Booked Appointment Calendar', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('A booking calendar widget with size and tooltip options.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

@@ -17,7 +17,7 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 			__('Themovation Team', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Display team or staff members with social, photo and background options.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

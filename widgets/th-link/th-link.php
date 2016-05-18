@@ -17,7 +17,7 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 			__('Themovation Link', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Special use widget. Not designed for standalone use.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

@@ -17,7 +17,7 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 			__('Themovation Google Map', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('Add a Google Map widget.', 'themovation-widgets'),
 				'help'        => '',
 			),
 

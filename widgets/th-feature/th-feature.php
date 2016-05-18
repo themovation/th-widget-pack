@@ -17,7 +17,7 @@ class Themovation_SO_WB_Feature_Widget extends SiteOrigin_Widget {
 			__('Themovation Feature', 'themovation-widgets'),
 
 			array(
-				'description' => __('', 'themovation-widgets'),
+				'description' => __('A featured content block. Includes photo, heading, text and more.', 'themovation-widgets'),
 				'help'        => '',
 			),
 
