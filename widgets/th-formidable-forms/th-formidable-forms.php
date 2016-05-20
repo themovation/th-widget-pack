@@ -25,7 +25,17 @@ class Themovation_SO_WB_Forms_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// Fields go here
+				'shortcode' => array(
+					'type' => 'text',
+					'label' => __('Form Shortcode', 'themovation-widgets'),
+					'placeholder' => __('[add_shortcode_here]', 'themovation-widgets'),
+				),
+
+				'conversion_form' => array(
+					'type' => 'checkbox',
+					'default' => false,
+					'label' => __('Inline conversion form', 'themovation-widgets'),
+				),
 			),
 
 			plugin_dir_path(__FILE__)
