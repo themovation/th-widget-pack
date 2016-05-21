@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Header
-Description:
+Description: Heading widget with subtext and icon support.
 Author: Themovation
 Author URI: themovation.com
 */

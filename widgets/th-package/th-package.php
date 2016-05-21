@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Package
-Description:
+Description: Package widget, great for promotions, specials and deals.
 Author: Themovation
 Author URI: themovation.com
 */

@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Google Map
-Description:
+Description: Add a Google Map widget.
 Author: Themovation
 Author URI: themovation.com
 */

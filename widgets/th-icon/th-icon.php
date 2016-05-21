@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Icon
-Description:
+Description: Special use widget. Use the Enhanced Icon Widget for standalone use.
 Author: Themovation
 Author URI: themovation.com
 */

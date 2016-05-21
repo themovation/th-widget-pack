@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Video Player
-Description:
+Description: Embed Youtube, Vimeo or self hosted videos.
 Author: Themovation
 Author URI: themovation.com
 */

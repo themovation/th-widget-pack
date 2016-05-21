@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Link
-Description:
+Description: Special use widget. Not designed for standalone use.
 Author: Themovation
 Author URI: themovation.com
 */

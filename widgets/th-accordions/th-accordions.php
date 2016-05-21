@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Accordions
-Description:
+Description: Collapsible, expandable content blocks.
 Author: Themovation
 Author URI: themovation.com
 */

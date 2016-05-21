@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Content Editor
-Description:
+Description: A rich-text, text editor.
 Author: Themovation
 Author URI: themovation.com
 */

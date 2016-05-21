@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Logos
-Description:
+Description: An inline band of small images, ideal for logos.
 Author: Themovation
 Author URI: themovation.com
 */

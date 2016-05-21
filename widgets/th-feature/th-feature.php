@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Feature
-Description:
+Description: A featured content block. Includes photo, heading, text and more.
 Author: Themovation
 Author URI: themovation.com
 */

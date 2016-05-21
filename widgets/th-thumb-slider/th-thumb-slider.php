@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Thumbnail Slider
-Description:
+Description: Inline thumbnail images inside a moving slider / carousel.
 Author: Themovation
 Author URI: themovation.com
 */

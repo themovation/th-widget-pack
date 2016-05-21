@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Master Slider
-Description:
+Description: Master Slider widget.
 Author: Themovation
 Author URI: themovation.com
 */

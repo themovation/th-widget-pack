@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Button
-Description:
+Description: A button with different styles including graphic and add to cart.
 Author: Themovation
 Author URI: themovation.com
 */

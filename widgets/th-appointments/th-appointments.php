@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Booked Appointments Calendar
-Description:
+Description: A booking calendar widget with size and tooltip options.
 Author: Themovation
 Author URI: themovation.com
 */

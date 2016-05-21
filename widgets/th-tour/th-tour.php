@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Tour
-Description:
+Description: Stylized service or product showcase with photo, heading, text and button support.
 Author: Themovation
 Author URI: themovation.com
 */

@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Call to Action
-Description:
+Description: A text and button call-to-action widget.
 Author: Themovation
 Author URI: themovation.com
 */

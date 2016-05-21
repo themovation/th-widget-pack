@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Pricing Plans
-Description:
+Description: Pricing chart widget, great for showcasing multiple pricing options and details.
 Author: Themovation
 Author URI: themovation.com
 */

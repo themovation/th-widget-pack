@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation FAQ
-Description:
+Description: An styled question and answer list. Ideal for FAQs.
 Author: Themovation
 Author URI: themovation.com
 */

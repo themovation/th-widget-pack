@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Icon Enhanced
-Description:
+Description: Icon widget with link and lightbox support.
 Author: Themovation
 Author URI: themovation.com
 */

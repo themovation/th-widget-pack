@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Portfolio
-Description:
+Description: Displays portfolio items with column and sort layout options.
 Author: Themovation
 Author URI: themovation.com
 */

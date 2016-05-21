@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Team
-Description:
+Description: Display team or staff members with social, photo and background options.
 Author: Themovation
 Author URI: themovation.com
 */

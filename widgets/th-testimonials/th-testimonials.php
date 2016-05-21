@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Testimonials
-Description:
+Description: Display testimonials, reviews and quotes.
 Author: Themovation
 Author URI: themovation.com
 */

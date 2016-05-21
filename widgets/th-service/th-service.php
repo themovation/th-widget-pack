@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Service Blocks
-Description:
+Description: Icons with heading, text and link support.
 Author: Themovation
 Author URI: themovation.com
 */

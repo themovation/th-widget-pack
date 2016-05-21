@@ -1,7 +1,7 @@
 <?php
 /*
 Widget Name: Themovation Formidable Forms
-Description:
+Description: A Formidable form widget with inline styling options.
 Author: Themovation
 Author URI: themovation.com
 */
