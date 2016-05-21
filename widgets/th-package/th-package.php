@@ -124,6 +124,7 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'Themovation_SO_WB_Link_Widget',
 					'label' => __('Link', 'themovation-widgets'),
+					'hide' => true
 				),
 			),
 

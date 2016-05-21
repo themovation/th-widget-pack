@@ -29,6 +29,7 @@ class Themovation_SO_WB_Video_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'SiteOrigin_Widget_Video_Widget',
 					'label' => __('SiteOrigin Video Widget', 'themovation-widgets'),
+					'hide' => true
 				),
 
 				'webm' => array(

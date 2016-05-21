@@ -37,6 +37,7 @@ class Themovation_SO_WB_Feature_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'Themovation_SO_WB_Icon_Widget',
 					'label' => __('Icon', 'themovation-widgets'),
+					'hide' => true
 				),
 
 				'title' => array(
@@ -64,6 +65,7 @@ class Themovation_SO_WB_Feature_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'Themovation_SO_WB_Link_Widget',
 					'label' => __('Link', 'themovation-widgets'),
+					'hide' => true
 				),
 
 				'background' => array(

@@ -61,18 +61,21 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Button_Widget',
 							'label' => __('Button 1', 'themovation-widgets'),
+							'hide' => true
 						),
 
 						'button_2' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Button_Widget',
 							'label' => __('Button 2', 'themovation-widgets'),
+							'hide' => true
 						),
 
 						'icon' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Icon_Widget',
 							'label' => __('Icon', 'themovation-widgets'),
+							'hide' => true
 						),
 					)
 				),
