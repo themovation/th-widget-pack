@@ -25,7 +25,6 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				// TO DO : State emitter for lightbox checkbox
 				'icon' => array(
 					'type' => 'widget',
 					'class' => 'SiteOrigin_Widget_Icon_Widget',
@@ -33,15 +32,27 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 					'hide' => true
 				),
 
-				'lightbox' => array(
-					'type' => 'checkbox',
-					'default' => false,
-					'label' => __('Open in lightbox', 'themovation-widgets'),
+				'lightbox'    => array(
+					'type'    => 'radio',
+					'default' => 'off',
+					'label'   => __('Open in lightbox', 'themovation-widgets'),
+					'state_emitter' => array(
+						'callback' => 'select',
+						'args' => array( 'lightbox' )
+					),
+					'options' => array(
+						'off' => __('Off', 'themovation-widgets'),
+						'on' => __('On', 'themovation-widgets'),
+					),
 				),
 
 				'lightbox_width' => array(
 					'type' => 'number',
 					'label' => __('Lightbox width', 'themovation-widgets'),
+					'state_handler' => array(
+						'lightbox[on]' => array('show'),
+						'lightbox[off]' => array('hide'),
+					),
 				),
 
 				'style'    => array(
