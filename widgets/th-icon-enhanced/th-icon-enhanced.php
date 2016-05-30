@@ -29,7 +29,7 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'SiteOrigin_Widget_Icon_Widget',
 					'label' => __('SiteOrigin Icon Widget', 'themovation-widgets'),
-					'hide' => true
+					'hide' => false
 				),
 
 				'lightbox'    => array(

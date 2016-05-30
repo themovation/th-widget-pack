@@ -56,7 +56,7 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'Themovation_SO_WB_Link_Widget',
 					'label' => __('Link', 'themovation-widgets'),
-					'hide' => true
+					'hide' => false
 				),
 
 				'image' => array(
@@ -82,14 +82,14 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Icon_Widget',
 							'label' => __('Icon', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 
 						'link' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Link_Widget',
 							'label' => __('Link', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 					)
 				),
@@ -97,7 +97,7 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 				'background' => array(
 					'type' => 'section',
 					'label' => __('Background' , 'themovation-widgets'),
-					'hide' => true,
+					'hide' => false,
 					'fields' => array(
 
 						'color' => array(

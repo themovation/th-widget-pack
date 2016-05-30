@@ -28,7 +28,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 				'button' => array(
 					'type' => 'section',
 					'label' => __('Button' , 'themovation-widgets'),
-					'hide' => true,
+					'hide' => false,
 					'fields' => array(
 
 						'button_type'    => array(
@@ -82,7 +82,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 								'button_type[add-to-cart]' => array('hide'),
 								'button_type[graphic]' => array('hide'),
 							),
-							'hide' => true
+							'hide' => false
 						),
 
 						'button_link' => array(
@@ -94,7 +94,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 								'button_type[add-to-cart]' => array('hide'),
 								'button_type[graphic]' => array('hide'),
 							),
-							'hide' => true
+							'hide' => false
 						),
 
 						'product_button'    => array(
@@ -140,7 +140,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 								'button_type[add-to-cart]' => array('hide'),
 								'button_type[graphic]' => array('show'),
 							),
-							'hide' => true
+							'hide' => false
 						),
 
 					)

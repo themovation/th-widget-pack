@@ -28,7 +28,7 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 				'icon' => array(
 					'type' => 'section',
 					'label' => __('Icon' , 'themovation-widgets'),
-					'hide' => true,
+					'hide' => false,
 					'fields' => array(
 
 						'icon' => array(

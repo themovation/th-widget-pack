@@ -59,7 +59,7 @@ class Themovation_SO_WB_ThumbSlider_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Link_Widget',
 							'label' => __('Link', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 					)
 				),

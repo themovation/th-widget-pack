@@ -29,7 +29,7 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 					'type' => 'widget',
 					'class' => 'SiteOrigin_Widget_GoogleMap_Widget',
 					'label' => __('SiteOrigin Google Maps Widget', 'themovation-widgets'),
-					'hide' => true
+					'hide' => false
 				),
 			),
 

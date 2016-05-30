@@ -65,14 +65,14 @@ class Themovation_SO_WB_Pricing_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Button_Widget',
 							'label' => __('Button 1', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 
 						'button_2' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Button_Widget',
 							'label' => __('Button 2', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 
 						'popular' => array(

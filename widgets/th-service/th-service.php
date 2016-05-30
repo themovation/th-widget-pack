@@ -61,14 +61,14 @@ class Themovation_SO_WB_Service_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Icon_Widget',
 							'label' => __('Icon', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 
 						'link' => array(
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Link_Widget',
 							'label' => __('Link', 'themovation-widgets'),
-							'hide' => true
+							'hide' => false
 						),
 					)
 				),
