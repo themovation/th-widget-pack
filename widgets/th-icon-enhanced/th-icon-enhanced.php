@@ -62,6 +62,7 @@ class Themovation_SO_WB_IconEnhanced_Widget extends SiteOrigin_Widget {
 					'options' => array(
 						'standard' => __('Standard', 'themovation-widgets'),
 						'circle' => __('Circle', 'themovation-widgets'),
+						'border' => __('Bordered', 'themovation-widgets'),
 					),
 				),
 			),
