@@ -54,7 +54,7 @@ class Themovation_SO_WB_Header_Widget extends SiteOrigin_Widget {
 				),
 
 				'align' => array(
-					'type' => 'select',
+					'type' => 'radio',
 					'label' => __('Align', 'themovation-widgets'),
 					'default' => 'left',
 					'options' => array(

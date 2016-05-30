@@ -42,6 +42,13 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'placeholder' => __('Enter title here', 'themovation-widgets'),
 						),
 
+						'icon' => array(
+							'type' => 'widget',
+							'class' => 'Themovation_SO_WB_Icon_Widget',
+							'label' => __('Icon', 'themovation-widgets'),
+							'hide' => false
+						),
+
 						'content' => array(
 							'type' => 'tinymce',
 							'label' => __('Content', 'themovation-widgets'),
@@ -68,13 +75,6 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'type' => 'widget',
 							'class' => 'Themovation_SO_WB_Button_Widget',
 							'label' => __('Button 2', 'themovation-widgets'),
-							'hide' => false
-						),
-
-						'icon' => array(
-							'type' => 'widget',
-							'class' => 'Themovation_SO_WB_Icon_Widget',
-							'label' => __('Icon', 'themovation-widgets'),
 							'hide' => false
 						),
 					)

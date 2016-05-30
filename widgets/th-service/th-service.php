@@ -74,7 +74,7 @@ class Themovation_SO_WB_Service_Widget extends SiteOrigin_Widget {
 				),
 
 				'align' => array(
-					'type' => 'select',
+					'type' => 'radio',
 					'label' => __('Align Service Blocks', 'themovation-widgets'),
 					'default' => 'left',
 					'options' => array(

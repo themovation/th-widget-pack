@@ -33,7 +33,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 
 				'individual'    => array(
 					'type'    => 'select',
-					'default' => '',
+					'default' => 'none',
 					'label'   => __('Select Individually', 'themovation-widgets'),
 					'multiple' => true,
 					'options' => array(),
@@ -41,7 +41,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 
 				'group'    => array(
 					'type'    => 'select',
-					'default' => 'standard',
+					'default' => 'none',
 					'label'   => __('Select by Group', 'themovation-widgets'),
 					'multiple' => true,
 					'options' => array(),
@@ -78,6 +78,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 			'post_type' => array('themo_portfolio'),
 			'posts_per_page' => -1
 		) );
+		$portfolio['none'] = __('None', 'themovation-widgets');
 		while ( $loop->have_posts() ) : $loop->the_post();
 			$id = get_the_ID();
 			$title = get_the_title();
@@ -89,6 +90,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 	// Creating an array of Portfolio categories
 	function get_themo_portfolio_cats() {
 		$portfolio_group = array();
+		$portfolio_group['none'] = __('None', 'themovation-widgets');
 		$taxonomy = 'themo_project_type';
 		$tax_terms = get_terms( $taxonomy );
 		foreach( $tax_terms as $item ) {
