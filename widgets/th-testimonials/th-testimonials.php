@@ -62,6 +62,15 @@ class Themovation_SO_WB_Testimonials_Widget extends SiteOrigin_Widget {
 							'default'     => '',
 							'library' => 'image',
 						),
+
+						'rating' => array(
+							'type' => 'slider',
+							'label' => __( 'Rating', 'themovation-widgets' ),
+							'default' => 5,
+							'min' => 1,
+							'max' => 5,
+							'integer' => true,
+						),
 					)
 				),
 			),

@@ -59,7 +59,7 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 
 				'columns' => array(
 					'type' => 'slider',
-					'label' => __( 'Number of Columns to show', 'wpinked-widgets' ),
+					'label' => __( 'Number of Columns to show', 'themovation-widgets' ),
 					'default' => 3,
 					'min' => 2,
 					'max' => 5,
