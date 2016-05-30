@@ -77,7 +77,7 @@ class Themovation_SO_WB_Tour_Widget extends SiteOrigin_Widget {
 				'image_opts' => array(
 					'type' => 'section',
 					'label' => __('Featured Image Options' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'align' => array(

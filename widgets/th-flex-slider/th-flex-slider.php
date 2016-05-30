@@ -81,7 +81,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						'image' => array(
 							'type' => 'section',
 							'label' => __('Featured Image' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'image' => array(
@@ -104,7 +104,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						'background' => array(
 							'type' => 'section',
 							'label' => __('Background' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'color' => array(
@@ -183,7 +183,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						'padding' => array(
 							'type' => 'section',
 							'label' => __('Padding' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'top' => array(
@@ -209,7 +209,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						'shortcode' => array(
 							'type' => 'section',
 							'label' => __('Shortcode' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'shortcode' => array(
@@ -239,7 +239,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						'styling' => array(
 							'type' => 'section',
 							'label' => __('Alignment and Styling' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'large' => array(

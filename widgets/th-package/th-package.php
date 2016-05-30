@@ -49,7 +49,7 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 				'price' => array(
 					'type' => 'section',
 					'label' => __('Price' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'price' => array(
@@ -67,7 +67,7 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 						'background' => array(
 							'type' => 'section',
 							'label' => __('Background' , 'themovation-widgets'),
-							'hide' => false,
+							'hide' => true,
 							'fields' => array(
 
 								'color' => array(
@@ -100,7 +100,7 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 				'background' => array(
 					'type' => 'section',
 					'label' => __('Background' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'color' => array(

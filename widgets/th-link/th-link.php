@@ -28,7 +28,7 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 				'link' => array(
 					'type' => 'section',
 					'label' => __('Link' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'url' => array(

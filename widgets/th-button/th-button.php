@@ -28,7 +28,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 				'button' => array(
 					'type' => 'section',
 					'label' => __('Button' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'button_type'    => array(

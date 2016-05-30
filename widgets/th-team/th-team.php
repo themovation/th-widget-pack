@@ -97,7 +97,7 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 				'background' => array(
 					'type' => 'section',
 					'label' => __('Background' , 'themovation-widgets'),
-					'hide' => false,
+					'hide' => true,
 					'fields' => array(
 
 						'color' => array(

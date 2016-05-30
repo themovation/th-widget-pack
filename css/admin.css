@@ -1,1 +1,19 @@
-
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-icon > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-link > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_icon > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_link > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-graphic_link > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_1 > .siteorigin-widget-field-label,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_2 > .siteorigin-widget-field-label  {
+	display: none;
+}
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-icon > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-link > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_icon > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_link > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-graphic_link > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_1 > .siteorigin-widget-section,
+.siteorigin-widget-form .siteorigin-widget-field-type-widget.siteorigin-widget-field-button_2 > .siteorigin-widget-section {
+	padding: 0;
+	border: none;
+}
