@@ -1,6 +1,7 @@
-!function ($) {
-	$(document).on( "panelsopen", function() {
-		$(document).ready(function(){
+(
+	function ( $ ) {
+
+		$.fn.buttonLogic = function() {
 			$("select[name*='[button][button_type]']").change(function(){
 				$(this).find("option:selected").each(function(){
 					if($(this).attr("value")=="button"){
@@ -35,6 +36,22 @@
 					}
 				});
 			}).change();
-		});
+		}
+
+	}
+)( jQuery );
+
+!function ($) {
+	$(document).ready(function($) {
+		$('.siteorigin-widget-section ').buttonLogic();
+	});
+	$(document).on( "panelsopen", function() {
+		$('.siteorigin-widget-section ').buttonLogic();
+	});
+	$(document).on( "widget-added", function() {
+		$('.siteorigin-widget-section ').buttonLogic();
+	});
+	$(document).on( "widget-updated", function() {
+		$('.siteorigin-widget-section ').buttonLogic();
 	});
 }(jQuery);
