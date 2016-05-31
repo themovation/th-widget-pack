@@ -215,7 +215,7 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 								'shortcode' => array(
 									'type' => 'text',
 									'label' => __('Shortcode', 'themovation-widgets'),
-									'placeholder' => __('Cover', 'themovation-widgets'),
+									'placeholder' => __('[shortcode]', 'themovation-widgets'),
 								),
 
 								'tooltip' => array(

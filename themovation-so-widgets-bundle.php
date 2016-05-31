@@ -62,7 +62,7 @@ if ( ! function_exists( 'themovation_so_wb_glyphicons' ) ) :
 // Adding glyphicons to the icon field
 function themovation_so_wb_glyphicons( $icon_families ) {
 	$icon_families['glyphicons'] = array(
-		'name' => __( 'Glyphicons Regular', 'example-text-domain' ),
+		'name' => __( 'Glyphicons Regular', 'themovation-widgets' ),
 		'style_uri' => plugin_dir_url(__FILE__) . 'assets/glyphicons/style.css',
 		'icons' => array(
 			'glass' =>'&#xe001;',
@@ -871,6 +871,90 @@ function themovation_so_wb_glyphicons( $icon_families ) {
 }
 endif;
 add_filter( 'siteorigin_widgets_icon_families', 'themovation_so_wb_glyphicons' );
+
+if ( ! function_exists( 'themovation_so_wb_glyphicons_social' ) ) :
+// Adding glyphicons to the icon field
+function themovation_so_wb_glyphicons_social( $icon_families ) {
+	$icon_families['glyphicons-social'] = array(
+		'name' => __( 'Glyphicons Social', 'themovation-widgets' ),
+		'style_uri' => plugin_dir_url(__FILE__) . 'assets/glyphicons-social/style.css',
+		'icons' => array(
+			'pinterest' => '&#xe001',
+			'dropbox' => '&#xe002',
+			'google-plus' => '&#xe003',
+			'jolicloud' => '&#xe004',
+			'yahoo' => '&#xe005',
+			'blogger' => '&#xe006',
+			'picasa' => '&#xe007',
+			'amazon' => '&#xe008',
+			'tumblr' => '&#xe009',
+			'wordpress' => '&#xe010',
+			'instapaper' => '&#xe011',
+			'evernote' => '&#xe012',
+			'xing' => '&#xe013',
+			'e-mail-envelope' => '&#xe014',
+			'dribbble' => '&#xe015',
+			'deviantart' => '&#xe016',
+			'read-it-later' => '&#xe017',
+			'linked-in' => '&#xe018',
+			'gmail' => '&#xe019',
+			'pinboard' => '&#xe020',
+			'behance' => '&#xe021',
+			'github' => '&#xe022',
+			'youtube' => '&#xe023',
+			'open-id' => '&#xe024',
+			'foursquare' => '&#xe025',
+			'quora' => '&#xe026',
+			'badoo' => '&#xe027',
+			'spotify' => '&#xe028',
+			'stumbleupon' => '&#xe029',
+			'readability' => '&#xe030',
+			'facebook' => '&#xe031',
+			'twitter' => '&#xe032',
+			'instagram' => '&#xe033',
+			'posterous-spaces' => '&#xe034',
+			'vimeo' => '&#xe035',
+			'flickr' => '&#xe036',
+			'last-fm' => '&#xe037',
+			'rss' => '&#xe038',
+			'skype' => '&#xe039',
+			'e-mail' => '&#xe040',
+			'vine' => '&#xe041',
+			'myspace' => '&#xe042',
+			'goodreads' => '&#xe043',
+			'apple' => '&#xe044',
+			'windows' => '&#xe045',
+			'yelp' => '&#xe046',
+			'playstation' => '&#xe047',
+			'xbox' => '&#xe048',
+			'android' => '&#xe049',
+			'ios' => '&#xe050',
+			'wikipedia' => '&#xe051',
+			'pocket' => '&#xe052',
+			'steam' => '&#xe053',
+			'soundcloud' => '&#xe054',
+			'slideshare' => '&#xe055',
+			'netflix' => '&#xe056',
+			'paypal' => '&#xe057',
+			'google-drive' => '&#xe058',
+			'linux-foundation' => '&#xe059',
+			'ebay' => '&#xe060',
+			'bitbucket' => '&#xe061',
+			'whatsapp' => '&#xe062',
+			'buffer' => '&#xe063',
+			'medium' => '&#xe064',
+			'stackoverflow' => '&#xe065',
+			'linux' => '&#xe066',
+			'vk' => '&#xe067',
+			'snapchat' => '&#xe068',
+			'etsy' => '&#xe069',
+			'stackexchange' => '&#xe070'
+		),
+	);
+	return $icon_families;
+}
+endif;
+add_filter( 'siteorigin_widgets_icon_families', 'themovation_so_wb_glyphicons_social' );
 
 if ( ! function_exists( 'themovation_so_wb_admin' ) ) :
 // Enqueueing Backend CSS File
