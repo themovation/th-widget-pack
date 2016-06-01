@@ -1,0 +1,21 @@
+/* ==========================================================================
+    Team Widget
+   ========================================================================== */
+
+.th-team-member-image {margin-bottom:20px}
+
+.th-team-member h5 {
+    font-size:16px;
+    font-weight:300;
+}
+
+.th-team-member-social a .soc-icon {
+    font-size:24px;
+    color:#000;
+    opacity:0.3;
+    margin-top:5px;
+}
+.th-team-member-social a .soc-icon:hover {
+    color:#045089;
+    opacity:1;
+}
