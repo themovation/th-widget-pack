@@ -1,0 +1,46 @@
+/* ==========================================================================
+    Service Blocks Widget
+   ========================================================================== */
+
+/* Horizontal Style */
+
+.th-sb-single {margin-bottom:40px}
+
+.th-sb-single .med-icon {float:left}
+
+.th-sb-single .th-sb-text h3 {
+    margin-top:0;
+    padding-top:4px;
+    margin-left:60px;
+}
+.th-sb-single .th-sb-text p {margin-left:60px}
+
+.th-sb-single-circle {margin-bottom:40px}
+
+.th-sb-single-circle .circle-med-icon {float:left}
+
+.th-sb-single-circle .th-sb-text h3 {
+    margin-top:0;
+    margin-left:85px;
+}
+.th-sb-single-circle .th-sb-text p {margin-left:85px}
+
+/* Vertical Style */
+
+.th-sb-single-vert {
+    padding:0 45px;
+    margin-bottom:40px;
+    text-align:center;
+}
+.th-sb-single-vert .th-sb-text h3 {
+    font-size:22px;
+    margin-bottom:20px;
+}
+.th-sb-single-vert .th-sb-text p {
+    font-size:16px;
+    padding:0 15px;
+    color:#5c5c5c;
+    margin-bottom:0;
+}
+
+/*.light-text.icon-blocks p {color:#fff} */
