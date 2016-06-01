@@ -3,36 +3,24 @@
 
 		$.fn.buttonLogic = function() {
 			$("select[name*='[button][button_type]']").change(function(){
-				$(this).find("option:selected").each(function(){
-					if($(this).attr("value")=="button"){
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_text").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_style").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_icon").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_link").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_button").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_sku").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_graphic").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-graphic_link").hide();
-					}
-					else if($(this).attr("value")=="add-to-cart"){
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_text").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_style").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_icon").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_link").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_button").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_sku").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_graphic").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-graphic_link").hide();
-					}
-					else if($(this).attr("value")=="graphic"){
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_text").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_style").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_icon").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_link").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_button").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-product_sku").hide();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-button_graphic").show();
-						$(this).parents('.siteorigin-widget-field-button_type').siblings(".siteorigin-widget-field-graphic_link").show();
+				var $$ = $(this),
+					$p = '.siteorigin-widget-field-button_type',
+					$b = '.siteorigin-widget-field-button_text, .siteorigin-widget-field-button_style, .siteorigin-widget-field-button_icon, .siteorigin-widget-field-button_link',
+					$c = '.siteorigin-widget-field-product_button, .siteorigin-widget-field-product_sku',
+					$g = '.siteorigin-widget-field-button_graphic, .siteorigin-widget-field-graphic_link';
+				$$.find("option:selected").each(function(){
+					if($$.attr("value") == "button") {
+						$$.parents($p).siblings($b).show();
+						$$.parents($p).siblings($c).hide();
+						$$.parents($p).siblings($g).hide();
+					} else if($$.attr("value") == "add-to-cart") {
+						$$.parents($p).siblings($b).hide();
+						$$.parents($p).siblings($c).show();
+						$$.parents($p).siblings($g).hide();
+					} else if($$.attr("value") == "graphic") {
+						$$.parents($p).siblings($b).hide();
+						$$.parents($p).siblings($c).hide();
+						$$.parents($p).siblings($g).show();
 					}
 				});
 			}).change();
