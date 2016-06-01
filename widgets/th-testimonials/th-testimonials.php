@@ -80,11 +80,18 @@ class Themovation_SO_WB_Testimonials_Widget extends SiteOrigin_Widget {
 	}
 
 	function get_template_name($instance) {
-		return '';
+		return 'testimonials';
 	}
 
 	function get_style_name($instance) {
 		return '';
+	}
+
+	function enqueue_frontend_scripts( $instance ) {
+
+		wp_enqueue_style( 'themo-testimonials', siteorigin_widget_get_plugin_dir_url('th-testimonials') . 'styles/testimonials.css', array(), INKED_SO_WIDGETS );
+
+		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-testimonials', __FILE__, 'Themovation_SO_WB_Testimonials_Widget');

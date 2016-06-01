@@ -142,11 +142,18 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 	}
 
 	function get_template_name($instance) {
-		return '';
+		return 'package';
 	}
 
 	function get_style_name($instance) {
 		return '';
+	}
+
+	function enqueue_frontend_scripts( $instance ) {
+
+		wp_enqueue_style( 'themo-package', siteorigin_widget_get_plugin_dir_url('th-package') . 'styles/package.css', array(), INKED_SO_WIDGETS );
+
+		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-package', __FILE__, 'Themovation_SO_WB_Package_Widget');

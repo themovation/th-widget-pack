@@ -173,11 +173,18 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 	}
 
 	function get_template_name($instance) {
-		return '';
+		return 'button';
 	}
 
 	function get_style_name($instance) {
 		return '';
+	}
+
+	function enqueue_frontend_scripts( $instance ) {
+
+		wp_enqueue_style( 'themo-button', siteorigin_widget_get_plugin_dir_url('th-button') . 'styles/button.css', array(), INKED_SO_WIDGETS );
+
+		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-button', __FILE__, 'Themovation_SO_WB_Button_Widget');
