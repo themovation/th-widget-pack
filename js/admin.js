@@ -31,15 +31,27 @@
 
 !function ($) {
 	$(document).ready(function($) {
-		$('.siteorigin-widget-section ').buttonLogic();
+		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
+			$(this).buttonLogic();
+		} );
 	});
 	$(document).on( "panelsopen", function() {
-		$('.siteorigin-widget-section ').buttonLogic();
+		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
+			$(this).buttonLogic();
+		} );
 	});
 	$(document).on( "widget-added", function() {
-		$('.siteorigin-widget-section ').buttonLogic();
+		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
+			$(this).buttonLogic();
+		} );
 	});
 	$(document).on( "widget-updated", function() {
-		$('.siteorigin-widget-section ').buttonLogic();
+		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
+			$(this).buttonLogic();
+		} );
 	});
 }(jQuery);
