@@ -61,11 +61,14 @@ class Themovation_SO_WB_Appointments_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-appointments', siteorigin_widget_get_plugin_dir_url('th-appointments') . 'styles/appointments.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-appointments', plugin_dir_url(__FILE__) . 'styles/appointments.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-appointments', __FILE__, 'Themovation_SO_WB_Appointments_Widget');

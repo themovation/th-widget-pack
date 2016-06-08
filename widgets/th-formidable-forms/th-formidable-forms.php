@@ -50,11 +50,14 @@ class Themovation_SO_WB_Forms_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-formidable-forms', siteorigin_widget_get_plugin_dir_url('th-formidable-forms') . 'styles/formidable-forms.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-formidable-forms', plugin_dir_url(__FILE__) . 'styles/formidable-forms.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-formidable-forms', __FILE__, 'Themovation_SO_WB_Forms_Widget');

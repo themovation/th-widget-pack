@@ -44,11 +44,14 @@ class Themovation_SO_WB_MasterSlider_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-master-slider', siteorigin_widget_get_plugin_dir_url('th-master-slider') . 'styles/master-slider.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-master-slider', plugin_dir_url(__FILE__) . 'styles/master-slider.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-master-slider', __FILE__, 'Themovation_SO_WB_MasterSlider_Widget');

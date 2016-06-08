@@ -53,11 +53,14 @@ class Themovation_SO_WB_Editor_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-editor', siteorigin_widget_get_plugin_dir_url('th-editor') . 'styles/content-editor.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-editor', plugin_dir_url(__FILE__) . 'styles/content-editor.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-content-editor', __FILE__, 'Themovation_SO_WB_Editor_Widget');

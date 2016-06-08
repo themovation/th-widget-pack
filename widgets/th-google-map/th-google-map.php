@@ -45,11 +45,14 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-maps', siteorigin_widget_get_plugin_dir_url('th-maps') . 'styles/google-maps.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-maps', plugin_dir_url(__FILE__) . 'styles/google-maps.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-google-map', __FILE__, 'Themovation_SO_WB_Maps_Widget');

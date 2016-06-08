@@ -86,11 +86,14 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
-	function enqueue_frontend_scripts( $instance ) {
+	function initialize() {
 
-		wp_enqueue_style( 'themo-link', siteorigin_widget_get_plugin_dir_url('th-link') . 'styles/link.css', array(), INKED_SO_WIDGETS );
+		$this->register_frontend_styles(
+			array(
+				array( 'themo-link', plugin_dir_url(__FILE__) . 'styles/link.css', array(), ​THEMOVATION_WB_VER )
+			)
+		);
 
-		parent::enqueue_frontend_scripts( $instance );
 	}
 }
 siteorigin_widget_register('th-link', __FILE__, 'Themovation_SO_WB_Link_Widget');
