@@ -12,7 +12,7 @@ class Themovation_SO_WB_Editor_Widget extends SiteOrigin_Widget {
 
 		parent::__construct(
 
-			'th-editor',
+			'th-content-editor',
 
 			__('Themovation Content Editor', 'themovation-widgets'),
 
@@ -60,4 +60,4 @@ class Themovation_SO_WB_Editor_Widget extends SiteOrigin_Widget {
 		parent::enqueue_frontend_scripts( $instance );
 	}
 }
-siteorigin_widget_register('th-editor', __FILE__, 'Themovation_SO_WB_Editor_Widget');
+siteorigin_widget_register('th-content-editor', __FILE__, 'Themovation_SO_WB_Editor_Widget');

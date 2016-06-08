@@ -12,7 +12,7 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 
 		parent::__construct(
 
-			'th-maps',
+			'th-google-map',
 
 			__('Themovation Google Map', 'themovation-widgets'),
 
@@ -52,4 +52,4 @@ class Themovation_SO_WB_Maps_Widget extends SiteOrigin_Widget {
 		parent::enqueue_frontend_scripts( $instance );
 	}
 }
-siteorigin_widget_register('th-maps', __FILE__, 'Themovation_SO_WB_Maps_Widget');
+siteorigin_widget_register('th-google-map', __FILE__, 'Themovation_SO_WB_Maps_Widget');
