@@ -3,8 +3,8 @@
 
 		<?php foreach( $instance['faqs'] as $faq ) { ?>
 
-			<dt class="th-faq-dt"><?php echo $faq['title']; ?></dt>
-			<dd class="th-faq-dd"><?php echo $faq['content']; ?></dd>
+			<dt class="th-faq-dt"><?php echo esc_html( $faq['title'] ); ?></dt>
+			<dd class="th-faq-dd"><?php echo wp_kses_post( $faq['content'] ); ?></dd>
 
 		<?php } ?>
 
