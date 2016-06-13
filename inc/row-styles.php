@@ -1,7 +1,7 @@
 <?php
 
 if ( ! function_exists ( 'themovation_so_wb_row_layout_field' ) ) :
-// The functions that make it happen
+// Adding row layout options
 function themovation_so_wb_row_layout_field( $fields ) {
 
 	$fields['themo-row-layout'] = array(
@@ -29,7 +29,7 @@ if ( function_exists( 'ot_get_option' ) ) {
 }
 
 if ( ! function_exists ( 'themovation_so_wb_row_layout_class' ) ) :
-// Adding classes to widgets to control visibility
+// Adding row layout class
 function themovation_so_wb_row_layout_class( $attributes, $args ) {
 
 	if( ! empty( $args['themo-row-layout'] ) ) {
@@ -47,3 +47,37 @@ if ( function_exists( 'ot_get_option' ) ) {
 		remove_filter( 'siteorigin_panels_row_style_attributes', 'themovation_so_wb_row_layout_class', 10 );
 	}
 }
+
+if ( ! function_exists ( 'themovation_so_wb_text_contrast_field' ) ) :
+// The Text Contrast option
+function themovation_so_wb_text_contrast_field( $fields ) {
+
+	$fields['themo-text-contrast'] = array(
+			'name'        => __( 'Text Contast', 'themovation-widgets' ),
+			'type'        => 'select',
+			'group'       => 'design',
+			'default'     => 'th-dark-text',
+			'options'     => array(
+				'th-dark-text'  => __( 'Dark Text', 'themovation-widgets' ),
+				'th-light-text' => __( 'Light Text', 'themovation-widgets' ),
+			),
+			'priority'    => 1,
+	);
+
+	return $fields;
+}
+endif;
+add_filter( 'siteorigin_panels_row_style_fields', 'themovation_so_wb_text_contrast_field', 10 );
+
+if ( ! function_exists ( 'themovation_so_wb_text_contrast_class' ) ) :
+// Adding text contrast class
+function themovation_so_wb_text_contrast_class( $attributes, $args ) {
+
+	if( ! empty( $args['themo-text-contrast'] ) && ( $args['themo-text-contrast'] !== 'th-dark-text' ) ) {
+		array_push( $attributes['class'], $args['themo-text-contrast'] );
+	}
+
+	return $attributes;
+}
+endif;
+add_filter( 'siteorigin_panels_row_style_attributes', 'themovation_so_wb_text_contrast_class', 10, 2);
