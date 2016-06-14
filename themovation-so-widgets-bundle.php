@@ -62,3 +62,4 @@ require_once ( 'inc/activate.php' );
 require_once ( 'inc/icons.php' );
 require_once ( 'inc/enqueue.php' );
 require_once ( 'inc/row-styles.php' );
+require_once ( 'inc/widget-styles.php' );

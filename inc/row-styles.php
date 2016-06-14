@@ -16,6 +16,8 @@ function themovation_so_wb_row_layout_field( $fields ) {
 			'priority'    => 1,
 	);
 
+	unset( $fields['row_stretch'] );
+
 	return $fields;
 }
 endif;
