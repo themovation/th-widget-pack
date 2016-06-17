@@ -13,9 +13,9 @@
     <span class="sow-icon-glyphicons" data-sow-icon="&#xe602;" ></span>
 </a>
 
-<!-- Image button example -->
-<a href="#" target="_blank" title="Buy on Google Play" class="th-btn btn-image"><img src="http://placehold.it/170x60" alt=""></a>
+<!-- Graphic button example -->
+<a href="#" target="_blank" class="th-btn btn-image"><img src="http://placehold.it/170x60" alt="Buy on Google Play"></a>
 
 <!-- Add to Cart button example -->
-<?php do_shortcode('[add_to_cart id="123" sku=""]')?>
+<?php echo do_shortcode('[add_to_cart id="123" sku="456"]')?>
 
