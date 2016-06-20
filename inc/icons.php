@@ -5,7 +5,7 @@ if ( ! function_exists( 'themovation_so_wb_glyphicons' ) ) :
 function themovation_so_wb_glyphicons( $icon_families ) {
 	$icon_families['glyphicons'] = array(
 		'name' => __( 'Glyphicons Regular', 'themovation-widgets' ),
-		'style_uri' => plugin_dir_url(__FILE__) . 'assets/glyphicons/style.css',
+		'style_uri' => plugin_dir_url(__FILE__) . '../assets/glyphicons/style.css',
 		'icons' => array(
 			'glass' =>'&#xe001;',
 			'leaf' =>'&#xe002;',
@@ -819,7 +819,7 @@ if ( ! function_exists( 'themovation_so_wb_glyphicons_social' ) ) :
 function themovation_so_wb_glyphicons_social( $icon_families ) {
 	$icon_families['glyphicons-social'] = array(
 		'name' => __( 'Glyphicons Social', 'themovation-widgets' ),
-		'style_uri' => plugin_dir_url(__FILE__) . 'assets/glyphicons-social/style.css',
+		'style_uri' => plugin_dir_url(__FILE__) . '../assets/glyphicons-social/style.css',
 		'icons' => array(
 			'pinterest' => '&#xe001',
 			'dropbox' => '&#xe002',
