@@ -36,12 +36,6 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 							'label' => __('Link URL', 'themovation-widgets'),
 						),
 
-						'text' => array(
-							'type' => 'text',
-							'label' => __('Link text', 'themovation-widgets'),
-							'placeholder' => __('Enter text', 'themovation-widgets'),
-						),
-
 						'new_window' => array(
 							'type' => 'checkbox',
 							'default' => false,

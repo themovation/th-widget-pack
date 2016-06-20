@@ -1,5 +1,9 @@
-<!-- Standard link example -->
-<a target="_blank" href="http://www.youtube.com"> </a>
+<?php
+if( $instance['link']['new_window'] ) $target = ' target="_blank"';
+if( $instance['link']['lightbox'] ) $lightbox = ' data-toggle="lightbox" data-width="' . esc_html( $instance['link']['lightbox_width'] ) . '"';
 
-<!-- Modal link example -->
-<a href="http://www.apple.com/" data-toggle="lightbox" data-width="1280"> </a>
+if( $instance['link']['lightbox'] ) { ?>
+
+	<a href="<?php echo sow_esc_url( $instance['link']['new_window'] ); ?>"<?php echo $target; ?><?php echo $lightbox; ?>> </a>
+
+<?php }
