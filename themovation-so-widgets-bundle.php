@@ -13,6 +13,8 @@
 
 define('​THEMOVATION_WB_VER', '1.0.0');
 
+require_once ( 'inc/template-functions.php' );
+
 if ( ! function_exists( 'themovation_so_wb_collection' ) ) :
 // Adding all the widgets
 function themovation_so_wb_collection( $folders ) {

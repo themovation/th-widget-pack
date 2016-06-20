@@ -809,17 +809,10 @@ function themovation_so_wb_glyphicons( $icon_families ) {
 			'dice-6' =>'&#xe800;',
 		),
 	);
-	return $icon_families;
-}
-endif;
-add_filter( 'siteorigin_widgets_icon_families', 'themovation_so_wb_glyphicons' );
 
-if ( ! function_exists( 'themovation_so_wb_glyphicons_social' ) ) :
-// Adding glyphicons to the icon field
-function themovation_so_wb_glyphicons_social( $icon_families ) {
-	$icon_families['glyphicons-social'] = array(
+	$icon_families['glyphsocial'] = array(
 		'name' => __( 'Glyphicons Social', 'themovation-widgets' ),
-		'style_uri' => plugin_dir_url(__FILE__) . '../assets/glyphicons-social/style.css',
+		'style_uri' => plugin_dir_url(__FILE__) . '../assets/glyphsocial/style.css',
 		'icons' => array(
 			'pinterest' => '&#xe001',
 			'dropbox' => '&#xe002',
@@ -893,7 +886,8 @@ function themovation_so_wb_glyphicons_social( $icon_families ) {
 			'stackexchange' => '&#xe070'
 		),
 	);
+
 	return $icon_families;
 }
 endif;
-add_filter( 'siteorigin_widgets_icon_families', 'themovation_so_wb_glyphicons_social' );
+add_filter( 'siteorigin_widgets_icon_families', 'themovation_so_wb_glyphicons' );
