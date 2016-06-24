@@ -4,6 +4,8 @@
 
 .th-team-member-image {margin-bottom:20px}
 
+.th-team-member a:hover {text-decoration:none}
+
 .th-team-member h5 {
     font-size:16px;
     font-weight:300;
