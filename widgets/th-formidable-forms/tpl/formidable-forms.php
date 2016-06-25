@@ -1,9 +1,5 @@
-<!-- Default example -->
-<div class="th-formidable">
-    <?php echo do_shortcode('[formidable id=3]') ?>
-</div>
+<?php $conversion_form = ( $instance['conversion_form'] ) ? ' th-conversion' : ''; ?>
 
-<!-- Conversion form example -->
-<div class="th-formidable th-conversion">
-    <?php echo do_shortcode('[formidable id=3]') ?>
+<div class="th-formidable<?php echo $conversion_form; ?>">
+	<?php echo do_shortcode( $instance['shortcode'] ); ?>
 </div>
