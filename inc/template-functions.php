@@ -10,3 +10,16 @@ function themo_display_icon( $icon, $style, $image ) {
 	}
 	if( $style != 'standard' ) echo '</div>';
 }
+
+// Display link Widget
+function themo_display_link( $url, $target, $lightbox, $lightbox_width, $content ) {
+	$url = sow_esc_url( $url );
+	$target = ( $target ) ? ' target="_blank"' : '';
+	$lightbox_width = ( $lightbox_width && $lightbox == 'on' ) ? ' data-width="' . esc_html( $lightbox_width ) . '"' : '';
+	$lightbox = ( $lightbox == 'on' ) ? ' data-toggle="lightbox"' : '';
+	$content = ( $content ) ? $content : ' ';
+
+	$link = '<a href="%s"%s%s%s>%s</a>';
+
+	echo sprintf( $link, $url, $target, $lightbox, $lightbox_width, $content );
+}
