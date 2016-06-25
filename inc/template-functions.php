@@ -54,7 +54,6 @@ function themo_display_button( $instance ) {
 	if( $type == 'button' ) {
 
 		$class = 'btn th-btn btn-' . esc_attr( $style );
-		$link = sow_esc_url( $link );
 		$content = esc_html( $text ) . themo_display_icon( $icon, true );
 
 		themo_display_link( $link, $class, $content );
