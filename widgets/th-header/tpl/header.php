@@ -6,7 +6,7 @@
 </div>
 
 <!-- Centered example -->
-<div class="th-header th-center">
+<div class="th-header th-centered">
     <span class="sow-icon-glyphicons" data-sow-icon="&#xe602;" ></span>
     <h2>Sample Title</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel turpis sed felis finibus scelerisque.</p>
