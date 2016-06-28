@@ -1,7 +1,7 @@
 <div class="th-cta">
 	<?php if( $instance['text'] ) : ?>
 		<div class="th-cta-text">
-			<span><?php echo $instance['text']; ?></span>
+			<span><?php echo esc_html( $instance['text'] ); ?></span>
 		</div>
 	<?php endif; ?>
 	<div class="th-cta-btn">
