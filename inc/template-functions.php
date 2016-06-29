@@ -8,10 +8,10 @@ function themo_display_icon( $instance, $return = false ) {
 	$image = $instance['icon']['image'];
 
 	$open = ( $style != 'standard' ) ? '<div class="' . esc_attr( $style ) . '-med-icon">' : '';
-	if( $icon ) {
-		$output = siteorigin_widget_get_icon( $icon, $icon_styles );
-	} elseif( $image ) {
+	if( $image ) {
 		$output = wp_get_attachment_image( $image, 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
+	} elseif( $icon ) {
+		$output = siteorigin_widget_get_icon( $icon, $icon_styles );
 	}
 	$close = ( $style != 'standard' ) ? '</div>' : '';
 

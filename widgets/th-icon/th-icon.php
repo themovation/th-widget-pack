@@ -53,6 +53,7 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 							'label' => __('Select a graphic icon', 'themovation-widgets'),
 							'default'     => '',
 							'library' => 'image',
+							'description' => __('Replaces the icon with your own graphic icon', 'themovation-widgets'),
 						),
 
 					)
