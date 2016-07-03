@@ -128,11 +128,6 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 		return $form;
 	}
 
-	function modify_child_widget_form( $child_widget_form, $child_widget ) {
-		unset( $child_widget_form['icon']['fields']['style'] );
-		return $child_widget_form;
-	}
-
 	function get_template_name($instance) {
 		return 'button';
 	}

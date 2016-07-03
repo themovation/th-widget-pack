@@ -1,7 +1,7 @@
 (
 	function ( $ ) {
 
-		$.fn.buttonLogic = function() {
+		$.fn.themoButtonLogic = function() {
 			$("select[name*='[button][button_type]']").change(function(){
 				var $$ = $(this),
 					$p = '.siteorigin-widget-field-button_type',
@@ -26,32 +26,44 @@
 			}).change();
 		}
 
+		$.fn.themoButtonIcon = function() {
+			$('.siteorigin-widget-field-button').find('.siteorigin-widget-field-button_icon .siteorigin-widget-field-style').hide();
+		}
+
 	}
 )( jQuery );
 
 !function ($) {
 	$(document).ready(function($) {
-		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-section').themoButtonLogic();
+		$('.siteorigin-widget-section').themoButtonIcon();
 		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
-			$(this).buttonLogic();
+			$(this).themoButtonLogic();
+			$(this).themoButtonIcon();
 		} );
 	});
 	$(document).on( "panelsopen", function() {
-		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-section').themoButtonLogic();
+		$('.siteorigin-widget-section').themoButtonIcon();
 		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
-			$(this).buttonLogic();
+			$(this).themoButtonLogic();
+			$(this).themoButtonIcon();
 		} );
 	});
 	$(document).on( "widget-added", function() {
-		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-section').themoButtonLogic();
+		$('.siteorigin-widget-section').themoButtonIcon();
 		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
-			$(this).buttonLogic();
+			$(this).themoButtonLogic();
+			$(this).themoButtonIcon();
 		} );
 	});
 	$(document).on( "widget-updated", function() {
-		$('.siteorigin-widget-section').buttonLogic();
+		$('.siteorigin-widget-section').themoButtonLogic();
+		$('.siteorigin-widget-section').themoButtonIcon();
 		$('.siteorigin-widget-field-type-repeater').click( '.siteorigin-widget-field-repeater-add', function() {
-			$(this).buttonLogic();
+			$(this).themoButtonLogic();
+			$(this).themoButtonIcon();
 		} );
 	});
 }(jQuery);
