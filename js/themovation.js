@@ -5,8 +5,8 @@
 		"use strict";
 
 		if($( ".panel-grid-cell" ).length){
-			$(".panel-grid-cell").find( "[class^='so-widget-th-']" ).each( function() {
-				$(this).parent().parent().wrap('<div class="th-so-container"></div>');
+			$(".panel-grid-cell").each( function() {
+				$(this).wrap('<div class="th-so-container"></div>');
 			} );
 		}
 	}
