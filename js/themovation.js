@@ -4,9 +4,9 @@
 	$.fn.wrapGridCell = function(){
 		"use strict";
 
-		if($( ".panel-grid-cell" ).length){
-			$(".panel-grid-cell").each( function() {
-				$(this).wrap('<div class="th-so-container"></div>');
+		if($( ".panel-grid" ).length){
+			$(".panel-grid").each( function() {
+				$(this).wrapInner('<div class="th-so-container"></div>');
 			} );
 		}
 	}
