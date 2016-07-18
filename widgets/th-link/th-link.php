@@ -64,6 +64,15 @@ class Themovation_SO_WB_Link_Widget extends SiteOrigin_Widget {
 								'lightbox[off]' => array('hide'),
 							),
 						),
+
+						'lightbox_height' => array(
+							'type' => 'number',
+							'label' => __('Lightbox height', 'themovation-widgets'),
+							'state_handler' => array(
+								'lightbox[on]' => array('show'),
+								'lightbox[off]' => array('hide'),
+							),
+						),
 					)
 				)
 			),
