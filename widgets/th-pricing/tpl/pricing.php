@@ -1,4 +1,4 @@
- <!-- One column example -->
+ <!-- One column example with 2 buttons -->
  <div class="th-pricing-table th-one-col">
      <div class="row">
          <div class="th-pricing-column col-sm-6 col-sm-offset-3">
@@ -15,6 +15,9 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
+                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -38,6 +41,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -55,6 +60,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -78,6 +85,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -95,6 +104,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -112,6 +123,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -135,6 +148,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -152,6 +167,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -169,6 +186,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -186,6 +205,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -209,6 +230,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -226,6 +249,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -243,6 +268,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -260,6 +287,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -277,6 +306,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -300,6 +331,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -317,6 +350,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -334,6 +369,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -351,6 +388,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -368,6 +407,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
@@ -385,6 +426,8 @@
                      <li>High Speed Bandwidth</li>
                      <li>Premium Design</li>
                  </ul>
+             </div>
+             <div class="th-pricing-btn">
                  <a href="#" class="btn btn-ghost th-btn">Get Started</a>
              </div>
          </div>
