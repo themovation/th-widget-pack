@@ -1,435 +1,70 @@
- <!-- One column example with 2 buttons -->
- <div class="th-pricing-table th-one-col">
-     <div class="row">
-         <div class="th-pricing-column col-sm-6 col-sm-offset-3">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+<?php
+// Column count
+$column_number = sizeof( $instance['table'] );
 
- <!-- Two column example -->
- <div class="th-pricing-table th-two-col">
-     <div class="row">
-         <div class="th-pricing-column col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+switch( $column_number ) {
+	case 1:
+		$table_class = ' th-one-col';
+		$column_class = ' col-sm-6 col-sm-offset-3';
+		break;
+	case 2:
+		$table_class = ' th-two-col';
+		$column_class = ' col-sm-6';
+		break;
+	case 3:
+		$table_class = ' th-three-col';
+		$column_class = ' col-md-4 col-sm-6';
+		break;
+	case 4:
+		$table_class = ' th-four-col';
+		$column_class = ' col-md-3 col-sm-6';
+		break;
+	case 5:
+		$table_class = ' th-five-col';
+		$column_class = ' col-md-2 col-sm-6';
+		break;
+	case 6:
+		$table_class = ' th-six-col';
+		$column_class = ' col-md-2 col-sm-6';
+		break;
+	default:
+		$table_class = '';
+		$column_class = '';
+}
 
- <!-- Three column example with highlight -->
- <div class="th-pricing-table th-three-col">
-     <div class="row">
-         <div class="th-pricing-column col-md-4 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column th-highlight col-md-4 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-4 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+?>
 
- <!-- Four column example -->
- <div class="th-pricing-table th-four-col">
-     <div class="row">
-         <div class="th-pricing-column col-md-3 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-3 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-3 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-3 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+<div class="th-pricing-table<?php echo $table_class; ?>">
 
- <!-- Five column example -->
- <div class="th-pricing-table th-five-col">
-     <div class="row">
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+	<div class="row">
 
- <!-- Six column example -->
- <div class="th-pricing-table th-six-col">
-     <div class="row">
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-         <div class="th-pricing-column col-md-2 col-sm-6">
-             <div class="th-pricing-cost">
-                 $50
-                 <span>/month</span>
-             </div>
-             <div class="th-pricing-title">15 Day Trial</div>
-             <div class="th-pricing-features">
-                 <ul>
-                     <li>Customer Support</li>
-                     <li>Custom Domain</li>
-                     <li>Lots of Storage</li>
-                     <li>High Speed Bandwidth</li>
-                     <li>Premium Design</li>
-                 </ul>
-             </div>
-             <div class="th-pricing-btn">
-                 <a href="#" class="btn btn-ghost th-btn">Get Started</a>
-             </div>
-         </div>
-     </div>
- </div>
+		<?php foreach( $instance['table'] as $i => $column ) { ?>
+
+			<div class="th-pricing-column<?php echo( $column['popular'] ? ' th-highlight' : '' ); echo $column_class; ?>">
+
+				<div class="th-pricing-cost"><?php echo esc_html( $column['price'] ); ?><span><?php echo esc_html( $column['text'] ); ?></span></div>
+
+				<div class="th-pricing-title"><?php echo esc_html( $column['title'] ); ?></div>
+
+				<div class="th-pricing-features">
+					<ul>
+						<?php echo '<li>'.str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( $column['features'] , "\n\r" ) ).'</li>'; ?>
+					</ul>
+				</div>
+
+				<div class="th-pricing-btn">
+					<?php if( $column['button_1']['button']['button_link']['link']['url'] ) : ?>
+						<?php themo_display_button( $column['button_1'] ); ?>
+					<?php endif; ?>
+					<?php if( $column['button_2']['button']['button_link']['link']['url'] ) : ?>
+						<?php themo_display_button( $column['button_2'] ); ?>
+					<?php endif; ?>
+				</div>
+
+			</div>
+
+		<?php } ?>
+
+	</div>
+
+</div>
