@@ -65,3 +65,6 @@ require_once ( 'inc/icons.php' );
 require_once ( 'inc/enqueue.php' );
 require_once ( 'inc/row-styles.php' );
 require_once ( 'inc/widget-styles.php' );
+
+add_image_size( 'themo_brands', 150, 80, true);
+add_image_size( 'themo_team', 480, 320, true);
