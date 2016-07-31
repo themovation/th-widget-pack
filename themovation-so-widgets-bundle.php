@@ -46,6 +46,9 @@ function themovation_so_wb_group( $widgets ) {
 			$widget['icon'] = 'themovation-widget dashicons dashicons-welcome-learn-more';
 			$widget['groups'] = array( 'themovation-so-wb' );
 		}
+		if( preg_match('/SiteOrigin_Widget_Editor_Widget/', $class, $matches ) || preg_match('/SiteOrigin_Widget_GoogleMap_Widget/', $class, $matches ) ) {
+			$widget['groups'] = array( 'themovation-so-wb' );
+		}
 	}
 	return $widgets;
 }
