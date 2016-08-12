@@ -2,41 +2,80 @@
     Service Blocks Widget
    ========================================================================== */
 
-/* Horizontal Style */
+.th-sb-single,
+.th-sb-single-circle,
+.th-sb-single-border {margin-bottom:40px}
 
-.th-sb-single {margin-bottom:40px}
+.th-service-blocks .med-icon span,
+.th-service-blocks .xl-icon span {color:#045089}
 
-.th-sb-single .med-icon {float:left}
+/* Horizontal Left Style */
 
-.th-sb-single .th-sb-text h3 {
+.th-sb-left .th-sb-single .med-icon {float:left}
+
+.th-sb-left .th-sb-single .th-sb-text h3 {
     margin-top:0;
     padding-top:4px;
     margin-left:60px;
 }
-.th-sb-single .th-sb-text p {margin-left:60px}
+.th-sb-left .th-sb-single .th-sb-text p {margin-left:60px}
 
-.th-sb-single-circle {margin-bottom:40px}
+.th-sb-left .th-sb-single-circle .circle-med-icon,
+.th-sb-left .th-sb-single-border .border-med-icon {float:left}
 
-.th-sb-single-circle .circle-med-icon {float:left}
-
-.th-sb-single-circle .th-sb-text h3 {
+.th-sb-left .th-sb-single-circle .th-sb-text h3,
+.th-sb-left .th-sb-single-border .th-sb-text h3 {
     margin-top:0;
     margin-left:85px;
 }
-.th-sb-single-circle .th-sb-text p {margin-left:85px}
+.th-sb-left .th-sb-single-circle .th-sb-text p,
+.th-sb-left .th-sb-single-border .th-sb-text p {margin-left:85px}
+
+
+/* Horizontal Right Style */
+
+.th-sb-right .th-sb-single .med-icon {float:right}
+
+.th-sb-right .th-sb-single .th-sb-text {text-align:right}
+
+.th-sb-right .th-sb-single .th-sb-text h3 {
+    margin-top:0;
+    padding-top:4px;
+    margin-right:60px;
+}
+.th-sb-right .th-sb-single .th-sb-text p {margin-right:60px}
+
+.th-sb-right .th-sb-single-circle .circle-med-icon,
+.th-sb-right .th-sb-single-border .border-med-icon {float:right}
+
+.th-sb-right .th-sb-single-circle .th-sb-text h3,
+.th-sb-right .th-sb-single-border .th-sb-text h3 {
+    margin-top:0;
+    margin-right:85px;
+}
+.th-sb-right .th-sb-single-circle .th-sb-text p,
+.th-sb-right .th-sb-single-border .th-sb-text p {margin-right:85px}
+
 
 /* Vertical Style */
 
-.th-sb-single-vert {
+.th-sb-vert .th-sb-single,
+.th-sb-vert .th-sb-single-circle,
+.th-sb-vert .th-sb-single-border {
     padding:0 45px;
     margin-bottom:40px;
     text-align:center;
 }
-.th-sb-single-vert .th-sb-text h3 {
+.th-sb-vert .th-sb-single .th-sb-text h3,
+.th-sb-vert .th-sb-single-circle .th-sb-text h3,
+.th-sb-vert .th-sb-single-border .th-sb-text h3 {
     font-size:22px;
+    margin-top:20px;
     margin-bottom:20px;
 }
-.th-sb-single-vert .th-sb-text p {
+.th-sb-vert .th-sb-single .th-sb-text p,
+.th-sb-vert .th-sb-single-circle .th-sb-text p,
+.th-sb-vert .th-sb-single-border .th-sb-text p {
     font-size:16px;
     padding:0 15px;
     color:#5c5c5c;
