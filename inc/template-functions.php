@@ -29,14 +29,13 @@ function themo_display_link( $instance, $class, $content ) {
 	$url = sow_esc_url( $instance['link']['url'] );
 	$target = ( $instance['link']['new_window'] ) ? ' target="_blank"' : '';
 	$lightbox_width = ( $instance['link']['lightbox_width'] && $instance['link']['lightbox'] == 'on' ) ? ' data-width="' . esc_html( $instance['link']['lightbox_width'] ) . '"' : '';
-	$lightbox_height = ( $instance['link']['lightbox_height'] && $instance['link']['lightbox'] == 'on' ) ? ' data-height="' . esc_html( $instance['link']['lightbox_height'] ) . '"' : '';
 	$lightbox = ( $instance['link']['lightbox'] == 'on' ) ? ' data-toggle="lightbox"' : '';
 	$content = ( $content ) ? $content : ' ';
 	$class = ( $class ) ? 'class="' . $class . '"' : '';
 
-	$link = '<a %s href="%s"%s%s%s%s>%s</a>';
+	$link = '<a %s href="%s"%s%s%s>%s</a>';
 
-	echo sprintf( $link, $class, $url, $target, $lightbox, $lightbox_width, $lightbox_height, $content );
+	echo sprintf( $link, $class, $url, $target, $lightbox, $lightbox_width, $content );
 
 }
 
