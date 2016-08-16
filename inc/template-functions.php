@@ -8,12 +8,15 @@ function themo_display_icon( $instance, $return = false ) {
 	$image = $instance['icon']['image'];
 
 	$open = ( $style != 'standard' ) ? '<div class="' . esc_attr( $style ) . '-med-icon">' : '';
+	$close = ( $style != 'standard' ) ? '</div>' : '';
 	if( $image ) {
 		$output = wp_get_attachment_image( $image, 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
 	} elseif( $icon ) {
 		$output = siteorigin_widget_get_icon( $icon, $icon_styles );
+	} elseif( !$image && !$icon ) {
+		$open = '';
+		$close = '';
 	}
-	$close = ( $style != 'standard' ) ? '</div>' : '';
 
 	if( $return == true ) {
 		return $open . $output . $close;
@@ -71,3 +74,9 @@ function themo_display_button( $instance ) {
 
 	}
 }
+
+/**
+* GLOBAL VARIABLES
+*/
+global $th_acc_count, $th_acc_panel_count;
+$th_acc_panel_count = $th_acc_count = 0;
