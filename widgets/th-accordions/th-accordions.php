@@ -77,6 +77,12 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'label' => __('Button 2', 'themovation-widgets'),
 							'hide' => false
 						),
+
+						'expanded' => array(
+							'type' => 'checkbox',
+							'default' => false,
+							'label' => __('On page load, show this item expanded instead of collapsed', 'themovation-widgets'),
+						),
 					)
 				),
 			),

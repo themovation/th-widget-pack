@@ -22,7 +22,7 @@ $accordion_id = ++$th_acc_count;
 						</a>
 					</h4>
 				</div>
-				<div id="collapse<?php echo $toggle_id ?>" class="panel-collapse collapse">
+				<div id="collapse<?php echo $toggle_id ?>" class="panel-collapse collapse <?php echo ( $accordion['expanded'] ) ? 'in' : '' ;?>">
 					<div class="panel-body">
 						<?php echo do_shortcode( wp_kses_post( $accordion['content'] ) ); ?>
 						<?php if( $accordion['button_1']['button']['button_link']['link']['url'] || $accordion['button_2']['button']['button_link']['link']['url'] ) : ?>
