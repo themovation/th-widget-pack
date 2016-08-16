@@ -25,6 +25,17 @@ class Themovation_SO_WB_ThumbSlider_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
+				'orientation'    => array(
+					'type'    => 'radio',
+					'default' => 'landscape',
+					'label'   => __('Orientation', 'themovation-widgets'),
+					'options' => array(
+						'landscape' => __('Landscape', 'themovation-widgets'),
+						'portrait' => __('Portrait', 'themovation-widgets'),
+						'square' => __('Square', 'themovation-widgets'),
+					),
+				),
+
 				'slides' => array(
 					'type' => 'repeater',
 					'label' => __('Thumbnail Slides' , 'themovation-widgets'),
