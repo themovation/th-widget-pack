@@ -43,7 +43,7 @@ if ( !function_exists ( 'themovation_so_wb_animation_attribute' ) ) :
 function themovation_so_wb_animation_attribute( $attributes, $args ) {
 
 	if( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
-		array_push( $attributes['class'], $args['themo-animation-styles'] );
+		array_push( $attributes['class'], $args['themo-animation-styles'], 'th-hide-animation' );
 	}
 	return $attributes;
 }
