@@ -9,11 +9,12 @@ function themovation_so_wb_animation_field( $fields ) {
 			'group'       => 'design',
 			'default'     => 'slideUp',
 			'options'     => array(
-				'slideUp'    => __( 'Slide Up', 'themovation-widgets' ),
-				'slideDown'  => __( 'Slide Down', 'themovation-widgets' ),
-				'slideLeft'  => __( 'Slide Left', 'themovation-widgets' ),
-				'slideRight' => __( 'Slide Right', 'themovation-widgets' ),
-				'fadeIn'     => __( 'Fade In', 'themovation-widgets' ),
+				'none'       => __( 'None', 'themovation-widgets' ),
+				'th-slideup'    => __( 'Slide Up', 'themovation-widgets' ),
+				'th-slidedown'  => __( 'Slide Down', 'themovation-widgets' ),
+				'th-slideleft'  => __( 'Slide Left', 'themovation-widgets' ),
+				'th-slideright' => __( 'Slide Right', 'themovation-widgets' ),
+				'th-fadein'     => __( 'Fade In', 'themovation-widgets' ),
 			),
 			'priority'    => 10,
 	);
@@ -36,3 +37,15 @@ if ( function_exists( 'ot_get_option' ) ) {
 		remove_filter( 'siteorigin_panels_widget_style_fields', 'themovation_so_wb_animation_field', 10 );
 	}
 }
+
+if ( !function_exists ( 'themovation_so_wb_animation_attribute' ) ) :
+// Adding animation class to widget
+function themovation_so_wb_animation_attribute( $attributes, $args ) {
+
+	if( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
+		array_push( $attributes['class'], $args['themo-animation-styles'] );
+	}
+	return $attributes;
+}
+endif;
+add_filter( 'siteorigin_panels_widget_style_attributes', 'themovation_so_wb_animation_attribute', 10, 2);
