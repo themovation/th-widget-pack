@@ -7,14 +7,14 @@ function themovation_so_wb_animation_field( $fields ) {
 			'name'        => __( 'Animation Styles', 'themovation-widgets' ),
 			'type'        => 'select',
 			'group'       => 'design',
-			'default'     => 'slideUp',
+			'default'     => 'none',
 			'options'     => array(
-				'none'       => __( 'None', 'themovation-widgets' ),
-				'th-slideup'    => __( 'Slide Up', 'themovation-widgets' ),
-				'th-slidedown'  => __( 'Slide Down', 'themovation-widgets' ),
-				'th-slideleft'  => __( 'Slide Left', 'themovation-widgets' ),
-				'th-slideright' => __( 'Slide Right', 'themovation-widgets' ),
-				'th-fadein'     => __( 'Fade In', 'themovation-widgets' ),
+				'none'          => __( 'None', 'themovation-widgets' ),
+				'slideUp'    => __( 'Slide Up', 'themovation-widgets' ),
+				'slideDown'  => __( 'Slide Down', 'themovation-widgets' ),
+				'slideLeft'  => __( 'Slide Left', 'themovation-widgets' ),
+				'slideRight' => __( 'Slide Right', 'themovation-widgets' ),
+				'fadeIn'     => __( 'Fade In', 'themovation-widgets' ),
 			),
 			'priority'    => 10,
 	);
@@ -43,7 +43,7 @@ if ( !function_exists ( 'themovation_so_wb_animation_attribute' ) ) :
 function themovation_so_wb_animation_attribute( $attributes, $args ) {
 
 	if( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
-		array_push( $attributes['class'], $args['themo-animation-styles'], 'th-hide-animation' );
+		array_push( $attributes['class'], $args['themo-animation-styles'], 'hide-animation', 'widget-animate' );
 	}
 	return $attributes;
 }

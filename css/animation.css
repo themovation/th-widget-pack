@@ -1,4 +1,11 @@
-.th-hide-animation {
-	opacity: 0;
-	visibility: hidden;
+.hide-animation {
+	opacity: 0 !important;
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
+	animation: none !important;
+}
+
+.widget-animate {
+	opacity: 1;
 }

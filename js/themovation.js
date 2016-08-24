@@ -17,13 +17,13 @@
 jQuery( function ( $ ) {
 	$(document).wrapGridCell();
 
-	$( '.panel-grid' ).find('.so-panel.widget .th-hide-animation').waypoint( {
+	$( '.panel-grid' ).find('.so-panel.widget .hide-animation').waypoint( {
 		offset: function() {
-			return Waypoint.viewportHeight() - 100
+			return Waypoint.viewportHeight() - 300
 		},
 		handler: function() {
 			$(this).each(function(){
-				$(this).removeClass( 'th-hide-animation' );
+				$(this).removeClass( 'hide-animation' );
 			});
 		}
 	});
