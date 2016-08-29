@@ -77,12 +77,23 @@ class Themovation_SO_WB_Accordions_Widget extends SiteOrigin_Widget {
 							'label' => __('Button 2', 'themovation-widgets'),
 							'hide' => false
 						),
+
+						'expanded' => array(
+							'type' => 'checkbox',
+							'default' => false,
+							'label' => __('On page load, show this item expanded instead of collapsed', 'themovation-widgets'),
+						),
 					)
 				),
 			),
 
 			plugin_dir_path(__FILE__)
 		);
+	}
+
+	function modify_child_widget_form($child_widget_form, $child_widget) {
+		unset( $child_widget_form['icon']['fields']['style'] );
+		return $child_widget_form;
 	}
 
 	function get_template_name($instance) {

@@ -46,7 +46,7 @@ function themovation_so_wb_group( $widgets ) {
 			$widget['icon'] = 'themovation-widget dashicons dashicons-welcome-learn-more';
 			$widget['groups'] = array( 'themovation-so-wb' );
 		}
-		if( preg_match('/SiteOrigin_Widget_Editor_Widget/', $class, $matches ) || preg_match('/SiteOrigin_Widget_GoogleMap_Widget/', $class, $matches ) ) {
+		if( preg_match( '/SiteOrigin_Widget_Editor_Widget/', $class, $matches ) || preg_match( '/SiteOrigin_Widget_GoogleMap_Widget/', $class, $matches ) || preg_match( '/MSP_Main_Widget/', $class, $matches ) ) {
 			$widget['groups'] = array( 'themovation-so-wb' );
 		}
 	}
@@ -68,6 +68,7 @@ require_once ( 'inc/icons.php' );
 require_once ( 'inc/enqueue.php' );
 require_once ( 'inc/row-styles.php' );
 require_once ( 'inc/widget-styles.php' );
+require_once ( 'inc/portfolio.php' );
 
 add_image_size( 'themo_brands', 150, 80, true);
 add_image_size( 'themo_team', 480, 320, true);
