@@ -1,174 +1,33 @@
-<!-- Horizontal standard style example -->
+<div class="th-service-blocks th-sb-<?php echo $instance['align'] ?>">
+<?php foreach( $instance['blocks'] as $block ) { ?>
 
-<div class="th-service-blocks th-sb-left">
-    <div class="th-sb-single">
-        <div class="th-sb-icon med-icon">
-            <a href="http://www.google.com">
-                <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-            </a>
-        </div>
-        <div class="th-sb-text">
-            <a href="http://www.google.com">
-                <h3>Standard Service Block</h3>
-            </a>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single">
-        <div class="th-sb-icon med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Standard Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
+	<div class="th-sb-single<?php echo ( ( $block['icon']['icon']['style'] != 'standard' ) ? '-' . $block['icon']['icon']['style'] : '' ); ?>">
 
-<!-- Horizontal circle style example -->
+		<?php
+		$icon = themo_display_icon( $block['icon'], true, 'th-sb-icon' );
 
-<div class="th-service-blocks th-sb-left">
-    <div class="th-sb-single-circle">
-        <div class="th-sb-icon circle-med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Circle Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single-circle">
-        <div class="th-sb-icon circle-med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Circle Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
+		if( $block['link']['link']['url'] ) {
+			themo_display_link( $block['link'], '', $icon );
+		} else {
+			echo $icon;
+		}
+		?>
 
-<!-- Horizontal bordered style example -->
+		<div class="th-sb-text">
+			<?php
+			$title = '<h3>' . esc_html( $block['title'] ) . '</h3>';
 
-<div class="th-service-blocks th-sb-left">
-    <div class="th-sb-single-border">
-        <div class="th-sb-icon border-med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Bordered Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single-border">
-        <div class="th-sb-icon border-med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Bordered Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
+			if( $block['link']['link']['url'] ) {
+				themo_display_link( $block['link'], '', $title );
+			} else {
+				echo $title;
+			}
+			?>
+			<?php echo wp_kses_post( $block['content'] ); ?>
+		</div>
 
-<!-- Horizontal right aligned example -->
+	</div>
 
-<div class="th-service-blocks th-sb-right">
-    <div class="th-sb-single">
-        <div class="th-sb-icon med-icon">
-            <a href="http://www.google.com">
-                <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-            </a>
-        </div>
-        <div class="th-sb-text">
-            <a href="http://www.google.com">
-                <h3>Right Aligned Service Block</h3>
-            </a>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single">
-        <div class="th-sb-icon med-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Right Aligned Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
+<?php } ?>
 
-
-
-<!-- Vertical standard style example -->
-
-<div class="th-service-blocks th-sb-vert">
-    <div class="th-sb-single">
-        <div class="th-sb-icon xl-icon">
-            <a href="http://www.google.com">
-                <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-            </a>
-        </div>
-        <div class="th-sb-text">
-            <a href="http://www.google.com">
-                <h3>Vertical Standard Service Block</h3>
-            </a>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single">
-        <div class="th-sb-icon xl-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Vertical Standard Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Vertical circle style example -->
-
-<div class="th-service-blocks th-sb-vert">
-    <div class="th-sb-single-circle">
-        <div class="th-sb-icon circle-lrg-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Vertical Circle Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single-circle">
-        <div class="th-sb-icon circle-lrg-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Vertical Circle Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Vertical bordered style example -->
-
-<div class="th-service-blocks th-sb-vert">
-    <div class="th-sb-single-border">
-        <div class="th-sb-icon border-lrg-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Vertical Bordered Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
-    <div class="th-sb-single-border">
-        <div class="th-sb-icon border-lrg-icon">
-            <span class="sow-icon-glyphicons" data-sow-icon="&#xe364;" ></span>
-        </div>
-        <div class="th-sb-text">
-            <h3>Vertical Bordered Style Service Block</h3>
-            <p>Integer nec neque leo. Pellentesque nec ipsum ante. Vivamus viverra, libero et hendrerit placerat.</p>
-        </div>
-    </div>
 </div>
