@@ -1,13 +1,13 @@
 <?php
 
 // Display icon Widget
-function themo_display_icon( $instance, $return = false ) {
+function themo_display_icon( $instance, $return = false, $class ) {
 
 	$icon = $instance['icon']['icon'];
 	$style = $instance['icon']['style'];
 	$image = $instance['icon']['image'];
 
-	$open = ( $style != 'standard' ) ? '<div class="' . esc_attr( $style ) . '-med-icon">' : '';
+	$open = ( $style != 'standard' ) ? '<div class="' . $class . ' ' . esc_attr( $style ) . '-med-icon">' : '';
 	if( $image ) {
 		$output = wp_get_attachment_image( $image, 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
 	} elseif( $icon ) {
