@@ -64,14 +64,34 @@ class Themovation_SO_WB_Testimonials_Widget extends SiteOrigin_Widget {
 						),
 
 						'rating' => array(
-							'type' => 'slider',
-							'label' => __( 'Rating', 'themovation-widgets' ),
-							'default' => 5,
-							'min' => 1,
-							'max' => 5,
-							'integer' => true,
+							'type' => 'select',
+							'label' => __('Rating', 'themovation-widgets'),
+							'default' => '5',
+							'options' => array(
+								'05' => __('0.5', 'themovation-widgets'),
+								'10' => __('1', 'themovation-widgets'),
+								'15' => __('1.5', 'themovation-widgets'),
+								'20' => __('2', 'themovation-widgets'),
+								'25' => __('2.5', 'themovation-widgets'),
+								'30' => __('3', 'themovation-widgets'),
+								'35' => __('3.5', 'themovation-widgets'),
+								'40' => __('4', 'themovation-widgets'),
+								'45' => __('4.5', 'themovation-widgets'),
+								'50' => __('5', 'themovation-widgets'),
+							),
 						),
 					)
+				),
+
+				'rows'    => array(
+					'type'    => 'select',
+					'default' => '1',
+					'label'   => __('Testimonials per row', 'themovation-widgets'),
+					'options' => array(
+						'1' => __('1', 'themovation-widgets'),
+						'2' => __('2', 'themovation-widgets'),
+						'3' => __('3', 'themovation-widgets'),
+					),
 				),
 			),
 
