@@ -11,7 +11,11 @@
 
 /* Horizontal Left Style */
 
-.th-sb-left .th-sb-single .med-icon {float:left}
+.th-sb-left .th-sb-single .med-icon,
+.th-sb-left .th-sb-single > span {
+    float:left;
+    font-size:32px;
+}
 
 .th-sb-left .th-sb-single .th-sb-text h3 {
     margin-top:0;
@@ -34,7 +38,11 @@
 
 /* Horizontal Right Style */
 
-.th-sb-right .th-sb-single .med-icon {float:right}
+.th-sb-right .th-sb-single .med-icon,
+.th-sb-right .th-sb-single > span {
+    float:right;
+    font-size:32px;
+}
 
 .th-sb-right .th-sb-single .th-sb-text {text-align:right}
 
@@ -58,6 +66,10 @@
 
 
 /* Vertical Style */
+
+.th-sb-vert .th-sb-single > span {
+    font-size:72px
+}
 
 .th-sb-vert .th-sb-single,
 .th-sb-vert .th-sb-single-circle,
