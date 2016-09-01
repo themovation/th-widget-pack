@@ -28,7 +28,7 @@ switch ( $instance['rows'] ) {
 					<span class="th-star-5 glyphicons"></span>
 				</div>
 				<blockquote><?php echo wp_kses_post( $testimonial['quote'] ); ?></blockquote>
-				<?php if( $testimonial['image'] ) echo wp_get_attachment_image( $testimonial['image'], 'full', false, array( 'class' => 'th-circle' ) ); ?>
+				<?php if( $testimonial['image'] ) echo wp_get_attachment_image( $testimonial['image'], 'themo_testimonials', false, array( 'class' => 'th-circle' ) ); ?>
 				<figcaption><?php echo esc_html( $testimonial['name'] ); ?><span><?php echo esc_html( $testimonial['title'] ); ?></span></figcaption>
 			</figure>
 		</div>
