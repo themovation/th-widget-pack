@@ -1,14 +1,14 @@
 <?php
 
 // Display icon Widget
-function themo_display_icon( $instance, $return = false, $class ) {
+function themo_display_icon( $instance, $return = false, $class, $show_div = true ) {
 
 	$icon = $instance['icon']['icon'];
 	$style = $instance['icon']['style'];
 	$image = $instance['icon']['image'];
 
-	$open = ( $style != 'standard' ) ? '<div class="' . $class . ' ' . esc_attr( $style ) . '-med-icon">' : '';
-	$close = ( $style != 'standard' ) ? '</div>' : '';
+	$open = ( $style != 'standard' && $show_div == true  ) ? '<div class="' . $class . ' ' . esc_attr( $style ) . '-med-icon">' : '';
+	$close = ( $style != 'standard' && $show_div == true ) ? '</div>' : '';
 	if( $image ) {
 		$output = wp_get_attachment_image( $image, 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
 	} elseif( $icon ) {

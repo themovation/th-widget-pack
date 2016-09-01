@@ -17,7 +17,7 @@ $accordion_id = ++$th_acc_count;
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion<?php echo $accordion_id; ?>" href="#collapse<?php echo $toggle_id ?>" class="accordion-toggle">
-							<?php themo_display_icon( $accordion['icon'] ); ?>
+							<?php themo_display_icon( $accordion['icon'], false, '', false ); ?>
 							<?php echo esc_html( $accordion['title'] ); ?>
 						</a>
 					</h4>

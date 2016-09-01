@@ -4,7 +4,7 @@
 	<div class="th-sb-single<?php echo ( ( $block['icon']['icon']['style'] != 'standard' ) ? '-' . $block['icon']['icon']['style'] : '' ); ?>">
 
 		<?php
-		$icon = themo_display_icon( $block['icon'], true, 'th-sb-icon' );
+		$icon = themo_display_icon( $block['icon'], true, 'th-sb-icon', true );
 
 		if( $block['link']['link']['url'] ) {
 			themo_display_link( $block['link'], '', $icon );
