@@ -30,9 +30,17 @@ function themovation_so_wb_animation_field( $fields ) {
 endif;
 add_filter( 'siteorigin_panels_widget_style_fields', 'themovation_so_wb_animation_field', 10 );
 
-if ( function_exists( 'ot_get_option' ) ) {
-	$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
-	if ($th_so_style_panel_options == 'on'){
-		remove_filter( 'siteorigin_panels_widget_style_fields', 'themovation_so_wb_animation_field', 10 );
+if ( ! function_exists ( 'themovation_siteorigin_widget_options' ) ) :
+// Adding compatibility with Option Tree
+function themovation_siteorigin_widget_options() {
+
+	if ( function_exists( 'ot_get_option' ) ) {
+		$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
+		if ( $th_so_style_panel_options == 'on' ) {
+			remove_filter( 'siteorigin_panels_widget_style_fields', 'themovation_so_wb_animation_field', 10 );
+		}
 	}
+
 }
+endif;
+add_action( 'after_setup_theme', 'themovation_siteorigin_widget_options', 2 );
