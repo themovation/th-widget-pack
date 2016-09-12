@@ -44,7 +44,9 @@
     font-size:32px;
 }
 
-.th-sb-right .th-sb-single .th-sb-text {text-align:right}
+.th-sb-right .th-sb-single .th-sb-text,
+.th-sb-right .th-sb-single-circle .th-sb-text,
+.th-sb-right .th-sb-single-border .th-sb-text {text-align:right}
 
 .th-sb-right .th-sb-single .th-sb-text h3 {
     margin-top:0;
