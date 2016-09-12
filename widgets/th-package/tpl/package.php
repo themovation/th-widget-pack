@@ -1,72 +1,15 @@
-<!-- Portrait example -->
 
-
-<div id="sample-ID" class="th-thumb-flex-slider flexslider th-flex-portrait">
-    <ul class="slides gallery">
-        <li class="th-thumb-flex-slider-img-1">
-            <a data-toggle="lightbox" data-gallery="multiimages" data-title="Placeholder"  class="th-img-thumbnail" href="https://placehold.it/510x900" data-parent="slides">
-                <img width="255" height="450" src="https://placehold.it/255x450" class="img-responsive wp-post-image" alt="Placeholder" />
-            </a>
-            <p class="th-thumb-title">
-                <a href="#">App Thumb Slide 1</a>
-                <span>Text here!</span>
-            </p>
-        </li>
-        <li class="th-thumb-flex-slider-img-2">
-            <a data-toggle="lightbox" data-gallery="multiimages" data-title="Placeholder"  class="th-img-thumbnail" href="https://placehold.it/510x900" data-parent="slides">
-                <img width="255" height="450" src="https://placehold.it/255x450" class="img-responsive wp-post-image" alt="Placeholder" />
-            </a>
-            <p class="th-thumb-title">
-                <a href="#">App Thumb Slide 2</a>
-                <span>Text here!</span>
-            </p>
-        </li>
-        <li class="th-thumb-flex-slider-img-3">
-            <a data-toggle="lightbox" data-gallery="multiimages" data-title="Placeholder"  class="th-img-thumbnail" href="https://placehold.it/510x900" data-parent="slides">
-                <img width="255" height="450" src="https://placehold.it/255x450" class="img-responsive wp-post-image" alt="Placeholder" />
-            </a>
-            <p class="th-thumb-title">
-                <a href="#">App Thumb Slide 3</a>
-                <span>Text here!</span>
-            </p>
-        </li>
-        <li class="th-thumb-flex-slider-img-4">
-            <a data-toggle="lightbox" data-gallery="multiimages" data-title="Placeholder"  class="th-img-thumbnail" href="https://placehold.it/510x900" data-parent="slides">
-                <img width="255" height="450" src="https://placehold.it/255x450" class="img-responsive wp-post-image" alt="Placeholder" />
-            </a>
-            <p class="th-thumb-title">
-                <a href="#">App Thumb Slide 4</a>
-                <span>Text here!</span>
-            </p>
-        </li>
-        <li class="th-thumb-flex-slider-img-5">
-            <a data-toggle="lightbox" data-gallery="multiimages" data-title="Placeholder"  class="th-img-thumbnail" href="https://placehold.it/510x900" data-parent="slides">
-                <img width="255" height="450" src="https://placehold.it/255x450" class="img-responsive wp-post-image" alt="Placeholder" />
-            </a>
-            <p class="th-thumb-title">
-                <a href="#">App Thumb Slide 5</a>
-                <span>Text here!</span>
-            </p>
-        </li>
-    </ul>
-</div>
-
-
-<!-- Landscape example --> <!--
-
-<div class="th-thumb-flex-slider flexslider th-flex-landscape">
-</div>
-
-<!-- Square example --> <!--
-
-<div class="th-thumb-flex-slider flexslider th-flex-square">
-</div>
-
--->
-
-<script>
-    jQuery(window).load(function() {
-        jQuery('.th-thumb-flex-slider').show();
-        themo_start_thumb_slider('#sample-ID');
-    });
-</script>
+<article class="th-package">
+    <a class="th-pkg-click" href="http://www.google.com"></a>
+    <div class="th-pkg-info">
+        <h4>30%</h4>
+        <span>discount</span>
+    </div>
+    <div class="th-pkg-img">
+        <img src="http://placehold.it/560x320">
+    </div>
+    <div class="th-pkg-content">
+        <h3>Nine and Dine</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat rutrum ligula, eu volutpat massa auctor eu. Nullam malesuada dui a lacus finibus pretium.</p>
+    </div>
+</article>
