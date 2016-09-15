@@ -1,33 +1,37 @@
-<!-- Standard example -->
+<?php
+$content_bg = ( $instance['background']['color'] ? 'style = "background: ' . esc_attr( $instance['background']['color'] ) . '"' : '' );
+if( $instance['price']['background']['color'] ) {
+	$price_bg = hex2rgba( $instance['price']['background']['color'], ($instance['price']['background']['opacity'] / 100) );
+	$price_bg = 'style = "background: ' . esc_attr( $price_bg ) . '"';
+}
+?>
 
 <article class="th-package">
-    <a class="th-pkg-click" href="http://www.google.com"></a>
-    <div class="th-pkg-info th-pkg-info-dark">
-        <h4>30%</h4>
-        <span>discount</span>
-    </div>
-    <div class="th-pkg-img">
-        <img src="http://placehold.it/560x320">
-    </div>
-    <div class="th-pkg-content th-pkg-con-dark">
-        <h3>Nine and Dine</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat rutrum ligula, eu volutpat massa auctor eu. Nullam malesuada dui a lacus finibus pretium.</p>
-    </div>
-</article>
 
-<!-- Example with backgrounds specified -->
+	<?php themo_display_link( $instance['link'], 'th-pkg-click', '' ); ?>
 
-<article class="th-package">
-    <a class="th-pkg-click" href="http://www.google.com"></a>
-    <div class="th-pkg-info th-pkg-info-light" style="background-color:rgba(0,0,0,0.8)">
-        <h4>30%</h4>
-        <span>discount</span>
-    </div>
-    <div class="th-pkg-img">
-        <img src="http://placehold.it/560x320">
-    </div>
-    <div class="th-pkg-content th-pkg-con-light" style="background-color:#424348">
-        <h3>Nine and Dine</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat rutrum ligula, eu volutpat massa auctor eu. Nullam malesuada dui a lacus finibus pretium.</p>
-    </div>
+	<div class="th-pkg-info th-pkg-info-<?php echo esc_attr( $instance['price']['background']['contrast'] ); ?>"  <?php echo $price_bg; ?>>
+
+		<h4><?php echo esc_html( $instance['price']['price'] ); ?></h4>
+		<span><?php echo esc_html( $instance['price']['text'] ); ?></span>
+
+	</div>
+
+	<?php if ( $instance['image'] ) : ?>
+
+		<div class="th-pkg-img">
+
+			<?php echo wp_get_attachment_image( $instance['image'], 'full', false, '' ); ?>
+
+		</div>
+
+	<?php endif; ?>
+
+	<div class="th-pkg-content th-pkg-con-<?php echo esc_attr( $instance['background']['contrast'] ); ?>" <?php echo $content_bg; ?>>
+
+		<h3><?php echo esc_html( $instance['title'] ); ?></h3>
+		<?php echo do_shortcode( wp_kses_post( $instance['content'] ) ); ?>
+
+	</div>
+
 </article>
