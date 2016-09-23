@@ -8,7 +8,9 @@ if( $instance['price']['background']['color'] ) {
 
 <article class="th-package">
 
-	<?php themo_display_link( $instance['link'], 'th-pkg-click', '' ); ?>
+	<?php if ( $instance['link']['link']['url'] ) {
+		themo_display_link( $instance['link'], 'th-pkg-click', '' );
+	} ?>
 
 	<div class="th-pkg-info th-pkg-info-<?php echo esc_attr( $instance['price']['background']['contrast'] ); ?>"  <?php echo $price_bg; ?>>
 
