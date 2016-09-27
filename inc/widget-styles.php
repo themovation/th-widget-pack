@@ -47,9 +47,19 @@ function themovation_so_wb_animation_attribute( $attributes, $args ) {
 	$attributes['data-th-animation-delay'] = array();
 	if( empty( $args['themo-animation-delay'] ) || $args['themo-animation-delay'] == 0 ) { $args['themo-animation-delay'] = 0; }
 
-	if( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
-		array_push( $attributes['class'], $args['themo-animation-styles'], 'hide-animation', 'widget-animate' );
-		array_push( $attributes['data-th-animation-delay'], $args['themo-animation-delay'] );
+	if ( function_exists( 'ot_get_option' ) ) {
+		$th_so_mobile_animation_options = ot_get_option( 'th_so_mobile_animation', 'off' );
+		if ( $th_so_mobile_animation == 'on' && wp_is_mobile() ) {
+			if ( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
+				array_push( $attributes['class'], $args['themo-animation-styles'], 'hide-animation', 'widget-animate' );
+				array_push( $attributes['data-th-animation-delay'], $args['themo-animation-delay'] );
+			}
+		} elseif ( !wp_is_mobile() ) {
+			if ( !empty( $args['themo-animation-styles'] ) && ( $args['themo-animation-styles'] !== 'none' ) ) {
+				array_push( $attributes['class'], $args['themo-animation-styles'], 'hide-animation', 'widget-animate' );
+				array_push( $attributes['data-th-animation-delay'], $args['themo-animation-delay'] );
+			}
+		}
 	}
 
 	return $attributes;
@@ -63,7 +73,7 @@ if ( ! function_exists ( 'themovation_siteorigin_widget_options' ) ) :
 function themovation_siteorigin_widget_options() {
 	if ( function_exists( 'ot_get_option' ) ) {
 		$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
-		if ($th_so_style_panel_options == 'on') {
+		if ( $th_so_style_panel_options == 'on' ) {
 			remove_filter( 'siteorigin_panels_widget_style_fields', 'themovation_so_wb_animation_field', 10 );
 			remove_filter( 'siteorigin_panels_widget_style_attributes', 'themovation_so_wb_animation_attribute', 10 );
 		}
