@@ -23,7 +23,9 @@ jQuery( function ( $ ) {
 		},
 		handler: function() {
 			$(this).each(function(){
-				$(this).removeClass( 'hide-animation' );
+				$(this).delay( $(this).data( 'th-animation-delay' ) ).queue(function(){
+					$(this).removeClass( 'hide-animation' ).clearQueue();
+				});
 			});
 		}
 	});
