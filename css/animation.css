@@ -6,6 +6,7 @@
 	animation: none !important;
 }
 
-.widget-animate {
+.widget-animate,
+.widget-repeater-animate {
 	opacity: 1;
 }
