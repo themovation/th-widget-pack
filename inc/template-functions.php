@@ -1,14 +1,14 @@
 <?php
 
 // Display icon Widget
-function themo_display_icon( $instance, $return = false ) {
+function themo_display_icon( $instance, $return = false, $class, $show_div = true ) {
 
 	$icon = $instance['icon']['icon'];
 	$style = $instance['icon']['style'];
 	$image = $instance['icon']['image'];
 
-	$open = ( $style != 'standard' ) ? '<div class="' . esc_attr( $style ) . '-med-icon">' : '';
-	$close = ( $style != 'standard' ) ? '</div>' : '';
+	$open = ( $style != 'standard' && $show_div == true  ) ? '<div class="' . $class . ' ' . esc_attr( $style ) . '-med-icon">' : '';
+	$close = ( $style != 'standard' && $show_div == true ) ? '</div>' : '';
 	if( $image ) {
 		$output = wp_get_attachment_image( $image, 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
 	} elseif( $icon ) {
@@ -57,7 +57,7 @@ function themo_display_button( $instance ) {
 	if( $type == 'button' ) {
 
 		$class = 'btn th-btn btn-' . esc_attr( $style );
-		$content = esc_html( $text ) . themo_display_icon( $icon, true );
+		$content = esc_html( $text ) . themo_display_icon( $icon, true, '', false );
 
 		themo_display_link( $link, $class, $content );
 
@@ -75,8 +75,48 @@ function themo_display_button( $instance ) {
 	}
 }
 
+/* Convert hexdec color string to rgb(a) string */
+
+function hex2rgba($color, $opacity = false) {
+
+	$default = 'rgb(0,0,0)';
+
+	//Return default if no color provided
+	if(empty($color))
+		  return $default;
+
+	//Sanitize $color if "#" is provided
+		if ($color[0] == '#' ) {
+			$color = substr( $color, 1 );
+		}
+
+		//Check if color has 6 or 3 characters and get values
+		if (strlen($color) == 6) {
+				$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+		} elseif ( strlen( $color ) == 3 ) {
+				$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+		} else {
+				return $default;
+		}
+
+		//Convert hexadec to rgb
+		$rgb =  array_map('hexdec', $hex);
+
+		//Check if opacity is set(rgba or rgb)
+		if($opacity){
+			if(abs($opacity) > 1)
+				$opacity = 1.0;
+			$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
+		} else {
+			$output = 'rgb('.implode(",",$rgb).')';
+		}
+
+		//Return rgb(a) color string
+		return $output;
+}
+
 /**
 * GLOBAL VARIABLES
 */
-global $th_acc_count, $th_acc_panel_count;
-$th_acc_panel_count = $th_acc_count = 0;
+global $th_acc_count, $th_acc_panel_count, $th_thumb_slider_count;
+$th_acc_panel_count = $th_acc_count = $th_thumb_slider_count = 0;

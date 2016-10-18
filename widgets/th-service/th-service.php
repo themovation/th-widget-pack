@@ -78,9 +78,9 @@ class Themovation_SO_WB_Service_Widget extends SiteOrigin_Widget {
 					'label' => __('Align Service Blocks', 'themovation-widgets'),
 					'default' => 'left',
 					'options' => array(
-						'left' => __('Left', 'themovation-widgets'),
-						'centered' => __('Center', 'themovation-widgets'),
-						'right' => __('Right', 'themovation-widgets'),
+						'left' => __('Left - Horizontal', 'themovation-widgets'),
+						'right' => __('Right - Horizontal', 'themovation-widgets'),
+						'vert' => __('Center - Vertical', 'themovation-widgets'),
 					)
 				),
 			),

@@ -17,7 +17,7 @@ if( $instance['title'] ) $title = '<h4>' . esc_html( $instance['title'] ) . '</h
 		</div>
 		<div class="th-team-member-social">
 			<?php foreach( $instance['social'] as $i => $social ) {
-				$icon = themo_display_icon( $social['icon'], true );
+				$icon = themo_display_icon( $social['icon'], true, '', true );
 				if( $social['link']['link']['url'] ) {
 					themo_display_link( $social['link'], '', $icon );
 				} else {

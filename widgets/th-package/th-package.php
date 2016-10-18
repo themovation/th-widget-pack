@@ -75,10 +75,10 @@ class Themovation_SO_WB_Package_Widget extends SiteOrigin_Widget {
 									'label' => __('Background Color', 'themovation-widgets'),
 								),
 
-								'transparency' => array(
+								'opacity' => array(
 									'type' => 'slider',
-									'label' => __( 'Transparency', 'themovation-widgets' ),
-									'default' => 0,
+									'label' => __( 'Opacity', 'themovation-widgets' ),
+									'default' => 100,
 									'min' => 0,
 									'max' => 100,
 									'integer' => true,

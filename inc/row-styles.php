@@ -23,13 +23,6 @@ function themovation_so_wb_row_layout_field( $fields ) {
 endif;
 add_filter( 'siteorigin_panels_row_style_fields', 'themovation_so_wb_row_layout_field', 10 );
 
-if ( function_exists( 'ot_get_option' ) ) {
-	$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
-	if ($th_so_style_panel_options == 'on'){
-		remove_filter( 'siteorigin_panels_row_style_fields', 'themovation_so_wb_row_layout_field', 10 );
-	}
-}
-
 if ( ! function_exists ( 'themovation_so_wb_row_layout_class' ) ) :
 // Adding row layout class
 function themovation_so_wb_row_layout_class( $attributes, $args ) {
@@ -43,12 +36,21 @@ function themovation_so_wb_row_layout_class( $attributes, $args ) {
 endif;
 add_filter( 'siteorigin_panels_row_style_attributes', 'themovation_so_wb_row_layout_class', 10, 2);
 
-if ( function_exists( 'ot_get_option' ) ) {
-	$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
-	if ($th_so_style_panel_options == 'on'){
-		remove_filter( 'siteorigin_panels_row_style_attributes', 'themovation_so_wb_row_layout_class', 10 );
+if ( ! function_exists ( 'themovation_siteorigin_row_options' ) ) :
+// Adding compatibility with Option Tree
+function themovation_siteorigin_row_options() {
+
+	if ( function_exists( 'ot_get_option' ) ) {
+		$th_so_style_panel_options = ot_get_option( 'th_so_style_panel_options', 'off' );
+		if ($th_so_style_panel_options == 'on') {
+			remove_filter( 'siteorigin_panels_row_style_fields', 'themovation_so_wb_row_layout_field', 10 );
+			remove_filter( 'siteorigin_panels_row_style_attributes', 'themovation_so_wb_row_layout_class', 10 );
+		}
 	}
+
 }
+endif;
+add_action( 'after_setup_theme', 'themovation_siteorigin_row_options', 2 );
 
 if ( ! function_exists ( 'themovation_so_wb_text_contrast_field' ) ) :
 // The Text Contrast option

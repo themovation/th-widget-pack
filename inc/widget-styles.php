@@ -78,6 +78,7 @@ function themovation_siteorigin_widget_options() {
 			remove_filter( 'siteorigin_panels_widget_style_attributes', 'themovation_so_wb_animation_attribute', 10 );
 		}
 	}
+
 }
 endif;
 add_action( 'after_setup_theme', 'themovation_siteorigin_widget_options', 2 );
