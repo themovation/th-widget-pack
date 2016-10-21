@@ -12,13 +12,19 @@ switch ( $instance['rows'] ) {
 	default:
 		$rows = '';
 }
+
+$themo_animation = $instance['panels_info']['style']['themo-animation-styles'];
+
+if ( !empty( $themo_animation ) && $themo_animation != 'none' ) :
+	$animate_class = $themo_animation . ' hide-animation widget-repeater-animate';
+endif;
 ?>
 
-<div class="th-testimonials row">
+<div class="th-testimonials row th-widget-has-repeater">
 
 	<?php foreach( $instance['testimonials'] as $i => $testimonial ) { ?>
 
-		<div class="th-testimonial-single<?php echo $rows; ?>">
+		<div class="th-testimonial-single<?php echo $rows; ?> <?php echo $animate_class; ?>">
 			<figure class="th-quote">
 				<div class="th-star-rating th-star-<?php echo $testimonial['rating']; ?>">
 					<span class="th-star-1 glyphicons"></span>
