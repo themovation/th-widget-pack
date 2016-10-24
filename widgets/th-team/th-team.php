@@ -130,6 +130,11 @@ class Themovation_SO_WB_Team_Widget extends SiteOrigin_Widget {
 		return '';
 	}
 
+	function modify_child_widget_form($child_widget_form, $child_widget) {
+		unset( $child_widget_form['icon']['fields']['style'] );
+		return $child_widget_form;
+	}
+
 	function initialize() {
 
 		$this->register_frontend_styles(
