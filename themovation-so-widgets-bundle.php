@@ -73,5 +73,13 @@ require_once ( 'inc/row-styles.php' );
 require_once ( 'inc/widget-styles.php' );
 require_once ( 'inc/portfolio.php' );
 
+// Change SiteOrign Setting value on plugin activation
+function themovation_so_wb_settings() {
+	$current_settings = get_option( 'siteorigin_panels_settings', array() );
+	$current_settings['margin-bottom'] = 0;
+	update_option( 'siteorigin_panels_settings', $current_settings );
+}
+register_activation_hook( __FILE__, 'themovation_so_wb_settings' );
+
 add_image_size( 'themo_brands', 150, 80, true);
 add_image_size( 'themo_team', 480, 320, true);
