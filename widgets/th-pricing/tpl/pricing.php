@@ -32,15 +32,19 @@ switch( $column_number ) {
 		$column_class = '';
 }
 
+$themo_animation = $instance['panels_info']['style']['themo-animation-styles'];
+if ( !empty( $themo_animation ) && $themo_animation != 'none' ) :
+	$animate_class = $themo_animation . ' hide-animation widget-repeater-animate';
+endif;
 ?>
 
-<div class="th-pricing-table<?php echo $table_class; ?>">
+<div class="th-pricing-table<?php echo $table_class; ?> th-widget-has-repeater">
 
 	<div class="row">
 
 		<?php foreach( $instance['table'] as $i => $column ) { ?>
 
-			<div class="th-pricing-column<?php echo( $column['popular'] ? ' th-highlight' : '' ); echo $column_class; ?>">
+			<div class="th-pricing-column<?php echo( $column['popular'] ? ' th-highlight' : '' ); echo $column_class; ?> <?php echo $animate_class; ?>">
 
 				<div class="th-pricing-cost"><?php echo esc_html( $column['price'] ); ?><span><?php echo esc_html( $column['text'] ); ?></span></div>
 

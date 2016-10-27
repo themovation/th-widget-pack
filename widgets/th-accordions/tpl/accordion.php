@@ -4,16 +4,22 @@ global $th_acc_count;
 global $th_acc_panel_count;
 
 $accordion_id = ++$th_acc_count;
+
+$themo_animation = $instance['panels_info']['style']['themo-animation-styles'];
+
+if ( !empty( $themo_animation ) && $themo_animation != 'none' ) :
+	$animate_class = $themo_animation . ' hide-animation widget-repeater-animate';
+endif;
 ?>
 
-<div class="th-accordion">
+<div class="th-accordion th-widget-has-repeater">
 	<div class="panel-group" id="accordion<?php echo $accordion_id; ?>">
 
 		<?php foreach( $instance['accordions'] as $i => $accordion ) { ?>
 
 			<?php $toggle_id = ++$th_acc_panel_count; ?>
 
-			<div class="panel panel-default">
+			<div class="panel panel-default <?php echo $animate_class; ?>">
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion<?php echo $accordion_id; ?>" href="#collapse<?php echo $toggle_id ?>" class="accordion-toggle">

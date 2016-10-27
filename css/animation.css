@@ -1,0 +1,12 @@
+.hide-animation {
+	opacity: 0 !important;
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
+	animation: none !important;
+}
+
+.widget-animate,
+.widget-repeater-animate {
+	opacity: 1;
+}
