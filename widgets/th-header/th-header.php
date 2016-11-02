@@ -25,6 +25,16 @@ class Themovation_SO_WB_Header_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
+				'type' => array(
+					'type' => 'radio',
+					'label' => __('Type', 'themovation-widgets'),
+					'default' => 'section',
+					'options' => array(
+						'section' => __('Section Header', 'themovation-widgets'),
+						'page' => __('Page Header', 'themovation-widgets'),
+					)
+				),
+
 				'icon' => array(
 					'type' => 'widget',
 					'class' => 'Themovation_SO_WB_Icon_Widget',
