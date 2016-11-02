@@ -83,6 +83,19 @@ class Themovation_SO_WB_Service_Widget extends SiteOrigin_Widget {
 						'vert' => __('Center - Vertical', 'themovation-widgets'),
 					)
 				),
+
+				'row' => array(
+					'type' => 'radio',
+					'label' => __('Service Blocks per Row', 'themovation-widgets'),
+					'default' => '3',
+					'options' => array(
+						'1' => __('1', 'themovation-widgets'),
+						'2' => __('2', 'themovation-widgets'),
+						'3' => __('3', 'themovation-widgets'),
+						'4' => __('4', 'themovation-widgets'),
+						'5' => __('5', 'themovation-widgets'),
+					)
+				),
 			),
 
 			plugin_dir_path(__FILE__)
