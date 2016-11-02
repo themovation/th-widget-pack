@@ -29,6 +29,7 @@ class Themovation_SO_WB_Appointments_Widget extends SiteOrigin_Widget {
 					'type' => 'text',
 					'label' => __('Calendar Shortcode', 'themovation-widgets'),
 					'placeholder' => __('[add_shortcode_here]', 'themovation-widgets'),
+					'description' => __('For the standard calendar use [booked-calendar] More options available in the Booked settings area', 'themovation-widgets'),
 				),
 
 				'tooltip' => array(
@@ -38,13 +39,23 @@ class Themovation_SO_WB_Appointments_Widget extends SiteOrigin_Widget {
 				),
 
 				'size' => array(
-					'type' => 'select',
+					'type' => 'radio',
 					'label' => __('Calendar Size', 'themovation-widgets'),
 					'default' => 'large',
 					'options' => array(
 						'large' => __('Large', 'themovation-widgets'),
-						'medium' => __('Medium', 'themovation-widgets'),
 						'small' => __('Small', 'themovation-widgets'),
+					)
+				),
+
+				'align' => array(
+					'type' => 'radio',
+					'label' => __('Align Calendar', 'themovation-widgets'),
+					'default' => 'left',
+					'options' => array(
+						'left' => __('Left', 'themovation-widgets'),
+						'centered' => __('Center', 'themovation-widgets'),
+						'right' => __('Right', 'themovation-widgets'),
 					)
 				),
 			),
