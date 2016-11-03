@@ -1,4 +1,4 @@
-<? $tag = ( $instance['type'] == 'section' ) ? 'h2' : 'h1'; ?>
+<?php $tag = ( $instance['type'] == 'section' ) ? 'h2' : 'h1'; ?>
 
 <div class="th-header th-<?php echo esc_attr( $instance['align'] ); ?> th-header-<?php echo esc_attr( $instance['type'] ); ?>">
 	<?php themo_display_icon( $instance['icon'], false, '', true ); ?>
