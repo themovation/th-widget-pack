@@ -77,7 +77,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 							'type'    => 'select',
 							'default' => 'standard',
 							'label'   => __('Product Button', 'themovation-widgets'),
-							'options' => array(),
+							'options' => $this->get_woocommerce_product_list(),
 						),
 
 						'product_sku' => array(
@@ -154,7 +154,7 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 							'type'    => 'select',
 							'default' => 'standard',
 							'label'   => __('Product Button', 'themovation-widgets'),
-							'options' => array(),
+							'options' => $this->get_woocommerce_product_list(),
 						),
 
 						'product_sku' => array(
