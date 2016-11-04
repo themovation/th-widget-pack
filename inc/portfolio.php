@@ -117,3 +117,84 @@ if ( ! function_exists( 'themo_project_type' ) ) {
 	add_action( 'init', 'themo_project_type', 0 );
 
 }
+
+/**
+ * Add holes meta box
+ */
+function themo_holes_add_meta_box( $post ) {
+	add_meta_box(
+		'themo_holes_meta_box',
+		__( 'Hole', 'themovation-widgets' ),
+		'themo_holes_build_meta_box',
+		'themo_portfolio',
+		'side',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes_themo_portfolio', 'themo_holes_add_meta_box' );
+
+/**
+ * Build holes meta box
+ */
+function themo_holes_build_meta_box( $post ) {
+	wp_nonce_field( basename( __FILE__ ), 'themo_holes_meta_box_nonce' );
+
+	$current_holes_number = get_post_meta( $post->ID, '_holes_number', true );
+	$current_holes_par = get_post_meta( $post->ID, '_holes_par', true );
+	$current_holes_yards = get_post_meta( $post->ID, '_holes_yards', true );
+	$current_holes_handicap = get_post_meta( $post->ID, '_holes_handicap', true );
+
+	?>
+	<div class='inside'>
+
+		<h4 style="margin-bottom: 0"><?php _e( 'Hole #', 'themovation-widgets' ); ?></h4>
+		<p style="margin: 0">
+			<input type="text" name="hole-number" value="<?php echo $current_holes_number; ?>" />
+		</p>
+
+		<h4 style="margin-bottom: 0"><?php _e( 'Par', 'themovation-widgets' ); ?></h4>
+		<p style="margin: 0">
+			<input type="text" name="par" value="<?php echo $current_holes_par; ?>" />
+		</p>
+
+		<h4 style="margin-bottom: 0"><?php _e( 'Yards', 'themovation-widgets' ); ?></h4>
+		<p style="margin: 0">
+			<input type="text" name="yards" value="<?php echo $current_holes_yards; ?>" />
+		</p>
+
+		<h4 style="margin-bottom: 0"><?php _e( 'Handicap', 'themovation-widgets' ); ?></h4>
+		<p style="margin: 0">
+			<input type="text" name="handicap" value="<?php echo $current_holes_handicap; ?>" />
+		</p>
+
+	</div>
+	<?php
+}
+
+/**
+ * Save holes meta box
+ */
+function themo_holes_save_meta_box( $post_id ) {
+
+	if ( !isset( $_POST['themo_holes_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['themo_holes_meta_box_nonce'], basename( __FILE__ ) ) ) return;
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+
+	if ( isset( $_REQUEST['hole-number'] ) ) {
+		update_post_meta( $post_id, '_holes_number', sanitize_text_field( $_POST['hole-number'] ) );
+	}
+
+	if ( isset( $_REQUEST['par'] ) ) {
+		update_post_meta( $post_id, '_holes_par', sanitize_text_field( $_POST['par'] ) );
+	}
+
+	if ( isset( $_REQUEST['yards'] ) ) {
+		update_post_meta( $post_id, '_holes_yards', sanitize_text_field( $_POST['yards'] ) );
+	}
+
+	if ( isset( $_REQUEST['handicap'] ) ) {
+		update_post_meta( $post_id, '_holes_handicap', sanitize_text_field( $_POST['handicap'] ) );
+	}
+
+}
+add_action( 'save_post_themo_portfolio', 'themo_holes_save_meta_box', 10, 2 );
