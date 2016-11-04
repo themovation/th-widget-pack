@@ -26,9 +26,9 @@ if ( ! function_exists('themo_portfolio_custom_post_type') ) {
 		);
 
 		if ( function_exists( 'ot_get_option' ) ) {
-			$custom_slug = ot_get_option( 'themo_portfolio_rewrite_slug', 'portfolio' );
-		}else{
-			$custom_slug = 'portfolio';
+			$custom_slug = ot_get_option( 'themo_portfolio_rewrite_slug', 'course' );
+		} else {
+			$custom_slug = 'course';
 		}
 
 		$rewrite = array(
@@ -95,7 +95,7 @@ if ( ! function_exists( 'themo_project_type' ) ) {
 			'not_found'                  => __( 'Not Found', 'themovation-widgets' ),
 		);
 		$rewrite = array(
-			'slug'                       => 'project-type',
+			'slug'                       => 'hole-type',
 			'with_front'                 => true,
 			'hierarchical'               => false,
 		);
