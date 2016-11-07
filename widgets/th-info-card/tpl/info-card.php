@@ -1,23 +1,21 @@
 <?php
-$themo_animation = $instance['panels_info']['style']['themo-animation-styles'];
+if( $instance['background']['color'] ) {
+	$info_bg = hex2rgba( $instance['background']['color'], ($instance['background']['opacity'] / 100) );
+	$info_bg = $instance['background']['color'] ? 'background: ' . esc_attr( $info_bg ) . ';' : '';
+	$info_border = $instance['border-color'] ? 'border: 1px solid ' . $instance['border-color'] . ';' : '';
+	$info_style = ( $instance['background']['color'] || $instance['border-color'] ) ? 'style = "background: ' . $info_bg . ' ' . $info_border . '"' : '';
+}
 ?>
-<div class="th-faq th-widget-has-repeater">
-	<dl class="th-faq-list">
 
-		<?php foreach( $instance['faqs'] as $faq ) { ?>
-
-			<?php if ( !empty( $themo_animation ) && $themo_animation != 'none' ) : ?>
-				<div class="<?php echo $themo_animation . ' hide-animation widget-repeater-animate'; ?>">
-			<?php endif; ?>
-
-				<dt class="th-faq-dt"><?php echo esc_html( $faq['title'] ); ?></dt>
-				<dd class="th-faq-dd"><?php echo wp_kses_post( $faq['content'] ); ?></dd>
-
-			<?php if ( !empty( $themo_animation ) && $themo_animation != 'none' ) : ?>
-				</div>
-			<?php endif; ?>
-
-		<?php } ?>
-
-	</dl>
+<div class="th-info-card th-con-<?php echo esc_attr( $instance['align'] ); ?> th-card-<?php echo esc_attr( $instance['card-align'] ); ?>" <?php echo $info_style; ?>>
+	<?php if ( $instance['link']['link']['url'] ) {
+		themo_display_link( $instance['link'], '', '' );
+	} ?>
+	<h2 class="th-info-card-title"><?php echo esc_html( $instance['title'] ); ?></h2>
+	<?php echo do_shortcode( wp_kses_post( $instance['content'] ) ); ?>
+	<?php if( $instance['button']['button']['button_link']['link']['url'] ) : ?>
+		<div class="th-card-btn">
+			<?php themo_display_button( $instance['button'] ); ?>
+		</div>
+	<?php endif; ?>
 </div>
