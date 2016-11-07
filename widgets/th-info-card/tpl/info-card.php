@@ -3,7 +3,7 @@ if( $instance['background']['color'] ) {
 	$info_bg = hex2rgba( $instance['background']['color'], ($instance['background']['opacity'] / 100) );
 	$info_bg = $instance['background']['color'] ? 'background: ' . esc_attr( $info_bg ) . ';' : '';
 	$info_border = $instance['border-color'] ? 'border: 1px solid ' . $instance['border-color'] . ';' : '';
-	$info_style = ( $instance['background']['color'] || $instance['border-color'] ) ? 'style = "background: ' . $info_bg . ' ' . $info_border . '"' : '';
+	$info_style = ( $instance['background']['color'] || $instance['border-color'] ) ? 'style = "' . $info_bg . ' ' . $info_border . '"' : '';
 }
 ?>
 
