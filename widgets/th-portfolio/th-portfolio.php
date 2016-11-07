@@ -1,6 +1,6 @@
 <?php
 /*
-Widget Name: Themovation Portfolio
+Widget Name: Themovation Course Guide
 Description: Displays portfolio items with column and sort layout options.
 Author: Themovation
 Author URI: themovation.com
@@ -14,10 +14,10 @@ class Themovation_SO_WB_Portfolio_Widget extends SiteOrigin_Widget {
 
 			'th-portfolio',
 
-			__('Themovation Portfolio', 'themovation-widgets'),
+			__('Themovation Course Guide', 'themovation-widgets'),
 
 			array(
-				'description' => __('Displays portfolio items with column and sort layout options.', 'themovation-widgets'),
+				'description' => __('Displays holes with column and sort layout options.', 'themovation-widgets'),
 				'help'        => '',
 			),
 
