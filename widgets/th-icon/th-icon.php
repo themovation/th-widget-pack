@@ -6,7 +6,9 @@ Author: Themovation
 Author URI: themovation.com
 */
 
-class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
+if( !class_exists( 'Themovation_Widget_Base' ) ) include_once plugin_dir_path(​THEMOVATION_BASE_FILE) . '/inc/base.class.php';
+
+class Themovation_SO_WB_Icon_Widget extends Themovation_Widget_Base {
 
 	function __construct() {
 
@@ -29,34 +31,7 @@ class Themovation_SO_WB_Icon_Widget extends SiteOrigin_Widget {
 					'type' => 'section',
 					'label' => __('Icon' , 'themovation-widgets'),
 					'hide' => true,
-					'fields' => array(
-
-						'icon' => array(
-							'type' => 'icon',
-							'label' => __('Icon', 'themovation-widgets'),
-						),
-
-						'style'    => array(
-							'type'    => 'radio',
-							'default' => 'standard',
-							'label'   => __('Icon Style', 'themovation-widgets'),
-							'options' => array(
-								'standard' => __('Standard', 'themovation-widgets'),
-								'circle' => __('Circle', 'themovation-widgets'),
-								'border' => __('Bordered', 'themovation-widgets'),
-							),
-						),
-
-						'image' => array(
-							'type' => 'media',
-							'fallback' => false,
-							'label' => __('Select a graphic icon', 'themovation-widgets'),
-							'default'     => '',
-							'library' => 'image',
-							'description' => __('Replaces the icon with your own graphic icon', 'themovation-widgets'),
-						),
-
-					)
+					'fields' => $this->icon_form_fields()
 				)
 			),
 

@@ -12,6 +12,7 @@
  */
 
 define('​THEMOVATION_WB_VER', '1.0.0');
+define('​THEMOVATION_BASE_FILE', __FILE__);
 
 require_once ( 'inc/template-functions.php' );
 
