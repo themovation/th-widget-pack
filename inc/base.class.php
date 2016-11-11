@@ -71,247 +71,235 @@ abstract class Themovation_Widget_Base extends SiteOrigin_Widget {
 		);
 	}
 
-	function button_form_fields() {
+	function button_1_form_fields() {
 		return array(
-			'button_1' => array(
-				'type' => 'section',
-				'label' => __('Button 1' , 'themovation-widgets'),
-				'hide' => true,
-				'fields' => array(
-
-					'button_type'    => array(
-						'type'    => 'select',
-						'default' => 'button',
-						'label'   => __('Button Type', 'themovation-widgets'),
-						'options' => array(
-							'button' => __('Button', 'themovation-widgets'),
-							'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
-							'graphic' => __('Graphic Button', 'themovation-widgets'),
-						),
-						'state_emitter' => array(
-							'callback' => 'select',
-							'args' => array( 'button_type_1' )
-						),
-					),
-
-					'button_text' => array(
-						'type' => 'text',
-						'label' => __('Button Text', 'themovation-widgets'),
-						'placeholder' => __('Click here', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_1[button]' => array('show'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'button_style'    => array(
-						'type'    => 'select',
-						'default' => 'standard',
-						'label'   => __('Button Style', 'themovation-widgets'),
-						'options' => array(
-							'standard' => __('Standard', 'themovation-widgets'),
-							'ghost' => __('Ghost', 'themovation-widgets'),
-							'cta' => __('Call to Action', 'themovation-widgets'),
-						),
-						'state_handler' => array(
-							'button_type_1[button]' => array('show'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'button_icon' => array(
-						'type' => 'section',
-						'label' => __('Button Icon' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->icon_form_fields(),
-						'state_handler' => array(
-							'button_type_1[button]' => array('show'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'button_link' => array(
-						'type' => 'section',
-						'label' => __('Button Link' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->link_form_fields(),
-						'state_handler' => array(
-							'button_type_1[button]' => array('show'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'product_button'    => array(
-						'type'    => 'select',
-						'default' => 'standard',
-						'label'   => __('Product Button', 'themovation-widgets'),
-						'options' => $this->get_woocommerce_product_list(),
-						'state_handler' => array(
-							'button_type_1[button]' => array('hide'),
-							'button_type_1[add-to-cart]' => array('show'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'product_sku' => array(
-						'type' => 'text',
-						'label' => __('Product Sku', 'themovation-widgets'),
-						'placeholder' => __('sku-123', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_1[button]' => array('hide'),
-							'button_type_1[add-to-cart]' => array('show'),
-							'button_type_1[graphic]' => array('hide'),
-						),
-					),
-
-					'button_graphic' => array(
-						'type' => 'media',
-						'library' => 'image',
-						'label' => __('Button Graphic', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_1[button]' => array('hide'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('show'),
-						),
-					),
-
-					'graphic_link' => array(
-						'type' => 'section',
-						'label' => __('Link' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->link_form_fields(),
-						'state_handler' => array(
-							'button_type_1[button]' => array('hide'),
-							'button_type_1[add-to-cart]' => array('hide'),
-							'button_type_1[graphic]' => array('show'),
-						),
-					),
-				)
+			'button_type'    => array(
+				'type'    => 'select',
+				'default' => 'button',
+				'label'   => __('Button Type', 'themovation-widgets'),
+				'options' => array(
+					'button' => __('Button', 'themovation-widgets'),
+					'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
+					'graphic' => __('Graphic Button', 'themovation-widgets'),
+				),
+				'state_emitter' => array(
+					'callback' => 'select',
+					'args' => array( 'button_type_1' )
+				),
 			),
 
-			'button_2' => array(
+			'button_text' => array(
+				'type' => 'text',
+				'label' => __('Button Text', 'themovation-widgets'),
+				'placeholder' => __('Click here', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_1[button]' => array('show'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
+
+			'button_style'    => array(
+				'type'    => 'select',
+				'default' => 'standard',
+				'label'   => __('Button Style', 'themovation-widgets'),
+				'options' => array(
+					'standard' => __('Standard', 'themovation-widgets'),
+					'ghost' => __('Ghost', 'themovation-widgets'),
+					'cta' => __('Call to Action', 'themovation-widgets'),
+				),
+				'state_handler' => array(
+					'button_type_1[button]' => array('show'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
+
+			'button_icon' => array(
 				'type' => 'section',
-				'label' => __('Button 2' , 'themovation-widgets'),
+				'label' => __('Button Icon' , 'themovation-widgets'),
 				'hide' => true,
-				'fields' => array(
+				'fields' => $this->icon_form_fields(),
+				'state_handler' => array(
+					'button_type_1[button]' => array('show'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
 
-					'button_type'    => array(
-						'type'    => 'select',
-						'default' => 'button',
-						'label'   => __('Button Type', 'themovation-widgets'),
-						'options' => array(
-							'button' => __('Button', 'themovation-widgets'),
-							'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
-							'graphic' => __('Graphic Button', 'themovation-widgets'),
-						),
-						'state_emitter' => array(
-							'callback' => 'select',
-							'args' => array( 'button_type_2' )
-						),
-					),
+			'button_link' => array(
+				'type' => 'section',
+				'label' => __('Button Link' , 'themovation-widgets'),
+				'hide' => true,
+				'fields' => $this->link_form_fields(),
+				'state_handler' => array(
+					'button_type_1[button]' => array('show'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
 
-					'button_text' => array(
-						'type' => 'text',
-						'label' => __('Button Text', 'themovation-widgets'),
-						'placeholder' => __('Click here', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_2[button]' => array('show'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+			'product_button'    => array(
+				'type'    => 'select',
+				'default' => 'standard',
+				'label'   => __('Product Button', 'themovation-widgets'),
+				'options' => $this->get_woocommerce_product_list(),
+				'state_handler' => array(
+					'button_type_1[button]' => array('hide'),
+					'button_type_1[add-to-cart]' => array('show'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
 
-					'button_style'    => array(
-						'type'    => 'select',
-						'default' => 'standard',
-						'label'   => __('Button Style', 'themovation-widgets'),
-						'options' => array(
-							'standard' => __('Standard', 'themovation-widgets'),
-							'ghost' => __('Ghost', 'themovation-widgets'),
-							'cta' => __('Call to Action', 'themovation-widgets'),
-						),
-						'state_handler' => array(
-							'button_type_2[button]' => array('show'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+			'product_sku' => array(
+				'type' => 'text',
+				'label' => __('Product Sku', 'themovation-widgets'),
+				'placeholder' => __('sku-123', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_1[button]' => array('hide'),
+					'button_type_1[add-to-cart]' => array('show'),
+					'button_type_1[graphic]' => array('hide'),
+				),
+			),
 
-					'button_icon' => array(
-						'type' => 'section',
-						'label' => __('Button Icon' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->icon_form_fields(),
-						'state_handler' => array(
-							'button_type_2[button]' => array('show'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+			'button_graphic' => array(
+				'type' => 'media',
+				'library' => 'image',
+				'label' => __('Button Graphic', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_1[button]' => array('hide'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('show'),
+				),
+			),
 
-					'button_link' => array(
-						'type' => 'section',
-						'label' => __('Button Link' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->link_form_fields(),
-						'state_handler' => array(
-							'button_type_2[button]' => array('show'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+			'graphic_link' => array(
+				'type' => 'section',
+				'label' => __('Link' , 'themovation-widgets'),
+				'hide' => true,
+				'fields' => $this->link_form_fields(),
+				'state_handler' => array(
+					'button_type_1[button]' => array('hide'),
+					'button_type_1[add-to-cart]' => array('hide'),
+					'button_type_1[graphic]' => array('show'),
+				),
+			),
+		);
+	}
 
-					'product_button'    => array(
-						'type'    => 'select',
-						'default' => 'standard',
-						'label'   => __('Product Button', 'themovation-widgets'),
-						'options' => $this->get_woocommerce_product_list(),
-						'state_handler' => array(
-							'button_type_2[button]' => array('hide'),
-							'button_type_2[add-to-cart]' => array('show'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+	function button_2_form_fields() {
+		return array(
+			'button_type'    => array(
+				'type'    => 'select',
+				'default' => 'button',
+				'label'   => __('Button Type', 'themovation-widgets'),
+				'options' => array(
+					'button' => __('Button', 'themovation-widgets'),
+					'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
+					'graphic' => __('Graphic Button', 'themovation-widgets'),
+				),
+				'state_emitter' => array(
+					'callback' => 'select',
+					'args' => array( 'button_type_2' )
+				),
+			),
 
-					'product_sku' => array(
-						'type' => 'text',
-						'label' => __('Product Sku', 'themovation-widgets'),
-						'placeholder' => __('sku-123', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_2[button]' => array('hide'),
-							'button_type_2[add-to-cart]' => array('show'),
-							'button_type_2[graphic]' => array('hide'),
-						),
-					),
+			'button_text' => array(
+				'type' => 'text',
+				'label' => __('Button Text', 'themovation-widgets'),
+				'placeholder' => __('Click here', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_2[button]' => array('show'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
 
-					'button_graphic' => array(
-						'type' => 'media',
-						'library' => 'image',
-						'label' => __('Button Graphic', 'themovation-widgets'),
-						'state_handler' => array(
-							'button_type_2[button]' => array('hide'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('show'),
-						),
-					),
+			'button_style'    => array(
+				'type'    => 'select',
+				'default' => 'standard',
+				'label'   => __('Button Style', 'themovation-widgets'),
+				'options' => array(
+					'standard' => __('Standard', 'themovation-widgets'),
+					'ghost' => __('Ghost', 'themovation-widgets'),
+					'cta' => __('Call to Action', 'themovation-widgets'),
+				),
+				'state_handler' => array(
+					'button_type_2[button]' => array('show'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
 
-					'graphic_link' => array(
-						'type' => 'section',
-						'label' => __('Link' , 'themovation-widgets'),
-						'hide' => true,
-						'fields' => $this->link_form_fields(),
-						'state_handler' => array(
-							'button_type_2[button]' => array('hide'),
-							'button_type_2[add-to-cart]' => array('hide'),
-							'button_type_2[graphic]' => array('show'),
-						),
-					),
-				)
-			)
+			'button_icon' => array(
+				'type' => 'section',
+				'label' => __('Button Icon' , 'themovation-widgets'),
+				'hide' => true,
+				'fields' => $this->icon_form_fields(),
+				'state_handler' => array(
+					'button_type_2[button]' => array('show'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
+
+			'button_link' => array(
+				'type' => 'section',
+				'label' => __('Button Link' , 'themovation-widgets'),
+				'hide' => true,
+				'fields' => $this->link_form_fields(),
+				'state_handler' => array(
+					'button_type_2[button]' => array('show'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
+
+			'product_button'    => array(
+				'type'    => 'select',
+				'default' => 'standard',
+				'label'   => __('Product Button', 'themovation-widgets'),
+				'options' => $this->get_woocommerce_product_list(),
+				'state_handler' => array(
+					'button_type_2[button]' => array('hide'),
+					'button_type_2[add-to-cart]' => array('show'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
+
+			'product_sku' => array(
+				'type' => 'text',
+				'label' => __('Product Sku', 'themovation-widgets'),
+				'placeholder' => __('sku-123', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_2[button]' => array('hide'),
+					'button_type_2[add-to-cart]' => array('show'),
+					'button_type_2[graphic]' => array('hide'),
+				),
+			),
+
+			'button_graphic' => array(
+				'type' => 'media',
+				'library' => 'image',
+				'label' => __('Button Graphic', 'themovation-widgets'),
+				'state_handler' => array(
+					'button_type_2[button]' => array('hide'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('show'),
+				),
+			),
+
+			'graphic_link' => array(
+				'type' => 'section',
+				'label' => __('Link' , 'themovation-widgets'),
+				'hide' => true,
+				'fields' => $this->link_form_fields(),
+				'state_handler' => array(
+					'button_type_2[button]' => array('hide'),
+					'button_type_2[add-to-cart]' => array('hide'),
+					'button_type_2[graphic]' => array('show'),
+				),
+			),
 		);
 	}
 

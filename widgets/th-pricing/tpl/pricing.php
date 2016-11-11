@@ -57,10 +57,10 @@ endif;
 				</div>
 
 				<div class="th-pricing-btn">
-					<?php if( $column['button_1']['button']['button_link']['link']['url'] ) : ?>
+					<?php if( $column['button_1']['button_link']['url'] ) : ?>
 						<?php themo_display_button( $column['button_1'] ); ?>
 					<?php endif; ?>
-					<?php if( $column['button_2']['button']['button_link']['link']['url'] ) : ?>
+					<?php if( $column['button_2']['button_link']['url'] ) : ?>
 						<?php themo_display_button( $column['button_2'] ); ?>
 					<?php endif; ?>
 				</div>

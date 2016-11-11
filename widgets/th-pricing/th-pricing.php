@@ -63,11 +63,18 @@ class Themovation_SO_WB_Pricing_Widget extends Themovation_Widget_Base {
 							'rows' => 7
 						),
 
-						'button' => array(
+						'button_1' => array(
 							'type' => 'section',
-							'label' => __('Button' , 'themovation-widgets'),
+							'label' => __('Button 1' , 'themovation-widgets'),
 							'hide' => true,
-							'fields' => $this->button_form_fields()
+							'fields' => $this->button_1_form_fields()
+						),
+
+						'button_2' => array(
+							'type' => 'section',
+							'label' => __('Button 2' , 'themovation-widgets'),
+							'hide' => true,
+							'fields' => $this->button_2_form_fields()
 						),
 
 						'popular' => array(

@@ -16,7 +16,7 @@ endif;
 		<?php
 		$icon = themo_display_icon( $block['icon'], true, 'th-sb-icon' . $vert , true );
 
-		if( $block['link']['link']['url'] ) {
+		if( $block['link']['url'] ) {
 			themo_display_link( $block['link'], '', $icon );
 		} else {
 			echo $icon;
@@ -27,7 +27,7 @@ endif;
 			<?php
 			$title = '<h3>' . esc_html( $block['title'] ) . '</h3>';
 
-			if( $block['link']['link']['url'] ) {
+			if( $block['link']['url'] ) {
 				themo_display_link( $block['link'], '', $title );
 			} else {
 				echo $title;
