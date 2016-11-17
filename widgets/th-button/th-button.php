@@ -25,9 +25,9 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 			),
 
 			array(
-				'button' => array(
+				'button_1' => array(
 					'type' => 'section',
-					'label' => __('Button' , 'themovation-widgets'),
+					'label' => __('Button 1' , 'themovation-widgets'),
 					'hide' => true,
 					'fields' => array(
 
@@ -77,7 +77,84 @@ class Themovation_SO_WB_Button_Widget extends SiteOrigin_Widget {
 							'type'    => 'select',
 							'default' => 'standard',
 							'label'   => __('Product Button', 'themovation-widgets'),
-							'options' => array(),
+							'options' => $this->get_woocommerce_product_list(),
+						),
+
+						'product_sku' => array(
+							'type' => 'text',
+							'label' => __('Product Sku', 'themovation-widgets'),
+							'placeholder' => __('sku-123', 'themovation-widgets'),
+						),
+
+						'button_graphic' => array(
+							'type' => 'media',
+							'library' => 'image',
+							'label' => __('Button Graphic', 'themovation-widgets'),
+						),
+
+						'graphic_link' => array(
+							'type' => 'widget',
+							'class' => 'Themovation_SO_WB_Link_Widget',
+							'label' => __('Link', 'themovation-widgets'),
+							'hide' => false
+						),
+
+					)
+				),
+
+				'button_2' => array(
+					'type' => 'section',
+					'label' => __('Button 2' , 'themovation-widgets'),
+					'hide' => true,
+					'fields' => array(
+
+						'button_type'    => array(
+							'type'    => 'select',
+							'default' => 'button',
+							'label'   => __('Button Type', 'themovation-widgets'),
+							'options' => array(
+								'button' => __('Button', 'themovation-widgets'),
+								'add-to-cart' => __('Add to Cart', 'themovation-widgets'),
+								'graphic' => __('Graphic Button', 'themovation-widgets'),
+							),
+						),
+
+						'button_text' => array(
+							'type' => 'text',
+							'label' => __('Button Text', 'themovation-widgets'),
+							'placeholder' => __('Click here', 'themovation-widgets'),
+						),
+
+						'button_style'    => array(
+							'type'    => 'radio',
+							'default' => 'standard',
+							'label'   => __('Button Style', 'themovation-widgets'),
+							'options' => array(
+								'standard' => __('Standard', 'themovation-widgets'),
+								'ghost' => __('Ghost', 'themovation-widgets'),
+								'cta' => __('Call to Action', 'themovation-widgets'),
+							),
+						),
+
+						'button_icon' => array(
+							'type' => 'widget',
+							'class' => 'Themovation_SO_WB_Icon_Widget',
+							'label' => __('Button Icon', 'themovation-widgets'),
+							'hide' => false
+						),
+
+						'button_link' => array(
+							'type' => 'widget',
+							'class' => 'Themovation_SO_WB_Link_Widget',
+							'label' => __('Button Link', 'themovation-widgets'),
+							'hide' => false
+						),
+
+						'product_button'    => array(
+							'type'    => 'select',
+							'default' => 'standard',
+							'label'   => __('Product Button', 'themovation-widgets'),
+							'options' => $this->get_woocommerce_product_list(),
 						),
 
 						'product_sku' => array(

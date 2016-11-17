@@ -44,15 +44,27 @@ function themo_display_link( $instance, $class, $content ) {
 
 // Display button Widget
 function themo_display_button( $instance ) {
-	$type = $instance['button']['button_type'];
-	$text = $instance['button']['button_text'];
-	$style = $instance['button']['button_style'];
-	$icon = $instance['button']['button_icon'];
-	$link = $instance['button']['button_link'];
-	$product_button = $instance['button']['product_button'];
-	$product_sku = $instance['button']['product_sku'];
-	$graphic = $instance['button']['button_graphic'];
-	$graphic_link = $instance['button']['graphic_link'];
+
+	if( $instance['button_1']['button_link']['link']['url'] ) :
+		themo_display_single_button( $instance['button_1'] );
+	endif;
+	if( $instance['button_2']['button_link']['link']['url'] ) :
+		themo_display_single_button( $instance['button_2'] );
+	endif;
+
+}
+
+function themo_display_single_button( $button ) {
+
+	$type = $button['button_type'];
+	$text = $button['button_text'];
+	$style = $button['button_style'];
+	$icon = $button['button_icon'];
+	$link = $button['button_link'];
+	$product_button = $button['product_button'];
+	$product_sku = $button['product_sku'];
+	$graphic = $button['button_graphic'];
+	$graphic_link = $button['graphic_link'];
 
 	if( $type == 'button' ) {
 
@@ -73,6 +85,7 @@ function themo_display_button( $instance ) {
 		themo_display_link( $graphic_link, $class, $content );
 
 	}
+
 }
 
 /* Convert hexdec color string to rgb(a) string */

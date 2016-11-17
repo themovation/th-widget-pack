@@ -2,7 +2,7 @@
 	function ( $ ) {
 
 		$.fn.themoButtonLogic = function() {
-			$("select[name*='[button][button_type]']").change(function(){
+			$("select[name*='[button_1][button_type]'], select[name*='[button_2][button_type]']").change(function(){
 				var $$ = $(this),
 					$p = '.siteorigin-widget-field-button_type',
 					$b = '.siteorigin-widget-field-button_text, .siteorigin-widget-field-button_style, .siteorigin-widget-field-button_icon, .siteorigin-widget-field-button_link',
