@@ -11,7 +11,7 @@ endif;
 <div class="th-service-blocks th-widget-has-repeater th-sb-<?php echo $instance['align'] ?>">
 <?php foreach( $instance['blocks'] as $block ) { ?>
 
-	<div class="th-sb-single<?php echo ( ( $block['icon']['icon']['style'] != 'standard' ) ? '-' . $block['icon']['icon']['style'] : '' ); ?> <?php echo $animate_class; ?>">
+	<div class="th-sb-single<?php echo ( ( $block['icon']['style'] != 'standard' ) ? '-' . $block['icon']['style'] : '' ); ?> <?php echo $animate_class; ?>">
 
 		<?php
 		$icon = themo_display_icon( $block['icon'], true, 'th-sb-icon' . $vert , true );
