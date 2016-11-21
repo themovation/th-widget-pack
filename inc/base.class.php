@@ -126,7 +126,7 @@ abstract class Themovation_Widget_Base extends SiteOrigin_Widget {
 				'type' => 'section',
 				'label' => __('Button Icon' , 'themovation-widgets'),
 				'hide' => true,
-				'fields' => $this->icon_form_fields(),
+				'fields' => $this->icon_form_fields( false ),
 				'state_handler' => array(
 					'button_type_1[button]' => array('show'),
 					'button_type_1[add-to-cart]' => array('hide'),
@@ -242,7 +242,7 @@ abstract class Themovation_Widget_Base extends SiteOrigin_Widget {
 				'type' => 'section',
 				'label' => __('Button Icon' , 'themovation-widgets'),
 				'hide' => true,
-				'fields' => $this->icon_form_fields(),
+				'fields' => $this->icon_form_fields( false ),
 				'state_handler' => array(
 					'button_type_2[button]' => array('show'),
 					'button_type_2[add-to-cart]' => array('hide'),
