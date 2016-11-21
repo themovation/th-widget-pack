@@ -1,1 +1,1 @@
-<?php themo_display_link( $instance, '', '' ); ?>
+<?php themo_display_link( $instance['link'], '', '' ); ?>

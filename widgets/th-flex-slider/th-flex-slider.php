@@ -6,7 +6,9 @@ Author: Themovation
 Author URI: themovation.com
 */
 
-class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
+if( !class_exists( 'Themovation_Widget_Base' ) ) include_once plugin_dir_path(​THEMOVATION_BASE_FILE) . '/inc/base.class.php';
+
+class Themovation_SO_WB_FlexSlider_Widget extends Themovation_Widget_Base {
 
 	function __construct() {
 
@@ -65,17 +67,17 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 						),
 
 						'button_1' => array(
-							'type' => 'widget',
-							'class' => 'Themovation_SO_WB_Button_Widget',
-							'label' => __('Button 1', 'themovation-widgets'),
-							'hide' => false
+							'type' => 'section',
+							'label' => __('Button 1' , 'themovation-widgets'),
+							'hide' => true,
+							'fields' => $this->button_1_form_fields()
 						),
 
 						'button_2' => array(
-							'type' => 'widget',
-							'class' => 'Themovation_SO_WB_Button_Widget',
-							'label' => __('Button 2', 'themovation-widgets'),
-							'hide' => false
+							'type' => 'section',
+							'label' => __('Button 2' , 'themovation-widgets'),
+							'hide' => true,
+							'fields' => $this->button_2_form_fields()
 						),
 
 						'image' => array(
@@ -93,10 +95,10 @@ class Themovation_SO_WB_FlexSlider_Widget extends SiteOrigin_Widget {
 								),
 
 								'link' => array(
-									'type' => 'widget',
-									'class' => 'Themovation_SO_WB_Link_Widget',
-									'label' => __('Link', 'themovation-widgets'),
-									'hide' => false
+									'type' => 'section',
+									'label' => __('Link' , 'themovation-widgets'),
+									'hide' => true,
+									'fields' => $this->link_form_fields()
 								),
 							)
 						),

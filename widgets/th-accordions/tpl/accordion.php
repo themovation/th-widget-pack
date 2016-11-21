@@ -33,12 +33,7 @@ endif;
 						<?php echo do_shortcode( wp_kses_post( $accordion['content'] ) ); ?>
 						<?php if( $accordion['button_1']['button']['button_link']['link']['url'] || $accordion['button_2']['button']['button_link']['link']['url'] ) : ?>
 							<div class="accordion-btn">
-								<?php if( $accordion['button_1']['button']['button_link']['link']['url'] ) : ?>
-									<?php themo_display_button( $accordion['button_1'] ); ?>
-								<?php endif; ?>
-								<?php if( $accordion['button_2']['button']['button_link']['link']['url'] ) : ?>
-									<?php themo_display_button( $accordion['button_2'] ); ?>
-								<?php endif; ?>
+								<?php themo_display_buttons( $accordion['button_1'], $accordion['button_2'] ); ?>
 							</div>
 						<?php endif; ?>
 					</div>

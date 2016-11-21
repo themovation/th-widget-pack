@@ -6,7 +6,9 @@ Author: Themovation
 Author URI: themovation.com
 */
 
-class Themovation_SO_WB_InfoCard_Widget extends SiteOrigin_Widget {
+if( !class_exists( 'Themovation_Widget_Base' ) ) include_once plugin_dir_path(​THEMOVATION_BASE_FILE) . '/inc/base.class.php';
+
+class Themovation_SO_WB_InfoCard_Widget extends Themovation_Widget_Base {
 
 	function __construct() {
 
@@ -26,10 +28,10 @@ class Themovation_SO_WB_InfoCard_Widget extends SiteOrigin_Widget {
 
 			array(
 				'icon' => array(
-					'type' => 'widget',
-					'class' => 'Themovation_SO_WB_Icon_Widget',
-					'label' => __('Icon', 'themovation-widgets'),
-					'hide' => false
+					'type' => 'section',
+					'label' => __('Icon' , 'themovation-widgets'),
+					'hide' => true,
+					'fields' => $this->icon_form_fields()
 				),
 
 				'title' => array(
@@ -53,11 +55,18 @@ class Themovation_SO_WB_InfoCard_Widget extends SiteOrigin_Widget {
 					),
 				),
 
-				'button' => array(
-					'type' => 'widget',
-					'class' => 'Themovation_SO_WB_Button_Widget',
-					'label' => __('Button', 'themovation-widgets'),
-					'hide' => false
+				'button_1' => array(
+					'type' => 'section',
+					'label' => __('Button 1' , 'themovation-widgets'),
+					'hide' => true,
+					'fields' => $this->button_1_form_fields()
+				),
+
+				'button_2' => array(
+					'type' => 'section',
+					'label' => __('Button 2' , 'themovation-widgets'),
+					'hide' => true,
+					'fields' => $this->button_2_form_fields()
 				),
 
 				'align' => array(
