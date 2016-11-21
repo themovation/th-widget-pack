@@ -57,12 +57,7 @@ endif;
 				</div>
 
 				<div class="th-pricing-btn">
-					<?php if( $column['button_1']['button_link']['url'] ) : ?>
-						<?php themo_display_button( $column['button_1'] ); ?>
-					<?php endif; ?>
-					<?php if( $column['button_2']['button_link']['url'] ) : ?>
-						<?php themo_display_button( $column['button_2'] ); ?>
-					<?php endif; ?>
+					<?php themo_display_buttons( $column['button_1'], $column['button_2'] ); ?>
 				</div>
 
 			</div>

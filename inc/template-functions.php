@@ -75,6 +75,16 @@ function themo_display_button( $instance ) {
 	}
 }
 
+// Display 2 buttons
+function themo_display_buttons( $button_1, $button_2 ) {
+	if( $button_1['button_link']['url'] ) :
+		themo_display_button( $button_1 );
+	endif;
+	if( $button_2['button_link']['url'] ) :
+		themo_display_button( $button_2 );
+	endif;
+}
+
 /* Convert hexdec color string to rgb(a) string */
 
 function hex2rgba($color, $opacity = false) {
