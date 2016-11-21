@@ -8,14 +8,14 @@ if( $instance['background']['color'] ) {
 ?>
 
 <div class="th-info-card th-con-<?php echo esc_attr( $instance['align'] ); ?> th-card-<?php echo esc_attr( $instance['card-align'] ); ?>" <?php echo $info_style; ?>>
-	<?php if ( $instance['link']['link']['url'] ) {
+	<?php if ( $instance['link']['url'] ) {
 		themo_display_link( $instance['link'], '', '' );
 	} ?>
 	<h2 class="th-info-card-title"><?php echo esc_html( $instance['title'] ); ?></h2>
 	<?php echo do_shortcode( wp_kses_post( $instance['content'] ) ); ?>
-	<?php if( $instance['button']['button']['button_link']['link']['url'] ) : ?>
+	<?php if( $instance['button_1']['button_link']['link']['url'] || $instance['button_1']['button_link']['link']['url'] ) : ?>
 		<div class="th-card-btn">
-			<?php themo_display_button( $instance['button'] ); ?>
+			<?php themo_display_buttons( $instance['button_1'], $instance['button_2'] ); ?>
 		</div>
 	<?php endif; ?>
 </div>

@@ -8,7 +8,7 @@ if( $instance['price']['background']['color'] ) {
 
 <article class="th-package">
 
-	<?php if ( $instance['link']['link']['url'] ) {
+	<?php if ( $instance['link']['url'] ) {
 		themo_display_link( $instance['link'], 'th-pkg-click', '' );
 	} ?>
 
