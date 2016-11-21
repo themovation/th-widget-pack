@@ -1,23 +1,54 @@
 <?php
-$themo_animation = $instance['panels_info']['style']['themo-animation-styles'];
-?>
-<div class="th-faq th-widget-has-repeater">
-	<dl class="th-faq-list">
 
-		<?php foreach( $instance['faqs'] as $faq ) { ?>
+// WP_Query arguments
+$args = array (
+	'post_type' => array( 'post' ),
+);
 
-			<?php if ( !empty( $themo_animation ) && $themo_animation != 'none' ) : ?>
-				<div class="<?php echo $themo_animation . ' hide-animation widget-repeater-animate'; ?>">
-			<?php endif; ?>
+if ( $instance['categories'] != 'all' ) {
+	if ( is_array( $instance['categories'] ) ) {
+		if ( in_array( 'all', $instance['categories'] ) ) {
+			$instance['categories'] = array_diff( $instance['categories'], array('all') );
+		}
 
-				<dt class="th-faq-dt"><?php echo esc_html( $faq['title'] ); ?></dt>
-				<dd class="th-faq-dd"><?php echo wp_kses_post( $faq['content'] ); ?></dd>
+		$categories = implode( ', ', $instance['categories'] );
+	} else {
+		$categories = array( $instance['categories'] );
+	}
+	$args['cat'] = $categories;
+}
 
-			<?php if ( !empty( $themo_animation ) && $themo_animation != 'none' ) : ?>
-				</div>
-			<?php endif; ?>
+if ( $instance['number'] ) {
+	$args['posts_per_page'] = $instance['number'];
+}
 
-		<?php } ?>
+// The Query
+$query = new WP_Query( $args );
 
-	</dl>
-</div>
+// The Loop
+if ( $query->have_posts() ) { ?>
+
+	<section class="masonry-blog">
+		<div class="container">
+			<div class="mas-blog row">
+
+				<?php while ( $query->have_posts() ) { $query->the_post(); ?>
+
+					<?php $format = get_post_format() ? get_post_format() : 'standard'; ?>
+
+					<div class="mas-blog-post col-lg-4 col-md-4 col-sm-6">
+						<?php get_template_part('templates/content', $format); ?>
+					</div>
+
+				<?php } ?>
+
+			</div>
+		</div>
+	</section>
+	<?php
+
+} else {
+	esc_html_e('Sorry, no results were found.', 'themovation-widgets');
+}
+
+wp_reset_postdata();

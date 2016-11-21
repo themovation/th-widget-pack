@@ -1,6 +1,6 @@
 <?php
 if( $instance['background']['color'] ) $bg_color = 'style="background-color:' . esc_attr( $instance['background']['color'] ) . '"';
-if( $instance['image'] ) $image = wp_get_attachment_image( $instance['image'], 'themo_team', false, array( 'class' => 'th-team-member-image' ) );
+if( $instance['image'] ) $image = wp_get_attachment_image( $instance['image'], 'th_img_sm_portrait', false, array( 'class' => 'th-team-member-image' ) );
 if( $instance['title'] ) $title = '<h4>' . esc_html( $instance['title'] ) . '</h4>';
 ?>
 

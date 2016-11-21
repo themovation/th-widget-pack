@@ -8,7 +8,7 @@ endif;
 
 <div class="th-logos th-widget-has-repeater">
 	<?php foreach( $instance['logos'] as $i => $logo ) {
-		$image = wp_get_attachment_image( $logo['image'], 'themo_brands', false, array( 'class' => 'th-logo-img ' . $animate_class ) );
+		$image = wp_get_attachment_image( $logo['image'], 'th_img_xs', false, array( 'class' => 'th-logo-img ' . $animate_class ) );
 
 		if( $logo['link']['link']['url'] ) {
 			themo_display_link( $logo['link'], '', $image );
