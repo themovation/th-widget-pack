@@ -4,8 +4,8 @@ abstract class Themovation_Widget_Base extends SiteOrigin_Widget {
 
 	function initialize() {}
 
-	function icon_form_fields() {
-		return array(
+	function icon_form_fields( $style = true ) {
+		$icon = array(
 			'icon' => array(
 				'type' => 'icon',
 				'label' => __('Icon', 'themovation-widgets'),
@@ -31,6 +31,13 @@ abstract class Themovation_Widget_Base extends SiteOrigin_Widget {
 				'description' => __('Replaces the icon with your own graphic icon', 'themovation-widgets'),
 			),
 		);
+
+		if ( $style == false ) {
+			unset( $icon['style'] );
+			return $icon;
+		} else {
+			return $icon;
+		}
 	}
 
 	function link_form_fields() {
