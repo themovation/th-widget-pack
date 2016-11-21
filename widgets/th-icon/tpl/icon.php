@@ -1,1 +1,1 @@
-<?php themo_display_icon( $instance, false, '', true ); ?>
+<?php themo_display_icon( $instance['icon'], false, '', true ); ?>
