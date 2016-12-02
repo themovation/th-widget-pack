@@ -7,7 +7,7 @@ if( $instance['background']['color'] ) {
 }
 ?>
 
-<div class="th-info-card th-con-<?php echo esc_attr( $instance['align'] ); ?> th-card-<?php echo esc_attr( $instance['card-align'] ); ?>" <?php echo $info_style; ?>>
+<div class="th-info-card th-con-<?php echo esc_attr( $instance['align'] ); ?> th-card-<?php echo esc_attr( $instance['card-align'] ); ?> th-info-<?php echo esc_attr( $instance['background']['contrast'] ); ?>" <?php echo $info_style; ?>>
 	<?php if ( $instance['link']['url'] ) {
 		themo_display_link( $instance['link'], '', '' );
 	} ?>
