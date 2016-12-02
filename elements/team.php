@@ -240,12 +240,43 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	protected function render() {
+        $settings = $this->get_settings();
+
+        if ( empty( $settings['title'] ) || empty( $settings['content'] ) )
+            return;
+        ?>
+
+        <div class="th-team-member th-contrast-text">
+			<div class="th-team-member-wrap">
+                <?php if ( ! empty( $settings['job'] ) ) : ?>
+                    <h5><?php echo esc_html( $settings['job']) ?></h5>
+                <?php endif;?>
+                <?php if ( ! empty( $settings['content'] ) ) : ?>
+                    <div class="th-team-member-bio">
+                        <?php echo $settings['content']; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+		</div>
+		<?php
 
 	}
 
 	protected function _content_template() {
 		?>
 
+        <div class="th-team-member th-contrast-text">
+            <div class="th-team-member-wrap">
+                <# if ( '' !== settings.job ) { #>
+                    <h5>{{{ settings.job }}}</h5>
+                <# } #>
+                <# if ( '' !== settings.content ) { #>
+                    <div class="th-team-member-bio">
+                        {{{ settings.content }}}
+                    </div>
+                <# } #>
+            </div>
+        </div>
 		<?php
 	}
 }
