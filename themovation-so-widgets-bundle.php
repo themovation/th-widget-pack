@@ -14,6 +14,13 @@
 define('​THEMOVATION_WB_VER', '1.0.0');
 define('​THEMOVATION_BASE_FILE', __FILE__);
 
+function themovation_elements() {
+	require_once plugin_dir_path( __FILE__ ) . 'elements/team.php';
+}
+add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
+
+require_once ( 'inc/elementor-section.php' );
+
 require_once ( 'inc/template-functions.php' );
 
 if ( ! function_exists( 'themovation_so_wb_collection' ) ) :
