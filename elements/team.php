@@ -81,15 +81,6 @@ class Themo_Widget_Team extends Widget_Base {
 		);
 
 		$this->add_control(
-			'new_window',
-			[
-				'label' => __( 'Open in a new window', 'elementor' ),
-				'type' => Controls_Manager::CHECKBOX,
-				'default' => false,
-			]
-		);
-
-		$this->add_control(
 			'lightbox',
 			[
 				'label' => __( 'Lightbox', 'elementor' ),
@@ -108,6 +99,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'label' => __( 'Lightbox width (px)', 'elementor' ),
 				'type' => Controls_Manager::NUMBER,
 				'default' => '',
+				'condition' => [
+					'lightbox!' => 'off',
+				],
 			]
 		);
 
@@ -175,13 +169,6 @@ class Themo_Widget_Team extends Widget_Base {
 						'label_block' => true,
 					],
 					[
-						'name' => 'new_window',
-						'label' => __( 'Open in a new window', 'elementor' ),
-						'type' => Controls_Manager::CHECKBOX,
-						'default' => false,
-						'label_block' => true,
-					],
-					[
 						'name' => 'lightbox',
 						'label' => __( 'Lightbox', 'elementor' ),
 						'type' => Controls_Manager::SELECT,
@@ -200,7 +187,7 @@ class Themo_Widget_Team extends Widget_Base {
 						'label_block' => true,
 					]
 				],
-				'title_field' => '{{{ icon }}}',
+				'title_field' => '<i class="{{ icon }}"></i> {{{ url }}}',
 			]
 		);
 
@@ -219,7 +206,9 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
-				'selectors' => '',
+				'selectors' => [
+					'{{WRAPPER}} .th-team-member-wrap' => 'background-color: {{VALUE}};',
+				],
 			]
 		);
 
@@ -240,43 +229,123 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	protected function render() {
-        $settings = $this->get_settings();
+		$settings = $this->get_settings();
 
-        if ( empty( $settings['title'] ) || empty( $settings['content'] ) )
-            return;
-        ?>
+		$this->add_render_attribute('th-team-member','class', 'th-' . $settings['background_contrast'] . '-text');
 
-        <div class="th-team-member th-contrast-text">
+		if ( ! empty( $settings['url']['url'] ) ) {
+			$this->add_render_attribute( 'link', 'href', $settings['url']['url'] );
+
+			if ( ! empty( $settings['url']['is_external'] ) ) {
+				$this->add_render_attribute( 'link', 'target', '_blank' );
+			}
+
+			if ( $settings['lightbox'] != 'off' ) {
+				$this->add_render_attribute( 'link', 'data-toggle', 'lightbox' );
+			}
+
+			if ( $settings['lightbox'] != 'off' && $settings['lightbox_width'] ) {
+				$this->add_render_attribute( 'link', 'data-width', $settings['lightbox_width'] );
+			}
+		}
+
+		if ( empty( $settings['title'] ) ) {
+			return;
+		} else {
+			$title = '<h4>' . esc_html( $settings['title'] ) . '</h4>';
+		}
+
+		if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_sm_portrait', false, array( 'class' => 'th-team-member-image' ) );
+		?>
+
+		<div class="th-team-member">
 			<div class="th-team-member-wrap">
-                <?php if ( ! empty( $settings['job'] ) ) : ?>
-                    <h5><?php echo esc_html( $settings['job']) ?></h5>
-                <?php endif;?>
-                <?php if ( ! empty( $settings['content'] ) ) : ?>
-                    <div class="th-team-member-bio">
-                        <?php echo $settings['content']; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-		</div>
-		<?php
+				<?php if ( ! empty( $settings['url']['url'] ) ) : ?>
+					<a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
+						<?php echo $image . '' . $title; ?>
+					</a>
+				<?php else : ?>
+					<?php echo $image . '' . $title; ?>
+				<?php endif; ?>
+				<?php if ( ! empty( $settings['job'] ) ) : ?>
+					<h5><?php echo esc_html( $settings['job']) ?></h5>
+				<?php endif;?>
+				<?php if ( ! empty( $settings['content'] ) ) : ?>
+					<div class="th-team-member-bio">
+						<?php echo $settings['content']; ?>
+					</div>
+				<?php endif; ?>
+				<div class="th-team-member-social">
+					<?php foreach( $settings['social'] as $social ) {
+						if ( ! empty( $social['url']['url'] ) ) {
+							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
+							$lightbox = ( $social['lightbox'] != 'off' ) ? 'data-toggle="lightbox"' : '';
+							$lightbox_width = ( $social['lightbox_width'] && $social['lightbox'] != 'off' ) ? 'data-width="' . esc_html( $social['lightbox_width'] ) . '"' : '';
 
+							echo '<a href="' . $social['url']['url'] . '"' . $target . ' ' . $lightbox . ' ' . $lightbox_width . '>';
+						}
+							if ( $social['graphic_image']['id'] ) :
+								wp_get_attachment_image( $social['graphic_image']['id'], 'full', false, array( 'class' => 'th-icon th-icon-graphic' ) );
+							elseif ( $social['icon'] ) : ?>
+								<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
+							<?php endif;
+						if ( ! empty( $social['url']['url'] ) ) {
+							echo '</a>';
+						}
+					} ?>
+				</div>
+			</div>
+		</div>
+
+		<?php
 	}
 
 	protected function _content_template() {
 		?>
-
-        <div class="th-team-member th-contrast-text">
-            <div class="th-team-member-wrap">
-                <# if ( '' !== settings.job ) { #>
-                    <h5>{{{ settings.job }}}</h5>
-                <# } #>
-                <# if ( '' !== settings.content ) { #>
-                    <div class="th-team-member-bio">
-                        {{{ settings.content }}}
-                    </div>
-                <# } #>
-            </div>
-        </div>
+		<div class="th-team-member 'th-' + settings'background_contrast' + '-text'">
+			<div class="th-team-member-wrap">
+				<# if ( settings.url && settings.url.url ) { #>
+					<a href="{{ settings.url.url }}">
+				<# } #>
+					<# if ( settings.image && '' !== settings.image.url ) { #>
+						<img src="{{{ settings.image.url }}}" class="th-team-member-image" />
+					<# } #>
+					<# if ( '' !== settings.title ) { #>
+						<h4>{{{ settings.title }}}</h4>
+					<# } #>
+				<# if ( settings.url && settings.url.url ) { #>
+					</a>
+				<# } #>
+				<# if ( '' !== settings.job ) { #>
+					<h5>{{{ settings.job }}}</h5>
+				<# } #>
+				<# if ( '' !== settings.content ) { #>
+					<div class="th-team-member-bio">
+						{{{ settings.content }}}
+					</div>
+				<# } #>
+				<div class="th-team-member-social">
+					<#
+					if ( settings.social ) {
+						_.each( settings.social, function( item ) { #>
+							<# if ( item.url && item.url.url ) { #>
+								<a href="{{ item.url.url }}">
+							<# } #>
+								<# if ( item.image && item.image.url ) { #>
+									<img src="{{{ item.image.url }}}" class="th-icon th-icon-graphic" />
+								<# } #>
+								<# if ( item.icon ) { #>
+									<i class="{{ item.icon }}"></i>
+								<# } #>
+							<# if ( item.link && item.link.url ) { #>
+								</a>
+							<# } #>
+						<#
+						} );
+					} #>
+				</div>
+			</div>
+		</div>
 		<?php
 	}
 }
