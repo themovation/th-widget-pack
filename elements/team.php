@@ -62,7 +62,7 @@ class Themo_Widget_Team extends Widget_Base {
 			'content',
 			[
 				'label' => __( 'Content', 'elementor' ),
-				'type' => Controls_Manager::WYSIWYG,
+				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 			]
 		);
@@ -178,7 +178,7 @@ class Themo_Widget_Team extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'section_style',
+			'section_style_background',
 			[
 				'label' => __( 'Background', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -192,6 +192,176 @@ class Themo_Widget_Team extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-team-member-wrap' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_content',
+			[
+				'label' => __( 'Content', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'content_color',
+			[
+				'label' => __( 'Content Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'content_typography',
+				'label' => __( 'Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .th-team-member-bio',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_name',
+			[
+				'label' => __( 'Name', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'name_color',
+			[
+				'label' => __( 'Name Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} h4' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'name_typography',
+				'label' => __( 'Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} h4',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_job',
+			[
+				'label' => __( 'Job Title', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'job_color',
+			[
+				'label' => __( 'Job Title Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} h5' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'job_typography',
+				'label' => __( 'Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} h5',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_link',
+			[
+				'label' => __( 'Link', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'link_color',
+			[
+				'label' => __( 'Link Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'link_typography',
+				'label' => __( 'Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} a',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_icon',
+			[
+				'label' => __( 'Icon', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'icon_color',
+			[
+				'label' => __( 'Icon Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'scheme' => [
+					'type' => Scheme_Color::get_type(),
+					'value' => Scheme_Color::COLOR_3,
+				],
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} i' => 'color: {{VALUE}};',
 				],
 			]
 		);
