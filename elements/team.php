@@ -90,19 +90,6 @@ class Themo_Widget_Team extends Widget_Base {
 		);
 
 		$this->add_control(
-			'lightbox',
-			[
-				'label' => __( 'Lightbox', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'off',
-				'options' => [
-					'off' => __( 'Off', 'elementor' ),
-					'on' => __( 'On', 'elementor' ),
-				],
-			]
-		);
-
-		$this->add_control(
 			'lightbox_width',
 			[
 				'label' => __( 'Lightbox width (px)', 'elementor' ),
@@ -152,24 +139,6 @@ class Themo_Widget_Team extends Widget_Base {
 						'separator' => 'before',
 						'label_block' => true,
 					],
-					[
-						'name' => 'lightbox',
-						'label' => __( 'Lightbox', 'elementor' ),
-						'type' => Controls_Manager::SELECT,
-						'default' => 'off',
-						'options' => [
-							'off' => __( 'Off', 'elementor' ),
-							'on' => __( 'On', 'elementor' ),
-						],
-						'label_block' => true,
-					],
-					[
-						'name' => 'lightbox_width',
-						'label' => __( 'Lightbox width (px)', 'elementor' ),
-						'type' => Controls_Manager::NUMBER,
-						'default' => '',
-						'label_block' => true,
-					]
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ url.url }}}',
 			]
@@ -307,42 +276,6 @@ class Themo_Widget_Team extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'section_style_link',
-			[
-				'label' => __( 'Link', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'link_color',
-			[
-				'label' => __( 'Link Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'link_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} a',
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
 			'section_style_icon',
 			[
 				'label' => __( 'Icon', 'elementor' ),
@@ -379,11 +312,7 @@ class Themo_Widget_Team extends Widget_Base {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
 			}
 
-			if ( $settings['lightbox'] != 'off' ) {
-				$this->add_render_attribute( 'link', 'data-toggle', 'lightbox' );
-			}
-
-			if ( $settings['lightbox'] != 'off' && $settings['lightbox_width'] ) {
+			if ( $settings['lightbox_width'] ) {
 				$this->add_render_attribute( 'link', 'data-width', $settings['lightbox_width'] );
 			}
 		}
@@ -418,10 +347,8 @@ class Themo_Widget_Team extends Widget_Base {
 					<?php foreach( $settings['social'] as $social ) {
 						if ( ! empty( $social['url']['url'] ) ) {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
-							$lightbox = ( $social['lightbox'] != 'off' ) ? 'data-toggle="lightbox"' : '';
-							$lightbox_width = ( $social['lightbox_width'] && $social['lightbox'] != 'off' ) ? 'data-width="' . esc_html( $social['lightbox_width'] ) . '"' : '';
 
-							echo '<a href="' . $social['url']['url'] . '"' . $target . ' ' . $lightbox . ' ' . $lightbox_width . '>';
+							echo '<a href="' . $social['url']['url'] . '"' . $target . '>';
 						}
 						if ( $social['icon'] ) : ?>
 							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
