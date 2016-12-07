@@ -89,18 +89,6 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'lightbox_width',
-			[
-				'label' => __( 'Lightbox width (px)', 'elementor' ),
-				'type' => Controls_Manager::NUMBER,
-				'default' => '',
-				'condition' => [
-					'lightbox!' => 'off',
-				],
-			]
-		);
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -310,10 +298,6 @@ class Themo_Widget_Team extends Widget_Base {
 
 			if ( ! empty( $settings['url']['is_external'] ) ) {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
-			}
-
-			if ( $settings['lightbox_width'] ) {
-				$this->add_render_attribute( 'link', 'data-width', $settings['lightbox_width'] );
 			}
 		}
 
