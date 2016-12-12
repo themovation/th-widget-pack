@@ -17,6 +17,7 @@ define('​THEMOVATION_BASE_FILE', __FILE__);
 function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/team.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/package.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/appointments.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
