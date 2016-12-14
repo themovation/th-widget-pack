@@ -88,7 +88,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .post-title a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -99,7 +99,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .post-title a',
 			]
 		);
 
@@ -124,7 +124,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .post-meta' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -135,7 +135,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'meta_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .post-meta',
 			]
 		);
 
@@ -160,7 +160,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .entry-content p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -171,7 +171,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'excerpt_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .entry-content p',
 			]
 		);
 
@@ -196,7 +196,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .entry-content p a' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -207,7 +207,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .entry-content p a',
 			]
 		);
 
