@@ -19,6 +19,7 @@ function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/package.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/appointments.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/blog.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
