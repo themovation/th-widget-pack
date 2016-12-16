@@ -50,7 +50,8 @@ class Themo_Widget_Appointments extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-cal-tooltip h3' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-cal-tooltip' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-cal-tooltip:after' => 'border-top-color: {{VALUE}};',
 				],
 			]
 		);
