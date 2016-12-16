@@ -168,7 +168,10 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 		}
 		?>
 
-		<div id="th-portfolio-content" class="th-portfolio">
+        <?php
+        $th_uid = uniqid('th-portfolio-content-');
+        ?>
+		<div id="<?php echo $th_uid; ?>" class="th-portfolio">
 
 			<?php if ( $settings['filter'] ) : ?>
 
@@ -179,7 +182,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 					$taxonomy = 'themo_project_type';
 					$tax_terms = get_terms( $taxonomy );
 					foreach ( $tax_terms as $tax_term ) {
-						echo '<a href="#" data-filter="#th-portfolio-content .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
+						echo '<a href="#" data-filter="#'.$th_uid.' .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
 					}
 					?>
 				</div>

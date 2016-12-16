@@ -131,7 +131,7 @@ function themo_holes_add_meta_box( $post ) {
 		'default'
 	);
 }
-add_action( 'add_meta_boxes_themo_portfolio', 'themo_holes_add_meta_box' );
+//add_action( 'add_meta_boxes_themo_portfolio', 'themo_holes_add_meta_box' );
 
 /**
  * Build holes meta box
