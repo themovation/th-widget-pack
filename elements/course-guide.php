@@ -231,6 +231,65 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 				if ( $query->have_posts() ) {
 					while ( $query->have_posts() ) {
 						$query->the_post();
+                        // get post format
+						$format = get_post_format();
+                        if ( false === $format ) {
+                            $format = '';
+                        }
+
+                        // default settings
+                        $link_url = get_the_permalink();
+                        $link_title = get_the_title();
+                        $link_target_markup = false;
+                        $img_src = false;
+                        $alt_text = '';
+
+                        // Link post type options
+                        if(isset($format) && $format == 'link'){
+
+                            $link_url = get_post_meta( get_the_ID(), '_format_link_url', true);
+                            $link_title = get_post_meta( get_the_ID(), '_format_link_title', true);
+                            $link_target = get_post_meta( get_the_ID(), '_format_link_target');
+
+                            if(!$link_url > ""){
+                                $link_url = get_the_permalink();
+                            }
+
+                            // Link Target
+                            if(isset($link_target[0][0]) && $link_target[0][0] == "_blank"){
+                                $link_target_markup = "target='_blank'";
+                            }
+
+                            // Custom Title
+                            if(!$link_title > "") {
+                                $link_title=get_the_title();
+                            }
+                        }
+
+                        //Image post type options
+                        if(isset($format) && $format == 'image') {
+
+                            // Get Project Format Options
+                            $project_thumb_alt_img = get_post_meta( get_the_ID(), '_holes_image', false);
+
+                            if (isset($project_thumb_alt_img[0]) && $project_thumb_alt_img[0] > "") {
+                                $alt = false;
+                                $img_src = themo_return_metabox_image($project_thumb_alt_img[0], null, "th_img_md_square", true, $alt);
+                                $alt_text = $alt;
+                                // Default lightbox url
+                                $link_url = themo_return_metabox_image($project_thumb_alt_img[0], null, "th_img_xl", true, $alt);
+                            }
+
+                            // lightbox mark up
+                            $link_url_tmp = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'th_img_xl');
+                            if(isset($link_url_tmp[0])){
+                                $link_url = $link_url_tmp[0];
+                            }
+                            //echo $link_url;
+                            $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
+                            $link_title = the_title_attribute('echo=0') ;
+                        }
+
 						$terms = get_the_terms( get_the_ID(), 'themo_project_type' );
 						if ( $terms && ! is_wp_error( $terms ) ) :
 							$filtering_links = array();
@@ -242,15 +301,24 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 						?>
 						<div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 							<div class="th-port-wrap">
-								<?php the_post_thumbnail( get_the_ID(), 'full' ); ?>
+								<?php
+                                if(isset($img_src) &&  $img_src > ""){
+                                    echo '<img class="img-responsive port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
+                                }else{
+                                    if ( has_post_thumbnail(get_the_ID()) ) {
+                                        $featured_img_attr = array('class'	=> "img-responsive port-img");
+                                        echo get_the_post_thumbnail(get_the_ID(),"th_img_md_square",$featured_img_attr);
+                                    }
+                                }
+                                ?>
 								<div class="th-port-overlay"></div>
 								<div class="th-port-inner">
 									<div class="th-port-center">
-										<i class="th-port-icon glyphicons glyphicons-lightbulb"></i>
+										<!--i class="th-port-icon glyphicons glyphicons-lightbulb"></i-->
 										<h3 class="th-port-title"><?php the_title(); ?></h3>
 										<p class="th-port-sub">Malesuada tortor nunc</p>
 									</div>
-									<a class="th-port-link" href="#"></a>
+                                    <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . ' title="'.esc_attr($link_title).'"></a>'; ?>
 								</div>
 							</div>
 						</div>
