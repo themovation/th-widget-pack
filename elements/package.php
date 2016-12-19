@@ -34,7 +34,6 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
-				'default' => '',
 			]
 		);
 
