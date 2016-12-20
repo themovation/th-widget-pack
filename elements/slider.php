@@ -354,7 +354,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'conditions' => [
 					'terms' => [
 						[
-							'name' => 'custom_style',
+							'name' => 'slide_custom_style',
 							'operator' => '==',
 							'value' => 'yes',
 						],
@@ -394,7 +394,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'conditions' => [
 					'terms' => [
 						[
-							'name' => 'custom_style',
+							'name' => 'slide_custom_style',
 							'operator' => '==',
 							'value' => 'yes',
 						],
@@ -429,7 +429,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'conditions' => [
 					'terms' => [
 						[
-							'name' => 'custom_style',
+							'name' => 'slide_custom_style',
 							'operator' => '==',
 							'value' => 'yes',
 						],
@@ -451,7 +451,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'conditions' => [
 					'terms' => [
 						[
-							'name' => 'custom_style',
+							'name' => 'slide_custom_style',
 							'operator' => '==',
 							'value' => 'yes',
 						],
@@ -1054,16 +1054,22 @@ class Themo_Widget_Slider extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
+
+		if ( empty( $settings['slides'] ) ) {
+			return;
+		}
+		$init_main_loop = 0;
 		?>
 
+		<script>
+			jQuery(window).load(function() {
+				themo_start_flex_slider('#main-flex-slider','fade', 'swing', true, true, 4000, 550, false, true, true, true, true);
+			});
+		</script>
 		<?php
 	}
 
-	protected function _content_template() {
-		?>
-
-		<?php
-	}
+	protected function _content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Slider() );
