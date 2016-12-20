@@ -467,31 +467,11 @@ class Themo_Widget_Slider extends Widget_Base {
 		$this->add_control(
 			'slides',
 			[
-				'label' => __( 'Slides', 'elementor' ),
+				'label' => __( 'Slides', 'elementor-pro' ),
 				'type' => Controls_Manager::REPEATER,
 				'show_label' => true,
-				'default' => [
-					[
-						'heading' => __( 'Slide 1 Heading', 'elementor' ),
-						'description' => __( 'I am slide content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
-						'button_text' => __( 'Click Here', 'elementor' ),
-						'background_color' => '#833ca3',
-					],
-					[
-						'heading' => __( 'Slide 2 Heading', 'elementor' ),
-						'description' => __( 'I am slide content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
-						'button_text' => __( 'Click Here', 'elementor' ),
-						'background_color' => '#4054b2',
-					],
-					[
-						'heading' => __( 'Slide 3 Heading', 'elementor' ),
-						'description' => __( 'I am slide content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
-						'button_text' => __( 'Click Here', 'elementor' ),
-						'background_color' => '#1abc9c',
-					],
-				],
 				'fields' => array_values( $repeater->get_controls() ),
-				'title_field' => '{{{ title }}}',
+				'title_field' => '{{{ slide_title }}}',
 			]
 		);
 
