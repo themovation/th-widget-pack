@@ -1131,7 +1131,20 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		<script>
 			jQuery(window).load(function() {
-				themo_start_flex_slider('#main-flex-slider','fade', 'swing', true, true, 4000, 550, false, true, true, true, true);
+				themo_start_flex_slider(
+					'#main-flex-slider',
+					'<?php echo $settings['animation']; ?>',
+					'<?php echo $settings['easing']; ?>',
+					<?php echo $settings['animation_loop'] ? 'true' : 'false'; ?>,
+					<?php echo $settings['smooth_height'] ? 'true' : 'false'; ?>,
+					<?php echo ! $settings['slideshow_speed']['size'] ? '0' : $settings['slideshow_speed']['size']; ?>,
+					<?php echo ! $settings['animation_speed']['size'] ? '0' : $settings['animation_speed']['size']; ?>,
+					<?php echo $settings['randomize'] ? 'true' : 'false'; ?>,
+					<?php echo $settings['pause_on_hover'] ? 'true' : 'false'; ?>,
+					<?php echo $settings['touch'] ? 'true' : 'false'; ?>,
+					<?php echo $settings['direction'] ? 'true' : 'false'; ?>,
+					<?php echo $settings['paging'] ? 'true' : 'false'; ?>
+				);
 			});
 		</script>
 		<?php
