@@ -1104,6 +1104,19 @@ class Themo_Widget_Slider extends Widget_Base {
 										</div>
 									<?php endif; ?>
 
+									<?php if ( $slide['slide_image']['id'] ) : ?>
+										<div class="page-title-image ">
+											<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+												<?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
+												<?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
+											<?php endif; ?>
+											<?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
+											<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+												<?php echo '</a>'; ?>
+											<?php endif; ?>
+											</div>
+									<?php endif; ?>
+
 								</div>
 							</div>
 						</div>
