@@ -221,7 +221,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Content', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __( 'I am slide content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
+				'default' => __( 'Slide Content', 'elementor' ),
 				'show_label' => false,
 			]
 		);
@@ -615,7 +615,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'slides_randomize',
+			'randomize',
 			[
 				'label' => __( 'Randomize', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
@@ -627,7 +627,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'slides_pause_on_hover',
+			'pause_on_hover',
 			[
 				'label' => __( 'Pause On Hover', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
@@ -639,7 +639,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'slides_touch',
+			'touch',
 			[
 				'label' => __( 'Touch', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
@@ -651,7 +651,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'slides_direction',
+			'direction',
 			[
 				'label' => __( 'Direction Nav', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
@@ -663,7 +663,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'slides_paging',
+			'paging',
 			[
 				'label' => __( 'Paging Control', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
@@ -810,7 +810,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'heading_spacing',
+			'title_spacing',
 			[
 				'label' => __( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
@@ -827,7 +827,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'heading_color',
+			'title_color',
 			[
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
@@ -841,7 +841,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'heading_typography',
+				'name' => 'title_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .elementor-slide-heading',
@@ -851,15 +851,15 @@ class Themo_Widget_Slider extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'section_style_description',
+			'section_style_content',
 			[
-				'label' => __( 'Description', 'elementor' ),
+				'label' => __( 'Content', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'description_spacing',
+			'content_spacing',
 			[
 				'label' => __( 'Spacing', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
@@ -876,7 +876,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$this->add_control(
-			'description_color',
+			'content_color',
 			[
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
@@ -890,7 +890,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'description_typography',
+				'name' => 'content_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .elementor-slide-description',
@@ -1060,6 +1060,57 @@ class Themo_Widget_Slider extends Widget_Base {
 		}
 		$init_main_loop = 0;
 		?>
+
+		<div id="main-flex-slider" class="flexslider" >
+			<ul class="slides">
+				<?php foreach( $settings['slides'] as $slide ) { ?>
+					<li>
+						<div class="slider-bg">
+							<div class="container">
+								<div class="row">
+
+									<?php if ( ! empty( $slide['slide_title'] ) ) : ?>
+										<h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
+									<?php endif;?>
+
+									<?php if ( ! empty( $slide['slide_text'] ) ) : ?>
+										<div class="slider-subtitle">
+											<p><?php echo esc_html( $slide['slide_text']) ?></p>
+										</div>
+									<?php endif;?>
+
+									<?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_1'] ) ) : ?>
+										<div class="page-title-button">
+											<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+												<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
+												<?php echo '<a href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+											<?php endif; ?>
+											<?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+												<?php echo esc_html( $slide['slide_button_text_1']) ?>
+											<?php endif;?>
+											<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+												<?php echo '</a>'; ?>
+											<?php endif; ?>
+											<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+												<?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
+												<?php echo '<a href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+											<?php endif; ?>
+											<?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+												<?php echo esc_html( $slide['slide_button_text_2']) ?>
+											<?php endif;?>
+											<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+												<?php echo '</a>'; ?>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+
+								</div>
+							</div>
+						</div>
+					</li>
+				<?php } ?>
+			</ul>
+		</div>
 
 		<script>
 			jQuery(window).load(function() {
