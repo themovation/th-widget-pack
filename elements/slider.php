@@ -1117,6 +1117,10 @@ class Themo_Widget_Slider extends Widget_Base {
 											</div>
 									<?php endif; ?>
 
+									<?php if ( $slide['slide_shortcode'] ) : ?>
+										<?php echo do_shortcode( $slide['slide_shortcode'] ); ?>
+									<?php endif; ?>
+
 								</div>
 							</div>
 						</div>
