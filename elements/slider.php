@@ -52,7 +52,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#bbbbbb',
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -63,7 +63,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Background Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-image: url({{URL}})',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}})',
 				],
 			]
 		);
@@ -73,16 +73,15 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Repeat', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
+				'default' => 'repeat',
 				'options' => [
-					'default' => __( 'Default', 'elementor' ),
 					'no-repeat' => __( 'No Repeat', 'elementor' ),
 					'repeat' => __( 'Repeat All', 'elementor' ),
 					'repeat-x' => __( 'Repeat Horizontally', 'elementor' ),
 					'repeat-y' => __( 'Repeat Vertically ', 'elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -101,14 +100,13 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Attachment', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
+				'default' => 'scroll',
 				'options' => [
-					'default' => __( 'Default', 'elementor' ),
 					'fixed' => __( 'Fixed', 'elementor' ),
 					'scroll' => __( 'Scroll', 'elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -127,21 +125,20 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Position', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
+				'default' => 'left top',
 				'options' => [
-					'default' => __( 'Default', 'elementor' ),
-					'left-top' =>  __( 'Left Top', 'elementor' ),
-					'left-center' =>  __( 'Left Center', 'elementor' ),
-					'left-bottom' =>  __( 'Left Bottom', 'elementor' ),
-					'center-top' =>  __( 'Center Top', 'elementor' ),
-					'center-center' =>  __( 'Center Center', 'elementor' ),
-					'center-bottom' =>  __( 'Center Bottom', 'elementor' ),
-					'right-top' =>  __( 'Right Top', 'elementor' ),
-					'right-center' =>  __( 'Right Center', 'elementor' ),
-					'right-bottom' =>  __( 'Right Bottom', 'elementor' ),
+					'left top' =>  __( 'Left Top', 'elementor' ),
+					'left center' =>  __( 'Left Center', 'elementor' ),
+					'left bottom' =>  __( 'Left Bottom', 'elementor' ),
+					'center top' =>  __( 'Center Top', 'elementor' ),
+					'center center' =>  __( 'Center Center', 'elementor' ),
+					'center bottom' =>  __( 'Center Bottom', 'elementor' ),
+					'right top' =>  __( 'Right Top', 'elementor' ),
+					'right center' =>  __( 'Right Center', 'elementor' ),
+					'right bottom' =>  __( 'Right Bottom', 'elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -166,7 +163,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'auto' => __( 'Auto', 'elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -370,7 +367,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner .elementor-slide-content' => '{{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .elementor-slide-content' => '{{VALUE}}',
 				],
 				'selectors_dictionary' => [
 					'left' => 'margin-right: auto',
@@ -545,6 +542,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Down Arrow URL anchor', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( '#prices', 'elementor' ),
+				'condition' => [
+					'slides_down_arrow' => 'yes',
+				],
 			]
 		);
 
@@ -1241,7 +1241,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		<div id="main-flex-slider" class="flexslider" >
 			<ul class="slides">
 				<?php foreach( $settings['slides'] as $slide ) { ?>
-					<li>
+					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
 							<div class="container">
 								<div class="row">
