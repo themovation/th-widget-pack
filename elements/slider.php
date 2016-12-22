@@ -519,7 +519,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-slide-inner' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}}' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 			]
@@ -727,11 +727,11 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ '%', 'px' ],
 				'default' => [
-					'size' => '66',
+					'size' => '100',
 					'unit' => '%',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-content' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -743,7 +743,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .slick-slide-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -769,7 +769,7 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'eicon-h-align-right',
 					],
 				],
-				'prefix_class' => 'elementor--h-position-',
+				'prefix_class' => 'th-slide-h-position-',
 			]
 		);
 
@@ -794,7 +794,7 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'eicon-v-align-bottom',
 					],
 				],
-				'prefix_class' => 'elementor--v-position-',
+				'prefix_class' => 'th-slide-v-position-',
 			]
 		);
 
@@ -820,7 +820,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'default' => 'center',
 				'selectors' => [
-					'{{WRAPPER}} .slick-slide-inner' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
@@ -847,7 +847,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-heading' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -858,7 +858,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-heading' => 'color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'color: {{VALUE}}',
 
 				],
 			]
@@ -870,7 +870,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .elementor-slide-heading',
+				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title',
 			]
 		);
 
@@ -896,7 +896,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-description' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -907,8 +907,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-description' => 'color: {{VALUE}}',
-
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -919,7 +918,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'name' => 'content_typography',
 				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
-				'selector' => '{{WRAPPER}} .elementor-slide-description',
+				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p',
 			]
 		);
 
@@ -948,7 +947,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -959,7 +958,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'button_typography_1',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} .elementor-slide-button',
+				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1',
 			]
 		);
 
@@ -975,7 +974,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -992,7 +991,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -1008,7 +1007,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1019,7 +1018,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1030,7 +1029,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1045,7 +1044,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1056,7 +1055,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1067,7 +1066,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1099,7 +1098,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -1110,7 +1109,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'button_typography_2',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} .elementor-slide-button',
+				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2',
 			]
 		);
 
@@ -1126,7 +1125,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -1143,7 +1142,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -1159,7 +1158,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1170,7 +1169,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1181,7 +1180,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1196,7 +1195,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1207,7 +1206,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1218,7 +1217,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-slide-button:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1241,6 +1240,14 @@ class Themo_Widget_Slider extends Widget_Base {
 		<div id="main-flex-slider" class="flexslider" >
 			<ul class="slides">
 				<?php foreach( $settings['slides'] as $slide ) { ?>
+
+					<?php if ( ! empty( $settings['button_size_1'] ) ) {
+						$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['button_size_1'] );
+					} ?>
+					<?php if ( ! empty( $settings['button_size_2'] ) ) {
+						$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
+					} ?>
+
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
 							<div class="container">
@@ -1260,7 +1267,7 @@ class Themo_Widget_Slider extends Widget_Base {
 										<div class="page-title-button">
 											<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
 												<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-												<?php echo '<a href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+												<?php echo '<a class="th-button th-button-1" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
 											<?php endif; ?>
 											<?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
 												<?php echo esc_html( $slide['slide_button_text_1']) ?>
@@ -1270,7 +1277,7 @@ class Themo_Widget_Slider extends Widget_Base {
 											<?php endif; ?>
 											<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
 												<?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-												<?php echo '<a href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+												<?php echo '<a class="th-button th-button-2" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
 											<?php endif; ?>
 											<?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
 												<?php echo esc_html( $slide['slide_button_text_2']) ?>
@@ -1304,6 +1311,12 @@ class Themo_Widget_Slider extends Widget_Base {
 					</li>
 				<?php } ?>
 			</ul>
+
+
+			<?php //if ( $settings['slides_down_arrow'] == 'yes' && $settings['slides_down_arrow_link']['url'] ) : ?>
+				<?php //$down_target = $settings['slides_down_arrow_link']['is_external'] ? ' target="_blank"' : 'target="_self"'; ?>
+				<?php //echo '<a class="slider-scroll-down th-icon th-i-down" href="' . $settings['slides_down_arrow_link']['url'] . '"' . $down_target . '>'; ?>
+			<?php //endif; ?>
 		</div>
 
 		<script>
