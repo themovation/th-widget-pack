@@ -1250,68 +1250,72 @@ class Themo_Widget_Slider extends Widget_Base {
 
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
-							<div class="container">
-								<div class="row">
+                            <div class=="th-slider-overlay">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="slick-slide-inner">
+                                            <div class="elementor-slide-content">
+                                                <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
+                                                    <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
+                                                <?php endif;?>
 
-									<?php if ( ! empty( $slide['slide_title'] ) ) : ?>
-										<h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
-									<?php endif;?>
+                                                <?php if ( ! empty( $slide['slide_text'] ) ) : ?>
+                                                    <div class="slider-subtitle">
+                                                        <p><?php echo esc_html( $slide['slide_text']) ?></p>
+                                                    </div>
+                                                <?php endif;?>
 
-									<?php if ( ! empty( $slide['slide_text'] ) ) : ?>
-										<div class="slider-subtitle">
-											<p><?php echo esc_html( $slide['slide_text']) ?></p>
-										</div>
-									<?php endif;?>
+                                                <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                    <div class="page-title-button">
+                                                        <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+                                                            <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                            <?php echo '<a class="th-button th-button-1" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+                                                        <?php endif; ?>
+                                                        <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                            <?php echo esc_html( $slide['slide_button_text_1']) ?>
+                                                        <?php endif;?>
+                                                        <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+                                                            <?php echo '</a>'; ?>
+                                                        <?php endif; ?>
+                                                        <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+                                                            <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                            <?php echo '<a class="th-button th-button-2" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+                                                        <?php endif; ?>
+                                                        <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                                            <?php echo esc_html( $slide['slide_button_text_2']) ?>
+                                                        <?php endif;?>
+                                                        <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+                                                            <?php echo '</a>'; ?>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
 
-									<?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_1'] ) ) : ?>
-										<div class="page-title-button">
-											<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-												<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-												<?php echo '<a class="th-button th-button-1" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
-											<?php endif; ?>
-											<?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
-												<?php echo esc_html( $slide['slide_button_text_1']) ?>
-											<?php endif;?>
-											<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-												<?php echo '</a>'; ?>
-											<?php endif; ?>
-											<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-												<?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-												<?php echo '<a class="th-button th-button-2" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
-											<?php endif; ?>
-											<?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
-												<?php echo esc_html( $slide['slide_button_text_2']) ?>
-											<?php endif;?>
-											<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-												<?php echo '</a>'; ?>
-											<?php endif; ?>
-										</div>
-									<?php endif; ?>
+                                                <?php if ( $slide['slide_image']['id'] ) : ?>
+                                                    <div class="page-title-image ">
+                                                        <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+                                                            <?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                            <?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
+                                                        <?php endif; ?>
+                                                        <?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
+                                                        <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+                                                            <?php echo '</a>'; ?>
+                                                        <?php endif; ?>
+                                                        </div>
+                                                <?php endif; ?>
 
-									<?php if ( $slide['slide_image']['id'] ) : ?>
-										<div class="page-title-image ">
-											<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-												<?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
-												<?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
-											<?php endif; ?>
-											<?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
-											<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-												<?php echo '</a>'; ?>
-											<?php endif; ?>
-											</div>
-									<?php endif; ?>
-
-									<?php if ( $slide['slide_shortcode'] ) : ?>
-										<?php echo do_shortcode( $slide['slide_shortcode'] ); ?>
-									<?php endif; ?>
-
-								</div>
-							</div>
+                                                <?php if ( $slide['slide_shortcode'] ) : ?>
+                                                    <?php echo do_shortcode( $slide['slide_shortcode'] ); ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 						</div>
 					</li>
 				<?php } ?>
 			</ul>
-
+            <a href="#about" target="_self" class="slider-scroll-down th-icon th-i-down"></a>
 
 			<?php //if ( $settings['slides_down_arrow'] == 'yes' && $settings['slides_down_arrow_link']['url'] ) : ?>
 				<?php //$down_target = $settings['slides_down_arrow_link']['is_external'] ? ' target="_blank"' : 'target="_self"'; ?>
