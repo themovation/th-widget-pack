@@ -316,7 +316,28 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 									<div class="th-port-center">
 										<!--i class="th-port-icon glyphicons glyphicons-lightbulb"></i-->
 										<h3 class="th-port-title"><?php the_title(); ?></h3>
-										<p class="th-port-sub">Malesuada tortor nunc</p>
+
+                                        <?php
+                                        $automatic_post_excerpts = 'on';
+                                        if ( function_exists( 'ot_get_option' ) ) {
+                                            $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+                                        }
+                                        if($automatic_post_excerpts === 'off'){
+                                            $content = apply_filters( 'the_content', get_the_content() );
+                                            $content = str_replace( ']]>', ']]&gt;', $content );
+                                            if($content != ""){
+                                                echo '<p class="th-port-sub">'.$content.'</p>';
+                                            }
+                                        }else{
+                                            $excerpt = apply_filters( 'the_excerpt', get_the_excerpt() );
+                                            $excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+                                            $excerpt = str_replace('<p', '<p class="th-port-sub"', $excerpt);
+                                            if($excerpt != ""){
+                                                echo $excerpt;
+                                            }
+                                        }
+                                        ?>
+                                        ?>
 									</div>
                                     <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . ' title="'.esc_attr($link_title).'"></a>'; ?>
 								</div>
