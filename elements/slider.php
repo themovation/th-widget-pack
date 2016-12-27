@@ -206,7 +206,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#bbbbbb',
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slider-overlay' => 'background-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1234,6 +1234,9 @@ class Themo_Widget_Slider extends Widget_Base {
 		if ( empty( $settings['slides'] ) ) {
 			return;
 		}
+
+		$this->add_render_attribute( 'slider-bg', 'class', 'slide-cal-center' );
+
 		$init_main_loop = 0;
 		?>
 
@@ -1250,11 +1253,11 @@ class Themo_Widget_Slider extends Widget_Base {
 
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
-                            <div class=="th-slider-overlay">
+                            <div class="th-slider-overlay">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="slick-slide-inner">
-                                            <div class="elementor-slide-content">
+                                        <div class="th-slide-inner">
+                                            <div class="th-slide-content">
                                                 <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
                                                     <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
                                                 <?php endif;?>
@@ -1315,12 +1318,11 @@ class Themo_Widget_Slider extends Widget_Base {
 					</li>
 				<?php } ?>
 			</ul>
-            <a href="#about" target="_self" class="slider-scroll-down th-icon th-i-down"></a>
 
-			<?php //if ( $settings['slides_down_arrow'] == 'yes' && $settings['slides_down_arrow_link']['url'] ) : ?>
-				<?php //$down_target = $settings['slides_down_arrow_link']['is_external'] ? ' target="_blank"' : 'target="_self"'; ?>
-				<?php //echo '<a class="slider-scroll-down th-icon th-i-down" href="' . $settings['slides_down_arrow_link']['url'] . '"' . $down_target . '>'; ?>
-			<?php //endif; ?>
+			<?php if ( $settings['slides_down_arrow'] == 'yes' && $settings['slides_down_arrow_link']['url'] ) : ?>
+				<?php $down_target = $settings['slides_down_arrow_link']['is_external'] ? 'target="_blank"' : 'target="_self"'; ?>
+				<a href="<?php echo $settings['slides_down_arrow_link']['url'] ?>" <?php echo $down_target ?> class="slider-scroll-down th-icon th-i-down"></a>
+			<?php endif; ?>
 		</div>
 
 		<script>
