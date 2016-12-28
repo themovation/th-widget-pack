@@ -367,7 +367,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .elementor-slide-content' => '{{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-content' => '{{VALUE}}',
 				],
 				'selectors_dictionary' => [
 					'left' => 'margin-right: auto',
@@ -407,7 +407,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'align-items: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner: {{VALUE}}',
 				],
 				'selectors_dictionary' => [
 					'top' => 'flex-start',
@@ -447,7 +447,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'text-align: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -467,9 +467,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Content Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner .elementor-slide-heading' => 'color: {{VALUE}}',
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner .elementor-slide-description' => 'color: {{VALUE}}',
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner .elementor-slide-button' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .slider-title' => 'color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .slider-subtitle' => 'color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .th-button' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
