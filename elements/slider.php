@@ -1268,7 +1268,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                                     </div>
                                                 <?php endif;?>
 
-                                                <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
                                                     <div class="page-title-button">
                                                         <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
                                                             <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>

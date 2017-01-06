@@ -54,9 +54,9 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_background',
 						'label' => __( 'Background Color', 'elementor' ),
 						'type' => Controls_Manager::COLOR,
-						'default' => '#bbbbbb',
+						'default' => '#ffffff',
 						'selectors' => [
-							'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
+							'{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
 						],
 					],
 					[
@@ -83,7 +83,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					[
 						'name' => 'price_col_description',
 						'label' => __( 'Description', 'elementor' ),
-						'type' => Controls_Manager::TEXT,
+						'type' => Controls_Manager::TEXTAREA,
 						'placeholder' => __( 'List all details here. Use line break to for new line.', 'elementor' ),
 						'label_block' => true,
 					],
@@ -143,7 +143,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-pricing-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -154,7 +154,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'title_typography',
 				'label' => __( 'Title Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-pricing-title',
 			]
 		);
 
@@ -169,7 +169,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-pricing-cost' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -180,7 +180,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'price_typography',
 				'label' => __( 'Price Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-pricing-cost',
 			]
 		);
 
@@ -195,7 +195,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-pricing-cost span' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -206,7 +206,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'price_text_typography',
 				'label' => __( 'Price Text Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-pricing-cost span',
 			]
 		);
 
@@ -221,7 +221,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-pricing-features ul li' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -232,7 +232,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'description_typography',
 				'label' => __( 'Description Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-pricing-features ul li',
 			]
 		);
 
@@ -261,7 +261,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -272,7 +272,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'name' => 'button_typography_1',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1',
+				'selector' => '{{WRAPPER}} .th-button-1',
 			]
 		);
 
@@ -288,7 +288,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+					'{{WRAPPER}} .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -305,7 +305,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -321,7 +321,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -332,7 +332,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -343,7 +343,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -358,7 +358,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -369,7 +369,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -380,7 +380,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-1:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -412,7 +412,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -423,7 +423,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'name' => 'button_typography_2',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2',
+				'selector' => '{{WRAPPER}} .th-button-2',
 			]
 		);
 
@@ -439,7 +439,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+					'{{WRAPPER}} .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -456,7 +456,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -472,7 +472,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -483,7 +483,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -494,7 +494,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -509,7 +509,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -520,7 +520,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -531,7 +531,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-button-2:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -559,7 +559,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-pricing-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -570,7 +570,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'featured_title_typography',
 				'label' => __( 'Title Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-title',
 			]
 		);
 
@@ -585,7 +585,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-pricing-cost' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -596,7 +596,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'featured_price_typography',
 				'label' => __( 'Price Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-cost',
 			]
 		);
 
@@ -611,7 +611,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-pricing-cost span' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -622,7 +622,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'featured_price_text_typography',
 				'label' => __( 'Price Text Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-cost span',
 			]
 		);
 
@@ -637,7 +637,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-pricing-features ul li' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -648,7 +648,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'name' => 'featured_description_typography',
 				'label' => __( 'Description Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
+				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-features ul li',
 			]
 		);
 
@@ -677,7 +677,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -688,7 +688,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'name' => 'featured_button_typography_1',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1',
+				'selector' => '{{WRAPPER}} .th-highlight .th-button-1',
 			]
 		);
 
@@ -704,7 +704,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -721,7 +721,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -737,7 +737,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -748,7 +748,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -759,7 +759,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -774,7 +774,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -785,7 +785,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -796,7 +796,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-1:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -828,7 +828,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 
 				],
 			]
@@ -839,7 +839,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'name' => 'featured_button_typography_2',
 				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2',
+				'selector' => '{{WRAPPER}} .th-highlight .th-button-2',
 			]
 		);
 
@@ -855,7 +855,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
 				],
 			]
 		);
@@ -872,7 +872,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'after',
 			]
@@ -888,7 +888,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -899,7 +899,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -910,7 +910,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -925,7 +925,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -936,7 +936,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -947,7 +947,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .th-highlight .th-button-2:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -959,16 +959,118 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
+
+		if ( empty( $settings['pricing'] ) ) {
+			return;
+		}
+
+		$column_number = sizeof( $settings['pricing'] );
+
+		switch( $column_number ) {
+			case 1:
+				$table_class = ' th-one-col';
+				$column_class = ' col-sm-6 col-sm-offset-3';
+				break;
+			case 2:
+				$table_class = ' th-two-col';
+				$column_class = ' col-sm-6';
+				break;
+			case 3:
+				$table_class = ' th-three-col';
+				$column_class = ' col-md-4 col-sm-6';
+				break;
+			case 4:
+				$table_class = ' th-four-col';
+				$column_class = ' col-md-3 col-sm-6';
+				break;
+			case 5:
+				$table_class = ' th-five-col';
+				$column_class = ' col-md-2 col-sm-6';
+				break;
+			case 6:
+				$table_class = ' th-six-col';
+				$column_class = ' col-md-2 col-sm-6';
+				break;
+			default:
+				$table_class = '';
+				$column_class = '';
+		}
 		?>
+
+		<div class="th-pricing-table<?php echo $table_class; ?>">
+
+			<div class="row">
+
+				<?php foreach( $settings['pricing'] as $column ) { ?>
+
+					<?php if ( ! $column['price_col_featured'] ) : ?>
+						<?php if ( ! empty( $settings['button_size_1'] ) ) {
+							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['button_size_1'] );
+						} ?>
+						<?php if ( ! empty( $settings['button_size_2'] ) ) {
+							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
+						} ?>
+					<?php else : ?>
+						<?php if ( ! empty( $settings['featured_button_size_1'] ) ) {
+							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['featured_button_size_1'] );
+						} ?>
+						<?php if ( ! empty( $settings['featured_button_size_2'] ) ) {
+							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['featured_button_size_2'] );
+						} ?>
+					<?php endif; ?>
+
+					<div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( $column['price_col_featured'] ? ' th-highlight' : '' ); echo $column_class; ?>">
+
+						<div class="th-pricing-cost">
+							<?php echo esc_html( $column['price_col_price'] ); ?>
+							<span><?php echo esc_html( $column['price_col_text'] ); ?></span>
+						</div>
+
+						<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
+
+						<div class="th-pricing-features">
+							<ul>
+								<?php echo '<li>'.str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( $column['price_col_description'] , "\n\r" ) ).'</li>'; ?>
+							</ul>
+						</div>
+
+						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
+							<div class="page-title-button">
+								<?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
+									<?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
+									<?php echo '<a class="th-button th-button-1" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
+								<?php endif; ?>
+								<?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+									<?php echo esc_html( $column['price_col_button_1_text']) ?>
+								<?php endif;?>
+								<?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
+									<?php echo '</a>'; ?>
+								<?php endif; ?>
+								<?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
+									<?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
+									<?php echo '<a class="th-button th-button-2" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
+								<?php endif; ?>
+								<?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
+									<?php echo esc_html( $column['price_col_button_2_text']) ?>
+								<?php endif;?>
+								<?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
+									<?php echo '</a>'; ?>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
+
+					</div>
+
+				<?php } ?>
+
+			</div>
+
+		</div>
 
 		<?php
 	}
 
-	protected function _content_template() {
-		?>
-
-		<?php
-	}
+	protected function _content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Pricing() );
