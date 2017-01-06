@@ -21,6 +21,7 @@ function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/blog.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/slider.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/pricing.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
