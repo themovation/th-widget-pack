@@ -306,7 +306,7 @@ class Themo_Widget_Team extends Widget_Base {
 			$name = '<h4>' . esc_html( $settings['name'] ) . '</h4>';
 		}
 
-		if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_sm_portrait', false, array( 'class' => 'th-team-member-image' ) );
+		if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_md_square', false, array( 'class' => 'th-team-member-image' ) );
 		?>
 
 		<div class="th-team-member">
