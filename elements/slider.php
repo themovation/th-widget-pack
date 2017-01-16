@@ -827,404 +827,404 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
-			'section_style_title',
-			[
-				'label' => __( 'Title', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'title_spacing',
-			[
-				'label' => __( 'Spacing', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'title_color',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'color: {{VALUE}}',
-
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'title_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title',
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_content',
-			[
-				'label' => __( 'Content', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'content_spacing',
-			[
-				'label' => __( 'Spacing', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'content_color',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p',
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_button_1',
-			[
-				'label' => __( 'Button 1', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'button_size_1',
-			[
-				'label' => __( 'Size', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'sm',
-				'options' => self::get_button_sizes(),
-			]
-		);
-
-		$this->add_control( 'button_color_1',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
-
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'button_typography_1',
-				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1',
-			]
-		);
-
-		$this->add_control(
-			'button_border_width_1',
-			[
-				'label' => __( 'Border Width', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 20,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_radius_1',
-			[
-				'label' => __( 'Border Radius', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->start_controls_tabs( 'button_1_tabs' );
-
-		$this->start_controls_tab( 'normal_1', [ 'label' => __( 'Normal', 'elementor' ) ] );
-
-		$this->add_control(
-			'button_text_color_1',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_background_color_1',
-			[
-				'label' => __( 'Background Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color_1',
-			[
-				'label' => __( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab( 'hover_1', [ 'label' => __( 'Hover', 'elementor' ) ] );
-
-		$this->add_control(
-			'button_hover_text_color_1',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_background_color_1',
-			[
-				'label' => __( 'Background Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_border_color_1',
-			[
-				'label' => __( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tabs();
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_button_2',
-			[
-				'label' => __( 'Button 2', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'button_size_2',
-			[
-				'label' => __( 'Size', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'sm',
-				'options' => self::get_button_sizes(),
-			]
-		);
-
-		$this->add_control( 'button_color_2',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
-
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'button_typography_2',
-				'label' => __( 'Typography', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2',
-			]
-		);
-
-		$this->add_control(
-			'button_border_width_2',
-			[
-				'label' => __( 'Border Width', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 20,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_radius_2',
-			[
-				'label' => __( 'Border Radius', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
-				],
-				'separator' => 'after',
-			]
-		);
-
-		$this->start_controls_tabs( 'button_2_tabs' );
-
-		$this->start_controls_tab( 'normal_2', [ 'label' => __( 'Normal', 'elementor' ) ] );
-
-		$this->add_control(
-			'button_text_color_2',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_background_color_2',
-			[
-				'label' => __( 'Background Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color_2',
-			[
-				'label' => __( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab( 'hover_2', [ 'label' => __( 'Hover', 'elementor' ) ] );
-
-		$this->add_control(
-			'button_hover_text_color_2',
-			[
-				'label' => __( 'Text Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_background_color_2',
-			[
-				'label' => __( 'Background Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_hover_border_color_2',
-			[
-				'label' => __( 'Border Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tabs();
-
-		$this->end_controls_section();
+		// $this->start_controls_section(
+		// 	'section_style_title',
+		// 	[
+		// 		'label' => __( 'Title', 'elementor' ),
+		// 		'tab' => Controls_Manager::TAB_STYLE,
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'title_spacing',
+		// 	[
+		// 		'label' => __( 'Spacing', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 100,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'title_color',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title' => 'color: {{VALUE}}',
+		//
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_group_control(
+		// 	Group_Control_Typography::get_type(),
+		// 	[
+		// 		'name' => 'title_typography',
+		// 		'label' => __( 'Typography', 'elementor' ),
+		// 		'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+		// 		'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-title',
+		// 	]
+		// );
+		//
+		// $this->end_controls_section();
+		//
+		// $this->start_controls_section(
+		// 	'section_style_content',
+		// 	[
+		// 		'label' => __( 'Content', 'elementor' ),
+		// 		'tab' => Controls_Manager::TAB_STYLE,
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'content_spacing',
+		// 	[
+		// 		'label' => __( 'Spacing', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 100,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'content_color',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_group_control(
+		// 	Group_Control_Typography::get_type(),
+		// 	[
+		// 		'name' => 'content_typography',
+		// 		'label' => __( 'Typography', 'elementor' ),
+		// 		'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+		// 		'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .slider-subtitle p',
+		// 	]
+		// );
+		//
+		// $this->end_controls_section();
+		//
+		// $this->start_controls_section(
+		// 	'section_style_button_1',
+		// 	[
+		// 		'label' => __( 'Button 1', 'elementor' ),
+		// 		'tab' => Controls_Manager::TAB_STYLE,
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_size_1',
+		// 	[
+		// 		'label' => __( 'Size', 'elementor' ),
+		// 		'type' => Controls_Manager::SELECT,
+		// 		'default' => 'sm',
+		// 		'options' => self::get_button_sizes(),
+		// 	]
+		// );
+		//
+		// $this->add_control( 'button_color_1',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+		//
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_group_control(
+		// 	Group_Control_Typography::get_type(),
+		// 	[
+		// 		'name' => 'button_typography_1',
+		// 		'label' => __( 'Typography', 'elementor' ),
+		// 		'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1',
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_width_1',
+		// 	[
+		// 		'label' => __( 'Border Width', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 20,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_radius_1',
+		// 	[
+		// 		'label' => __( 'Border Radius', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 100,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 		'separator' => 'after',
+		// 	]
+		// );
+		//
+		// $this->start_controls_tabs( 'button_1_tabs' );
+		//
+		// $this->start_controls_tab( 'normal_1', [ 'label' => __( 'Normal', 'elementor' ) ] );
+		//
+		// $this->add_control(
+		// 	'button_text_color_1',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_background_color_1',
+		// 	[
+		// 		'label' => __( 'Background Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'background-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_color_1',
+		// 	[
+		// 		'label' => __( 'Border Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1' => 'border-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->end_controls_tab();
+		//
+		// $this->start_controls_tab( 'hover_1', [ 'label' => __( 'Hover', 'elementor' ) ] );
+		//
+		// $this->add_control(
+		// 	'button_hover_text_color_1',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_hover_background_color_1',
+		// 	[
+		// 		'label' => __( 'Background Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'background-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_hover_border_color_1',
+		// 	[
+		// 		'label' => __( 'Border Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-1:hover' => 'border-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->end_controls_tabs();
+		//
+		// $this->end_controls_section();
+		//
+		// $this->start_controls_section(
+		// 	'section_style_button_2',
+		// 	[
+		// 		'label' => __( 'Button 2', 'elementor' ),
+		// 		'tab' => Controls_Manager::TAB_STYLE,
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_size_2',
+		// 	[
+		// 		'label' => __( 'Size', 'elementor' ),
+		// 		'type' => Controls_Manager::SELECT,
+		// 		'default' => 'sm',
+		// 		'options' => self::get_button_sizes(),
+		// 	]
+		// );
+		//
+		// $this->add_control( 'button_color_2',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+		//
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_group_control(
+		// 	Group_Control_Typography::get_type(),
+		// 	[
+		// 		'name' => 'button_typography_2',
+		// 		'label' => __( 'Typography', 'elementor' ),
+		// 		'selector' => '{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2',
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_width_2',
+		// 	[
+		// 		'label' => __( 'Border Width', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 20,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-width: {{SIZE}}{{UNIT}}; border-style: solid;',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_radius_2',
+		// 	[
+		// 		'label' => __( 'Border Radius', 'elementor' ),
+		// 		'type' => Controls_Manager::SLIDER,
+		// 		'range' => [
+		// 			'px' => [
+		// 				'min' => 0,
+		// 				'max' => 100,
+		// 			],
+		// 		],
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 		'separator' => 'after',
+		// 	]
+		// );
+		//
+		// $this->start_controls_tabs( 'button_2_tabs' );
+		//
+		// $this->start_controls_tab( 'normal_2', [ 'label' => __( 'Normal', 'elementor' ) ] );
+		//
+		// $this->add_control(
+		// 	'button_text_color_2',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_background_color_2',
+		// 	[
+		// 		'label' => __( 'Background Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'background-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_border_color_2',
+		// 	[
+		// 		'label' => __( 'Border Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2' => 'border-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->end_controls_tab();
+		//
+		// $this->start_controls_tab( 'hover_2', [ 'label' => __( 'Hover', 'elementor' ) ] );
+		//
+		// $this->add_control(
+		// 	'button_hover_text_color_2',
+		// 	[
+		// 		'label' => __( 'Text Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_hover_background_color_2',
+		// 	[
+		// 		'label' => __( 'Background Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'background-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'button_hover_border_color_2',
+		// 	[
+		// 		'label' => __( 'Border Color', 'elementor' ),
+		// 		'type' => Controls_Manager::COLOR,
+		// 		'selectors' => [
+		// 			'{{WRAPPER}} #main-flex-slider .slider-bg .container .th-button-2:hover' => 'border-color: {{VALUE}};',
+		// 		],
+		// 	]
+		// );
+		//
+		// $this->end_controls_tabs();
+		//
+		// $this->end_controls_section();
 
 	}
 
