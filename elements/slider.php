@@ -268,6 +268,20 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'slide_button_style_1',
+			[
+				'label' => __( 'Button 1 Style', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'standard',
+				'options' => [
+					'standard' => __( 'Standard', 'elementor' ),
+					'ghost'    => __( 'Ghost', 'elementor' ),
+					'c2a'      => __( 'Call to Action', 'elementor' ),
+				],
+			]
+		);
+
+		$repeater->add_control(
 			'slide_button_text_2',
 			[
 				'label' => __( 'Button 2 Text', 'elementor' ),
@@ -282,6 +296,20 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Button 2 Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+			]
+		);
+
+		$repeater->add_control(
+			'slide_button_style_2',
+			[
+				'label' => __( 'Button 2 Style', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'standard',
+				'options' => [
+					'standard' => __( 'Standard', 'elementor' ),
+					'ghost'    => __( 'Ghost', 'elementor' ),
+					'c2a'      => __( 'Call to Action', 'elementor' ),
+				],
 			]
 		);
 
@@ -1292,7 +1320,8 @@ class Themo_Widget_Slider extends Widget_Base {
                                                     <div class="page-title-button">
                                                         <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
                                                             <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                            <?php echo '<a class="th-button th-button-1" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+															<?php $button_style = 'th-button-' . $slide['slide_button_style_1']; ?>
+                                                            <?php echo '<a class="th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
                                                         <?php endif; ?>
                                                         <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
                                                             <?php echo esc_html( $slide['slide_button_text_1']) ?>
@@ -1302,7 +1331,8 @@ class Themo_Widget_Slider extends Widget_Base {
                                                         <?php endif; ?>
                                                         <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
                                                             <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                            <?php echo '<a class="th-button th-button-2" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+															<?php $button_style = 'th-button-' . $slide['slide_button_style_2']; ?>
+                                                            <?php echo '<a class="th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
                                                         <?php endif; ?>
                                                         <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
                                                             <?php echo esc_html( $slide['slide_button_text_2']) ?>
