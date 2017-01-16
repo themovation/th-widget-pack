@@ -462,24 +462,44 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'slide_title_color',
+			[
+				'label' => __( 'Title Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title' => 'color: {{VALUE}}'
+				],
+			]
+		);
+
+		$repeater->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'slide_title_typography',
+				'label' => __( 'Title Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title',
+			]
+		);
+
+		$repeater->add_control(
 			'slide_content_color',
 			[
 				'label' => __( 'Content Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .slider-title' => 'color: {{VALUE}}',
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .slider-subtitle' => 'color: {{VALUE}}',
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner .th-button' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}'
 				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
-				],
+			]
+		);
+
+		$repeater->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'slide_content_typography',
+				'label' => __( 'Content Typography', 'elementor' ),
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p',
 			]
 		);
 
