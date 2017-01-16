@@ -276,7 +276,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'options' => [
 					'standard' => __( 'Standard', 'elementor' ),
 					'ghost'    => __( 'Ghost', 'elementor' ),
-					'c2a'      => __( 'Call to Action', 'elementor' ),
+					'cta'      => __( 'Call to Action', 'elementor' ),
 				],
 			]
 		);
@@ -308,7 +308,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'options' => [
 					'standard' => __( 'Standard', 'elementor' ),
 					'ghost'    => __( 'Ghost', 'elementor' ),
-					'c2a'      => __( 'Call to Action', 'elementor' ),
+					'cta'      => __( 'Call to Action', 'elementor' ),
 				],
 			]
 		);
@@ -355,6 +355,28 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
 				]
+			]
+		);
+
+		$repeater->add_control(
+			'slide_tooltip',
+			[
+				'label' => __( 'Display Tooltip', 'elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'elementor' ),
+				'label_off' => __( 'No', 'elementor' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$repeater->add_control(
+			'slide_tooltip_text',
+			[
+				'label' => __( 'Tooltip Text', 'elementor' ),
+				'type' => Controls_Manager::TEXT,
+				'condition' => [
+					'slide_tooltip' => 'yes',
+				],
 			]
 		);
 
@@ -1301,69 +1323,72 @@ class Themo_Widget_Slider extends Widget_Base {
 
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
-                            <div class="th-slider-overlay">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="th-slide-inner">
-                                            <div class="th-slide-content">
-                                                <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
-                                                    <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
-                                                <?php endif;?>
+							<div class="th-slider-overlay">
+								<div class="container">
+									<div class="row">
+										<div class="th-slide-inner">
+											<div class="th-slide-content">
+												<?php if ( ! empty( $slide['slide_title'] ) ) : ?>
+													<h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
+												<?php endif;?>
 
-                                                <?php if ( ! empty( $slide['slide_text'] ) ) : ?>
-                                                    <div class="slider-subtitle">
-                                                        <p><?php echo esc_html( $slide['slide_text']) ?></p>
-                                                    </div>
-                                                <?php endif;?>
+												<?php if ( ! empty( $slide['slide_text'] ) ) : ?>
+													<div class="slider-subtitle">
+														<p><?php echo esc_html( $slide['slide_text']) ?></p>
+													</div>
+												<?php endif;?>
 
-                                                <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
-                                                    <div class="page-title-button">
-                                                        <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-                                                            <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-															<?php $button_style = 'th-button-' . $slide['slide_button_style_1']; ?>
-                                                            <?php echo '<a class="th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
-                                                        <?php endif; ?>
-                                                        <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
-                                                            <?php echo esc_html( $slide['slide_button_text_1']) ?>
-                                                        <?php endif;?>
-                                                        <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-                                                            <?php echo '</a>'; ?>
-                                                        <?php endif; ?>
-                                                        <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-                                                            <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-															<?php $button_style = 'th-button-' . $slide['slide_button_style_2']; ?>
-                                                            <?php echo '<a class="th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
-                                                        <?php endif; ?>
-                                                        <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
-                                                            <?php echo esc_html( $slide['slide_button_text_2']) ?>
-                                                        <?php endif;?>
-                                                        <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-                                                            <?php echo '</a>'; ?>
-                                                        <?php endif; ?>
-                                                    </div>
-                                                <?php endif; ?>
+												<?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
+													<div class="page-title-button">
+														<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+															<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
+															<?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
+															<?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+														<?php endif; ?>
+														<?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+															<?php echo esc_html( $slide['slide_button_text_1']) ?>
+														<?php endif;?>
+														<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+															<?php echo '</a>'; ?>
+														<?php endif; ?>
+														<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+															<?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
+															<?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
+															<?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+														<?php endif; ?>
+														<?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+															<?php echo esc_html( $slide['slide_button_text_2']) ?>
+														<?php endif;?>
+														<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+															<?php echo '</a>'; ?>
+														<?php endif; ?>
+													</div>
+												<?php endif; ?>
 
-                                                <?php if ( $slide['slide_image']['id'] ) : ?>
-                                                    <div class="page-title-image ">
-                                                        <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-                                                            <?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                            <?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
-                                                        <?php endif; ?>
-                                                        <?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
-                                                        <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-                                                            <?php echo '</a>'; ?>
-                                                        <?php endif; ?>
-                                                        </div>
-                                                <?php endif; ?>
+												<?php if ( $slide['slide_image']['id'] ) : ?>
+													<div class="page-title-image ">
+														<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+															<?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
+															<?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
+														<?php endif; ?>
+														<?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
+														<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+															<?php echo '</a>'; ?>
+														<?php endif; ?>
+														</div>
+												<?php endif; ?>
 
-                                                <?php if ( $slide['slide_shortcode'] ) : ?>
-                                                    <?php echo do_shortcode( $slide['slide_shortcode'] ); ?>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+												<?php if ( $slide['slide_shortcode'] ) : ?>
+													<?php $show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
+													<?php $tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
+													<?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
+													<?php themo_do_metabox_shortcode( $slide['slide_shortcode'], '', '', '', $show_tooltip, $tooltip ); ?>
+												<?php endif; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</li>
 				<?php } ?>
