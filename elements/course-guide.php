@@ -14,7 +14,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'favorite';
+		return 'eicon-favorite';
 	}
 
 	public function get_categories() {

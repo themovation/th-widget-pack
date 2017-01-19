@@ -14,7 +14,7 @@ class Themo_Widget_Package extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'image-box';
+		return 'eicon-image-box';
 	}
 
 	public function get_categories() {

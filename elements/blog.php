@@ -14,7 +14,7 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'posts-grid';
+		return 'eicon-posts-grid';
 	}
 
 	public function get_categories() {
