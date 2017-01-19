@@ -39,13 +39,13 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater = new Repeater();
+		$th_repeater = new Repeater();
 
-		$repeater->start_controls_tabs( 'slider_repeater' );
+		$th_repeater->start_controls_tabs( 'slider_repeater' );
 
-		$repeater->start_controls_tab( 'slide_background', [ 'label' => __( 'Background', 'elementor' ) ] );
+		$th_repeater->start_controls_tab( 'slide_background', [ 'label' => __( 'Background', 'elementor' ) ] );
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_color',
 			[
 				'label' => __( 'Background Color', 'elementor' ),
@@ -57,7 +57,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_image',
 			[
 				'label' => __( 'Background Image', 'elementor' ),
@@ -68,7 +68,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_repeat',
 			[
 				'label' => __( 'Background Repeat', 'elementor' ),
@@ -95,7 +95,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_attachment',
 			[
 				'label' => __( 'Background Attachment', 'elementor' ),
@@ -120,7 +120,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_position',
 			[
 				'label' => __( 'Background Position', 'elementor' ),
@@ -152,7 +152,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_size',
 			[
 				'label' => __( 'Background Size', 'elementor' ),
@@ -177,7 +177,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_overlay',
 			[
 				'label' => __( 'Background Overlay', 'elementor' ),
@@ -199,14 +199,14 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_bg_overlay_color',
 			[
 				'label' => __( 'Overlay Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#bbbbbb',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slider-overlay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -225,11 +225,11 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->end_controls_tab();
+		$th_repeater->end_controls_tab();
 
-		$repeater->start_controls_tab( 'slide_content', [ 'label' => __( 'Content', 'elementor' ) ] );
+		$th_repeater->start_controls_tab( 'slide_content', [ 'label' => __( 'Content', 'elementor' ) ] );
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_title',
 			[
 				'label' => __( 'Title', 'elementor' ),
@@ -239,7 +239,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_text',
 			[
 				'label' => __( 'Content', 'elementor' ),
@@ -249,7 +249,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_text_1',
 			[
 				'label' => __( 'Button 1 Text', 'elementor' ),
@@ -258,7 +258,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_link_1',
 			[
 				'label' => __( 'Button 1 Link', 'elementor' ),
@@ -267,7 +267,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_style_1',
 			[
 				'label' => __( 'Button 1 Style', 'elementor' ),
@@ -281,7 +281,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_text_2',
 			[
 				'label' => __( 'Button 2 Text', 'elementor' ),
@@ -290,7 +290,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_link_2',
 			[
 				'label' => __( 'Button 2 Link', 'elementor' ),
@@ -299,7 +299,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_button_style_2',
 			[
 				'label' => __( 'Button 2 Style', 'elementor' ),
@@ -313,7 +313,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_image',
 			[
 				'label' => __( 'Image', 'elementor' ),
@@ -324,7 +324,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_image_url',
 			[
 				'label' => __( 'Image URL', 'elementor' ),
@@ -333,7 +333,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_shortcode',
 			[
 				'label' => __( 'Shortcode', 'elementor' ),
@@ -341,7 +341,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_shortcode_border',
 			[
 				'label' => __( 'Shortcode Form Border', 'elementor' ),
@@ -358,7 +358,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_tooltip',
 			[
 				'label' => __( 'Display Tooltip', 'elementor' ),
@@ -369,7 +369,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_tooltip_text',
 			[
 				'label' => __( 'Tooltip Text', 'elementor' ),
@@ -380,11 +380,11 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->end_controls_tab();
+		$th_repeater->end_controls_tab();
 
-		$repeater->start_controls_tab( 'slide_style', [ 'label' => __( 'Style', 'elementor' ) ] );
+		$th_repeater->start_controls_tab( 'slide_style', [ 'label' => __( 'Style', 'elementor' ) ] );
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_custom_style',
 			[
 				'label' => __( 'Custom', 'elementor' ),
@@ -396,7 +396,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_horizontal_position',
 			[
 				'label' => __( 'Horizontal Position', 'elementor' ),
@@ -436,7 +436,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_vertical_position',
 			[
 				'label' => __( 'Vertical Position', 'elementor' ),
@@ -476,7 +476,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_text_align',
 			[
 				'label' => __( 'Text Align', 'elementor' ),
@@ -511,7 +511,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_title_color',
 			[
 				'label' => __( 'Title Color', 'elementor' ),
@@ -519,20 +519,32 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title' => 'color: {{VALUE}}'
 				],
+				'conditions' => [
+					'terms' => [
+						[
+							'name' => 'slide_custom_style',
+							'operator' => '==',
+							'value' => 'yes',
+						],
+					],
+				],
 			]
 		);
 
-		$repeater->add_group_control(
+		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'slide_title_typography',
+				'name' => 'slide_title_typo',
 				'label' => __( 'Title Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title',
+				'condition' => [
+					'slide_custom_style' => 'yes',
+				],
 			]
 		);
 
-		$repeater->add_control(
+		$th_repeater->add_control(
 			'slide_content_color',
 			[
 				'label' => __( 'Content Color', 'elementor' ),
@@ -540,22 +552,34 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}'
 				],
+				'conditions' => [
+					'terms' => [
+						[
+							'name' => 'slide_custom_style',
+							'operator' => '==',
+							'value' => 'yes',
+						],
+					],
+				],
 			]
 		);
 
-		$repeater->add_group_control(
+		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name' => 'slide_content_typography',
+				'name' => 'slide_content_typo',
 				'label' => __( 'Content Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p',
+				'condition' => [
+					'slide_custom_style' => 'yes',
+				],
 			]
 		);
 
-		$repeater->end_controls_tab();
+		$th_repeater->end_controls_tab();
 
-		$repeater->end_controls_tabs();
+		$th_repeater->end_controls_tabs();
 
 		$this->add_control(
 			'slides',
@@ -563,7 +587,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Slides', 'elementor-pro' ),
 				'type' => Controls_Manager::REPEATER,
 				'show_label' => true,
-				'fields' => array_values( $repeater->get_controls() ),
+				'fields' => array_values( $th_repeater->get_controls() ),
 				'title_field' => '{{{ slide_title }}}',
 			]
 		);
@@ -589,7 +613,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}}' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 			]
