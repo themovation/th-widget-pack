@@ -206,7 +206,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#bbbbbb',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slider-overlay' => 'background-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -274,16 +274,16 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'standard-primary',
 				'options' => [
-					'standard-primary' => ( 'Standard Primary', 'elementor' ),
-					'standard-accent' => ( 'Standard Accent', 'elementor' ),
-					'standard-light' => ( 'Standard Light', 'elementor' ),
-					'standard-dark' => ( 'Standard Dark', 'elementor' ),
-					'ghost-primary' => ( 'Ghost Primary', 'elementor' ),
-					'ghost-accent' => ( 'Ghost Accent', 'elementor' ),
-					'ghost-light' => ( 'Ghost Light', 'elementor' ),
-					'ghost-dark' => ( 'Ghost Dark', 'elementor' ),
-					'cta-primary' => ( 'CTA Primary', 'elementor' ),
-					'cta-primary' => ( 'CTA Accent', 'elementor' ),
+					'standard-primary' => __( 'Standard Primary', 'elementor' ),
+					'standard-accent' => __( 'Standard Accent', 'elementor' ),
+					'standard-light' => __( 'Standard Light', 'elementor' ),
+					'standard-dark' => __( 'Standard Dark', 'elementor' ),
+					'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
+					'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
+					'ghost-light' => __( 'Ghost Light', 'elementor' ),
+					'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
+					'cta-primary' => __( 'CTA Primary', 'elementor' ),
+					'cta-primary' => __( 'CTA Accent', 'elementor' ),
 				],
 			]
 		);
@@ -313,16 +313,16 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'standard-primary',
 				'options' => [
-					'standard-primary' => ( 'Standard Primary', 'elementor' ),
-					'standard-accent' => ( 'Standard Accent', 'elementor' ),
-					'standard-light' => ( 'Standard Light', 'elementor' ),
-					'standard-dark' => ( 'Standard Dark', 'elementor' ),
-					'ghost-primary' => ( 'Ghost Primary', 'elementor' ),
-					'ghost-accent' => ( 'Ghost Accent', 'elementor' ),
-					'ghost-light' => ( 'Ghost Light', 'elementor' ),
-					'ghost-dark' => ( 'Ghost Dark', 'elementor' ),
-					'cta-primary' => ( 'CTA Primary', 'elementor' ),
-					'cta-primary' => ( 'CTA Accent', 'elementor' ),
+					'standard-primary' => __( 'Standard Primary', 'elementor' ),
+					'standard-accent' => __( 'Standard Accent', 'elementor' ),
+					'standard-light' => __( 'Standard Light', 'elementor' ),
+					'standard-dark' => __( 'Standard Dark', 'elementor' ),
+					'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
+					'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
+					'ghost-light' => __( 'Ghost Light', 'elementor' ),
+					'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
+					'cta-primary' => __( 'CTA Primary', 'elementor' ),
+					'cta-primary' => __( 'CTA Accent', 'elementor' ),
 				],
 			]
 		);
