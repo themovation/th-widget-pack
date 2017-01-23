@@ -272,11 +272,18 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Button 1 Style', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'standard',
+				'default' => 'standard-primary',
 				'options' => [
-					'standard' => __( 'Standard', 'elementor' ),
-					'ghost'    => __( 'Ghost', 'elementor' ),
-					'cta'      => __( 'Call to Action', 'elementor' ),
+					'standard-primary' => ( 'Standard Primary', 'elementor' ),
+					'standard-accent' => ( 'Standard Accent', 'elementor' ),
+					'standard-light' => ( 'Standard Light', 'elementor' ),
+					'standard-dark' => ( 'Standard Dark', 'elementor' ),
+					'ghost-primary' => ( 'Ghost Primary', 'elementor' ),
+					'ghost-accent' => ( 'Ghost Accent', 'elementor' ),
+					'ghost-light' => ( 'Ghost Light', 'elementor' ),
+					'ghost-dark' => ( 'Ghost Dark', 'elementor' ),
+					'cta-primary' => ( 'CTA Primary', 'elementor' ),
+					'cta-primary' => ( 'CTA Accent', 'elementor' ),
 				],
 			]
 		);
@@ -304,11 +311,18 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Button 2 Style', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'standard',
+				'default' => 'standard-primary',
 				'options' => [
-					'standard' => __( 'Standard', 'elementor' ),
-					'ghost'    => __( 'Ghost', 'elementor' ),
-					'cta'      => __( 'Call to Action', 'elementor' ),
+					'standard-primary' => ( 'Standard Primary', 'elementor' ),
+					'standard-accent' => ( 'Standard Accent', 'elementor' ),
+					'standard-light' => ( 'Standard Light', 'elementor' ),
+					'standard-dark' => ( 'Standard Dark', 'elementor' ),
+					'ghost-primary' => ( 'Ghost Primary', 'elementor' ),
+					'ghost-accent' => ( 'Ghost Accent', 'elementor' ),
+					'ghost-light' => ( 'Ghost Light', 'elementor' ),
+					'ghost-dark' => ( 'Ghost Dark', 'elementor' ),
+					'cta-primary' => ( 'CTA Primary', 'elementor' ),
+					'cta-primary' => ( 'CTA Accent', 'elementor' ),
 				],
 			]
 		);
