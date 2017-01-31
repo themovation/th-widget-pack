@@ -34,8 +34,20 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Image_Size::get_type(),
+            [
+                'name' => 'image', // Actually its `image_size`
+                'label' => __( 'Image Size', 'elementor' ),
+                'default' => 'large',
+            ]
+        );
 
 		$this->add_control(
 			'title',
@@ -321,11 +333,14 @@ class Themo_Widget_Package extends Widget_Base {
 				<?php endif;?>
 			</div>
 
-			<?php if ( $settings['image']['id'] ) : ?>
-				<div class="th-pkg-img">
-					<?php echo wp_get_attachment_image( $settings['image']['id'], 'full', false, '' ); ?>
-				</div>
-			<?php endif; ?>
+            <?php
+            if ( empty( $settings['image']['url'] ) ) {
+                return;
+            }
+            ?>
+            <div class="th-pkg-img">
+                <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings ); ?>
+            </div>
 
 			<div class="th-pkg-content">
 				<?php if ( ! empty( $settings['title'] ) ) : ?>
@@ -357,9 +372,23 @@ class Themo_Widget_Package extends Widget_Base {
 					<span>{{{ settings.price_text }}}</span>
 				<# } #>
 			</div>
-			<# if ( settings.image && '' !== settings.image.url ) { #>
+            <# if ( '' !== settings.image.url ) {
+                    var image = {
+                    id: settings.image.id,
+                    url: settings.image.url,
+                    size: settings.image_size,
+                    dimension: settings.image_custom_dimension,
+                    model: editModel
+                    };
+
+                    var image_url = elementor.imagesManager.getImageUrl( image );
+
+                    if ( ! image_url ) {
+                    return;
+                    }
+                #>
 				<div class="th-pkg-img">
-					<img src="{{{ settings.image.url }}}" />
+					<img src="{{{ image_url }}}" />
 				</div>
 			<# } #>
 			<div class="th-pkg-content">
