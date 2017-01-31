@@ -249,14 +249,69 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+        $th_repeater->add_control(
+            'slide_button_text_1_show',
+            [
+                'label' => __( 'Button 1', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'elementor' ),
+                'label_off' => __( 'No', 'elementor' ),
+                'return_value' => 'yes',
+                'default' => '',
+                'separator' => 'before',
+            ]
+        );
+
+
+
 		$th_repeater->add_control(
 			'slide_button_text_1',
 			[
 				'label' => __( 'Button 1 Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Click Here', 'elementor' ),
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_1_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+                'separator' => 'before',
 			]
 		);
+
+        $th_repeater->add_control(
+            'slide_button_style_1',
+            [
+                'label' => __( 'Button 1 Style', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
+                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
+                    'standard-light' => __( 'Standard Light', 'elementor' ),
+                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
+                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
+                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
+                    'cta-primary' => __( 'CTA Accent', 'elementor' ),
+                ],
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_1_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
 
 		$th_repeater->add_control(
 			'slide_button_link_1',
@@ -264,29 +319,63 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Button 1 Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_1_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
 			]
 		);
 
-		$th_repeater->add_control(
-			'slide_button_style_1',
-			[
-				'label' => __( 'Button 1 Style', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'standard-primary',
-				'options' => [
-					'standard-primary' => __( 'Standard Primary', 'elementor' ),
-					'standard-accent' => __( 'Standard Accent', 'elementor' ),
-					'standard-light' => __( 'Standard Light', 'elementor' ),
-					'standard-dark' => __( 'Standard Dark', 'elementor' ),
-					'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-					'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-					'ghost-light' => __( 'Ghost Light', 'elementor' ),
-					'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-					'cta-primary' => __( 'CTA Primary', 'elementor' ),
-					'cta-primary' => __( 'CTA Accent', 'elementor' ),
-				],
-			]
-		);
+        $th_repeater->add_control(
+            'slide_button_text_1_div',
+            [
+                'type' => Controls_Manager::DIVIDER,
+                /*'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_1_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],*/
+            ]
+        );
+
+
+        $th_repeater->add_control(
+            'slide_button_text_2_show',
+            [
+                'label' => __( 'Button 2', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'elementor' ),
+                'label_off' => __( 'No', 'elementor' ),
+                'return_value' => 'yes',
+                'default' => '',
+                'separator' => 'before',
+            ]
+        );
+
+        /*$th_repeater->add_control(
+            'slide_button_text_2_div',
+            [
+                'type' => Controls_Manager::DIVIDER,
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_2_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );*/
 
 		$th_repeater->add_control(
 			'slide_button_text_2',
@@ -294,15 +383,15 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Button 2 Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Click Here', 'elementor' ),
-			]
-		);
-
-		$th_repeater->add_control(
-			'slide_button_link_2',
-			[
-				'label' => __( 'Button 2 Link', 'elementor' ),
-				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_2_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
 			]
 		);
 
@@ -324,8 +413,35 @@ class Themo_Widget_Slider extends Widget_Base {
 					'cta-primary' => __( 'CTA Primary', 'elementor' ),
 					'cta-primary' => __( 'CTA Accent', 'elementor' ),
 				],
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_2_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
 			]
 		);
+
+        $th_repeater->add_control(
+            'slide_button_link_2',
+            [
+                'label' => __( 'Button 2 Link', 'elementor' ),
+                'type' => Controls_Manager::URL,
+                'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_2_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
 
 		$th_repeater->add_control(
 			'slide_image',
@@ -398,7 +514,7 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		$th_repeater->start_controls_tab( 'slide_style', [ 'label' => __( 'Style', 'elementor' ) ] );
 
-		$th_repeater->add_control(
+		/*$th_repeater->add_control(
 			'slide_custom_style',
 			[
 				'label' => __( 'Custom', 'elementor' ),
@@ -408,49 +524,75 @@ class Themo_Widget_Slider extends Widget_Base {
 				'return_value' => 'yes',
 				'description'   => __( 'Set custom style that will only affect this specific slide.', 'elementor' ),
 			]
-		);
+		);*/
 
-		$th_repeater->add_control(
-			'slide_horizontal_position',
-			[
-				'label' => __( 'Horizontal Position', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'label_block' => false,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'eicon-h-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'eicon-h-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'eicon-h-align-right',
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-content' => '{{VALUE}}',
-				],
-				'selectors_dictionary' => [
-					'left' => 'margin-right: auto',
-					'center' => 'margin: 0 auto',
-					'right' => 'margin-left: auto',
-				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
-				],
-			]
-		);
+        $th_repeater->add_responsive_control(
+            'content_max_width',
+            [
+                'label' => __( 'Content Width', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ '%', 'px' ],
+                'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .th-slide-inner' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
-		$th_repeater->add_control(
+        $th_repeater->add_control(
+            'slide_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-content' => '{{VALUE}}',
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'margin-right: auto',
+                    'center' => 'margin: 0 auto',
+                    'right' => 'margin-left: auto',
+                ],
+                /*'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_custom_style',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],*/
+            ]
+        );
+
+        $th_repeater->add_control(
 			'slide_vertical_position',
 			[
 				'label' => __( 'Vertical Position', 'elementor' ),
@@ -478,15 +620,6 @@ class Themo_Widget_Slider extends Widget_Base {
 					'middle' => 'center',
 					'bottom' => 'flex-end',
 				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
-				],
 			]
 		);
 
@@ -513,15 +646,6 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'text-align: {{VALUE}}',
 				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
-				],
 			]
 		);
 
@@ -531,16 +655,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Title Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title' => 'color: {{VALUE}}'
-				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -551,7 +666,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'name' => 'slide_title_typo',
 				'label' => __( 'Title Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-title',
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 				'condition' => [
 					'slide_custom_style' => 'yes',
 				],
@@ -564,16 +679,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Content Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p' => 'color: {{VALUE}}'
-				],
-				'conditions' => [
-					'terms' => [
-						[
-							'name' => 'slide_custom_style',
-							'operator' => '==',
-							'value' => 'yes',
-						],
-					],
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}'
 				],
 			]
 		);
@@ -584,7 +690,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'name' => 'slide_content_typo',
 				'label' => __( 'Content Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container .slider-subtitle p',
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p',
 				'condition' => [
 					'slide_custom_style' => 'yes',
 				],
@@ -810,130 +916,130 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
-			'section_style_slides',
-			[
-				'label' => __( 'Slides', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+        /*$this->start_controls_section(
+            'section_style_slides',
+            [
+                'label' => __( 'Slides', 'elementor' ),
+                'tab' => ntrols_Manager::TAB_STYLE,
+            ]
+        );
 
-		$this->add_responsive_control(
-			'content_max_width',
-			[
-				'label' => __( 'Content Width', 'elementor' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 1000,
-					],
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'size_units' => [ '%', 'px' ],
-				'default' => [
-					'size' => '100',
-					'unit' => '%',
-				],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'max-width: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
+        /*$this->add_responsive_control(
+            'content_max_width',
+            [
+                'label' => __( 'Content Width', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ '%', 'px' ],
+                'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
-		$this->add_responsive_control(
-			'slides_padding',
-			[
-				'label' => __( 'Padding', 'elementor' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
+        $this->add_responsive_control(
+            'slides_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
-		$this->add_control(
-			'slides_horizontal_position',
-			[
-				'label' => __( 'Horizontal Position', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'label_block' => false,
-				'default' => 'center',
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'eicon-h-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'eicon-h-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'eicon-h-align-right',
-					],
-				],
-				'prefix_class' => 'th-slide-h-position-',
-			]
-		);
+        $this->add_control(
+            'slides_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'default' => 'center',
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'prefix_class' => 'th-slide-h-position-',
+            ]
+        );
 
-		$this->add_control(
-			'slides_vertical_position',
-			[
-				'label' => __( 'Vertical Position', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'label_block' => false,
-				'default' => 'middle',
-				'options' => [
-					'top' => [
-						'title' => __( 'Top', 'elementor' ),
-						'icon' => 'eicon-v-align-top',
-					],
-					'middle' => [
-						'title' => __( 'Middle', 'elementor' ),
-						'icon' => 'eicon-v-align-middle',
-					],
-					'bottom' => [
-						'title' => __( 'Bottom', 'elementor' ),
-						'icon' => 'eicon-v-align-bottom',
-					],
-				],
-				'prefix_class' => 'th-slide-v-position-',
-			]
-		);
+        $this->add_control(
+            'slides_vertical_position',
+            [
+                'label' => __( 'Vertical Position', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'default' => 'middle',
+                'options' => [
+                    'top' => [
+                        'title' => __( 'Top', 'elementor' ),
+                        'icon' => 'eicon-v-align-top',
+                    ],
+                    'middle' => [
+                        'title' => __( 'Middle', 'elementor' ),
+                        'icon' => 'eicon-v-align-middle',
+                    ],
+                    'bottom' => [
+                        'title' => __( 'Bottom', 'elementor' ),
+                        'icon' => 'eicon-v-align-bottom',
+                    ],
+                ],
+                'prefix_class' => 'th-slide-v-position-',
+            ]
+        );
 
-		$this->add_control(
-			'slides_text_align',
-			[
-				'label' => __( 'Text Align', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'label_block' => false,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'fa fa-align-right',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'text-align: {{VALUE}}',
-				],
-			]
-		);
+        $this->add_control(
+            'slides_text_align',
+            [
+                'label' => __( 'Text Align', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider .slider-bg .container' => 'text-align: {{VALUE}}',
+                ],
+            ]
+        );
 
-		$this->end_controls_section();
+		$this->end_controls_section();*/
 
 		// $this->start_controls_section(
 		// 	'section_style_title',
@@ -1362,70 +1468,70 @@ class Themo_Widget_Slider extends Widget_Base {
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
 							<div class="th-slider-overlay">
-								<div class="container">
-									<div class="row">
-										<div class="th-slide-inner">
-											<div class="th-slide-content">
-												<?php if ( ! empty( $slide['slide_title'] ) ) : ?>
-													<h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
-												<?php endif;?>
+							<div class="th-slider-overlay">
+                                <div class="th-slide-inner">
+                                    <div class="th-slide-content">
+                                        <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
+                                            <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
+                                        <?php endif;?>
 
-												<?php if ( ! empty( $slide['slide_text'] ) ) : ?>
-													<div class="slider-subtitle">
-														<p><?php echo esc_html( $slide['slide_text']) ?></p>
-													</div>
-												<?php endif;?>
+                                        <?php if ( ! empty( $slide['slide_text'] ) ) : ?>
+                                            <div class="slider-subtitle">
+                                                <p><?php echo esc_html( $slide['slide_text']) ?></p>
+                                            </div>
+                                        <?php endif;?>
+                                        <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                            <div class="page-title-button">
+                                                <?php if (isset($slide['slide_button_text_1_show']) && $slide['slide_button_text_1_show'] == 'yes') : ?>
+                                                    <?php if ( ! empty( $slide['slide_button_link_1']['url']) ) : ?>
+                                                        <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                        <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
+                                                        <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
+                                                    <?php endif; ?>
+                                                    <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                        <?php echo esc_html( $slide['slide_button_text_1']) ?>
+                                                    <?php endif;?>
+                                                    <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+                                                        <?php echo '</a>'; ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                                <?php if (isset($slide['slide_button_text_2_show']) && $slide['slide_button_text_2_show'] == 'yes') : ?>
+                                                    <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+                                                        <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                        <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
+                                                        <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
+                                                    <?php endif; ?>
+                                                    <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                                        <?php echo esc_html( $slide['slide_button_text_2']) ?>
+                                                    <?php endif;?>
+                                                    <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+                                                        <?php echo '</a>'; ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
 
-												<?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
-													<div class="page-title-button">
-														<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-															<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-															<?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
-															<?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
-														<?php endif; ?>
-														<?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
-															<?php echo esc_html( $slide['slide_button_text_1']) ?>
-														<?php endif;?>
-														<?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-															<?php echo '</a>'; ?>
-														<?php endif; ?>
-														<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-															<?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-															<?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
-															<?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
-														<?php endif; ?>
-														<?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
-															<?php echo esc_html( $slide['slide_button_text_2']) ?>
-														<?php endif;?>
-														<?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-															<?php echo '</a>'; ?>
-														<?php endif; ?>
-													</div>
-												<?php endif; ?>
+                                        <?php if ( $slide['slide_image']['id'] ) : ?>
+                                            <div class="page-title-image ">
+                                                <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+                                                    <?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                    <?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
+                                                <?php endif; ?>
+                                                <?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
+                                                <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
+                                                    <?php echo '</a>'; ?>
+                                                <?php endif; ?>
+                                                </div>
+                                        <?php endif; ?>
 
-												<?php if ( $slide['slide_image']['id'] ) : ?>
-													<div class="page-title-image ">
-														<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-															<?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
-															<?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
-														<?php endif; ?>
-														<?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
-														<?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
-															<?php echo '</a>'; ?>
-														<?php endif; ?>
-														</div>
-												<?php endif; ?>
-
-												<?php if ( $slide['slide_shortcode'] ) : ?>
-													<?php $show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
-													<?php $tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
-													<?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
-													<?php themo_do_metabox_shortcode( $slide['slide_shortcode'], '', '', '', $show_tooltip, $tooltip ); ?>
-												<?php endif; ?>
-											</div>
-										</div>
-									</div>
-								</div>
+                                        <?php if ( $slide['slide_shortcode'] ) : ?>
+                                            <?php $show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
+                                            <?php $tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
+                                            <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
+                                            <?php themo_do_metabox_shortcode( $slide['slide_shortcode'], '', '', '', $show_tooltip, $tooltip ); ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</li>
