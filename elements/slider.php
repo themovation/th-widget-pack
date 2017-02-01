@@ -73,7 +73,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Repeat', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'repeat',
+				'default' => 'no-repeat',
 				'options' => [
 					'no-repeat' => __( 'No Repeat', 'elementor' ),
 					'repeat' => __( 'Repeat All', 'elementor' ),
@@ -552,6 +552,7 @@ class Themo_Widget_Slider extends Widget_Base {
             ]
         );
 
+
         $th_repeater->add_control(
             'slide_horizontal_position',
             [
@@ -580,15 +581,6 @@ class Themo_Widget_Slider extends Widget_Base {
                     'center' => 'margin: 0 auto',
                     'right' => 'margin-left: auto',
                 ],
-                /*'conditions' => [
-                    'terms' => [
-                        [
-                            'name' => 'slide_custom_style',
-                            'operator' => '==',
-                            'value' => 'yes',
-                        ],
-                    ],
-                ],*/
             ]
         );
 
@@ -613,13 +605,14 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'align-items: {{VALUE}}',
 				],
 				'selectors_dictionary' => [
 					'top' => 'flex-start',
 					'middle' => 'center',
 					'bottom' => 'flex-end',
 				],
+                //'prefix_class' => 'th-slide-v-position-',
 			]
 		);
 
