@@ -547,7 +547,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     'unit' => '%',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .th-slide-inner' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .th-slide-content' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1460,7 +1460,6 @@ class Themo_Widget_Slider extends Widget_Base {
 
 					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg">
-							<div class="th-slider-overlay">
 							<div class="th-slider-overlay">
                                 <div class="th-slide-inner">
                                     <div class="th-slide-content">
