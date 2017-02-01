@@ -471,12 +471,29 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+        $th_repeater->add_control(
+            'slide_shortcode_form_style',
+            [
+                'label' => __( 'Formidable Form Style', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'inline' => __( 'Inline', 'elementor' ),
+                    'stacked' => __( 'Stacked', 'elementor' ),
+                    'none' => __( 'None', 'elementor' ),
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+                ]*/
+            ]
+        );
+
 		$th_repeater->add_control(
 			'slide_shortcode_border',
 			[
-				'label' => __( 'Shortcode Form Border', 'elementor' ),
+				'label' => __( 'Form Background (When Stacked)', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'light',
+				'default' => 'none',
 				'options' => [
 					'light' => __( 'Light', 'elementor' ),
 					'dark' => __( 'Dark', 'elementor' ),
@@ -491,7 +508,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		$th_repeater->add_control(
 			'slide_tooltip',
 			[
-				'label' => __( 'Display Tooltip', 'elementor' ),
+				'label' => __( 'Booked Display Tooltip', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'elementor' ),
 				'label_off' => __( 'No', 'elementor' ),
