@@ -67,6 +67,23 @@ class Themo_Widget_Blog extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'post_image_size',
+            [
+                'label' => __( 'Image Size', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'th_img_sm_landscape',
+                'options' => [
+                    'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
+                    'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
+                    'th_img_sm_square' => __( 'Square', 'elementor' ),
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+                ]*/
+            ]
+        );
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -223,6 +240,15 @@ class Themo_Widget_Blog extends Widget_Base {
 			'post_type' => array( 'post' ),
 		);
 
+		//post_image_size
+
+
+
+        if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
+            global $image_size;
+            $image_size = $settings['post_image_size'];
+        }
+
 		if ( $settings['post_categories'] != 'all' ) {
 			if ( is_array( $settings['post_categories'] ) ) {
 				if ( in_array( 'all', $settings['post_categories'] ) ) {
@@ -243,6 +269,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		// The Query
 		$query = new \WP_Query( $args );
 		// The Loop
+
 		if ( $query->have_posts() ) { ?>
 
 			<section class="masonry-blog">
@@ -251,7 +278,7 @@ class Themo_Widget_Blog extends Widget_Base {
 
 						<?php while ( $query->have_posts() ) { $query->the_post(); ?>
 
-							<?php $format = get_post_format() ? get_post_format() : 'standard'; ?>
+							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
 							<div class="mas-blog-post col-lg-4 col-md-4 col-sm-6">
 								<?php get_template_part('templates/content', $format); ?>
