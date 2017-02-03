@@ -72,11 +72,31 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Image Size', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'th_img_sm_landscape',
+                'default' => 'th_img_sm_standard',
                 'options' => [
+                    'th_img_sm_standard' => __( 'Standard', 'elementor' ),
                     'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
                     'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
                     'th_img_sm_square' => __( 'Square', 'elementor' ),
+                    'th_img_lg' => __( 'Large', 'elementor' ),
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+                ]*/
+            ]
+        );
+
+        $this->add_control(
+            'post_columns',
+            [
+                'label' => __( 'Max. Number of Columns', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '3-col',
+                'options' => [
+                    '2-col' => __( '2 Columns', 'elementor' ),
+                    '3-col' => __( '3 Columns', 'elementor' ),
+                    '4-col' => __( '4 Columns', 'elementor' ),
+                    '5-col' => __( '5 Columns', 'elementor' ),
                 ],
                 /*'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
