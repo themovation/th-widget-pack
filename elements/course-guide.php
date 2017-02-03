@@ -125,6 +125,19 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'gutter',
+            [
+                'label' => __( 'Gutter', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'on',
+                'options' => [
+                    'on' => __( 'On', 'elementor' ),
+                    'off' => __( 'Off', 'elementor' )
+                ],
+            ]
+        );
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -144,6 +157,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 
 		global $th_folio_count;
 		$folio_id = 'th-portfolio-' . ++$th_folio_count;
+
 
 		switch( $settings['columns'] ) {
 			case 2:
@@ -166,6 +180,11 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 				$portfolio_row = '';
 				$portfolio_item = array();
 		}
+
+        if ( isset($settings['gutter']) &&  $settings['gutter'] == 'on'){
+            $portfolio_row .= ' th-port-gutter';
+        }
+
 		?>
 
         <?php
