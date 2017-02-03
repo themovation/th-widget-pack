@@ -309,9 +309,9 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                             $link_title = the_title_attribute('echo=0') ;
                         }
 
+                        $filtering_links = array();
 						$terms = get_the_terms( get_the_ID(), 'themo_project_type' );
 						if ( $terms && ! is_wp_error( $terms ) ) :
-							$filtering_links = array();
 							foreach ( $terms as $term ) {
 								$filtering_links[] = 'p-' . $term->slug;
 							}
@@ -322,7 +322,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 							<div class="th-port-wrap">
 								<?php
                                 if(isset($img_src) &&  $img_src > ""){
-                                    echo '<img class="img-responsive port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
+                                    echo '<img class="img-responsive th-port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
                                 }else{
                                     if ( has_post_thumbnail(get_the_ID()) ) {
                                         $featured_img_attr = array('class'	=> "img-responsive port-img");
