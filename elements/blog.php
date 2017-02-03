@@ -280,7 +280,8 @@ class Themo_Widget_Blog extends Widget_Base {
 
 							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
-							<div class="mas-blog-post col-lg-4 col-md-4 col-sm-6">
+							<!--div class="mas-blog-post col-lg-4 col-md-4 col-sm-6"-->
+                            <div class="mas-blog-post">
 								<?php get_template_part('templates/content', $format); ?>
 							</div>
 
