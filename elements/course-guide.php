@@ -325,7 +325,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                                     echo '<img class="img-responsive th-port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
                                 }else{
                                     if ( has_post_thumbnail(get_the_ID()) ) {
-                                        $featured_img_attr = array('class'	=> "img-responsive port-img");
+                                        $featured_img_attr = array('class'	=> "img-responsive th-port-img");
                                         echo get_the_post_thumbnail(get_the_ID(),"th_img_md_square",$featured_img_attr);
                                     }
                                 }
