@@ -265,8 +265,14 @@ class Themo_Widget_Blog extends Widget_Base {
 
 
         if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
-            global $image_size;
+            global $image_size, $masonry_template_key, $automatic_post_excerpts;
             $image_size = $settings['post_image_size'];
+            $masonry_template_key = '-masonry';
+
+            $automatic_post_excerpts = 'on';
+            if ( function_exists( 'ot_get_option' ) ) {
+                $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+            }
         }
 
 		if ( $settings['post_categories'] != 'all' ) {
