@@ -25,6 +25,7 @@ function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/formidable-form.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/tour-nav.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/button.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/call-to-action.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
