@@ -30,7 +30,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		);
 
 		$this->add_control(
-			'text',
+			'title',
 			[
 				'label' => __( 'Title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,

@@ -27,6 +27,7 @@ function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/button.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/call-to-action.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/itinerary.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/google-maps.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
