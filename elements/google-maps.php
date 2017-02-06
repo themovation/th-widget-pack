@@ -33,7 +33,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'address',
 			[
-				'label' => __( 'Address', 'elementor' ),
+				'label' => __( 'Map Address', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => $default_address,
 				'default' => $default_address,
@@ -120,9 +120,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		);
 
 		$this->add_control(
-			'address',
+			'business_address',
 			[
-				'label' => __( 'Address', 'elementor' ),
+				'label' => __( 'Business Address', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
