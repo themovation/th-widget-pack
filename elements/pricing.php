@@ -87,30 +87,176 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'placeholder' => __( 'List all details here. Use line break to for new line.', 'elementor' ),
 						'label_block' => true,
 					],
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'label' => __( 'Button 1', 'elementor' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Yes', 'elementor' ),
+                        'label_off' => __( 'No', 'elementor' ),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'separator' => 'before',
+                    ],
 					[
 						'name' => 'price_col_button_1_text',
 						'label' => __( 'Button 1 Text', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
 						'default' => __( 'Click Here', 'elementor' ),
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_1_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
 					],
+                    [
+                        'name' => 'price_col_button_1_style',
+                        'label' => __( 'Button 1 Style', 'elementor' ),
+                        'type' => Controls_Manager::SELECT,
+                        'default' => 'standard-primary',
+                        'options' => [
+                            'standard-primary' => __( 'Standard Primary', 'elementor' ),
+                            'standard-accent' => __( 'Standard Accent', 'elementor' ),
+                            'standard-light' => __( 'Standard Light', 'elementor' ),
+                            'standard-dark' => __( 'Standard Dark', 'elementor' ),
+                            'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
+                            'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
+                            'ghost-light' => __( 'Ghost Light', 'elementor' ),
+                            'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
+                            'cta-primary' => __( 'CTA Primary', 'elementor' ),
+                            'cta-primary' => __( 'CTA Accent', 'elementor' ),
+                        ],
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_1_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'price_col_button_1_icon',
+                        'label' => __( 'Button 1 Icon', 'elementor' ),
+                        'type' => Controls_Manager::ICON,
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_1_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
 					[
 						'name' => 'price_col_button_1_link',
 						'label' => __( 'Button 1 Link', 'elementor' ),
 						'type' => Controls_Manager::URL,
 						'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_1_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
 					],
-					[
-						'name' => 'price_col_button_2_text',
-						'label' => __( 'Button 2 Text', 'elementor' ),
-						'type' => Controls_Manager::TEXT,
-						'default' => __( 'Click Here', 'elementor' ),
-					],
-					[
-						'name' => 'price_col_button_2_link',
-						'label' => __( 'Button 2 Link', 'elementor' ),
-						'type' => Controls_Manager::URL,
-						'placeholder' => __( 'http://your-link.com', 'elementor' ),
-					],
+                    [
+                        'name' => 'price_col_button_1_div',
+                        'type' => Controls_Manager::DIVIDER,
+                    ],
+                    [
+                        'name' => 'price_col_button_2_show',
+                        'label' => __( 'Button 2', 'elementor' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Yes', 'elementor' ),
+                        'label_off' => __( 'No', 'elementor' ),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'separator' => 'before',
+                    ],
+                    [
+                        'name' => 'price_col_button_2_text',
+                        'label' => __( 'Button 2 Text', 'elementor' ),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __( 'Click Here', 'elementor' ),
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_2_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'price_col_button_2_style',
+                        'label' => __( 'Button 2 Style', 'elementor' ),
+                        'type' => Controls_Manager::SELECT,
+                        'default' => 'standard-primary',
+                        'options' => [
+                            'standard-primary' => __( 'Standard Primary', 'elementor' ),
+                            'standard-accent' => __( 'Standard Accent', 'elementor' ),
+                            'standard-light' => __( 'Standard Light', 'elementor' ),
+                            'standard-dark' => __( 'Standard Dark', 'elementor' ),
+                            'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
+                            'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
+                            'ghost-light' => __( 'Ghost Light', 'elementor' ),
+                            'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
+                            'cta-primary' => __( 'CTA Primary', 'elementor' ),
+                            'cta-primary' => __( 'CTA Accent', 'elementor' ),
+                        ],
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_2_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'price_col_button_2_icon',
+                        'label' => __( 'Button 2 Icon', 'elementor' ),
+                        'type' => Controls_Manager::ICON,
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_2_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'price_col_button_2_link',
+                        'label' => __( 'Button 2 Link', 'elementor' ),
+                        'type' => Controls_Manager::URL,
+                        'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_2_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'price_col_button_2_div',
+                        'type' => Controls_Manager::DIVIDER,
+                    ],
 					[
 						'name' => 'price_col_featured',
 						'label' => __( 'Featured', 'elementor' ),
@@ -1036,26 +1182,30 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
 							<div class="page-title-button">
-								<?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
-									<?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
-									<?php echo '<a class="th-button th-button-1" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
-								<?php endif; ?>
-								<?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-									<?php echo esc_html( $column['price_col_button_1_text']) ?>
-								<?php endif;?>
-								<?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
-									<?php echo '</a>'; ?>
-								<?php endif; ?>
-								<?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
-									<?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
-									<?php echo '<a class="th-button th-button-2" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
-								<?php endif; ?>
-								<?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
-									<?php echo esc_html( $column['price_col_button_2_text']) ?>
-								<?php endif;?>
-								<?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
-									<?php echo '</a>'; ?>
-								<?php endif; ?>
+                                <?php if (isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes') : ?>
+                                    <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
+                                        <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
+                                        <?php echo '<a class="th-button th-button-1" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
+                                    <?php endif; ?>
+                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                        <?php echo esc_html( $column['price_col_button_1_text']) ?>
+                                    <?php endif;?>
+                                    <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
+                                        <?php echo '</a>'; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if (isset($column['price_col_button_2_show']) && $column['price_col_button_2_show'] == 'yes') : ?>
+                                    <?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
+                                        <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
+                                        <?php echo '<a class="th-button th-button-2" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
+                                    <?php endif; ?>
+                                    <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
+                                        <?php echo esc_html( $column['price_col_button_2_text']) ?>
+                                    <?php endif;?>
+                                    <?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
+                                        <?php echo '</a>'; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
 							</div>
 						<?php endif; ?>
 
