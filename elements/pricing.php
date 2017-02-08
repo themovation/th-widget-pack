@@ -127,7 +127,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                             'ghost-light' => __( 'Ghost Light', 'elementor' ),
                             'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
                             'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                            'cta-primary' => __( 'CTA Accent', 'elementor' ),
+                            'cta-accent' => __( 'CTA Accent', 'elementor' ),
                         ],
                         'conditions' => [
                             'terms' => [
@@ -212,7 +212,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                             'ghost-light' => __( 'Ghost Light', 'elementor' ),
                             'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
                             'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                            'cta-primary' => __( 'CTA Accent', 'elementor' ),
+                            'cta-accent' => __( 'CTA Accent', 'elementor' ),
                         ],
                         'conditions' => [
                             'terms' => [
