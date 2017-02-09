@@ -104,6 +104,17 @@ class Themo_Widget_Blog extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'pagination',
+            [
+                'label' => __( 'Pagination', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'label_off',
+                'label_on' => __( 'Yes', 'elementor' ),
+                'label_off' => __( 'No', 'elementor' ),
+            ]
+        );
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -253,17 +264,20 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+        $settings = $this->get_settings();
+
+        $use_bittersweet_pagination = false;
+        if(is_front_page()) {
+            $use_bittersweet_pagination=true;
+        }
 
 		// WP_Query arguments
 		$args = array (
 			'post_type' => array( 'post' ),
+            'post_status'=>array('publish'),
 		);
 
-		//post_image_size
-
-
-
+        
         if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
             global $image_size, $masonry_template_key, $automatic_post_excerpts;
             $image_size = $settings['post_image_size'];
@@ -272,6 +286,29 @@ class Themo_Widget_Blog extends Widget_Base {
             $automatic_post_excerpts = 'on';
             if ( function_exists( 'ot_get_option' ) ) {
                 $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+            }
+        }
+
+        $th_section_class = "masonry-blog";
+        $th_post_classes = "col-sm-6 col-md-4";
+
+        if ( isset($settings['post_columns']) &&  $settings['post_columns'] > "") {
+            switch ($settings['post_columns']) {
+                case '2-col':
+                    $th_section_class .= " th-blog-2-col";
+                    $th_post_classes = "col-sm-6";
+                    break;
+                case '4-col':
+                    $th_section_class .= " th-blog-4-col";
+                    $th_post_classes = "col-sm-6 col-md-4";
+                    break;
+                case '5-col':
+                    $th_section_class .= " th-blog-5-col";
+                    $th_post_classes = "col-sm-6 col-md-4";
+                    break;
+                default:
+                    $th_section_class .= " th-blog-3-col";
+                    $th_post_classes = "col-sm-6 col-md-4";
             }
         }
 
@@ -292,28 +329,64 @@ class Themo_Widget_Blog extends Widget_Base {
 			$args['posts_per_page'] = $settings['post_count'];
 		}
 
+        if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' ) {
+            if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
+            elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
+            else { $paged = 1; }
+
+            if(isset($settings['post_count'])) {
+                $th_offset = ( $paged - 1 ) * $settings['post_count'];
+            } else{
+                $default_posts_per_page = get_option( 'posts_per_page' );
+                $th_offset = ( $paged - 1 ) * $default_posts_per_page;
+            }
+
+            $args['paged'] = $paged;
+            $args['offset'] = $th_offset;
+        }
+
 		// The Query
 		$query = new \WP_Query( $args );
+
+        //echo "<pre>";
+        //print_r($args);
+        //echo "</pre>";
 		// The Loop
 
 		if ( $query->have_posts() ) { ?>
 
-			<section class="masonry-blog">
+			<section class="<?php echo $th_section_class; ?>">
 				<div class="container">
 
                     <div class="mas-blog row">
-                        <div class="mas-blog-post-sizer col-lg-4 col-md-4 col-sm-6"></div>
+                        <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
 						<?php while ( $query->have_posts() ) { $query->the_post(); ?>
 
 							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
-							<div <?php post_class("mas-blog-post col-lg-4 col-md-4 col-sm-6"); ?>>
+							<div <?php $th_post_classes = "mas-blog-post ".$th_post_classes; post_class($th_post_classes); ?>>
 								<?php get_template_part('templates/content', $format); ?>
 							</div>
 
 						<?php } ?>
 
 					</div>
+                    <?php if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' ) { ?>
+                    <div class="row">
+                        <?php if ($query->max_num_pages > 1) { ?>
+                            <nav class="post-nav">
+                                <ul class="pager">
+                                    <?php if($use_bittersweet_pagination){
+                                        bittersweet_pagination();
+                                    }else{ ?>
+                                        <li class="previous"><?php next_posts_link(esc_html__('&larr; Older posts', 'westwood'), $query->max_num_pages); ?></li>
+                                        <li class="next"><?php previous_posts_link(esc_html__('Newer posts &rarr;', 'westwood'), $query->max_num_pages); ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </nav>
+                        <?php } ?>
+                    </div>
+                    <?php } ?>
 				</div>
 			</section>
 			<?php
@@ -322,7 +395,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			esc_html_e('Sorry, no results were found.', 'themovation-widgets');
 		}
 
-		wp_reset_postdata();
+        wp_reset_postdata();
 	}
 
 	protected function _content_template() {}
