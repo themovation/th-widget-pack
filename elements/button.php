@@ -260,7 +260,7 @@ class Themo_Widget_Button extends Widget_Base {
 		<# } #>
 		<# if ( settings.button_2_link.url ) { #>
 			<a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ settings.button_2_link.url }}">
-				{{{ settings.button_1_text }}}
+				{{{ settings.button_2_text }}}
 				<# if ( settings.button_2_icon ) { #>
 					<i class="{{ settings.button_2_icon }}"></i>
 				<# } #>

@@ -30,7 +30,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		);
 
 		$this->add_control(
-			'title',
+			'text',
 			[
 				'label' => __( 'Title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
@@ -169,7 +169,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-cta-text span' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -180,14 +180,99 @@ class Themo_Widget_CallToAction extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
+
+		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
+		$this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
+		$this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
+		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . $settings['button_1_style'] );
+
+		if ( ! empty( $settings['button_1_link']['url'] ) ) {
+			$this->add_render_attribute( 'btn-1-link', 'href', $settings['button_1_link']['url'] );
+
+			if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
+				$this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
+			}
+		}
+
+		$this->add_render_attribute( 'btn-2-link', 'class', 'btn-2' );
+		$this->add_render_attribute( 'btn-2-link', 'class', 'btn' );
+		$this->add_render_attribute( 'btn-2-link', 'class', 'th-btn' );
+		$this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . $settings['button_2_style'] );
+
+		if ( ! empty( $settings['button_2_link']['url'] ) ) {
+			$this->add_render_attribute( 'btn-2-link', 'href', $settings['button_2_link']['url'] );
+
+			if ( ! empty( $settings['button_2_link']['is_external'] ) ) {
+				$this->add_render_attribute( 'btn-2-link', 'target', '_blank' );
+			}
+		}
 		?>
+
+		<div class="th-cta">
+			<?php if ( $settings['text'] ) : ?>
+		        <div class="th-cta-text">
+		            <span><?php echo esc_html( $settings['text'] ); ?></span>
+		        </div>
+		    <?php endif; ?>
+			<?php if ( ! empty( $settings['button_1_link']['url'] ) || ! empty( $settings['button_2_link']['url'] ) ) : ?>
+				<div class="th-cta-btn">
+					<?php if ( ! empty( $settings['button_1_link']['url'] ) ) : ?>
+						<a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
+							<?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
+								<?php echo esc_html( $settings['button_1_text'] ); ?>
+							<?php endif; ?>
+							<?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
+								<i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
+							<?php endif; ?>
+						</a>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $settings['button_2_link']['url'] ) ) : ?>
+						<a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
+							<?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
+								<?php echo esc_html( $settings['button_2_text'] ); ?>
+							<?php endif; ?>
+							<?php if ( ! empty( $settings['button_2_icon'] ) ) : ?>
+								<i class="<?php echo esc_attr( $settings['button_2_icon'] ); ?>"></i>
+							<?php endif; ?>
+						</a>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+		</div>
 
 		<?php
 	}
 
 	protected function _content_template() {
 		?>
-
+		<div class="th-cta">
+			<# if ( settings.text ) { #>
+		        <div class="th-cta-text">
+		            <span>{{{ settings.text }}}</span>
+		        </div>
+		    <# } #>
+			<# if ( settings.button_1_link.url || settings.button_2_link.url ) { #>
+				<div class="th-cta-btn">
+					<# if ( settings.button_1_link.url ) { #>
+						<a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ settings.button_1_link.url }}">
+							{{{ settings.button_1_text }}}
+							<# if ( settings.button_1_icon ) { #>
+								<i class="{{ settings.button_1_icon }}"></i>
+							<# } #>
+						</a>
+					<# } #>
+					<# if ( settings.button_2_link.url ) { #>
+						<a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ settings.button_2_link.url }}">
+							{{{ settings.button_2_text }}}
+							<# if ( settings.button_2_icon ) { #>
+								<i class="{{ settings.button_2_icon }}"></i>
+							<# } #>
+						</a>
+					<# } #>
+				</div>
+			<# } #>
+		</div>
 		<?php
 	}
 }
