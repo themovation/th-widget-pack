@@ -125,7 +125,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Position', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'left top',
+				'default' => 'center center',
 				'options' => [
 					'left top' =>  __( 'Left Top', 'elementor' ),
 					'left center' =>  __( 'Left Center', 'elementor' ),
@@ -361,21 +361,6 @@ class Themo_Widget_Slider extends Widget_Base {
             ]
         );
 
-        /*$th_repeater->add_control(
-            'slide_button_text_2_div',
-            [
-                'type' => Controls_Manager::DIVIDER,
-                'conditions' => [
-                    'terms' => [
-                        [
-                            'name' => 'slide_button_text_2_show',
-                            'operator' => '==',
-                            'value' => 'yes',
-                        ],
-                    ],
-                ],
-            ]
-        );*/
 
 		$th_repeater->add_control(
 			'slide_button_text_2',
