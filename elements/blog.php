@@ -264,12 +264,9 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	protected function render() {
-        $settings = $this->get_settings();
+	    $settings = $this->get_settings();
 
-        $use_bittersweet_pagination = false;
-        if(is_front_page()) {
-            $use_bittersweet_pagination=true;
-        }
+
 
 		// WP_Query arguments
 		$args = array (
@@ -330,9 +327,12 @@ class Themo_Widget_Blog extends Widget_Base {
 		}
 
         if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' ) {
+
+
             if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
             elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
             else { $paged = 1; }
+
 
             if(isset($settings['post_count'])) {
                 $th_offset = ( $paged - 1 ) * $settings['post_count'];
@@ -342,25 +342,31 @@ class Themo_Widget_Blog extends Widget_Base {
             }
 
             $args['paged'] = $paged;
-            $args['offset'] = $th_offset;
+            //$args['offset'] = $th_offset;
         }
 
 		// The Query
-		$query = new \WP_Query( $args );
+        $use_bittersweet_pagination = false;
+        if(is_front_page()) {
+            $use_bittersweet_pagination=true;
+        }
 
-        //echo "<pre>";
-        //print_r($args);
-        //echo "</pre>";
-		// The Loop
+        $widget_wp_query = new \WP_Query( $args );
+        global $wp_query;
 
-		if ( $query->have_posts() ) { ?>
+        // Pagination fix
+        $temp_query = $wp_query;
+        $wp_query   = NULL;
+        $wp_query   = $widget_wp_query;
+
+		if ( $widget_wp_query->have_posts() ) { ?>
 
 			<section class="<?php echo $th_section_class; ?>">
 				<div class="container">
 
                     <div class="mas-blog row">
                         <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
-						<?php while ( $query->have_posts() ) { $query->the_post(); ?>
+						<?php while ( $widget_wp_query->have_posts() ) { $widget_wp_query->the_post(); ?>
 
 							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
@@ -370,21 +376,25 @@ class Themo_Widget_Blog extends Widget_Base {
 
 						<?php } ?>
 
+                        <?php
+                        // Reset postdata
+                        wp_reset_postdata();
+                        ?>
+
 					</div>
-                    <?php if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' ) { ?>
+                    <?php if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1) { ?>
                     <div class="row">
-                        <?php if ($query->max_num_pages > 1) { ?>
-                            <nav class="post-nav">
-                                <ul class="pager">
-                                    <?php if($use_bittersweet_pagination){
-                                        bittersweet_pagination();
-                                    }else{ ?>
-                                        <li class="previous"><?php next_posts_link(esc_html__('&larr; Older posts', 'westwood'), $query->max_num_pages); ?></li>
-                                        <li class="next"><?php previous_posts_link(esc_html__('Newer posts &rarr;', 'westwood'), $query->max_num_pages); ?></li>
-                                    <?php } ?>
-                                </ul>
-                            </nav>
-                        <?php } ?>
+                        <nav class="post-nav">
+                            <ul class="pager">
+                                <?php
+                                if($use_bittersweet_pagination) {
+                                    bittersweet_pagination();
+                                } else { ?>
+                                <li class="previous"><?php next_posts_link(esc_html__('&larr; Older posts', 'westwood'), $widget_wp_query->max_num_pages); ?></li>
+                                <li class="next"><?php previous_posts_link(esc_html__('Newer posts &rarr;', 'westwood')); ?></li>
+                               <?php }?>
+                            </ul>
+                        </nav>
                     </div>
                     <?php } ?>
 				</div>
@@ -395,7 +405,10 @@ class Themo_Widget_Blog extends Widget_Base {
 			esc_html_e('Sorry, no results were found.', 'themovation-widgets');
 		}
 
-        wp_reset_postdata();
+        // Reset main query object
+        $wp_query = NULL;
+        $wp_query = $temp_query;
+
 	}
 
 	protected function _content_template() {}
