@@ -457,19 +457,14 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
         $th_repeater->add_control(
-            'slide_shortcode_form_style',
+            'inline_form',
             [
-                'label' => __( 'Formidable Form Style', 'elementor' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'none',
-                'options' => [
-                    'inline' => __( 'Inline', 'elementor' ),
-                    'stacked' => __( 'Stacked', 'elementor' ),
-                    'none' => __( 'None', 'elementor' ),
-                ],
-                /*'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
-                ]*/
+                'label' => __( 'Show form inline', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'label_on',
+                'label_on' => __( 'Yes', 'elementor' ),
+                'label_off' => __( 'No', 'elementor' ),
+                'return_value' => 'th-conversion',
             ]
         );
 
@@ -480,13 +475,13 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'light' => __( 'Light', 'elementor' ),
-					'dark' => __( 'Dark', 'elementor' ),
+					'th-form-bg th-light-bg' => __( 'Light', 'elementor' ),
+					'th-form-bg th-dark-bg' => __( 'Dark', 'elementor' ),
 					'none' => __( 'None', 'elementor' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
-				]
+                'condition' => [
+                    'inline_form' => '',
+                ],
 			]
 		);
 
@@ -1449,7 +1444,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		$init_main_loop = 0;
 		?>
 
-		<div id="main-flex-slider" class="flexslider" >
+		<div id="main-flex-slider" class="flexslider">
 			<ul class="slides">
 				<?php foreach( $settings['slides'] as $slide ) { ?>
 
@@ -1459,9 +1454,17 @@ class Themo_Widget_Slider extends Widget_Base {
 					<?php if ( ! empty( $settings['button_size_2'] ) ) {
 						$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
 					} ?>
+                    <?php
+                    $th_form_border_class = false;
+                    $th_stacked_form_class = false;
+                    if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none' && isset($slide['inline_form']) && $slide['inline_form'] == ""){
+                        $th_form_border_class = $slide['slide_shortcode_border'];
+                        $th_stacked_form_class = 'th-simple-conversion ';
+                    }
+                    ?>
 
-					<li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
-						<div class="slider-bg">
+                    <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
+						<div class="slider-bg <?php echo $th_form_border_class; ?>">
 							<div class="th-slider-overlay">
                                 <div class="th-slide-inner">
                                     <div class="th-slide-content">
@@ -1518,11 +1521,43 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 </div>
                                         <?php endif; ?>
 
-                                        <?php if ( $slide['slide_shortcode'] ) : ?>
+                                        <?php if ( isset($slide['slide_shortcode'])) : ?>
                                             <?php $show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
-                                            <?php $tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
+                                            <?php $th_tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
                                             <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
-                                            <?php themo_do_metabox_shortcode( $slide['slide_shortcode'], '', '', '', $show_tooltip, $tooltip ); ?>
+                                            <?php $th_inline_class =  (isset($slide['inline_form']) ? $slide['inline_form'] : false); ?>
+
+                                            <?php 
+
+                                                $th_shortcode = sanitize_text_field($slide['slide_shortcode']);
+                                                $th_brackets = array("[","]");
+                                                $th_shortcode_text = str_replace($th_brackets,"", $th_shortcode);
+                                                $th_shortcode_name = strtok($th_shortcode_text,  ' ');
+                                                $th_output = "";
+    
+                                                switch ($th_shortcode_name) {
+                                                    case 'formidable':
+                                                        $th_output .= '<div class="'.sanitize_html_class($th_stacked_form_class) . sanitize_html_class($th_inline_class).'">';
+                                                        $th_output .= do_shortcode( $th_shortcode );
+                                                        $th_output .= '</div>';
+                                                        break;
+                                                    case 'booked-calendar':
+                                                        $th_output .= '<div class="booked-cal-sm .booked-cal-sm">';
+                                                        if($show_tooltip){
+                                                            $th_output .= '<div class="cal-tooltip">';
+                                                            $th_output .= '<h3>'.esc_attr($th_tooltip).'</h3>';
+                                                            $th_output .= '</div>';
+                                                        }
+                                                        $th_output .= do_shortcode( $th_shortcode );
+                                                        $th_output .= '</div>';
+                                                        break;
+                                                    default:
+                                                        $th_output .= '<div>';
+                                                        $th_output .= do_shortcode( $th_shortcode );
+                                                        $th_output .= '</div>';
+                                                }
+                                                echo $th_output;
+                                            ?>
                                         <?php endif; ?>
                                     </div>
                                 </div>
