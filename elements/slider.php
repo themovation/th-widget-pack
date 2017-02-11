@@ -457,9 +457,16 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
         $th_repeater->add_control(
+            'slide_shortcode_div_1',
+            [
+                'type' => Controls_Manager::DIVIDER,
+            ]
+        );
+
+        $th_repeater->add_control(
             'inline_form',
             [
-                'label' => __( 'Show form inline', 'elementor' ),
+                'label' => __( 'Show Form Inline', 'elementor' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'label_on',
                 'label_on' => __( 'Yes', 'elementor' ),
@@ -485,6 +492,14 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+        $th_repeater->add_control(
+            'slide_shortcode_div_2',
+            [
+                'type' => Controls_Manager::DIVIDER,
+            ]
+        );
+
+
 		$th_repeater->add_control(
 			'slide_tooltip',
 			[
@@ -506,6 +521,19 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 			]
 		);
+
+        $th_repeater->add_control(
+            'th_cal_size',
+            [
+                'label' => __( 'Calendar Size', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'small',
+                'options' => [
+                    'small' => __( 'Small', 'elementor' ),
+                    'large' => __( 'Large', 'elementor' ),
+                ]
+            ]
+        );
 
 		$th_repeater->end_controls_tab();
 
@@ -1522,7 +1550,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                         <?php endif; ?>
 
                                         <?php if ( isset($slide['slide_shortcode'])) : ?>
-                                            <?php $show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
+                                            <?php $sth_show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
                                             <?php $th_tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
                                             <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
                                             <?php $th_inline_class =  (isset($slide['inline_form']) ? $slide['inline_form'] : false); ?>
@@ -1533,6 +1561,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 $th_brackets = array("[","]");
                                                 $th_shortcode_text = str_replace($th_brackets,"", $th_shortcode);
                                                 $th_shortcode_name = strtok($th_shortcode_text,  ' ');
+                                                $th_cal_size =  (isset($slide['th_cal_size']) ? $slide['th_cal_size'] : false);
                                                 $th_output = "";
     
                                                 switch ($th_shortcode_name) {
@@ -1542,9 +1571,9 @@ class Themo_Widget_Slider extends Widget_Base {
                                                         $th_output .= '</div>';
                                                         break;
                                                     case 'booked-calendar':
-                                                        $th_output .= '<div class="booked-cal-sm .booked-cal-sm">';
-                                                        if($show_tooltip){
-                                                            $th_output .= '<div class="cal-tooltip">';
+                                                        $th_output .= '<div class="th-book-cal-'.esc_attr( $th_cal_size ) .'">';
+                                                        if($sth_show_tooltip){
+                                                            $th_output .= '<div class="th-cal-tooltip">';
                                                             $th_output .= '<h3>'.esc_attr($th_tooltip).'</h3>';
                                                             $th_output .= '</div>';
                                                         }
