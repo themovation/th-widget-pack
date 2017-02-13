@@ -1508,30 +1508,14 @@ class Themo_Widget_Slider extends Widget_Base {
                                         <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
                                             <div class="th-btn-wrap">
                                                 <?php if (isset($slide['slide_button_text_1_show']) && $slide['slide_button_text_1_show'] == 'yes') : ?>
-                                                    <?php if ( ! empty( $slide['slide_button_link_1']['url']) ) : ?>
-                                                        <?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                        <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
-                                                        <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>'; ?>
-                                                    <?php endif; ?>
-                                                    <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
-                                                        <?php echo esc_html( $slide['slide_button_text_1']) ?>
-                                                    <?php endif;?>
-                                                    <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
-                                                        <?php echo '</a>'; ?>
-                                                    <?php endif; ?>
+													<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                    <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>' . esc_html( $slide['slide_button_text_1']) . '</a>'; ?>
                                                 <?php endif; ?>
                                                 <?php if (isset($slide['slide_button_text_2_show']) && $slide['slide_button_text_2_show'] == 'yes') : ?>
-                                                    <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-                                                        <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                        <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
-                                                        <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>'; ?>
-                                                    <?php endif; ?>
-                                                    <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
-                                                        <?php echo esc_html( $slide['slide_button_text_2']) ?>
-                                                    <?php endif;?>
-                                                    <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
-                                                        <?php echo '</a>'; ?>
-                                                    <?php endif; ?>
+                                                    <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
+                                                    <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>' . esc_html( $slide['slide_button_text_2']) . '</a>'; ?>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>
