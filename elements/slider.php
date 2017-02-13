@@ -1555,7 +1555,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                             <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
                                             <?php $th_inline_class =  (isset($slide['inline_form']) ? $slide['inline_form'] : false); ?>
 
-                                            <?php 
+                                            <?php
 
                                                 $th_shortcode = sanitize_text_field($slide['slide_shortcode']);
                                                 $th_brackets = array("[","]");
@@ -1563,7 +1563,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 $th_shortcode_name = strtok($th_shortcode_text,  ' ');
                                                 $th_cal_size =  (isset($slide['th_cal_size']) ? $slide['th_cal_size'] : false);
                                                 $th_output = "";
-    
+
                                                 switch ($th_shortcode_name) {
                                                     case 'formidable':
                                                         $th_output .= '<div class="'.sanitize_html_class($th_stacked_form_class) . sanitize_html_class($th_inline_class).'">';
@@ -1603,7 +1603,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		</div>
 
 		<script>
-			jQuery(window).load(function() {
+			jQuery( function ( $ ) {
 				themo_start_flex_slider(
 					'#main-flex-slider',
 					'<?php echo $settings['animation']; ?>',
@@ -1618,7 +1618,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					<?php echo $settings['direction'] ? 'true' : 'false'; ?>,
 					<?php echo $settings['paging'] ? 'true' : 'false'; ?>
 				);
-			});
+			} );
 		</script>
 		<?php
 	}
