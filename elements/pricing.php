@@ -1219,6 +1219,13 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 		</div>
 
+		<script>
+		jQuery( function ( $ ) {
+			// Adjust Pricing Table Height
+			themo_adjust_pricing_table_height();
+		} );
+		</script>
+
 		<?php
 	}
 
