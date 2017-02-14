@@ -1181,7 +1181,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						</div>
 
 						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
-							<div class="page-title-button">
+							<div class="th-btn-wrap">
                                 <?php if (isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes') : ?>
                                     <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
                                         <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
