@@ -1183,30 +1183,22 @@ class Themo_Widget_Pricing extends Widget_Base {
 						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
 							<div class="th-btn-wrap">
                                 <?php if (isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes') : ?>
-                                    <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
-                                        <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
-                                        <?php $button_style = 'btn-' . $column['price_col_button_1_style']; ?>
-                                        <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
-                                    <?php endif; ?>
+                                    <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
+                                    <?php $button_style = 'btn-' . $column['price_col_button_1_style']; ?>
+                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
                                     <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
                                         <?php echo esc_html( $column['price_col_button_1_text']) ?>
                                     <?php endif;?>
-                                    <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
-                                        <?php echo '</a>'; ?>
-                                    <?php endif; ?>
+                                    <?php echo '</a>'; ?>
                                 <?php endif; ?>
                                 <?php if (isset($column['price_col_button_2_show']) && $column['price_col_button_2_show'] == 'yes') : ?>
-                                    <?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
-                                        <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
-                                        <?php $button_style = 'btn-' . $column['price_col_button_2_style']; ?>
-                                        <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
-                                    <?php endif; ?>
+                                    <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
+                                    <?php $button_style = 'btn-' . $column['price_col_button_2_style']; ?>
+                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
                                     <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
                                         <?php echo esc_html( $column['price_col_button_2_text']) ?>
                                     <?php endif;?>
-                                    <?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
-                                        <?php echo '</a>'; ?>
-                                    <?php endif; ?>
+                                    <?php echo '</a>'; ?>
                                 <?php endif; ?>
 							</div>
 						<?php endif; ?>
