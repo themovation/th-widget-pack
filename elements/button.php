@@ -77,7 +77,7 @@ class Themo_Widget_Button extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		/*$this->add_responsive_control(
 			'button_1_align',
 			[
 				'label' => __( 'Alignment', 'elementor' ),
@@ -103,7 +103,7 @@ class Themo_Widget_Button extends Widget_Base {
 				'prefix_class' => 'btn-1%s-align-',
 				'default' => '',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -162,7 +162,7 @@ class Themo_Widget_Button extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		/*$this->add_responsive_control(
 			'button_2_align',
 			[
 				'label' => __( 'Alignment', 'elementor' ),
@@ -188,9 +188,49 @@ class Themo_Widget_Button extends Widget_Base {
 				'prefix_class' => 'btn-2%s-align-',
 				'default' => '',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'button_alignment',
+            [
+                'label' => __( 'Button Alignment', 'elementor' ),
+                'type' => Controls_Manager::SECTION,
+            ]
+        );
+
+
+
+        $this->add_responsive_control(
+			'button_align',
+			[
+				'label' => __( 'Alignment', 'elementor' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'    => [
+						'title' => __( 'Left', 'elementor' ),
+						'icon' => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'elementor' ),
+						'icon' => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'elementor' ),
+						'icon' => 'fa fa-align-right',
+					],
+					/*'justify' => [
+						'title' => __( 'Justified', 'elementor' ),
+						'icon' => 'fa fa-align-justify',
+					],*/
+				],
+				'prefix_class' => 'th-btn-align-',
+				'default' => '',
+			]
+		);
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
