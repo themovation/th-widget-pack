@@ -10,7 +10,7 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Team', 'elementor' );
+		return __( 'Team Member', 'elementor' );
 	}
 
 	public function get_icon() {
@@ -36,6 +36,25 @@ class Themo_Widget_Team extends Widget_Base {
 				'type' => Controls_Manager::MEDIA,
 			]
 		);
+
+        $this->add_control(
+            'post_image_size',
+            [
+                'label' => __( 'Image Size', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'th_img_sm_standard',
+                'options' => [
+                    'th_img_sm_standard' => __( 'Standard', 'elementor' ),
+                    'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
+                    'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
+                    'th_img_sm_square' => __( 'Square', 'elementor' ),
+                    'th_img_lg' => __( 'Large', 'elementor' ),
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+                ]*/
+            ]
+        );
 
 		$this->add_control(
 			'name',
@@ -178,7 +197,7 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
@@ -186,7 +205,7 @@ class Themo_Widget_Team extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-team-member-bio',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -214,7 +233,7 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'name_typography',
@@ -222,7 +241,7 @@ class Themo_Widget_Team extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} h4',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -250,7 +269,7 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'job_typography',
@@ -258,7 +277,7 @@ class Themo_Widget_Team extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} h5',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -306,7 +325,16 @@ class Themo_Widget_Team extends Widget_Base {
 			$name = '<h4>' . esc_html( $settings['name'] ) . '</h4>';
 		}
 
-		if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_md_square', false, array( 'class' => 'th-team-member-image' ) );
+
+        if ( empty( $settings['image']['url'] ) ) {
+            return;
+        }
+        if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
+            $image_size = $settings['post_image_size'];
+            if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
+        }
+
+		//if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_md_square', false, array( 'class' => 'th-team-member-image' ) );
 		?>
 
 		<div class="th-team-member">
@@ -347,9 +375,10 @@ class Themo_Widget_Team extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
-		?>
-		<div class="th-team-member">
+	protected function _content_template() {}
+
+	/*
+	 * <div class="th-team-member">
 			<div class="th-team-member-wrap">
 				<# if ( settings.url && settings.url.url ) { #>
 					<a href="{{ settings.url.url }}">
@@ -390,8 +419,8 @@ class Themo_Widget_Team extends Widget_Base {
 				</div>
 			</div>
 		</div>
-		<?php
-	}
+	 *
+	 * */
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Team() );
