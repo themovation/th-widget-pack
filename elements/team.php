@@ -155,7 +155,7 @@ class Themo_Widget_Team extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_background',
 			[
-				'label' => __( 'Background', 'elementor' ),
+				'label' => __( 'Content', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -163,21 +163,11 @@ class Themo_Widget_Team extends Widget_Base {
 		$this->add_control(
 			'background_color',
 			[
-				'label' => __( 'Color', 'elementor' ),
+				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-team-member-wrap' => 'background-color: {{VALUE}};',
 				],
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_content',
-			[
-				'label' => __( 'Content', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -197,26 +187,6 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-team-member-bio',
-			]
-		);*/
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_name',
-			[
-				'label' => __( 'Name', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
 		$this->add_control(
 			'name_color',
 			[
@@ -230,26 +200,6 @@ class Themo_Widget_Team extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} h4' => 'color: {{VALUE}};',
 				],
-			]
-		);
-
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'name_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} h4',
-			]
-		);*/
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_job',
-			[
-				'label' => __( 'Job Title', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -269,25 +219,6 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'job_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} h5',
-			]
-		);*/
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_icon',
-			[
-				'label' => __( 'Icon', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
 
 		$this->add_control(
 			'icon_color',
