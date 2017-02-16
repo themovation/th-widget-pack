@@ -40,14 +40,33 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-        $this->add_group_control(
+        $this->add_control(
+            'post_image_size',
+            [
+                'label' => __( 'Image Size', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'th_img_sm_standard',
+                'options' => [
+                    'th_img_sm_standard' => __( 'Standard', 'elementor' ),
+                    'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
+                    'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
+                    'th_img_sm_square' => __( 'Square', 'elementor' ),
+                    'th_img_lg' => __( 'Large', 'elementor' ),
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
+                ]*/
+            ]
+        );
+
+        /*$this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'image', // Actually its `image_size`
                 'label' => __( 'Image Size', 'elementor' ),
                 'default' => 'large',
             ]
-        );
+        );*/
 
 		$this->add_control(
 			'title',
@@ -182,7 +201,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
@@ -190,7 +209,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} h3',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -218,7 +237,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
@@ -226,7 +245,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-package-content',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -254,7 +273,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_typography',
@@ -262,7 +281,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} h4',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -290,7 +309,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_text_typography',
@@ -298,7 +317,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} span',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 	}
@@ -337,9 +356,13 @@ class Themo_Widget_Package extends Widget_Base {
             if ( empty( $settings['image']['url'] ) ) {
                 return;
             }
+            if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
+                $image_size = $settings['post_image_size'];
+                if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
+            }
             ?>
             <div class="th-pkg-img">
-                <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings ); ?>
+                <?php echo $image ; //echo Group_Control_Image_Size::get_attachment_image_html( $settings ); ?>
             </div>
 
 			<div class="th-pkg-content">
@@ -358,9 +381,10 @@ class Themo_Widget_Package extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
-		?>
-		<article class="th-package">
+	protected function _content_template() {}
+
+	/*
+	 * <article class="th-package">
 			<# if ( settings.url && settings.url.url ) { #>
 				<a class="th-pkg-click"  href="{{ settings.url.url }}"></a>
 			<# } #>
@@ -402,8 +426,7 @@ class Themo_Widget_Package extends Widget_Base {
 				<# } #>
 			</div>
 		</article>
-		<?php
-	}
+	 * */
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Package() );
