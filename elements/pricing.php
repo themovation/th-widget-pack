@@ -294,7 +294,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
@@ -302,7 +302,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-pricing-title',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'price_color',
@@ -320,7 +320,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_typography',
@@ -328,7 +328,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-pricing-cost',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'price_text_color',
@@ -346,7 +346,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_text_typography',
@@ -354,7 +354,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-pricing-cost span',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'description_color',
@@ -372,7 +372,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'description_typography',
@@ -380,9 +380,9 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-pricing-features ul li',
 			]
-		);
+		);*/
 
-		$this->end_controls_section();
+		/*$this->end_controls_section();
 
 		$this->start_controls_section(
 			'section_style_button_1',
@@ -680,7 +680,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'{{WRAPPER}} .th-button-2:hover' => 'border-color: {{VALUE}};',
 				],
 			]
-		);
+		);*/
 
 		$this->end_controls_tabs();
 
@@ -710,7 +710,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'featured_title_typography',
@@ -718,7 +718,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-title',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'featured_price_color',
@@ -736,7 +736,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'featured_price_typography',
@@ -744,7 +744,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-cost',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'featured_price_text_color',
@@ -762,7 +762,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'featured_price_text_typography',
@@ -770,7 +770,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-cost span',
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'featured_description_color',
@@ -788,7 +788,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'featured_description_typography',
@@ -796,11 +796,11 @@ class Themo_Widget_Pricing extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-highlight .th-pricing-features ul li',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
+		/*$this->start_controls_section(
 			'section_style_featured_button_1',
 			[
 				'label' => __( 'Featured Button 1', 'elementor' ),
@@ -1100,7 +1100,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 		$this->end_controls_tabs();
 
-		$this->end_controls_section();
+		$this->end_controls_section();*/
 	}
 
 	protected function render() {
