@@ -51,22 +51,21 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 				'fields' => [
 					[
-						'name' => 'price_col_background',
-						'label' => __( 'Background Color', 'elementor' ),
-						'type' => Controls_Manager::COLOR,
-						'default' => '#ffffff',
-						'selectors' => [
-							'{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
-						],
-					],
-					[
 						'name' => 'price_col_title',
-						'label' => __( 'Name', 'elementor' ),
+						'label' => __( 'Title', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
 						'default' => __( '1 hour tour', 'elementor' ),
                         'placeholder' => __( '1 hour tour', 'elementor' ),
 						'label_block' => true,
 					],
+                    [
+                        'name' => 'price_col_sub_title',
+                        'label' => __( 'Sub Title', 'elementor' ),
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __( '3 People +', 'elementor' ),
+                        'placeholder' => __( '3 People +', 'elementor' ),
+                        'label_block' => true,
+                    ],
 					[
 						'name' => 'price_col_price',
 						'label' => __( 'Price', 'elementor' ),
@@ -262,12 +261,34 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_div',
                         'type' => Controls_Manager::DIVIDER,
                     ],
-					[
-						'name' => 'price_col_featured',
-						'label' => __( 'Featured', 'elementor' ),
-						'type' => Controls_Manager::CHECKBOX,
-						'default' => false,
-					]
+                    [
+                        'name' => 'price_col_featured',
+                        'label' => __( 'Featured', 'elementor' ),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __( 'Yes', 'elementor' ),
+                        'label_off' => __( 'No', 'elementor' ),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'separator' => 'before',
+                    ],
+                    [
+                        'name' => 'price_col_background',
+                        'label' => __( 'Background Color', 'elementor' ),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '#54595f',
+                        'selectors' => [
+                            '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
+                        ],
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_featured',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
 				],
 				'title_field' => '{{{ price_col_title }}}',
 			]
@@ -298,6 +319,22 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 			]
 		);
+
+        $this->add_control(
+            'sub_title_color',
+            [
+                'label' => __( 'Sub Title Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-pricing-sub-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -708,12 +745,28 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '',
+				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
+
+        $this->add_control(
+            'featured_sub_title_color',
+            [
+                'label' => __( 'Sub Title Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#FFFFFF',
+                'selectors' => [
+                    '{{WRAPPER}} .th-highlight .th-pricing-sub-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -734,7 +787,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '',
+				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost' => 'color: {{VALUE}};',
 				],
@@ -760,7 +813,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '',
+				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost span' => 'color: {{VALUE}};',
 				],
@@ -786,7 +839,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '',
+				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-features ul li' => 'color: {{VALUE}};',
 				],
@@ -1172,18 +1225,29 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 					<div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( $column['price_col_featured'] ? ' th-highlight' : '' ); echo $column_class; ?>">
 
-						<div class="th-pricing-cost">
-							<?php echo esc_html( $column['price_col_price'] ); ?>
-							<span><?php echo esc_html( $column['price_col_text'] ); ?></span>
-						</div>
 
+                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
 						<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
+                    <?php endif; ?>
 
+                    <?php if ( isset( $column['price_col_sub_title'] ) && ! empty( $column['price_col_sub_title'] ) ) : ?>
+                        <div class="th-pricing-sub-title"><?php echo esc_html( $column['price_col_sub_title'] ); ?></div>
+                    <?php endif; ?>
+
+                    <?php if ( (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )) || (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )))  : ?>
+                        <div class="th-pricing-cost">
+                            <?php echo esc_html( $column['price_col_price'] ); ?>
+                            <span><?php echo esc_html( $column['price_col_text'] ); ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
 						<div class="th-pricing-features">
 							<ul>
 								<?php echo '<li>'.str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( $column['price_col_description'] , "\n\r" ) ).'</li>'; ?>
 							</ul>
 						</div>
+                    <?php endif; ?>
 
 						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
 							<div class="th-btn-wrap">
