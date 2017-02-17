@@ -68,6 +68,17 @@ class Themo_Widget_Package extends Widget_Base {
             ]
         );*/
 
+        $this->add_control(
+            'pre_title',
+            [
+                'label' => __( 'Pre Title', 'elementor' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => __( '25% Off', 'elementor' ),
+                'placeholder' => __( '25% Off', 'elementor' ),
+                'label_block' => true,
+            ]
+        );
+
 		$this->add_control(
 			'title',
 			[
@@ -88,6 +99,32 @@ class Themo_Widget_Package extends Widget_Base {
 				'default' => 'Paddle the longest, continuous Class IV whitewater',
 			]
 		);
+
+        $this->add_control(
+            'package_text_align',
+            [
+                'label' => __( 'Content Align', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-content' => 'text-align: {{VALUE}}',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 
@@ -282,16 +319,24 @@ class Themo_Widget_Package extends Widget_Base {
             if ( empty( $settings['image']['url'] ) ) {
                 return;
             }
-            if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
+            if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
                 $image_size = $settings['post_image_size'];
                 if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
+            }elseif ( ! empty( $settings['image']['url'] ) ) {
+                $this->add_render_attribute( 'image', 'src', $settings['image']['url'] );
+                $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['image'] ) );
+                $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['image'] ) );
+                $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
             }
             ?>
             <div class="th-pkg-img">
-                <?php echo $image ; //echo Group_Control_Image_Size::get_attachment_image_html( $settings ); ?>
+                <?php echo $image ; ?>
             </div>
 
 			<div class="th-pkg-content">
+                <?php if ( ! empty( $settings['pre_title'] ) ) : ?>
+                    <div class=="th-package-pre-title"><?php echo $settings['pre_title']; ?></div>
+                <?php endif; ?>
 				<?php if ( ! empty( $settings['title'] ) ) : ?>
 					<h3><?php echo $settings['title']; ?></h3>
 				<?php endif; ?>
@@ -342,6 +387,9 @@ class Themo_Widget_Package extends Widget_Base {
 				</div>
 			<# } #>
 			<div class="th-pkg-content">
+	            <# if ( '' !== settings.pre_title ) { #>
+					<div class="th-package-pre-title"">{{{ settings.pre_title }}}</div>
+				<# } #>
 				<# if ( '' !== settings.title ) { #>
 					<h3>{{{ settings.title }}}</h3>
 				<# } #>
