@@ -34,7 +34,8 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Button Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'elementor' ),
+				'default' => __( 'Book Tour', 'elementor' ),
+				'placeholder' => __( 'Book Tour', 'elementor' ),
 				'separator' => 'before',
 			]
 		);
@@ -73,7 +74,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+				'placeholder' => __( '#booktour', 'elementor' ),
 			]
 		);
 
@@ -119,7 +120,8 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Button Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'elementor' ),
+				'placeholder' => __( 'Book Tour', 'elementor' ),
+				//'default' => __( 'Book Tour', 'elementor' ),
 				'separator' => 'before',
 			]
 		);
@@ -158,7 +160,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+				'placeholder' => __( '#booktour', 'elementor' ),
 			]
 		);
 
@@ -236,6 +238,9 @@ class Themo_Widget_Button extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings();
 
+        if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
+        if ( empty( $settings['button_2_link']['url'] ) ) { $settings['button_2_link']['url'] = '#'; };
+
 		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
 		$this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
 		$this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
@@ -263,7 +268,7 @@ class Themo_Widget_Button extends Widget_Base {
 		}
 		?>
 
-		<?php if ( ! empty( $settings['button_1_link']['url'] ) ) : ?>
+        <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
 			<a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
 				<?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
 					<?php echo esc_html( $settings['button_1_text'] ); ?>
@@ -274,7 +279,7 @@ class Themo_Widget_Button extends Widget_Base {
 			</a>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $settings['button_2_link']['url'] ) ) : ?>
+		<?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
 			<a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
 				<?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
 					<?php echo esc_html( $settings['button_2_text'] ); ?>
@@ -290,16 +295,23 @@ class Themo_Widget_Button extends Widget_Base {
 
 	protected function _content_template() {
 		?>
-		<# if ( settings.button_1_link.url ) { #>
-			<a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ settings.button_1_link.url }}">
+        <#  var button_1_link_url = '#';
+            if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
+
+             var button_2_link_url = '#';
+             if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
+        #>
+
+		<# if ( button_1_link_url ) { #>
+			<a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
 				{{{ settings.button_1_text }}}
 				<# if ( settings.button_1_icon ) { #>
 					<i class="{{ settings.button_1_icon }}"></i>
 				<# } #>
 			</a>
 		<# } #>
-		<# if ( settings.button_2_link.url ) { #>
-			<a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ settings.button_2_link.url }}">
+		<# if ( button_2_link_url  && (settings.button_2_text || settings.button_2_icon) ) { #>
+			<a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
 				{{{ settings.button_2_text }}}
 				<# if ( settings.button_2_icon ) { #>
 					<i class="{{ settings.button_2_icon }}"></i>

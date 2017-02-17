@@ -32,8 +32,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->add_control(
 			'tooltip_title',
 			[
-				'label' => __( 'Tooltip Title (optional)', 'elementor' ),
+				'label' => __( 'Tooltip Title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Book Today', 'elementor' ),
 				'placeholder' => __( 'Book here', 'elementor' ),
 				'label_block' => true,
 			]
@@ -70,6 +71,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 			[
 				'label' => __( 'Shortcode', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
+				'default' => __( '[booked-calendar]', 'elementor' ),
 				'placeholder' => __( '[add_shortcode_here]', 'elementor' ),
 				'label_block' => true,
 			]
@@ -121,14 +123,14 @@ class Themo_Widget_Appointments extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '',
+				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
-		$this->add_group_control(
+		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'tooltip_typography',
@@ -136,7 +138,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .th-cal-tooltip h3',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
