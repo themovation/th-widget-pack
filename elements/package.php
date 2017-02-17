@@ -73,7 +73,8 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Enter name here', 'elementor' ),
+				'default' => __( 'Chilko Tour', 'elementor' ),
+				'placeholder' => __( 'Chilko Tour', 'elementor' ),
 				'label_block' => true,
 			]
 		);
@@ -84,6 +85,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'label' => __( 'Content', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
+				'default' => 'Paddle the longest, continuous Class IV whitewater',
 			]
 		);
 
@@ -101,7 +103,8 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Price', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Free', 'elementor' ),
+				'default' => __( '$299', 'elementor' ),
+				'placeholder' => __( '$299', 'elementor' ),
 				'label_block' => true,
 			]
 		);
@@ -111,7 +114,8 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Price Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( '/month', 'elementor' ),
+				'default' => __( '/person', 'elementor' ),
+				'placeholder' => __( '/person', 'elementor' ),
 				'label_block' => true,
 			]
 		);

@@ -34,6 +34,9 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
 			]
 		);
 
@@ -61,7 +64,8 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Name', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Enter name here', 'elementor' ),
+				'default' => __( 'Justin Case', 'elementor' ),
+				'placeholder' => __( 'Justin Case', 'elementor' ),
 				'label_block' => true,
 			]
 		);
@@ -71,7 +75,8 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Job Title', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'CEO', 'elementor' ),
+				'default' => __( 'Equipment', 'elementor' ),
+				'placeholder' => __( 'Equipment', 'elementor' ),
 				'label_block' => true,
 			]
 		);
@@ -82,6 +87,8 @@ class Themo_Widget_Team extends Widget_Base {
 				'label' => __( 'Content', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
+				'default' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis.', 'elementor' ),
+
 			]
 		);
 
@@ -131,8 +138,8 @@ class Themo_Widget_Team extends Widget_Base {
 						'name' => 'icon',
 						'label' => __( 'Icon', 'elementor' ),
 						'type' => Controls_Manager::ICON,
-						'default' => '',
-						'label_block' => true,
+                        'label_block' => true,
+                        'default' => 'fa fa-facebook',
 					],
 					[
 						'name' => 'url',
