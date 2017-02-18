@@ -272,6 +272,16 @@ class Themo_Widget_Team extends Widget_Base {
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
         }
 
+        if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
+            $image_size = $settings['post_image_size'];
+            if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
+        }elseif ( ! empty( $settings['image']['url'] ) ) {
+            $this->add_render_attribute( 'image', 'src', $settings['image']['url'] );
+            $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['image'] ) );
+            $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['image'] ) );
+            $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
+        }
+
 		//if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], 'th_img_md_square', false, array( 'class' => 'th-team-member-image' ) );
 		?>
 
