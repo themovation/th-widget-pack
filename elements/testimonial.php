@@ -35,7 +35,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				'label' => __( 'Content', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'rows' => '10',
-				'default' => 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.',
+				'default' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'elementor' ),
+				'placeholder' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'elementor' ),
 			]
 		);
 
@@ -55,7 +56,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Name', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => 'John Doe',
+				'default' => 'Doug Martin',
+				'placeholder' => 'Doug Martin',
 			]
 		);
 
@@ -64,7 +66,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Job', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => 'Designer',
+				'default' => 'Adventurer',
+				'placeholder' => 'Adventurer',
 			]
 		);
 
@@ -309,10 +312,16 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			$this->add_render_attribute( 'meta', 'class', 'elementor-has-image' );
 		}*/
 
-        if ( ! empty( $settings['testimonial_image'] ) ) {
+        if ( isset($settings['testimonial_image']['id']) && $settings['testimonial_image']['id'] > "") {
 
             if ( $settings['testimonial_image']['id'] ) $image = wp_get_attachment_image( $settings['testimonial_image']['id'], 'th_img_sm_square', false, array( 'class' => 'th-team-member-image' ) );
 
+        }elseif ( ! empty( $settings['testimonial_image']['url'] ) ) {
+            $this->add_render_attribute( 'image', 'src', $settings['testimonial_image']['url'] );
+            $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['testimonial_image'] ) );
+            $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['testimonial_image'] ) );
+            $this->add_render_attribute( 'image', 'class', 'th-team-member-image' );
+            $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
         }
 
 
