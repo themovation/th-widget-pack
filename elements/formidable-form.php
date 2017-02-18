@@ -38,8 +38,8 @@ class Themo_Widget_Formidable extends Widget_Base {
 			[
 				'label' => __( 'Insert your shortcode here', 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'placeholder' => '[formidable id="1"]',
-				'default' => '',
+				'default' => '[formidable id=3]',
+				'placeholder' => '[formidable id="3"]',
 			]
 		);
 
@@ -48,7 +48,7 @@ class Themo_Widget_Formidable extends Widget_Base {
             [
                 'label' => __( 'Show form inline', 'elementor' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'label_on',
+                'default' => 'th-conversion',
                 'label_on' => __( 'Yes', 'elementor' ),
                 'label_off' => __( 'No', 'elementor' ),
                 'return_value' => 'th-conversion',
