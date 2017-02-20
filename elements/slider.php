@@ -50,7 +50,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
-				'default' => '#bbbbbb',
+				'default' => '#4A4A4A',
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
 				],
@@ -62,6 +62,9 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
+                /*'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],*/
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}})',
 				],
@@ -257,7 +260,7 @@ class Themo_Widget_Slider extends Widget_Base {
                 'label_on' => __( 'Yes', 'elementor' ),
                 'label_off' => __( 'No', 'elementor' ),
                 'return_value' => 'yes',
-                'default' => '',
+                'default' => 'yes',
                 'separator' => 'before',
             ]
         );
@@ -269,7 +272,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Button 1 Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'elementor' ),
+				'default' => __( 'Button Text', 'elementor' ),
                 'conditions' => [
                     'terms' => [
                         [
@@ -288,7 +291,7 @@ class Themo_Widget_Slider extends Widget_Base {
             [
                 'label' => __( 'Button 1 Style', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'standard-primary',
+                'default' => 'standard-light',
                 'options' => [
                     'standard-primary' => __( 'Standard Primary', 'elementor' ),
                     'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -367,7 +370,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Button 2 Text', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Click Here', 'elementor' ),
+				'default' => __( 'More Info', 'elementor' ),
                 'conditions' => [
                     'terms' => [
                         [
@@ -385,7 +388,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Button 2 Style', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'standard-primary',
+				'default' => 'standard-light',
 				'options' => [
 					'standard-primary' => __( 'Standard Primary', 'elementor' ),
 					'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -453,6 +456,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Shortcode', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
+                'placeholder' => __( '[formidable id=3]', 'elementor' ),
 			]
 		);
 
@@ -468,7 +472,6 @@ class Themo_Widget_Slider extends Widget_Base {
             [
                 'label' => __( 'Show Form Inline', 'elementor' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'label_on',
                 'label_on' => __( 'Yes', 'elementor' ),
                 'label_off' => __( 'No', 'elementor' ),
                 'return_value' => 'th-conversion',
@@ -519,6 +522,8 @@ class Themo_Widget_Slider extends Widget_Base {
 				'condition' => [
 					'slide_tooltip' => 'yes',
 				],
+                'default' => __( 'Book Your Tour Today', 'elementor' ),
+                'plcaeholder' => __( 'Book Your Tour Today', 'elementor' ),
 			]
 		);
 
@@ -606,6 +611,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     'center' => 'margin: 0 auto',
                     'right' => 'margin-left: auto',
                 ],
+                'default' => 'center',
             ]
         );
 
@@ -637,6 +643,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'middle' => 'center',
 					'bottom' => 'flex-end',
 				],
+                'default' => 'middle',
                 //'prefix_class' => 'th-slide-v-position-',
 			]
 		);
@@ -664,6 +671,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'text-align: {{VALUE}}',
 				],
+                'default' => 'center',
 			]
 		);
 
@@ -675,6 +683,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title' => 'color: {{VALUE}}'
 				],
+                'default' => '#FFFFFF',
 			]
 		);
 
@@ -699,6 +708,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}'
 				],
+                'default' => '#FFFFFF',
 			]
 		);
 
@@ -725,6 +735,24 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Slides', 'elementor-pro' ),
 				'type' => Controls_Manager::REPEATER,
 				'show_label' => true,
+                'default' => [
+                    [
+                        'slide_title' => __( 'Discover the great outdoors', 'elementor' ),
+                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
+                        'slide_button_text_1' => __( 'View all Tours', 'elementor' ),
+                        'slide_bg_color' => __( '#3A3B74', 'elementor' ),
+                        'slide_button_style_1' => __( 'ghost-light', 'elementor' ),
+                    ],
+                    [
+                        'slide_title' => __( 'Book Your Tickets', 'elementor' ),
+                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
+                        'slide_bg_color' => __( '#4A4A4A', 'elementor' ),
+                        'slide_button_text_1_show' => __( 'no', 'elementor' ),
+                        'slide_shortcode' => __( '[booked-calendar]', 'elementor' ),
+
+                    ],
+
+                ],
 				'fields' => array_values( $th_repeater->get_controls() ),
 				'title_field' => '{{{ slide_title }}}',
 			]
@@ -746,7 +774,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'default' => [
-					'size' => 400,
+					'size' => 600,
 					'unit' => 'px',
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
