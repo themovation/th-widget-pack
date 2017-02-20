@@ -14,6 +14,26 @@
 define('​THEMOVATION_WB_VER', '1.0.0');
 define('​THEMOVATION_BASE_FILE', __FILE__);
 
+function themovation_elements() {
+	require_once plugin_dir_path( __FILE__ ) . 'elements/team.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/package.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/appointments.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/blog.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/slider.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/pricing.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/formidable-form.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/tour-nav.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/button.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/call-to-action.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/itinerary.php';
+	require_once plugin_dir_path( __FILE__ ) . 'elements/google-maps.php';
+    require_once plugin_dir_path( __FILE__ ) . 'elements/testimonial.php';
+}
+add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
+
+require_once ( 'inc/elementor-section.php' );
+
 require_once ( 'inc/template-functions.php' );
 
 if ( ! function_exists( 'themovation_so_wb_collection' ) ) :

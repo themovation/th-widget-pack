@@ -1,5 +1,20 @@
 <?php
 
+// Functions for elementor
+function themo_link_element( $url, $target, $lightbox, $lb_width, $class, $content ) {
+
+	$target = ( $target != false ) ? ' target="_blank"' : '';
+	$lightbox_width = ( $lb_width && $lightbox == 'on' ) ? ' data-width="' . esc_html( $lb_width ) . '"' : '';
+	$lightbox = ( $lightbox == 'on' ) ? ' data-toggle="lightbox"' : '';
+	$content = ( $content ) ? $content : ' ';
+	$class = ( $class ) ? 'class="' . $class . '"' : '';
+
+	$link = '<a %s href="%s"%s%s%s>%s</a>';
+
+	echo sprintf( $link, $class, $url, $target, $lightbox, $lightbox_width, $content );
+
+}
+
 // Display icon Widget
 function themo_display_icon( $instance, $return = false, $class, $show_div = true ) {
 
