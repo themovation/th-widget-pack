@@ -335,7 +335,7 @@ class Themo_Widget_Package extends Widget_Base {
 
 			<div class="th-pkg-content">
                 <?php if ( ! empty( $settings['pre_title'] ) ) : ?>
-                    <div class=="th-package-pre-title"><?php echo $settings['pre_title']; ?></div>
+                    <div class="th-package-pre-title"><?php echo $settings['pre_title']; ?></div>
                 <?php endif; ?>
 				<?php if ( ! empty( $settings['title'] ) ) : ?>
 					<h3><?php echo $settings['title']; ?></h3>
@@ -388,7 +388,7 @@ class Themo_Widget_Package extends Widget_Base {
 			<# } #>
 			<div class="th-pkg-content">
 	            <# if ( '' !== settings.pre_title ) { #>
-					<div class="th-package-pre-title"">{{{ settings.pre_title }}}</div>
+					<div class="th-package-pre-title">{{{ settings.pre_title }}}</div>
 				<# } #>
 				<# if ( '' !== settings.title ) { #>
 					<h3>{{{ settings.title }}}</h3>
