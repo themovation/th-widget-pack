@@ -76,11 +76,38 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'expanded',
 			[
-				'label' => __( 'Start all Toggles Expanded', 'elementor' ),
+				'label' => __( 'Start all Items Expanded', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'On', 'elementor' ),
-				'label_on' => __( 'Off', 'elementor' ),
+				'label_off' => __( 'Off', 'elementor' ),
+				'label_on' => __( 'On', 'elementor' ),
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'width',
+			[
+				'label' => __( 'Width', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'th-itin-narrow',
+				'options' => [
+					'th-itin-narrow' => __( 'Narrow', 'elementor' ),
+					'th-itin-med' => __( 'Medium', 'elementor' ),
+					'th-itin-fw' => __( 'Full Width', 'elementor' ),
+				],
+			]
+		);
+
+		$this->add_control(
+			'alignment',
+			[
+				'label' => __( 'Alignment', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'th-itin-center',
+				'options' => [
+					'th-itin-center' => __( 'Center', 'elementor' ),
+					'th-itin-left' => __( 'Left', 'elementor' ),
+				],
 			]
 		);
 
@@ -100,7 +127,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'label' => __( 'Title Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-itin-title' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -111,18 +138,29 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'label' => __( 'Content Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
 		$this->add_control(
-			'border_color',
+			'vertical_line_color',
 			[
-				'label' => __( 'Border Color', 'elementor' ),
+				'label' => __( 'Vertical Line Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'dot_color',
+			[
+				'label' => __( 'Dot Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -132,19 +170,26 @@ class Themo_Widget_Itinerary extends Widget_Base {
 	}
 
 	protected function render() {
+		$settings = $this->get_settings();
 		$tabs = $this->get_settings( 'tabs' );
+
+		$this->add_render_attribute( 'itin-main', 'class', 'th-itinerary' );
+		$this->add_render_attribute( 'itin-main', 'class', $settings['width'] );
+		$this->add_render_attribute( 'itin-main', 'class', $settings['alignment'] );
 		?>
-		<div class="elementor-toggle">
+		<div <?php echo $this->get_render_attribute_string( 'itin-main' ); ?>>
 			<?php
 			$counter = 1; ?>
 			<?php foreach ( $tabs as $item ) : ?>
-				<div class="elementor-toggle-title" data-tab="<?php echo $counter; ?>">
-					<span class="elementor-toggle-icon">
-						<i class="fa"></i>
-					</span>
-					<?php echo $item['tab_title']; ?>
+				<div class="th-itin-single">
+					<i class="th-itin-icon halflings halflings-record-empty"></i>
+					<div class="th-itin-title">
+						<span><?php echo $item['tab_title']; ?></span>
+					</div>
+					<div class="th-itin-content">
+						<?php echo $item['tab_content']; ?>
+					</div>
 				</div>
-				<div class="elementor-toggle-content elementor-clearfix" data-tab="<?php echo $counter; ?>"><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
 			<?php
 				$counter++;
 			endforeach; ?>
@@ -152,27 +197,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
-		?>
-		<div class="elementor-toggle">
-			<#
-			if ( settings.tabs ) {
-				var counter = 1;
-				_.each(settings.tabs, function( item ) { #>
-					<div class="elementor-toggle-title" data-tab="{{ counter }}">
-						<span class="elementor-toggle-icon">
-						<i class="fa"></i>
-					</span>
-						{{{ item.tab_title }}}
-					</div>
-					<div class="elementor-toggle-content elementor-clearfix" data-tab="{{ counter }}">{{{ item.tab_content }}}</div>
-				<#
-					counter++;
-				} );
-			} #>
-		</div>
-		<?php
-	}
+	protected function _content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Itinerary() );
