@@ -181,7 +181,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 			<?php
 			$counter = 1; ?>
 			<?php foreach ( $tabs as $item ) : ?>
-				<div class="th-itin-single">
+				<div class="th-itin-single<?php echo ( $settings['expanded'] ? ' th-itin-active' : '' ); ?>">
 					<i class="th-itin-icon halflings halflings-record-empty"></i>
 					<div class="th-itin-title">
 						<span><?php echo $item['tab_title']; ?></span>
@@ -203,7 +203,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 			<#
 			if ( settings.tabs ) {
 				_.each(settings.tabs, function( item ) { #>
-					<div class="th-itin-single">
+					<div class="th-itin-single{{ settings.expanded ? ' th-itin-active' : '' }}">
 						<i class="th-itin-icon halflings halflings-record-empty"></i>
 						<div class="th-itin-title">
 							<span>{{{ item.tab_title }}}</span>
