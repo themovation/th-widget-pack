@@ -409,6 +409,9 @@ class Themo_Widget_Blog extends Widget_Base {
         $wp_query = NULL;
         $wp_query = $temp_query;
 
+        // Reset postdata
+        wp_reset_postdata();
+
 	}
 
 	protected function _content_template() {}

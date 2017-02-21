@@ -179,22 +179,6 @@ class Themo_Widget_Team extends Widget_Base {
 		);
 
 		$this->add_control(
-			'content_color',
-			[
-				'label' => __( 'Content Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .th-team-member-bio' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
 			'name_color',
 			[
 				'label' => __( 'Name Color', 'elementor' ),
@@ -226,6 +210,21 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'content_color',
+            [
+                'label' => __( 'Content Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-text' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->add_control(
 			'icon_color',
@@ -291,7 +290,13 @@ class Themo_Widget_Team extends Widget_Base {
                 if ( empty( $settings['name'] ) ) {
                     return;
                 } else { ?>
-                    <h4 class="th-team-member-name"><?php echo esc_html( $settings['name'] ) ?></h4>
+                    <?php if ( ! empty( $settings['url']['url'] ) ) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
+                            <h4 class="th-team-member-name"><?php echo esc_html( $settings['name'] ) ?></h4>
+                        </a>
+                    <?php else : ?>
+                        <h4 class="th-team-member-name"><?php echo esc_html( $settings['name'] ) ?></h4>
+                    <?php endif; ?>
                <?php }  ?>
 				<?php if ( ! empty( $settings['job'] ) ) : ?>
 					<h5 class="th-team-member-title"><?php echo esc_html( $settings['job']) ?></h5>
