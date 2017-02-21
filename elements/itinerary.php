@@ -187,7 +187,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 						<span><?php echo $item['tab_title']; ?></span>
 					</div>
 					<div class="th-itin-content">
-						<?php echo $item['tab_content']; ?>
+						<?php echo $this->parse_text_editor( $item['tab_content'] ); ?>
 					</div>
 				</div>
 			<?php
@@ -197,7 +197,27 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function _content_template() {
+		?>
+		<div class="th-itinerary {{settings.width}} {{settings.alignment}}">
+			<#
+			if ( settings.tabs ) {
+				_.each(settings.tabs, function( item ) { #>
+					<div class="th-itin-single">
+						<i class="th-itin-icon halflings halflings-record-empty"></i>
+						<div class="th-itin-title">
+							<span>{{{ item.tab_title }}}</span>
+						</div>
+						<div class="th-itin-content">
+							{{{ item.tab_content }}}
+						</div>
+					</div>
+				<#
+				} );
+			} #>
+		</div>
+		<?php
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Itinerary() );
