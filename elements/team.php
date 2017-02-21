@@ -173,7 +173,7 @@ class Themo_Widget_Team extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .th-team-member-wrap' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -257,13 +257,6 @@ class Themo_Widget_Team extends Widget_Base {
 			}
 		}
 
-		if ( empty( $settings['name'] ) ) {
-			return;
-		} else {
-			$name = '<h4>' . esc_html( $settings['name'] ) . '</h4>';
-		}
-
-
         if ( empty( $settings['image']['url'] ) ) {
             return;
         }
@@ -286,27 +279,30 @@ class Themo_Widget_Team extends Widget_Base {
 		?>
 
 		<div class="th-team-member">
-			<div class="th-team-member-wrap">
-				<?php if ( ! empty( $settings['url']['url'] ) ) : ?>
-					<a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
-						<?php echo $image . '' . $name; ?>
-					</a>
-				<?php else : ?>
-					<?php echo $image . '' . $name; ?>
-				<?php endif; ?>
+            <?php if ( ! empty( $settings['url']['url'] ) ) : ?>
+                <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
+                    <?php echo $image; ?>
+                </a>
+            <?php else : ?>
+                <?php echo $image; ?>
+            <?php endif; ?>
+			<div class="th-team-member-content">
+                <?php
+                if ( empty( $settings['name'] ) ) {
+                    return;
+                } else { ?>
+                    <h4 class="th-team-member-name"><?php echo esc_html( $settings['name'] ) ?></h4>
+               <?php }  ?>
 				<?php if ( ! empty( $settings['job'] ) ) : ?>
-					<h5><?php echo esc_html( $settings['job']) ?></h5>
+					<h5 class="th-team-member-title"><?php echo esc_html( $settings['job']) ?></h5>
 				<?php endif;?>
 				<?php if ( ! empty( $settings['content'] ) ) : ?>
-					<div class="th-team-member-bio">
-						<?php echo $settings['content']; ?>
-					</div>
+					<div class="th-team-member-text"><?php echo $settings['content']; ?></div>
 				<?php endif; ?>
 				<div class="th-team-member-social">
 					<?php foreach( $settings['social'] as $social ) {
 						if ( ! empty( $social['url']['url'] ) ) {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
-
 							echo '<a href="' . $social['url']['url'] . '"' . $target . '>';
 						}
 						if ( $social['icon'] ) : ?>
@@ -327,7 +323,7 @@ class Themo_Widget_Team extends Widget_Base {
 
 	/*
 	 * <div class="th-team-member">
-			<div class="th-team-member-wrap">
+			<div class="th-team-member-content">
 				<# if ( settings.url && settings.url.url ) { #>
 					<a href="{{ settings.url.url }}">
 				<# } #>
