@@ -36,13 +36,17 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
 				'default' => [
 					[
-						'tab_title' => __( 'Item #1', 'elementor' ),
-						'tab_content' => __( 'I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
+						'tab_title' => __( 'Day 1 Training', 'elementor' ),
+						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
 					],
 					[
-						'tab_title' => __( 'Item #2', 'elementor' ),
-						'tab_content' => __( 'I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
+						'tab_title' => __( 'Day 2 Rafting Whitewater', 'elementor' ),
+						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
 					],
+                    [
+                        'tab_title' => __( 'Day 3 Rafting The Chilko', 'elementor' ),
+                        'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
+                    ],
 				],
 				'fields' => [
 					[
@@ -181,7 +185,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 			<?php
 			$counter = 1; ?>
 			<?php foreach ( $tabs as $item ) : ?>
-				<div class="th-itin-single<?php echo ( $settings['expanded'] ? ' th-itin-active' : '' ); ?>">
+				<div class="th-itin-single<?php echo ( $settings['expanded'] ? ' th-itin-active' : ( $counter == 1 ? ' th-itin-active' : ' th-itin-inactive') ); ?>">
 					<i class="th-itin-icon halflings halflings-record-empty"></i>
 					<div class="th-itin-title">
 						<span><?php echo $item['tab_title']; ?></span>

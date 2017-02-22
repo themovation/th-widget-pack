@@ -168,24 +168,30 @@ jQuery( function ( $ ) {
         });
     }
 
+    // Intinerary Toggles
+
 	$( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
 		var $$ = $( this ),
 			$title = $$.find( '.th-itin-title' ),
 			$content = $$.find( '.th-itin-content' );
 
-		if ( $$.not( '.th-itin-active' ) ) {
-			$content.hide();
-		}
 
 		$title.on( 'click', function() {
 			if ( $$.hasClass( 'th-itin-active' ) ) {
-				$$.removeClass( 'th-itin-active' );
-				$content.slideUp();
+                $content.slideUp('fast', function() {
+                    $$.addClass( 'th-itin-inactive' );
+                    $$.removeClass( 'th-itin-active' );
+                });
 			} else {
-				$$.addClass( 'th-itin-active' );
-				$content.slideDown();
+                $content.slideDown('fast', function() {
+                    $$.addClass( 'th-itin-active' );
+                    $$.removeClass( 'th-itin-inactive' );
+                });
 			}
 		} );
+
+
+
 	} );
 
 } );
