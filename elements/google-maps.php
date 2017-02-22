@@ -114,6 +114,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'title',
 			[
 				'label' => __( 'Title', 'elementor' ),
+				'default' => __( 'Company Co.', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -123,6 +124,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'business_address',
 			[
 				'label' => __( 'Business Address', 'elementor' ),
+				'default' => __( "1366 Main Street\nancouver Canada\nV8V 3K6", 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
@@ -132,6 +134,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'hours',
 			[
 				'label' => __( 'Hours', 'elementor' ),
+				'default' => __( "Monday to Friday: 10am - 6pm\nSaturday: 11am - 4pm\nSunday: Closed", 'elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
@@ -141,6 +144,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'link_1_text',
 			[
 				'label' => __( 'Link 1 Text', 'elementor' ),
+				'default' => __( 'Call Us', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -152,6 +156,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Link 1 URL', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'default' => [
+                    'url' => 'tel:222-2222',
+                ],
 			]
 		);
 
@@ -159,6 +166,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'link_2_text',
 			[
 				'label' => __( 'Link 2 Text', 'elementor' ),
+                'default' => __( 'Email Us', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -170,6 +178,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Link 2 URL', 'elementor' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'default' => [
+                    'url' => 'mailto:info@companyco.com',
+                ],
 			]
 		);
 
