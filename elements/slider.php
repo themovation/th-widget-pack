@@ -766,7 +766,7 @@ class Themo_Widget_Slider extends Widget_Base {
                         'slide_bg_color' => __( '#7A85E8', 'elementor' ),
                         'inline_form' => __( 'inline', 'elementor' ),
                         'slide_button_text_1_show' => __( 'no', 'elementor' ),
-                        'slide_shortcode' => __( '[[formidable id="3"]]', 'elementor' ),
+                        'slide_shortcode' => __( '[formidable id="3"]', 'elementor' ),
                     ],
 
                 ],
