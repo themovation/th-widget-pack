@@ -472,10 +472,12 @@ class Themo_Widget_Slider extends Widget_Base {
             [
                 'label' => __( 'Formidable Form Style', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'th-conversion',
+                'default' => 'none',
                 'options' => [
+                    'none' => __( 'Default', 'elementor' ),
                     'inline' => __( 'Inline', 'elementor' ),
                     'stacked' => __( 'Stacked', 'elementor' ),
+
                 ],
                     /*'label' => __( 'Show Form Inline', 'elementor' ),
                 'type' => Controls_Manager::SWITCHER,
@@ -492,9 +494,10 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'th-form-bg th-light-bg' => __( 'Light', 'elementor' ),
+                    'none' => __( 'None', 'elementor' ),
+                    'th-form-bg th-light-bg' => __( 'Light', 'elementor' ),
 					'th-form-bg th-dark-bg' => __( 'Dark', 'elementor' ),
-					'none' => __( 'None', 'elementor' ),
+
 				],
                 'condition' => [
                     'inline_form' => 'stacked',
@@ -796,7 +799,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 			]
@@ -1552,12 +1555,23 @@ class Themo_Widget_Slider extends Widget_Base {
 						$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
 					} ?>
                     <?php
+
                     $th_form_border_class = false;
-                    $th_stacked_form_class = false;
-                    if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none' && isset($slide['inline_form']) && $slide['inline_form'] == "stacked"){
-                        $th_form_border_class = $slide['slide_shortcode_border'];
-                        $th_stacked_form_class = 'th-simple-conversion ';
-                    }
+                    $th_formidable_class = 'th-form-default';
+                    if ( isset($slide['inline_form']) && $slide['inline_form'] > "") :
+                        switch ($slide['inline_form']) {
+                            case 'stacked':
+                                $th_formidable_class = 'th-form-stacked';
+                                if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none'){
+                                    $th_form_border_class = $slide['slide_shortcode_border'];
+                                }
+                                break;
+                            case 'inline':
+                                $th_formidable_class = 'th-conversion ';
+                                break;
+                        }
+                    endif;
+
                     ?>
 
                     <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
@@ -1606,15 +1620,8 @@ class Themo_Widget_Slider extends Widget_Base {
                                             <?php $sth_show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
                                             <?php $th_tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
                                             <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
-                                            <?php
-                                            $th_inline_class = false;
-                                            if (isset($slide['inline_form']) && $slide['inline_form'] == 'inline'){
-                                                $th_inline_class = 'th-conversion ';
-                                            }
-                                            ?>
 
                                             <?php
-
                                                 $th_shortcode = sanitize_text_field($slide['slide_shortcode']);
                                                 $th_brackets = array("[","]");
                                                 $th_shortcode_text = str_replace($th_brackets,"", $th_shortcode);
@@ -1624,7 +1631,7 @@ class Themo_Widget_Slider extends Widget_Base {
 
                                                 switch ($th_shortcode_name) {
                                                     case 'formidable':
-                                                        $th_output .= '<div class="'.sanitize_html_class($th_stacked_form_class) . sanitize_html_class($th_inline_class).'">';
+                                                        $th_output .= '<div class="' . sanitize_html_class($th_formidable_class).'">';
                                                         $th_output .= do_shortcode( $th_shortcode );
                                                         $th_output .= '</div>';
                                                         break;
