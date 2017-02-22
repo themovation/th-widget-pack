@@ -456,32 +456,39 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Shortcode', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
-                'placeholder' => __( '[formidable id=3]', 'elementor' ),
+                /*'placeholder' => __( '[formidable id=3]', 'elementor' ),*/
 			]
 		);
 
-        $th_repeater->add_control(
+        /*$th_repeater->add_control(
             'slide_shortcode_div_1',
             [
                 'type' => Controls_Manager::DIVIDER,
             ]
-        );
+        );*/
 
         $th_repeater->add_control(
             'inline_form',
             [
-                'label' => __( 'Show Form Inline', 'elementor' ),
+                'label' => __( 'Formidable Form Style', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'th-conversion',
+                'options' => [
+                    'inline' => __( 'Inline', 'elementor' ),
+                    'stacked' => __( 'Stacked', 'elementor' ),
+                ],
+                    /*'label' => __( 'Show Form Inline', 'elementor' ),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __( 'Yes', 'elementor' ),
                 'label_off' => __( 'No', 'elementor' ),
-                'return_value' => 'th-conversion',
+                'return_value' => 'th-conversion',*/
             ]
         );
 
 		$th_repeater->add_control(
 			'slide_shortcode_border',
 			[
-				'label' => __( 'Form Background (When Stacked)', 'elementor' ),
+				'label' => __( 'Form Background', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
@@ -490,23 +497,23 @@ class Themo_Widget_Slider extends Widget_Base {
 					'none' => __( 'None', 'elementor' ),
 				],
                 'condition' => [
-                    'inline_form' => '',
+                    'inline_form' => 'stacked',
                 ],
 			]
 		);
 
-        $th_repeater->add_control(
+        /*$th_repeater->add_control(
             'slide_shortcode_div_2',
             [
                 'type' => Controls_Manager::DIVIDER,
             ]
-        );
+        );*/
 
 
 		$th_repeater->add_control(
 			'slide_tooltip',
 			[
-				'label' => __( 'Booked Display Tooltip', 'elementor' ),
+				'label' => __( 'Booked Calendar Tooltip', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'elementor' ),
 				'label_off' => __( 'No', 'elementor' ),
@@ -539,6 +546,8 @@ class Themo_Widget_Slider extends Widget_Base {
                 ]
             ]
         );
+
+
 
 		$th_repeater->end_controls_tab();
 
@@ -818,17 +827,29 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'autoplay',
+            [
+                'label' => __( 'Auto play', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'On', 'elementor' ),
+                'label_off' => __( 'Off', 'elementor' ),
+                'return_value' => 'On',
+                'description' => __( 'Start slider automatically', 'elementor' ),
+            ]
+        );
+
 		$this->add_control(
 			'animation',
 			[
-				'label' => __( 'Animation', 'elementor' ),
+				'label' => __( 'Transition Style', 'elementor' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'fade',
 				'options' => [
 					'fade' => __( 'Fade', 'elementor' ),
 					'slide' => __( 'Slide', 'elementor' ),
 				],
-				'description' => __( 'Controls the animation type, "fade" or "slide"', 'elementor' ),
+				'description' => __( 'Controls the transition style, "fade" or "slide"', 'elementor' ),
 			]
 		);
 
@@ -849,11 +870,12 @@ class Themo_Widget_Slider extends Widget_Base {
 		$this->add_control(
 			'animation_loop',
 			[
-				'label' => __( 'Animation Loop', 'elementor' ),
+				'label' => __( 'Infinite Loop', 'elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Gives the slider a seamless infinite loop', 'elementor' ),
 			]
 		);
@@ -866,6 +888,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Animate the height of the slider smoothly for slides of varying height', 'elementor' ),
 			]
 		);
@@ -875,13 +898,16 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Slideshow Speed', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 4000,
+                ],
 				'range' => [
 					'px' => [
 						'min' => 0,
 						'max' => 15000,
 					],
 				],
-				'description' => __( 'Set the speed of the slideshow cycling, in milliseconds', 'elementor' ),
+				'description' => __( 'Set the speed of the slideshow cycling, in milliseconds (1 s = 1000 ms)', 'elementor' ),
 			]
 		);
 
@@ -890,13 +916,16 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Animation Speed', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
-				'range' => [
+                'default' => [
+                    'size' => 550,
+                ],
+                'range' => [
 					'px' => [
 						'min' => 0,
 						'max' => 1200,
 					],
 				],
-				'description' => __( 'Set the speed of animations, in milliseconds', 'elementor' ),
+				'description' => __( 'Set the speed of animations, in milliseconds (1 s = 1000 ms)', 'elementor' ),
 			]
 		);
 
@@ -920,6 +949,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Pause the slideshow when hovering over slider, then resume when no longer hovering', 'elementor' ),
 			]
 		);
@@ -932,6 +962,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Allow touch swipe navigation of the slider on enabled devices', 'elementor' ),
 			]
 		);
@@ -944,6 +975,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Create previous/next arrow navigation', 'elementor' ),
 			]
 		);
@@ -956,6 +988,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label_on' => __( 'On', 'elementor' ),
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'On',
+				'default' => 'On',
 				'description' => __( 'Create navigation for paging control of each slide', 'elementor' ),
 			]
 		);
@@ -1513,7 +1546,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     <?php
                     $th_form_border_class = false;
                     $th_stacked_form_class = false;
-                    if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none' && isset($slide['inline_form']) && $slide['inline_form'] == ""){
+                    if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none' && isset($slide['inline_form']) && $slide['inline_form'] == "stacked"){
                         $th_form_border_class = $slide['slide_shortcode_border'];
                         $th_stacked_form_class = 'th-simple-conversion ';
                     }
@@ -1565,7 +1598,12 @@ class Themo_Widget_Slider extends Widget_Base {
                                             <?php $sth_show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
                                             <?php $th_tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
                                             <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
-                                            <?php $th_inline_class =  (isset($slide['inline_form']) ? $slide['inline_form'] : false); ?>
+                                            <?php
+                                            $th_inline_class = false;
+                                            if (isset($slide['inline_form']) && $slide['inline_form'] == 'inline'){
+                                                $th_inline_class = 'th-conversion ';
+                                            }
+                                            ?>
 
                                             <?php
 
@@ -1618,6 +1656,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			jQuery( function ( $ ) {
 				themo_start_flex_slider(
 					'#main-flex-slider',
+                    <?php echo $settings['autoplay'] ? 'true' : 'false'; ?>,
 					'<?php echo $settings['animation']; ?>',
 					'<?php echo $settings['easing']; ?>',
 					<?php echo $settings['animation_loop'] ? 'true' : 'false'; ?>,
