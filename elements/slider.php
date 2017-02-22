@@ -760,6 +760,14 @@ class Themo_Widget_Slider extends Widget_Base {
                         'slide_shortcode' => __( '[booked-calendar]', 'elementor' ),
 
                     ],
+                    [
+                        'slide_title' => __( 'Discover the great outdoors', 'elementor' ),
+                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
+                        'slide_bg_color' => __( '#7A85E8', 'elementor' ),
+                        'inline_form' => __( 'inline', 'elementor' ),
+                        'slide_button_text_1_show' => __( 'no', 'elementor' ),
+                        'slide_shortcode' => __( '[[formidable id="3"]]', 'elementor' ),
+                    ],
 
                 ],
 				'fields' => array_values( $th_repeater->get_controls() ),
