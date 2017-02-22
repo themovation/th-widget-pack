@@ -168,4 +168,24 @@ jQuery( function ( $ ) {
         });
     }
 
+	$( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
+		var $$ = $( this ),
+			$title = $$.find( '.th-itin-title' ),
+			$content = $$.find( '.th-itin-content' );
+
+		if ( $$.not( '.th-itin-active' ) ) {
+			$content.hide();
+		}
+
+		$title.on( 'click', function() {
+			if ( $$.hasClass( 'th-itin-active' ) ) {
+				$$.removeClass( 'th-itin-active' );
+				$content.slideUp();
+			} else {
+				$$.addClass( 'th-itin-active' );
+				$content.slideDown();
+			}
+		} );
+	} );
+
 } );
