@@ -15,6 +15,8 @@ function themovation_so_wb_scripts() {
 	wp_enqueue_style( 'themo-animatation', plugin_dir_url( __FILE__ ) . '../css/animation.css', array(), ​THEMOVATION_WB_VER );
 	wp_enqueue_script( 'themo-so-waypoints', plugin_dir_url( __FILE__ ) . '../js/jquery.waypoints.js', array( 'jquery' ), ​THEMOVATION_WB_VER, true );
 	wp_enqueue_script( 'themo-so-wb-js', plugin_dir_url( __FILE__ ) . '../js/themovation.js', array( 'jquery', 'themo-so-waypoints' ), ​THEMOVATION_WB_VER, true );
+
+	wp_enqueue_script( 'jquery-slick' );
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts' );
@@ -63,4 +65,3 @@ add_action( 'elementor/preview/enqueue_styles', function() {
 
 
 } );
-
