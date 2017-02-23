@@ -25,7 +25,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->start_controls_section(
 			'section_toggles',
 			[
-				'label' => __( 'Toggles', 'elementor' ),
+				'label' => __( 'Itinerary', 'elementor' ),
 			]
 		);
 
@@ -54,13 +54,13 @@ class Themo_Widget_Itinerary extends Widget_Base {
 						'label' => __( 'Title & Content', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
 						'label_block' => true,
-						'default' => __( 'Toggle Title' , 'elementor' ),
+						'default' => __( 'Itinerary Title' , 'elementor' ),
 					],
 					[
 						'name' => 'tab_content',
 						'label' => __( 'Content', 'elementor' ),
 						'type' => Controls_Manager::WYSIWYG,
-						'default' => __( 'Toggle Content', 'elementor' ),
+						'default' => __( 'Itinerary Content', 'elementor' ),
 						'show_label' => false,
 					],
 				],
