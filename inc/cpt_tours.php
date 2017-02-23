@@ -139,23 +139,32 @@ function th_register_tour_meta_boxes()
                 'id' => 'th_tour_highlight',
                 'label' => 'Highlight',
                 'type' => 'text',
+                'desc' => __('Displayed above the title.', 'westwood'),
             ),
             array(
                 'id' => 'th_tour_title',
                 'label' => 'Title',
                 'type' => 'text',
+                'desc' => __('Defaults to the page title', 'westwood'),
             ),
             array(
                 'id' => 'th_tour_intro',
                 'label' => 'Intro',
                 'type' => 'text',
+                'desc' => __('Displayed below the title. 8 - 10 words recommended', 'westwood'),
+            ),
+            array(
+                'id' => 'th_tour_button_text',
+                'label' => 'Button Text',
+                'type' => 'text',
+                'desc' => __('Displayed below the intro.', 'westwood'),
             ),
             array(
                 'id'          => "th_tour_thumb",
-                'label'       => __( 'Thumbnail Image', 'westwood'),
+                'label'       => __( 'Grid Image', 'westwood'),
                 'type'        => 'upload',
                 'class'       => 'ot-upload-attachment-id',
-                'desc' => 'Sets the thumbnail image for Image post format only.',
+                'desc' => 'Alternative grid image. Works with Image format.',
             ),
             // END PAGE LAYOUT META BOX
         )

@@ -26,7 +26,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
         $loop = new \WP_Query( array(
             'post_type' => array('themo_tour'),
-            'posts_per_page' => -1
+            'posts_per_page' => -1,
+            'post_status'=>array('publish'),
         ) );
 
         $portfolio['none'] = __('None', 'elementor');
@@ -49,8 +50,10 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
         $tax_terms = get_terms( $taxonomy );
 
-        foreach( $tax_terms as $item ) {
-            $portfolio_group[$item->term_id] = $item->name;
+        if ( ! empty( $tax_terms ) && ! is_wp_error( $tax_terms ) ){
+            foreach( $tax_terms as $item ) {
+                $portfolio_group[$item->term_id] = $item->name;
+            }
         }
 
         return $portfolio_group;
@@ -80,7 +83,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'type'    => Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple'    => true,
-                'default' => 'none',
+                //'default' => 'none',
                 'options' => $this->get_tours_list()
             ]
         );
@@ -92,7 +95,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'type'    => Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple'    => true,
-                'default' => 'none',
+                //'default' => 'none',
                 'options' => $this->get_tours_group_list()
             ]
         );
@@ -134,6 +137,32 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'options' => [
                     'on' => __( 'On', 'elementor' ),
                     'off' => __( 'Off', 'elementor' )
+                ],
+            ]
+        );
+
+
+        $default_hover = '#000000';
+        $default_rgba = 'rgba(0, 0, 0, 0.75)';
+        if ( function_exists( 'ot_get_option' ) ) {
+            $default_hover = ot_get_option( 'themo_color_primary', $default_hover );
+            $default_hex = ot_get_option( 'themo_color_primary', $default_hover );
+            list($r, $g, $b) = sscanf($default_hex, "#%02x%02x%02x");
+            $default_rgba = "rgba(".$r .", ". $g. ", ". $b . ", 0.75)";
+        }
+
+        $this->add_control(
+            'hover_color',
+            [
+                'label' => __( 'Hover Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-overlay' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -243,6 +272,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                     $args['orderby'] = 'menu_order';
                     $args['order'] = 'ASC';
                 }
+                $args['post_status'] = 'publish';
+
                 // The Query
                 $query = new \WP_Query( $args );
 
@@ -311,11 +342,11 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
                         $filtering_links = array();
                         $terms = get_the_terms( get_the_ID(), 'themo_tour_type' );
-                        if ( $terms && ! is_wp_error( $terms ) ) :
+                        if ( $terms && ! is_wp_error( $terms ) ) {
                             foreach ( $terms as $term ) {
                                 $filtering_links[] = 'p-' . $term->slug;
                             }
-                        endif;
+                        }
                         $classes = array_merge( $portfolio_item, $filtering_links );
                         ?>
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
@@ -360,18 +391,27 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 }else{
                                     $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
                                 }
+
+                                $th_tour_button_text = false;
+                                $th_tour_button_text = get_post_meta( get_the_ID(), 'th_tour_button_text', true);
                                 ?>
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
                                     <div class="th-port-center">
-                                        <?php if($th_tour_highlight){?>
-                                            <div class="th-port-top-text"><?php echo  $th_tour_highlight; ?></div>
-                                        <? } ?>
+                                        <?php if($th_tour_highlight){ ?>
+                                            <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
+                                        <?php } ?>
                                         <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
                                         <?php echo $th_tour_intro; ?>
+
+                                        <?php if(! $th_tour_button_text === false || ! empty($th_tour_button_text)) { ?>
+                                            <a class="btn-1 btn th-btn btn-ghost-light" href="<?php echo esc_url($link_url); ?>">
+                                                <?php echo $th_tour_button_text; ?>
+                                            </a>
+                                        <?php } ?>
                                     </div>
-                                    <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . ' title="'.esc_attr($link_title).'"></a>'; ?>
+                                    <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . '></a>'; ?>
                                 </div>
                             </div>
                         </div>
