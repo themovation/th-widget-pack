@@ -19,7 +19,8 @@ function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/package.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/appointments.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/blog.php';
-	require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
+	//require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
+    require_once plugin_dir_path( __FILE__ ) . 'elements/tour-grid.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/slider.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/slider-slick.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/pricing.php';
@@ -93,7 +94,7 @@ require_once ( 'inc/icons.php' );
 require_once ( 'inc/enqueue.php' );
 require_once ( 'inc/row-styles.php' );
 require_once ( 'inc/widget-styles.php' );
-require_once ( 'inc/portfolio.php' );
+require_once ( 'inc/cpt_tours.php' );
 
 // Change SiteOrign Setting value on plugin activation
 function themovation_so_wb_settings() {
