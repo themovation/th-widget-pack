@@ -3,29 +3,29 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_Tour_Grid extends Widget_Base {
+class Themo_Widget_Course_Guide extends Widget_Base {
 
 	public function get_name() {
-		return 'themo-tour-grid';
+		return 'themo-course-guide';
 	}
 
 	public function get_title() {
-		return __( 'Tour Grid', 'elementor' );
+		return __( 'Course Guide', 'elementor' );
 	}
 
 	public function get_icon() {
-		return 'eicon-posts-grid';
+		return 'eicon-favorite';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	private function get_tours_list() {
+	private function get_courses_list() {
 		$portfolio = array();
 
 		$loop = new \WP_Query( array(
-			'post_type' => array('themo_tour'),
+			'post_type' => array('themo_portfolio'),
 			'posts_per_page' => -1
 		) );
 
@@ -40,12 +40,12 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 		return $portfolio;
 	}
 
-	private function get_tours_group_list() {
+	private function get_courses_group_list() {
 		$portfolio_group = array();
 
 		$portfolio_group['none'] = __( 'None', 'elementor' );
 
-		$taxonomy = 'themo_tour_type';
+		$taxonomy = 'themo_project_type';
 
 		$tax_terms = get_terms( $taxonomy );
 
@@ -81,7 +81,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 				'label_block' => true,
 				'multiple'    => true,
 				'default' => 'none',
-				'options' => $this->get_tours_list()
+				'options' => $this->get_courses_list()
 			]
 		);
 
@@ -93,7 +93,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 				'label_block' => true,
 				'multiple'    => true,
 				'default' => 'none',
-				'options' => $this->get_tours_group_list()
+				'options' => $this->get_courses_group_list()
 			]
 		);
 
@@ -198,7 +198,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 					<span><?php echo __( 'Sort:', 'themovation-widgets' ); ?></span>
 					<a href="#" data-filter="*" class="current"><?php echo __( 'All', 'themovation-widgets' ); ?></a>
 					<?php
-					$taxonomy = 'themo_tour_type';
+					$taxonomy = 'themo_project_type';
 					$tax_terms = get_terms( $taxonomy );
 					foreach ( $tax_terms as $tax_term ) {
 						echo '<a href="#" data-filter="#'.$th_uid.' .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
@@ -221,7 +221,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 						$args['post__in'] = $post_ids;
 					}
 				}
-				$args['post_type'] = array( 'themo_tour' );
+				$args['post_type'] = array( 'themo_portfolio' );
 				if ( $settings['group'] ) {
 					if ( in_array( 'none', $settings['group'] ) ) {
 						$settings['group'] = array_diff( $settings['group'], array( 'none' ) );
@@ -230,7 +230,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 						$project_type_id = $settings['group'];
 						$args['tax_query'] = array(
 							array(
-								'taxonomy' => 'themo_tour_type',
+								'taxonomy' => 'themo_project_type',
 								'field'    => 'term_id',
 								'terms'    => $project_type_id,
 							),
@@ -289,7 +289,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         if(isset($format) && $format == 'image') {
 
                             // Get Project Format Options
-                            $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false);
+                            $project_thumb_alt_img = get_post_meta( get_the_ID(), '_holes_image', false);
 
                             if (isset($project_thumb_alt_img[0]) && $project_thumb_alt_img[0] > "") {
                                 $alt = false;
@@ -310,7 +310,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         }
 
                         $filtering_links = array();
-						$terms = get_the_terms( get_the_ID(), 'themo_tour_type' );
+						$terms = get_the_terms( get_the_ID(), 'themo_project_type' );
 						if ( $terms && ! is_wp_error( $terms ) ) :
 							foreach ( $terms as $term ) {
 								$filtering_links[] = 'p-' . $term->slug;
@@ -329,47 +329,34 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                         echo get_the_post_thumbnail(get_the_ID(),"th_img_md_square",$featured_img_attr);
                                     }
                                 }
-
-                                $th_tour_title = get_the_title();;
-                                $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true);
-                                if($th_tour_title_meta > ""){
-                                    $th_tour_title = $th_tour_title_meta;
-                                }
-
-                                $th_tour_highlight = false;
-                                $th_tour_highlight = get_post_meta( get_the_ID(), 'th_tour_highlight', true);
-
-                                $th_tour_intro = false;
-                                $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true);
-                                if($th_tour_intro === false || empty($th_tour_intro)){
-                                    $automatic_post_excerpts = 'on';
-                                    if ( function_exists( 'ot_get_option' ) ) {
-                                        $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
-                                    }
-                                    if($automatic_post_excerpts === 'off'){
-                                        $th_tour_intro = apply_filters( 'the_content', get_the_content() );
-                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        if($th_tour_intro != ""){
-                                            $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
-                                        }
-                                    }else{
-                                        $th_tour_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
-                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        $th_tour_intro = str_replace('<p', '<p class="th-port-sub"', $th_tour_intro);
-                                    }
-                                }else{
-                                    $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
-                                }
                                 ?>
-
 								<div class="th-port-overlay"></div>
 								<div class="th-port-inner">
 									<div class="th-port-center">
-										<?php if($th_tour_highlight){?>
-										   <div class="th-port-top-text"><?php echo  $th_tour_highlight; ?></div>
-                                        <? } ?>
-                                        <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
-                                        <?php echo $th_tour_intro; ?>
+										<!--i class="th-port-icon glyphicons glyphicons-lightbulb"></i-->
+										<h3 class="th-port-title"><?php the_title(); ?></h3>
+
+                                        <?php
+                                        $automatic_post_excerpts = 'on';
+                                        if ( function_exists( 'ot_get_option' ) ) {
+                                            $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+                                        }
+                                        if($automatic_post_excerpts === 'off'){
+                                            $content = apply_filters( 'the_content', get_the_content() );
+                                            $content = str_replace( ']]>', ']]&gt;', $content );
+                                            if($content != ""){
+                                                echo '<p class="th-port-sub">'.$content.'</p>';
+                                            }
+                                        }else{
+                                            $excerpt = apply_filters( 'the_excerpt', get_the_excerpt() );
+                                            $excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+                                            $excerpt = str_replace('<p', '<p class="th-port-sub"', $excerpt);
+                                            if($excerpt != ""){
+                                                echo $excerpt;
+                                            }
+                                        }
+                                        ?>
+                                        ?>
 									</div>
                                     <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . ' title="'.esc_attr($link_title).'"></a>'; ?>
 								</div>
@@ -397,4 +384,4 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 	protected function _content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Tour_Grid() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Course_Guide() );
