@@ -3,127 +3,127 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_Course_Guide extends Widget_Base {
+class Themo_Widget_Tour_Grid extends Widget_Base {
 
-	public function get_name() {
-		return 'themo-course-guide';
-	}
+    public function get_name() {
+        return 'themo-tour-grid';
+    }
 
-	public function get_title() {
-		return __( 'Course Guide', 'elementor' );
-	}
+    public function get_title() {
+        return __( 'Tour Grid', 'elementor' );
+    }
 
-	public function get_icon() {
-		return 'eicon-favorite';
-	}
+    public function get_icon() {
+        return 'eicon-posts-grid';
+    }
 
-	public function get_categories() {
-		return [ 'themo-elements' ];
-	}
+    public function get_categories() {
+        return [ 'themo-elements' ];
+    }
 
-	private function get_courses_list() {
-		$portfolio = array();
+    private function get_tours_list() {
+        $portfolio = array();
 
-		$loop = new \WP_Query( array(
-			'post_type' => array('themo_portfolio'),
-			'posts_per_page' => -1
-		) );
+        $loop = new \WP_Query( array(
+            'post_type' => array('themo_tour'),
+            'posts_per_page' => -1
+        ) );
 
-		$portfolio['none'] = __('None', 'elementor');
+        $portfolio['none'] = __('None', 'elementor');
 
-		while ( $loop->have_posts() ) : $loop->the_post();
-			$id = get_the_ID();
-			$title = get_the_title();
-			$portfolio[$id] = $title;
-		endwhile; wp_reset_query();
+        while ( $loop->have_posts() ) : $loop->the_post();
+            $id = get_the_ID();
+            $title = get_the_title();
+            $portfolio[$id] = $title;
+        endwhile; wp_reset_query();
 
-		return $portfolio;
-	}
+        return $portfolio;
+    }
 
-	private function get_courses_group_list() {
-		$portfolio_group = array();
+    private function get_tours_group_list() {
+        $portfolio_group = array();
 
-		$portfolio_group['none'] = __( 'None', 'elementor' );
+        $portfolio_group['none'] = __( 'None', 'elementor' );
 
-		$taxonomy = 'themo_project_type';
+        $taxonomy = 'themo_tour_type';
 
-		$tax_terms = get_terms( $taxonomy );
+        $tax_terms = get_terms( $taxonomy );
 
-		foreach( $tax_terms as $item ) {
-			$portfolio_group[$item->term_id] = $item->name;
-		}
+        foreach( $tax_terms as $item ) {
+            $portfolio_group[$item->term_id] = $item->name;
+        }
 
-		return $portfolio_group;
-	}
+        return $portfolio_group;
+    }
 
-	protected function _register_controls() {
-		$this->start_controls_section(
-			'section_layout',
-			[
-				'label' => __( 'Layout', 'elementor' ),
-			]
-		);
+    protected function _register_controls() {
+        $this->start_controls_section(
+            'section_layout',
+            [
+                'label' => __( 'Layout', 'elementor' ),
+            ]
+        );
 
-		$this->add_control(
-			'filter',
-			[
-				'label' => __( 'Show filter bar', 'elementor' ),
-				'type' => Controls_Manager::CHECKBOX,
-				'default' => false,
-			]
-		);
+        $this->add_control(
+            'filter',
+            [
+                'label' => __( 'Show filter bar', 'elementor' ),
+                'type' => Controls_Manager::CHECKBOX,
+                'default' => false,
+            ]
+        );
 
-		$this->add_control(
-			'individual',
-			[
-				'label'   => __( 'Select Individually', 'elementor' ),
-				'type'    => Controls_Manager::SELECT2,
-				'label_block' => true,
-				'multiple'    => true,
-				'default' => 'none',
-				'options' => $this->get_courses_list()
-			]
-		);
+        $this->add_control(
+            'individual',
+            [
+                'label'   => __( 'Select Individually', 'elementor' ),
+                'type'    => Controls_Manager::SELECT2,
+                'label_block' => true,
+                'multiple'    => true,
+                'default' => 'none',
+                'options' => $this->get_tours_list()
+            ]
+        );
 
-		$this->add_control(
-			'group',
-			[
-				'label'   => __( 'Select by Group', 'elementor' ),
-				'type'    => Controls_Manager::SELECT2,
-				'label_block' => true,
-				'multiple'    => true,
-				'default' => 'none',
-				'options' => $this->get_courses_group_list()
-			]
-		);
+        $this->add_control(
+            'group',
+            [
+                'label'   => __( 'Select by Group', 'elementor' ),
+                'type'    => Controls_Manager::SELECT2,
+                'label_block' => true,
+                'multiple'    => true,
+                'default' => 'none',
+                'options' => $this->get_tours_group_list()
+            ]
+        );
 
-		$this->add_control(
-			'order',
-			[
-				'label' => __( 'Order by', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'date',
-				'options' => [
-					'date' => __( 'Date Published', 'elementor' ),
-					'menu_order' => __( 'Drag and Drop', 'elementor' ),
-				],
-			]
-		);
+        $this->add_control(
+            'order',
+            [
+                'label' => __( 'Order by', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'date',
+                'options' => [
+                    'date' => __( 'Date Published', 'elementor' ),
+                    'menu_order' => __( 'Drag and Drop', 'elementor' ),
+                ],
+            ]
+        );
 
-		$this->add_control(
-			'columns',
-			[
-				'label' => __( 'Number of Columns to show', 'elementor' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => '2',
-				'options' => [
-					'2' => __( '2', 'elementor' ),
-					'3' => __( '3', 'elementor' ),
-					'4' => __( '4', 'elementor' ),
-					'5' => __( '5', 'elementor' ),
-				],
-			]
-		);
+        $this->add_control(
+            'columns',
+            [
+                'label' => __( 'Number of Columns to show', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '2',
+                'options' => [
+                    '2' => __( '2', 'elementor' ),
+                    '3' => __( '3', 'elementor' ),
+                    '4' => __( '4', 'elementor' ),
+                    '5' => __( '5', 'elementor' ),
+                ],
+            ]
+        );
 
         $this->add_control(
             'gutter',
@@ -138,120 +138,120 @@ class Themo_Widget_Course_Guide extends Widget_Base {
             ]
         );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
 
-		$this->start_controls_section(
-			'section_style_content',
-			[
-				'label' => __( 'Content', 'elementor' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+        $this->start_controls_section(
+            'section_style_content',
+            [
+                'label' => __( 'Content', 'elementor' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
 
-	}
+    }
 
-	protected function render() {
-		$settings = $this->get_settings();
+    protected function render() {
+        $settings = $this->get_settings();
 
-		global $th_folio_count;
-		$folio_id = 'th-portfolio-' . ++$th_folio_count;
+        global $th_folio_count;
+        $folio_id = 'th-portfolio-' . ++$th_folio_count;
 
 
-		switch( $settings['columns'] ) {
-			case 2:
-				$portfolio_row = ' two-columns';
-				$portfolio_item = array('th-portfolio-item', 'item', 'col-sm-6');
-				break;
-			case 3:
-				$portfolio_row = ' three-columns';
-				$portfolio_item = array('th-portfolio-item', 'item', 'col-md-4', 'col-sm-6');
-				break;
-			case 4:
-				$portfolio_row = ' four-columns';
-				$portfolio_item = array('th-portfolio-item', 'item', 'col-md-3', 'col-sm-6');
-				break;
-			case 5:
-				$portfolio_row = ' five-columns';
-				$portfolio_item = array('th-portfolio-item', 'item', 'col-md-2', 'col-sm-6');
-				break;
-			default:
-				$portfolio_row = '';
-				$portfolio_item = array();
-		}
+        switch( $settings['columns'] ) {
+            case 2:
+                $portfolio_row = ' two-columns';
+                $portfolio_item = array('th-portfolio-item', 'item', 'col-sm-6');
+                break;
+            case 3:
+                $portfolio_row = ' three-columns';
+                $portfolio_item = array('th-portfolio-item', 'item', 'col-md-4', 'col-sm-6');
+                break;
+            case 4:
+                $portfolio_row = ' four-columns';
+                $portfolio_item = array('th-portfolio-item', 'item', 'col-md-3', 'col-sm-6');
+                break;
+            case 5:
+                $portfolio_row = ' five-columns';
+                $portfolio_item = array('th-portfolio-item', 'item', 'col-md-2', 'col-sm-6');
+                break;
+            default:
+                $portfolio_row = '';
+                $portfolio_item = array();
+        }
 
         if ( isset($settings['gutter']) &&  $settings['gutter'] == 'on'){
             $portfolio_row .= ' th-port-gutter';
         }
 
-		?>
+        ?>
 
         <?php
         $th_uid = uniqid('th-portfolio-content-');
         ?>
-		<div id="<?php echo $th_uid; ?>" class="th-portfolio">
+        <div id="<?php echo $th_uid; ?>" class="th-portfolio">
 
-			<?php if ( $settings['filter'] ) : ?>
+            <?php if ( $settings['filter'] ) : ?>
 
-				<div id="filters" class="th-portfolio-filters">
-					<span><?php echo __( 'Sort:', 'themovation-widgets' ); ?></span>
-					<a href="#" data-filter="*" class="current"><?php echo __( 'All', 'themovation-widgets' ); ?></a>
-					<?php
-					$taxonomy = 'themo_project_type';
-					$tax_terms = get_terms( $taxonomy );
-					foreach ( $tax_terms as $tax_term ) {
-						echo '<a href="#" data-filter="#'.$th_uid.' .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
-					}
-					?>
-				</div>
+                <div id="filters" class="th-portfolio-filters">
+                    <span><?php echo __( 'Sort:', 'themovation-widgets' ); ?></span>
+                    <a href="#" data-filter="*" class="current"><?php echo __( 'All', 'themovation-widgets' ); ?></a>
+                    <?php
+                    $taxonomy = 'themo_tour_type';
+                    $tax_terms = get_terms( $taxonomy );
+                    foreach ( $tax_terms as $tax_term ) {
+                        echo '<a href="#" data-filter="#'.$th_uid.' .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
+                    }
+                    ?>
+                </div>
 
-			<?php endif; ?>
+            <?php endif; ?>
 
-			<div id="th-portfolio-row" class="th-portfolio-row row portfolio_content <?php echo $portfolio_row; ?>">
+            <div id="th-portfolio-row" class="th-portfolio-row row portfolio_content <?php echo $portfolio_row; ?>">
 
-				<?php
-				$args = array();
-				if ( $settings['individual'] ) {
-					if ( in_array( 'none', $settings['individual'] ) ) {
-						$settings['individual'] = array_diff( $settings['individual'], array( 'none' ) );
-					}
-					if ( $settings['individual'] ) {
-						$post_ids = $settings['individual'];
-						$args['post__in'] = $post_ids;
-					}
-				}
-				$args['post_type'] = array( 'themo_portfolio' );
-				if ( $settings['group'] ) {
-					if ( in_array( 'none', $settings['group'] ) ) {
-						$settings['group'] = array_diff( $settings['group'], array( 'none' ) );
-					}
-					if ( $settings['group'] ) {
-						$project_type_id = $settings['group'];
-						$args['tax_query'] = array(
-							array(
-								'taxonomy' => 'themo_project_type',
-								'field'    => 'term_id',
-								'terms'    => $project_type_id,
-							),
-						);
-					}
-				}
-				if ( $settings['order'] == 'date' ) {
-					$args['orderby'] = 'date';
-				} elseif ( $settings['order'] == 'menu_order' ) {
-					$args['orderby'] = 'menu_order';
-					$args['order'] = 'ASC';
-				}
-				// The Query
-				$query = new \WP_Query( $args );
+                <?php
+                $args = array();
+                if ( $settings['individual'] ) {
+                    if ( in_array( 'none', $settings['individual'] ) ) {
+                        $settings['individual'] = array_diff( $settings['individual'], array( 'none' ) );
+                    }
+                    if ( $settings['individual'] ) {
+                        $post_ids = $settings['individual'];
+                        $args['post__in'] = $post_ids;
+                    }
+                }
+                $args['post_type'] = array( 'themo_tour' );
+                if ( $settings['group'] ) {
+                    if ( in_array( 'none', $settings['group'] ) ) {
+                        $settings['group'] = array_diff( $settings['group'], array( 'none' ) );
+                    }
+                    if ( $settings['group'] ) {
+                        $project_type_id = $settings['group'];
+                        $args['tax_query'] = array(
+                            array(
+                                'taxonomy' => 'themo_tour_type',
+                                'field'    => 'term_id',
+                                'terms'    => $project_type_id,
+                            ),
+                        );
+                    }
+                }
+                if ( $settings['order'] == 'date' ) {
+                    $args['orderby'] = 'date';
+                } elseif ( $settings['order'] == 'menu_order' ) {
+                    $args['orderby'] = 'menu_order';
+                    $args['order'] = 'ASC';
+                }
+                // The Query
+                $query = new \WP_Query( $args );
 
-				// The Loop
-				if ( $query->have_posts() ) {
-					while ( $query->have_posts() ) {
-						$query->the_post();
+                // The Loop
+                if ( $query->have_posts() ) {
+                    while ( $query->have_posts() ) {
+                        $query->the_post();
                         // get post format
-						$format = get_post_format();
+                        $format = get_post_format();
                         if ( false === $format ) {
                             $format = '';
                         }
@@ -289,7 +289,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         if(isset($format) && $format == 'image') {
 
                             // Get Project Format Options
-                            $project_thumb_alt_img = get_post_meta( get_the_ID(), '_holes_image', false);
+                            $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false);
 
                             if (isset($project_thumb_alt_img[0]) && $project_thumb_alt_img[0] > "") {
                                 $alt = false;
@@ -310,17 +310,17 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         }
 
                         $filtering_links = array();
-						$terms = get_the_terms( get_the_ID(), 'themo_project_type' );
-						if ( $terms && ! is_wp_error( $terms ) ) :
-							foreach ( $terms as $term ) {
-								$filtering_links[] = 'p-' . $term->slug;
-							}
-						endif;
-						$classes = array_merge( $portfolio_item, $filtering_links );
-						?>
-						<div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
-							<div class="th-port-wrap">
-								<?php
+                        $terms = get_the_terms( get_the_ID(), 'themo_tour_type' );
+                        if ( $terms && ! is_wp_error( $terms ) ) :
+                            foreach ( $terms as $term ) {
+                                $filtering_links[] = 'p-' . $term->slug;
+                            }
+                        endif;
+                        $classes = array_merge( $portfolio_item, $filtering_links );
+                        ?>
+                        <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+                            <div class="th-port-wrap">
+                                <?php
                                 if(isset($img_src) &&  $img_src > ""){
                                     echo '<img class="img-responsive th-port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
                                 }else{
@@ -329,59 +329,72 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                                         echo get_the_post_thumbnail(get_the_ID(),"th_img_md_square",$featured_img_attr);
                                     }
                                 }
+
+                                $th_tour_title = get_the_title();;
+                                $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true);
+                                if($th_tour_title_meta > ""){
+                                    $th_tour_title = $th_tour_title_meta;
+                                }
+
+                                $th_tour_highlight = false;
+                                $th_tour_highlight = get_post_meta( get_the_ID(), 'th_tour_highlight', true);
+
+                                $th_tour_intro = false;
+                                $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true);
+                                if($th_tour_intro === false || empty($th_tour_intro)){
+                                    $automatic_post_excerpts = 'on';
+                                    if ( function_exists( 'ot_get_option' ) ) {
+                                        $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+                                    }
+                                    if($automatic_post_excerpts === 'off'){
+                                        $th_tour_intro = apply_filters( 'the_content', get_the_content() );
+                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
+                                        if($th_tour_intro != ""){
+                                            $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
+                                        }
+                                    }else{
+                                        $th_tour_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
+                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
+                                        $th_tour_intro = str_replace('<p', '<p class="th-port-sub"', $th_tour_intro);
+                                    }
+                                }else{
+                                    $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
+                                }
                                 ?>
-								<div class="th-port-overlay"></div>
-								<div class="th-port-inner">
-									<div class="th-port-center">
-										<!--i class="th-port-icon glyphicons glyphicons-lightbulb"></i-->
-										<h3 class="th-port-title"><?php the_title(); ?></h3>
 
-                                        <?php
-                                        $automatic_post_excerpts = 'on';
-                                        if ( function_exists( 'ot_get_option' ) ) {
-                                            $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
-                                        }
-                                        if($automatic_post_excerpts === 'off'){
-                                            $content = apply_filters( 'the_content', get_the_content() );
-                                            $content = str_replace( ']]>', ']]&gt;', $content );
-                                            if($content != ""){
-                                                echo '<p class="th-port-sub">'.$content.'</p>';
-                                            }
-                                        }else{
-                                            $excerpt = apply_filters( 'the_excerpt', get_the_excerpt() );
-                                            $excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
-                                            $excerpt = str_replace('<p', '<p class="th-port-sub"', $excerpt);
-                                            if($excerpt != ""){
-                                                echo $excerpt;
-                                            }
-                                        }
-                                        ?>
-                                        ?>
-									</div>
+                                <div class="th-port-overlay"></div>
+                                <div class="th-port-inner">
+                                    <div class="th-port-center">
+                                        <?php if($th_tour_highlight){?>
+                                            <div class="th-port-top-text"><?php echo  $th_tour_highlight; ?></div>
+                                        <? } ?>
+                                        <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
+                                        <?php echo $th_tour_intro; ?>
+                                    </div>
                                     <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . ' title="'.esc_attr($link_title).'"></a>'; ?>
-								</div>
-							</div>
-						</div>
-						<?php
-					}
-				} else {
-					echo '<div class="alert">';
-					_e('Sorry, no results were found.', 'themovation-widgets');
-					echo '</div>';
-					get_search_form();
-				}
-				// Restore original Post Data
-				wp_reset_postdata();
-				?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo '<div class="alert">';
+                    _e('Sorry, no results were found.', 'themovation-widgets');
+                    echo '</div>';
+                    get_search_form();
+                }
+                // Restore original Post Data
+                wp_reset_postdata();
+                ?>
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-		<?php
-	}
+        <?php
+    }
 
-	protected function _content_template() {}
+    protected function _content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Course_Guide() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Tour_Grid() );
