@@ -1236,8 +1236,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 
                     <?php if ( (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )) || (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )))  : ?>
                         <div class="th-pricing-cost">
-                            <?php echo esc_html( $column['price_col_price'] ); ?>
-                            <span><?php echo esc_html( $column['price_col_text'] ); ?></span>
+                            <?php echo esc_html( $column['price_col_price'] ); ?><span><?php echo esc_html( $column['price_col_text'] ); ?></span>
                         </div>
                     <?php endif; ?>
 
