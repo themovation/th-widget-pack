@@ -1248,8 +1248,8 @@ class Themo_Widget_Pricing extends Widget_Base {
 						</div>
                     <?php endif; ?>
 
+                        <div class="th-btn-wrap">
 						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
-							<div class="th-btn-wrap">
                                 <?php if (isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes') : ?>
                                     <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
                                     <?php $button_style = 'btn-' . $column['price_col_button_1_style']; ?>
@@ -1268,8 +1268,8 @@ class Themo_Widget_Pricing extends Widget_Base {
                                     <?php endif;?>
                                     <?php echo '</a>'; ?>
                                 <?php endif; ?>
-							</div>
 						<?php endif; ?>
+                        </div>
 
 					</div>
 
