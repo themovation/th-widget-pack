@@ -680,12 +680,29 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
-				'selectors' => [
+				/*'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'text-align: {{VALUE}}',
-				],
+				],*/
                 'default' => 'center',
 			]
 		);
+
+        /*$th_repeater->add_control(
+            'slide_text_align',
+            [
+                'label' => __( 'Text Align', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'large',
+                'options' => [
+                    'left' => __('Left', 'elementor'),
+                    'center' => __('Center', 'elementor'),
+                    'right' => __('Right', 'elementor'),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-inner' => 'text-align: {{VALUE}}',
+                ],
+            ]
+        );*/
 
 		$th_repeater->add_control(
 			'slide_title_color',
@@ -1572,12 +1589,27 @@ class Themo_Widget_Slider extends Widget_Base {
                         }
                     endif;
 
+                    $th_cal_align_class = false;
+                    if(isset($slide['slide_text_align']) && $slide['slide_text_align'] > ""){
+                        switch ($slide['slide_text_align']) {
+                            case 'left':
+                                $th_cal_align_class =  ' th-left';
+                                break;
+                            case 'center':
+                                $th_cal_align_class = ' th-centered';
+                                break;
+                            case 'right':
+                                $th_cal_align_class = ' th-right';
+                                break;
+                        }
+                    }
+
                     ?>
 
                     <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
 						<div class="slider-bg <?php echo $th_form_border_class; ?>">
 							<div class="th-slider-overlay">
-                                <div class="th-slide-inner">
+                                <div class="th-slide-inner <?php echo esc_attr($th_cal_align_class); ?>">
                                     <div class="th-slide-content">
                                         <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
                                             <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
@@ -1636,7 +1668,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                                         $th_output .= '</div>';
                                                         break;
                                                     case 'booked-calendar':
-                                                        $th_output .= '<div class="th-book-cal-'.esc_attr( $th_cal_size ) .'">';
+                                                        $th_output .= '<div class="th-book-cal-'.esc_attr( $th_cal_size ) . esc_attr($th_cal_align_class) .'">';
                                                         if($sth_show_tooltip){
                                                             $th_output .= '<div class="th-cal-tooltip">';
                                                             $th_output .= '<h3>'.esc_attr($th_tooltip).'</h3>';
