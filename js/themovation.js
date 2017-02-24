@@ -1,5 +1,6 @@
 (
-	function ( $ ) {
+
+    function ( $ ) {
 
 	$.fn.wrapGridCell = function() {
 		"use strict";
@@ -14,8 +15,15 @@
 	}
 )( jQuery );
 
+
 jQuery( function ( $ ) {
 	$(document).wrapGridCell();
+
+   /* $('.th-pricing-table').on('load', function(){
+        // $(this).show();
+        console.log('load the iframe')
+    });*/
+
 
 	$( '.panel-grid' ).find('.so-panel.widget .widget-animate').waypoint( {
 		offset: function() {
@@ -45,6 +53,8 @@ jQuery( function ( $ ) {
 
     // fix pricing columns
 	themo_adjust_pricing_table_height();
+
+
 
     // start isotope
     themo_init_isotope();
@@ -137,9 +147,14 @@ jQuery( function ( $ ) {
 
         var $tallestCol;
 
+
+
         // For each pricing-table element
         $('.th-pricing-table').each(function(){
             $tallestCol = 0;
+
+
+            console.log('CHECKING TABLE HEIGHT ');
 
             // Find the plan name
             $(this).find('> div .th-pricing-title').each(function(){
@@ -152,6 +167,17 @@ jQuery( function ( $ ) {
             // set even height
             $(this).find('> div .th-pricing-title').css('height',$tallestCol);
 
+            // Button Wrap
+            $(this).find('> div .th-btn-wrap').each(function(){
+                ($(this).height() > $tallestCol) ? $tallestCol = $(this).height() : $tallestCol = $tallestCol;
+            });
+
+            // Safety net incase pricing tables height couldn't be determined
+            if($tallestCol == 0) $tallestCol = 'auto';
+
+            // Set even height
+            $(this).find('> div .th-btn-wrap').css('height',$tallestCol);
+
             // FEATURES UL
             $(this).find('> div .th-pricing-features').each(function(){
                 ($(this).height() > $tallestCol) ? $tallestCol = $(this).height() : $tallestCol = $tallestCol;
@@ -162,6 +188,10 @@ jQuery( function ( $ ) {
 
             // Set even height
             $(this).find('> div .th-pricing-features').css('height',$tallestCol);
+
+
+
+            //th-btn-wrap
 
             // END FEATURES UL
 
