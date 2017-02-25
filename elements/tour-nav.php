@@ -163,8 +163,8 @@ class Themo_Widget_TourNav extends Widget_Base {
 				$counter = 1; ?>
                 <?php foreach ( $items as $item ) : ?>
 					<span class="th-tour-nav-item">
-						<i class="<?php echo $item['icon']; ?>" aria-hidden="true"></i>
-						<span><?php echo $item['text']; ?></span>
+						<i class="<?php echo esc_attr($item['icon']); ?>" aria-hidden="true"></i>
+						<span><?php echo esc_html($item['text']); ?></span>
 					</span>
                     <?php
                     $counter++;
