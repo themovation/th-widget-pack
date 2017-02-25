@@ -178,8 +178,8 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$tabs = $this->get_settings( 'tabs' );
 
 		$this->add_render_attribute( 'itin-main', 'class', 'th-itinerary' );
-		$this->add_render_attribute( 'itin-main', 'class', $settings['width'] );
-		$this->add_render_attribute( 'itin-main', 'class', $settings['alignment'] );
+		$this->add_render_attribute( 'itin-main', 'class', esc_attr($settings['width']));
+		$this->add_render_attribute( 'itin-main', 'class', esc_attr($settings['alignment']) );
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'itin-main' ); ?>>
 			<?php
@@ -188,10 +188,10 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				<div class="th-itin-single<?php echo ( $settings['expanded'] ? ' th-itin-active' : ( $counter == 1 ? ' th-itin-active' : ' th-itin-inactive') ); ?>">
 					<i class="th-itin-icon halflings halflings-record-empty"></i>
 					<div class="th-itin-title">
-						<span><?php echo $item['tab_title']; ?></span>
+						<span><?php echo esc_html($item['tab_title']); ?></span>
 					</div>
 					<div class="th-itin-content">
-						<?php echo $this->parse_text_editor( $item['tab_content'] ); ?>
+						<?php echo wp_kses_post($this->parse_text_editor( $item['tab_content']) ); ?>
 					</div>
 				</div>
 			<?php
