@@ -34,6 +34,21 @@ class Themo_Widget_TourNav extends Widget_Base {
 			[
 				'label' => __( 'Items', 'elementor' ),
 				'type' => Controls_Manager::REPEATER,
+                'default' => [
+                    [
+                        'icon' => __( 'fa fa-money', 'elementor' ),
+                        'text' => __( '$99 per person', 'elementor' ),
+                    ],
+                    [
+                        'icon' => __( 'fa fa-clock-o', 'elementor' ),
+                        'text' => __( '3 Hours', 'elementor' ),
+                    ],
+                    [
+                        'icon' => __( 'fa fa-user-o', 'elementor' ),
+                        'text' => __( '3+ People', 'elementor' ),
+                    ],
+
+                ],
 				'fields' => [
 					[
 						'name' => 'icon',
@@ -62,6 +77,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}}' => 'background-color: {{VALUE}};',
 				],
+                'default' => 'rgba(0,0,0,0.5)',
 			]
 		);
 
@@ -116,6 +132,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
 				],
+                'default' => '#ffffff',
 			]
 		);
 
@@ -127,6 +144,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
 				],
+                'default' => '#ffffff',
 			]
 		);
 
