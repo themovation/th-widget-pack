@@ -30,7 +30,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 		);
 
 		$this->add_control(
-			'item',
+			'items',
 			[
 				'label' => __( 'Items', 'elementor' ),
 				'type' => Controls_Manager::REPEATER,
@@ -154,7 +154,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings();
 
-        $items = $this->get_settings( 'item' );
+        $items = $this->get_settings( 'items' );
 
 		?>
 		<div class="th-tour-nav">
@@ -175,7 +175,21 @@ class Themo_Widget_TourNav extends Widget_Base {
 	}
 
 	protected function _content_template() {
-		?><?php
+		?>
+        <div class="th-tour-nav">
+            <div class="th-tour-nav-items">
+            <# if ( settings.items ) {
+                    _.each(settings.items, function( item ) { #>
+                    <span class="th-tour-nav-item">
+                        <i class="{{{ item.icon }}}" aria-hidden="true"></i>
+                        <span>{{{ item.text }}}</span>
+                    </span>
+
+                <#  } );
+                } #>
+            </div>
+        </div>
+        <?php
 	}
 }
 
