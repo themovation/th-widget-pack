@@ -65,7 +65,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		/*$this->add_control(
 			'prev_next_links',
 			[
 				'label' => __( 'Prev / Next Links', 'elementor' ),
@@ -85,9 +85,9 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'off',
 			]
-		);
+		);*/
 
-		$this->add_control(
+		/*$this->add_control(
 			'details',
 			[
 				'label' => __( 'Tour Details', 'elementor' ),
@@ -96,7 +96,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'label_off' => __( 'Off', 'elementor' ),
 				'return_value' => 'off',
 			]
-		);
+		);*/
 
 		$this->end_controls_section();
 
@@ -114,7 +114,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'label' => __( 'Icon Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -125,7 +125,7 @@ class Themo_Widget_TourNav extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -135,15 +135,29 @@ class Themo_Widget_TourNav extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
-		?>
 
+        $items = $this->get_settings( 'item' );
+
+		?>
+		<div class="th-tour-nav">
+			<div class="th-tour-nav-items">
+				<?php
+				$counter = 1; ?>
+                <?php foreach ( $items as $item ) : ?>
+					<span class="th-tour-nav-item">
+						<i class="<?php echo $item['icon']; ?>" aria-hidden="true"></i>
+						<span><?php echo $item['text']; ?></span>
+					</span>
+                    <?php
+                    $counter++;
+                endforeach; ?>
+			</div>
+		</div>
 		<?php
 	}
 
 	protected function _content_template() {
-		?>
-
-		<?php
+		?><?php
 	}
 }
 
