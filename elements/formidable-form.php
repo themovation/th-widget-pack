@@ -60,13 +60,17 @@ class Themo_Widget_Formidable extends Widget_Base {
 
 	protected function render() {
 
-        $th_shortcode = $this->get_settings( 'shortcode' );
-        $th_inline_class = $this->get_settings( 'inline_form' );
+        $settings = $this->get_settings();
 
-        $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
-		?>
-		<div class="<?php echo sanitize_html_class($th_inline_class);?>"><?php echo $th_shortcode; ?></div>
-		<?php
+        if(isset($settings['shortcode']) && ! empty($settings['shortcode'])){
+            $th_shortcode = $settings['shortcode'];
+            $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
+            $this->add_render_attribute( 'th-form-class', 'class', esc_attr($settings['inline_form']) );
+            ?>
+            <div <?php echo $this->get_render_attribute_string( 'th-form-class'); ?>><?php echo $th_shortcode; ?></div>
+            <?php
+        }
+
 	}
 
 	public function render_plain_content() {
