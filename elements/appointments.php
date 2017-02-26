@@ -130,26 +130,21 @@ class Themo_Widget_Appointments extends Widget_Base {
 			]
 		);
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'tooltip_typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .th-cal-tooltip h3',
-			]
-		);*/
-
 		$this->end_controls_section();
 
 	}
 
 	protected function render() {
 		$settings = $this->get_settings();
+
+        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr($settings['calendar_size']) );
+        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr($settings['calendar_align']) );
+        $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip');
+
 		?>
-		<div class="th-book-cal-<?php echo esc_attr( $settings['calendar_size'] ); ?> th-<?php echo esc_attr( $settings['calendar_align'] ); ?>">
+		<div <?php echo $this->get_render_attribute_string( 'th-cal-wrap'); ?>>
 			<?php if( $settings['tooltip_title'] ) : ?>
-				<div class="th-cal-tooltip"><h3><?php echo esc_html( $settings['tooltip_title'] ); ?></h3></div>
+				<div <?php echo $this->get_render_attribute_string( 'th-cal-tooltip'); ?>><h3><?php echo esc_html( $settings['tooltip_title'] ); ?></h3></div>
 			<?php endif; ?>
 			<?php echo do_shortcode( $settings['calendar_shortcode'] ); ?>
 		</div>
