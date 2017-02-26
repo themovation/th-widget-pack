@@ -145,3 +145,6 @@ function hex2rgba($color, $opacity = false) {
 */
 global $th_acc_count, $th_acc_panel_count, $th_thumb_slider_count;
 $th_acc_panel_count = $th_acc_count = $th_thumb_slider_count = 0;
+
+global $th_map_id;
+$th_map_id = 0;

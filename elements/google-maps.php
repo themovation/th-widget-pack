@@ -42,6 +42,22 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		);
 
 		$this->add_control(
+			'address_lat',
+			[
+				'label' => __( 'Address Latitude', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+			]
+		);
+
+		$this->add_control(
+			'address_lng',
+			[
+				'label' => __( 'Address Longitude', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+			]
+		);
+
+		$this->add_control(
 			'zoom',
 			[
 				'label' => __( 'Zoom Level', 'elementor' ),
@@ -55,6 +71,16 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 						'max' => 20,
 					],
 				],
+			]
+		);
+
+		$this->add_control(
+			'api',
+			[
+				'label' => __( 'Google Maps API', 'elementor' ),
+				'description' => __( '<a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Get an API key</a>', 'elementor' ),
+				'type' => Controls_Manager::TEXT,
+				'separator' => 'before',
 			]
 		);
 
@@ -73,7 +99,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} iframe' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #map' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -189,18 +215,63 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
+		// global $th_map_id;
+		// $map_id = 'th-map-' . ++$th_map_id;
 
-		if ( empty( $settings['address'] ) )
-			return;
+		$map_id = 'map';
 
-		if ( 0 === absint( $settings['zoom']['size'] ) )
-			$settings['zoom']['size'] = 10;
+		if ( empty( $settings['address'] ) ) return;
 
-		printf(
-			'<div class="elementor-custom-embed"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;t=m&amp;z=%d&amp;output=embed&amp;iwloc=near"></iframe></div>',
-			urlencode( $settings['address'] ),
-			absint( $settings['zoom']['size'] )
-		);
+		if ( 0 === absint( $settings['zoom']['size'] ) ) $settings['zoom']['size'] = 10;
+
+		// url encode the address
+		$address = urlencode( $settings['address'] );
+		// google map geocode api url
+		$url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key={$settings['api']}";
+		// get the json response
+		$resp_json = file_get_contents( $url );
+		// decode the json
+		$resp = json_decode( $resp_json, true );
+
+		// response status will be 'OK', if able to geocode given address
+		if ( $resp['status'] == 'OK' ) {
+			// get the important data
+			$settings['address_lat'] = $resp['results'][0]['geometry']['location']['lat'];
+			$settings['address_lng'] = $resp['results'][0]['geometry']['location']['lng'];
+		} else {
+			return false;
+		}
+		?>
+
+		<!DOCTYPE html>
+		<html>
+		  <head>
+		    <style>
+		       #<?php echo $map_id ?> {
+		        width: 100%;
+		       }
+		    </style>
+		  </head>
+		  <body>
+		    <div id="<?php echo $map_id ?>"></div>
+		    <script>
+		      function initMap() {
+		        var uluru = {lat: <?php echo $settings['address_lat'] ?>, lng: <?php echo $settings['address_lng'] ?>};
+		        var map = new google.maps.Map(document.getElementById('<?php echo $map_id ?>'), {
+		          zoom: <?php echo $settings['zoom']['size'] ?>,
+		          center: uluru,
+				  mapTypeId: 'hybrid',
+				  disableDefaultUI: true
+		        });
+		      }
+		    </script>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=<?php echo $settings['api'] ?>&callback=initMap">
+		    </script>
+		  </body>
+		</html>
+
+		<?php
 	}
 
 	protected function _content_template() {}
