@@ -204,7 +204,7 @@ class Themo_Widget_Button extends Widget_Base {
 
 
 
-        $this->add_responsive_control(
+        $this->add_control(
 			'button_align',
 			[
 				'label' => __( 'Alignment', 'elementor' ),
