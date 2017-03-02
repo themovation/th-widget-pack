@@ -1209,66 +1209,66 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 					<?php if ( ! $column['price_col_featured'] ) : ?>
 						<?php if ( ! empty( $settings['button_size_1'] ) ) {
-							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['button_size_1'] );
+							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['button_size_1'] ) );
 						} ?>
 						<?php if ( ! empty( $settings['button_size_2'] ) ) {
-							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
+							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . esc_attr( $settings['button_size_2'] ) );
 						} ?>
 					<?php else : ?>
 						<?php if ( ! empty( $settings['featured_button_size_1'] ) ) {
-							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['featured_button_size_1'] );
+							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['featured_button_size_1'] ) );
 						} ?>
 						<?php if ( ! empty( $settings['featured_button_size_2'] ) ) {
-							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['featured_button_size_2'] );
+							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . esc_attr( $settings['featured_button_size_2'] ) );
 						} ?>
 					<?php endif; ?>
 
 					<div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( $column['price_col_featured'] ? ' th-highlight' : '' ); echo $column_class; ?>">
 
 
-                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
-						<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
-                    <?php endif; ?>
+	                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
+							<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
+	                    <?php endif; ?>
 
-                    <?php if ( isset( $column['price_col_sub_title'] ) && ! empty( $column['price_col_sub_title'] ) ) : ?>
-                        <div class="th-pricing-sub-title"><?php echo esc_html( $column['price_col_sub_title'] ); ?></div>
-                    <?php endif; ?>
+	                    <?php if ( isset( $column['price_col_sub_title'] ) && ! empty( $column['price_col_sub_title'] ) ) : ?>
+	                        <div class="th-pricing-sub-title"><?php echo esc_html( $column['price_col_sub_title'] ); ?></div>
+	                    <?php endif; ?>
 
-                    <?php if ( (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )) || (isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] )))  : ?>
-                        <div class="th-pricing-cost">
-                            <?php echo esc_html( $column['price_col_price'] ); ?><span><?php echo esc_html( $column['price_col_text'] ); ?></span>
-                        </div>
-                    <?php endif; ?>
+	                    <?php if ( ( isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] ) ) || ( isset( $column['price_col_price'] ) && ! empty( $column['price_col_price'] ) ) ) : ?>
+	                        <div class="th-pricing-cost">
+	                            <?php echo esc_html( $column['price_col_price'] ); ?><span><?php echo esc_html( $column['price_col_text'] ); ?></span>
+	                        </div>
+	                    <?php endif; ?>
 
-                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
-						<div class="th-pricing-features">
-							<ul>
-								<?php echo '<li>'.str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( $column['price_col_description'] , "\n\r" ) ).'</li>'; ?>
-							</ul>
-						</div>
-                    <?php endif; ?>
+	                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
+							<div class="th-pricing-features">
+								<ul>
+									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( esc_html( $column['price_col_description'] ), "\n\r" ) ) . '</li>'; ?>
+								</ul>
+							</div>
+	                    <?php endif; ?>
 
                         <div class="th-btn-wrap">
-						<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
-                                <?php if (isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes') : ?>
-                                    <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
-                                    <?php $button_style = 'btn-' . $column['price_col_button_1_style']; ?>
-                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $column['price_col_button_1_link']['url'] . '"' . $target . '>'; ?>
-                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-                                        <?php echo esc_html( $column['price_col_button_1_text']) ?>
-                                    <?php endif;?>
-                                    <?php echo '</a>'; ?>
-                                <?php endif; ?>
-                                <?php if (isset($column['price_col_button_2_show']) && $column['price_col_button_2_show'] == 'yes') : ?>
-                                    <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
-                                    <?php $button_style = 'btn-' . $column['price_col_button_2_style']; ?>
-                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $column['price_col_button_2_link']['url'] . '"' . $target . '>'; ?>
-                                    <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
-                                        <?php echo esc_html( $column['price_col_button_2_text']) ?>
-                                    <?php endif;?>
-                                    <?php echo '</a>'; ?>
-                                <?php endif; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
+	                            <?php if ( isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes' ) : ?>
+	                                <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
+	                                <?php $button_style = 'btn-' . esc_attr( $column['price_col_button_1_style'] ); ?>
+	                                <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . esc_url( $column['price_col_button_1_link']['url'] ) . '"' . $target . '>'; ?>
+		                                <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+		                                    <?php echo esc_html( $column['price_col_button_1_text']) ?>
+		                                <?php endif;?>
+	                                <?php echo '</a>'; ?>
+	                            <?php endif; ?>
+	                            <?php if (isset($column['price_col_button_2_show']) && $column['price_col_button_2_show'] == 'yes') : ?>
+	                                <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
+	                                <?php $button_style = 'btn-' . esc_attr( $column['price_col_button_2_style'] ); ?>
+	                                <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . esc_url( $column['price_col_button_2_link']['url'] ) . '"' . $target . '>'; ?>
+		                                <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
+		                                    <?php echo esc_html( $column['price_col_button_2_text']) ?>
+		                                <?php endif;?>
+	                                <?php echo '</a>'; ?>
+	                            <?php endif; ?>
+							<?php endif; ?>
                         </div>
 
 					</div>
