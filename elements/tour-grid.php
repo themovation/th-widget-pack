@@ -162,7 +162,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 ],
                 'default' => $default_rgba,
                 'selectors' => [
-                    '{{WRAPPER}} .th-port-overlay' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
