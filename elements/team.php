@@ -249,7 +249,7 @@ class Themo_Widget_Team extends Widget_Base {
 		$settings = $this->get_settings();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
-			$this->add_render_attribute( 'link', 'href', $settings['url']['url'] );
+			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
 
 			if ( ! empty( $settings['url']['is_external'] ) ) {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
@@ -260,17 +260,17 @@ class Themo_Widget_Team extends Widget_Base {
             return;
         }
         if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
-            $image_size = $settings['post_image_size'];
+            $image_size = esc_attr( $settings['post_image_size'] );
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
         }
 
         if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
-            $image_size = $settings['post_image_size'];
+            $image_size = esc_attr( $settings['post_image_size'] );
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
         }elseif ( ! empty( $settings['image']['url'] ) ) {
-            $this->add_render_attribute( 'image', 'src', $settings['image']['url'] );
-            $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['image'] ) );
-            $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['image'] ) );
+            $this->add_render_attribute( 'image', 'src', esc_url( $settings['image']['url'] ) );
+            $this->add_render_attribute( 'image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['image'] ) ) );
+            $this->add_render_attribute( 'image', 'title', sec_attr( Control_Media::get_image_title( $settings['image'] ) ) );
             $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
         }
 
@@ -302,13 +302,13 @@ class Themo_Widget_Team extends Widget_Base {
 					<h5 class="th-team-member-title"><?php echo esc_html( $settings['job']) ?></h5>
 				<?php endif;?>
 				<?php if ( ! empty( $settings['content'] ) ) : ?>
-					<div class="th-team-member-text"><?php echo $settings['content']; ?></div>
+					<div class="th-team-member-text"><?php echo esc_html( $settings['content'] ); ?></div>
 				<?php endif; ?>
 				<div class="th-team-member-social">
 					<?php foreach( $settings['social'] as $social ) {
 						if ( ! empty( $social['url']['url'] ) ) {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
-							echo '<a href="' . $social['url']['url'] . '"' . $target . '>';
+							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . $target . '>';
 						}
 						if ( $social['icon'] ) : ?>
 							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
