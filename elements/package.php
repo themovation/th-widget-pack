@@ -289,7 +289,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$settings = $this->get_settings();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
-			$this->add_render_attribute( 'link', 'href', $settings['url']['url'] );
+			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
 
 			if ( ! empty( $settings['url']['is_external'] ) ) {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
@@ -319,13 +319,13 @@ class Themo_Widget_Package extends Widget_Base {
             if ( empty( $settings['image']['url'] ) ) {
                 return;
             }
-            if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
-                $image_size = $settings['post_image_size'];
+            if ( isset( $settings['post_image_size'] ) &&  $settings['post_image_size'] > "" && isset( $settings['image']['id'] ) && $settings['image']['id'] > "" ) {
+                $image_size = esc_attr( $settings['post_image_size'] );
                 if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
-            }elseif ( ! empty( $settings['image']['url'] ) ) {
-                $this->add_render_attribute( 'image', 'src', $settings['image']['url'] );
-                $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['image'] ) );
-                $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['image'] ) );
+            } elseif ( ! empty( $settings['image']['url'] ) ) {
+                $this->add_render_attribute( 'image', 'src', esc_url( $settings['image']['url'] ) );
+                $this->add_render_attribute( 'image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['image'] ) ) );
+                $this->add_render_attribute( 'image', 'title', esc_attr( Control_Media::get_image_title( $settings['image'] ) ) );
                 $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
             }
             ?>
@@ -335,14 +335,14 @@ class Themo_Widget_Package extends Widget_Base {
 
 			<div class="th-pkg-content">
                 <?php if ( ! empty( $settings['pre_title'] ) ) : ?>
-                    <div class="th-package-pre-title"><?php echo $settings['pre_title']; ?></div>
+                    <div class="th-package-pre-title"><?php echo esc_html( $settings['pre_title'] ); ?></div>
                 <?php endif; ?>
 				<?php if ( ! empty( $settings['title'] ) ) : ?>
-					<h3><?php echo $settings['title']; ?></h3>
+					<h3><?php echo esc_html( $settings['title'] ); ?></h3>
 				<?php endif; ?>
 				<?php if ( ! empty( $settings['content'] ) ) : ?>
 					<div class="th-package-content">
-						<?php echo $settings['content']; ?>
+						<?php echo esc_html( $settings['content'] ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
