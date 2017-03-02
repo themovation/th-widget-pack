@@ -398,17 +398,14 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
+                                    <?php if($th_tour_highlight){ ?>
+                                        <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
+                                    <?php } ?>
                                     <div class="th-port-center">
-                                        <?php if($th_tour_highlight){ ?>
-                                            <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
-                                        <?php } ?>
                                         <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
                                         <?php echo $th_tour_intro; ?>
-
                                         <?php if(! $th_tour_button_text === false || ! empty($th_tour_button_text)) { ?>
-                                            <a class="btn-1 btn th-btn btn-ghost-light" href="<?php echo esc_url($link_url); ?>">
-                                                <?php echo $th_tour_button_text; ?>
-                                            </a>
+                                            <span class="th-port-btn"><?php echo $th_tour_button_text; ?></span>
                                         <?php } ?>
                                     </div>
                                     <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . '></a>'; ?>
