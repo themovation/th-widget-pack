@@ -303,7 +303,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-wrapper' );
 
 		if ( $settings['testimonial_alignment'] ) {
-			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . $settings['testimonial_alignment'] );
+			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . esc_attr( $settings['testimonial_alignment'] ) );
 		}
 
 		$this->add_render_attribute( 'meta', 'class', 'elementor-testimonial-meta' );
@@ -317,16 +317,15 @@ class Themo_Widget_Testimonial extends Widget_Base {
             if ( $settings['testimonial_image']['id'] ) $image = wp_get_attachment_image( $settings['testimonial_image']['id'], 'th_img_sm_square', false, array( 'class' => 'th-team-member-image' ) );
 
         }elseif ( ! empty( $settings['testimonial_image']['url'] ) ) {
-            $this->add_render_attribute( 'image', 'src', $settings['testimonial_image']['url'] );
-            $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['testimonial_image'] ) );
-            $this->add_render_attribute( 'image', 'title', Control_Media::get_image_title( $settings['testimonial_image'] ) );
+            $this->add_render_attribute( 'image', 'src', esc_url( $settings['testimonial_image']['url'] ) );
+            $this->add_render_attribute( 'image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['testimonial_image'] ) ) );
+            $this->add_render_attribute( 'image', 'title', esc_attr( Control_Media::get_image_title( $settings['testimonial_image'] ) ) );
             $this->add_render_attribute( 'image', 'class', 'th-team-member-image' );
             $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
         }
 
-
 		if ( $settings['testimonial_image_position'] ) {
-			$this->add_render_attribute( 'meta', 'class', 'elementor-testimonial-image-position-' . $settings['testimonial_image_position'] );
+			$this->add_render_attribute( 'meta', 'class', 'elementor-testimonial-image-position-' . esc_attr( $settings['testimonial_image_position'] ) );
 		}
 
         $settings['test'] = 'test';
@@ -346,7 +345,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 
 			<?php if ( $has_content ) : ?>
-				<div class="elementor-testimonial-content"><?php echo $settings['testimonial_content']; ?></div>
+				<div class="elementor-testimonial-content"><?php echo esc_html( $settings['testimonial_content'] ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( $has_image || $has_name || $has_job ) : ?>
@@ -361,11 +360,11 @@ class Themo_Widget_Testimonial extends Widget_Base {
 					<?php if ( $has_name || $has_job ) : ?>
 					<div class="elementor-testimonial-details">
 						<?php if ( $has_name ) : ?>
-							<div class="elementor-testimonial-name"><?php echo $settings['testimonial_name']; ?></div>
+							<div class="elementor-testimonial-name"><?php echo esc_html( $settings['testimonial_name'] ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( $has_job ) : ?>
-							<div class="elementor-testimonial-job"><?php echo $settings['testimonial_job']; ?></div>
+							<div class="elementor-testimonial-job"><?php echo esc_html( $settings['testimonial_job'] ); ?></div>
 						<?php endif; ?>
 					</div>
 					<?php endif; ?>
