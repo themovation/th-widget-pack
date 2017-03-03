@@ -723,9 +723,6 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Title Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
-				'condition' => [
-					'slide_custom_style' => 'yes',
-				],
 			]
 		);
 
@@ -748,9 +745,6 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Content Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p',
-				'condition' => [
-					'slide_custom_style' => 'yes',
-				],
 			]
 		);
 
