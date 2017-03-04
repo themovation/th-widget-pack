@@ -54,6 +54,23 @@ class Themo_Widget_Header extends Widget_Base {
         );
 
         $this->add_control(
+            'shape',
+            [
+                'label' => __( 'Shape', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'circle' => __( 'Circle', 'elementor' ),
+                    'square' => __( 'Square', 'elementor' ),
+                ],
+                'default' => 'circle',
+                'condition' => [
+                    'view!' => 'default',
+                ],
+                'prefix_class' => 'elementor-shape-',
+            ]
+        );
+
+        $this->add_control(
             'position',
             [
                 'label' => __( 'Position', 'elementor' ),
@@ -77,6 +94,8 @@ class Themo_Widget_Header extends Widget_Base {
                 'toggle' => false,
             ]
         );
+
+
 
         $this->end_controls_section();
 
