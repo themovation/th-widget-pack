@@ -7,8 +7,6 @@ function themovation_so_wb_scripts() {
 	wp_enqueue_script( 'themo-so-waypoints', plugin_dir_url( __FILE__ ) . '../js/jquery.waypoints.js', array( 'jquery' ), ​THEMOVATION_WB_VER, true );
 	wp_enqueue_script( 'themo-so-wb-js', plugin_dir_url( __FILE__ ) . '../js/themovation.js', array( 'jquery', 'themo-so-waypoints' ), ​THEMOVATION_WB_VER, true );
 
-	wp_enqueue_script( 'jquery-slick' );
-
 	if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
 		wp_dequeue_script( 'booked-font-awesome' );
 	}
