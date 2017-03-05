@@ -22,7 +22,6 @@ function themovation_elements() {
 	//require_once plugin_dir_path( __FILE__ ) . 'elements/course-guide.php';
     require_once plugin_dir_path( __FILE__ ) . 'elements/tour-grid.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/slider.php';
-	require_once plugin_dir_path( __FILE__ ) . 'elements/slider-slick.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/pricing.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/formidable-form.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/tour-info.php';
@@ -37,8 +36,6 @@ function themovation_elements() {
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 require_once ( 'inc/elementor-section.php' );
-
-require_once ( 'inc/template-functions.php' );
 
 if ( ! function_exists( 'themovation_so_wb_translation' ) ) :
 // Making the plugin translation ready
