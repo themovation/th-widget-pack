@@ -53,3 +53,9 @@ require_once ( 'inc/cpt_tours.php' );
 
 add_image_size( 'themo_brands', 150, 80, true);
 add_image_size( 'themo_team', 480, 320, true);
+
+/**
+* GLOBAL VARIABLES
+*/
+global $th_map_id;
+$th_map_id = 0;
