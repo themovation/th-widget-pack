@@ -92,6 +92,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Content Alignment', 'elementor' ),
                 'type' => Controls_Manager::CHOOSE,
+                'default' => 'center',
                 'options' => [
                     'left' => [
                         'title' => __( 'Left', 'elementor' ),
@@ -128,7 +129,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'fa fa-star',
+                //'default' => 'fa fa-star',
             ]
         );
 
@@ -235,8 +236,8 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Title', 'elementor' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'This is the heading', 'elementor' ),
-                'placeholder' => __( 'Your Title', 'elementor' ),
+                'default' => __( 'Discover the great outdoors', 'elementor' ),
+                'placeholder' => __( 'Discover the great outdoors', 'elementor' ),
                 'label_block' => true,
             ]
         );
@@ -246,7 +247,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Description', 'elementor' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor' ),
+                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
                 'placeholder' => __( 'Your Description', 'elementor' ),
                 'title' => __( 'Input icon text here', 'elementor' ),
                 'rows' => 10,
@@ -321,8 +322,8 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'elementor' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Book Tour', 'elementor' ),
-                'placeholder' => __( 'Book Tour', 'elementor' ),
+                'default' => __( 'View All Tours', 'elementor' ),
+                'placeholder' => __( 'View All Tours', 'elementor' ),
             ]
         );
 
