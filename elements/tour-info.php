@@ -68,8 +68,8 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'fa fa-money', 'elementor' ),
-                        'text' => __( '$99 per person', 'elementor' ),
+                        'icon' => __( 'fa fa-compass', 'elementor' ),
+                        'text' => __( '4.5 Miles', 'elementor' ),
                     ],
                     [
                         'icon' => __( 'fa fa-clock-o', 'elementor' ),
