@@ -22,6 +22,100 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	protected function _register_controls() {
+
+        $this->start_controls_section(
+            'section_align',
+            [
+                'label' => __( 'Position', 'elementor' ),
+            ]
+        );
+
+        $this->add_control(
+            'content_max_width',
+            [
+                'label' => __( 'Content Width', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ '%', 'px' ],
+                'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'header_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap' => '{{VALUE}}',
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'margin-right: auto',
+                    'center' => 'margin: 0 auto',
+                    'right' => 'margin-left: auto',
+                ],
+                'default' => 'center',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'text_align',
+            [
+                'label' => __( 'Content Alignment', 'elementor' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'elementor' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'elementor' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'elementor' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->end_controls_section();
+
 		$this->start_controls_section(
 			'section_icon',
 			[
@@ -45,7 +139,7 @@ class Themo_Widget_Header extends Widget_Base {
                 'type' => Controls_Manager::SELECT,
                 'options' => [
                     'default' => __( 'Default', 'elementor' ),
-                    'stacked' => __( 'Stacked', 'elementor' ),
+                    'stacked' => __( 'Filled', 'elementor' ),
                     'framed' => __( 'Framed', 'elementor' ),
                 ],
                 'default' => 'default',
@@ -67,6 +161,19 @@ class Themo_Widget_Header extends Widget_Base {
                     'view!' => 'default',
                 ],
                 'prefix_class' => 'elementor-shape-',
+            ]
+        );
+
+        $this->add_control(
+            'icon_size',
+            [
+                'label' => __( 'Icon Size', 'elementor' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'sm' => __( 'Small', 'elementor' ),
+                    'lg' => __( 'Large', 'elementor' ),
+                ],
+                'default' => 'lg',
             ]
         );
 
@@ -147,37 +254,9 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'text_align',
-            [
-                'label' => __( 'Alignment', 'elementor' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'elementor' ),
-                        'icon' => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __( 'Center', 'elementor' ),
-                        'icon' => 'fa fa-align-center',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'elementor' ),
-                        'icon' => 'fa fa-align-right',
-                    ],
-                    'justify' => [
-                        'title' => __( 'Justified', 'elementor' ),
-                        'icon' => 'fa fa-align-justify',
-                    ],
-                ],
-                'separator' => 'none',
-                'selectors' => [
-                    '{{WRAPPER}} .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
 
-        $this->add_control(
+
+        /*$this->add_control(
             'description_align_override',
             [
                 'label' => __( 'Description Alignment Override', 'elementor' ),
@@ -186,12 +265,12 @@ class Themo_Widget_Header extends Widget_Base {
                 'label_off' => __( 'No', 'elementor' ),
                 'return_value' => 'yes',
             ]
-        );
+        );*/
 
-        $this->add_control(
+        $this->add_responsive_control(
             'description_align',
             [
-                'label' => __( 'Description Alignment', 'elementor' ),
+                'label' => __( 'Description Alignment Override', 'elementor' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -206,47 +285,19 @@ class Themo_Widget_Header extends Widget_Base {
                         'title' => __( 'Right', 'elementor' ),
                         'icon' => 'fa fa-align-right',
                     ],
-                    'justify' => [
-                        'title' => __( 'Justified', 'elementor' ),
-                        'icon' => 'fa fa-align-justify',
-                    ],
                 ],
-                'condition' => [
-                    'description_align_override' => 'yes',
-                ],
+                //'condition' => [
+                 //   'description_align_override' => 'yes',
+                //],
                 'separator' => 'none',
-                'show_label' => false,
-                /*'selectors' => [
-                    '{{WRAPPER}} .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
-                ],*/
+                //'show_label' => false,
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-description' => 'text-align: {{VALUE}};',
+                ],
             ]
         );
 
-        $this->add_control(
-            'content_max_width',
-            [
-                'label' => __( 'Content Width', 'elementor' ),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'size_units' => [ '%', 'px' ],
-                'default' => [
-                    'size' => '100',
-                    'unit' => '%',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .th-slide-content' => 'max-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+
 
         $this->end_controls_section();
 
@@ -266,21 +317,21 @@ class Themo_Widget_Header extends Widget_Base {
         );
 
         $this->add_control(
-            'slide_button_text_1',
+            'button_1_text',
             [
-                'label' => __( 'Text', 'elementor' ),
+                'label' => __( 'Button Text', 'elementor' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Button Text', 'elementor' ),
-                'separator' => 'none',
+                'default' => __( 'Book Tour', 'elementor' ),
+                'placeholder' => __( 'Book Tour', 'elementor' ),
             ]
         );
 
         $this->add_control(
-            'slide_button_style_1',
+            'button_1_style',
             [
-                'label' => __( 'Style', 'elementor' ),
+                'label' => __( 'Button Style', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'standard-light',
+                'default' => 'standard-primary',
                 'options' => [
                     'standard-primary' => __( 'Standard Primary', 'elementor' ),
                     'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -293,16 +344,23 @@ class Themo_Widget_Header extends Widget_Base {
                     'cta-primary' => __( 'CTA Primary', 'elementor' ),
                     'cta-accent' => __( 'CTA Accent', 'elementor' ),
                 ],
-                'separator' => 'none',
             ]
         );
 
         $this->add_control(
-            'slide_button_link_1',
+            'button_1_icon',
             [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::ICON,
+            ]
+        );
+
+        $this->add_control(
+            'button_1_link',
+            [
+                'label' => __( 'Link', 'elementor' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( 'http://your-link.com', 'elementor' ),
-                'separator' => 'none',
+                'placeholder' => __( '#booktour', 'elementor' ),
             ]
         );
 
@@ -316,21 +374,21 @@ class Themo_Widget_Header extends Widget_Base {
         );
 
         $this->add_control(
-            'slide_button_text_2',
+            'button_2_text',
             [
-                'label' => __( 'Text', 'elementor' ),
+                'label' => __( 'Button Text', 'elementor' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'More Info', 'elementor' ),
-                'separator' => 'none',
+                'placeholder' => __( 'Book Tour', 'elementor' ),
+                //'default' => __( 'Book Tour', 'elementor' ),
             ]
         );
 
         $this->add_control(
-            'slide_button_style_2',
+            'button_2_style',
             [
-                'label' => __( 'Style', 'elementor' ),
+                'label' => __( 'Button Style', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'standard-light',
+                'default' => 'standard-primary',
                 'options' => [
                     'standard-primary' => __( 'Standard Primary', 'elementor' ),
                     'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -343,26 +401,33 @@ class Themo_Widget_Header extends Widget_Base {
                     'cta-primary' => __( 'CTA Primary', 'elementor' ),
                     'cta-accent' => __( 'CTA Accent', 'elementor' ),
                 ],
-                'separator' => 'none',
             ]
         );
 
         $this->add_control(
-            'slide_button_link_2',
+            'button_2_icon',
             [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::ICON,
+            ]
+        );
+
+        $this->add_control(
+            'button_2_link',
+            [
+                'label' => __( 'Link', 'elementor' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( 'http://your-link.com', 'elementor' ),
-                'separator' => 'none',
+                'placeholder' => __( '#booktour', 'elementor' ),
             ]
         );
 
         $this->add_control(
             'button_align',
             [
-                'label' => __( 'Alignment', 'elementor' ),
+                'label' => __( 'Alignment Override', 'elementor' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
-                    'left'    => [
+                    'left' => [
                         'title' => __( 'Left', 'elementor' ),
                         'icon' => 'fa fa-align-left',
                     ],
@@ -375,9 +440,10 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'th-btn-align-',
-                'default' => '',
-                'separator' => 'before',
+                'separator' => 'none',
+                'selectors' => [
+                    '{{WRAPPER}} .th-btn-wrap' => 'text-align: {{VALUE}};',
+                ],
             ]
         );
 
@@ -385,7 +451,8 @@ class Themo_Widget_Header extends Widget_Base {
         $this->end_controls_section();
 
 
-		$this->start_controls_section(
+
+        $this->start_controls_section(
 			'section_style_icon',
 			[
 				'label' => __( 'Icon', 'elementor' ),
@@ -423,20 +490,6 @@ class Themo_Widget_Header extends Widget_Base {
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
 				],
-			]
-		);
-
-
-		$this->add_control(
-			'icon_size',
-			[
-				'label' => __( 'Icon Size', 'elementor' ),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    'small' => __( 'Small', 'elementor' ),
-                    'large' => __( 'Large', 'elementor' ),
-                ],
-                'default' => 'large',
 			]
 		);
 
@@ -538,31 +591,100 @@ class Themo_Widget_Header extends Widget_Base {
 
 		$this->add_render_attribute( 'i', 'class', $settings['icon'] );
 
+        $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
+        $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'.$settings['icon_size'] );
+
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
 		$link_attributes = $this->get_render_attribute_string( 'link' );
+
+
+        if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
+        if ( empty( $settings['button_2_link']['url'] ) ) { $settings['button_2_link']['url'] = '#'; };
+
+        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
+        $this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
+        $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
+        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr($settings['button_1_style']) );
+
+        if ( ! empty( $settings['button_1_link']['url'] ) ) {
+            $this->add_render_attribute( 'btn-1-link', 'href', esc_url($settings['button_1_link']['url']) );
+
+            if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
+                $this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
+            }
+        }
+
+        $this->add_render_attribute( 'btn-2-link', 'class', 'btn-2' );
+        $this->add_render_attribute( 'btn-2-link', 'class', 'btn' );
+        $this->add_render_attribute( 'btn-2-link', 'class', 'th-btn' );
+        $this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . esc_attr($settings['button_2_style']) );
+
+        if ( ! empty( $settings['button_2_link']['url'] ) ) {
+            $this->add_render_attribute( 'btn-2-link', 'href', esc_url($settings['button_2_link']['url']) );
+
+            if ( ! empty( $settings['button_2_link']['is_external'] ) ) {
+                $this->add_render_attribute( 'btn-2-link', 'target', '_blank' );
+            }
+        }
+
 		?>
-		<div class="elementor-icon-box-wrapper">
-			<div class="elementor-icon-box-icon">
-				<<?php echo implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] ); ?>>
-					<i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
-				</<?php echo $icon_tag; ?>>
-			</div>
-			<div class="elementor-icon-box-content">
-				<<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
-					<<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
-				</<?php echo $settings['title_size']; ?>>
-				<p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
-			</div>
-		</div>
+		<div class="th-header-wrap">
+            <div class="elementor-icon-box-wrapper">
+                <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
+                    <<?php echo implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] ); ?>>
+                        <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    </<?php echo $icon_tag; ?>>
+                </div>
+                <div class="elementor-icon-box-content">
+                    <<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
+                        <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
+                    </<?php echo $settings['title_size']; ?>>
+                    <p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
+                </div>
+
+                <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon']) || ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                <div class="th-btn-wrap">
+                    <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
+                            <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
+                                <?php echo esc_html( $settings['button_1_text'] ); ?>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
+                                <i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
+                            <?php endif; ?>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
+                            <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
+                                <?php echo esc_html( $settings['button_2_text'] ); ?>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $settings['button_2_icon'] ) ) : ?>
+                                <i class="<?php echo esc_attr( $settings['button_2_icon'] ); ?>"></i>
+                            <?php endif; ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+
 		<?php
 	}
 
 	protected function _content_template() {
 		?>
-		<# var link = '',
-				iconTag = 'span'; #>
-		<div class="elementor-icon-box-wrapper">
-			<div class="elementor-icon-box-icon">
+
+		<#
+        var link = '',
+        iconTag = 'span';
+        icon_size = '';
+        if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
+                #>
+        <div class="th-header-wrap">
+            <div class="elementor-icon-box-wrapper">
+			<div class="elementor-icon-box-icon {{ icon_size }}">
 				<{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
 					<i class="{{ settings.icon }}"></i>
 				</{{{ iconTag }}}>
@@ -573,7 +695,45 @@ class Themo_Widget_Header extends Widget_Base {
 				</{{{ settings.title_size }}}>
 				<p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
 			</div>
-		</div>
+
+
+        <#  var button_1_link_url = '#';
+            var button_1_text = '';
+            var button_1_icon = '';
+            if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
+            if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
+            if ( settings.button_1_icon ) { var button_1_icon = settings.button_1_icon }
+
+            var button_2_link_url = '#';
+            var button_2_text = '';
+            var button_2_icon = '';
+            if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
+            if ( settings.button_2_text ) { var button_2_text = settings.button_2_text }
+            if ( settings.button_2_icon ) { var button_2_icon = settings.button_2_icon }
+        #>
+        <# if ( button_1_text || button_1_icon || button_2_text || button_2_icon ) { #>
+            <div class="th-btn-wrap">
+                <# if ( button_1_text || button_1_icon ) { #>
+                    <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
+                        {{{ settings.button_1_text }}}
+                        <# if ( settings.button_1_icon ) { #>
+                            <i class="{{ settings.button_1_icon }}"></i>
+                        <# } #>
+                    </a>
+                <# } #>
+                <# if ( button_2_text || button_2_icon  ) { #>
+                    <a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
+                        {{{ settings.button_2_text }}}
+                        <# if ( settings.button_2_icon ) { #>
+                            <i class="{{ settings.button_2_icon }}"></i>
+                        <# } #>
+                    </a>
+                <# } #>
+            </div>
+        <# } #>
+        </div>
+        </div>
+
 		<?php
 	}
 }
