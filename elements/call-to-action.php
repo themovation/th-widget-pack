@@ -257,14 +257,22 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		        </div>
 		    <# } #>
             <#  var button_1_link_url = '#';
+                var button_1_text = '';
+                var button_1_icon = '';
                 if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
+                if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
+                if ( settings.button_1_icon ) { var button_1_icon = settings.button_1_icon }
 
                 var button_2_link_url = '#';
+                var button_2_text = '';
+                var button_2_icon = '';
                 if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
+                if ( settings.button_2_text ) { var button_2_text = settings.button_2_text }
+                if ( settings.button_2_icon ) { var button_2_icon = settings.button_2_icon }
             #>
-            <# if ( button_1_link_url || button_2_link_url ) { #>
+            <# if ( button_1_text || button_1_icon || button_2_text || button_2_icon ) { #>
                 <div class="th-cta-btn">
-                <# if ( button_1_link_url ) { #>
+                <# if ( button_1_text || button_1_icon ) { #>
                     <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
                         {{{ settings.button_1_text }}}
                         <# if ( settings.button_1_icon ) { #>
@@ -272,7 +280,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
                         <# } #>
                     </a>
                 <# } #>
-                <# if ( button_2_link_url  && (settings.button_2_text || settings.button_2_icon) ) { #>
+                <# if ( button_2_text || button_2_icon ) { #>
                     <a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
                         {{{ settings.button_2_text }}}
                         <# if ( settings.button_2_icon ) { #>
