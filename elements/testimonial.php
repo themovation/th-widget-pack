@@ -40,6 +40,27 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'star_rating',
+            [
+                'label' => __( 'Star Rating', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 5,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => .5,
+                        'max' => 5,
+                        'step' => .5,
+                    ],
+                ],
+                /*'selectors' => [
+                    '{{WRAPPER}} .box' => 'data-blah: {{SIZE}};',
+                ],*/
+            ]
+        );
+
 		$this->add_control(
 			'testimonial_image',
 			[
@@ -329,8 +350,6 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			$this->add_render_attribute( 'meta', 'class', 'elementor-testimonial-image-position-' . esc_attr( $settings['testimonial_image_position'] ) );
 		}
 
-        $settings['test'] = 'test';
-
 		$has_content = ! ! $settings['testimonial_content'];
 
 		$has_image = ! ! $settings['testimonial_image']['url'];
@@ -342,12 +361,29 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		if ( ! $has_content && ! $has_image && ! $has_name && ! $has_job ) {
 			return;
 		}
+
+        if ( $settings['star_rating']['size'] ) {
+		    $th_rating = $settings['star_rating']['size'];
+            $th_rating = $th_rating*10;
+            $th_rating = sprintf("%02d", $th_rating);
+            $this->add_render_attribute( 'star-rating', 'class', 'th-star-rating th-star-' . esc_attr( $th_rating ) );
+        }
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 
 			<?php if ( $has_content ) : ?>
 				<div class="elementor-testimonial-content"><?php echo esc_html( $settings['testimonial_content'] ); ?></div>
 			<?php endif; ?>
+
+            <div class="th-quote">
+            <div <?php echo $this->get_render_attribute_string( 'star-rating' ); ?>>
+                <span class="th-star-1 glyphicons"></span>
+                <span class="th-star-2 glyphicons"></span>
+                <span class="th-star-3 glyphicons"></span>
+                <span class="th-star-4 glyphicons"></span>
+                <span class="th-star-5 glyphicons"></span>
+            </div>
+            </div>
 
 			<?php if ( $has_image || $has_name || $has_job ) : ?>
 			<div <?php echo $this->get_render_attribute_string( 'meta' ); ?>>
