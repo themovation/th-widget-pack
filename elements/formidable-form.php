@@ -120,6 +120,32 @@ class Themo_Widget_Formidable extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'content_max_width',
+            [
+                'label' => __( 'Content Width', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ '%', 'px' ],
+                /*'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],*/
+                'selectors' => [
+                    '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
 		$this->end_controls_section();
 	}
 
