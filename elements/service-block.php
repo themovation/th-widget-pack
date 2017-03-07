@@ -51,7 +51,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     'unit' => '%',
                 ],*/
                 'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .th-service-block-w' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -76,7 +76,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap' => '{{VALUE}}',
+                    '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
                     'left' => 'margin-right: auto',
@@ -109,7 +109,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .th-service-block-w' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -129,7 +129,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'fa fa-tree',
+                'default' => 'fa fa-bus',
             ]
         );
 
@@ -236,8 +236,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Title', 'elementor' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Discover the great outdoors', 'elementor' ),
-                'placeholder' => __( 'Discover the great outdoors', 'elementor' ),
+                'default' => __( 'Free Shuttle', 'elementor' ),
+                'placeholder' => __( 'Free Shuttle', 'elementor' ),
                 'label_block' => true,
             ]
         );
@@ -247,8 +247,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Description', 'elementor' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
-                'placeholder' => __( 'Your Description', 'elementor' ),
+                'default' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'elementor' ),
+                'placeholder' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'elementor' ),
                 'title' => __( 'Input icon text here', 'elementor' ),
                 'rows' => 10,
                 'separator' => 'none',
