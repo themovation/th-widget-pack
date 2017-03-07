@@ -686,54 +686,53 @@ class Themo_Widget_Header extends Widget_Base {
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper">
-			<div class="elementor-icon-box-icon {{ icon_size }}">
-				<{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-					<i class="{{ settings.icon }}"></i>
-				</{{{ iconTag }}}>
-			</div>
-			<div class="elementor-icon-box-content">
-				<{{{ settings.title_size }}} class="elementor-icon-box-title">
-					<{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
-				</{{{ settings.title_size }}}>
-				<p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
-			</div>
+                <div class="elementor-icon-box-icon {{ icon_size }}">
+                    <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
+                        <i class="{{ settings.icon }}"></i>
+                    </{{{ iconTag }}}>
+                </div>
+                <div class="elementor-icon-box-content">
+                    <{{{ settings.title_size }}} class="elementor-icon-box-title">
+                        <{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
+                    </{{{ settings.title_size }}}>
+                    <p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
 
+                    <#  var button_1_link_url = '#';
+                        var button_1_text = '';
+                        var button_1_icon = '';
+                        if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
+                        if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
+                        if ( settings.button_1_icon ) { var button_1_icon = settings.button_1_icon }
 
-        <#  var button_1_link_url = '#';
-            var button_1_text = '';
-            var button_1_icon = '';
-            if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
-            if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
-            if ( settings.button_1_icon ) { var button_1_icon = settings.button_1_icon }
-
-            var button_2_link_url = '#';
-            var button_2_text = '';
-            var button_2_icon = '';
-            if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
-            if ( settings.button_2_text ) { var button_2_text = settings.button_2_text }
-            if ( settings.button_2_icon ) { var button_2_icon = settings.button_2_icon }
-        #>
-        <# if ( button_1_text || button_1_icon || button_2_text || button_2_icon ) { #>
-            <div class="th-btn-wrap">
-                <# if ( button_1_text || button_1_icon ) { #>
-                    <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
-                        {{{ settings.button_1_text }}}
-                        <# if ( settings.button_1_icon ) { #>
-                            <i class="{{ settings.button_1_icon }}"></i>
-                        <# } #>
-                    </a>
-                <# } #>
-                <# if ( button_2_text || button_2_icon  ) { #>
-                    <a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
-                        {{{ settings.button_2_text }}}
-                        <# if ( settings.button_2_icon ) { #>
-                            <i class="{{ settings.button_2_icon }}"></i>
-                        <# } #>
-                    </a>
-                <# } #>
+                        var button_2_link_url = '#';
+                        var button_2_text = '';
+                        var button_2_icon = '';
+                        if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
+                        if ( settings.button_2_text ) { var button_2_text = settings.button_2_text }
+                        if ( settings.button_2_icon ) { var button_2_icon = settings.button_2_icon }
+                    #>
+                    <# if ( button_1_text || button_1_icon || button_2_text || button_2_icon ) { #>
+                        <div class="th-btn-wrap">
+                            <# if ( button_1_text || button_1_icon ) { #>
+                                <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
+                                    {{{ settings.button_1_text }}}
+                                    <# if ( settings.button_1_icon ) { #>
+                                        <i class="{{ settings.button_1_icon }}"></i>
+                                    <# } #>
+                                </a>
+                            <# } #>
+                            <# if ( button_2_text || button_2_icon  ) { #>
+                                <a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
+                                    {{{ settings.button_2_text }}}
+                                    <# if ( settings.button_2_icon ) { #>
+                                        <i class="{{ settings.button_2_icon }}"></i>
+                                    <# } #>
+                                </a>
+                            <# } #>
+                        </div>
+                    <# } #>
+                </div>
             </div>
-        <# } #>
-        </div>
         </div>
 
 		<?php
