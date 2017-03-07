@@ -32,6 +32,7 @@ function themovation_elements() {
     require_once plugin_dir_path( __FILE__ ) . 'elements/testimonial.php';
     require_once plugin_dir_path( __FILE__ ) . 'elements/image-gallery.php';
     require_once plugin_dir_path( __FILE__ ) . 'elements/header.php';
+    require_once plugin_dir_path( __FILE__ ) . 'elements/info-card.php';
 }
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
