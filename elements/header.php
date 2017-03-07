@@ -641,34 +641,35 @@ class Themo_Widget_Header extends Widget_Base {
                         <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
                     </<?php echo $settings['title_size']; ?>>
                     <p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
-                </div>
 
-                <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon']) || ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
-                <div class="th-btn-wrap">
-                    <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
-                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
-                            <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
-                                <?php echo esc_html( $settings['button_1_text'] ); ?>
+                    <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon']) || ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                        <div class="th-btn-wrap">
+                            <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
+                                <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
+                                    <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
+                                        <?php echo esc_html( $settings['button_1_text'] ); ?>
+                                    <?php endif; ?>
+                                    <?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
+                                        <i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
+                                    <?php endif; ?>
+                                </a>
                             <?php endif; ?>
-                            <?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
-                                <i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
-                            <?php endif; ?>
-                        </a>
-                    <?php endif; ?>
 
-                    <?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
-                        <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
-                            <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
-                                <?php echo esc_html( $settings['button_2_text'] ); ?>
+                            <?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                                <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
+                                    <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
+                                        <?php echo esc_html( $settings['button_2_text'] ); ?>
+                                    <?php endif; ?>
+                                    <?php if ( ! empty( $settings['button_2_icon'] ) ) : ?>
+                                        <i class="<?php echo esc_attr( $settings['button_2_icon'] ); ?>"></i>
+                                    <?php endif; ?>
+                                </a>
                             <?php endif; ?>
-                            <?php if ( ! empty( $settings['button_2_icon'] ) ) : ?>
-                                <i class="<?php echo esc_attr( $settings['button_2_icon'] ); ?>"></i>
-                            <?php endif; ?>
-                        </a>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
-            <?php endif; ?>
+
         </div>
 
 		<?php
