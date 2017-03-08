@@ -273,6 +273,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                     $args['order'] = 'ASC';
                 }
                 $args['post_status'] = 'publish';
+                $args['posts_per_page'] = -1;
 
                 // The Query
                 $query = new \WP_Query( $args );
