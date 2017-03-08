@@ -273,7 +273,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Contact Color', 'elementor' ),
+				'label' => __( 'Description Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
