@@ -207,9 +207,9 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Overlay Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
-				'default' => '#bbbbbb',
+				'default' => 'rgba(187, 187, 187, 0.5)',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slider-overlay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
@@ -1550,6 +1550,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			return;
 		}
 
+		$this->add_render_attribute( 'slider-bg', 'class', 'slider-bg' );
 		$this->add_render_attribute( 'slider-bg', 'class', 'slide-cal-center' );
 
 		$init_main_loop = 0;
@@ -1582,6 +1583,9 @@ class Themo_Widget_Slider extends Widget_Base {
                                 break;
                         }
                     endif;
+					$this->add_render_attribute( 'slider-bg', 'class', $th_form_border_class );
+
+					$th_slide_has_image = ( $slide['slide_bg_image']['url'] ) ? 'has-image-bg' : false;
 
                     $th_cal_align_class = false;
                     if(isset($slide['slide_text_align']) && $slide['slide_text_align'] > ""){
@@ -1597,12 +1601,11 @@ class Themo_Widget_Slider extends Widget_Base {
                                 break;
                         }
                     }
-
                     ?>
 
                     <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
-						<div class="slider-bg <?php echo $th_form_border_class; ?>">
-							<div class="th-slider-overlay">
+						<div <?php echo $this->get_render_attribute_string( 'slider-bg' ); ?>">
+							<div class="th-slider-overlay <?php echo $th_slide_has_image; ?>">
                                 <div class="th-slide-inner <?php echo esc_attr($th_cal_align_class); ?>">
                                     <div class="th-slide-content">
                                         <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
