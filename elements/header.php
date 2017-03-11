@@ -109,7 +109,7 @@ class Themo_Widget_Header extends Widget_Base {
 
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .th-header-wrap .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
