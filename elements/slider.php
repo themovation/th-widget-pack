@@ -436,9 +436,9 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Image', 'elementor' ),
 				'type' => Controls_Manager::MEDIA,
-				'selectors' => [
+				/*'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-image: url({{URL}})',
-				],
+				],*/
 			]
 		);
 
