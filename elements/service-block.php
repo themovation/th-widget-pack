@@ -109,7 +109,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .th-service-block-w' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .th-service-block-w .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
