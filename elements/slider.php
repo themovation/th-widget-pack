@@ -435,10 +435,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			'slide_image',
 			[
 				'label' => __( 'Image', 'elementor' ),
-				'type' => Controls_Manager::MEDIA,
-				'selectors' => [
-					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-image: url({{URL}})',
-				],
+				'type' => Controls_Manager::MEDIA
 			]
 		);
 
@@ -1642,7 +1639,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
                                                     <?php echo '</a>'; ?>
                                                 <?php endif; ?>
-                                                </div>
+                                            </div>
                                         <?php endif; ?>
 
                                         <?php if ( isset($slide['slide_shortcode'])) : ?>

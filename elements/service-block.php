@@ -262,7 +262,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->start_controls_section(
             'section_link',
             [
-                'label' => __( 'Lnk', 'elementor' ),
+                'label' => __( 'Link', 'elementor' ),
             ]
         );
 
