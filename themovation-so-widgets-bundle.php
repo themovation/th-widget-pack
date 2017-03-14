@@ -49,6 +49,7 @@ add_action( 'plugins_loaded', 'themovation_so_wb_translation' );
 
 require_once ( 'inc/enqueue.php' );
 require_once ( 'inc/cpt_tours.php' );
+require_once ( 'inc/shortcodes.php' );
 
 add_image_size( 'themo_brands', 150, 80, true);
 add_image_size( 'themo_team', 480, 320, true);
