@@ -1578,6 +1578,9 @@ class Themo_Widget_Slider extends Widget_Base {
 					$this->add_render_attribute( 'slider-bg', 'class', $th_form_border_class );
 
 
+                    $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slide-wrap' );
+
+
 					if ( 'yes' === $slide['slide_bg_overlay'] ) {
                         $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slider-overlay' );
                     }
