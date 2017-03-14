@@ -40,10 +40,22 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+
         $this->add_control(
             'star_rating',
             [
                 'label' => __( 'Star Rating', 'elementor' ),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __( 'Yes', 'elementor' ),
+                'label_off' => __( 'No', 'elementor' ),
+                'return_value' => 'yes',
+            ]
+        );
+
+
+        $this->add_control(
+            'rating',
+            [
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 5,
@@ -55,9 +67,13 @@ class Themo_Widget_Testimonial extends Widget_Base {
                         'step' => .5,
                     ],
                 ],
+                'condition' => [
+                    'star_rating' => 'yes',
+                ],
                 /*'selectors' => [
                     '{{WRAPPER}} .box' => 'data-blah: {{SIZE}};',
                 ],*/
+                'separator' => 'none',
             ]
         );
 
@@ -147,7 +163,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_testimonial_content',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Colors', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -155,7 +171,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'content_content_color',
 			[
-				'label' => __( 'Content Color', 'elementor' ),
+				'label' => __( 'Content', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -168,6 +184,22 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'star_rating_color',
+            [
+                'label' => __( 'Star Rating', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-star-rating' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
 		/*$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -178,7 +210,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);*/
 
-		$this->end_controls_section();
+
 
 		// Image
 		/*$this->start_controls_section(
@@ -242,18 +274,18 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->end_controls_section();*/
 
 		// Name
-		$this->start_controls_section(
+		/*$this->start_controls_section(
 			'section_style_testimonial_name',
 			[
 				'label' => __( 'Name', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
-		);
+		); */
 
 		$this->add_control(
 			'name_text_color',
 			[
-				'label' => __( 'Text Color', 'elementor' ),
+				'label' => __( 'Name', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -276,21 +308,21 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);*/
 
-		$this->end_controls_section();
+		//$this->end_controls_section();
 
 		// Job
-		$this->start_controls_section(
+		/*$this->start_controls_section(
 			'section_style_testimonial_job',
 			[
 				'label' => __( 'Job', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
-		);
+		);*/
 
 		$this->add_control(
 			'job_text_color',
 			[
-				'label' => __( 'Text Color', 'elementor' ),
+				'label' => __( 'Job', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -362,8 +394,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			return;
 		}
 
-        if ( $settings['star_rating']['size'] ) {
-		    $th_rating = $settings['star_rating']['size'];
+        if ( $settings['rating']['size'] ) {
+		    $th_rating = $settings['rating']['size'];
             $th_rating = $th_rating*10;
             $th_rating = sprintf("%02d", $th_rating);
             $this->add_render_attribute( 'star-rating', 'class', 'th-star-rating th-star-' . esc_attr( $th_rating ) );
@@ -375,18 +407,20 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				<div class="elementor-testimonial-content"><?php echo esc_html( $settings['testimonial_content'] ); ?></div>
 			<?php endif; ?>
 
-            <div class="th-quote">
-            <div <?php echo $this->get_render_attribute_string( 'star-rating' ); ?>>
-                <span class="th-star-1 glyphicons"></span>
-                <span class="th-star-2 glyphicons"></span>
-                <span class="th-star-3 glyphicons"></span>
-                <span class="th-star-4 glyphicons"></span>
-                <span class="th-star-5 glyphicons"></span>
-            </div>
-            </div>
+            <?php if ($settings['star_rating'] == 'yes') : ?>
+                <div <?php echo $this->get_render_attribute_string( 'star-rating' ); ?>>
+                    <span class="th-star-1 fa"></span>
+                    <span class="th-star-2 fa"></span>
+                    <span class="th-star-3 fa"></span>
+                    <span class="th-star-4 fa"></span>
+                    <span class="th-star-5 fa"></span>
+                </div>
+            <?php endif; ?>
 
 			<?php if ( $has_image || $has_name || $has_job ) : ?>
-			<div <?php echo $this->get_render_attribute_string( 'meta' ); ?>>
+
+                    <div <?php echo $this->get_render_attribute_string( 'meta' ); ?>>
+
 				<div class="elementor-testimonial-meta-inner">
                     <?php if ( isset( $image ) ) : ?>
                         <div class="elementor-testimonial-image">
