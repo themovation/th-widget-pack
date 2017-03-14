@@ -724,11 +724,26 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Content Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}'
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} #main-flex-slider a.slider-scroll-down' => 'color: {{VALUE}}'
 				],
                 'default' => '#FFFFFF',
 			]
 		);
+
+        /*$th_repeater->add_control(
+            'slide_anchor_color',
+            [
+                'label' => __( 'Anchor Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider a.slider-scroll-down' => 'color: {{VALUE}}'
+                ],
+                'default' => '#FFFFFF'
+            ]
+        );*/
+
+
 
 		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),
