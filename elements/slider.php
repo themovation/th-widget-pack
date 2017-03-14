@@ -207,17 +207,12 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Overlay Color', 'elementor' ),
 				'type' => Controls_Manager::COLOR,
-				'default' => 'rgba(187, 187, 187, 0.5)',
+				'default' => 'rgba(0, 0, 0, 0.5)',
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}}',
 				],
 				'conditions' => [
 					'terms' => [
-						[
-							'name' => 'slide_bg_image[url]',
-							'operator' => '!=',
-							'value' => '',
-						],
 						[
 							'name' => 'slide_bg_overlay',
 							'operator' => '==',
@@ -1582,7 +1577,15 @@ class Themo_Widget_Slider extends Widget_Base {
                     endif;
 					$this->add_render_attribute( 'slider-bg', 'class', $th_form_border_class );
 
-					$th_slide_has_image = ( $slide['slide_bg_image']['url'] ) ? 'has-image-bg' : false;
+
+					if ( 'yes' === $slide['slide_bg_overlay'] ) {
+                        $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slider-overlay' );
+                    }
+
+                    if ($slide['slide_bg_image']['url'] ) {
+                        $this->add_render_attribute( 'slider-bg-overlay', 'class', 'has-image-bg' );
+                    }
+
 
                     $th_cal_align_class = false;
                     if(isset($slide['slide_text_align']) && $slide['slide_text_align'] > ""){
@@ -1598,11 +1601,14 @@ class Themo_Widget_Slider extends Widget_Base {
                                 break;
                         }
                     }
+
+
+
                     ?>
 
                     <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
-						<div <?php echo $this->get_render_attribute_string( 'slider-bg' ); ?>">
-							<div class="th-slider-overlay <?php echo $th_slide_has_image; ?>">
+						<div <?php echo $this->get_render_attribute_string( 'slider-bg' ); ?>>
+                            <div <?php echo $this->get_render_attribute_string( 'slider-bg-overlay' );?>>
                                 <div class="th-slide-inner <?php echo esc_attr($th_cal_align_class); ?>">
                                     <div class="th-slide-content">
                                         <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
