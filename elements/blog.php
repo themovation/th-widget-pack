@@ -280,9 +280,9 @@ class Themo_Widget_Blog extends Widget_Base {
             $image_size = $settings['post_image_size'];
             $masonry_template_key = '-masonry';
 
-            $automatic_post_excerpts = 'on';
-            if ( function_exists( 'ot_get_option' ) ) {
-                $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+            $automatic_post_excerpts = true;
+            if ( function_exists( 'get_theme_mod' ) ) {
+                $automatic_post_excerpts = get_theme_mod( 'themo_automatic_post_excerpts', true );
             }
         }
 

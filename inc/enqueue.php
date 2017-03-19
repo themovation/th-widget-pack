@@ -16,16 +16,16 @@ add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 add_action( 'elementor/preview/enqueue_styles', function() {
 
     /* Themovation Theme Options : Colors for Preview */
-    if ( function_exists( 'ot_get_option' ) ) {
+    if ( function_exists( 'get_theme_mod' ) ) {
 
         /* CUSTOM CSS Support */
         $custom_css_outfall = "";
 
         /* Custom Color */
-        $custom_color_primary_not_important = ot_get_option( 'themo_color_primary', THEMO_COLOR_PRIMARY ) ;
+        $custom_color_primary_not_important = get_theme_mod( 'themo_color_primary', THEMO_COLOR_PRIMARY ) ;
 
-        $custom_color_primary = ot_get_option( 'themo_color_primary', THEMO_COLOR_PRIMARY ) . " !important"; // Get favicon option
-        $custom_color_accent = ot_get_option( 'themo_color_accent', THEMO_COLOR_ACCENT ) . " !important"; // Get favicon option
+        $custom_color_primary = get_theme_mod( 'themo_color_primary', THEMO_COLOR_PRIMARY ) . " !important"; // Get favicon option
+        $custom_color_accent = get_theme_mod( 'themo_color_accent', THEMO_COLOR_ACCENT ) . " !important"; // Get favicon option
 
         $custom_color_css = "\n/* Custom Color CSS $custom_color_primary */\n";
         $custom_color_css .= "#main-flex-slider .slides h1,.accent,.light-text .btn-ghost:hover,.light-text .googlemap a,.light-text .pricing-column.highlight .btn-ghost:hover,.light-text .pricing-column.highlight .btn-standard,.navbar .navbar-nav .dropdown-menu li a:hover,.navbar .navbar-nav .dropdown-menu li.active a,.navbar .navbar-nav .dropdown-menu li.active a:hover,.page-title h1,.panel-title i,.pricing-column.highlight .btn-ghost:hover,.pricing-column.highlight .btn-standard,.pricing-cost,.simple-cta span,.team-member-social a .soc-icon:hover,a,.light-text .panel-body p a{color:$custom_color_primary_not_important}.footer .widget-title:after,.navbar .navbar-nav>li.active>a:after,.navbar .navbar-nav>li.active>a:focus:after,.navbar .navbar-nav>li.active>a:hover:after,.navbar .navbar-nav>li>a:hover:after,.port-overlay,.section-header h2:after{background-color:$custom_color_primary}.accordion .accordion-btn .btn-ghost:hover,.btn-ghost:hover,.btn-standard,.circle-lrg-icon i,.circle-lrg-icon span,.light-text .pricing-table .btn-ghost:hover,.pager li>a:hover,.pager li>span:hover,.pricing-column.highlight{background-color:$custom_color_primary;border-color:$custom_color_primary}.accordion .accordion-btn .btn-ghost,.btn-ghost,.circle-lrg-icon i:hover,.circle-lrg-icon span:hover,.light-text .pricing-table .btn-ghost,.portfolio-filters a.current{color:$custom_color_primary;border-color:$custom_color_primary}.search-form input:focus,.widget select:focus,form input:focus,form select:focus,form textarea:focus{border-color:$custom_color_primary}.circle-med-icon i,.circle-med-icon span,.frm_form_submit_style,.frm_form_submit_style:hover,.with_frm_style .frm_submit input[type=button],.with_frm_style .frm_submit input[type=button]:hover,.with_frm_style .frm_submit input[type=submit],.with_frm_style .frm_submit input[type=submit]:hover,.with_frm_style.frm_login_form input[type=submit],.with_frm_style.frm_login_form input[type=submit]:hover,form input[type=submit],form input[type=submit]:hover{background:$custom_color_primary}.footer .tagcloud a:hover,.headhesive--clone .navbar-nav>li.active>a:after,.headhesive--clone .navbar-nav>li.active>a:focus:after,.headhesive--clone .navbar-nav>li.active>a:hover:after,.headhesive--clone .navbar-nav>li>a:hover:after,.search-submit,.search-submit:hover,.simple-conversion .with_frm_style input[type=submit],.simple-conversion .with_frm_style input[type=submit]:focus,.simple-conversion form input[type=submit],.simple-conversion form input[type=submit]:focus,.widget .tagcloud a:hover, .wpbs-form .wpbs-form-form .wpbs-form-submit, .wpbs-form .wpbs-form-form .wpbs-form-submit:hover, .wpbs-form .wpbs-form-form .wpbs-form-submit:active, .wpbs-form .wpbs-form-form .wpbs-form-submit:focus{background-color:$custom_color_primary}.btn-cta{background-color:$custom_color_accent}body #booked-profile-page input[type=submit].button-primary,body table.booked-calendar input[type=submit].button-primary,body .booked-modal input[type=submit].button-primary,body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block{background:$custom_color_accent}body #booked-profile-page input[type=submit].button-primary,body table.booked-calendar input[type=submit].button-primary,body .booked-modal input[type=submit].button-primary,body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button{border-color:$custom_color_accent}";
@@ -36,7 +36,7 @@ add_action( 'elementor/preview/enqueue_styles', function() {
         $custom_color_css .= ".frm_style_formidable-style.with_frm_style .frm_compact .frm_dropzone.dz-clickable .dz-message, .frm_style_formidable-style.with_frm_style input[type=submit], .frm_style_formidable-style.with_frm_style .frm_submit input[type=button], .frm_style_formidable-style.with_frm_style .frm_submit button, .frm_form_submit_style, .frm_style_formidable-style.with_frm_style.frm_login_form input[type=submit]{color:#fff !important};";
 
         /* Rounded button settings. */
-        $rounded_buttons = ot_get_option( 'themo_enable_rounded_buttons', 'off' ); // Get favicon option
+        $rounded_buttons = get_theme_mod( 'themo_enable_rounded_buttons', false ); // Get favicon option
         if(isset($rounded_buttons) && $rounded_buttons =='off') {
             $custom_color_css .= ".simple-conversion form input[type=submit],.simple-conversion .with_frm_style input[type=submit],.search-form input, .wpbs-form-form .wpbs-form-item input, .wpbs-form-form .wpbs-form-item select, .wpbs-form-form .wpbs-form-item textarea{border-radius:1px !important;}";
             $custom_color_css .= ".nav-tabs > li > a {border-radius:1px 1px 0 0 !important}";
