@@ -286,7 +286,7 @@ class Themo_Widget_Blog extends Widget_Base {
             }
         }
 
-        $th_section_class = "masonry-blog";
+        $th_section_class = "th-masonry-blog";
         $th_post_classes = "col-sm-6 col-md-4";
 
         if ( isset($settings['post_columns']) &&  $settings['post_columns'] > "") {
@@ -362,7 +362,6 @@ class Themo_Widget_Blog extends Widget_Base {
 		if ( $widget_wp_query->have_posts() ) { ?>
 
 			<section class="<?php echo $th_section_class; ?>">
-				<div class="container">
 
                     <div class="mas-blog row">
                         <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
@@ -397,7 +396,7 @@ class Themo_Widget_Blog extends Widget_Base {
                         </nav>
                     </div>
                     <?php } ?>
-				</div>
+
 			</section>
 			<?php
 
