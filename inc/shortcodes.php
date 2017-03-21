@@ -61,18 +61,18 @@ function th_register_shortcodes() {
                     $width = "width: $width";
                     $width .= "px";
                 }
-                if ( function_exists( 'ot_get_option' ) ) {
-                    $themo_flex_autoplay  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_autoplay', "on" ));
-                    $themo_flex_animation  = ot_get_option( 'themo_flex_animation', "fade" );
-                    $themo_flex_easing  = ot_get_option( 'themo_flex_easing', "swing" );
-                    $themo_flex_animationloop  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_animationloop', 'on' ));
-                    $themo_flex_smoothheight  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_smoothheight', 'off' ));
-                    $themo_flex_slideshowspeed  = ot_get_option( 'themo_flex_slideshowspeed', 7000 );
-                    $themo_flex_animationspeed  = ot_get_option( 'themo_flex_animationspeed', 600 );
-                    $themo_flex_randomize  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_randomize', 'off' ));
-                    $themo_flex_pauseonhover  =themo_return_on_off_boolean( ot_get_option( 'themo_flex_pauseonhover', 'on' ));
-                    $themo_flex_touch  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_touch', 'on' ));
-                    $themo_flex_directionnav  = themo_return_on_off_boolean(ot_get_option( 'themo_flex_directionnav', 'on' ));
+                if ( function_exists( 'get_theme_mod' ) ) {
+                    $themo_flex_autoplay  = get_theme_mod( 'themo_flex_autoplay', true );
+                    $themo_flex_animation  = get_theme_mod( 'themo_flex_animation', 'fade' );
+                    $themo_flex_easing  = get_theme_mod( 'themo_flex_easing', "swing" );
+                    $themo_flex_animationloop  = get_theme_mod( 'themo_flex_animationloop', true );
+                    $themo_flex_smoothheight  = get_theme_mod( 'themo_flex_smoothheight', true );
+                    $themo_flex_slideshowspeed  = get_theme_mod( 'themo_flex_slideshowspeed', 4000 );
+                    $themo_flex_animationspeed  = get_theme_mod( 'themo_flex_animationspeed', 550 );
+                    $themo_flex_randomize  = get_theme_mod( 'themo_flex_randomize', 0 );
+                    $themo_flex_pauseonhover  = get_theme_mod( 'themo_flex_pauseonhover', true );
+                    $themo_flex_touch  = get_theme_mod( 'themo_flex_touch', true );
+                    $themo_flex_directionnav  = get_theme_mod( 'themo_flex_directionnav ', true );
                 }
                 $themo_flex_settings = "$themo_flex_autoplay, '$themo_flex_animation', '$themo_flex_easing',
                                 $themo_flex_animationloop, $themo_flex_smoothheight, $themo_flex_slideshowspeed, $themo_flex_animationspeed,

@@ -25,8 +25,8 @@ if ( ! function_exists('themo_tour_custom_post_type') ) {
             'not_found_in_trash'  => __( 'Not found in Trash', 'themovation-widgets' ),
         );
 
-        if ( function_exists( 'ot_get_option' ) ) {
-            $custom_slug = ot_get_option( 'themo_tour_rewrite_slug', 'tours' );
+        if ( function_exists( 'get_theme_mod' ) ) {
+            $custom_slug = get_theme_mod( 'themo_tour_rewrite_slug', 'tours' );
         } else {
             $custom_slug = 'tours';
         }

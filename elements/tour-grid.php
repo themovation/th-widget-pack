@@ -144,9 +144,9 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
         $default_hover = '#000000';
         $default_rgba = 'rgba(0, 0, 0, 0.75)';
-        if ( function_exists( 'ot_get_option' ) ) {
-            $default_hover = ot_get_option( 'themo_color_primary', $default_hover );
-            $default_hex = ot_get_option( 'themo_color_primary', $default_hover );
+        if ( function_exists( 'get_theme_mod' ) ) {
+            $default_hover = get_theme_mod( 'themo_color_primary', $default_hover );
+            $default_hex = get_theme_mod( 'themo_color_primary', $default_hover );
             list($r, $g, $b) = sscanf($default_hex, "#%02x%02x%02x");
             $default_rgba = "rgba(".$r .", ". $g. ", ". $b . ", 0.75)";
         }
@@ -375,8 +375,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true);
                                 if($th_tour_intro === false || empty($th_tour_intro)){
                                     $automatic_post_excerpts = 'on';
-                                    if ( function_exists( 'ot_get_option' ) ) {
-                                        $automatic_post_excerpts = ot_get_option( 'themo_automatic_post_excerpts', 'on' );
+                                    if ( function_exists( 'get_theme_mod' ) ) {
+                                        $automatic_post_excerpts = get_theme_mod( 'themo_automatic_post_excerpts', 'on' );
                                     }
                                     if($automatic_post_excerpts === 'off'){
                                         $th_tour_intro = apply_filters( 'the_content', get_the_content() );
