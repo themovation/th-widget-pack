@@ -725,7 +725,6 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} #main-flex-slider a.slider-scroll-down' => 'color: {{VALUE}}'
 				],
                 'default' => '#FFFFFF',
 			]
@@ -845,6 +844,21 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 			]
 		);
+
+        $this->add_control(
+            'slide_down_arrow_color',
+            [
+                'label' => __( 'Down Arrow Color', 'elementor' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #main-flex-slider a.slider-scroll-down' => 'color: {{VALUE}}'
+                ],
+                'default' => '#FFFFFF',
+                'condition' => [
+                    'slides_down_arrow' => 'yes',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 
