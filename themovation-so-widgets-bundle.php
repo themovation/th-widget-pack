@@ -14,6 +14,8 @@
 define('​THEMOVATION_WB_VER', '1.0.0');
 define('​THEMOVATION_BASE_FILE', __FILE__);
 
+require_once( 'fields/icons.php' );
+
 function themovation_elements() {
 	require_once plugin_dir_path( __FILE__ ) . 'elements/team.php';
 	require_once plugin_dir_path( __FILE__ ) . 'elements/package.php';

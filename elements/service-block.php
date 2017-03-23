@@ -130,6 +130,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'label' => __( 'Choose Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
                 'default' => 'fa fa-bus',
+                'icons' => themo_icons(),
             ]
         );
 

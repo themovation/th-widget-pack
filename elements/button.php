@@ -66,6 +66,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Icon', 'elementor' ),
 				'type' => Controls_Manager::ICON,
+				'icons' => themo_icons(),
 			]
 		);
 
@@ -152,6 +153,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Icon', 'elementor' ),
 				'type' => Controls_Manager::ICON,
+				'icons' => themo_icons(),
 			]
 		);
 

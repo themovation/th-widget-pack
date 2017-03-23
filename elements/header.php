@@ -130,6 +130,7 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Choose Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
                 //'default' => 'fa fa-star',
+                'icons' => themo_icons(),
             ]
         );
 
@@ -353,6 +354,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
+                'icons' => themo_icons(),
             ]
         );
 
@@ -410,6 +412,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Icon', 'elementor' ),
                 'type' => Controls_Manager::ICON,
+                'icons' => themo_icons(),
             ]
         );
 

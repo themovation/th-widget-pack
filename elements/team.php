@@ -140,6 +140,7 @@ class Themo_Widget_Team extends Widget_Base {
 						'type' => Controls_Manager::ICON,
                         'label_block' => true,
                         'default' => 'fa fa-facebook',
+						'icons' => themo_icons(),
 					],
 					[
 						'name' => 'url',
@@ -270,7 +271,7 @@ class Themo_Widget_Team extends Widget_Base {
         }elseif ( ! empty( $settings['image']['url'] ) ) {
             $this->add_render_attribute( 'image', 'src', esc_url( $settings['image']['url'] ) );
             $this->add_render_attribute( 'image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['image'] ) ) );
-            $this->add_render_attribute( 'image', 'title', sec_attr( Control_Media::get_image_title( $settings['image'] ) ) );
+            $this->add_render_attribute( 'image', 'title', esc_attr( Control_Media::get_image_title( $settings['image'] ) ) );
             $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
         }
 
