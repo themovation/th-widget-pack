@@ -16,6 +16,7 @@ if ( ! function_exists ( 'themovation_icon_styles' ) ) :
 // Enqueueing themovation icon styles
 function themovation_icon_styles() {
 	wp_enqueue_style( 'themo-glyphsocial', plugin_dir_url( __FILE__ ) . '../assets/glyphsocial/style.css', array(), THEMOVATION_WB_VER );
+    wp_enqueue_style( 'themo-travelpack', plugin_dir_url( __FILE__ ) . '../assets/travelpack/travelpack.css', array(), THEMOVATION_WB_VER );
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'themovation_icon_styles', 1000000 );
