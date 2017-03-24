@@ -26,9 +26,9 @@ if ( ! function_exists('themo_tour_custom_post_type') ) {
         );
 
         if ( function_exists( 'get_theme_mod' ) ) {
-            $custom_slug = get_theme_mod( 'themo_tour_rewrite_slug', 'tours' );
+            $custom_slug = get_theme_mod( 'themo_tour_rewrite_slug', 'tour' );
         } else {
-            $custom_slug = 'tours';
+            $custom_slug = 'tour';
         }
 
         $rewrite = array(
