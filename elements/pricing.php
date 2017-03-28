@@ -44,17 +44,54 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Pricing Table', 'elementor' ),
 				'type' => Controls_Manager::REPEATER,
-				'default' => [
-					[
-						'url' => 'http://your-link.com'
-					]
-				],
+                'default' => [
+                    [
+                        'price_col_title' => __( '1 Hour Tour', 'elementor' ),
+                        'price_col_sub_title' => __( '3 People +', 'elementor' ),
+                        'price_col_price' => __( '$59', 'elementor' ),
+                        'price_col_text' => __( '/person', 'elementor' ),
+                        'price_col_description' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
+                        'price_col_button_1_show' => __( 'yes', 'elementor' ),
+                        'price_col_button_1_text' => __( 'BOOK THIS TOUR', 'elementor' ),
+                        'price_col_button_1_style' => __( 'cta-accent', 'elementor' ),
+                        'price_col_button_1_link' => __( '#book', 'elementor' ),
+                        'price_col_featured' => __( '', 'elementor' ),
+                        'price_col_background' => __( '', 'elementor' ),
+                    ],
+                    [
+                        'price_col_title' => __( '2 Hour Tour', 'elementor' ),
+                        'price_col_sub_title' => __( '3 People +', 'elementor' ),
+                        'price_col_price' => __( '$79', 'elementor' ),
+                        'price_col_text' => __( '/person', 'elementor' ),
+                        'price_col_description' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
+                        'price_col_button_1_show' => __( 'yes', 'elementor' ),
+                        'price_col_button_1_text' => __( 'BOOK THIS TOUR', 'elementor' ),
+                        'price_col_button_1_style' => __( 'cta-accent', 'elementor' ),
+                        'price_col_button_1_link' => __( '#book', 'elementor' ),
+                        'price_col_featured' => __( 'yes', 'elementor' ),
+                        'price_col_background' => __( '', 'elementor' ),
+                    ],
+                    [
+                        'price_col_title' => __( '3 Hour Tour', 'elementor' ),
+                        'price_col_sub_title' => __( '3 People +', 'elementor' ),
+                        'price_col_price' => __( '$99', 'elementor' ),
+                        'price_col_text' => __( '/person', 'elementor' ),
+                        'price_col_description' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
+                        'price_col_button_1_show' => __( 'yes', 'elementor' ),
+                        'price_col_button_1_text' => __( 'BOOK THIS TOUR', 'elementor' ),
+                        'price_col_button_1_style' => __( 'cta-accent', 'elementor' ),
+                        'price_col_button_1_link' => __( '#book', 'elementor' ),
+                        'price_col_featured' => __( '', 'elementor' ),
+                        'price_col_background' => __( '', 'elementor' ),
+                    ],
+
+                ],
 				'fields' => [
 					[
 						'name' => 'price_col_title',
 						'label' => __( 'Title', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
-						'default' => __( '1 hour tour', 'elementor' ),
+						//'default' => __( '1 hour tour', 'elementor' ),
                         'placeholder' => __( '1 hour tour', 'elementor' ),
 						'label_block' => true,
 					],
@@ -62,7 +99,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_sub_title',
                         'label' => __( 'Sub Title', 'elementor' ),
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( '3 People +', 'elementor' ),
+                        //'default' => __( '3 People +', 'elementor' ),
                         'placeholder' => __( '3 People +', 'elementor' ),
                         'label_block' => true,
                     ],
@@ -70,7 +107,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_price',
 						'label' => __( 'Price', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
-                        'default' => __( '$99', 'elementor' ),
+                        //'default' => __( '$99', 'elementor' ),
                         'placeholder' => __( '$99', 'elementor' ),
 						'label_block' => true,
 					],
@@ -78,7 +115,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_text',
 						'label' => __( 'Price text', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
-                        'default' => __( '/person', 'elementor' ),
+                        //'default' => __( '/person', 'elementor' ),
                         'placeholder' => __( '/person', 'elementor' ),
 						'label_block' => true,
 					],
@@ -86,14 +123,14 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_description',
 						'label' => __( 'Description', 'elementor' ),
 						'type' => Controls_Manager::TEXTAREA,
-                        'default' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
+                        //'default' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
 						'placeholder' => __( "Return Shuttle\nBasic Training & Safety\nFull Safety Suits\nFood Provided", 'elementor' ),
 						'label_block' => true,
 					],
                     [
                         'name' => 'price_col_button_1_show',
                         'label' => __( 'Button 1', 'elementor' ),
-                        'default' => 'yes',
+                        //'default' => 'yes',
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __( 'Yes', 'elementor' ),
                         'label_off' => __( 'No', 'elementor' ),
@@ -104,7 +141,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_button_1_text',
 						'label' => __( 'Button 1 Text', 'elementor' ),
 						'type' => Controls_Manager::TEXT,
-						'default' => __( 'BOOK THIS TOUR', 'elementor' ),
+						//'default' => __( 'BOOK THIS TOUR', 'elementor' ),
 						'placeholder' => __( 'BOOK THIS TOUR', 'elementor' ),
                         'conditions' => [
                             'terms' => [
@@ -120,7 +157,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_1_style',
                         'label' => __( 'Button 1 Style', 'elementor' ),
                         'type' => Controls_Manager::SELECT,
-                        'default' => 'cta-accent',
+                        //'default' => 'cta-accent',
                         'options' => [
                             'standard-primary' => __( 'Standard Primary', 'elementor' ),
                             'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -184,14 +221,14 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'label_on' => __( 'Yes', 'elementor' ),
                         'label_off' => __( 'No', 'elementor' ),
                         'return_value' => 'yes',
-                        'default' => '',
+                        //'default' => '',
                         'separator' => 'before',
                     ],
                     [
                         'name' => 'price_col_button_2_text',
                         'label' => __( 'Button 2 Text', 'elementor' ),
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Click Here', 'elementor' ),
+                        //'default' => __( 'Click Here', 'elementor' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -206,7 +243,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_style',
                         'label' => __( 'Button 2 Style', 'elementor' ),
                         'type' => Controls_Manager::SELECT,
-                        'default' => 'standard-primary',
+                        //'default' => 'standard-primary',
                         'options' => [
                             'standard-primary' => __( 'Standard Primary', 'elementor' ),
                             'standard-accent' => __( 'Standard Accent', 'elementor' ),
@@ -269,15 +306,15 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __( 'Yes', 'elementor' ),
                         'label_off' => __( 'No', 'elementor' ),
-                        'return_value' => 'yes',
-                        'default' => '',
+                        'return_value' => 'no',
+                        //'default' => '',
                         'separator' => 'before',
                     ],
                     [
                         'name' => 'price_col_background',
                         'label' => __( 'Background Color', 'elementor' ),
                         'type' => Controls_Manager::COLOR,
-                        'default' => '#54595f',
+                        //'default' => '#FFF',
                         'selectors' => [
                             '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
                         ],
@@ -747,7 +784,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '#FFFFFF',
+				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-title' => 'color: {{VALUE}};',
 				],
@@ -763,7 +800,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
                 ],
-                'default' => '#FFFFFF',
+                'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-highlight .th-pricing-sub-title' => 'color: {{VALUE}};',
                 ],
@@ -789,7 +826,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '#FFFFFF',
+				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost' => 'color: {{VALUE}};',
 				],
@@ -815,7 +852,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '#FFFFFF',
+				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost span' => 'color: {{VALUE}};',
 				],
@@ -841,7 +878,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
-				'default' => '#FFFFFF',
+				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-features ul li' => 'color: {{VALUE}};',
 				],
