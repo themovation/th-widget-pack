@@ -41,8 +41,9 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			Group_Control_Image_Size::get_type(),
 			[
                 //'include' => [ 'thumbnail','medium','large','th_img_sm_landscape','th_img_sm_portrait','th_img_sm_square','th_img_sm_standard','th_img_md_landscape','th_img_md_portrait','th_img_md_square'],
+
                 'name' => 'thumbnail',
-				'exclude' => [ 'custom'],
+				'exclude' => [ 'custom','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_team','themo_brands','full'],
 			]
 		);
 
