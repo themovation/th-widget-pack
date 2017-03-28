@@ -265,13 +265,14 @@ class Themo_Widget_Team extends Widget_Base {
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
         }
 
-        if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
+        if (isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
             $image_size = esc_attr( $settings['post_image_size'] );
-            if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
+            if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => 'th-img-stretch' ) );
         }elseif ( ! empty( $settings['image']['url'] ) ) {
             $this->add_render_attribute( 'image', 'src', esc_url( $settings['image']['url'] ) );
             $this->add_render_attribute( 'image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['image'] ) ) );
             $this->add_render_attribute( 'image', 'title', esc_attr( Control_Media::get_image_title( $settings['image'] ) ) );
+            $this->add_render_attribute( 'image', 'class', 'th-img-stretch' );
             $image = '<img ' . $this->get_render_attribute_string( 'image' ) . '>';
         }
 
