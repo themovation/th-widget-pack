@@ -1,11 +1,9 @@
 <?php
 
-define("THEMOVATION_WB_VER", '1.0');
-
 if ( ! function_exists ( 'themovation_so_wb_scripts' ) ) :
 // Enqueueing Frontend stylesheet and scripts.
 function themovation_so_wb_scripts() {
-	wp_enqueue_script( 'themo-so-wb-js', plugin_dir_url( __FILE__ ) . '../js/themovation.js', array('jquery'), THEMOVATION_WB_VER, true);
+	wp_enqueue_script( 'themo-so-wb-js', THEMO_URL . 'js/themovation.js', array('jquery'), THEMO_VERSION, true);
 
 	if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
 		wp_dequeue_script( 'booked-font-awesome' );
@@ -14,16 +12,19 @@ function themovation_so_wb_scripts() {
 endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
-if ( ! function_exists ( 'themovation_icon_styles' ) ) :
-// Enqueueing themovation icon styles
-function themovation_icon_styles() {
-	wp_enqueue_style( 'themo-glyphsocial', plugin_dir_url( __FILE__ ) . '../assets/glyphsocial/style.css', array(), THEMOVATION_WB_VER );
-    wp_enqueue_style( 'themo-travelpack', plugin_dir_url( __FILE__ ) . '../assets/travelpack/travelpack.css', array(), THEMOVATION_WB_VER );
-}
-endif;
-add_action( 'wp_enqueue_scripts', 'themovation_icon_styles', 1000000 );
+// FRONTEND // After Elementor registers all styles.
+add_action( 'elementor/frontend/after_register_styles', function() {
+    wp_enqueue_style( 'themo-travelpack', THEMO_ASSETS_URL . 'travelpack/travelpack.css', array(), THEMO_VERSION);
+} );
+
+// EDITOR // Before the editor scripts enqueuing.
+add_action( 'elementor/editor/before_enqueue_scripts', function() {
+    wp_enqueue_style( 'themo-glyphsocial', THEMO_ASSETS_URL . 'glyphsocial/style.css', array(), THEMO_VERSION);
+    wp_enqueue_style( 'themo-travelpack', THEMO_ASSETS_URL  . 'travelpack/travelpack.css', array(), THEMO_VERSION);
+} );
 
 
+// PREVIEW // Before the preview styles enqueuing.
 add_action( 'elementor/preview/enqueue_styles', function() {
 
     /* Themovation Theme Options : Colors for Preview */
