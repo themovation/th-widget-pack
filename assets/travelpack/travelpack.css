@@ -24,9 +24,9 @@
 [class^="travelpack-"]:before, [class*=" travelpack-"]:before,
 [class^="travelpack-"]:after, [class*=" travelpack-"]:after {   
   font-family: travelpack;
-        font-size: 20px;
-font-style: normal;
-margin-left: 20px;
+  /*font-size: 20px;*/
+  font-style: normal;
+  /*margin-left: 20px;*/
 }
 
 .travelpack-aeroplane-top-view:before { content: "\f100"; }
