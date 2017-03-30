@@ -76,3 +76,84 @@ add_image_size( 'themo_team', 480, 320, true);
 */
 global $th_map_id;
 $th_map_id = 0;
+
+// Initial Settings
+/*$page_title_selector = get_option( 'elementor_page_title_selector' );
+if ( empty( $page_title_selector ) ) {
+    update_option( 'elementor_page_title_selector', '.page-title');
+}*/
+
+
+add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', function( $element, $args ) {
+
+    $element->add_control(
+        'themo_transparent_header',
+        [
+            'label' => __( 'Transparent Header', 'your-plugin' ),
+            'type' => \Elementor\Controls_Manager::SWITCHER,
+            'default' => '',
+            'label_on' => __( 'On', 'your-plugin' ),
+            'label_off' => __( 'Off', 'your-plugin' ),
+            'return_value' => 'on',
+        ]
+    );
+
+    $element->add_control(
+        'themo_page_layout',
+        [
+            'label' => __( 'Sidebar', 'your-plugin' ),
+            'type' => \Elementor\Controls_Manager::CHOOSE,
+            'default' => 'full',
+            'options' => [
+                'left'    => [
+                    'title' => __( 'Left', 'your-plugin' ),
+                    'icon' => 'fa fa-long-arrow-left',
+                ],
+                'full' => [
+                    'title' => __( 'No Sidebar', 'your-plugin' ),
+                    'icon' => 'fa fa-times',
+                ],
+                'right' => [
+                    'title' => __( 'Right', 'your-plugin' ),
+                    'icon' => 'fa fa-long-arrow-right',
+                ],
+
+            ],
+            'return_value' => 'yes',
+        ]
+    );
+
+   // $element->end_controls_section();
+}, 10, 2 );
+
+
+
+add_action( 'elementor/editor/after_save', function( $post_id, $editor_data ) {
+
+
+    /*if(isset($post_id) && $post_id > ""){
+        $themo_page_ID = $post_id; // Default Page ID
+    }
+
+    // Are there settings from the Elementor Page Options?
+    $elm_page_settings = get_post_meta( $themo_page_ID,"_elementor_page_settings");
+    //echo "SAVED SETTINGS ";
+    //echo "<pre>";
+    $elm_trans_header = $elm_page_settings[0]['themo_transparent_header'];
+    $elm_page_layout = $elm_page_settings[0]['themo_page_layout'];
+
+    //echo $elm_trans_header;
+    //echo "<br>";
+    //echo $elm_page_layout;
+
+    //echo "</pre>";
+
+    if(empty($elm_trans_header)){
+        //echo "EMPTY";
+        $elm_trans_header = 'off';
+    }
+    update_post_meta($themo_page_ID,'themo_transparent_header',$elm_trans_header);
+    update_post_meta($themo_page_ID,'themo_page_layout',$elm_page_layout);
+    */
+
+});
