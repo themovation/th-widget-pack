@@ -163,3 +163,195 @@ if ( ! function_exists( 'th_check_meta_change' ) ) {
     }
 }
 add_action('updated_post_meta', 'th_check_meta_change', 0, 4);
+
+
+/* Elementor Hooks  */
+
+/*
+ * Applied to the PHP html content of a single widget.
+ *
+ */
+
+add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+
+    // Wrap Sideba Widget with our own classes.
+    if ( 'sidebar' === $widget->get_name() ) {
+        $tmp_content = $content;
+        $content = '<div class="sidebar th-widget-area th-sidebar-widget">';
+        $content .= $tmp_content;
+        $content .= '</div>';
+    }
+
+    /*
+     * IMAGE GALLERY WIDGET
+     * Add Image Stretch Option Control
+     */
+    if ( 'image-gallery-x' === $widget->get_name() ) {
+
+        $settings = $widget->get_settings();
+
+
+        $gallery_class = false;
+        if ( 'yes' === $settings['image_stretch'] ) {
+            $gallery_class = 'th-image-stretch';
+        }
+
+        $content = '<div class="elementor-image-gallery '.$gallery_class.'">';
+        $content .= do_shortcode( '[gallery ' . $widget->get_render_attribute_string( 'shortcode' ) . ']' );
+        $content .= '</div>';
+
+    }
+
+    /*
+     * TESTIMONIAL WIDGET
+     * Use specific image size, th_img_sm_square
+     */
+    if ( 'testimonialx' === $widget->get_name() ) {
+        $settings = $widget->get_settings();
+
+        if ( empty( $settings['testimonial_name'] ) || empty( $settings['testimonial_content'] ) )
+            return;
+
+        $has_image = false;
+        if ( '' !== $settings['testimonial_image']['url'] ) {
+            $image_url = $settings['testimonial_image']['url'];
+            $has_image = ' elementor-has-image';
+        }
+
+        if ( ! empty( $settings['testimonial_image'] ) ) {
+
+            if ( $settings['testimonial_image']['id'] ) $image = wp_get_attachment_image( $settings['testimonial_image']['id'], 'th_img_sm_square', false, array( 'class' => 'th-team-member-image' ) );
+
+        }
+
+        $testimonial_alignment = $settings['testimonial_alignment'] ? ' elementor-testimonial-text-align-' . $settings['testimonial_alignment'] : '';
+        $testimonial_image_position = $settings['testimonial_image_position'] ? ' elementor-testimonial-image-position-' . $settings['testimonial_image_position'] : '';
+        ?>
+        <div class="elementor-testimonial-wrapper<?php echo $testimonial_alignment; ?>">
+
+            <?php if ( ! empty( $settings['testimonial_content'] ) ) : ?>
+                <div class="elementor-testimonial-content">
+                    <?php echo $settings['testimonial_content']; ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="elementor-testimonial-meta<?php if ( $has_image ) echo $has_image; ?><?php echo $testimonial_image_position; ?>">
+                <div class="elementor-testimonial-meta-inner">
+                    <?php if ( isset( $image ) ) : ?>
+                        <div class="elementor-testimonial-image">
+                            <?php echo $image; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="elementor-testimonial-details">
+                        <?php if ( ! empty( $settings['testimonial_name'] ) ) : ?>
+                            <div class="elementor-testimonial-name">
+                                <?php echo $settings['testimonial_name']; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ( ! empty( $settings['testimonial_job'] ) ) : ?>
+                            <div class="elementor-testimonial-job">
+                                <?php echo $settings['testimonial_job']; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        $content = "";
+    }
+
+    return $content;
+}, 10, 2 );
+
+
+/*
+ * Applied to the javascript preview templates.
+ */
+
+add_action( 'elementor/widget/print_template', function( $template, $widget ) {
+
+
+    /*
+     * TESTIMONIAL WIDGET
+     * Use specific image size, th_img_sm_square
+     */
+    if ( 'testimonialx' === $widget->get_name() ) {
+        ?>
+        <#
+            var imageUrl = false, hasImage = '';
+            if ( '' !== settings.testimonial_image.url ) {
+            imageUrl = settings.testimonial_image.url;
+            hasImage = ' elementor-has-image';
+            }
+
+            var testimonial_alignment = settings.testimonial_alignment ? ' elementor-testimonial-text-align-' + settings.testimonial_alignment : '';
+            var testimonial_image_position = settings.testimonial_image_position ? ' elementor-testimonial-image-position-' + settings.testimonial_image_position : '';
+            #>
+            <div class="elementor-testimonial-wrapper{{ testimonial_alignment }}">
+
+                <# if ( '' !== settings.testimonial_content ) { #>
+                    <div class="elementor-testimonial-content">
+                        {{{ settings.testimonial_content }}}
+                    </div>
+                    <# } #>
+
+                        <div class="elementor-testimonial-meta{{ hasImage }}{{ testimonial_image_position }}">
+                            <div class="elementor-testimonial-meta-inner">
+                                <# if ( imageUrl ) { #>
+                                    <div class="elementor-testimonial-image">
+                                        <img src="{{ imageUrl }}" alt="testimonial" />
+                                    </div>
+                                    <# } #>
+
+                                        <div class="elementor-testimonial-details">
+                                            <# if ( '' !== settings.testimonial_name ) { #>
+                                                <div class="elementor-testimonial-name">
+                                                    {{{ settings.testimonial_name }}}
+                                                </div>
+                                                <# } #>
+
+                                                    <# if ( '' !== settings.testimonial_job ) { #>
+                                                        <div class="elementor-testimonial-job">
+                                                            {{{ settings.testimonial_job }}}
+                                                        </div>
+                                                        <# } #>
+                                        </div>
+                            </div>
+                        </div>
+            </div>
+        <?php
+        $template = "";
+    }
+
+    return $template;
+}, 10, 2 );
+
+/*
+ * add additional controls to existing sections.
+ */
+
+add_action( 'elementor/element/before_section_end', function( $element, $section_id, $args ) {
+
+    /*
+     * IMAGE GALLERY WIDGET
+     * Add Image Stretch Option Control
+     */
+    if ( 'image-gallery-x' === $element->get_name() && 'section_gallery-x' === $section_id ) {
+
+        /*$element->add_control(
+            'image_stretch',
+            [
+                'label' => __( 'Image Stretch', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'no',
+                'options' => [
+                    'no' => __( 'No', 'elementor' ),
+                    'yes' => __( 'Yes', 'elementor' ),
+                ],
+            ]
+        );*/
+    }
+}, 10, 3 );
