@@ -139,6 +139,3 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings' ) ) {
     }
 }
 add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings',10, 2);
-
-
-

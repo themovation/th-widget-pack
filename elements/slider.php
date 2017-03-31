@@ -1591,11 +1591,11 @@ class Themo_Widget_Slider extends Widget_Base {
 
                     $th_form_border_class = false;
                     $th_formidable_class = 'th-form-default';
-                    if ( isset($slide['inline_form']) && $slide['inline_form'] > "") :
-                        switch ($slide['inline_form']) {
+                    if ( isset( $slide['inline_form'] ) && $slide['inline_form'] > "" ) :
+                        switch ( $slide['inline_form'] ) {
                             case 'stacked':
                                 $th_formidable_class = 'th-form-stacked';
-                                if (isset($slide['slide_shortcode_border']) && $slide['slide_shortcode_border'] != 'none'){
+                                if ( isset( $slide['slide_shortcode_border'] ) && $slide['slide_shortcode_border'] != 'none' ){
                                     $th_form_border_class = $slide['slide_shortcode_border'];
                                 }
                                 break;
@@ -1606,9 +1606,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     endif;
 					$this->add_render_attribute( 'slider-bg', 'class', $th_form_border_class );
 
-
                     $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slide-wrap' );
-
 
 					if ( 'yes' === $slide['slide_bg_overlay'] ) {
                         $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slider-overlay' );
@@ -1618,9 +1616,8 @@ class Themo_Widget_Slider extends Widget_Base {
                         $this->add_render_attribute( 'slider-bg-overlay', 'class', 'has-image-bg' );
                     }
 
-
                     $th_cal_align_class = false;
-                    if(isset($slide['slide_text_align']) && $slide['slide_text_align'] > ""){
+                    if( isset( $slide['slide_text_align'] ) && $slide['slide_text_align'] > "" ) {
                         switch ($slide['slide_text_align']) {
                             case 'left':
                                 $th_cal_align_class =  ' th-left';
@@ -1633,18 +1630,15 @@ class Themo_Widget_Slider extends Widget_Base {
                                 break;
                         }
                     }
-
-
-
                     ?>
 
-                    <li class="elementor-repeater-item-<?php echo $slide['_id'] ?>">
+                    <li class="elementor-repeater-item-<?php echo esc_attr( $slide['_id'] ); ?>">
 						<div <?php echo $this->get_render_attribute_string( 'slider-bg' ); ?>>
                             <div <?php echo $this->get_render_attribute_string( 'slider-bg-overlay' );?>>
-                                <div class="th-slide-inner <?php echo esc_attr($th_cal_align_class); ?>">
+                                <div class="th-slide-inner <?php echo esc_attr( $th_cal_align_class ); ?>">
                                     <div class="th-slide-content">
                                         <?php if ( ! empty( $slide['slide_title'] ) ) : ?>
-                                            <h1 class="slider-title"><?php echo esc_html( $slide['slide_title']) ?></h1>
+                                            <h1 class="slider-title"><?php echo esc_html( $slide['slide_title'] ) ?></h1>
                                         <?php endif;?>
 
                                         <?php if ( ! empty( $slide['slide_text'] ) ) : ?>
@@ -1654,15 +1648,15 @@ class Themo_Widget_Slider extends Widget_Base {
                                         <?php endif;?>
                                         <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
                                             <div class="th-btn-wrap">
-                                                <?php if (isset($slide['slide_button_text_1_show']) && $slide['slide_button_text_1_show'] == 'yes') : ?>
+                                                <?php if ( isset($slide['slide_button_text_1_show'] ) && $slide['slide_button_text_1_show'] == 'yes' ) : ?>
 													<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
                                                     <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . $slide['slide_button_link_1']['url'] . '"' . $target . '>' . esc_html( $slide['slide_button_text_1']) . '</a>'; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $slide['slide_button_link_1']['url'] ) . '"' . $target . '>' . esc_html( $slide['slide_button_text_1'] ) . '</a>'; ?>
                                                 <?php endif; ?>
-                                                <?php if (isset($slide['slide_button_text_2_show']) && $slide['slide_button_text_2_show'] == 'yes') : ?>
+                                                <?php if ( isset( $slide['slide_button_text_2_show'] ) && $slide['slide_button_text_2_show'] == 'yes' ) : ?>
                                                     <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
                                                     <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . $slide['slide_button_link_2']['url'] . '"' . $target . '>' . esc_html( $slide['slide_button_text_2']) . '</a>'; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . esc_attr( $button_style ) . '" href="' . esc_url ( $slide['slide_button_link_2']['url'] ) . '"' . $target . '>' . esc_html( $slide['slide_button_text_2'] ) . '</a>'; ?>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>
@@ -1671,7 +1665,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                             <div class="page-title-image ">
                                                 <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
                                                     <?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                    <?php echo '<a href="' . $slide['slide_image_url']['url'] . '"' . $img_target . '>'; ?>
+                                                    <?php echo '<a href="' . esc_url( $slide['slide_image_url']['url'] ) . '"' . $img_target . '>'; ?>
                                                 <?php endif; ?>
                                                 <?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
                                                 <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
@@ -1680,30 +1674,30 @@ class Themo_Widget_Slider extends Widget_Base {
                                             </div>
                                         <?php endif; ?>
 
-                                        <?php if ( isset($slide['slide_shortcode'])) : ?>
+                                        <?php if ( isset( $slide['slide_shortcode'] ) ) : ?>
                                             <?php $sth_show_tooltip = $slide['slide_tooltip'] == 'yes' ? true : false; ?>
                                             <?php $th_tooltip = $slide['slide_tooltip_text'] ? $slide['slide_tooltip_text'] : ''; ?>
-                                            <?php $themo_flex_smoothheight = strpos($slide['slide_shortcode'], 'booked-calendar') !== FALSE ? false : true; ?>
+                                            <?php $themo_flex_smoothheight = strpos( $slide['slide_shortcode'], 'booked-calendar' ) !== FALSE ? false : true; ?>
 
                                             <?php
-                                                $th_shortcode = sanitize_text_field($slide['slide_shortcode']);
-                                                $th_brackets = array("[","]");
-                                                $th_shortcode_text = str_replace($th_brackets,"", $th_shortcode);
-                                                $th_shortcode_name = strtok($th_shortcode_text,  ' ');
-                                                $th_cal_size =  (isset($slide['th_cal_size']) ? $slide['th_cal_size'] : false);
+                                                $th_shortcode = sanitize_text_field( $slide['slide_shortcode'] );
+                                                $th_brackets = array( "[","]" );
+                                                $th_shortcode_text = str_replace( $th_brackets, "", $th_shortcode );
+                                                $th_shortcode_name = strtok( $th_shortcode_text,  ' ' );
+                                                $th_cal_size =  ( isset( $slide['th_cal_size'] ) ? $slide['th_cal_size'] : false );
                                                 $th_output = "";
 
-                                                switch ($th_shortcode_name) {
+                                                switch ( $th_shortcode_name ) {
                                                     case 'formidable':
-                                                        $th_output .= '<div class="' . sanitize_html_class($th_formidable_class).'">';
+                                                        $th_output .= '<div class="' . sanitize_html_class($th_formidable_class) . '">';
                                                         $th_output .= do_shortcode( $th_shortcode );
                                                         $th_output .= '</div>';
                                                         break;
                                                     case 'booked-calendar':
-                                                        $th_output .= '<div class="th-book-cal-'.esc_attr( $th_cal_size ) . esc_attr($th_cal_align_class) .'">';
-                                                        if($sth_show_tooltip){
+                                                        $th_output .= '<div class="th-book-cal-' . esc_attr( $th_cal_size ) . esc_attr( $th_cal_align_class ) .'">';
+                                                        if( $sth_show_tooltip ){
                                                             $th_output .= '<div class="th-cal-tooltip">';
-                                                            $th_output .= '<h3>'.esc_attr($th_tooltip).'</h3>';
+                                                            $th_output .= '<h3>' . esc_html( $th_tooltip ) . '</h3>';
                                                             $th_output .= '</div>';
                                                         }
                                                         $th_output .= do_shortcode( $th_shortcode );

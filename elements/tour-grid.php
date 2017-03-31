@@ -210,14 +210,14 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 $portfolio_item = array();
         }
 
-        if ( isset($settings['gutter']) &&  $settings['gutter'] == 'on'){
+        if ( isset( $settings['gutter'] ) &&  $settings['gutter'] == 'on' ){
             $portfolio_row .= ' th-port-gutter';
         }
 
         ?>
 
         <?php
-        $th_uid = uniqid('th-portfolio-content-');
+        $th_uid = uniqid( 'th-portfolio-content-' );
         ?>
         <div id="<?php echo $th_uid; ?>" class="th-portfolio">
 
@@ -225,7 +225,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
                 <div id="filters" class="th-portfolio-filters">
                     <span><?php echo __( 'Sort:', 'themovation-widgets' ); ?></span>
-                    <a href="#" data-filter="*" class="current"><?php echo __( 'All', 'themovation-widgets' ); ?></a>
+                    <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'themovation-widgets' ); ?></a>
                     <?php
                     $taxonomy = 'themo_tour_type';
                     $tax_terms = get_terms( $taxonomy );
@@ -298,47 +298,47 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         // Link post type options
                         if(isset($format) && $format == 'link'){
 
-                            $link_url = get_post_meta( get_the_ID(), '_format_link_url', true);
-                            $link_title = get_post_meta( get_the_ID(), '_format_link_title', true);
-                            $link_target = get_post_meta( get_the_ID(), '_format_link_target');
+                            $link_url = get_post_meta( get_the_ID(), '_format_link_url', true );
+                            $link_title = get_post_meta( get_the_ID(), '_format_link_title', true );
+                            $link_target = get_post_meta( get_the_ID(), '_format_link_target' );
 
                             if(!$link_url > ""){
                                 $link_url = get_the_permalink();
                             }
 
                             // Link Target
-                            if(isset($link_target[0][0]) && $link_target[0][0] == "_blank"){
+                            if( isset( $link_target[0][0] ) && $link_target[0][0] == "_blank" ) {
                                 $link_target_markup = "target='_blank'";
                             }
 
                             // Custom Title
-                            if(!$link_title > "") {
-                                $link_title=get_the_title();
+                            if( ! $link_title > "" ) {
+                                $link_title = get_the_title();
                             }
                         }
 
                         //Image post type options
-                        if(isset($format) && $format == 'image') {
+                        if( isset( $format ) && $format == 'image' ) {
 
                             // Get Project Format Options
-                            $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false);
+                            $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false );
 
-                            if (isset($project_thumb_alt_img[0]) && $project_thumb_alt_img[0] > "") {
+                            if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
                                 $alt = false;
-                                $img_src = themo_return_metabox_image($project_thumb_alt_img[0], null, "th_img_md_square", true, $alt);
+                                $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
                                 $alt_text = $alt;
                                 // Default lightbox url
-                                $link_url = themo_return_metabox_image($project_thumb_alt_img[0], null, "th_img_xl", true, $alt);
+                                $link_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
                             }
 
                             // lightbox mark up
-                            $link_url_tmp = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'th_img_xl');
-                            if(isset($link_url_tmp[0])){
+                            $link_url_tmp = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'th_img_xl' );
+                            if( isset( $link_url_tmp[0] ) ) {
                                 $link_url = $link_url_tmp[0];
                             }
                             //echo $link_url;
                             $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
-                            $link_title = the_title_attribute('echo=0') ;
+                            $link_title = the_title_attribute( 'echo=0' );
                         }
 
                         $filtering_links = array();
@@ -353,63 +353,63 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
-                                if(isset($img_src) &&  $img_src > ""){
-                                    echo '<img class="img-responsive th-port-img" src="'.esc_url($img_src).'" alt="'.esc_attr($alt_text).'">';
+                                if( isset( $img_src ) && $img_src > "" ) {
+                                    echo '<img class="img-responsive th-port-img" src="' . esc_url( $img_src ) . '" alt="' . esc_attr( $alt_text ) . '">';
                                 }else{
                                     if ( has_post_thumbnail(get_the_ID()) ) {
                                         $featured_img_attr = array('class'	=> "img-responsive th-port-img");
-                                        echo get_the_post_thumbnail(get_the_ID(),"th_img_md_square",$featured_img_attr);
+                                        echo get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr );
                                     }
                                 }
 
                                 $th_tour_title = get_the_title();;
-                                $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true);
-                                if($th_tour_title_meta > ""){
+                                $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true );
+                                if( $th_tour_title_meta > "" ) {
                                     $th_tour_title = $th_tour_title_meta;
                                 }
 
                                 $th_tour_highlight = false;
-                                $th_tour_highlight = get_post_meta( get_the_ID(), 'th_tour_highlight', true);
+                                $th_tour_highlight = get_post_meta( get_the_ID(), 'th_tour_highlight', true );
 
                                 $th_tour_intro = false;
-                                $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true);
-                                if($th_tour_intro === false || empty($th_tour_intro)){
+                                $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true );
+                                if( $th_tour_intro === false || empty( $th_tour_intro ) ) {
                                     $automatic_post_excerpts = 'on';
                                     if ( function_exists( 'get_theme_mod' ) ) {
                                         $automatic_post_excerpts = get_theme_mod( 'themo_automatic_post_excerpts', 'on' );
                                     }
-                                    if($automatic_post_excerpts === 'off'){
+                                    if( $automatic_post_excerpts === 'off' ) {
                                         $th_tour_intro = apply_filters( 'the_content', get_the_content() );
                                         $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        if($th_tour_intro != ""){
-                                            $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
+                                        if( $th_tour_intro != "" ) {
+                                            $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
                                         }
-                                    }else{
+                                    } else {
                                         $th_tour_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
                                         $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        $th_tour_intro = str_replace('<p', '<p class="th-port-sub"', $th_tour_intro);
+                                        $th_tour_intro = str_replace( '<p', '<p class="th-port-sub"', $th_tour_intro );
                                     }
                                 }else{
-                                    $th_tour_intro = '<p class="th-port-sub">'.$th_tour_intro.'</p>';
+                                    $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
                                 }
 
                                 $th_tour_button_text = false;
-                                $th_tour_button_text = get_post_meta( get_the_ID(), 'th_tour_button_text', true);
+                                $th_tour_button_text = get_post_meta( get_the_ID(), 'th_tour_button_text', true );
                                 ?>
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
-                                    <?php if($th_tour_highlight){ ?>
+                                    <?php if( $th_tour_highlight ) { ?>
                                         <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
                                     <?php } ?>
                                     <div class="th-port-center">
                                         <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
                                         <?php echo $th_tour_intro; ?>
-                                        <?php if(! $th_tour_button_text === false || ! empty($th_tour_button_text)) { ?>
-                                            <span class="th-port-btn"><?php echo $th_tour_button_text; ?></span>
+                                        <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
+                                            <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>
                                     </div>
-                                    <?php echo '<a href="'. esc_url($link_url) . '" class="th-port-link" ' .esc_html($link_target_markup) . '></a>'; ?>
+                                    <?php echo '<a href="' . esc_url( $link_url ) . '" class="th-port-link" ' . esc_html( $link_target_markup ) . '></a>'; ?>
                                 </div>
                             </div>
                         </div>

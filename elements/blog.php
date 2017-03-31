@@ -266,16 +266,14 @@ class Themo_Widget_Blog extends Widget_Base {
 	protected function render() {
 	    $settings = $this->get_settings();
 
-
-
 		// WP_Query arguments
 		$args = array (
 			'post_type' => array( 'post' ),
-            'post_status'=>array('publish'),
+            'post_status'=>array( 'publish' ),
 		);
 
-        
-        if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
+
+        if ( isset( $settings['post_image_size'] ) &&  $settings['post_image_size'] > "" ) {
             global $image_size, $masonry_template_key, $automatic_post_excerpts;
             $image_size = $settings['post_image_size'];
             $masonry_template_key = '-masonry';
@@ -289,8 +287,8 @@ class Themo_Widget_Blog extends Widget_Base {
         $th_section_class = "th-masonry-blog";
         $th_post_classes = "col-sm-6 col-md-4";
 
-        if ( isset($settings['post_columns']) &&  $settings['post_columns'] > "") {
-            switch ($settings['post_columns']) {
+        if ( isset( $settings['post_columns'] ) &&  $settings['post_columns'] > "" ) {
+            switch ( $settings['post_columns'] ) {
                 case '2-col':
                     $th_section_class .= " th-blog-2-col";
                     $th_post_classes = "col-sm-6";
@@ -326,13 +324,11 @@ class Themo_Widget_Blog extends Widget_Base {
 			$args['posts_per_page'] = $settings['post_count'];
 		}
 
-        if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' ) {
-
+        if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' ) {
 
             if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
             elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
             else { $paged = 1; }
-
 
             if(isset($settings['post_count'])) {
                 $th_offset = ( $paged - 1 ) * $settings['post_count'];
@@ -369,8 +365,8 @@ class Themo_Widget_Blog extends Widget_Base {
 
 							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
-							<div <?php $th_post_classes = "mas-blog-post ".$th_post_classes; post_class($th_post_classes); ?>>
-								<?php get_template_part('templates/content', $format); ?>
+							<div <?php $th_post_classes = "mas-blog-post ".$th_post_classes; post_class( $th_post_classes ); ?>>
+								<?php get_template_part( 'templates/content', $format ); ?>
 							</div>
 
 						<?php } ?>
@@ -381,16 +377,16 @@ class Themo_Widget_Blog extends Widget_Base {
                         ?>
 
 					</div>
-                    <?php if ( isset($settings['pagination']) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1) { ?>
+                    <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
                     <div class="row">
                         <nav class="post-nav">
                             <ul class="pager">
                                 <?php
-                                if($use_bittersweet_pagination) {
+                                if( $use_bittersweet_pagination ) {
                                     bittersweet_pagination();
                                 } else { ?>
-                                <li class="previous"><?php next_posts_link(esc_html__('&larr; Older posts', 'westwood'), $widget_wp_query->max_num_pages); ?></li>
-                                <li class="next"><?php previous_posts_link(esc_html__('Newer posts &rarr;', 'westwood')); ?></li>
+                                <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'westwood' ), $widget_wp_query->max_num_pages); ?></li>
+                                <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'westwood' ) ); ?></li>
                                <?php }?>
                             </ul>
                         </nav>
@@ -401,7 +397,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			<?php
 
 		} else {
-			esc_html_e('Sorry, no results were found.', 'themovation-widgets');
+			esc_html_e( 'Sorry, no results were found.', 'themovation-widgets' );
 		}
 
         // Reset main query object
