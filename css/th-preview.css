@@ -1,0 +1,13 @@
+.hide-nav-wrap{
+    z-index: 9999;
+    position: absolute;
+    left: 50%;
+}
+.hide-nav{
+    position: relative;
+    left: -50%;
+    border: solid blue 1px;
+    border-top:none;
+    padding: 5px;
+}
+
