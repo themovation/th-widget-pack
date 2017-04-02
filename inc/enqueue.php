@@ -3,7 +3,8 @@
 if ( ! function_exists ( 'themovation_so_wb_scripts' ) ) :
 // Enqueueing Frontend stylesheet and scripts.
 function themovation_so_wb_scripts() {
-	wp_enqueue_script( 'themo-so-wb-js', THEMO_URL . 'js/themovation.js', array('jquery'), THEMO_VERSION, true);
+    //wp_enqueue_script( 'themo-js-head', THEMO_URL . 'js/themo-head.js', array('jquery'), THEMO_VERSION, false);
+    wp_enqueue_script( 'themo-js-foot', THEMO_URL . 'js/themo-foot.js', array('jquery'), THEMO_VERSION, true);
 
 	if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
 		wp_dequeue_script( 'booked-font-awesome' );

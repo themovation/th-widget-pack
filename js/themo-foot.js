@@ -1,3 +1,57 @@
+"use strict";
+
+//-----------------------------------------------------
+// Initiate Slider (flexslider)
+//-----------------------------------------------------
+function themo_start_flex_slider(flex_selector,themo_autoplay,themo_flex_animation, themo_flex_easing,
+                                 themo_flex_animationloop, themo_flex_smoothheight, themo_flex_slideshowspeed, themo_flex_animationspeed,
+                                 themo_flex_randomize, themo_flex_pauseonhover, themo_flex_touch, themo_flex_directionnav,themo_flex_controlNav){
+    // SETUP FLEXSLIDER OPTIONS
+    // Remove ajax_loader.gif from Formidable Plugin
+    jQuery("img.frm_ajax_loading").remove();
+    jQuery(flex_selector).flexslider({
+        slideshow: themo_autoplay,
+        animation: themo_flex_animation,
+        smoothHeight: themo_flex_smoothheight,
+        easing: themo_flex_easing,
+        animationLoop: themo_flex_animationloop,
+        slideshowSpeed: themo_flex_slideshowspeed,
+        animationSpeed: themo_flex_animationspeed,
+        randomize: themo_flex_randomize,
+        pauseOnHover: themo_flex_pauseonhover,
+        touch: themo_flex_touch,
+        directionNav: themo_flex_directionnav,
+        controlNav: themo_flex_controlNav,
+        //directionNav: false,
+        prevText: '',
+        nextText: '',
+        start: function (slider) {
+            //slider.removeClass( "flexpreloader");
+            jQuery('body').addClass('loaded');
+        },
+        after: function (slider) {
+        },
+        before: function () {
+        }
+    });
+}
+
+//-----------------------------------------------------
+// Active Lightbox
+//-----------------------------------------------------
+function themo_active_lightbox(){
+    // delegate calls to data-toggle="lightbox"
+    jQuery(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        return jQuery(this).ekkoLightbox({
+            always_show_close: true,
+            gallery_parent_selector: '.gallery',
+            right_arrow_class: '.flex-next',
+            left_arrow_class: '.flex-prev'
+        });
+    });
+}
+
 jQuery( function ( $ ) {
 
    /* $('.th-pricing-table').on('load', function(){
@@ -172,8 +226,40 @@ jQuery( function ( $ ) {
 			}
 		} );
 
-
-
 	} );
 
+    // If flex slider loading then wait a max of 5 seconds.
+    // else check if images are loaded
+    if ($("#main-flex-slider")[0]){
+        // Do nothing / flex will figure it out.
+        //console.log('Let Flex Take Care of It');
+        setTimeout(function(){
+            console.log('Took too long, timeout and clear preloader');
+            $('body').addClass('loaded');
+        }, 10000);
+    }else{
+        $('body').addClass('loaded');
+    }
+
+    // tooltips
+    $('a[rel=tooltip]').tooltip();
+
+    // popovers
+    $("a[rel=popover]").popover();
+
 } );
+
+
+
+//======================================================================
+// On Window Load - executes when complete page is fully loaded, including all frames, objects and images
+//======================================================================
+jQuery(window).load(function($) {
+    "use strict";
+
+
+    // Initiate Lightbox
+    themo_active_lightbox();
+
+
+});
