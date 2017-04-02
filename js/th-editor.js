@@ -2,10 +2,42 @@
  * Created by rl on 2017-03-30.
  */
 jQuery( function( $ ) {
-    if ( undefined !== window.elementor ) {
-        //console.log('We are in!');
-        elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
 
+    // Page Settings Panel - onchange save and reload elementor window.
+    if ( undefined !== elementor.pageSettings ) {
+
+        // Page Layout Options
+        elementor.pageSettings.addChangeCallback( 'themo_page_layout', function( newValue ) {
+            // Here you can do as you wish with the newValue
+
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'settingsPage' );
+                } );
+            } );
+        } );
+
+        // Header Transparency
+        elementor.pageSettings.addChangeCallback( 'themo_transparent_header', function( newValue ) {
+            // Here you can do as you wish with the newValue
+
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'settingsPage' );
+                } );
+            } );
+        } );
+
+    }
+
+
+    if ( undefined !== window.elementor ) {
+
+        elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
 
             //elementor.reloadPreview();
 
@@ -45,8 +77,5 @@ jQuery( function( $ ) {
              } );*/
 
         });
-
-    }else{
-        console.log('does not exist');
     }
 } );

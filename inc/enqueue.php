@@ -23,7 +23,7 @@ add_action( 'elementor/editor/before_enqueue_scripts', function() {
     wp_enqueue_style( 'themo-glyphsocial', THEMO_ASSETS_URL . 'glyphsocial/style.css', array(), THEMO_VERSION);
     wp_enqueue_style( 'themo-travelpack', THEMO_ASSETS_URL  . 'travelpack/travelpack.css', array(), THEMO_VERSION);
     // JS for the Editor
-    //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+    wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
 } );
 
 
