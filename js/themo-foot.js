@@ -228,18 +228,7 @@ jQuery( function ( $ ) {
 
 	} );
 
-    // If flex slider loading then wait a max of 5 seconds.
-    // else check if images are loaded
-    if ($("#main-flex-slider")[0]){
-        // Do nothing / flex will figure it out.
-        //console.log('Let Flex Take Care of It');
-        setTimeout(function(){
-            console.log('Took too long, timeout and clear preloader');
-            $('body').addClass('loaded');
-        }, 10000);
-    }else{
-        $('body').addClass('loaded');
-    }
+
 
     // tooltips
     $('a[rel=tooltip]').tooltip();
