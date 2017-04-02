@@ -1,5 +1,48 @@
 <?php
 
+
+
+//-----------------------------------------------------
+// themo_string_contains
+// IF String contains any items in an array (case insensitive).
+//-----------------------------------------------------
+function themo_string_contains($str, array $arr)
+{
+    foreach($arr as $a) {
+        if (stripos($str,$a) !== false) return true;
+    }
+    return false;
+}
+
+//-----------------------------------------------------
+// themo_RandNumber
+// Return a random number
+//-----------------------------------------------------
+function themo_RandNumber($e){
+    $rand = 0;
+    for($i=0;$i<$e;$i++){
+        $rand =  $rand .  rand(0, 9);
+    }
+    return $rand;
+}
+
+//-----------------------------------------------------
+// Generate random string
+// @return string
+//-----------------------------------------------------
+function themo_randomString($length = 6) {
+    $str = "";
+    $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+    $max = count($characters) - 1;
+
+    for ($i = 0; $i < $length; $i++) {
+        $rand = mt_rand(0, $max);
+        $str .= $characters[$rand];
+    }
+
+    return $str;
+}
+
 // Elementor Page Settings needs to be synced with Option Tree Settings.
 // Compare and update to stay synced.
 if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
