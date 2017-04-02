@@ -8,7 +8,7 @@ jQuery( function( $ ) {
           $( "header[data-transparent-header='true']:not('.headhesive--clone')" ).prepend( "<p class='hide-nav'><a href=''>Test</a></p>" );
          */
 
-        $( "<div class='hide-nav-wrap button'><div class='hide-nav'><a href='#'>Hide Navigatoin</a></div> </div>" ).insertAfter( "header[data-transparent-header='true']:not('.headhesive--clone')" );
+        $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide Navigation</div> </div>" ).insertAfter( "header[data-transparent-header='true']:not('.headhesive--clone')" );
 
         $( ".hide-nav-wrap" ).click(function() {
             $( "header[data-transparent-header='true']:not('.headhesive--clone')" ).fadeToggle( "fast", function() {

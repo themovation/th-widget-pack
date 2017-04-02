@@ -107,9 +107,11 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 
 // Add custom controls to the Page Settings inside the Elementor Global Options.
 
-if ( ! function_exists( 'th_add_custom_controls_elem_page_settings' ) ) {
-    function th_add_custom_controls_elem_page_settings($element, $args)
+// Top of section
+if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
+    function th_add_custom_controls_elem_page_settings_top($element, $args)
     {
+
         $element->add_control(
             'themo_transparent_header',
             [
@@ -121,6 +123,44 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings' ) ) {
                 'return_value' => 'on',
             ]
         );
+
+        $page_title_selector = get_option( 'elementor_page_title_selector' );
+        if ( empty( $page_title_selector ) ) {
+            $page_title_selector = 'h1.entry-title';
+        }
+
+        $element->add_control(
+            'themo_page_title_margin',
+            [
+                'label' => __( 'Title  Margin', 'your-plugin' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 1,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+    }
+}
+// Bottom of section
+if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
+    function th_add_custom_controls_elem_page_settings_bottom($element, $args)
+    {
 
         $element->add_control(
             'themo_page_layout',
@@ -148,4 +188,5 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings' ) ) {
         );
     }
 }
-add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings',10, 2);
+add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
+add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);

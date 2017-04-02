@@ -2,6 +2,7 @@
     z-index: 9999;
     position: absolute;
     left: 50%;
+    top: 0;
 }
 .hide-nav{
     position: relative;
