@@ -71,6 +71,16 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
+        if (!in_array("page", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"page");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
+        if (!in_array("post", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"post");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
     }
 }
 
