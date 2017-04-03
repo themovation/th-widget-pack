@@ -41,21 +41,21 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'address_lat',
-			[
-				'label' => __( 'Address Latitude', 'elementor' ),
-				'type' => Controls_Manager::HIDDEN,
-			]
-		);
-
-		$this->add_control(
-			'address_lng',
-			[
-				'label' => __( 'Address Longitude', 'elementor' ),
-				'type' => Controls_Manager::HIDDEN,
-			]
-		);
+		// $this->add_control(
+		// 	'address_lat',
+		// 	[
+		// 		'label' => __( 'Address Latitude', 'elementor' ),
+		// 		'type' => Controls_Manager::HIDDEN,
+		// 	]
+		// );
+		//
+		// $this->add_control(
+		// 	'address_lng',
+		// 	[
+		// 		'label' => __( 'Address Longitude', 'elementor' ),
+		// 		'type' => Controls_Manager::HIDDEN,
+		// 	]
+		// );
 
 		$this->add_control(
 			'zoom',
@@ -97,9 +97,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 						'min' => 40,
 						'max' => 1440,
 					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} #map' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -243,11 +240,11 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		}
 		?>
 
-		<!DOCTYPE html>
+		<!-- <!DOCTYPE html>
 		<html>
 		  <head>
 		    <style>
-		       #<?php echo $map_id ?> {
+		       <?php echo $map_id ?> {
 		        width: 100%;
 		       }
 		    </style>
@@ -269,7 +266,44 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		    src="https://maps.googleapis.com/maps/api/js?key=<?php echo $settings['api'] ?>&callback=initMap">
 		    </script>
 		  </body>
-		</html>
+		</html> -->
+		<div class="th-google-map">
+			<center>
+				<img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $address ?>&zoom=<?php echo $settings['zoom']['size'] ?>&size=1280x<?php echo $settings['height']['size'] ?>&scale=2&key=<?php echo $settings['api'] ?>" />
+			</center>
+
+			<div class="map-info">
+				<h3><?php echo $settings['title']; ?></h3>
+				<?php echo wpautop( $settings['business_address'] ); ?>
+				<?php echo wpautop( $settings['hours'] ); ?>
+				<?php if ( $settings['link_1_url'] ) : ?>
+					<a href="<?php echo $settings['link_1_url']['url'] ?>">
+						<?php echo $settings['link_1_text'] ?>
+					</a>
+				<?php endif; ?>
+				<?php if ( $settings['link_2_url'] ) : ?>
+					<a href="<?php echo $settings['link_2_url']['url'] ?>">
+						<?php echo $settings['link_2_text'] ?>
+					</a>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<style>
+			.th-google-map {
+				position: relative;
+			}
+			.map-info {
+				background: #fff;
+				padding: 25px;
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+			.map-info a:last-child {
+				padding-left: 20px;
+			}
+		</style>
 
 		<?php
 	}
