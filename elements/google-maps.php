@@ -78,7 +78,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'api',
 			[
 				'label' => __( 'Google Maps API', 'elementor' ),
-				'description' => __( '<a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Get an API key</a>', 'elementor' ),
+				'description' => __( '<a href="https://developers.google.com/maps/documentation/static-maps/" target="_blank">Get an API key</a>', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -220,6 +220,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		if ( empty( $settings['address'] ) ) return;
 
 		if ( 0 === absint( $settings['zoom']['size'] ) ) $settings['zoom']['size'] = 10;
+
+		if ( '' === $settings['api'] ) $settings['api'] = 'AIzaSyB8l2MZuaD3n75dnMm0_OOx2QEv_lnWpmw';
 
 		// url encode the address
 		$address = urlencode( $settings['address'] );
