@@ -98,6 +98,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 						'max' => 1440,
 					],
 				],
+				'selectors' => [
+					'{{WRAPPER}} .th-google-map' => 'height: {{SIZE}}{{UNIT}};',
+				],
 			]
 		);
 
@@ -241,39 +244,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			return false;
 		}
 		?>
-
-		<!-- <!DOCTYPE html>
-		<html>
-		  <head>
-		    <style>
-		       <?php echo $map_id ?> {
-		        width: 100%;
-		       }
-		    </style>
-		  </head>
-		  <body>
-		    <div id="<?php echo $map_id ?>"></div>
-		    <script>
-		      function initMap() {
-		        var uluru = {lat: <?php echo $settings['address_lat'] ?>, lng: <?php echo $settings['address_lng'] ?>};
-		        var map = new google.maps.Map(document.getElementById('<?php echo $map_id ?>'), {
-		          zoom: <?php echo $settings['zoom']['size'] ?>,
-		          center: uluru,
-				  mapTypeId: 'hybrid',
-				  disableDefaultUI: true
-		        });
-		      }
-		    </script>
-		    <script async defer
-		    src="https://maps.googleapis.com/maps/api/js?key=<?php echo $settings['api'] ?>&callback=initMap">
-		    </script>
-		  </body>
-		</html> -->
 		<div class="th-google-map">
-			<center>
-				<img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $address ?>&zoom=<?php echo $settings['zoom']['size'] ?>&size=1280x<?php echo $settings['height']['size'] ?>&scale=2&key=<?php echo $settings['api'] ?>" />
-			</center>
-
 			<div class="map-info">
 				<h3><?php echo $settings['title']; ?></h3>
 				<?php echo wpautop( $settings['business_address'] ); ?>
@@ -293,7 +264,16 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		<style>
 			.th-google-map {
-				position: relative;
+				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $address ?>&zoom=<?php echo $settings['zoom']['size'] ?>&size=1280x1280&scale=2&key=<?php echo $settings['api'] ?>" );
+			}
+		</style>
+
+		<style>
+			/* Move to Main CSS files*/
+			.th-google-map {
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
 			}
 			.map-info {
 				background: #fff;
