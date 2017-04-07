@@ -41,22 +41,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		// $this->add_control(
-		// 	'address_lat',
-		// 	[
-		// 		'label' => __( 'Address Latitude', 'elementor' ),
-		// 		'type' => Controls_Manager::HIDDEN,
-		// 	]
-		// );
-		//
-		// $this->add_control(
-		// 	'address_lng',
-		// 	[
-		// 		'label' => __( 'Address Longitude', 'elementor' ),
-		// 		'type' => Controls_Manager::HIDDEN,
-		// 	]
-		// );
-
 		$this->add_control(
 			'zoom',
 			[
@@ -228,21 +212,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		// url encode the address
 		$address = urlencode( $settings['address'] );
-		// google map geocode api url
-		$url = "https://maps.googleapis.com/maps/api/geocode/json?address={$address}&key={$settings['api']}";
-		// get the json response
-		$resp_json = file_get_contents( $url );
-		// decode the json
-		$resp = json_decode( $resp_json, true );
-
-		// response status will be 'OK', if able to geocode given address
-		if ( $resp['status'] == 'OK' ) {
-			// get the important data
-			$settings['address_lat'] = $resp['results'][0]['geometry']['location']['lat'];
-			$settings['address_lng'] = $resp['results'][0]['geometry']['location']['lng'];
-		} else {
-			return false;
-		}
 		?>
 		<div class="th-google-map">
 			<div class="map-info">
