@@ -215,17 +215,17 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		?>
 		<div class="th-google-map">
 			<div class="map-info">
-				<h3><?php echo $settings['title']; ?></h3>
-				<?php echo wpautop( $settings['business_address'] ); ?>
-				<?php echo wpautop( $settings['hours'] ); ?>
+				<h3><?php echo esc_html( $settings['title'] ) ?></h3>
+				<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
+				<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
 				<?php if ( $settings['link_1_url'] ) : ?>
-					<a href="<?php echo $settings['link_1_url']['url'] ?>">
-						<?php echo $settings['link_1_text'] ?>
+					<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
+						<?php echo esc_html( $settings['link_1_text'] ) ?>
 					</a>
 				<?php endif; ?>
 				<?php if ( $settings['link_2_url'] ) : ?>
-					<a href="<?php echo $settings['link_2_url']['url'] ?>">
-						<?php echo $settings['link_2_text'] ?>
+					<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
+						<?php echo esc_html( $settings['link_2_text'] ) ?>
 					</a>
 				<?php endif; ?>
 			</div>
@@ -233,7 +233,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		<style>
 			.th-google-map {
-				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo $address ?>&zoom=<?php echo $settings['zoom']['size'] ?>&size=1280x1280&scale=2&key=<?php echo $settings['api'] ?>" );
+				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo esc_url( $address ) ?>&zoom=<?php echo esc_attr( $settings['zoom']['size'] ) ?>&size=1280x1280&scale=2&key=<?php echo esc_attr( $settings['api'] ) ?>" );
 			}
 		</style>
 
