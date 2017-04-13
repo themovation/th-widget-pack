@@ -124,6 +124,39 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             ]
         );
 
+        $element->add_control(
+            'themo_header_content_style',
+            [
+                'label' => __( 'Transparent Header Content Style', 'elementor' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'label_block' => true,
+                'default' => 'light',
+                'options' => [
+                    'light' => __( 'Light', 'elementor' ),
+                    'dark' => __( 'Dark', 'elementor' ),
+                ],
+                'condition' => [
+                    'themo_transparent_header' => 'on',
+                ],
+            ]
+        );
+
+        $element->add_control(
+            'themo_alt_logo',
+            [
+                'label' => __( 'Use Alternative Logo', 'your-plugin' ),
+                'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'your-plugin' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'default' => 'Off',
+                'label_on' => __( 'On', 'your-plugin' ),
+                'label_off' => __( 'Off', 'your-plugin' ),
+                'return_value' => 'on',
+                'condition' => [
+                    'themo_transparent_header' => 'on',
+                ],
+            ]
+        );
+
         $page_title_selector = get_option( 'elementor_page_title_selector' );
         if ( empty( $page_title_selector ) ) {
             $page_title_selector = 'h1.entry-title';

@@ -6,8 +6,26 @@ jQuery( function( $ ) {
     // Page Settings Panel - onchange save and reload elementor window.
     if ( undefined !== elementor.pageSettings ) {
 
+        console.log('GETTING HERE');
+
         // Page Layout Options
         elementor.pageSettings.addChangeCallback( 'themo_page_layout', function( newValue ) {
+            // Here you can do as you wish with the newValue
+
+            console.log('PAGE LAYOUT CHANGE.');
+
+            this.save( function() {
+                console.log('Calling Reload');
+                elementor.reloadPreview();
+                console.log('Reload Complete');
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'settingsPage' );
+                } );
+            } );
+        } );
+
+        // Header Transparency
+        elementor.pageSettings.addChangeCallback( 'themo_transparent_header', function( newValue ) {
             // Here you can do as you wish with the newValue
 
             this.save( function() {
@@ -19,8 +37,21 @@ jQuery( function( $ ) {
             } );
         } );
 
-        // Header Transparency
-        elementor.pageSettings.addChangeCallback( 'themo_transparent_header', function( newValue ) {
+        // Header Contenet Style
+        elementor.pageSettings.addChangeCallback( 'themo_header_content_style', function( newValue ) {
+            // Here you can do as you wish with the newValue
+
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'settingsPage' );
+                } );
+            } );
+        } );
+
+        // Alt Logo
+        elementor.pageSettings.addChangeCallback( 'themo_alt_logo', function( newValue ) {
             // Here you can do as you wish with the newValue
 
             this.save( function() {
