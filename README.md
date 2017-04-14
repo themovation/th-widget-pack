@@ -1,2 +1,2 @@
-# themovation-so-widgets-bundle
+# th-widget-pack
 Theme Widget Pack
