@@ -1,2 +1,2 @@
 # themovation-so-widgets-bundle
-Themovation SiteOrigin Widgets Bundle
+Theme Widget Pack
