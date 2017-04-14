@@ -10,7 +10,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Header', 'elementor' );
+		return __( 'Header', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -26,14 +26,14 @@ class Themo_Widget_Header extends Widget_Base {
         $this->start_controls_section(
             'section_align',
             [
-                'label' => __( 'Position', 'elementor' ),
+                'label' => __( 'Position', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'elementor' ),
+                'label' => __( 'Content Width', 'th-widget-pack' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -59,19 +59,19 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'header_horizontal_position',
             [
-                'label' => __( 'Horizontal Position', 'elementor' ),
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
@@ -90,20 +90,20 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_responsive_control(
             'text_align',
             [
-                'label' => __( 'Content Alignment', 'elementor' ),
+                'label' => __( 'Content Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'default' => 'center',
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
 
@@ -120,14 +120,14 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->start_controls_section(
 			'section_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 			]
 		);
 
         $this->add_control(
             'icon',
             [
-                'label' => __( 'Choose Icon', 'elementor' ),
+                'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 //'default' => 'fa fa-star',
                 'icons' => themo_icons(),
@@ -137,12 +137,12 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'view',
             [
-                'label' => __( 'Style', 'elementor' ),
+                'label' => __( 'Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'default' => __( 'Default', 'elementor' ),
-                    'stacked' => __( 'Filled', 'elementor' ),
-                    'framed' => __( 'Framed', 'elementor' ),
+                    'default' => __( 'Default', 'th-widget-pack' ),
+                    'stacked' => __( 'Filled', 'th-widget-pack' ),
+                    'framed' => __( 'Framed', 'th-widget-pack' ),
                 ],
                 'default' => 'default',
                 'prefix_class' => 'elementor-view-',
@@ -152,11 +152,11 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'shape',
             [
-                'label' => __( 'Shape', 'elementor' ),
+                'label' => __( 'Shape', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'circle' => __( 'Circle', 'elementor' ),
-                    'square' => __( 'Square', 'elementor' ),
+                    'circle' => __( 'Circle', 'th-widget-pack' ),
+                    'square' => __( 'Square', 'th-widget-pack' ),
                 ],
                 'default' => 'circle',
                 'condition' => [
@@ -169,11 +169,11 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'icon_size',
             [
-                'label' => __( 'Icon Size', 'elementor' ),
+                'label' => __( 'Icon Size', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'sm' => __( 'Small', 'elementor' ),
-                    'lg' => __( 'Large', 'elementor' ),
+                    'sm' => __( 'Small', 'th-widget-pack' ),
+                    'lg' => __( 'Large', 'th-widget-pack' ),
                 ],
                 'default' => 'lg',
             ]
@@ -182,20 +182,20 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'position',
             [
-                'label' => __( 'Position', 'elementor' ),
+                'label' => __( 'Position', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'default' => 'top',
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'top' => [
-                        'title' => __( 'Top', 'elementor' ),
+                        'title' => __( 'Top', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -211,22 +211,22 @@ class Themo_Widget_Header extends Widget_Base {
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __( 'Title & Description', 'elementor' ),
+                'label' => __( 'Title & Description', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'title_size',
             [
-                'label' => __( 'Title HTML Tag', 'elementor' ),
+                'label' => __( 'Title HTML Tag', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'h1' => __( 'H1', 'elementor' ),
-                    'h2' => __( 'H2', 'elementor' ),
-                    'h3' => __( 'H3', 'elementor' ),
-                    'h4' => __( 'H4', 'elementor' ),
-                    'h5' => __( 'H5', 'elementor' ),
-                    'h6' => __( 'H6', 'elementor' ),
+                    'h1' => __( 'H1', 'th-widget-pack' ),
+                    'h2' => __( 'H2', 'th-widget-pack' ),
+                    'h3' => __( 'H3', 'th-widget-pack' ),
+                    'h4' => __( 'H4', 'th-widget-pack' ),
+                    'h5' => __( 'H5', 'th-widget-pack' ),
+                    'h6' => __( 'H6', 'th-widget-pack' ),
                 ],
                 'default' => 'h1',
             ]
@@ -235,10 +235,10 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'title_text',
             [
-                'label' => __( 'Title', 'elementor' ),
+                'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Discover the great outdoors', 'elementor' ),
-                'placeholder' => __( 'Discover the great outdoors', 'elementor' ),
+                'default' => __( 'Discover the great outdoors', 'th-widget-pack' ),
+                'placeholder' => __( 'Discover the great outdoors', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -246,53 +246,37 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'description_text',
             [
-                'label' => __( 'Description', 'elementor' ),
+                'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
-                'placeholder' => __( 'Your Description', 'elementor' ),
-                'title' => __( 'Input icon text here', 'elementor' ),
+                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                'placeholder' => __( 'Your Description', 'th-widget-pack' ),
+                'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
             ]
         );
 
 
-
-        /*$this->add_control(
-            'description_align_override',
-            [
-                'label' => __( 'Description Alignment Override', 'elementor' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'elementor' ),
-                'label_off' => __( 'No', 'elementor' ),
-                'return_value' => 'yes',
-            ]
-        );*/
-
         $this->add_responsive_control(
             'description_align',
             [
-                'label' => __( 'Description Alignment Override', 'elementor' ),
+                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                //'condition' => [
-                 //   'description_align_override' => 'yes',
-                //],
                 'separator' => 'none',
-                //'show_label' => false,
                 'selectors' => [
                     '{{WRAPPER}} .elementor-icon-box-description' => 'text-align: {{VALUE}};',
                 ],
@@ -306,14 +290,14 @@ class Themo_Widget_Header extends Widget_Base {
         $this->start_controls_section(
             'section_buttons',
             [
-                'label' => __( 'Buttons', 'elementor' ),
+                'label' => __( 'Buttons', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_1_heading',
             [
-                'label' => __( 'Button 1', 'elementor' ),
+                'label' => __( 'Button 1', 'th-widget-pack' ),
                 'type' => Controls_Manager::HEADING,
             ]
         );
@@ -321,30 +305,30 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_1_text',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'View All Tours', 'elementor' ),
-                'placeholder' => __( 'View All Tours', 'elementor' ),
+                'default' => __( 'View All Tours', 'th-widget-pack' ),
+                'placeholder' => __( 'View All Tours', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_1_style',
             [
-                'label' => __( 'Button Style', 'elementor' ),
+                'label' => __( 'Button Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'standard-primary',
                 'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
-                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
-                    'standard-light' => __( 'Standard Light', 'elementor' ),
-                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                    'cta-accent' => __( 'CTA Accent', 'elementor' ),
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -352,7 +336,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_1_icon',
             [
-                'label' => __( 'Icon', 'elementor' ),
+                'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
             ]
@@ -361,9 +345,9 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_1_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
             ]
         );
 
@@ -371,7 +355,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_2_heading',
             [
-                'label' => __( 'Button 2', 'elementor' ),
+                'label' => __( 'Button 2', 'th-widget-pack' ),
                 'type' => Controls_Manager::HEADING,
             ]
         );
@@ -379,30 +363,30 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_2_text',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'elementor' ),
-                //'default' => __( 'Book Tour', 'elementor' ),
+                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+                //'default' => __( 'Book Tour', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_2_style',
             [
-                'label' => __( 'Button Style', 'elementor' ),
+                'label' => __( 'Button Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'standard-primary',
                 'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
-                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
-                    'standard-light' => __( 'Standard Light', 'elementor' ),
-                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                    'cta-accent' => __( 'CTA Accent', 'elementor' ),
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -410,7 +394,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_2_icon',
             [
-                'label' => __( 'Icon', 'elementor' ),
+                'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
             ]
@@ -419,28 +403,28 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'button_2_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_align',
             [
-                'label' => __( 'Alignment Override', 'elementor' ),
+                'label' => __( 'Alignment Override', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -459,7 +443,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->start_controls_section(
 			'section_style_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -467,7 +451,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'elementor' ),
+				'label' => __( 'Primary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -484,7 +468,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => __( 'Secondary Color', 'elementor' ),
+				'label' => __( 'Secondary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'condition' => [
@@ -507,7 +491,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -516,7 +500,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'heading_title',
 			[
-				'label' => __( 'Title', 'elementor' ),
+				'label' => __( 'Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -526,7 +510,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -552,7 +536,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'heading_description',
 			[
-				'label' => __( 'Description', 'elementor' ),
+				'label' => __( 'Description', 'th-widget-pack' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -561,7 +545,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'elementor' ),
+				'label' => __( 'Description Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [

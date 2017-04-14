@@ -10,7 +10,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Service Block', 'elementor' );
+		return __( 'Service Block', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -26,14 +26,14 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->start_controls_section(
             'section_align',
             [
-                'label' => __( 'Position', 'elementor' ),
+                'label' => __( 'Position', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'elementor' ),
+                'label' => __( 'Content Width', 'th-widget-pack' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -59,19 +59,19 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'header_horizontal_position',
             [
-                'label' => __( 'Horizontal Position', 'elementor' ),
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
@@ -90,20 +90,20 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_responsive_control(
             'text_align',
             [
-                'label' => __( 'Content Alignment', 'elementor' ),
+                'label' => __( 'Content Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'default' => 'center',
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
 
@@ -120,14 +120,14 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->start_controls_section(
 			'section_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 			]
 		);
 
         $this->add_control(
             'icon',
             [
-                'label' => __( 'Choose Icon', 'elementor' ),
+                'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'default' => 'fa fa-bus',
                 'icons' => themo_icons(),
@@ -137,12 +137,12 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'view',
             [
-                'label' => __( 'Style', 'elementor' ),
+                'label' => __( 'Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'default' => __( 'Default', 'elementor' ),
-                    'stacked' => __( 'Filled', 'elementor' ),
-                    'framed' => __( 'Framed', 'elementor' ),
+                    'default' => __( 'Default', 'th-widget-pack' ),
+                    'stacked' => __( 'Filled', 'th-widget-pack' ),
+                    'framed' => __( 'Framed', 'th-widget-pack' ),
                 ],
                 'default' => 'default',
                 'prefix_class' => 'elementor-view-',
@@ -152,11 +152,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'shape',
             [
-                'label' => __( 'Shape', 'elementor' ),
+                'label' => __( 'Shape', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'circle' => __( 'Circle', 'elementor' ),
-                    'square' => __( 'Square', 'elementor' ),
+                    'circle' => __( 'Circle', 'th-widget-pack' ),
+                    'square' => __( 'Square', 'th-widget-pack' ),
                 ],
                 'default' => 'circle',
                 'condition' => [
@@ -169,11 +169,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'icon_size',
             [
-                'label' => __( 'Icon Size', 'elementor' ),
+                'label' => __( 'Icon Size', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'sm' => __( 'Small', 'elementor' ),
-                    'lg' => __( 'Large', 'elementor' ),
+                    'sm' => __( 'Small', 'th-widget-pack' ),
+                    'lg' => __( 'Large', 'th-widget-pack' ),
                 ],
                 'default' => 'sm',
             ]
@@ -182,20 +182,20 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'position',
             [
-                'label' => __( 'Position', 'elementor' ),
+                'label' => __( 'Position', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'default' => 'top',
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'top' => [
-                        'title' => __( 'Top', 'elementor' ),
+                        'title' => __( 'Top', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -211,22 +211,22 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __( 'Title & Description', 'elementor' ),
+                'label' => __( 'Title & Description', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'title_size',
             [
-                'label' => __( 'Title HTML Tag', 'elementor' ),
+                'label' => __( 'Title HTML Tag', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'h1' => __( 'H1', 'elementor' ),
-                    'h2' => __( 'H2', 'elementor' ),
-                    'h3' => __( 'H3', 'elementor' ),
-                    'h4' => __( 'H4', 'elementor' ),
-                    'h5' => __( 'H5', 'elementor' ),
-                    'h6' => __( 'H6', 'elementor' ),
+                    'h1' => __( 'H1', 'th-widget-pack' ),
+                    'h2' => __( 'H2', 'th-widget-pack' ),
+                    'h3' => __( 'H3', 'th-widget-pack' ),
+                    'h4' => __( 'H4', 'th-widget-pack' ),
+                    'h5' => __( 'H5', 'th-widget-pack' ),
+                    'h6' => __( 'H6', 'th-widget-pack' ),
                 ],
                 'default' => 'h3',
             ]
@@ -235,10 +235,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'title_text',
             [
-                'label' => __( 'Title', 'elementor' ),
+                'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Free Shuttle', 'elementor' ),
-                'placeholder' => __( 'Free Shuttle', 'elementor' ),
+                'default' => __( 'Free Shuttle', 'th-widget-pack' ),
+                'placeholder' => __( 'Free Shuttle', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -246,11 +246,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'description_text',
             [
-                'label' => __( 'Description', 'elementor' ),
+                'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'elementor' ),
-                'placeholder' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'elementor' ),
-                'title' => __( 'Input icon text here', 'elementor' ),
+                'default' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'th-widget-pack' ),
+                'placeholder' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'th-widget-pack' ),
+                'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
             ]
@@ -263,7 +263,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->start_controls_section(
             'section_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
             ]
         );
 
@@ -272,9 +272,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_control(
             'link',
             [
-                'label' => __( 'Link to', 'elementor' ),
+                'label' => __( 'Link to', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( 'http://your-link.com', 'elementor' ),
+                'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -287,7 +287,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->start_controls_section(
 			'section_style_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -295,7 +295,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'elementor' ),
+				'label' => __( 'Primary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -312,7 +312,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => __( 'Secondary Color', 'elementor' ),
+				'label' => __( 'Secondary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'condition' => [
@@ -335,7 +335,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -344,7 +344,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'heading_title',
 			[
-				'label' => __( 'Title', 'elementor' ),
+				'label' => __( 'Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -354,7 +354,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -380,7 +380,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'heading_description',
 			[
-				'label' => __( 'Description', 'elementor' ),
+				'label' => __( 'Description', 'th-widget-pack' ),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -389,7 +389,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'elementor' ),
+				'label' => __( 'Description Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -452,7 +452,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 	protected function _content_template() {
 		?>
-
         <#
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';

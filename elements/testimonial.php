@@ -10,7 +10,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Testimonial', 'elementor' );
+		return __( 'Testimonial', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,18 +25,18 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'section_testimonial',
 			[
-				'label' => __( 'Testimonial', 'elementor' ),
+				'label' => __( 'Testimonial', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'testimonial_content',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'rows' => '10',
-				'default' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'elementor' ),
-				'placeholder' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'elementor' ),
+				'default' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'th-widget-pack' ),
+				'placeholder' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'th-widget-pack' ),
 			]
 		);
 
@@ -44,10 +44,10 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->add_control(
             'star_rating',
             [
-                'label' => __( 'Star Rating', 'elementor' ),
+                'label' => __( 'Star Rating', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'elementor' ),
-                'label_off' => __( 'No', 'elementor' ),
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
                 'return_value' => 'yes',
             ]
         );
@@ -80,7 +80,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_image',
 			[
-				'label' => __( 'Add Image', 'elementor' ),
+				'label' => __( 'Add Image', 'th-widget-pack' ),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -91,7 +91,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_name',
 			[
-				'label' => __( 'Name', 'elementor' ),
+				'label' => __( 'Name', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => 'Doug Martin',
 				'placeholder' => 'Doug Martin',
@@ -101,7 +101,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_job',
 			[
-				'label' => __( 'Job', 'elementor' ),
+				'label' => __( 'Job', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => 'Adventurer',
 				'placeholder' => 'Adventurer',
@@ -111,12 +111,12 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_image_position',
 			[
-				'label' => __( 'Image Position', 'elementor' ),
+				'label' => __( 'Image Position', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'aside',
 				'options' => [
-					'aside' => __( 'Aside', 'elementor' ),
-					'top' => __( 'Top', 'elementor' ),
+					'aside' => __( 'Aside', 'th-widget-pack' ),
+					'top' => __( 'Top', 'th-widget-pack' ),
 				],
 				'condition' => [
 					'testimonial_image[url]!' => '',
@@ -128,20 +128,20 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'testimonial_alignment',
 			[
-				'label' => __( 'Alignment', 'elementor' ),
+				'label' => __( 'Alignment', 'th-widget-pack' ),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'center',
 				'options' => [
 					'left'    => [
-						'title' => __( 'Left', 'elementor' ),
+						'title' => __( 'Left', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor' ),
+						'title' => __( 'Center', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor' ),
+						'title' => __( 'Right', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-right',
 					],
 				],
@@ -151,7 +151,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => __( 'View', 'elementor' ),
+				'label' => __( 'View', 'th-widget-pack' ),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
@@ -163,7 +163,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_testimonial_content',
 			[
-				'label' => __( 'Colors', 'elementor' ),
+				'label' => __( 'Colors', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -171,7 +171,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'content_content_color',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -187,7 +187,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->add_control(
             'star_rating_color',
             [
-                'label' => __( 'Star Rating', 'elementor' ),
+                'label' => __( 'Star Rating', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -204,7 +204,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .elementor-testimonial-content',
 			]
@@ -216,7 +216,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		/*$this->start_controls_section(
 			'section_style_testimonial_image',
 			[
-				'label' => __( 'Image', 'elementor' ),
+				'label' => __( 'Image', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'testimonial_image[url]!' => '',
@@ -227,7 +227,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'image_size',
 			[
-				'label' => __( 'Image Size', 'elementor' ),
+				'label' => __( 'Image Size', 'th-widget-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -259,7 +259,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'image_border_radius',
 			[
-				'label' => __( 'Border Radius', 'elementor' ),
+				'label' => __( 'Border Radius', 'th-widget-pack' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
@@ -277,7 +277,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		/*$this->start_controls_section(
 			'section_style_testimonial_name',
 			[
-				'label' => __( 'Name', 'elementor' ),
+				'label' => __( 'Name', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		); */
@@ -285,7 +285,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'name_text_color',
 			[
-				'label' => __( 'Name', 'elementor' ),
+				'label' => __( 'Name', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -302,7 +302,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'name_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .elementor-testimonial-name',
 			]
@@ -314,7 +314,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		/*$this->start_controls_section(
 			'section_style_testimonial_job',
 			[
-				'label' => __( 'Job', 'elementor' ),
+				'label' => __( 'Job', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);*/
@@ -322,7 +322,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_control(
 			'job_text_color',
 			[
-				'label' => __( 'Job', 'elementor' ),
+				'label' => __( 'Job', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -339,7 +339,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'job_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .elementor-testimonial-job',
 			]

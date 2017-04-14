@@ -387,17 +387,6 @@ add_action( 'elementor/element/before_section_end', function( $element, $section
      */
     if ( 'image-gallery-x' === $element->get_name() && 'section_gallery-x' === $section_id ) {
 
-        /*$element->add_control(
-            'image_stretch',
-            [
-                'label' => __( 'Image Stretch', 'elementor' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'no',
-                'options' => [
-                    'no' => __( 'No', 'elementor' ),
-                    'yes' => __( 'Yes', 'elementor' ),
-                ],
-            ]
-        );*/
+        // This is the image gallery widget , do something.
     }
 }, 10, 3 );

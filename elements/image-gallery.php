@@ -10,7 +10,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Image Gallery', 'elementor' );
+		return __( 'Image Gallery', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,14 +25,14 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->start_controls_section(
 			'section_gallery',
 			[
-				'label' => __( 'Image Gallery', 'elementor' ),
+				'label' => __( 'Image Gallery', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'wp_gallery',
 			[
-				'label' => __( 'Add Images', 'elementor' ),
+				'label' => __( 'Add Images', 'th-widget-pack' ),
 				'type' => Controls_Manager::GALLERY,
 			]
 		);
@@ -53,7 +53,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'gallery_columns',
 			[
-				'label' => __( 'Columns', 'elementor' ),
+				'label' => __( 'Columns', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 4,
 				'options' => $gallery_columns,
@@ -63,13 +63,13 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'gallery_link',
 			[
-				'label' => __( 'Link to', 'elementor' ),
+				'label' => __( 'Link to', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'file',
 				'options' => [
-					'file' => __( 'Media File', 'elementor' ),
-					'attachment' => __( 'Attachment Page', 'elementor' ),
-					'none' => __( 'None', 'elementor' ),
+					'file' => __( 'Media File', 'th-widget-pack' ),
+					'attachment' => __( 'Attachment Page', 'th-widget-pack' ),
+					'none' => __( 'None', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -77,11 +77,11 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'gallery_rand',
 			[
-				'label' => __( 'Ordering', 'elementor' ),
+				'label' => __( 'Ordering', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'' => __( 'Default', 'elementor' ),
-					'rand' => __( 'Random', 'elementor' ),
+					'' => __( 'Default', 'th-widget-pack' ),
+					'rand' => __( 'Random', 'th-widget-pack' ),
 				],
 				'default' => '',
 			]
@@ -90,12 +90,12 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
         $this->add_control(
             'image_stretch',
             [
-                'label' => __( 'Image Stretch', 'elementor' ),
+                'label' => __( 'Image Stretch', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'yes',
                 'options' => [
-                    'no' => __( 'No', 'elementor' ),
-                    'yes' => __( 'Yes', 'elementor' ),
+                    'no' => __( 'No', 'th-widget-pack' ),
+                    'yes' => __( 'Yes', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -103,7 +103,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => __( 'View', 'elementor' ),
+				'label' => __( 'View', 'th-widget-pack' ),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
@@ -111,82 +111,10 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 
 		$this->end_controls_section();
 
-        /*$this->start_controls_section(
-            'section_gallery_images',
-            [
-                'label' => __( 'Images', 'elementor' ),
-                'tab' => ntrols_Manager::TAB_STYLE,
-            ]
-        );
-
-        /*$this->add_control(
-            'image_spacing',
-            [
-                'label' => __( 'Spacing', 'elementor' ),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    '' => __( 'Default', 'elementor' ),
-                    'custom' => __( 'Custom', 'elementor' ),
-                ],
-                'prefix_class' => 'gallery-spacing-',
-                'default' => '',
-            ]
-        );
-
-        $columns_margin = is_rtl() ? '0 0 -{{SIZE}}{{UNIT}} -{{SIZE}}{{UNIT}};' : '0 -{{SIZE}}{{UNIT}} -{{SIZE}}{{UNIT}} 0;';
-        $columns_padding = is_rtl() ? '0 0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}};' : '0 {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} 0;';
-
-        $this->add_control(
-            'image_spacing_custom',
-            [
-                'label' => __( 'Image Spacing', 'elementor' ),
-                'type' => Controls_Manager::SLIDER,
-                'show_label' => false,
-                'range' => [
-                    'px' => [
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'size' => 15,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .gallery-item' => 'padding:' . $columns_padding,
-                    '{{WRAPPER}} .gallery' => 'margin: ' . $columns_margin,
-                ],
-                'condition' => [
-                    'image_spacing' => 'custom',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'image_border',
-                'label' => __( 'Image Border', 'elementor' ),
-                'selector' => '{{WRAPPER}} .gallery-item img',
-            ]
-        );
-
-        $this->add_control(
-            'image_border_radius',
-            [
-                'label' => __( 'Border Radius', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .gallery-item img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-		$this->end_controls_section();*/
-
 		$this->start_controls_section(
 			'section_caption',
 			[
-				'label' => __( 'Caption', 'elementor' ),
+				'label' => __( 'Caption', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -194,12 +122,12 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'gallery_display_caption',
 			[
-				'label' => __( 'Display', 'elementor' ),
+				'label' => __( 'Display', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'' => __( 'Show', 'elementor' ),
-					'none' => __( 'Hide', 'elementor' ),
+					'' => __( 'Show', 'th-widget-pack' ),
+					'none' => __( 'Hide', 'th-widget-pack' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .gallery-text' => 'display: {{VALUE}};',
@@ -210,23 +138,23 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'align',
 			[
-				'label' => __( 'Alignment', 'elementor' ),
+				'label' => __( 'Alignment', 'th-widget-pack' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => __( 'Left', 'elementor' ),
+						'title' => __( 'Left', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor' ),
+						'title' => __( 'Center', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor' ),
+						'title' => __( 'Right', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
-						'title' => __( 'Justified', 'elementor' ),
+						'title' => __( 'Justified', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-justify',
 					],
 				],
@@ -244,7 +172,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->add_control(
 			'text_color',
 			[
-				'label' => __( 'Text Color', 'elementor' ),
+				'label' => __( 'Text Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -256,19 +184,6 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 				],
 			]
 		);
-
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'typography',
-				'label' => __( 'Typography', 'elementor' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
-				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);*/
 
 		$this->end_controls_section();
 	}

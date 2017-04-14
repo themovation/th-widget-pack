@@ -10,7 +10,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Call to Action', 'elementor' );
+		return __( 'Call to Action', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,17 +25,17 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		$this->start_controls_section(
 			'section_text',
 			[
-				'label' => __( 'Text', 'elementor' ),
+				'label' => __( 'Text', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'text',
 			[
-				'label' => __( 'Text', 'elementor' ),
+				'label' => __( 'Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Does this look like fun, book tickets today!', 'elementor' ),
-				'placeholder' => __( 'Title', 'elementor' ),
+				'default' => __( 'Does this look like fun, book tickets today!', 'th-widget-pack' ),
+				'placeholder' => __( 'Title', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
 		);
@@ -45,17 +45,17 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->start_controls_section(
             'section_button_1',
             [
-                'label' => __( 'Button 1', 'elementor' ),
+                'label' => __( 'Button 1', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_1_text',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Book Tour', 'elementor' ),
-                'placeholder' => __( 'Book Tour', 'elementor' ),
+                'default' => __( 'Book Tour', 'th-widget-pack' ),
+                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -63,20 +63,20 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_1_style',
             [
-                'label' => __( 'Button Style', 'elementor' ),
+                'label' => __( 'Button Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'standard-primary',
                 'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
-                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
-                    'standard-light' => __( 'Standard Light', 'elementor' ),
-                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                    'cta-accent' => __( 'CTA Accent', 'elementor' ),
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -84,7 +84,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_1_icon',
             [
-                'label' => __( 'Icon', 'elementor' ),
+                'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
             ]
@@ -93,9 +93,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_1_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
             ]
         );
 
@@ -104,17 +104,17 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->start_controls_section(
             'section_button_2',
             [
-                'label' => __( 'Button 2', 'elementor' ),
+                'label' => __( 'Button 2', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_2_text',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'elementor' ),
-                //'default' => __( 'Book Tour', 'elementor' ),
+                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+                //'default' => __( 'Book Tour', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -122,20 +122,20 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_2_style',
             [
-                'label' => __( 'Button Style', 'elementor' ),
+                'label' => __( 'Button Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'standard-primary',
                 'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
-                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
-                    'standard-light' => __( 'Standard Light', 'elementor' ),
-                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                    'cta-accent' => __( 'CTA Accent', 'elementor' ),
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -143,7 +143,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_2_icon',
             [
-                'label' => __( 'Icon', 'elementor' ),
+                'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
 				'icons' => themo_icons(),
             ]
@@ -152,9 +152,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'button_2_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
             ]
         );
 
@@ -163,7 +163,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'elementor' ),
+				'label' => __( 'Colors', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -171,7 +171,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		$this->add_control(
 			'text_color',
 			[
-				'label' => __( 'Text Color', 'elementor' ),
+				'label' => __( 'Text Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-cta-text span' => 'color: {{VALUE}};',

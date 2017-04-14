@@ -10,7 +10,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Tour Grid', 'elementor' );
+        return __( 'Tour Grid', 'th-widget-pack' );
     }
 
     public function get_icon() {
@@ -30,7 +30,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             'post_status'=>array('publish'),
         ) );
 
-        $portfolio['none'] = __('None', 'elementor');
+        $portfolio['none'] = __('None', 'th-widget-pack');
 
         while ( $loop->have_posts() ) : $loop->the_post();
             $id = get_the_ID();
@@ -44,7 +44,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     private function get_tours_group_list() {
         $portfolio_group = array();
 
-        $portfolio_group['none'] = __( 'None', 'elementor' );
+        $portfolio_group['none'] = __( 'None', 'th-widget-pack' );
 
         $taxonomy = 'themo_tour_type';
 
@@ -63,14 +63,14 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __( 'Layout', 'elementor' ),
+                'label' => __( 'Layout', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'filter',
             [
-                'label' => __( 'Show filter bar', 'elementor' ),
+                'label' => __( 'Show filter bar', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHECKBOX,
                 'default' => false,
             ]
@@ -79,7 +79,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'individual',
             [
-                'label'   => __( 'Select Individually', 'elementor' ),
+                'label'   => __( 'Select Individually', 'th-widget-pack' ),
                 'type'    => Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple'    => true,
@@ -91,7 +91,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'group',
             [
-                'label'   => __( 'Select by Group', 'elementor' ),
+                'label'   => __( 'Select by Group', 'th-widget-pack' ),
                 'type'    => Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple'    => true,
@@ -103,12 +103,12 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'order',
             [
-                'label' => __( 'Order by', 'elementor' ),
+                'label' => __( 'Order by', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'date',
                 'options' => [
-                    'date' => __( 'Date Published', 'elementor' ),
-                    'menu_order' => __( 'Drag and Drop', 'elementor' ),
+                    'date' => __( 'Date Published', 'th-widget-pack' ),
+                    'menu_order' => __( 'Drag and Drop', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -116,14 +116,14 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Number of Columns to show', 'elementor' ),
+                'label' => __( 'Number of Columns to show', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '2',
                 'options' => [
-                    '2' => __( '2', 'elementor' ),
-                    '3' => __( '3', 'elementor' ),
-                    '4' => __( '4', 'elementor' ),
-                    '5' => __( '5', 'elementor' ),
+                    '2' => __( '2', 'th-widget-pack' ),
+                    '3' => __( '3', 'th-widget-pack' ),
+                    '4' => __( '4', 'th-widget-pack' ),
+                    '5' => __( '5', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -131,12 +131,12 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'gutter',
             [
-                'label' => __( 'Gutter', 'elementor' ),
+                'label' => __( 'Gutter', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'on',
                 'options' => [
-                    'on' => __( 'On', 'elementor' ),
-                    'off' => __( 'Off', 'elementor' )
+                    'on' => __( 'On', 'th-widget-pack' ),
+                    'off' => __( 'Off', 'th-widget-pack' )
                 ],
             ]
         );
@@ -154,7 +154,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->add_control(
             'hover_color',
             [
-                'label' => __( 'Hover Color', 'elementor' ),
+                'label' => __( 'Hover Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -172,7 +172,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $this->start_controls_section(
             'section_style_content',
             [
-                'label' => __( 'Content', 'elementor' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -224,8 +224,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             <?php if ( $settings['filter'] ) : ?>
 
                 <div id="filters" class="th-portfolio-filters">
-                    <span><?php echo __( 'Sort:', 'themovation-widgets' ); ?></span>
-                    <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'themovation-widgets' ); ?></a>
+                    <span><?php echo __( 'Sort:', 'th-widget-pack' ); ?></span>
+                    <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'th-widget-pack' ); ?></a>
                     <?php
                     $taxonomy = 'themo_tour_type';
                     $tax_terms = get_terms( $taxonomy );
@@ -417,7 +417,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                     }
                 } else {
                     echo '<div class="alert">';
-                    _e('Sorry, no results were found.', 'themovation-widgets');
+                    _e('Sorry, no results were found.', 'th-widget-pack');
                     echo '</div>';
                     get_search_form();
                 }

@@ -115,11 +115,11 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         $element->add_control(
             'themo_transparent_header',
             [
-                'label' => __( 'Transparent Header', 'your-plugin' ),
+                'label' => __( 'Transparent Header', 'th-widget-pack' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => '',
-                'label_on' => __( 'On', 'your-plugin' ),
-                'label_off' => __( 'Off', 'your-plugin' ),
+                'label_on' => __( 'On', 'th-widget-pack' ),
+                'label_off' => __( 'Off', 'th-widget-pack' ),
                 'return_value' => 'on',
             ]
         );
@@ -127,13 +127,13 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         $element->add_control(
             'themo_header_content_style',
             [
-                'label' => __( 'Transparent Header Content Style', 'elementor' ),
+                'label' => __( 'Transparent Header Content Style', 'th-widget-pack' ),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'label_block' => true,
                 'default' => 'light',
                 'options' => [
-                    'light' => __( 'Light', 'elementor' ),
-                    'dark' => __( 'Dark', 'elementor' ),
+                    'light' => __( 'Light', 'th-widget-pack' ),
+                    'dark' => __( 'Dark', 'th-widget-pack' ),
                 ],
                 'condition' => [
                     'themo_transparent_header' => 'on',
@@ -144,12 +144,12 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         $element->add_control(
             'themo_alt_logo',
             [
-                'label' => __( 'Use Alternative Logo', 'your-plugin' ),
-                'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'your-plugin' ),
+                'label' => __( 'Use Alternative Logo', 'th-widget-pack' ),
+                'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'th-widget-pack' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'default' => 'Off',
-                'label_on' => __( 'On', 'your-plugin' ),
-                'label_off' => __( 'Off', 'your-plugin' ),
+                'label_on' => __( 'On', 'th-widget-pack' ),
+                'label_off' => __( 'Off', 'th-widget-pack' ),
                 'return_value' => 'on',
                 'condition' => [
                     'themo_transparent_header' => 'on',
@@ -165,7 +165,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         $element->add_control(
             'themo_page_title_margin',
             [
-                'label' => __( 'Title  Margin', 'your-plugin' ),
+                'label' => __( 'Title  Margin', 'th-widget-pack' ),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 1,
@@ -198,20 +198,20 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
         $element->add_control(
             'themo_page_layout',
             [
-                'label' => __( 'Sidebar', 'your-plugin' ),
+                'label' => __( 'Sidebar', 'th-widget-pack' ),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'default' => 'full',
                 'options' => [
                     'left'    => [
-                        'title' => __( 'Left', 'your-plugin' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-long-arrow-left',
                     ],
                     'full' => [
-                        'title' => __( 'No Sidebar', 'your-plugin' ),
+                        'title' => __( 'No Sidebar', 'th-widget-pack' ),
                         'icon' => 'fa fa-times',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'your-plugin' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-long-arrow-right',
                     ],
 

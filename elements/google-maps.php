@@ -10,7 +10,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Google Maps', 'elementor' );
+		return __( 'Google Maps', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,15 +25,15 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->start_controls_section(
 			'section_map',
 			[
-				'label' => __( 'Map', 'elementor' ),
+				'label' => __( 'Map', 'th-widget-pack' ),
 			]
 		);
 
-		$default_address = __( 'London Eye, London, United Kingdom', 'elementor' );
+		$default_address = __( 'London Eye, London, United Kingdom', 'th-widget-pack' );
 		$this->add_control(
 			'address',
 			[
-				'label' => __( 'Map Address', 'elementor' ),
+				'label' => __( 'Map Address', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => $default_address,
 				'default' => $default_address,
@@ -44,7 +44,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'zoom',
 			[
-				'label' => __( 'Zoom Level', 'elementor' ),
+				'label' => __( 'Zoom Level', 'th-widget-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10,
@@ -61,8 +61,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'api',
 			[
-				'label' => __( 'Google Maps API', 'elementor' ),
-				'description' => __( '<a href="https://developers.google.com/maps/documentation/static-maps/" target="_blank">Get an API key</a>', 'elementor' ),
+				'label' => __( 'Google Maps API', 'th-widget-pack' ),
+				'description' => __( '<a href="https://developers.google.com/maps/documentation/static-maps/" target="_blank">Get an API key</a>', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -71,7 +71,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'height',
 			[
-				'label' => __( 'Height', 'elementor' ),
+				'label' => __( 'Height', 'th-widget-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 300,
@@ -91,11 +91,11 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'prevent_scroll',
 			[
-				'label' => __( 'Prevent Scroll', 'elementor' ),
+				'label' => __( 'Prevent Scroll', 'th-widget-pack' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
-				'label_on' => __( 'Yes', 'elementor' ),
-				'label_off' => __( 'No', 'elementor' ),
+				'label_on' => __( 'Yes', 'th-widget-pack' ),
+				'label_off' => __( 'No', 'th-widget-pack' ),
 				'selectors' => [
 					'{{WRAPPER}} iframe' => 'pointer-events: none;',
 				],
@@ -105,7 +105,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => __( 'View', 'elementor' ),
+				'label' => __( 'View', 'th-widget-pack' ),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
@@ -116,15 +116,15 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->start_controls_section(
 			'section_text_block',
 			[
-				'label' => __( 'Text Block', 'elementor' ),
+				'label' => __( 'Text Block', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Title', 'elementor' ),
-				'default' => __( 'Company Co.', 'elementor' ),
+				'label' => __( 'Title', 'th-widget-pack' ),
+				'default' => __( 'Company Co.', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -133,8 +133,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'business_address',
 			[
-				'label' => __( 'Business Address', 'elementor' ),
-				'default' => __( "1366 Main Street\nancouver Canada\nV8V 3K6", 'elementor' ),
+				'label' => __( 'Business Address', 'th-widget-pack' ),
+				'default' => __( "1366 Main Street\nancouver Canada\nV8V 3K6", 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
@@ -143,8 +143,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'hours',
 			[
-				'label' => __( 'Hours', 'elementor' ),
-				'default' => __( "Monday to Friday: 10am - 6pm\nSaturday: 11am - 4pm\nSunday: Closed", 'elementor' ),
+				'label' => __( 'Hours', 'th-widget-pack' ),
+				'default' => __( "Monday to Friday: 10am - 6pm\nSaturday: 11am - 4pm\nSunday: Closed", 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
@@ -153,8 +153,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'link_1_text',
 			[
-				'label' => __( 'Link 1 Text', 'elementor' ),
-				'default' => __( 'Call Us', 'elementor' ),
+				'label' => __( 'Link 1 Text', 'th-widget-pack' ),
+				'default' => __( 'Call Us', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -163,9 +163,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'link_1_url',
 			[
-				'label' => __( 'Link 1 URL', 'elementor' ),
+				'label' => __( 'Link 1 URL', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+				'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
                 'default' => [
                     'url' => 'tel:222-2222',
                 ],
@@ -175,8 +175,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'link_2_text',
 			[
-				'label' => __( 'Link 2 Text', 'elementor' ),
-                'default' => __( 'Email Us', 'elementor' ),
+				'label' => __( 'Link 2 Text', 'th-widget-pack' ),
+                'default' => __( 'Email Us', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -185,9 +185,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'link_2_url',
 			[
-				'label' => __( 'Link 2 URL', 'elementor' ),
+				'label' => __( 'Link 2 URL', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( 'http://your-link.com', 'elementor' ),
+				'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
                 'default' => [
                     'url' => 'mailto:info@companyco.com',
                 ],

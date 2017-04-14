@@ -10,7 +10,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Tour Info Bar', 'elementor' );
+		return __( 'Tour Info Bar', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -26,17 +26,17 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->start_controls_section(
             'section_price',
             [
-                'label' => __( 'Price', 'elementor' ),
+                'label' => __( 'Price', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'price',
             [
-                'label' => __( 'Price', 'elementor' ),
+                'label' => __( 'Price', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( '$299', 'elementor' ),
-                'placeholder' => __( '$299', 'elementor' ),
+                'default' => __( '$299', 'th-widget-pack' ),
+                'placeholder' => __( '$299', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -44,10 +44,10 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'price_text',
             [
-                'label' => __( 'Price Text', 'elementor' ),
+                'label' => __( 'Price Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( '/person', 'elementor' ),
-                'placeholder' => __( '/person', 'elementor' ),
+                'default' => __( '/person', 'th-widget-pack' ),
+                'placeholder' => __( '/person', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -57,34 +57,34 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	    $this->start_controls_section(
 			'section_items',
 			[
-				'label' => __( 'Items', 'elementor' ),
+				'label' => __( 'Items', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'items',
 			[
-				'label' => __( 'Items', 'elementor' ),
+				'label' => __( 'Items', 'th-widget-pack' ),
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'fa fa-compass', 'elementor' ),
-                        'text' => __( '4.5 Miles', 'elementor' ),
+                        'icon' => __( 'fa fa-compass', 'th-widget-pack' ),
+                        'text' => __( '4.5 Miles', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'fa fa-clock-o', 'elementor' ),
-                        'text' => __( '3 Hours', 'elementor' ),
+                        'icon' => __( 'fa fa-clock-o', 'th-widget-pack' ),
+                        'text' => __( '3 Hours', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'fa fa-user-o', 'elementor' ),
-                        'text' => __( '3+ People', 'elementor' ),
+                        'icon' => __( 'fa fa-user-o', 'th-widget-pack' ),
+                        'text' => __( '3+ People', 'th-widget-pack' ),
                     ],
 
                 ],
 				'fields' => [
 					[
 						'name' => 'icon',
-						'label' => __( 'Icon', 'elementor' ),
+						'label' => __( 'Icon', 'th-widget-pack' ),
 						'type' => Controls_Manager::ICON,
 						'default' => '',
 						'label_block' => true,
@@ -92,7 +92,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					],
 					[
 						'name' => 'text',
-						'label' => __( 'Text', 'elementor' ),
+						'label' => __( 'Text', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
 						'placeholder' => '$99/person',
 						'label_block' => true,
@@ -107,17 +107,17 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->start_controls_section(
             'section_button',
             [
-                'label' => __( 'Button', 'elementor' ),
+                'label' => __( 'Button', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_1_text',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Book Tour', 'elementor' ),
-                'placeholder' => __( 'Book Tour', 'elementor' ),
+                'default' => __( 'Book Tour', 'th-widget-pack' ),
+                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -125,20 +125,20 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'button_1_style',
             [
-                'label' => __( 'Button Style', 'elementor' ),
+                'label' => __( 'Button Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'ghost-dark',
                 'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'elementor' ),
-                    'standard-accent' => __( 'Standard Accent', 'elementor' ),
-                    'standard-light' => __( 'Standard Light', 'elementor' ),
-                    'standard-dark' => __( 'Standard Dark', 'elementor' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-                    'ghost-light' => __( 'Ghost Light', 'elementor' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-                    'cta-primary' => __( 'CTA Primary', 'elementor' ),
-                    'cta-accent' => __( 'CTA Accent', 'elementor' ),
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -146,7 +146,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'button_1_icon',
             [
-                'label' => __( 'Icon', 'elementor' ),
+                'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
             ]
@@ -155,9 +155,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'button_1_link',
             [
-                'label' => __( 'Link', 'elementor' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
             ]
         );
 
@@ -166,7 +166,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'elementor' ),
+				'label' => __( 'Colors', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -174,7 +174,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'price_color',
             [
-                'label' => __( 'Price Color', 'elementor' ),
+                'label' => __( 'Price Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -190,7 +190,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'price_text_color',
             [
-                'label' => __( 'Price Text Color', 'elementor' ),
+                'label' => __( 'Price Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -206,7 +206,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		$this->add_control(
 			'icon',
 			[
-				'label' => __( 'Icon Color', 'elementor' ),
+				'label' => __( 'Icon Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
@@ -218,7 +218,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		$this->add_control(
 			'text',
 			[
-				'label' => __( 'Text Color', 'elementor' ),
+				'label' => __( 'Text Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',

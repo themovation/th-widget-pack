@@ -10,7 +10,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Formidable Form', 'elementor' );
+		return __( 'Formidable Form', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -29,51 +29,30 @@ class Themo_Widget_Formidable extends Widget_Base {
 		$this->start_controls_section(
 			'section_shortcode',
 			[
-				'label' => __( 'Form shortcode', 'elementor' ),
+				'label' => __( 'Form shortcode', 'th-widget-pack' ),
 			]
 		);
-
-		/*$this->add_control(
-			'shortcode',
-			[
-				'label' => __( 'Insert your shortcode here', 'elementor' ),
-				'type' => Controls_Manager::TEXTAREA,
-				'default' => '[formidable id=3]',
-				'placeholder' => '[formidable id="3"]',
-			]
-		);*/
 
         $this->add_control(
             'shortcode',
             [
-                'label' => __( 'Shortcode', 'elementor' ),
+                'label' => __( 'Shortcode', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( '[formidable id=3]', 'elementor' ),
-                'default' => __( '[formidable id=3]', 'elementor' )
+                'placeholder' => __( '[formidable id=3]', 'th-widget-pack' ),
+                'default' => __( '[formidable id=3]', 'th-widget-pack' )
             ]
         );
 
-        /*$this->add_control(
-            'inline_form',
-            [
-                'label' => __( 'Show form inline', 'elementor' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'th-conversion',
-                'label_on' => __( 'Yes', 'elementor' ),
-                'label_off' => __( 'No', 'elementor' ),
-                'return_value' => 'th-conversion',
-            ]
-        );*/
         $this->add_control(
             'inline_form',
             [
-                'label' => __( 'Formidable Form Style', 'elementor' ),
+                'label' => __( 'Formidable Form Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
-                    'none' => __( 'Default', 'elementor' ),
-                    'inline' => __( 'Inline', 'elementor' ),
-                    'stacked' => __( 'Stacked', 'elementor' ),
+                    'none' => __( 'Default', 'th-widget-pack' ),
+                    'inline' => __( 'Inline', 'th-widget-pack' ),
+                    'stacked' => __( 'Stacked', 'th-widget-pack' ),
 
                 ],
             ]
@@ -81,13 +60,13 @@ class Themo_Widget_Formidable extends Widget_Base {
         $this->add_control(
             'slide_shortcode_border',
             [
-                'label' => __( 'Form Background', 'elementor' ),
+                'label' => __( 'Form Background', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
-                    'none' => __( 'None', 'elementor' ),
-                    'th-form-bg th-light-bg' => __( 'Light', 'elementor' ),
-                    'th-form-bg th-dark-bg' => __( 'Dark', 'elementor' ),
+                    'none' => __( 'None', 'th-widget-pack' ),
+                    'th-form-bg th-light-bg' => __( 'Light', 'th-widget-pack' ),
+                    'th-form-bg th-dark-bg' => __( 'Dark', 'th-widget-pack' ),
 
                 ],
                 'condition' => [
@@ -99,20 +78,20 @@ class Themo_Widget_Formidable extends Widget_Base {
         $this->add_control(
             'slide_text_align',
             [
-                'label' => __( 'Align', 'elementor' ),
+                'label' => __( 'Align', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -123,7 +102,7 @@ class Themo_Widget_Formidable extends Widget_Base {
         $this->add_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'elementor' ),
+                'label' => __( 'Content Width', 'th-widget-pack' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -136,10 +115,6 @@ class Themo_Widget_Formidable extends Widget_Base {
                     ],
                 ],
                 'size_units' => [ '%', 'px' ],
-                /*'default' => [
-                    'size' => '100',
-                    'unit' => '%',
-                ],*/
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],

@@ -10,19 +10,19 @@ if ( ! function_exists('themo_tour_custom_post_type') ) {
     function themo_tour_custom_post_type() {
 
         $labels = array(
-            'name'                => _x( 'Tours', 'Post Type General Name', 'themovation-widgets' ),
-            'singular_name'       => _x( 'Tour', 'Post Type Singular Name', 'themovation-widgets' ),
-            'menu_name'           => __( 'Tours', 'themovation-widgets' ),
-            'parent_item_colon'   => __( 'Parent Tour:', 'themovation-widgets' ),
-            'all_items'           => __( 'All Tours', 'themovation-widgets' ),
-            'view_item'           => __( 'View Tour', 'themovation-widgets' ),
-            'add_new_item'        => __( 'Add New Tours', 'themovation-widgets' ),
-            'add_new'             => __( 'Add New', 'themovation-widgets' ),
-            'edit_item'           => __( 'Edit Tour', 'themovation-widgets' ),
-            'update_item'         => __( 'Update Tour', 'themovation-widgets' ),
-            'search_items'        => __( 'Search Tour', 'themovation-widgets' ),
-            'not_found'           => __( 'Not found', 'themovation-widgets' ),
-            'not_found_in_trash'  => __( 'Not found in Trash', 'themovation-widgets' ),
+            'name'                => _x( 'Tours', 'Post Type General Name', 'th-widget-pack' ),
+            'singular_name'       => _x( 'Tour', 'Post Type Singular Name', 'th-widget-pack' ),
+            'menu_name'           => __( 'Tours', 'th-widget-pack' ),
+            'parent_item_colon'   => __( 'Parent Tour:', 'th-widget-pack' ),
+            'all_items'           => __( 'All Tours', 'th-widget-pack' ),
+            'view_item'           => __( 'View Tour', 'th-widget-pack' ),
+            'add_new_item'        => __( 'Add New Tours', 'th-widget-pack' ),
+            'add_new'             => __( 'Add New', 'th-widget-pack' ),
+            'edit_item'           => __( 'Edit Tour', 'th-widget-pack' ),
+            'update_item'         => __( 'Update Tour', 'th-widget-pack' ),
+            'search_items'        => __( 'Search Tour', 'th-widget-pack' ),
+            'not_found'           => __( 'Not found', 'th-widget-pack' ),
+            'not_found_in_trash'  => __( 'Not found in Trash', 'th-widget-pack' ),
         );
 
         if ( function_exists( 'get_theme_mod' ) ) {
@@ -38,8 +38,8 @@ if ( ! function_exists('themo_tour_custom_post_type') ) {
             'feeds'               => true,
         );
         $args = array(
-            'label'               => __( 'themo_tour', 'themovation-widgets' ),
-            'description'         => __( 'Tours', 'themovation-widgets' ),
+            'label'               => __( 'themo_tour', 'th-widget-pack' ),
+            'description'         => __( 'Tours', 'th-widget-pack' ),
             'labels'              => $labels,
             'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
             'taxonomies'          => array( 'themo_tour_type' ),
@@ -78,21 +78,21 @@ if ( ! function_exists( 'themo_tour_type' ) ) {
     function themo_tour_type() {
 
         $labels = array(
-            'name'                       => _x( 'Tour Types', 'Taxonomy General Name', 'themovation-widgets' ),
-            'singular_name'              => _x( 'Tour Type', 'Taxonomy Singular Name', 'themovation-widgets' ),
-            'menu_name'                  => __( 'Tour Types', 'themovation-widgets' ),
-            'all_items'                  => __( 'All Tour Types', 'themovation-widgets' ),
-            'parent_item'                => __( 'Parent Tour Type', 'themovation-widgets' ),
-            'parent_item_colon'          => __( 'Parent Tour Type:', 'themovation-widgets' ),
-            'new_item_name'              => __( 'New Tour Type Name', 'themovation-widgets' ),
-            'add_new_item'               => __( 'Add New Tour Type', 'themovation-widgets' ),
-            'edit_item'                  => __( 'Edit Tour Type', 'themovation-widgets' ),
-            'update_item'                => __( 'Update Tour Type', 'themovation-widgets' ),
-            'separate_items_with_commas' => __( 'Separate Tour Type with commas', 'themovation-widgets' ),
-            'search_items'               => __( 'Search Tour Types', 'themovation-widgets' ),
-            'add_or_remove_items'        => __( 'Add or remove Tour type', 'themovation-widgets' ),
-            'choose_from_most_used'      => __( 'Choose from the most Tour types', 'themovation-widgets' ),
-            'not_found'                  => __( 'Not Found', 'themovation-widgets' ),
+            'name'                       => _x( 'Tour Types', 'Taxonomy General Name', 'th-widget-pack' ),
+            'singular_name'              => _x( 'Tour Type', 'Taxonomy Singular Name', 'th-widget-pack' ),
+            'menu_name'                  => __( 'Tour Types', 'th-widget-pack' ),
+            'all_items'                  => __( 'All Tour Types', 'th-widget-pack' ),
+            'parent_item'                => __( 'Parent Tour Type', 'th-widget-pack' ),
+            'parent_item_colon'          => __( 'Parent Tour Type:', 'th-widget-pack' ),
+            'new_item_name'              => __( 'New Tour Type Name', 'th-widget-pack' ),
+            'add_new_item'               => __( 'Add New Tour Type', 'th-widget-pack' ),
+            'edit_item'                  => __( 'Edit Tour Type', 'th-widget-pack' ),
+            'update_item'                => __( 'Update Tour Type', 'th-widget-pack' ),
+            'separate_items_with_commas' => __( 'Separate Tour Type with commas', 'th-widget-pack' ),
+            'search_items'               => __( 'Search Tour Types', 'th-widget-pack' ),
+            'add_or_remove_items'        => __( 'Add or remove Tour type', 'th-widget-pack' ),
+            'choose_from_most_used'      => __( 'Choose from the most Tour types', 'th-widget-pack' ),
+            'not_found'                  => __( 'Not Found', 'th-widget-pack' ),
         );
         $rewrite = array(
             'slug'                       => 'tour-type',

@@ -10,7 +10,7 @@ class Themo_Widget_Package extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Package', 'elementor' );
+		return __( 'Package', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,14 +25,14 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->start_controls_section(
 			'section_about',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'image',
 			[
-				'label' => __( 'Image', 'elementor' ),
+				'label' => __( 'Image', 'th-widget-pack' ),
 				'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -43,15 +43,15 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'post_image_size',
             [
-                'label' => __( 'Image Size', 'elementor' ),
+                'label' => __( 'Image Size', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'th_img_sm_standard',
                 'options' => [
-                    'th_img_sm_standard' => __( 'Standard', 'elementor' ),
-                    'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
-                    'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
-                    'th_img_sm_square' => __( 'Square', 'elementor' ),
-                    'th_img_lg' => __( 'Large', 'elementor' ),
+                    'th_img_sm_standard' => __( 'Standard', 'th-widget-pack' ),
+                    'th_img_sm_landscape' => __( 'Landscape', 'th-widget-pack' ),
+                    'th_img_sm_portrait' => __( 'Portrait', 'th-widget-pack' ),
+                    'th_img_sm_square' => __( 'Square', 'th-widget-pack' ),
+                    'th_img_lg' => __( 'Large', 'th-widget-pack' ),
                 ],
                 /*'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
@@ -63,7 +63,7 @@ class Themo_Widget_Package extends Widget_Base {
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'image', // Actually its `image_size`
-                'label' => __( 'Image Size', 'elementor' ),
+                'label' => __( 'Image Size', 'th-widget-pack' ),
                 'default' => 'large',
             ]
         );*/
@@ -71,10 +71,10 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'pre_title',
             [
-                'label' => __( 'Pre Title', 'elementor' ),
+                'label' => __( 'Pre Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( '25% Off', 'elementor' ),
-                'placeholder' => __( '25% Off', 'elementor' ),
+                'default' => __( '25% Off', 'th-widget-pack' ),
+                'placeholder' => __( '25% Off', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -82,10 +82,10 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Title', 'elementor' ),
+				'label' => __( 'Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Chilko Tour', 'elementor' ),
-				'placeholder' => __( 'Chilko Tour', 'elementor' ),
+				'default' => __( 'Chilko Tour', 'th-widget-pack' ),
+				'placeholder' => __( 'Chilko Tour', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -93,7 +93,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'content',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => 'Paddle the longest, continuous Class IV whitewater',
@@ -103,20 +103,20 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'package_text_align',
             [
-                'label' => __( 'Content Align', 'elementor' ),
+                'label' => __( 'Content Align', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
@@ -131,17 +131,17 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->start_controls_section(
 			'section_price',
 			[
-				'label' => __( 'Price', 'elementor' ),
+				'label' => __( 'Price', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'price',
 			[
-				'label' => __( 'Price', 'elementor' ),
+				'label' => __( 'Price', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '$299', 'elementor' ),
-				'placeholder' => __( '$299', 'elementor' ),
+				'default' => __( '$299', 'th-widget-pack' ),
+				'placeholder' => __( '$299', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -149,10 +149,10 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'price_text',
 			[
-				'label' => __( 'Price Text', 'elementor' ),
+				'label' => __( 'Price Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '/person', 'elementor' ),
-				'placeholder' => __( '/person', 'elementor' ),
+				'default' => __( '/person', 'th-widget-pack' ),
+				'placeholder' => __( '/person', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -160,7 +160,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'price_background',
 			[
-				'label' => __( 'Price Background', 'elementor' ),
+				'label' => __( 'Price Background', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -178,14 +178,14 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->start_controls_section(
 			'section_link',
 			[
-				'label' => __( 'Link', 'elementor' ),
+				'label' => __( 'Link', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'url',
 			[
-				'label' => __( 'Link URL', 'elementor' ),
+				'label' => __( 'Link URL', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => 'http://your-link.com',
 				'default' => [
@@ -200,7 +200,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_background',
 			[
-				'label' => __( 'Content', 'elementor' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -208,7 +208,7 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'price_color',
             [
-                'label' => __( 'Price Color', 'elementor' ),
+                'label' => __( 'Price Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -224,7 +224,7 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'price_text_color',
             [
-                'label' => __( 'Price Text Color', 'elementor' ),
+                'label' => __( 'Price Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -241,7 +241,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -258,7 +258,7 @@ class Themo_Widget_Package extends Widget_Base {
 		$this->add_control(
 			'content_color',
 			[
-				'label' => __( 'Content Color', 'elementor' ),
+				'label' => __( 'Content Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -274,7 +274,7 @@ class Themo_Widget_Package extends Widget_Base {
         $this->add_control(
             'background_color',
             [
-                'label' => __( 'Background Color', 'elementor' ),
+                'label' => __( 'Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .th-pkg-content' => 'background-color: {{VALUE}};',

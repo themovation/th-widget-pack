@@ -10,7 +10,7 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Blog', 'elementor' );
+		return __( 'Blog', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -22,7 +22,7 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	private function get_blog_categories_list() {
-		$categories = array('all' => __('All Categories', 'themovation-widgets'));
+		$categories = array('all' => __('All Categories', 'th-widget-pack'));
 		$get_categories = get_categories( array(
 			'orderby' => 'name',
 			'order'   => 'ASC'
@@ -41,14 +41,14 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->start_controls_section(
 			'section_layout',
 			[
-				'label' => __( 'Layout', 'elementor' ),
+				'label' => __( 'Layout', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'post_count',
 			[
-				'label' => __( 'Number of posts to display', 'elementor' ),
+				'label' => __( 'Number of posts to display', 'th-widget-pack' ),
 				'type' => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default' => 10,
@@ -58,7 +58,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->add_control(
 			'post_categories',
 			[
-				'label'   => __( 'Category Filter', 'elementor' ),
+				'label'   => __( 'Category Filter', 'th-widget-pack' ),
 				'type'    => Controls_Manager::SELECT2,
 				'label_block' => true,
 				'multiple'    => true,
@@ -70,15 +70,15 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->add_control(
             'post_image_size',
             [
-                'label' => __( 'Image Size', 'elementor' ),
+                'label' => __( 'Image Size', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'th_img_sm_standard',
                 'options' => [
-                    'th_img_sm_standard' => __( 'Standard', 'elementor' ),
-                    'th_img_sm_landscape' => __( 'Landscape', 'elementor' ),
-                    'th_img_sm_portrait' => __( 'Portrait', 'elementor' ),
-                    'th_img_sm_square' => __( 'Square', 'elementor' ),
-                    'th_img_lg' => __( 'Large', 'elementor' ),
+                    'th_img_sm_standard' => __( 'Standard', 'th-widget-pack' ),
+                    'th_img_sm_landscape' => __( 'Landscape', 'th-widget-pack' ),
+                    'th_img_sm_portrait' => __( 'Portrait', 'th-widget-pack' ),
+                    'th_img_sm_square' => __( 'Square', 'th-widget-pack' ),
+                    'th_img_lg' => __( 'Large', 'th-widget-pack' ),
                 ],
                 /*'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
@@ -89,14 +89,14 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->add_control(
             'post_columns',
             [
-                'label' => __( 'Max. Number of Columns', 'elementor' ),
+                'label' => __( 'Max. Number of Columns', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '3-col',
                 'options' => [
-                    '2-col' => __( '2 Columns', 'elementor' ),
-                    '3-col' => __( '3 Columns', 'elementor' ),
-                    '4-col' => __( '4 Columns', 'elementor' ),
-                    '5-col' => __( '5 Columns', 'elementor' ),
+                    '2-col' => __( '2 Columns', 'th-widget-pack' ),
+                    '3-col' => __( '3 Columns', 'th-widget-pack' ),
+                    '4-col' => __( '4 Columns', 'th-widget-pack' ),
+                    '5-col' => __( '5 Columns', 'th-widget-pack' ),
                 ],
                 /*'selectors' => [
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
@@ -107,11 +107,11 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->add_control(
             'pagination',
             [
-                'label' => __( 'Pagination', 'elementor' ),
+                'label' => __( 'Pagination', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'label_off',
-                'label_on' => __( 'Yes', 'elementor' ),
-                'label_off' => __( 'No', 'elementor' ),
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
             ]
         );
 
@@ -120,7 +120,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_title',
 			[
-				'label' => __( 'Title', 'elementor' ),
+				'label' => __( 'Title', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -128,7 +128,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -145,7 +145,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .post-title a',
 			]
@@ -156,7 +156,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_meta',
 			[
-				'label' => __( 'Meta', 'elementor' ),
+				'label' => __( 'Meta', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -164,7 +164,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->add_control(
 			'meta_color',
 			[
-				'label' => __( 'Meta Color', 'elementor' ),
+				'label' => __( 'Meta Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -181,7 +181,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'meta_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .post-meta',
 			]
@@ -192,7 +192,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_excerpt',
 			[
-				'label' => __( 'Excerpt', 'elementor' ),
+				'label' => __( 'Excerpt', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -200,7 +200,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->add_control(
 			'excerpt_color',
 			[
-				'label' => __( 'Excerpt Color', 'elementor' ),
+				'label' => __( 'Excerpt Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -217,7 +217,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'excerpt_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .entry-content p',
 			]
@@ -228,7 +228,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_read_more',
 			[
-				'label' => __( 'Read More', 'elementor' ),
+				'label' => __( 'Read More', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -236,7 +236,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		$this->add_control(
 			'read_more_color',
 			[
-				'label' => __( 'Read More Color', 'elementor' ),
+				'label' => __( 'Read More Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -253,7 +253,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'read_more_typography',
-				'label' => __( 'Typography', 'elementor' ),
+				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .entry-content p a',
 			]
@@ -397,7 +397,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			<?php
 
 		} else {
-			esc_html_e( 'Sorry, no results were found.', 'themovation-widgets' );
+			esc_html_e( 'Sorry, no results were found.', 'th-widget-pack' );
 		}
 
         // Reset main query object

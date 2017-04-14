@@ -10,7 +10,7 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Button', 'elementor' );
+		return __( 'Button', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,17 +25,17 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->start_controls_section(
 			'section_button_1',
 			[
-				'label' => __( 'Button 1', 'elementor' ),
+				'label' => __( 'Button 1', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'button_1_text',
 			[
-				'label' => __( 'Button Text', 'elementor' ),
+				'label' => __( 'Button Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Book Tour', 'elementor' ),
-				'placeholder' => __( 'Book Tour', 'elementor' ),
+				'default' => __( 'Book Tour', 'th-widget-pack' ),
+				'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
 		);
@@ -43,20 +43,20 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_1_style',
 			[
-				'label' => __( 'Button Style', 'elementor' ),
+				'label' => __( 'Button Style', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'standard-primary',
 				'options' => [
-					'standard-primary' => __( 'Standard Primary', 'elementor' ),
-					'standard-accent' => __( 'Standard Accent', 'elementor' ),
-					'standard-light' => __( 'Standard Light', 'elementor' ),
-					'standard-dark' => __( 'Standard Dark', 'elementor' ),
-					'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-					'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-					'ghost-light' => __( 'Ghost Light', 'elementor' ),
-					'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-					'cta-primary' => __( 'CTA Primary', 'elementor' ),
-					'cta-accent' => __( 'CTA Accent', 'elementor' ),
+					'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+					'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+					'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+					'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+					'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+					'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+					'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+					'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+					'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+					'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -64,7 +64,7 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_1_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 				'type' => Controls_Manager::ICON,
 				'icons' => themo_icons(),
 			]
@@ -73,56 +73,28 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_1_link',
 			[
-				'label' => __( 'Link', 'elementor' ),
+				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( '#booktour', 'elementor' ),
+				'placeholder' => __( '#booktour', 'th-widget-pack' ),
 			]
 		);
 
-		/*$this->add_responsive_control(
-			'button_1_align',
-			[
-				'label' => __( 'Alignment', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left'    => [
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'fa fa-align-right',
-					],
-					'justify' => [
-						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'fa fa-align-justify',
-					],
-				],
-				'prefix_class' => 'btn-1%s-align-',
-				'default' => '',
-			]
-		);*/
 
 		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'section_button_2',
 			[
-				'label' => __( 'Button 2', 'elementor' ),
+				'label' => __( 'Button 2', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'button_2_text',
 			[
-				'label' => __( 'Button Text', 'elementor' ),
+				'label' => __( 'Button Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Book Tour', 'elementor' ),
-				//'default' => __( 'Book Tour', 'elementor' ),
+				'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
 		);
@@ -130,20 +102,20 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_2_style',
 			[
-				'label' => __( 'Button Style', 'elementor' ),
+				'label' => __( 'Button Style', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'standard-primary',
 				'options' => [
-					'standard-primary' => __( 'Standard Primary', 'elementor' ),
-					'standard-accent' => __( 'Standard Accent', 'elementor' ),
-					'standard-light' => __( 'Standard Light', 'elementor' ),
-					'standard-dark' => __( 'Standard Dark', 'elementor' ),
-					'ghost-primary' => __( 'Ghost Primary', 'elementor' ),
-					'ghost-accent' => __( 'Ghost Accent', 'elementor' ),
-					'ghost-light' => __( 'Ghost Light', 'elementor' ),
-					'ghost-dark' => __( 'Ghost Dark', 'elementor' ),
-					'cta-primary' => __( 'CTA Primary', 'elementor' ),
-					'cta-accent' => __( 'CTA Accent', 'elementor' ),
+					'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+					'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+					'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+					'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+					'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+					'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+					'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+					'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+					'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+					'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -151,7 +123,7 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_2_icon',
 			[
-				'label' => __( 'Icon', 'elementor' ),
+				'label' => __( 'Icon', 'th-widget-pack' ),
 				'type' => Controls_Manager::ICON,
 				'icons' => themo_icons(),
 			]
@@ -160,46 +132,18 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_control(
 			'button_2_link',
 			[
-				'label' => __( 'Link', 'elementor' ),
+				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( '#booktour', 'elementor' ),
+				'placeholder' => __( '#booktour', 'th-widget-pack' ),
 			]
 		);
-
-		/*$this->add_responsive_control(
-			'button_2_align',
-			[
-				'label' => __( 'Alignment', 'elementor' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left'    => [
-						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'fa fa-align-right',
-					],
-					'justify' => [
-						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'fa fa-align-justify',
-					],
-				],
-				'prefix_class' => 'btn-2%s-align-',
-				'default' => '',
-			]
-		);*/
 
 		$this->end_controls_section();
 
         $this->start_controls_section(
             'button_alignment',
             [
-                'label' => __( 'Button Alignment', 'elementor' ),
+                'label' => __( 'Button Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::SECTION,
             ]
         );
@@ -209,25 +153,22 @@ class Themo_Widget_Button extends Widget_Base {
         $this->add_control(
 			'button_align',
 			[
-				'label' => __( 'Alignment', 'elementor' ),
+				'label' => __( 'Alignment', 'th-widget-pack' ),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left'    => [
-						'title' => __( 'Left', 'elementor' ),
+						'title' => __( 'Left', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
-						'title' => __( 'Center', 'elementor' ),
+						'title' => __( 'Center', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
-						'title' => __( 'Right', 'elementor' ),
+						'title' => __( 'Right', 'th-widget-pack' ),
 						'icon' => 'fa fa-align-right',
 					],
-					/*'justify' => [
-						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'fa fa-align-justify',
-					],*/
+
 				],
 				'prefix_class' => 'th-btn-align-',
 				'default' => '',

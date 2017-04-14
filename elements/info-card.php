@@ -10,7 +10,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Info Card', 'elementor' );
+		return __( 'Info Card', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -29,14 +29,14 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->start_controls_section(
             'section_align',
             [
-                'label' => __( 'Position', 'elementor' ),
+                'label' => __( 'Position', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'elementor' ),
+                'label' => __( 'Content Width', 'th-widget-pack' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -62,19 +62,19 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'header_horizontal_position',
             [
-                'label' => __( 'Horizontal Position', 'elementor' ),
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
@@ -93,20 +93,20 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_responsive_control(
             'text_align',
             [
-                'label' => __( 'Content Alignment', 'elementor' ),
+                'label' => __( 'Content Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'default' => 'center',
                 'options' => [
                     'left' => [
-                        'title' => __( 'Left', 'elementor' ),
+                        'title' => __( 'Left', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-left',
                     ],
                     'center' => [
-                        'title' => __( 'Center', 'elementor' ),
+                        'title' => __( 'Center', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-center',
                     ],
                     'right' => [
-                        'title' => __( 'Right', 'elementor' ),
+                        'title' => __( 'Right', 'th-widget-pack' ),
                         'icon' => 'fa fa-align-right',
                     ],
 
@@ -123,7 +123,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->start_controls_section(
             'section_title',
             [
-                'label' => __( 'Title & Description', 'elementor' ),
+                'label' => __( 'Title & Description', 'th-widget-pack' ),
             ]
         );
 
@@ -131,10 +131,10 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'title_text',
             [
-                'label' => __( 'Title', 'elementor' ),
+                'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Discover the great outdoors', 'elementor' ),
-                'placeholder' => __( 'Discover the great outdoors', 'elementor' ),
+                'default' => __( 'Discover the great outdoors', 'th-widget-pack' ),
+                'placeholder' => __( 'Discover the great outdoors', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -142,11 +142,11 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'description_text',
             [
-                'label' => __( 'Description', 'elementor' ),
+                'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'elementor' ),
-                'placeholder' => __( 'Your Description', 'elementor' ),
-                'title' => __( 'Input icon text here', 'elementor' ),
+                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                'placeholder' => __( 'Your Description', 'th-widget-pack' ),
+                'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
             ]
@@ -157,10 +157,10 @@ class Themo_Widget_Info_Card extends Widget_Base {
         /*$this->add_control(
             'description_align_override',
             [
-                'label' => __( 'Description Alignment Override', 'elementor' ),
+                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'elementor' ),
-                'label_off' => __( 'No', 'elementor' ),
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
                 'return_value' => 'yes',
             ]
         );*/
@@ -172,7 +172,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->start_controls_section(
             'section_buttons',
             [
-                'label' => __( 'Links', 'elementor' ),
+                'label' => __( 'Links', 'th-widget-pack' ),
             ]
         );
 
@@ -180,19 +180,19 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'button_1_text',
             [
-                'label' => __( 'Link 1 Text', 'elementor' ),
+                'label' => __( 'Link 1 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'View All Tours', 'elementor' ),
-                'placeholder' => __( 'View All Tours', 'elementor' ),
+                'default' => __( 'View All Tours', 'th-widget-pack' ),
+                'placeholder' => __( 'View All Tours', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_1_link',
             [
-                'label' => __( 'Link 1', 'elementor' ),
+                'label' => __( 'Link 1', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
                 'separator' => 'none',
             ]
         );
@@ -201,19 +201,19 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'button_2_text',
             [
-                'label' => __( 'Link 2 Text', 'elementor' ),
+                'label' => __( 'Link 2 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'elementor' ),
-                //'default' => __( 'Book Tour', 'elementor' ),
+                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+                //'default' => __( 'Book Tour', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'button_2_link',
             [
-                'label' => __( 'Link 2', 'elementor' ),
+                'label' => __( 'Link 2', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'elementor' ),
+                'placeholder' => __( '#booktour', 'th-widget-pack' ),
                 'separator' => 'none',
             ]
         );
@@ -224,14 +224,14 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->start_controls_section(
             'section_bg',
             [
-                'label' => __( 'Background', 'elementor' ),
+                'label' => __( 'Background', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control(
             'bg_color',
             [
-                'label' => __( 'Color', 'elementor' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
@@ -249,7 +249,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => __( 'Colors', 'elementor' ),
+				'label' => __( 'Colors', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -257,7 +257,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -273,7 +273,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'elementor' ),
+				'label' => __( 'Description Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -289,7 +289,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'link_1_color',
             [
-                'label' => __( 'Link 1 Color', 'elementor' ),
+                'label' => __( 'Link 1 Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -305,7 +305,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_control(
             'link_2_color',
             [
-                'label' => __( 'Link 2 Color', 'elementor' ),
+                'label' => __( 'Link 2 Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [

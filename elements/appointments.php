@@ -10,7 +10,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Booked Appointment Calendar', 'elementor' );
+		return __( 'Booked Appointment Calendar', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,17 +25,17 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->start_controls_section(
 			'section_tooltip',
 			[
-				'label' => __( 'Tooltip Title', 'elementor' ),
+				'label' => __( 'Tooltip Title', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'tooltip_title',
 			[
-				'label' => __( 'Tooltip Title', 'elementor' ),
+				'label' => __( 'Tooltip Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Book Today', 'elementor' ),
-				'placeholder' => __( 'Book here', 'elementor' ),
+				'default' => __( 'Book Today', 'th-widget-pack' ),
+				'placeholder' => __( 'Book here', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -43,7 +43,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->add_control(
 			'tooltip_background',
 			[
-				'label' => __( 'Tooltip Background', 'elementor' ),
+				'label' => __( 'Tooltip Background', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -62,17 +62,17 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->start_controls_section(
 			'section_calendar',
 			[
-				'label' => __( 'Calendar', 'elementor' ),
+				'label' => __( 'Calendar', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'calendar_shortcode',
 			[
-				'label' => __( 'Shortcode', 'elementor' ),
+				'label' => __( 'Shortcode', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '[booked-calendar]', 'elementor' ),
-				'placeholder' => __( '[add_shortcode_here]', 'elementor' ),
+				'default' => __( '[booked-calendar]', 'th-widget-pack' ),
+				'placeholder' => __( '[add_shortcode_here]', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -80,12 +80,12 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->add_control(
 			'calendar_size',
 			[
-				'label' => __( 'Calendar Size', 'elementor' ),
+				'label' => __( 'Calendar Size', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'large',
 				'options' => [
-					'large' => __( 'Large', 'elementor' ),
-					'small' => __( 'Small', 'elementor' ),
+					'large' => __( 'Large', 'th-widget-pack' ),
+					'small' => __( 'Small', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -93,13 +93,13 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->add_control(
 			'calendar_align',
 			[
-				'label' => __( 'Align Calendar', 'elementor' ),
+				'label' => __( 'Align Calendar', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'large',
 				'options' => [
-					'left' => __('Left', 'elementor'),
-					'centered' => __('Center', 'elementor'),
-					'right' => __('Right', 'elementor'),
+					'left' => __('Left', 'th-widget-pack'),
+					'centered' => __('Center', 'th-widget-pack'),
+					'right' => __('Right', 'th-widget-pack'),
 				],
 			]
 		);
@@ -109,7 +109,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_tooltip',
 			[
-				'label' => __( 'Tooltip Title', 'elementor' ),
+				'label' => __( 'Tooltip Title', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -117,7 +117,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->add_control(
 			'tooltip_color',
 			[
-				'label' => __( 'Tooltip Color', 'elementor' ),
+				'label' => __( 'Tooltip Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),

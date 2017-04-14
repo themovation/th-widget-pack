@@ -5,7 +5,7 @@ function themovation_elementor_section() {
 	Plugin::instance()->elements_manager->add_category(
 		'themo-elements',
 		[
-			'title'  => __( 'Themovation Elements', 'themovation-widgets' ),
+			'title'  => __( 'Themovation Elements', 'th-widget-pack' ),
 			'icon' => 'font'
 		],
 		1

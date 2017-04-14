@@ -10,7 +10,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Itinerary', 'elementor' );
+		return __( 'Itinerary', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
@@ -25,42 +25,42 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->start_controls_section(
 			'section_toggles',
 			[
-				'label' => __( 'Itinerary', 'elementor' ),
+				'label' => __( 'Itinerary', 'th-widget-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'tabs',
 			[
-				'label' => __( 'Items', 'elementor' ),
+				'label' => __( 'Items', 'th-widget-pack' ),
 				'type' => Controls_Manager::REPEATER,
 				'default' => [
 					[
-						'tab_title' => __( 'Day 1 Training', 'elementor' ),
-						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
+						'tab_title' => __( 'Day 1 Training', 'th-widget-pack' ),
+						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'th-widget-pack' ),
 					],
 					[
-						'tab_title' => __( 'Day 2 Rafting Whitewater', 'elementor' ),
-						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
+						'tab_title' => __( 'Day 2 Rafting Whitewater', 'th-widget-pack' ),
+						'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'th-widget-pack' ),
 					],
                     [
-                        'tab_title' => __( 'Day 3 Rafting The Chilko', 'elementor' ),
-                        'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'elementor' ),
+                        'tab_title' => __( 'Day 3 Rafting The Chilko', 'th-widget-pack' ),
+                        'tab_content' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo.', 'th-widget-pack' ),
                     ],
 				],
 				'fields' => [
 					[
 						'name' => 'tab_title',
-						'label' => __( 'Title & Content', 'elementor' ),
+						'label' => __( 'Title & Content', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
 						'label_block' => true,
-						'default' => __( 'Itinerary Title' , 'elementor' ),
+						'default' => __( 'Itinerary Title' , 'th-widget-pack' ),
 					],
 					[
 						'name' => 'tab_content',
-						'label' => __( 'Content', 'elementor' ),
+						'label' => __( 'Content', 'th-widget-pack' ),
 						'type' => Controls_Manager::WYSIWYG,
-						'default' => __( 'Itinerary Content', 'elementor' ),
+						'default' => __( 'Itinerary Content', 'th-widget-pack' ),
 						'show_label' => false,
 					],
 				],
@@ -71,7 +71,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => __( 'View', 'elementor' ),
+				'label' => __( 'View', 'th-widget-pack' ),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
@@ -80,10 +80,10 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'expanded',
 			[
-				'label' => __( 'Start all Items Expanded', 'elementor' ),
+				'label' => __( 'Start all Items Expanded', 'th-widget-pack' ),
 				'type' => Controls_Manager::SWITCHER,
-				'label_off' => __( 'Off', 'elementor' ),
-				'label_on' => __( 'On', 'elementor' ),
+				'label_off' => __( 'Off', 'th-widget-pack' ),
+				'label_on' => __( 'On', 'th-widget-pack' ),
 				'default' => 'yes',
 			]
 		);
@@ -91,13 +91,13 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'width',
 			[
-				'label' => __( 'Width', 'elementor' ),
+				'label' => __( 'Width', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'th-itin-narrow',
 				'options' => [
-					'th-itin-narrow' => __( 'Narrow', 'elementor' ),
-					'th-itin-med' => __( 'Medium', 'elementor' ),
-					'th-itin-fw' => __( 'Full Width', 'elementor' ),
+					'th-itin-narrow' => __( 'Narrow', 'th-widget-pack' ),
+					'th-itin-med' => __( 'Medium', 'th-widget-pack' ),
+					'th-itin-fw' => __( 'Full Width', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -105,12 +105,12 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'alignment',
 			[
-				'label' => __( 'Alignment', 'elementor' ),
+				'label' => __( 'Alignment', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'th-itin-center',
 				'options' => [
-					'th-itin-center' => __( 'Center', 'elementor' ),
-					'th-itin-left' => __( 'Left', 'elementor' ),
+					'th-itin-center' => __( 'Center', 'th-widget-pack' ),
+					'th-itin-left' => __( 'Left', 'th-widget-pack' ),
 				],
 			]
 		);
@@ -120,7 +120,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'elementor' ),
+				'label' => __( 'Colors', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -128,7 +128,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'elementor' ),
+				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-title' => 'color: {{VALUE}};',
@@ -139,7 +139,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'content_color',
 			[
-				'label' => __( 'Content Color', 'elementor' ),
+				'label' => __( 'Content Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
@@ -150,7 +150,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'vertical_line_color',
 			[
-				'label' => __( 'Vertical Line Color', 'elementor' ),
+				'label' => __( 'Vertical Line Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
@@ -161,7 +161,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 		$this->add_control(
 			'dot_color',
 			[
-				'label' => __( 'Dot Color', 'elementor' ),
+				'label' => __( 'Dot Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
