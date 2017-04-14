@@ -45,7 +45,7 @@ function themo_randomString($length = 6) {
 if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
     function sync_ot_and_elem_page_settings() {
         global $post;
-        if($post->ID){
+        if(isset($post->ID)){
             $post_id = $post->ID;
 
             // Are there settings from the Elementor Page Options?
