@@ -1,12 +1,9 @@
 <?php
-
-
-
 //-----------------------------------------------------
 // themo_string_contains
 // IF String contains any items in an array (case insensitive).
 //-----------------------------------------------------
-function themo_string_contains($str, array $arr)
+function themo_string_contains($str, $arr)
 {
     foreach($arr as $a) {
         if (stripos($str,$a) !== false) return true;
