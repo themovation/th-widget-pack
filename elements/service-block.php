@@ -408,7 +408,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings();
 
-		$this->add_render_attribute( 'icon', 'class', [ 'elementor-icon', 'elementor-animation-' . $settings['hover_animation'] ] );
+        if ( ! empty( $settings['hover_animation'] ) ) {
+            $this->add_render_attribute('icon', 'class', ['elementor-icon', 'elementor-animation-' . $settings['hover_animation']]);
+        }
 
         $icon_tag = 'span';
 
