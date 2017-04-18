@@ -564,9 +564,11 @@ class Themo_Widget_Header extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings();
 
+        $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {
-            $this->add_render_attribute('icon', 'class', ['elementor-icon', 'elementor-animation-' . $settings['hover_animation']]);
+            $elm_animation = 'elementor-animation-' . $settings['hover_animation'];
         }
+        $this->add_render_attribute('icon', 'class', ['elementor-icon', $elm_animation]);
 
 		$icon_tag = 'span';
 
