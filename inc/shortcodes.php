@@ -38,7 +38,7 @@ if ( ! function_exists('th_register_shortcodes') ) {
 
                 $glyphicon_markup = false;
                 if(isset($icon) && $icon > ""){
-                    $glyphicon_markup = '<i class="glyphicons '.$icon.'"></i>';
+                    $glyphicon_markup = '<i class="'.$icon.'"></i>';
                 }
 
 
@@ -104,7 +104,7 @@ if ( ! function_exists('th_register_shortcodes') ) {
                 if($block == 'true') {$alertblock = 'alert-block';}
                 $output = '<div class="fade in alert '. $type . ' '. $block . '">';
                 if($close == 'true') {
-                    $icon = do_shortcode('[glyphicon icon="glyphicons remove" wrapper=i]');
+                    $icon = do_shortcode('[ icon="fa fa-minus" wrapper=i]');
                     $output .= '<a class="close" data-dismiss="alert">'.$icon.'</a>';
                 }
                 if($heading <> '') {
@@ -310,13 +310,13 @@ if ( ! function_exists('th_register_shortcodes') ) {
                 }
 
                 if($icon > ""){
-                    $icon = do_shortcode('[glyphicon icon="glyphicons '.$icon.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon.'" wrapper=i] ');
                 }elseif($icon_halflings > ""){
-                    $icon = do_shortcode('[glyphicon icon="halflings '.$icon_halflings.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_halflings.'" wrapper=i] ');
                 }elseif($icon_social > ""){
-                    $icon = do_shortcode('[glyphicon icon="social '.$icon_social.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_social.'" wrapper=i] ');
                 }elseif($icon_filetype > ""){
-                    $icon = do_shortcode('[glyphicon icon="filetype '.$icon_filetype.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_filetype.'" wrapper=i] ');
                 }else{
                     $icon = "";
                 }
@@ -378,13 +378,13 @@ if ( ! function_exists('th_register_shortcodes') ) {
                 }
 
                 if($icon > ""){
-                    $icon = do_shortcode('[glyphicon icon="glyphicons '.$icon.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon.'" wrapper=i] ');
                 }elseif($icon_halflings > ""){
-                    $icon = do_shortcode('[glyphicon icon="halflings '.$icon_halflings.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_halflings.'" wrapper=i] ');
                 }elseif($icon_social > ""){
-                    $icon = do_shortcode('[glyphicon icon="social '.$icon_social.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_social.'" wrapper=i] ');
                 }elseif($icon_filetype > ""){
-                    $icon = do_shortcode('[glyphicon icon="filetype '.$icon_filetype.'" wrapper=i] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_filetype.'" wrapper=i] ');
                 }else{
                     $icon = "";
                 }
@@ -559,7 +559,7 @@ if ( ! function_exists('th_register_shortcodes') ) {
                     'src' => '', // Video SRC
                     'width' => '1280', // Video Size
                     'size' => 'xl-icon', // Icon Size
-                    'icon' => 'glyphicons-play-button', // Icon
+                    'icon' => 'fa fa-play', // Icon
                     'icon_halflings' => '',
                     'icon_social' => '',
                     'icon_filetype' => '',
@@ -579,13 +579,13 @@ if ( ! function_exists('th_register_shortcodes') ) {
                 //list($glyhicon_library, $glyhicon_icon) = explode(' ', "$icon ", 2);
 
                 if($icon > ""){
-                    $icon = do_shortcode('[glyphicon icon="glyphicons '.$icon.'" wrapper=i size='.$size.' style='.$style.'] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon.'" wrapper=i size='.$size.' style='.$style.'] ');
                 }elseif($icon_halflings > ""){
-                    $icon = do_shortcode('[glyphicon icon="halflings '.$icon_halflings.'" wrapper=i size='.$size.' style='.$style.'] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_halflings.'" wrapper=i size='.$size.' style='.$style.'] ');
                 }elseif($icon_social > ""){
-                    $icon = do_shortcode('[glyphicon icon="social '.$icon_social.'" wrapper=i size='.$size.' style='.$style.'] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_social.'" wrapper=i size='.$size.' style='.$style.'] ');
                 }elseif($icon_filetype > ""){
-                    $icon = do_shortcode('[glyphicon icon="filetype '.$icon_filetype.'" wrapper=i size='.$size.' style='.$style.'] ');
+                    $icon = do_shortcode('[glyphicon icon="'.$icon_filetype.'" wrapper=i size='.$size.' style='.$style.'] ');
                 }else{
                     $icon = "";
                 }
@@ -627,14 +627,14 @@ if ( ! function_exists('th_register_shortcodes') ) {
                 if($icon > ""){
                     $glyphicon_sets = array("halflings","social","filetype");
                     if(!themo_string_contains($icon, $glyphicon_sets)){
-                        $icon = "glyphicons $icon";
+                        $icon = "$icon";
                     }
                 }elseif($icon_halflings > ""){
-                    $icon = "halflings $icon_halflings";
+                    $icon = "$icon_halflings";
                 }elseif($icon_social > ""){
-                    $icon = "social $icon_social";
+                    $icon = "$icon_social";
                 }elseif($icon_filetype > ""){
-                    $icon = "filetype icon_filetype";
+                    $icon = "icon_filetype";
                 }else{
                     $icon = "";
                 }
