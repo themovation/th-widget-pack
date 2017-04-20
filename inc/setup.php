@@ -37,7 +37,6 @@ require_once  THEMO_PATH . 'inc/enqueue.php';
 require_once THEMO_PATH . 'inc/cpt_tours.php' ;
 require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
-
 // GLOBAL VARIABLES
 // global $th_map_id;
 // $th_map_id = 0;
