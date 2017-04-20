@@ -237,25 +237,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			}
 		</style>
 
-		<style>
-			/* Move to Main CSS files*/
-			.th-google-map {
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center;
-			}
-			.map-info {
-				background: #fff;
-				padding: 25px;
-				position: absolute;
-				top: 50px;
-				left: 50px;
-			}
-			.map-info a:last-child {
-				padding-left: 20px;
-			}
-		</style>
-
 		<?php
 	}
 
