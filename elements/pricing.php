@@ -306,7 +306,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __( 'Yes', 'th-widget-pack' ),
                         'label_off' => __( 'No', 'th-widget-pack' ),
-                        'return_value' => 'no',
+                        'return_value' => 'yes',
                         //'default' => '',
                         'separator' => 'before',
                     ],
@@ -317,15 +317,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                         //'default' => '#FFF',
                         'selectors' => [
                             '{{WRAPPER}} {{CURRENT_ITEM}}' => 'background-color: {{VALUE}}',
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_featured',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
                         ],
                     ],
 				],
@@ -572,24 +563,8 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 				<?php foreach( $settings['pricing'] as $column ) { ?>
 
-					<?php if ( ! $column['price_col_featured'] ) : ?>
-						<?php if ( ! empty( $settings['button_size_1'] ) ) {
-							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['button_size_1'] ) );
-						} ?>
-						<?php if ( ! empty( $settings['button_size_2'] ) ) {
-							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . esc_attr( $settings['button_size_2'] ) );
-						} ?>
-					<?php else : ?>
-						<?php if ( ! empty( $settings['featured_button_size_1'] ) ) {
-							$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['featured_button_size_1'] ) );
-						} ?>
-						<?php if ( ! empty( $settings['featured_button_size_2'] ) ) {
-							$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . esc_attr( $settings['featured_button_size_2'] ) );
-						} ?>
-					<?php endif; ?>
 
-					<div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( $column['price_col_featured'] ? ' th-highlight' : '' ); echo $column_class; ?>">
-
+                    <div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( isset($column['price_col_featured']) && $column['price_col_featured'] == 'yes' ? ' th-highlight' : '' ); echo $column_class; ?>">
 
 	                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
 							<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
