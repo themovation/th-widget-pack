@@ -87,6 +87,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
+                'include' => themo_fa_icons()
             ]
         );
 
@@ -145,7 +146,8 @@ class Themo_Widget_CallToAction extends Widget_Base {
             [
                 'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-				'icons' => themo_icons(),
+                'icons' => themo_icons(),
+				'include' => themo_fa_icons()
             ]
         );
 

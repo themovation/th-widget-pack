@@ -141,6 +141,7 @@ class Themo_Widget_Team extends Widget_Base {
                         'label_block' => true,
                         'default' => 'fa fa-facebook',
 						'icons' => themo_icons(),
+						'include' => themo_fa_icons()
 					],
 					[
 						'name' => 'url',

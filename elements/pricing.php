@@ -194,6 +194,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                             ],
                         ],
 						'icons' => themo_icons(),
+						'include' => themo_fa_icons()
                     ],
 					[
 						'name' => 'price_col_button_1_link',
@@ -280,6 +281,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                             ],
                         ],
 						'icons' => themo_icons(),
+						'include' => themo_fa_icons()
                     ],
                     [
                         'name' => 'price_col_button_2_link',

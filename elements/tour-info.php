@@ -88,7 +88,8 @@ class Themo_Widget_TourInfo extends Widget_Base {
 						'type' => Controls_Manager::ICON,
 						'default' => '',
 						'label_block' => true,
-                        'icons' => themo_icons(),
+						'icons' => themo_icons(),
+						'include' => themo_fa_icons()
 					],
 					[
 						'name' => 'text',
@@ -149,6 +150,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'label' => __( 'Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
                 'icons' => themo_icons(),
+				'include' => themo_fa_icons()
             ]
         );
 
