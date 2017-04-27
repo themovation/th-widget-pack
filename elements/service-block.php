@@ -174,7 +174,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'type' => Controls_Manager::SELECT,
                 'options' => [
                     'sm' => __( 'Small', 'th-widget-pack' ),
+                    'md' => __( 'Medium', 'th-widget-pack' ),
                     'lg' => __( 'Large', 'th-widget-pack' ),
+                    'xl' => __( 'Extra Large', 'th-widget-pack' ),
                 ],
                 'default' => 'sm',
             ]
