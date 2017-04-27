@@ -627,11 +627,13 @@ class Themo_Widget_Header extends Widget_Base {
 		?>
 		<div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper">
+                <?php if (isset($settings['icon']) && $settings['icon'] > ""){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                     <<?php echo implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] ); ?>>
                         <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
                     </<?php echo $icon_tag; ?>>
                 </div>
+                <?php } ?>
                 <div class="elementor-icon-box-content">
                     <<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
                         <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
@@ -682,11 +684,13 @@ class Themo_Widget_Header extends Widget_Base {
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper">
+                <# if ( settings.icon ) { #>
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
                         <i class="{{ settings.icon }}"></i>
                     </{{{ iconTag }}}>
                 </div>
+                <# } #>
                 <div class="elementor-icon-box-content">
                     <{{{ settings.title_size }}} class="elementor-icon-box-title">
                         <{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
