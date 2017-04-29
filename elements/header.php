@@ -310,7 +310,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'View All Tours', 'th-widget-pack' ),
+                //'default' => __( 'View All Tours', 'th-widget-pack' ),
                 'placeholder' => __( 'View All Tours', 'th-widget-pack' ),
             ]
         );
