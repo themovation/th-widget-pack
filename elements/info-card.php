@@ -14,7 +14,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-type-tool';
+		return 'eicon-flip-box';
 	}
 
 	public function get_categories() {

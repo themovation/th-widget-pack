@@ -8,24 +8,24 @@ require_once THEMO_PATH . 'inc/helper-functions.php' ;
 if ( ! function_exists( 'themovation_elements' ) ) {
     function themovation_elements()
     {
-        require_once THEMO_PATH . 'elements/team.php';
-        require_once THEMO_PATH . 'elements/package.php';
-        require_once THEMO_PATH . 'elements/appointments.php';
-        require_once THEMO_PATH . 'elements/blog.php';
-        require_once THEMO_PATH . 'elements/tour-grid.php';
         require_once THEMO_PATH . 'elements/slider.php';
-        require_once THEMO_PATH . 'elements/pricing.php';
-        require_once THEMO_PATH . 'elements/formidable-form.php';
-        require_once THEMO_PATH . 'elements/tour-info.php';
-        require_once THEMO_PATH . 'elements/button.php';
-        require_once THEMO_PATH . 'elements/call-to-action.php';
-        require_once THEMO_PATH . 'elements/itinerary.php';
-        require_once THEMO_PATH . 'elements/google-maps.php';
-        require_once THEMO_PATH . 'elements/testimonial.php';
-        require_once THEMO_PATH . 'elements/image-gallery.php';
         require_once THEMO_PATH . 'elements/header.php';
-        require_once THEMO_PATH . 'elements/info-card.php';
         require_once THEMO_PATH . 'elements/service-block.php';
+        require_once THEMO_PATH . 'elements/testimonial.php';
+        require_once THEMO_PATH . 'elements/info-card.php';
+        require_once THEMO_PATH . 'elements/button.php';
+        require_once THEMO_PATH . 'elements/formidable-form.php';
+        require_once THEMO_PATH . 'elements/call-to-action.php';
+        require_once THEMO_PATH . 'elements/team.php';
+        require_once THEMO_PATH . 'elements/image-gallery.php';
+        require_once THEMO_PATH . 'elements/google-maps.php';
+        require_once THEMO_PATH . 'elements/tour-grid.php';
+        require_once THEMO_PATH . 'elements/tour-info.php';
+        require_once THEMO_PATH . 'elements/itinerary.php';
+        require_once THEMO_PATH . 'elements/appointments.php';
+        require_once THEMO_PATH . 'elements/package.php';
+        require_once THEMO_PATH . 'elements/pricing.php';
+        require_once THEMO_PATH . 'elements/blog.php';
     }
 }
 // Include Custom Widgets

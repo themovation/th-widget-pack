@@ -14,7 +14,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-posts-grid';
+        return 'eicon-gallery-grid';
     }
 
     public function get_categories() {
