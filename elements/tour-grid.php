@@ -105,7 +105,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             [
                 'label' => __( 'Order by', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'date',
+                'default' => 'menu_order',
                 'options' => [
                     'date' => __( 'Date Published', 'th-widget-pack' ),
                     'menu_order' => __( 'Drag and Drop', 'th-widget-pack' ),
