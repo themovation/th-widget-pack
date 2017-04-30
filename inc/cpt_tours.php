@@ -161,10 +161,10 @@ function th_register_tour_meta_boxes()
             ),
             array(
                 'id'          => "th_tour_thumb",
-                'label'       => __( 'Grid Image', 'westwood'),
+                'label'       => __( 'Alternative Grid Image', 'westwood'),
                 'type'        => 'upload',
                 'class'       => 'ot-upload-attachment-id',
-                'desc' => 'Alternative grid image. Works with Image format.',
+                'desc' => 'The lightbox will continue to use the "Featured Image".',
             ),
             // END PAGE LAYOUT META BOX
         )
