@@ -159,14 +159,15 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
 		$this->end_controls_section();
 
-		// Content
-		$this->start_controls_section(
-			'section_style_testimonial_content',
-			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+
+        // Content
+        $this->start_controls_section(
+            'section_style_testimonial_content',
+            [
+                'label' => __( 'Colors', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
 		$this->add_control(
 			'content_content_color',
@@ -200,87 +201,6 @@ class Themo_Widget_Testimonial extends Widget_Base {
             ]
         );
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'content_typography',
-				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .elementor-testimonial-content',
-			]
-		);*/
-
-
-
-		// Image
-		/*$this->start_controls_section(
-			'section_style_testimonial_image',
-			[
-				'label' => __( 'Image', 'th-widget-pack' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-				'condition' => [
-					'testimonial_image[url]!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'image_size',
-			[
-				'label' => __( 'Image Size', 'th-widget-pack' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-				'range' => [
-					'px' => [
-						'min' => 20,
-						'max' => 200,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-testimonial-wrapper .elementor-testimonial-image img' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'testimonial_image[url]!' => '',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'image_border',
-				'selector' => '{{WRAPPER}} .elementor-testimonial-wrapper .elementor-testimonial-image img',
-				'condition' => [
-					'testimonial_image[url]!' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'image_border_radius',
-			[
-				'label' => __( 'Border Radius', 'th-widget-pack' ),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-testimonial-wrapper .elementor-testimonial-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'testimonial_image[url]!' => '',
-				],
-			]
-		);
-
-		$this->end_controls_section();*/
-
-		// Name
-		/*$this->start_controls_section(
-			'section_style_testimonial_name',
-			[
-				'label' => __( 'Name', 'th-widget-pack' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		); */
 
 		$this->add_control(
 			'name_text_color',
@@ -298,26 +218,6 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'name_typography',
-				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .elementor-testimonial-name',
-			]
-		);*/
-
-		//$this->end_controls_section();
-
-		// Job
-		/*$this->start_controls_section(
-			'section_style_testimonial_job',
-			[
-				'label' => __( 'Job', 'th-widget-pack' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);*/
 
 		$this->add_control(
 			'job_text_color',
@@ -335,17 +235,35 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
-		/*$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'job_typography',
-				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
-				'selector' => '{{WRAPPER}} .elementor-testimonial-job',
-			]
-		);*/
 
 		$this->end_controls_section();
+
+        // Typography
+        $this->start_controls_section(
+            'section_style_testimonial_typography',
+            [
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'text_size',
+            [
+                'label' => __( 'Text Size', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'sm' => __( 'Small', 'th-widget-pack' ),
+                    'md' => __( 'Medium', 'th-widget-pack' ),
+                    'lg' => __( 'Large', 'th-widget-pack' ),
+                ],
+                'default' => 'md',
+            ]
+        );
+
+        $this->end_controls_section();
+
+
 	}
 
 	protected function render() {
@@ -355,6 +273,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-wrapper' );
         $this->add_render_attribute( 'wrapper', 'class', 'th-testimonial-w' );
+
+        $this->add_render_attribute( 'wrapper', 'class', 'th-txt-'.$settings['text_size'] );
 
 		if ( $settings['testimonial_alignment'] ) {
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . esc_attr( $settings['testimonial_alignment'] ) );
@@ -400,6 +320,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
             $th_rating = sprintf("%02d", $th_rating);
             $this->add_render_attribute( 'star-rating', 'class', 'th-star-rating th-star-' . esc_attr( $th_rating ) );
         }
+
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 
