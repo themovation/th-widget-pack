@@ -40,6 +40,20 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'text_size',
+            [
+                'label' => __( 'Content Size', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'sm' => __( 'Small', 'th-widget-pack' ),
+                    'md' => __( 'Medium', 'th-widget-pack' ),
+                    'lg' => __( 'Large', 'th-widget-pack' ),
+                ],
+                'default' => 'md',
+            ]
+        );
+
 
         $this->add_control(
             'star_rating',
@@ -237,31 +251,6 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
 
 		$this->end_controls_section();
-
-        // Typography
-        $this->start_controls_section(
-            'section_style_testimonial_typography',
-            [
-                'label' => __( 'Typography', 'th-widget-pack' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'text_size',
-            [
-                'label' => __( 'Text Size', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'options' => [
-                    'sm' => __( 'Small', 'th-widget-pack' ),
-                    'md' => __( 'Medium', 'th-widget-pack' ),
-                    'lg' => __( 'Large', 'th-widget-pack' ),
-                ],
-                'default' => 'md',
-            ]
-        );
-
-        $this->end_controls_section();
 
 
 	}
