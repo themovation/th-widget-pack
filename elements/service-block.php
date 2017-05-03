@@ -23,100 +23,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 	protected function _register_controls() {
 
-        $this->start_controls_section(
-            'section_align',
-            [
-                'label' => __( 'Position', 'th-widget-pack' ),
-            ]
-        );
-
-        $this->add_control(
-            'content_max_width',
-            [
-                'label' => __( 'Content Width', 'th-widget-pack' ),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'size_units' => [ '%', 'px' ],
-                /*'default' => [
-                    'size' => '100',
-                    'unit' => '%',
-                ],*/
-                'selectors' => [
-                    '{{WRAPPER}} .th-service-block-w' => 'max-width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'header_horizontal_position',
-            [
-                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-left',
-                    ],
-                    'center' => [
-                        'title' => __( 'Center', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-center',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-right',
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
-                ],
-                'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
-                    'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
-                ],
-                'default' => 'center',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'text_align',
-            [
-                'label' => __( 'Content Alignment', 'th-widget-pack' ),
-                'type' => Controls_Manager::CHOOSE,
-                'default' => 'center',
-                'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __( 'Center', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-center',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-right',
-                    ],
-
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-service-block-w .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
-                ],
-            ]
-        );
-
-
-        $this->end_controls_section();
-
 		$this->start_controls_section(
 			'section_icon',
 			[
@@ -129,7 +35,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'fa fa-bus',
+                'default' => 'th-trip travelpack-frontal-school-bus',
 				'icons' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
@@ -178,7 +84,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     'lg' => __( 'Large', 'th-widget-pack' ),
                     'xl' => __( 'Extra Large', 'th-widget-pack' ),
                 ],
-                'default' => 'sm',
+                'default' => 'md',
             ]
         );
 
@@ -286,6 +192,99 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->end_controls_section();
 
 
+        $this->start_controls_section(
+            'section_align',
+            [
+                'label' => __( 'Position', 'th-widget-pack' ),
+            ]
+        );
+
+        $this->add_control(
+            'content_max_width',
+            [
+                'label' => __( 'Content Width', 'th-widget-pack' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'size_units' => [ '%', 'px' ],
+                /*'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],*/
+                'selectors' => [
+                    '{{WRAPPER}} .th-service-block-w' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'header_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'margin-right: auto',
+                    'center' => 'margin: 0 auto',
+                    'right' => 'margin-left: auto',
+                ],
+                'default' => 'center',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'text_align',
+            [
+                'label' => __( 'Content Alignment', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'default' => 'center',
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-service-block-w .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->end_controls_section();
 
         $this->start_controls_section(
 			'section_style_icon',
