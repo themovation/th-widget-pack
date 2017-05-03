@@ -275,7 +275,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			$this->add_render_attribute( 'meta', 'class', 'elementor-has-image' );
 		}*/
 
-        if ( isset($settings['testimonial_image']['id']) && $settings['testimonial_image']['id'] > "") {
+        if ( isset( $settings['testimonial_image']['id']) && $settings['testimonial_image']['id'] > "" ) {
 
             if ( $settings['testimonial_image']['id'] ) $image = wp_get_attachment_image( $settings['testimonial_image']['id'], 'th_img_sm_square', false, array( 'class' => 'th-team-member-image' ) );
 

@@ -331,7 +331,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn-1' );
 
         if ( ! empty( $settings['button_1_link']['url'] ) ) {
-            $this->add_render_attribute( 'btn-1-link', 'href', esc_url($settings['button_1_link']['url']) );
+            $this->add_render_attribute( 'btn-1-link', 'href', esc_url( $settings['button_1_link']['url'] ) );
 
             if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
                 $this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
@@ -341,7 +341,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         $this->add_render_attribute( 'btn-2-link', 'class', 'th-btn-2' );
 
         if ( ! empty( $settings['button_2_link']['url'] ) ) {
-            $this->add_render_attribute( 'btn-2-link', 'href', esc_url($settings['button_2_link']['url']) );
+            $this->add_render_attribute( 'btn-2-link', 'href', esc_url( $settings['button_2_link']['url'] ) );
 
             if ( ! empty( $settings['button_2_link']['is_external'] ) ) {
                 $this->add_render_attribute( 'btn-2-link', 'target', '_blank' );
@@ -352,12 +352,12 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		<div class="th-info-card-wrap">
             <div class="elementor-icon-box-wrapper">
                 <div class="elementor-icon-box-content">
-                    <h3 class="elementor-icon-box-title"><?php echo $settings['title_text']; ?></h3>
-                    <p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
+                    <h3 class="elementor-icon-box-title"><?php echo esc_html( $settings['title_text'] ); ?></h3>
+                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
                 </div>
-                <?php if ( ! empty( $settings['button_1_text']) || ! empty( $settings['button_2_text'])) : ?>
+                <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] ) ) : ?>
                 <div class="th-btn-wrap">
-                    <?php if ( ! empty( $settings['button_1_text'])) : ?>
+                    <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
                         <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
                             <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
                                 <?php echo esc_html( $settings['button_1_text'] ); ?>

@@ -413,15 +413,14 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
         $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {
-            $elm_animation = 'elementor-animation-' . $settings['hover_animation'];
+            $elm_animation = 'elementor-animation-' . esc_attr( $settings['hover_animation'] );
         }
-        $this->add_render_attribute('icon', 'class', ['elementor-icon', $elm_animation]);
-
+        $this->add_render_attribute('icon', 'class', ['elementor-icon', $elm_animation] );
 
         $icon_tag = 'span';
 
         if ( ! empty( $settings['link']['url'] ) ) {
-            $this->add_render_attribute( 'link', 'href', $settings['link']['url'] );
+            $this->add_render_attribute( 'link', 'href', esc_url( $settings['link']['url'] ) );
             $icon_tag = 'a';
 
             if ( ! empty( $settings['link']['is_external'] ) ) {
@@ -432,7 +431,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         $this->add_render_attribute( 'i', 'class', $settings['icon'] );
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
-        $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'.$settings['icon_size'] );
+        $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'. esc_attr( $settings['icon_size'] ) );
 
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
 		$link_attributes = $this->get_render_attribute_string( 'link' );
@@ -447,9 +446,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 </div>
                 <div class="elementor-icon-box-content">
                     <<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
-                        <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
+                        <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo $icon_tag; ?>>
                     </<?php echo $settings['title_size']; ?>>
-                    <p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
+                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
                 </div>
             </div>
 

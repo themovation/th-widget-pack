@@ -308,10 +308,10 @@ class Themo_Widget_Package extends Widget_Base {
 
 			<div class="th-pkg-info">
 				<?php if ( ! empty( $settings['price'] ) ) : ?>
-					<h4><?php echo esc_html( $settings['price']) ?></h4>
+					<h4><?php echo esc_html( $settings['price'] ) ?></h4>
 				<?php endif;?>
 				<?php if ( ! empty( $settings['price_text'] ) ) : ?>
-					<span><?php echo esc_html( $settings['price_text']) ?></span>
+					<span><?php echo esc_html( $settings['price_text'] ) ?></span>
 				<?php endif;?>
 			</div>
 
@@ -319,7 +319,7 @@ class Themo_Widget_Package extends Widget_Base {
             if ( empty( $settings['image']['url'] ) ) {
                 return;
             }
-            if ( isset( $settings['post_image_size'] ) &&  $settings['post_image_size'] > "" && isset( $settings['image']['id'] ) && $settings['image']['id'] > "" ) {
+            if ( isset( $settings['post_image_size'] ) && $settings['post_image_size'] > "" && isset( $settings['image']['id'] ) && $settings['image']['id'] > "" ) {
                 $image_size = esc_attr( $settings['post_image_size'] );
                 if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
             } elseif ( ! empty( $settings['image']['url'] ) ) {

@@ -266,7 +266,7 @@ class Themo_Widget_Team extends Widget_Base {
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => '' ) );
         }
 
-        if (isset($settings['post_image_size']) &&  $settings['post_image_size'] > "" && isset($settings['image']['id']) && $settings['image']['id'] > "") {
+        if ( isset( $settings['post_image_size'] ) &&  $settings['post_image_size'] > "" && isset( $settings['image']['id'] ) && $settings['image']['id'] > "" ) {
             $image_size = esc_attr( $settings['post_image_size'] );
             if ( $settings['image']['id'] ) $image = wp_get_attachment_image( $settings['image']['id'], $image_size, false, array( 'class' => 'th-img-stretch' ) );
         }elseif ( ! empty( $settings['image']['url'] ) ) {

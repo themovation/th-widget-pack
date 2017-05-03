@@ -242,10 +242,10 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
         $this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
         $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
-        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr($settings['button_1_style']) );
+        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr( $settings['button_1_style'] ) );
 
         if ( ! empty( $settings['button_1_link']['url'] ) ) {
-            $this->add_render_attribute( 'btn-1-link', 'href', esc_url($settings['button_1_link']['url']) );
+            $this->add_render_attribute( 'btn-1-link', 'href', esc_url( $settings['button_1_link']['url'] ) );
 
             if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
                 $this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
@@ -257,11 +257,11 @@ class Themo_Widget_TourInfo extends Widget_Base {
 
             <?php if ( ! empty( $settings['price'] ) ) : ?>
             <div class="th-tour-nav-price">
-                <?php echo esc_html( $settings['price']) ?><?php if ( ! empty( $settings['price_text'] ) ) : ?><span><?php echo esc_html( $settings['price_text']) ?></span><?php endif;?>
+                <?php echo esc_html( $settings['price'] ) ?><?php if ( ! empty( $settings['price_text'] ) ) : ?><span><?php echo esc_html( $settings['price_text'] ) ?></span><?php endif;?>
             </div>
             <?php endif;?>
 
-            <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
+            <?php if ( ! empty( $settings['button_1_text'] ) ||  ! empty( $settings['button_1_icon'] ) ) : ?>
                 <div class="th-tour-nav-btn">
                 <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
                     <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
@@ -279,8 +279,8 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				$counter = 1; ?>
                 <?php foreach ( $items as $item ) : ?>
 					<span class="th-tour-nav-item">
-						<i class="<?php echo esc_attr($item['icon']); ?>" aria-hidden="true"></i>
-						<span><?php echo esc_html($item['text']); ?></span>
+						<i class="<?php echo esc_attr( $item['icon'] ); ?>" aria-hidden="true"></i>
+						<span><?php echo esc_html( $item['text'] ); ?></span>
 					</span>
                     <?php
                     $counter++;

@@ -189,10 +189,10 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
 		$this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
 		$this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
-		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr($settings['button_1_style']) );
+		$this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr( $settings['button_1_style'] ) );
 
 		if ( ! empty( $settings['button_1_link']['url'] ) ) {
-			$this->add_render_attribute( 'btn-1-link', 'href', esc_url($settings['button_1_link']['url']) );
+			$this->add_render_attribute( 'btn-1-link', 'href', esc_url( $settings['button_1_link']['url'] ) );
 
 			if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
 				$this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
@@ -202,10 +202,10 @@ class Themo_Widget_Button extends Widget_Base {
 		$this->add_render_attribute( 'btn-2-link', 'class', 'btn-2' );
 		$this->add_render_attribute( 'btn-2-link', 'class', 'btn' );
 		$this->add_render_attribute( 'btn-2-link', 'class', 'th-btn' );
-		$this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . esc_attr($settings['button_2_style']) );
+		$this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . esc_attr( $settings['button_2_style'] ) );
 
 		if ( ! empty( $settings['button_2_link']['url'] ) ) {
-			$this->add_render_attribute( 'btn-2-link', 'href', esc_url($settings['button_2_link']['url']) );
+			$this->add_render_attribute( 'btn-2-link', 'href', esc_url( $settings['button_2_link']['url'] ) );
 
 			if ( ! empty( $settings['button_2_link']['is_external'] ) ) {
 				$this->add_render_attribute( 'btn-2-link', 'target', '_blank' );
@@ -213,7 +213,7 @@ class Themo_Widget_Button extends Widget_Base {
 		}
 		?>
 
-        <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
+        <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_1_icon'] ) ) : ?>
 			<a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
 				<?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
 					<?php echo esc_html( $settings['button_1_text'] ); ?>
@@ -224,7 +224,7 @@ class Themo_Widget_Button extends Widget_Base {
 			</a>
 		<?php endif; ?>
 
-		<?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+		<?php if ( ! empty( $settings['button_2_text'] ) || ! empty( $settings['button_2_icon'] ) ) : ?>
 			<a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
 				<?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
 					<?php echo esc_html( $settings['button_2_text'] ); ?>

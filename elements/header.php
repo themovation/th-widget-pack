@@ -486,12 +486,7 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-
-
-
 		$this->end_controls_section();
-
-
 
 		$this->start_controls_section(
 			'section_style_content',
@@ -501,7 +496,6 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-
 		$this->add_control(
 			'heading_title',
 			[
@@ -510,7 +504,6 @@ class Themo_Widget_Header extends Widget_Base {
 				'separator' => 'before',
 			]
 		);
-
 
 		$this->add_control(
 			'title_color',
@@ -527,7 +520,6 @@ class Themo_Widget_Header extends Widget_Base {
 				],
 			]
 		);
-
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -573,7 +565,7 @@ class Themo_Widget_Header extends Widget_Base {
         if ( ! empty( $settings['hover_animation'] ) ) {
             $elm_animation = 'elementor-animation-' . $settings['hover_animation'];
         }
-        $this->add_render_attribute('icon', 'class', ['elementor-icon', $elm_animation]);
+        $this->add_render_attribute( 'icon', 'class', ['elementor-icon', $elm_animation] );
 
 		$icon_tag = 'span';
 
@@ -589,7 +581,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_render_attribute( 'i', 'class', $settings['icon'] );
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
-        $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'.$settings['icon_size'] );
+        $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-' . esc_attr( $settings['icon_size'] ) );
 
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
 		$link_attributes = $this->get_render_attribute_string( 'link' );
@@ -601,10 +593,10 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
         $this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
         $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
-        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr($settings['button_1_style']) );
+        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr( $settings['button_1_style'] ) );
 
         if ( ! empty( $settings['button_1_link']['url'] ) ) {
-            $this->add_render_attribute( 'btn-1-link', 'href', esc_url($settings['button_1_link']['url']) );
+            $this->add_render_attribute( 'btn-1-link', 'href', esc_url( $settings['button_1_link']['url'] ) );
 
             if ( ! empty( $settings['button_1_link']['is_external'] ) ) {
                 $this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
@@ -614,10 +606,10 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_render_attribute( 'btn-2-link', 'class', 'btn-2' );
         $this->add_render_attribute( 'btn-2-link', 'class', 'btn' );
         $this->add_render_attribute( 'btn-2-link', 'class', 'th-btn' );
-        $this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . esc_attr($settings['button_2_style']) );
+        $this->add_render_attribute( 'btn-2-link', 'class', 'btn-' . esc_attr( $settings['button_2_style'] ) );
 
         if ( ! empty( $settings['button_2_link']['url'] ) ) {
-            $this->add_render_attribute( 'btn-2-link', 'href', esc_url($settings['button_2_link']['url']) );
+            $this->add_render_attribute( 'btn-2-link', 'href', esc_url( $settings['button_2_link']['url'] ) );
 
             if ( ! empty( $settings['button_2_link']['is_external'] ) ) {
                 $this->add_render_attribute( 'btn-2-link', 'target', '_blank' );
@@ -636,13 +628,13 @@ class Themo_Widget_Header extends Widget_Base {
                 <?php } ?>
                 <div class="elementor-icon-box-content">
                     <<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
-                        <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo $settings['title_text']; ?></<?php echo $icon_tag; ?>>
+                        <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo $icon_tag; ?>>
                     </<?php echo $settings['title_size']; ?>>
-                    <p class="elementor-icon-box-description"><?php echo $settings['description_text']; ?></p>
+                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
 
-                    <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon']) || ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                    <?php if ( ! empty( $settings['button_1_text'] ) ||  ! empty( $settings['button_1_icon'] ) || ! empty( $settings['button_2_text'] ) ||  ! empty( $settings['button_2_icon'] ) ) : ?>
                         <div class="th-btn-wrap">
-                            <?php if ( ! empty( $settings['button_1_text']) ||  ! empty( $settings['button_1_icon'])) : ?>
+                            <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_1_icon'] ) ) : ?>
                                 <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
                                     <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
                                         <?php echo esc_html( $settings['button_1_text'] ); ?>
@@ -653,7 +645,7 @@ class Themo_Widget_Header extends Widget_Base {
                                 </a>
                             <?php endif; ?>
 
-                            <?php if ( ! empty( $settings['button_2_text']) ||  ! empty( $settings['button_2_icon'])) : ?>
+                            <?php if ( ! empty( $settings['button_2_text'] ) || ! empty( $settings['button_2_icon'] ) ) : ?>
                                 <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
                                     <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
                                         <?php echo esc_html( $settings['button_2_text'] ); ?>

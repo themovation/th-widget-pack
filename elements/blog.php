@@ -324,15 +324,15 @@ class Themo_Widget_Blog extends Widget_Base {
 			$args['posts_per_page'] = $settings['post_count'];
 		}
 
-        if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' ) {
+        if ( isset( $settings['pagination'] ) && $settings['pagination'] == 'yes' ) {
 
             if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
             elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
             else { $paged = 1; }
 
-            if(isset($settings['post_count'])) {
+            if ( isset( $settings['post_count'] ) ) {
                 $th_offset = ( $paged - 1 ) * $settings['post_count'];
-            } else{
+            } else {
                 $default_posts_per_page = get_option( 'posts_per_page' );
                 $th_offset = ( $paged - 1 ) * $default_posts_per_page;
             }
@@ -357,28 +357,28 @@ class Themo_Widget_Blog extends Widget_Base {
 
 		if ( $widget_wp_query->have_posts() ) { ?>
 
-			<section class="<?php echo $th_section_class; ?>">
+			<section class="<?php echo esc_attr( $th_section_class ); ?>">
 
-                    <div class="mas-blog row">
-                        <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
-						<?php while ( $widget_wp_query->have_posts() ) { $widget_wp_query->the_post(); ?>
+                <div class="mas-blog row">
+                    <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
+					<?php while ( $widget_wp_query->have_posts() ) { $widget_wp_query->the_post(); ?>
 
-							<?php $format = get_post_format() ? get_post_format() : 'standard';?>
+						<?php $format = get_post_format() ? get_post_format() : 'standard';?>
 
-							<div <?php $th_post_classes = "mas-blog-post ".$th_post_classes; post_class( $th_post_classes ); ?>>
-								<?php get_template_part( 'templates/content', $format ); ?>
-							</div>
+						<div <?php $th_post_classes = "mas-blog-post ".$th_post_classes; post_class( $th_post_classes ); ?>>
+							<?php get_template_part( 'templates/content', $format ); ?>
+						</div>
 
-						<?php } ?>
+					<?php } ?>
 
-                        <?php
-                        // Reset postdata
-                        wp_reset_postdata();
-                        ?>
+                    <?php
+                    // Reset postdata
+                    wp_reset_postdata();
+                    ?>
 
-					</div>
-                    <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
-                    <div class="row">
+				</div>
+                <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
+                	<div class="row">
                         <nav class="post-nav">
                             <ul class="pager">
                                 <?php
@@ -391,7 +391,7 @@ class Themo_Widget_Blog extends Widget_Base {
                             </ul>
                         </nav>
                     </div>
-                    <?php } ?>
+                <?php } ?>
 
 			</section>
 			<?php

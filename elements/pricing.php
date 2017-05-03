@@ -566,7 +566,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 				<?php foreach( $settings['pricing'] as $column ) { ?>
 
 
-                    <div class="elementor-repeater-item-<?php echo $column['_id'] ?> th-pricing-column<?php echo( isset($column['price_col_featured']) && $column['price_col_featured'] == 'yes' ? ' th-highlight' : '' ); echo $column_class; ?>">
+                    <div class="elementor-repeater-item-<?php echo esc_attr( $column['_id'] ) ?> th-pricing-column<?php echo( isset( $column['price_col_featured'] ) && $column['price_col_featured'] == 'yes' ? ' th-highlight' : '' ); echo $column_class; ?>">
 
 	                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
 							<div class="th-pricing-title"><?php echo esc_html( $column['price_col_title'] ); ?></div>
@@ -592,7 +592,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 
                         <div class="th-btn-wrap">
 							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
-	                            <?php if ( isset($column['price_col_button_1_show']) && $column['price_col_button_1_show'] == 'yes' ) : ?>
+	                            <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) : ?>
 	                                <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
 	                                <?php $button_style = 'btn-' . esc_attr( $column['price_col_button_1_style'] ); ?>
 	                                <?php echo '<a class="btn th-btn th-button th-button-1 ' . $button_style . '" href="' . esc_url( $column['price_col_button_1_link']['url'] ) . '"' . $target . '>'; ?>
@@ -601,7 +601,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 		                                <?php endif;?>
 	                                <?php echo '</a>'; ?>
 	                            <?php endif; ?>
-	                            <?php if (isset($column['price_col_button_2_show']) && $column['price_col_button_2_show'] == 'yes') : ?>
+	                            <?php if ( isset( $column['price_col_button_2_show'] ) && $column['price_col_button_2_show'] == 'yes' ) : ?>
 	                                <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
 	                                <?php $button_style = 'btn-' . esc_attr( $column['price_col_button_2_style'] ); ?>
 	                                <?php echo '<a class="btn th-btn th-button th-button-2 ' . $button_style . '" href="' . esc_url( $column['price_col_button_2_link']['url'] ) . '"' . $target . '>'; ?>

@@ -128,17 +128,17 @@ class Themo_Widget_Formidable extends Widget_Base {
 
         $settings = $this->get_settings();
 
-        if(isset($settings['shortcode']) && ! empty($settings['shortcode'])){
-            $th_shortcode = sanitize_text_field($settings['shortcode']);
+        if ( isset( $settings['shortcode'] ) && ! empty( $settings['shortcode'] ) ) {
+            $th_shortcode = sanitize_text_field( $settings['shortcode'] );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
             $th_form_border_class = false;
             $th_formidable_class = 'th-form-default';
-            if ( isset($settings['inline_form']) && $settings['inline_form'] > "") :
-                switch ($settings['inline_form']) {
+            if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
+                switch ( $settings['inline_form'] ) {
                     case 'stacked':
                         $th_formidable_class = 'th-form-stacked';
-                        if (isset($settings['slide_shortcode_border']) && $settings['slide_shortcode_border'] != 'none'){
+                        if ( isset( $settings['slide_shortcode_border'] ) && $settings['slide_shortcode_border'] != 'none' ) {
                             $th_form_border_class = $settings['slide_shortcode_border'];
                         }
                         break;
@@ -149,10 +149,10 @@ class Themo_Widget_Formidable extends Widget_Base {
             endif;
 
             $th_cal_align_class = false;
-            if(isset($settings['slide_text_align']) && $settings['slide_text_align'] > ""){
-                switch ($settings['slide_text_align']) {
+            if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
+                switch ( $settings['slide_text_align'] ) {
                     case 'left':
-                        $th_cal_align_class =  ' th-left';
+                        $th_cal_align_class = ' th-left';
                         break;
                     case 'center':
                         $th_cal_align_class = ' th-centered';
@@ -164,9 +164,9 @@ class Themo_Widget_Formidable extends Widget_Base {
             }
 
             $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr($th_cal_align_class));
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr($th_formidable_class));
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr($th_form_border_class));
+            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
+            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
+            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
 
 
             ?>

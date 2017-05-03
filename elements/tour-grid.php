@@ -296,13 +296,13 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         $alt_text = '';
 
                         // Link post type options
-                        if(isset($format) && $format == 'link'){
+                        if ( isset( $format ) && $format == 'link' ) {
 
                             $link_url = get_post_meta( get_the_ID(), '_format_link_url', true );
                             $link_title = get_post_meta( get_the_ID(), '_format_link_title', true );
                             $link_target = get_post_meta( get_the_ID(), '_format_link_target' );
 
-                            if(!$link_url > ""){
+                            if ( ! $link_url > "" ) {
                                 $link_url = get_the_permalink();
                             }
 
@@ -357,11 +357,11 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
-                                if( isset( $img_src ) && $img_src > "" ) {
+                                if ( isset( $img_src ) && $img_src > "" ) {
                                     echo '<img class="img-responsive th-port-img" src="' . esc_url( $img_src ) . '" alt="' . esc_attr( $alt_text ) . '">';
-                                }else{
-                                    if ( has_post_thumbnail(get_the_ID()) ) {
-                                        $featured_img_attr = array('class'	=> "img-responsive th-port-img");
+                                } else {
+                                    if ( has_post_thumbnail( get_the_ID() ) ) {
+                                        $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
                                         echo get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr );
                                     }
                                 }
@@ -407,8 +407,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                         <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
                                     <?php } ?>
                                     <div class="th-port-center">
-                                        <h3 class="th-port-title"><?php echo $th_tour_title; ?></h3>
-                                        <?php echo $th_tour_intro; ?>
+                                        <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
+                                        <?php echo esc_html( $th_tour_intro ); ?>
                                         <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>

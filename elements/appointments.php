@@ -137,9 +137,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings();
 
-        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr($settings['calendar_size']) );
-        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr($settings['calendar_align']) );
-        $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip');
+        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr( $settings['calendar_size'] ) );
+        $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr( $settings['calendar_align'] ) );
+        $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip' );
 
 		?>
 		<div <?php echo $this->get_render_attribute_string( 'th-cal-wrap'); ?>>

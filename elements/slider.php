@@ -1007,10 +1007,10 @@ class Themo_Widget_Slider extends Widget_Base {
 				<?php foreach( $settings['slides'] as $slide ) { ?>
 
 					<?php if ( ! empty( $settings['button_size_1'] ) ) {
-						$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . $settings['button_size_1'] );
+						$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['button_size_1'] ) );
 					} ?>
 					<?php if ( ! empty( $settings['button_size_2'] ) ) {
-						$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . $settings['button_size_2'] );
+						$this->add_render_attribute( 'th-button-2', 'class', 'th-button-size-' . esc_attr( $settings['button_size_2'] ) );
 					} ?>
                     <?php
 
@@ -1021,7 +1021,7 @@ class Themo_Widget_Slider extends Widget_Base {
                             case 'stacked':
                                 $th_formidable_class = 'th-form-stacked';
                                 if ( isset( $slide['slide_shortcode_border'] ) && $slide['slide_shortcode_border'] != 'none' ){
-                                    $th_form_border_class = $slide['slide_shortcode_border'];
+                                    $th_form_border_class = esc_attr( $slide['slide_shortcode_border'] );
                                 }
                                 break;
                             case 'inline':
@@ -1042,8 +1042,8 @@ class Themo_Widget_Slider extends Widget_Base {
                     }
 
                     $th_cal_align_class = false;
-                    if( isset( $slide['slide_text_align'] ) && $slide['slide_text_align'] > "" ) {
-                        switch ($slide['slide_text_align']) {
+                    if ( isset( $slide['slide_text_align'] ) && $slide['slide_text_align'] > "" ) {
+                        switch ( $slide['slide_text_align'] ) {
                             case 'left':
                                 $th_cal_align_class =  ' th-left';
                                 break;
@@ -1073,7 +1073,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                         <?php endif;?>
                                         <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
                                             <div class="th-btn-wrap">
-                                                <?php if ( isset($slide['slide_button_text_1_show'] ) && $slide['slide_button_text_1_show'] == 'yes' ) : ?>
+                                                <?php if ( isset( $slide['slide_button_text_1_show'] ) && $slide['slide_button_text_1_show'] == 'yes' ) : ?>
 													<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
                                                     <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
                                                     <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $slide['slide_button_link_1']['url'] ) . '"' . $target . '>' . esc_html( $slide['slide_button_text_1'] ) . '</a>'; ?>
@@ -1114,7 +1114,7 @@ class Themo_Widget_Slider extends Widget_Base {
 
                                                 switch ( $th_shortcode_name ) {
                                                     case 'formidable':
-                                                        $th_output .= '<div class="' . sanitize_html_class($th_formidable_class) . '">';
+                                                        $th_output .= '<div class="' . sanitize_html_class( $th_formidable_class ) . '">';
                                                         $th_output .= do_shortcode( $th_shortcode );
                                                         $th_output .= '</div>';
                                                         break;
