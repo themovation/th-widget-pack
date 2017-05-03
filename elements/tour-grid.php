@@ -317,24 +317,28 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                             }
                         }
 
+                        // Get Project Format Options
+                        $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false );
+
+                        $fallback_lightbox_url = false;
+
+                        if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
+                            $alt = false;
+                            $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
+                            $alt_text = $alt;
+                            $fallback_lightbox_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
+                        }
+
                         //Image post type options
                         if( isset( $format ) && $format == 'image' ) {
 
-                            // Get Project Format Options
-                            $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false );
-
-                            if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
-                                $alt = false;
-                                $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
-                                $alt_text = $alt;
-                                // Default lightbox url
-                                $link_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
-                            }
+                            // Fallback lightbox url
+                            $link_url = $fallback_lightbox_url;
 
                             // lightbox mark up
-                            $link_url_tmp = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'th_img_xl' );
-                            if( isset( $link_url_tmp[0] ) ) {
-                                $link_url = $link_url_tmp[0];
+                            $featured_url = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'th_img_xl' );
+                            if( isset( $featured_url[0] ) ) {
+                                $link_url = $featured_url[0];
                             }
                             //echo $link_url;
                             $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
