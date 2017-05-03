@@ -164,7 +164,7 @@ function th_register_tour_meta_boxes()
                 'label'       => __( 'Alternative Grid Image', 'westwood'),
                 'type'        => 'upload',
                 'class'       => 'ot-upload-attachment-id',
-                'desc' => 'The lightbox will continue to use the "Featured Image".',
+                'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the tour grid and the Featured Image for the lightbox.',
             ),
             // END PAGE LAYOUT META BOX
         )
