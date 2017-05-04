@@ -220,3 +220,19 @@ function jt_default_post_format_filter( $format ) {
 
     return in_array( $format, jt_get_allowed_project_formats() ) ? $format : 'standard';
 }
+
+// hide any extra fields.
+if ( ! function_exists( 'th_hide_meta_box' ) ) {
+    function th_hide_meta_box($hidden, $screen)
+    {
+        //make sure we are dealing with the correct screen
+        if ('themo_tour' == $screen->post_type) {
+
+            //lets hide everything
+            $hidden = array('postexcerpt', 'slugdiv', 'postcustom', 'trackbacksdiv', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv');
+            //$hidden[] = 'my_custom_meta_box';//for custom meta box, enter the id used in the add_meta_box() function.
+        }
+        return $hidden;
+    }
+    add_filter('default_hidden_meta_boxes','th_hide_meta_box',10,2);
+}

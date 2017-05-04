@@ -394,7 +394,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                         $th_tour_intro = str_replace( '<p', '<p class="th-port-sub"', $th_tour_intro );
                                     }
                                 }else{
-                                    $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
+                                    $th_tour_intro = '<p class="th-port-sub">' . esc_html($th_tour_intro) . '</p>';
                                 }
 
                                 $th_tour_button_text = false;
@@ -408,7 +408,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                     <?php } ?>
                                     <div class="th-port-center">
                                         <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
-                                        <?php echo esc_html( $th_tour_intro ); ?>
+                                        <?php echo $th_tour_intro; ?>
                                         <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>
