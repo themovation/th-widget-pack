@@ -252,7 +252,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     'center' => 'margin: 0 auto',
                     'right' => 'margin-left: auto',
                 ],
-                'default' => 'center',
             ]
         );
 
@@ -261,7 +260,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Content Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
-                'default' => 'center',
                 'options' => [
                     'left' => [
                         'title' => __( 'Left', 'th-widget-pack' ),
