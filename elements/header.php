@@ -336,15 +336,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'button_1_icon',
-            [
-                'label' => __( 'Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-				'icons' => themo_icons(),
-				'include' => themo_fa_icons()
-            ]
-        );
+
 
         $this->add_control(
             'button_1_link',
@@ -395,15 +387,6 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'button_2_icon',
-            [
-                'label' => __( 'Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-				'icons' => themo_icons(),
-				'include' => themo_fa_icons()
-            ]
-        );
 
         $this->add_control(
             'button_2_link',
@@ -632,26 +615,20 @@ class Themo_Widget_Header extends Widget_Base {
                     </<?php echo $settings['title_size']; ?>>
                     <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
 
-                    <?php if ( ! empty( $settings['button_1_text'] ) ||  ! empty( $settings['button_1_icon'] ) || ! empty( $settings['button_2_text'] ) ||  ! empty( $settings['button_2_icon'] ) ) : ?>
+                    <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] )  ) : ?>
                         <div class="th-btn-wrap">
-                            <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_1_icon'] ) ) : ?>
+                            <?php if ( ! empty( $settings['button_1_text'] )  ) : ?>
                                 <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
                                     <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
                                         <?php echo esc_html( $settings['button_1_text'] ); ?>
                                     <?php endif; ?>
-                                    <?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
-                                        <i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
-                                    <?php endif; ?>
                                 </a>
                             <?php endif; ?>
 
-                            <?php if ( ! empty( $settings['button_2_text'] ) || ! empty( $settings['button_2_icon'] ) ) : ?>
+                            <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
                                 <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
                                     <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
                                         <?php echo esc_html( $settings['button_2_text'] ); ?>
-                                    <?php endif; ?>
-                                    <?php if ( ! empty( $settings['button_2_icon'] ) ) : ?>
-                                        <i class="<?php echo esc_attr( $settings['button_2_icon'] ); ?>"></i>
                                     <?php endif; ?>
                                 </a>
                             <?php endif; ?>
@@ -691,34 +668,29 @@ class Themo_Widget_Header extends Widget_Base {
 
                     <#  var button_1_link_url = '#';
                         var button_1_text = '';
-                        var button_1_icon = '';
+
                         if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
                         if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
-                        if ( settings.button_1_icon ) { var button_1_icon = settings.button_1_icon }
+
 
                         var button_2_link_url = '#';
                         var button_2_text = '';
-                        var button_2_icon = '';
+
                         if ( settings.button_2_link.url ) { var button_2_link_url = settings.button_2_link.url }
                         if ( settings.button_2_text ) { var button_2_text = settings.button_2_text }
-                        if ( settings.button_2_icon ) { var button_2_icon = settings.button_2_icon }
+
                     #>
-                    <# if ( button_1_text || button_1_icon || button_2_text || button_2_icon ) { #>
+                    <# if ( button_1_text || button_2_text  ) { #>
                         <div class="th-btn-wrap">
-                            <# if ( button_1_text || button_1_icon ) { #>
+                            <# if ( button_1_text ) { #>
                                 <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
                                     {{{ settings.button_1_text }}}
-                                    <# if ( settings.button_1_icon ) { #>
-                                        <i class="{{ settings.button_1_icon }}"></i>
-                                    <# } #>
+
                                 </a>
                             <# } #>
-                            <# if ( button_2_text || button_2_icon  ) { #>
+                            <# if ( button_2_text ) { #>
                                 <a class="btn btn-2 th-btn btn-{{ settings.button_2_style }}" href="{{ button_2_link_url }}">
                                     {{{ settings.button_2_text }}}
-                                    <# if ( settings.button_2_icon ) { #>
-                                        <i class="{{ settings.button_2_icon }}"></i>
-                                    <# } #>
                                 </a>
                             <# } #>
                         </div>

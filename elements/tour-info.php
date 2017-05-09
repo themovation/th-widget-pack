@@ -144,15 +144,6 @@ class Themo_Widget_TourInfo extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'button_1_icon',
-            [
-                'label' => __( 'Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-                'icons' => themo_icons(),
-				'include' => themo_fa_icons()
-            ]
-        );
 
         $this->add_control(
             'button_1_link',
@@ -261,14 +252,11 @@ class Themo_Widget_TourInfo extends Widget_Base {
             </div>
             <?php endif;?>
 
-            <?php if ( ! empty( $settings['button_1_text'] ) ||  ! empty( $settings['button_1_icon'] ) ) : ?>
+            <?php if ( ! empty( $settings['button_1_text'] )  ) : ?>
                 <div class="th-tour-nav-btn">
                 <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
                     <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
                         <?php echo esc_html( $settings['button_1_text'] ); ?>
-                    <?php endif; ?>
-                    <?php if ( ! empty( $settings['button_1_icon'] ) ) : ?>
-                        <i class="<?php echo esc_attr( $settings['button_1_icon'] ); ?>"></i>
                     <?php endif; ?>
                 </a>
                 </div>
@@ -307,9 +295,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 <div class="th-tour-nav-btn">
                     <a class="btn th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
                         {{{ settings.button_1_text }}}
-                        <# if ( settings.button_1_icon ) { #>
-                            <i class="{{ settings.button_1_icon }}"></i>
-                        <# } #>
+
                     </a>
                 </div>
             <# } #>

@@ -180,22 +180,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                             ],
                         ],
                     ],
-                    [
-                        'name' => 'price_col_button_1_icon',
-                        'label' => __( 'Button 1 Icon', 'th-widget-pack' ),
-                        'type' => Controls_Manager::ICON,
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
-                        ],
-						'icons' => themo_icons(),
-						'include' => themo_fa_icons()
-                    ],
 					[
 						'name' => 'price_col_button_1_link',
 						'label' => __( 'Button 1 Link', 'th-widget-pack' ),
@@ -266,22 +250,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                                 ],
                             ],
                         ],
-                    ],
-                    [
-                        'name' => 'price_col_button_2_icon',
-                        'label' => __( 'Button 2 Icon', 'th-widget-pack' ),
-                        'type' => Controls_Manager::ICON,
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_2_show',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
-                        ],
-						'icons' => themo_icons(),
-						'include' => themo_fa_icons()
                     ],
                     [
                         'name' => 'price_col_button_2_link',
