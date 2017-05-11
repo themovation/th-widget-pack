@@ -142,14 +142,23 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         );
 
 
-        $default_hover = '#000000';
-        $default_rgba = 'rgba(0, 0, 0, 0.75)';
+        $default_rgba = 'rgba(0, 0, 0, 0.75)'; // Fallback RGBA\
+
         if ( function_exists( 'get_theme_mod' ) ) {
-            $default_hover = get_theme_mod( 'themo_color_primary', $default_hover );
-            $default_hex = get_theme_mod( 'themo_color_primary', $default_hover );
-            list($r, $g, $b) = sscanf($default_hex, "#%02x%02x%02x");
-            $default_rgba = "rgba(".$r .", ". $g. ", ". $b . ", 0.75)";
+
+            $default_hex = get_theme_mod( 'color_primary', $default_rgba );
+
+            // Test if HEX, then convert to RGBA, else use RGBA
+            if (isset($default_hex) && strpos($default_hex, '#') !== false) {
+                list($r, $g, $b) = sscanf($default_hex, "#%02x%02x%02x");
+                $default_rgba = "rgba(".$r .", ". $g. ", ". $b . ", 0.75)";
+            }elseif(isset($default_hex)){
+                $default_rgba = $default_hex;
+            }
+
+            error_log("RGBA: ".$default_rgba,0);
         }
+
 
         $this->add_control(
             'hover_color',
