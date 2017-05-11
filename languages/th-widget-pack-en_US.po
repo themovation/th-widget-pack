@@ -1,0 +1,1806 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Embark Theme Widget Pack\n"
+"POT-Creation-Date: 2017-05-10 17:27-0700\n"
+"PO-Revision-Date: 2017-05-10 17:27-0700\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: th-widget-pack.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: elements/appointments.php:13
+msgid "Booked Appointment Calendar"
+msgstr ""
+
+#: elements/appointments.php:28 elements/appointments.php:35
+#: elements/appointments.php:112
+msgid "Tooltip Title"
+msgstr ""
+
+#: elements/appointments.php:37
+msgid "Book Today"
+msgstr ""
+
+#: elements/appointments.php:38
+msgid "Book here"
+msgstr ""
+
+#: elements/appointments.php:46
+msgid "Tooltip Background"
+msgstr ""
+
+#: elements/appointments.php:65
+msgid "Calendar"
+msgstr ""
+
+#: elements/appointments.php:72 elements/formidable-form.php:39
+#: elements/slider.php:449
+msgid "Shortcode"
+msgstr ""
+
+#: elements/appointments.php:74 elements/slider.php:727
+msgid "[booked-calendar]"
+msgstr ""
+
+#: elements/appointments.php:75
+msgid "[add_shortcode_here]"
+msgstr ""
+
+#: elements/appointments.php:83 elements/slider.php:520
+msgid "Calendar Size"
+msgstr ""
+
+#: elements/appointments.php:87 elements/blog.php:81 elements/header.php:178
+#: elements/package.php:54 elements/pricing.php:29
+#: elements/service-block.php:84 elements/slider.php:29 elements/slider.php:525
+#: elements/team.php:54 elements/testimonial.php:51
+msgid "Large"
+msgstr ""
+
+#: elements/appointments.php:88 elements/header.php:176 elements/pricing.php:27
+#: elements/service-block.php:82 elements/slider.php:27 elements/slider.php:524
+#: elements/testimonial.php:49
+msgid "Small"
+msgstr ""
+
+#: elements/appointments.php:96
+msgid "Align Calendar"
+msgstr ""
+
+#: elements/appointments.php:100 elements/button.php:143
+#: elements/formidable-form.php:86 elements/header.php:66
+#: elements/header.php:98 elements/header.php:193 elements/header.php:270
+#: elements/header.php:407 elements/image-gallery.php:145
+#: elements/info-card.php:69 elements/info-card.php:101
+#: elements/itinerary.php:113 elements/package.php:111
+#: elements/service-block.php:99 elements/service-block.php:235
+#: elements/service-block.php:265 elements/slider.php:573
+#: elements/slider.php:638 elements/testimonial.php:150 inc/setup.php:206
+msgid "Left"
+msgstr ""
+
+#: elements/appointments.php:101 elements/button.php:147
+#: elements/formidable-form.php:90 elements/header.php:70
+#: elements/header.php:102 elements/header.php:274 elements/header.php:411
+#: elements/image-gallery.php:149 elements/info-card.php:73
+#: elements/info-card.php:105 elements/itinerary.php:112
+#: elements/package.php:115 elements/service-block.php:239
+#: elements/service-block.php:269 elements/slider.php:577
+#: elements/slider.php:642 elements/testimonial.php:154
+msgid "Center"
+msgstr ""
+
+#: elements/appointments.php:102 elements/button.php:151
+#: elements/formidable-form.php:94 elements/header.php:74
+#: elements/header.php:106 elements/header.php:201 elements/header.php:278
+#: elements/header.php:415 elements/image-gallery.php:153
+#: elements/info-card.php:77 elements/info-card.php:109
+#: elements/package.php:119 elements/service-block.php:107
+#: elements/service-block.php:243 elements/service-block.php:273
+#: elements/slider.php:581 elements/slider.php:646 elements/testimonial.php:158
+#: inc/setup.php:214
+msgid "Right"
+msgstr ""
+
+#: elements/appointments.php:120
+msgid "Tooltip Color"
+msgstr ""
+
+#: elements/blog.php:13
+msgid "Blog"
+msgstr ""
+
+#: elements/blog.php:25
+msgid "All Categories"
+msgstr ""
+
+#: elements/blog.php:44 elements/tour-grid.php:66
+msgid "Layout"
+msgstr ""
+
+#: elements/blog.php:51
+msgid "Number of posts to display"
+msgstr ""
+
+#: elements/blog.php:61
+msgid "Category Filter"
+msgstr ""
+
+#: elements/blog.php:73 elements/package.php:46 elements/team.php:46
+msgid "Image Size"
+msgstr ""
+
+#: elements/blog.php:77 elements/package.php:50 elements/team.php:50
+msgid "Standard"
+msgstr ""
+
+#: elements/blog.php:78 elements/package.php:51 elements/team.php:51
+msgid "Landscape"
+msgstr ""
+
+#: elements/blog.php:79 elements/package.php:52 elements/team.php:52
+msgid "Portrait"
+msgstr ""
+
+#: elements/blog.php:80 elements/header.php:160 elements/package.php:53
+#: elements/service-block.php:66 elements/team.php:53
+msgid "Square"
+msgstr ""
+
+#: elements/blog.php:92
+msgid "Max. Number of Columns"
+msgstr ""
+
+#: elements/blog.php:96
+msgid "2 Columns"
+msgstr ""
+
+#: elements/blog.php:97
+msgid "3 Columns"
+msgstr ""
+
+#: elements/blog.php:98
+msgid "4 Columns"
+msgstr ""
+
+#: elements/blog.php:99
+msgid "5 Columns"
+msgstr ""
+
+#: elements/blog.php:110
+msgid "Pagination"
+msgstr ""
+
+#: elements/blog.php:113 elements/google-maps.php:97
+#: elements/image-gallery.php:98 elements/pricing.php:130
+#: elements/pricing.php:201 elements/pricing.php:272 elements/slider.php:188
+#: elements/slider.php:255 elements/slider.php:354 elements/slider.php:498
+#: elements/slider.php:777 elements/testimonial.php:63
+msgid "Yes"
+msgstr ""
+
+#: elements/blog.php:114 elements/google-maps.php:98
+#: elements/image-gallery.php:97 elements/pricing.php:131
+#: elements/pricing.php:202 elements/pricing.php:273 elements/slider.php:189
+#: elements/slider.php:256 elements/slider.php:355 elements/slider.php:499
+#: elements/slider.php:778 elements/testimonial.php:64
+msgid "No"
+msgstr ""
+
+#: elements/blog.php:123 elements/call-to-action.php:38
+#: elements/google-maps.php:126 elements/header.php:241 elements/header.php:485
+#: elements/info-card.php:134 elements/package.php:85 elements/pricing.php:87
+#: elements/service-block.php:147 elements/service-block.php:347
+#: elements/slider.php:233
+msgid "Title"
+msgstr ""
+
+#: elements/blog.php:131 elements/header.php:494 elements/info-card.php:260
+#: elements/itinerary.php:131 elements/package.php:244 elements/pricing.php:305
+#: elements/pricing.php:398 elements/service-block.php:357
+#: elements/slider.php:660
+msgid "Title Color"
+msgstr ""
+
+#: elements/blog.php:148 elements/blog.php:184 elements/blog.php:220
+#: elements/blog.php:256
+msgid "Typography"
+msgstr ""
+
+#: elements/blog.php:159
+msgid "Meta"
+msgstr ""
+
+#: elements/blog.php:167
+msgid "Meta Color"
+msgstr ""
+
+#: elements/blog.php:195
+msgid "Excerpt"
+msgstr ""
+
+#: elements/blog.php:203
+msgid "Excerpt Color"
+msgstr ""
+
+#: elements/blog.php:231
+msgid "Read More"
+msgstr ""
+
+#: elements/blog.php:239
+msgid "Read More Color"
+msgstr ""
+
+#: elements/blog.php:388
+msgid "&larr; Older posts"
+msgstr ""
+
+#: elements/blog.php:389
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: elements/blog.php:400 elements/tour-grid.php:424
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: elements/button.php:13 elements/tour-info.php:111
+msgid "Button"
+msgstr ""
+
+#: elements/button.php:28 elements/call-to-action.php:48
+#: elements/header.php:303 elements/pricing.php:127 elements/slider.php:253
+msgid "Button 1"
+msgstr ""
+
+#: elements/button.php:35 elements/button.php:86 elements/call-to-action.php:55
+#: elements/call-to-action.php:105 elements/header.php:311
+#: elements/header.php:362 elements/slider.php:270 elements/tour-info.php:118
+msgid "Button Text"
+msgstr ""
+
+#: elements/button.php:37 elements/button.php:38 elements/button.php:88
+#: elements/call-to-action.php:57 elements/call-to-action.php:58
+#: elements/call-to-action.php:107 elements/header.php:364
+#: elements/info-card.php:206 elements/tour-info.php:120
+#: elements/tour-info.php:121
+msgid "Book Tour"
+msgstr ""
+
+#: elements/button.php:46 elements/button.php:96 elements/call-to-action.php:66
+#: elements/call-to-action.php:116 elements/header.php:321
+#: elements/header.php:372 elements/tour-info.php:129
+msgid "Button Style"
+msgstr ""
+
+#: elements/button.php:50 elements/button.php:100
+#: elements/call-to-action.php:70 elements/call-to-action.php:120
+#: elements/header.php:325 elements/header.php:376 elements/pricing.php:157
+#: elements/pricing.php:228 elements/slider.php:291 elements/slider.php:388
+#: elements/tour-info.php:133
+msgid "Standard Primary"
+msgstr ""
+
+#: elements/button.php:51 elements/button.php:101
+#: elements/call-to-action.php:71 elements/call-to-action.php:121
+#: elements/header.php:326 elements/header.php:377 elements/pricing.php:158
+#: elements/pricing.php:229 elements/slider.php:292 elements/slider.php:389
+#: elements/tour-info.php:134
+msgid "Standard Accent"
+msgstr ""
+
+#: elements/button.php:52 elements/button.php:102
+#: elements/call-to-action.php:72 elements/call-to-action.php:122
+#: elements/header.php:327 elements/header.php:378 elements/pricing.php:159
+#: elements/pricing.php:230 elements/slider.php:293 elements/slider.php:390
+#: elements/tour-info.php:135
+msgid "Standard Light"
+msgstr ""
+
+#: elements/button.php:53 elements/button.php:103
+#: elements/call-to-action.php:73 elements/call-to-action.php:123
+#: elements/header.php:328 elements/header.php:379 elements/pricing.php:160
+#: elements/pricing.php:231 elements/slider.php:294 elements/slider.php:391
+#: elements/tour-info.php:136
+msgid "Standard Dark"
+msgstr ""
+
+#: elements/button.php:54 elements/button.php:104
+#: elements/call-to-action.php:74 elements/call-to-action.php:124
+#: elements/header.php:329 elements/header.php:380 elements/pricing.php:161
+#: elements/pricing.php:232 elements/slider.php:295 elements/slider.php:392
+#: elements/tour-info.php:137
+msgid "Ghost Primary"
+msgstr ""
+
+#: elements/button.php:55 elements/button.php:105
+#: elements/call-to-action.php:75 elements/call-to-action.php:125
+#: elements/header.php:330 elements/header.php:381 elements/pricing.php:162
+#: elements/pricing.php:233 elements/slider.php:296 elements/slider.php:393
+#: elements/tour-info.php:138
+msgid "Ghost Accent"
+msgstr ""
+
+#: elements/button.php:56 elements/button.php:106
+#: elements/call-to-action.php:76 elements/call-to-action.php:126
+#: elements/header.php:331 elements/header.php:382 elements/pricing.php:163
+#: elements/pricing.php:234 elements/slider.php:297 elements/slider.php:394
+#: elements/tour-info.php:139
+msgid "Ghost Light"
+msgstr ""
+
+#: elements/button.php:57 elements/button.php:107
+#: elements/call-to-action.php:77 elements/call-to-action.php:127
+#: elements/header.php:332 elements/header.php:383 elements/pricing.php:164
+#: elements/pricing.php:235 elements/slider.php:298 elements/slider.php:395
+#: elements/tour-info.php:140
+msgid "Ghost Dark"
+msgstr ""
+
+#: elements/button.php:58 elements/button.php:108
+#: elements/call-to-action.php:78 elements/call-to-action.php:128
+#: elements/header.php:333 elements/header.php:384 elements/pricing.php:165
+#: elements/pricing.php:236 elements/slider.php:299 elements/slider.php:396
+#: elements/tour-info.php:141
+msgid "CTA Primary"
+msgstr ""
+
+#: elements/button.php:59 elements/button.php:109
+#: elements/call-to-action.php:79 elements/call-to-action.php:129
+#: elements/header.php:334 elements/header.php:385 elements/pricing.php:166
+#: elements/pricing.php:237 elements/slider.php:300 elements/slider.php:397
+#: elements/tour-info.php:142
+msgid "CTA Accent"
+msgstr ""
+
+#: elements/button.php:67 elements/button.php:118
+#: elements/call-to-action.php:87 elements/call-to-action.php:138
+#: elements/header.php:344 elements/header.php:394 elements/package.php:181
+#: elements/service-block.php:175 elements/team.php:100
+#: elements/tour-info.php:151
+msgid "Link"
+msgstr ""
+
+#: elements/button.php:69 elements/button.php:120
+#: elements/call-to-action.php:89 elements/call-to-action.php:140
+#: elements/header.php:346 elements/header.php:396 elements/info-card.php:195
+#: elements/info-card.php:216 elements/tour-info.php:153
+msgid "#booktour"
+msgstr ""
+
+#: elements/button.php:79 elements/call-to-action.php:98
+#: elements/header.php:354 elements/pricing.php:199 elements/slider.php:352
+msgid "Button 2"
+msgstr ""
+
+#: elements/button.php:129
+msgid "Button Alignment"
+msgstr ""
+
+#: elements/button.php:139 elements/image-gallery.php:141
+#: elements/itinerary.php:108 elements/testimonial.php:145
+msgid "Alignment"
+msgstr ""
+
+#: elements/call-to-action.php:13
+msgid "Call to Action"
+msgstr ""
+
+#: elements/call-to-action.php:28 elements/call-to-action.php:35
+#: elements/tour-info.php:96
+msgid "Text"
+msgstr ""
+
+#: elements/call-to-action.php:37
+msgid "Does this look like fun, book tickets today!"
+msgstr ""
+
+#: elements/call-to-action.php:149 elements/info-card.php:252
+#: elements/itinerary.php:123 elements/testimonial.php:181
+#: elements/tour-info.php:162
+msgid "Colors"
+msgstr ""
+
+#: elements/call-to-action.php:157 elements/image-gallery.php:175
+#: elements/tour-info.php:214
+msgid "Text Color"
+msgstr ""
+
+#: elements/formidable-form.php:13
+msgid "Formidable Form"
+msgstr ""
+
+#: elements/formidable-form.php:32
+msgid "Form shortcode"
+msgstr ""
+
+#: elements/formidable-form.php:41 elements/formidable-form.php:42
+msgid "[formidable id=3]"
+msgstr ""
+
+#: elements/formidable-form.php:49 elements/slider.php:459
+msgid "Formidable Form Style"
+msgstr ""
+
+#: elements/formidable-form.php:53 elements/header.php:144
+#: elements/image-gallery.php:83 elements/service-block.php:50
+#: elements/slider.php:463
+msgid "Default"
+msgstr ""
+
+#: elements/formidable-form.php:54 elements/slider.php:464
+msgid "Inline"
+msgstr ""
+
+#: elements/formidable-form.php:55 elements/slider.php:465
+msgid "Stacked"
+msgstr ""
+
+#: elements/formidable-form.php:63 elements/slider.php:475
+msgid "Form Background"
+msgstr ""
+
+#: elements/formidable-form.php:67 elements/image-gallery.php:72
+#: elements/slider.php:479 elements/tour-grid.php:33 elements/tour-grid.php:47
+msgid "None"
+msgstr ""
+
+#: elements/formidable-form.php:68 elements/slider.php:480 inc/setup.php:135
+msgid "Light"
+msgstr ""
+
+#: elements/formidable-form.php:69 elements/slider.php:481 inc/setup.php:136
+msgid "Dark"
+msgstr ""
+
+#: elements/formidable-form.php:81
+msgid "Align"
+msgstr ""
+
+#: elements/formidable-form.php:105 elements/header.php:36
+#: elements/info-card.php:39 elements/service-block.php:205
+#: elements/slider.php:541
+msgid "Content Width"
+msgstr ""
+
+#: elements/google-maps.php:13
+msgid "Google Maps"
+msgstr ""
+
+#: elements/google-maps.php:28
+msgid "Map"
+msgstr ""
+
+#: elements/google-maps.php:32
+msgid "London Eye, London, United Kingdom"
+msgstr ""
+
+#: elements/google-maps.php:36
+msgid "Map Address"
+msgstr ""
+
+#: elements/google-maps.php:47
+msgid "Zoom Level"
+msgstr ""
+
+#: elements/google-maps.php:64
+msgid "Google Maps API"
+msgstr ""
+
+#: elements/google-maps.php:65
+msgid ""
+"<a href=\"https://developers.google.com/maps/documentation/static-maps/\" "
+"target=\"_blank\">Get an API key</a>"
+msgstr ""
+
+#: elements/google-maps.php:74 elements/slider.php:748
+msgid "Height"
+msgstr ""
+
+#: elements/google-maps.php:94
+msgid "Prevent Scroll"
+msgstr ""
+
+#: elements/google-maps.php:108 elements/image-gallery.php:106
+#: elements/itinerary.php:74 elements/testimonial.php:168
+msgid "View"
+msgstr ""
+
+#: elements/google-maps.php:119
+msgid "Text Block"
+msgstr ""
+
+#: elements/google-maps.php:127
+msgid "Company Co."
+msgstr ""
+
+#: elements/google-maps.php:136
+msgid "Business Address"
+msgstr ""
+
+#: elements/google-maps.php:137
+msgid ""
+"1366 Main Street\n"
+"ancouver Canada\n"
+"V8V 3K6"
+msgstr ""
+
+#: elements/google-maps.php:146
+msgid "Hours"
+msgstr ""
+
+#: elements/google-maps.php:147
+msgid ""
+"Monday to Friday: 10am - 6pm\n"
+"Saturday: 11am - 4pm\n"
+"Sunday: Closed"
+msgstr ""
+
+#: elements/google-maps.php:156 elements/info-card.php:183
+msgid "Link 1 Text"
+msgstr ""
+
+#: elements/google-maps.php:157
+msgid "Call Us"
+msgstr ""
+
+#: elements/google-maps.php:166
+msgid "Link 1 URL"
+msgstr ""
+
+#: elements/google-maps.php:168 elements/google-maps.php:190
+#: elements/pricing.php:182 elements/pricing.php:253
+#: elements/service-block.php:186 elements/slider.php:319
+#: elements/slider.php:416 elements/slider.php:442
+msgid "http://your-link.com"
+msgstr ""
+
+#: elements/google-maps.php:178 elements/info-card.php:204
+msgid "Link 2 Text"
+msgstr ""
+
+#: elements/google-maps.php:179
+msgid "Email Us"
+msgstr ""
+
+#: elements/google-maps.php:188
+msgid "Link 2 URL"
+msgstr ""
+
+#: elements/header.php:13
+msgid "Header"
+msgstr ""
+
+#: elements/header.php:29 elements/header.php:188 elements/info-card.php:32
+#: elements/service-block.php:94 elements/service-block.php:198
+msgid "Position"
+msgstr ""
+
+#: elements/header.php:62 elements/info-card.php:65
+#: elements/service-block.php:231 elements/slider.php:568
+msgid "Horizontal Position"
+msgstr ""
+
+#: elements/header.php:93 elements/info-card.php:96
+#: elements/service-block.php:261
+msgid "Content Alignment"
+msgstr ""
+
+#: elements/header.php:123 elements/header.php:434
+#: elements/service-block.php:29 elements/service-block.php:290
+#: elements/team.php:139 elements/tour-info.php:87
+msgid "Icon"
+msgstr ""
+
+#: elements/header.php:130 elements/service-block.php:36
+msgid "Choose Icon"
+msgstr ""
+
+#: elements/header.php:141 elements/service-block.php:47
+#: elements/slider.php:534
+msgid "Style"
+msgstr ""
+
+#: elements/header.php:145 elements/service-block.php:51
+msgid "Filled"
+msgstr ""
+
+#: elements/header.php:146 elements/service-block.php:52
+msgid "Framed"
+msgstr ""
+
+#: elements/header.php:156 elements/service-block.php:62
+msgid "Shape"
+msgstr ""
+
+#: elements/header.php:159 elements/service-block.php:65
+msgid "Circle"
+msgstr ""
+
+#: elements/header.php:173 elements/service-block.php:79
+msgid "Icon Size"
+msgstr ""
+
+#: elements/header.php:177 elements/itinerary.php:99 elements/pricing.php:28
+#: elements/service-block.php:83 elements/slider.php:28
+#: elements/testimonial.php:50
+msgid "Medium"
+msgstr ""
+
+#: elements/header.php:179 elements/pricing.php:30
+#: elements/service-block.php:85 elements/slider.php:30
+msgid "Extra Large"
+msgstr ""
+
+#: elements/header.php:197 elements/service-block.php:103
+#: elements/slider.php:605 elements/testimonial.php:133
+msgid "Top"
+msgstr ""
+
+#: elements/header.php:217 elements/info-card.php:126
+#: elements/service-block.php:123
+msgid "Title & Description"
+msgstr ""
+
+#: elements/header.php:224 elements/service-block.php:130
+msgid "Title HTML Tag"
+msgstr ""
+
+#: elements/header.php:227 elements/service-block.php:133
+msgid "H1"
+msgstr ""
+
+#: elements/header.php:228 elements/service-block.php:134
+msgid "H2"
+msgstr ""
+
+#: elements/header.php:229 elements/service-block.php:135
+msgid "H3"
+msgstr ""
+
+#: elements/header.php:230 elements/service-block.php:136
+msgid "H4"
+msgstr ""
+
+#: elements/header.php:231 elements/service-block.php:137
+msgid "H5"
+msgstr ""
+
+#: elements/header.php:232 elements/service-block.php:138
+msgid "H6"
+msgstr ""
+
+#: elements/header.php:243 elements/header.php:244 elements/info-card.php:136
+#: elements/info-card.php:137 elements/slider.php:716 elements/slider.php:731
+msgid "Discover the great outdoors"
+msgstr ""
+
+#: elements/header.php:252 elements/header.php:519 elements/info-card.php:145
+#: elements/pricing.php:119 elements/service-block.php:158
+#: elements/service-block.php:383
+msgid "Description"
+msgstr ""
+
+#: elements/header.php:254 elements/info-card.php:147 elements/slider.php:717
+#: elements/slider.php:724 elements/slider.php:732
+msgid ""
+"Come and join the thrill and excitement of white water rafting with the "
+"adventure rafting team!"
+msgstr ""
+
+#: elements/header.php:255 elements/info-card.php:148
+msgid "Your Description"
+msgstr ""
+
+#: elements/header.php:256 elements/info-card.php:149
+#: elements/service-block.php:162
+msgid "Input icon text here"
+msgstr ""
+
+#: elements/header.php:266
+msgid "Description Alignment Override"
+msgstr ""
+
+#: elements/header.php:296
+msgid "Buttons"
+msgstr ""
+
+#: elements/header.php:314 elements/info-card.php:185
+#: elements/info-card.php:186
+msgid "View All Tours"
+msgstr ""
+
+#: elements/header.php:403
+msgid "Alignment Override"
+msgstr ""
+
+#: elements/header.php:442 elements/service-block.php:298
+msgid "Primary Color"
+msgstr ""
+
+#: elements/header.php:459 elements/service-block.php:315
+msgid "Secondary Color"
+msgstr ""
+
+#: elements/header.php:477 elements/itinerary.php:61 elements/package.php:28
+#: elements/package.php:96 elements/package.php:203 elements/pricing.php:297
+#: elements/service-block.php:338 elements/slider.php:228
+#: elements/slider.php:243 elements/team.php:87 elements/team.php:167
+#: elements/testimonial.php:35 elements/testimonial.php:189
+#: elements/tour-grid.php:175
+msgid "Content"
+msgstr ""
+
+#: elements/header.php:528 elements/info-card.php:276 elements/pricing.php:370
+#: elements/pricing.php:466 elements/service-block.php:392
+msgid "Description Color"
+msgstr ""
+
+#: elements/image-gallery.php:13 elements/image-gallery.php:28
+msgid "Image Gallery"
+msgstr ""
+
+#: elements/image-gallery.php:35
+msgid "Add Images"
+msgstr ""
+
+#: elements/image-gallery.php:56
+msgid "Columns"
+msgstr ""
+
+#: elements/image-gallery.php:66 elements/service-block.php:184
+msgid "Link to"
+msgstr ""
+
+#: elements/image-gallery.php:70
+msgid "Media File"
+msgstr ""
+
+#: elements/image-gallery.php:71
+msgid "Attachment Page"
+msgstr ""
+
+#: elements/image-gallery.php:80
+msgid "Ordering"
+msgstr ""
+
+#: elements/image-gallery.php:84
+msgid "Random"
+msgstr ""
+
+#: elements/image-gallery.php:93
+msgid "Image Stretch"
+msgstr ""
+
+#: elements/image-gallery.php:117
+msgid "Caption"
+msgstr ""
+
+#: elements/image-gallery.php:125
+msgid "Display"
+msgstr ""
+
+#: elements/image-gallery.php:129
+msgid "Show"
+msgstr ""
+
+#: elements/image-gallery.php:130
+msgid "Hide"
+msgstr ""
+
+#: elements/image-gallery.php:157
+msgid "Justified"
+msgstr ""
+
+#: elements/info-card.php:13
+msgid "Info Card"
+msgstr ""
+
+#: elements/info-card.php:175
+msgid "Links"
+msgstr ""
+
+#: elements/info-card.php:193
+msgid "Link 1"
+msgstr ""
+
+#: elements/info-card.php:214
+msgid "Link 2"
+msgstr ""
+
+#: elements/info-card.php:227 elements/slider.php:46
+msgid "Background"
+msgstr ""
+
+#: elements/info-card.php:234
+msgid "Color"
+msgstr ""
+
+#: elements/info-card.php:292
+msgid "Link 1 Color"
+msgstr ""
+
+#: elements/info-card.php:308
+msgid "Link 2 Color"
+msgstr ""
+
+#: elements/itinerary.php:13 elements/itinerary.php:28
+msgid "Itinerary"
+msgstr ""
+
+#: elements/itinerary.php:35 elements/tour-info.php:60
+#: elements/tour-info.php:67
+msgid "Items"
+msgstr ""
+
+#: elements/itinerary.php:39
+msgid "Day 1 Training"
+msgstr ""
+
+#: elements/itinerary.php:40 elements/itinerary.php:44
+#: elements/itinerary.php:48
+msgid ""
+"Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at "
+"lobortis. Fusce dapibus, tellus ac cursus commodo."
+msgstr ""
+
+#: elements/itinerary.php:43
+msgid "Day 2 Rafting Whitewater"
+msgstr ""
+
+#: elements/itinerary.php:47
+msgid "Day 3 Rafting The Chilko"
+msgstr ""
+
+#: elements/itinerary.php:54
+msgid "Title & Content"
+msgstr ""
+
+#: elements/itinerary.php:57
+msgid "Itinerary Title"
+msgstr ""
+
+#: elements/itinerary.php:63
+msgid "Itinerary Content"
+msgstr ""
+
+#: elements/itinerary.php:83
+msgid "Start all Items Expanded"
+msgstr ""
+
+#: elements/itinerary.php:85 elements/slider.php:826 elements/slider.php:866
+#: elements/slider.php:879 elements/slider.php:928 elements/slider.php:940
+#: elements/slider.php:953 elements/slider.php:966 elements/slider.php:979
+#: elements/tour-grid.php:139 inc/setup.php:122 inc/setup.php:152
+msgid "Off"
+msgstr ""
+
+#: elements/itinerary.php:86 elements/slider.php:825 elements/slider.php:865
+#: elements/slider.php:878 elements/slider.php:927 elements/slider.php:939
+#: elements/slider.php:952 elements/slider.php:965 elements/slider.php:978
+#: elements/tour-grid.php:138 inc/setup.php:121 inc/setup.php:151
+msgid "On"
+msgstr ""
+
+#: elements/itinerary.php:94
+msgid "Width"
+msgstr ""
+
+#: elements/itinerary.php:98
+msgid "Narrow"
+msgstr ""
+
+#: elements/itinerary.php:100
+msgid "Full Width"
+msgstr ""
+
+#: elements/itinerary.php:142 elements/package.php:261 elements/slider.php:682
+#: elements/team.php:218
+msgid "Content Color"
+msgstr ""
+
+#: elements/itinerary.php:153
+msgid "Vertical Line Color"
+msgstr ""
+
+#: elements/itinerary.php:164
+msgid "Dot Color"
+msgstr ""
+
+#: elements/package.php:13
+msgid "Package"
+msgstr ""
+
+#: elements/package.php:35 elements/slider.php:432 elements/team.php:35
+msgid "Image"
+msgstr ""
+
+#: elements/package.php:74
+msgid "Pre Title"
+msgstr ""
+
+#: elements/package.php:76 elements/package.php:77
+msgid "25% Off"
+msgstr ""
+
+#: elements/package.php:87 elements/package.php:88
+msgid "Chilko Tour"
+msgstr ""
+
+#: elements/package.php:106
+msgid "Content Align"
+msgstr ""
+
+#: elements/package.php:134 elements/package.php:141 elements/pricing.php:103
+#: elements/tour-info.php:29 elements/tour-info.php:36
+msgid "Price"
+msgstr ""
+
+#: elements/package.php:143 elements/package.php:144 elements/tour-info.php:38
+#: elements/tour-info.php:39
+msgid "$299"
+msgstr ""
+
+#: elements/package.php:152 elements/tour-info.php:47
+msgid "Price Text"
+msgstr ""
+
+#: elements/package.php:154 elements/package.php:155 elements/pricing.php:52
+#: elements/pricing.php:63 elements/pricing.php:75 elements/pricing.php:114
+#: elements/tour-info.php:49 elements/tour-info.php:50
+msgid "/person"
+msgstr ""
+
+#: elements/package.php:163
+msgid "Price Background"
+msgstr ""
+
+#: elements/package.php:188 elements/team.php:107 elements/team.php:148
+msgid "Link URL"
+msgstr ""
+
+#: elements/package.php:211 elements/pricing.php:337 elements/pricing.php:431
+#: elements/tour-info.php:170
+msgid "Price Color"
+msgstr ""
+
+#: elements/package.php:227 elements/pricing.php:353 elements/pricing.php:448
+#: elements/tour-info.php:186
+msgid "Price Text Color"
+msgstr ""
+
+#: elements/package.php:277 elements/pricing.php:280 elements/slider.php:51
+#: elements/team.php:175
+msgid "Background Color"
+msgstr ""
+
+#: elements/pricing.php:13
+msgid "Pricing"
+msgstr ""
+
+#: elements/pricing.php:26 elements/slider.php:26
+msgid "Extra Small"
+msgstr ""
+
+#: elements/pricing.php:38 elements/pricing.php:45
+msgid "Pricing Table"
+msgstr ""
+
+#: elements/pricing.php:49
+msgid "1 Hour Tour"
+msgstr ""
+
+#: elements/pricing.php:50 elements/pricing.php:61 elements/pricing.php:73
+#: elements/pricing.php:98
+msgid "3 People +"
+msgstr ""
+
+#: elements/pricing.php:51
+msgid "$59"
+msgstr ""
+
+#: elements/pricing.php:53 elements/pricing.php:64 elements/pricing.php:76
+#: elements/pricing.php:122
+msgid ""
+"Return Shuttle\n"
+"Basic Training & Safety\n"
+"Full Safety Suits\n"
+"Food Provided"
+msgstr ""
+
+#: elements/pricing.php:54 elements/pricing.php:65 elements/pricing.php:69
+#: elements/pricing.php:77
+msgid "yes"
+msgstr ""
+
+#: elements/pricing.php:55 elements/pricing.php:66 elements/pricing.php:78
+#: elements/pricing.php:140
+msgid "BOOK THIS TOUR"
+msgstr ""
+
+#: elements/pricing.php:56 elements/pricing.php:79
+msgid "ghost-primary"
+msgstr ""
+
+#: elements/pricing.php:57 elements/pricing.php:68 elements/pricing.php:80
+msgid "#book"
+msgstr ""
+
+#: elements/pricing.php:60
+msgid "2 Hour Tour"
+msgstr ""
+
+#: elements/pricing.php:62
+msgid "$79"
+msgstr ""
+
+#: elements/pricing.php:67 elements/slider.php:720
+msgid "ghost-light"
+msgstr ""
+
+#: elements/pricing.php:72
+msgid "3 Hour Tour"
+msgstr ""
+
+#: elements/pricing.php:74 elements/pricing.php:106
+msgid "$99"
+msgstr ""
+
+#: elements/pricing.php:90
+msgid "1 hour tour"
+msgstr ""
+
+#: elements/pricing.php:95
+msgid "Sub Title"
+msgstr ""
+
+#: elements/pricing.php:111
+msgid "Price text"
+msgstr ""
+
+#: elements/pricing.php:137 elements/slider.php:268
+msgid "Button 1 Text"
+msgstr ""
+
+#: elements/pricing.php:153 elements/slider.php:287
+msgid "Button 1 Style"
+msgstr ""
+
+#: elements/pricing.php:180 elements/slider.php:317
+msgid "Button 1 Link"
+msgstr ""
+
+#: elements/pricing.php:209 elements/slider.php:366
+msgid "Button 2 Text"
+msgstr ""
+
+#: elements/pricing.php:224 elements/slider.php:384
+msgid "Button 2 Style"
+msgstr ""
+
+#: elements/pricing.php:251 elements/slider.php:414
+msgid "Button 2 Link"
+msgstr ""
+
+#: elements/pricing.php:270 elements/pricing.php:390
+msgid "Featured"
+msgstr ""
+
+#: elements/pricing.php:321 elements/pricing.php:414
+msgid "Sub Title Color"
+msgstr ""
+
+#: elements/service-block.php:13
+msgid "Service Block"
+msgstr ""
+
+#: elements/service-block.php:149 elements/service-block.php:150
+msgid "Free Shuttle"
+msgstr ""
+
+#: elements/service-block.php:160 elements/service-block.php:161
+msgid "Shuttle to and from rafting trip. Store your belongings safely."
+msgstr ""
+
+#: elements/slider.php:13
+msgid "Slider"
+msgstr ""
+
+#: elements/slider.php:38 elements/slider.php:711
+msgid "Slides"
+msgstr ""
+
+#: elements/slider.php:63
+msgid "Background Image"
+msgstr ""
+
+#: elements/slider.php:77
+msgid "Background Repeat"
+msgstr ""
+
+#: elements/slider.php:81
+msgid "No Repeat"
+msgstr ""
+
+#: elements/slider.php:82
+msgid "Repeat All"
+msgstr ""
+
+#: elements/slider.php:83
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: elements/slider.php:84
+msgid "Repeat Vertically "
+msgstr ""
+
+#: elements/slider.php:104
+msgid "Background Attachment"
+msgstr ""
+
+#: elements/slider.php:108
+msgid "Fixed"
+msgstr ""
+
+#: elements/slider.php:109
+msgid "Scroll"
+msgstr ""
+
+#: elements/slider.php:129
+msgid "Background Position"
+msgstr ""
+
+#: elements/slider.php:133
+msgid "Left Top"
+msgstr ""
+
+#: elements/slider.php:134
+msgid "Left Center"
+msgstr ""
+
+#: elements/slider.php:135
+msgid "Left Bottom"
+msgstr ""
+
+#: elements/slider.php:136
+msgid "Center Top"
+msgstr ""
+
+#: elements/slider.php:137
+msgid "Center Center"
+msgstr ""
+
+#: elements/slider.php:138
+msgid "Center Bottom"
+msgstr ""
+
+#: elements/slider.php:139
+msgid "Right Top"
+msgstr ""
+
+#: elements/slider.php:140
+msgid "Right Center"
+msgstr ""
+
+#: elements/slider.php:141
+msgid "Right Bottom"
+msgstr ""
+
+#: elements/slider.php:161
+msgid "Background Size"
+msgstr ""
+
+#: elements/slider.php:165
+msgid "Cover"
+msgstr ""
+
+#: elements/slider.php:166
+msgid "Auto"
+msgstr ""
+
+#: elements/slider.php:186
+msgid "Background Overlay"
+msgstr ""
+
+#: elements/slider.php:208
+msgid "Overlay Color"
+msgstr ""
+
+#: elements/slider.php:235
+msgid "Slide Title"
+msgstr ""
+
+#: elements/slider.php:245
+msgid "Slide Content"
+msgstr ""
+
+#: elements/slider.php:368
+msgid "More Info"
+msgstr ""
+
+#: elements/slider.php:440
+msgid "Image URL"
+msgstr ""
+
+#: elements/slider.php:496
+msgid "Booked Calendar Tooltip"
+msgstr ""
+
+#: elements/slider.php:507
+msgid "Tooltip Text"
+msgstr ""
+
+#: elements/slider.php:512 elements/slider.php:513
+msgid "Book Your Tour Today"
+msgstr ""
+
+#: elements/slider.php:600
+msgid "Vertical Position"
+msgstr ""
+
+#: elements/slider.php:609
+msgid "Middle"
+msgstr ""
+
+#: elements/slider.php:613
+msgid "Bottom"
+msgstr ""
+
+#: elements/slider.php:633
+msgid "Text Align"
+msgstr ""
+
+#: elements/slider.php:673
+msgid "Title Typography"
+msgstr ""
+
+#: elements/slider.php:698
+msgid "Content Typography"
+msgstr ""
+
+#: elements/slider.php:718
+msgid "View all Tours"
+msgstr ""
+
+#: elements/slider.php:719
+msgid "#3A3B74"
+msgstr ""
+
+#: elements/slider.php:723
+msgid "Book Your Tickets"
+msgstr ""
+
+#: elements/slider.php:725
+msgid "#4A4A4A"
+msgstr ""
+
+#: elements/slider.php:726 elements/slider.php:735
+msgid "no"
+msgstr ""
+
+#: elements/slider.php:733
+msgid "#7A85E8"
+msgstr ""
+
+#: elements/slider.php:734
+msgid "inline"
+msgstr ""
+
+#: elements/slider.php:736
+msgid "[formidable id=\"3\"]"
+msgstr ""
+
+#: elements/slider.php:775
+msgid "Down Arrow"
+msgstr ""
+
+#: elements/slider.php:786
+msgid "Down Arrow URL anchor"
+msgstr ""
+
+#: elements/slider.php:788
+msgid "#prices"
+msgstr ""
+
+#: elements/slider.php:798
+msgid "Down Arrow Color"
+msgstr ""
+
+#: elements/slider.php:815
+msgid "Slider Options"
+msgstr ""
+
+#: elements/slider.php:823
+msgid "Auto play"
+msgstr ""
+
+#: elements/slider.php:828
+msgid "Start slider automatically"
+msgstr ""
+
+#: elements/slider.php:835
+msgid "Transition Style"
+msgstr ""
+
+#: elements/slider.php:839
+msgid "Fade"
+msgstr ""
+
+#: elements/slider.php:840
+msgid "Slide"
+msgstr ""
+
+#: elements/slider.php:842
+msgid "Controls the transition style, \"fade\" or \"slide\""
+msgstr ""
+
+#: elements/slider.php:849
+msgid "Easing"
+msgstr ""
+
+#: elements/slider.php:853
+msgid "Swing"
+msgstr ""
+
+#: elements/slider.php:854
+msgid "Linear"
+msgstr ""
+
+#: elements/slider.php:856
+msgid "Determines the easing method used in jQuery transitions"
+msgstr ""
+
+#: elements/slider.php:863
+msgid "Infinite Loop"
+msgstr ""
+
+#: elements/slider.php:869
+msgid "Gives the slider a seamless infinite loop"
+msgstr ""
+
+#: elements/slider.php:876
+msgid "Smooth Height"
+msgstr ""
+
+#: elements/slider.php:882
+msgid "Animate the height of the slider smoothly for slides of varying height"
+msgstr ""
+
+#: elements/slider.php:889
+msgid "Slideshow Speed"
+msgstr ""
+
+#: elements/slider.php:900
+msgid "Set the speed of the slideshow cycling, in milliseconds (1 s = 1000 ms)"
+msgstr ""
+
+#: elements/slider.php:907
+msgid "Animation Speed"
+msgstr ""
+
+#: elements/slider.php:918
+msgid "Set the speed of animations, in milliseconds (1 s = 1000 ms)"
+msgstr ""
+
+#: elements/slider.php:925
+msgid "Randomize"
+msgstr ""
+
+#: elements/slider.php:930
+msgid "Randomize slide order, on load"
+msgstr ""
+
+#: elements/slider.php:937
+msgid "Pause On Hover"
+msgstr ""
+
+#: elements/slider.php:943
+msgid ""
+"Pause the slideshow when hovering over slider, then resume when no longer "
+"hovering"
+msgstr ""
+
+#: elements/slider.php:950
+msgid "Touch"
+msgstr ""
+
+#: elements/slider.php:956
+msgid "Allow touch swipe navigation of the slider on enabled devices"
+msgstr ""
+
+#: elements/slider.php:963
+msgid "Direction Nav"
+msgstr ""
+
+#: elements/slider.php:969
+msgid "Create previous/next arrow navigation"
+msgstr ""
+
+#: elements/slider.php:976
+msgid "Paging Control"
+msgstr ""
+
+#: elements/slider.php:982
+msgid "Create navigation for paging control of each slide"
+msgstr ""
+
+#: elements/team.php:13
+msgid "Team Member"
+msgstr ""
+
+#: elements/team.php:28
+msgid "About"
+msgstr ""
+
+#: elements/team.php:65 elements/testimonial.php:108
+#: elements/testimonial.php:222
+msgid "Name"
+msgstr ""
+
+#: elements/team.php:67 elements/team.php:68
+msgid "Justin Case"
+msgstr ""
+
+#: elements/team.php:76
+msgid "Job Title"
+msgstr ""
+
+#: elements/team.php:78 elements/team.php:79
+msgid "Equipment"
+msgstr ""
+
+#: elements/team.php:90
+msgid ""
+"Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at "
+"lobortis."
+msgstr ""
+
+#: elements/team.php:122 elements/team.php:129
+msgid "Social Icons"
+msgstr ""
+
+#: elements/team.php:186
+msgid "Name Color"
+msgstr ""
+
+#: elements/team.php:202
+msgid "Job Title Color"
+msgstr ""
+
+#: elements/team.php:234 elements/tour-info.php:202
+msgid "Icon Color"
+msgstr ""
+
+#: elements/testimonial.php:13 elements/testimonial.php:28
+msgid "Testimonial"
+msgstr ""
+
+#: elements/testimonial.php:38 elements/testimonial.php:39
+msgid ""
+"“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing "
+"trip. Big group, but easily accommodated by Thrillz Co. The food was "
+"amazing, the weather was perfect, and the rafting was fun”"
+msgstr ""
+
+#: elements/testimonial.php:46
+msgid "Content Size"
+msgstr ""
+
+#: elements/testimonial.php:61 elements/testimonial.php:205
+msgid "Star Rating"
+msgstr ""
+
+#: elements/testimonial.php:97
+msgid "Add Image"
+msgstr ""
+
+#: elements/testimonial.php:118 elements/testimonial.php:239
+msgid "Job"
+msgstr ""
+
+#: elements/testimonial.php:128
+msgid "Image Position"
+msgstr ""
+
+#: elements/testimonial.php:132
+msgid "Aside"
+msgstr ""
+
+#: elements/tour-grid.php:13
+msgid "Tour Grid"
+msgstr ""
+
+#: elements/tour-grid.php:73
+msgid "Show filter bar"
+msgstr ""
+
+#: elements/tour-grid.php:82
+msgid "Select Individually"
+msgstr ""
+
+#: elements/tour-grid.php:94
+msgid "Select by Group"
+msgstr ""
+
+#: elements/tour-grid.php:106
+msgid "Order by"
+msgstr ""
+
+#: elements/tour-grid.php:110
+msgid "Date Published"
+msgstr ""
+
+#: elements/tour-grid.php:111
+msgid "Drag and Drop"
+msgstr ""
+
+#: elements/tour-grid.php:119
+msgid "Number of Columns to show"
+msgstr ""
+
+#: elements/tour-grid.php:123
+msgid "2"
+msgstr ""
+
+#: elements/tour-grid.php:124
+msgid "3"
+msgstr ""
+
+#: elements/tour-grid.php:125
+msgid "4"
+msgstr ""
+
+#: elements/tour-grid.php:126
+msgid "5"
+msgstr ""
+
+#: elements/tour-grid.php:134
+msgid "Gutter"
+msgstr ""
+
+#: elements/tour-grid.php:157
+msgid "Hover Color"
+msgstr ""
+
+#: elements/tour-grid.php:227
+msgid "Sort:"
+msgstr ""
+
+#: elements/tour-grid.php:228
+msgid "All"
+msgstr ""
+
+#: elements/tour-info.php:13
+msgid "Tour Info Bar"
+msgstr ""
+
+#: elements/tour-info.php:71
+msgid "fa fa-compass"
+msgstr ""
+
+#: elements/tour-info.php:72
+msgid "4.5 Miles"
+msgstr ""
+
+#: elements/tour-info.php:75
+msgid "fa fa-clock-o"
+msgstr ""
+
+#: elements/tour-info.php:76
+msgid "3 Hours"
+msgstr ""
+
+#: elements/tour-info.php:79
+msgid "fa fa-user-o"
+msgstr ""
+
+#: elements/tour-info.php:80
+msgid "3+ People"
+msgstr ""
+
+#: inc/cpt_tours.php:13
+msgctxt "Post Type General Name"
+msgid "Tours"
+msgstr ""
+
+#: inc/cpt_tours.php:14
+msgctxt "Post Type Singular Name"
+msgid "Tour"
+msgstr ""
+
+#: inc/cpt_tours.php:15 inc/cpt_tours.php:42
+msgid "Tours"
+msgstr ""
+
+#: inc/cpt_tours.php:16
+msgid "Parent Tour:"
+msgstr ""
+
+#: inc/cpt_tours.php:17
+msgid "All Tours"
+msgstr ""
+
+#: inc/cpt_tours.php:18
+msgid "View Tour"
+msgstr ""
+
+#: inc/cpt_tours.php:19
+msgid "Add New Tours"
+msgstr ""
+
+#: inc/cpt_tours.php:20
+msgid "Add New"
+msgstr ""
+
+#: inc/cpt_tours.php:21
+msgid "Edit Tour"
+msgstr ""
+
+#: inc/cpt_tours.php:22
+msgid "Update Tour"
+msgstr ""
+
+#: inc/cpt_tours.php:23
+msgid "Search Tour"
+msgstr ""
+
+#: inc/cpt_tours.php:24
+msgid "Not found"
+msgstr ""
+
+#: inc/cpt_tours.php:25
+msgid "Not found in Trash"
+msgstr ""
+
+#: inc/cpt_tours.php:41
+msgid "themo_tour"
+msgstr ""
+
+#: inc/cpt_tours.php:81
+msgctxt "Taxonomy General Name"
+msgid "Tour Types"
+msgstr ""
+
+#: inc/cpt_tours.php:82
+msgctxt "Taxonomy Singular Name"
+msgid "Tour Type"
+msgstr ""
+
+#: inc/cpt_tours.php:83
+msgid "Tour Types"
+msgstr ""
+
+#: inc/cpt_tours.php:84
+msgid "All Tour Types"
+msgstr ""
+
+#: inc/cpt_tours.php:85
+msgid "Parent Tour Type"
+msgstr ""
+
+#: inc/cpt_tours.php:86
+msgid "Parent Tour Type:"
+msgstr ""
+
+#: inc/cpt_tours.php:87
+msgid "New Tour Type Name"
+msgstr ""
+
+#: inc/cpt_tours.php:88
+msgid "Add New Tour Type"
+msgstr ""
+
+#: inc/cpt_tours.php:89
+msgid "Edit Tour Type"
+msgstr ""
+
+#: inc/cpt_tours.php:90
+msgid "Update Tour Type"
+msgstr ""
+
+#: inc/cpt_tours.php:91
+msgid "Separate Tour Type with commas"
+msgstr ""
+
+#: inc/cpt_tours.php:92
+msgid "Search Tour Types"
+msgstr ""
+
+#: inc/cpt_tours.php:93
+msgid "Add or remove Tour type"
+msgstr ""
+
+#: inc/cpt_tours.php:94
+msgid "Choose from the most Tour types"
+msgstr ""
+
+#: inc/cpt_tours.php:95
+msgid "Not Found"
+msgstr ""
+
+#: inc/cpt_tours.php:131
+msgid "Tour Grid Options"
+msgstr ""
+
+#: inc/cpt_tours.php:142
+msgid "Displayed above the title."
+msgstr ""
+
+#: inc/cpt_tours.php:148
+msgid "Defaults to the page title"
+msgstr ""
+
+#: inc/cpt_tours.php:154
+msgid "Displayed below the title. 8 - 10 words recommended"
+msgstr ""
+
+#: inc/cpt_tours.php:160
+msgid "Displayed below the intro."
+msgstr ""
+
+#: inc/cpt_tours.php:164
+msgid "Alternative Grid Image"
+msgstr ""
+
+#: inc/elementor-section.php:8
+msgid "Themovation Elements"
+msgstr ""
+
+#: inc/setup.php:118
+msgid "Transparent Header"
+msgstr ""
+
+#: inc/setup.php:130
+msgid "Transparent Header Content Style"
+msgstr ""
+
+#: inc/setup.php:147
+msgid "Use Alternative Logo"
+msgstr ""
+
+#: inc/setup.php:148
+msgid ""
+"You can upload an alternative logo under Appearance / Customize / Theme "
+"Options / Logo / "
+msgstr ""
+
+#: inc/setup.php:168
+msgid "Title  Margin"
+msgstr ""
+
+#: inc/setup.php:201
+msgid "Sidebar"
+msgstr ""
+
+#: inc/setup.php:210
+msgid "No Sidebar"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Embark Theme Widget Pack"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "themovation.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A widget pack for the Embark Theme"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Themovation"
+msgstr ""

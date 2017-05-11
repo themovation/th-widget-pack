@@ -55,8 +55,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'price_col_button_1_text' => __( 'BOOK THIS TOUR', 'th-widget-pack' ),
                         'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
                         'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
-                        'price_col_featured' => __( '', 'th-widget-pack' ),
-                        'price_col_background' => __( '', 'th-widget-pack' ),
                     ],
                     [
                         'price_col_title' => __( '2 Hour Tour', 'th-widget-pack' ),
@@ -69,7 +67,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'price_col_button_1_style' => __( 'ghost-light', 'th-widget-pack' ),
                         'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
                         'price_col_featured' => __( 'yes', 'th-widget-pack' ),
-                        'price_col_background' => __( '', 'th-widget-pack' ),
                     ],
                     [
                         'price_col_title' => __( '3 Hour Tour', 'th-widget-pack' ),
@@ -81,8 +78,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'price_col_button_1_text' => __( 'BOOK THIS TOUR', 'th-widget-pack' ),
                         'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
                         'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
-                        'price_col_featured' => __( '', 'th-widget-pack' ),
-                        'price_col_background' => __( '', 'th-widget-pack' ),
                     ],
 
                 ],

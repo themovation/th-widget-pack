@@ -23,14 +23,16 @@ define( 'THEMO_COLOR_PRIMARY', '#3A3B74' );
 define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
 
 
-
-if ( ! function_exists( 'themovation_so_wb_translation' ) ) :
-// Making the plugin translation ready
-    function themovation_so_wb_translation() {
-        load_plugin_textdomain( 'th-widget-pack', false, THEMO_PLUGIN_BASE  . '/languages/' );
-    }
-endif;
-add_action( 'plugins_loaded', 'themovation_so_wb_translation' );
-
 // Run Setup
 require_once THEMO_PATH . 'inc/setup.php';
+
+// Making the plugin translation ready
+if ( ! function_exists( 'th_translation_ready' ) ) :
+    function th_translation_ready() {
+        $locale = apply_filters('plugin_locale', get_locale(), "th-widget-pack");
+        //echo $locale;
+        load_textdomain("th-widget-pack", WP_LANG_DIR.'/th-widget-pack/'.'th-widget-pack'.'-'.$locale.'.mo');
+        load_plugin_textdomain( 'th-widget-pack', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+    }
+endif;
+add_action( 'plugins_loaded', 'th_translation_ready' );
