@@ -613,7 +613,7 @@ class Themo_Widget_Header extends Widget_Base {
                     <<?php echo $settings['title_size']; ?> class="elementor-icon-box-title">
                         <<?php echo implode( ' ', [ $icon_tag, $link_attributes ] ); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo $icon_tag; ?>>
                     </<?php echo $settings['title_size']; ?>>
-                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
+                    <p class="elementor-icon-box-description"><?php echo wp_filter_post_kses( $settings['description_text'] ); ?></p>
 
                     <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] )  ) : ?>
                         <div class="th-btn-wrap">
