@@ -1,0 +1,31 @@
+
+@font-face {
+  font-family: "person";
+  src: url("fonts/person.eot");
+  src: url("fonts/person.eot?#iefix") format("embedded-opentype"),
+       url("fonts/person.woff") format("woff"),
+       url("fonts/person.ttf") format("truetype"),
+       url("fonts/person.svg#person") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "person";
+    src: url("fonts/person.svg#person") format("svg");
+  }
+}
+
+[class^="person-"]:before, [class*=" person-"]:before,
+[class^="person-"]:after, [class*=" person-"]:after {
+    font-family: person;
+    font-style: normal;
+}
+
+.person-plus:before { content: "\f100"; }
+.person-symbol:before { content: "\f101"; }
+.person-male:before { content: "\f102"; }
+.person-female:before { content: "\f103"; }
+.person-male-circle:before { content: "\f104"; }
+.person-female-circle:before { content: "\f105"; }
