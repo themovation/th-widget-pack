@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Embark Theme Widget Pack
- * Version: 1.0.0
+ * Version: 1.0.1
  * Plugin URI: themovation.com
  * Description: A widget pack for the Embark Theme
  * Author: Themovation
@@ -12,7 +12,7 @@
  */
 
 
-define('THEMO_VERSION', '1.0.0');
+define('THEMO_VERSION', '1.0.1');
 
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
