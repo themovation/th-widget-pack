@@ -17,12 +17,14 @@ add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 add_action( 'elementor/frontend/after_register_styles', function() {
     wp_enqueue_style( 'themo-linea', THEMO_ASSETS_URL . 'linea/linea.css', array(), THEMO_VERSION);
     wp_enqueue_style( 'themo-travelpack', THEMO_ASSETS_URL . 'travelpack/travelpack.css', array(), THEMO_VERSION);
+    wp_enqueue_style( 'themo-person', THEMO_ASSETS_URL . 'person/person.css', array(), THEMO_VERSION);
 } );
 
 // EDITOR // Before the editor scripts enqueuing.
 add_action( 'elementor/editor/before_enqueue_scripts', function() {
     wp_enqueue_style( 'themo-linea', THEMO_ASSETS_URL . 'linea/linea.css', array(), THEMO_VERSION);
     wp_enqueue_style( 'themo-travelpack', THEMO_ASSETS_URL  . 'travelpack/travelpack.css', array(), THEMO_VERSION);
+    wp_enqueue_style( 'themo-person', THEMO_ASSETS_URL . 'person/person.css', array(), THEMO_VERSION);
     // JS for the Editor
     wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
 } );
