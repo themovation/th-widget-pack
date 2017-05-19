@@ -4,7 +4,7 @@ function themo_icons() {
     return [
         'th-trip travelpack-aqualung-bottles' => 'aqualung-bottles',
         'th-trip travelpack-baseball-headgear' => 'baseball-headgear',
-        'th-trip travelpack-beach-bag' => 'each-bag',
+        'th-trip travelpack-beach-bag' => 'beach-bag',
         'th-trip travelpack-beach-ball' => 'beach-ball',
         'th-trip travelpack-beach-mattress' => 'beach-mattress',
         'th-trip travelpack-big-trip-caravan' => 'big-trip-caravan',
