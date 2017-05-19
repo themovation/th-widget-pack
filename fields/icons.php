@@ -100,6 +100,13 @@ function themo_icons() {
         'th-trip travelpack-two-palm-trees-island' => 'two-palm-trees-island',
         'th-trip travelpack-women-hat' => 'women-hat',
         'th-trip travelpack-world-wide-web' => 'world-wide-web',
+        /* Persons Pack */
+        'th-trip th-prsn travelpack-man' => 'man',
+        'th-trip th-prsn travelpack-man-circle' => 'man-circle',
+        'th-trip th-prsn travelpack-woman' => 'woman',
+        'th-trip th-prsn travelpack-woman-circle' => 'woman-circle',
+        'th-trip th-prsn travelpack-person-plus' => 'person-plus',
+        'th-trip th-prsn travelpack-person-symbol' => 'person-symbol',
         /* Linea Arrows */
         'th-linea icon-arrows-anticlockwise' => 'arrows-anticlockwise',
         'th-linea icon-arrows-anticlockwise-dashed' => 'arrows-anticlockwise-dashed',
@@ -823,12 +830,6 @@ function themo_icons() {
         'th-linea icon-weather-wind-sw' => 'weather-wind-sw',
         'th-linea icon-weather-wind-w' => 'weather-wind-w',
         'th-linea icon-weather-windgust' => 'weather-windgust',
-        'th-prsn person-plus' => 'person-plus',
-        'th-prsn person-symbol' => 'person-symbol',
-        'th-prsn person-male' => 'person-male',
-        'th-prsn person-female' => 'person-female',
-        'th-prsn person-male-circle' => 'person-male-circle',
-        'th-prsn person-female-circle' => 'person-female-circle'
     ];
 }
 
@@ -933,6 +934,13 @@ function themo_fa_icons() {
         'th-trip travelpack-two-palm-trees-island',
         'th-trip travelpack-women-hat',
         'th-trip travelpack-world-wide-web',
+        /* Persons Pack */
+        'th-trip th-prsn travelpack-man',
+        'th-trip th-prsn travelpack-man-circle',
+        'th-trip th-prsn travelpack-woman',
+        'th-trip th-prsn travelpack-woman-circle',
+        'th-trip th-prsn travelpack-person-plus',
+        'th-trip th-prsn travelpack-person-symbol',
         /* Linea Arrows */
         'th-linea icon-arrows-anticlockwise',
         'th-linea icon-arrows-anticlockwise-dashed',
@@ -1676,11 +1684,5 @@ function themo_fa_icons() {
         'fa fa-youtube',
         'fa fa-youtube-play',
         'fa fa-youtube-square',
-        'th-prsn person-plus',
-        'th-prsn person-symbol',
-        'th-prsn person-male',
-        'th-prsn person-female',
-        'th-prsn person-male-circle',
-        'th-prsn person-female-circle'
     ];
 }
