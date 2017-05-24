@@ -202,23 +202,23 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 
 		$ids = wp_list_pluck( $settings['wp_gallery'], 'id' );
 
-		$this->add_render_attribute( 'shortcode', 'ids', implode( ',', $ids ) );
-		$this->add_render_attribute( 'shortcode', 'size', $settings['thumbnail_size'] );
+		$this->add_render_attribute( 'shortcode', 'ids', esc_attr(implode( ',', $ids )) );
+		$this->add_render_attribute( 'shortcode', 'size', esc_attr($settings['thumbnail_size']) );
 
 		if ( $settings['gallery_columns'] ) {
-			$this->add_render_attribute( 'shortcode', 'columns', $settings['gallery_columns'] );
+			$this->add_render_attribute( 'shortcode', 'columns', esc_attr($settings['gallery_columns']) );
 		}
 
 		if ( $settings['gallery_link'] ) {
-			$this->add_render_attribute( 'shortcode', 'link', $settings['gallery_link'] );
+			$this->add_render_attribute( 'shortcode', 'link', esc_attr($settings['gallery_link']) );
 		}
 
 		if ( ! empty( $settings['gallery_rand'] ) ) {
-			$this->add_render_attribute( 'shortcode', 'orderby', $settings['gallery_rand'] );
+			$this->add_render_attribute( 'shortcode', 'orderby', esc_attr($settings['gallery_rand']) );
 		}
 		?>
-		<div class="elementor-image-gallery <?php echo $gallery_class; ?>">
-			<?php echo do_shortcode( '[gallery ' . $this->get_render_attribute_string( 'shortcode' ) . ']' ); ?>
+		<div class="elementor-image-gallery <?php echo esc_attr($gallery_class); ?>">
+			<?php echo do_shortcode( '[gallery ' . sanitize_text_field($this->get_render_attribute_string( 'shortcode' )) . ']' ); ?>
 		</div>
 		<?php
 	}

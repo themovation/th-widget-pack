@@ -263,7 +263,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-wrapper' );
         $this->add_render_attribute( 'wrapper', 'class', 'th-testimonial-w' );
 
-        $this->add_render_attribute( 'wrapper', 'class', 'th-txt-'.$settings['text_size'] );
+        $this->add_render_attribute( 'wrapper', 'class', 'th-txt-'.esc_attr($settings['text_size']) );
 
 		if ( $settings['testimonial_alignment'] ) {
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . esc_attr( $settings['testimonial_alignment'] ) );
@@ -334,7 +334,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				<div class="elementor-testimonial-meta-inner">
                     <?php if ( isset( $image ) ) : ?>
                         <div class="elementor-testimonial-image">
-                            <?php echo $image; ?>
+                            <?php echo wp_kses_post($image); ?>
                         </div>
                     <?php endif; ?>
 

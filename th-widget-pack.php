@@ -30,7 +30,6 @@ require_once THEMO_PATH . 'inc/setup.php';
 if ( ! function_exists( 'th_translation_ready' ) ) :
     function th_translation_ready() {
         $locale = apply_filters('plugin_locale', get_locale(), "th-widget-pack");
-        //echo $locale;
         load_textdomain("th-widget-pack", WP_LANG_DIR.'/th-widget-pack/'.'th-widget-pack'.'-'.$locale.'.mo');
         load_plugin_textdomain( 'th-widget-pack', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
     }

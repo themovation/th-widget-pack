@@ -178,7 +178,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 
 	public function render_plain_content() {
 		// In plain mode, render without shortcode
-		echo $this->get_settings( 'shortcode' );
+		echo sanitize_text_field($this->get_settings( 'shortcode' ));
 	}
 
 	protected function _content_template() {}

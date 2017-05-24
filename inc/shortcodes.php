@@ -1344,9 +1344,7 @@ if ( ! function_exists( 'themo_slider_gallery' ) ) :
             }
 
             if( $image_attributes ) {
-                //echo $image_size;
                 $image_src = $image_attributes[0];
-                //echo $image_src;
             }else{
                 $image_src = wp_get_attachment_url( $attachment->ID );
             }

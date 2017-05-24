@@ -360,7 +360,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			<section class="<?php echo esc_attr( $th_section_class ); ?>">
 
                 <div class="mas-blog row">
-                    <div class="mas-blog-post-sizer <?php echo $th_post_classes; ?>"></div>
+                    <div class="mas-blog-post-sizer <?php echo esc_attr($th_post_classes); ?>"></div>
 					<?php while ( $widget_wp_query->have_posts() ) { $widget_wp_query->the_post(); ?>
 
 						<?php $format = get_post_format() ? get_post_format() : 'standard';?>

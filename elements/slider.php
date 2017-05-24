@@ -1029,7 +1029,7 @@ class Themo_Widget_Slider extends Widget_Base {
                                 break;
                         }
                     endif;
-					$this->add_render_attribute( 'slider-bg', 'class', $th_form_border_class );
+					$this->add_render_attribute( 'slider-bg', 'class', esc_attr($th_form_border_class) );
 
                     $this->add_render_attribute( 'slider-bg-overlay', 'class', 'th-slide-wrap' );
 
@@ -1076,12 +1076,12 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 <?php if ( isset( $slide['slide_button_text_1_show'] ) && $slide['slide_button_text_1_show'] == 'yes' ) : ?>
 													<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
                                                     <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $slide['slide_button_link_1']['url'] ) . '"' . $target . '>' . esc_html( $slide['slide_button_text_1'] ) . '</a>'; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $slide['slide_button_link_1']['url'] ) . '"' . wp_kses_post($target) . '>' . esc_html( $slide['slide_button_text_1'] ) . '</a>'; ?>
                                                 <?php endif; ?>
                                                 <?php if ( isset( $slide['slide_button_text_2_show'] ) && $slide['slide_button_text_2_show'] == 'yes' ) : ?>
                                                     <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
                                                     <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . esc_attr( $button_style ) . '" href="' . esc_url ( $slide['slide_button_link_2']['url'] ) . '"' . $target . '>' . esc_html( $slide['slide_button_text_2'] ) . '</a>'; ?>
+                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . esc_attr( $button_style ) . '" href="' . esc_url ( $slide['slide_button_link_2']['url'] ) . '"' . wp_kses_post($target) . '>' . esc_html( $slide['slide_button_text_2'] ) . '</a>'; ?>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>
@@ -1090,9 +1090,9 @@ class Themo_Widget_Slider extends Widget_Base {
                                             <div class="page-title-image ">
                                                 <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
                                                     <?php $img_target = $slide['slide_image_url']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                    <?php echo '<a href="' . esc_url( $slide['slide_image_url']['url'] ) . '"' . $img_target . '>'; ?>
+                                                    <?php echo '<a href="' . esc_url( $slide['slide_image_url']['url'] ) . '"' . wp_kses_post($img_target) . '>'; ?>
                                                 <?php endif; ?>
-                                                <?php echo wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) ); ?>
+                                                <?php echo wp_kses_post(wp_get_attachment_image( $slide['slide_image']['id'], 'large', false, array( 'class' => 'hero wp-post-image' ) )); ?>
                                                 <?php if ( ! empty( $slide['slide_image_url']['url'] ) ) : ?>
                                                     <?php echo '</a>'; ?>
                                                 <?php endif; ?>
@@ -1146,7 +1146,7 @@ class Themo_Widget_Slider extends Widget_Base {
 
 			<?php if ( $settings['slides_down_arrow'] == 'yes' && $settings['slides_down_arrow_link']['url'] ) : ?>
 				<?php $down_target = $settings['slides_down_arrow_link']['is_external'] ? 'target="_blank"' : 'target="_self"'; ?>
-				<a href="<?php echo $settings['slides_down_arrow_link']['url'] ?>" <?php echo $down_target ?> class="slider-scroll-down th-icon th-i-down"></a>
+				<a href="<?php echo esc_url($settings['slides_down_arrow_link']['url']) ?>" <?php echo wp_kses_post($down_target) ?> class="slider-scroll-down th-icon th-i-down"></a>
 			<?php endif; ?>
 		</div>
 
@@ -1154,18 +1154,18 @@ class Themo_Widget_Slider extends Widget_Base {
 			jQuery( function ( $ ) {
 				themo_start_flex_slider(
 					'#main-flex-slider',
-                    <?php echo $settings['autoplay'] ? 'true' : 'false'; ?>,
-					'<?php echo $settings['animation']; ?>',
-					'<?php echo $settings['easing']; ?>',
-					<?php echo $settings['animation_loop'] ? 'true' : 'false'; ?>,
-					<?php echo $settings['smooth_height'] ? 'true' : 'false'; ?>,
-					<?php echo ! $settings['slideshow_speed']['size'] ? '0' : $settings['slideshow_speed']['size']; ?>,
-					<?php echo ! $settings['animation_speed']['size'] ? '0' : $settings['animation_speed']['size']; ?>,
-					<?php echo $settings['randomize'] ? 'true' : 'false'; ?>,
-					<?php echo $settings['pause_on_hover'] ? 'true' : 'false'; ?>,
-					<?php echo $settings['touch'] ? 'true' : 'false'; ?>,
-					<?php echo $settings['direction'] ? 'true' : 'false'; ?>,
-					<?php echo $settings['paging'] ? 'true' : 'false'; ?>
+                    <?php echo esc_attr($settings['autoplay']) ? 'true' : 'false'; ?>,
+					'<?php echo esc_attr($settings['animation']); ?>',
+					'<?php echo esc_attr($settings['easing']); ?>',
+					<?php echo esc_attr($settings['animation_loop']) ? 'true' : 'false'; ?>,
+					<?php echo esc_attr($settings['smooth_height']) ? 'true' : 'false'; ?>,
+					<?php echo ! esc_attr($settings['slideshow_speed']['size']) ? '0' : $settings['slideshow_speed']['size']; ?>,
+					<?php echo ! esc_attr($settings['animation_speed']['size']) ? '0' : $settings['animation_speed']['size']; ?>,
+					<?php echo esc_attr($settings['randomize']) ? 'true' : 'false'; ?>,
+					<?php echo esc_attr($settings['pause_on_hover']) ? 'true' : 'false'; ?>,
+					<?php echo esc_attr($settings['touch']) ? 'true' : 'false'; ?>,
+					<?php echo esc_attr($settings['direction']) ? 'true' : 'false'; ?>,
+					<?php echo esc_attr($settings['paging']) ? 'true' : 'false'; ?>
 				);
 			} );
 		</script>

@@ -228,25 +228,25 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         <?php
         $th_uid = uniqid( 'th-portfolio-content-' );
         ?>
-        <div id="<?php echo $th_uid; ?>" class="th-portfolio">
+        <div id="<?php echo esc_attr($th_uid); ?>" class="th-portfolio">
 
             <?php if ( $settings['filter'] ) : ?>
 
                 <div id="filters" class="th-portfolio-filters">
-                    <span><?php echo __( 'Sort:', 'th-widget-pack' ); ?></span>
+                    <span><?php echo esc_html__( 'Sort:', 'th-widget-pack' ); ?></span>
                     <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'th-widget-pack' ); ?></a>
                     <?php
                     $taxonomy = 'themo_tour_type';
                     $tax_terms = get_terms( $taxonomy );
                     foreach ( $tax_terms as $tax_term ) {
-                        echo '<a href="#" data-filter="#'.$th_uid.' .p-' . $tax_term->slug . '">' . $tax_term->name .'</a>';
+                        echo '<a href="#" data-filter="#'.esc_attr($th_uid).' .p-' . esc_attr($tax_term->slug) . '">' . esc_html($tax_term->name) .'</a>';
                     }
                     ?>
                 </div>
 
             <?php endif; ?>
 
-            <div id="th-portfolio-row" class="th-portfolio-row row portfolio_content <?php echo $portfolio_row; ?>">
+            <div id="th-portfolio-row" class="th-portfolio-row row portfolio_content <?php echo esc_attr($portfolio_row); ?>">
 
                 <?php
                 $args = array();
@@ -349,7 +349,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                             if( isset( $featured_url[0] ) ) {
                                 $link_url = $featured_url[0];
                             }
-                            //echo $link_url;
                             $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
                             $link_title = the_title_attribute( 'echo=0' );
                         }
@@ -371,11 +370,11 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 } else {
                                     if ( has_post_thumbnail( get_the_ID() ) ) {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
-                                        echo get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr );
+                                        echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
                                     }
                                 }
 
-                                $th_tour_title = get_the_title();;
+                                $th_tour_title = get_the_title();
                                 $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true );
                                 if( $th_tour_title_meta > "" ) {
                                     $th_tour_title = $th_tour_title_meta;
@@ -403,7 +402,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                         $th_tour_intro = str_replace( '<p', '<p class="th-port-sub"', $th_tour_intro );
                                     }
                                 }else{
-                                    $th_tour_intro = '<p class="th-port-sub">' . esc_html($th_tour_intro) . '</p>';
+                                    $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
                                 }
 
                                 $th_tour_button_text = false;
@@ -413,11 +412,11 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
                                     <?php if( $th_tour_highlight ) { ?>
-                                        <div class="th-port-top-text"><?php echo $th_tour_highlight; ?></div>
+                                        <div class="th-port-top-text"><?php echo esc_html($th_tour_highlight); ?></div>
                                     <?php } ?>
                                     <div class="th-port-center">
                                         <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
-                                        <?php echo $th_tour_intro; ?>
+                                        <?php echo wp_kses_post($th_tour_intro); ?>
                                         <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>
