@@ -35,7 +35,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'th-trip travelpack-frontal-school-bus',
+                'default' => 'th-trip travelpack-bus',
 				'icons' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
