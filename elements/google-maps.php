@@ -30,13 +30,37 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		);
 
 		$default_address = __( 'London Eye, London, United Kingdom', 'th-widget-pack' );
+		$default_latitude = 51.503324;
+		$default_logitude = -0.119543;
+		// $this->add_control(
+		// 	'address',
+		// 	[
+		// 		'label' => __( 'Map Address', 'th-widget-pack' ),
+		// 		'type' => Controls_Manager::TEXT,
+		// 		'placeholder' => $default_address,
+		// 		'default' => $default_address,
+		// 		'label_block' => true,
+		// 	]
+		// );
+
 		$this->add_control(
-			'address',
+			'latitude',
 			[
-				'label' => __( 'Map Address', 'th-widget-pack' ),
+				'label' => __( 'Map Address : Latitude', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => $default_address,
-				'default' => $default_address,
+				'placeholder' => $default_latitude,
+				'default' => $default_latitude,
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'longitude',
+			[
+				'label' => __( 'Map Address : Longitude', 'th-widget-pack' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => $default_logitude,
+				'default' => $default_logitude,
 				'label_block' => true,
 			]
 		);
@@ -83,7 +107,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .th-google-map' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-map' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -96,9 +120,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'default' => 'yes',
 				'label_on' => __( 'Yes', 'th-widget-pack' ),
 				'label_off' => __( 'No', 'th-widget-pack' ),
-				'selectors' => [
-					'{{WRAPPER}} iframe' => 'pointer-events: none;',
-				],
 			]
 		);
 
@@ -199,10 +220,10 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings();
-		// global $th_map_id;
-		// $map_id = 'th-map-' . ++$th_map_id;
+		global $th_map_id;
+		$map_id = 'th-map-' . ++$th_map_id;
 
-		$map_id = 'map';
+		// $map_id = 'map';
 
 		if ( empty( $settings['address'] ) ) return;
 
@@ -213,29 +234,38 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		// url encode the address
 		$address = urlencode( $settings['address'] );
 		?>
-		<div class="th-google-map">
-			<div class="map-info">
-				<h3><?php echo esc_html( $settings['title'] ) ?></h3>
-				<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
-				<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
-				<?php if ( $settings['link_1_url'] ) : ?>
-					<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
-						<?php echo esc_html( $settings['link_1_text'] ) ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( $settings['link_2_url'] ) : ?>
-					<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
-						<?php echo esc_html( $settings['link_2_text'] ) ?>
-					</a>
-				<?php endif; ?>
-			</div>
+
+		<div class="map-info">
+			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
+			<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
+			<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
+			<?php if ( $settings['link_1_url'] ) : ?>
+				<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
+					<?php echo esc_html( $settings['link_1_text'] ) ?>
+				</a>
+			<?php endif; ?>
+			<?php if ( $settings['link_2_url'] ) : ?>
+				<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
+					<?php echo esc_html( $settings['link_2_text'] ) ?>
+				</a>
+			<?php endif; ?>
 		</div>
 
-		<style>
-			.th-google-map {
-				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo esc_url( $address ) ?>&zoom=<?php echo esc_attr( $settings['zoom']['size'] ) ?>&size=1280x1280&scale=2&key=<?php echo esc_attr( $settings['api'] ) ?>" );
-			}
-		</style>
+		<div class="th-map" id="<?php echo esc_attr( $map_id ) ?>"></div>
+
+		<script>
+		    var map;
+		    function initMap() {
+		        map = new google.maps.Map(document.getElementById("<?php echo esc_attr( $map_id ) ?>"), {
+		            center: {lat: <?php echo esc_attr( $settings['latitude'] ) ?>, lng: <?php echo esc_attr( $settings['longitude'] ) ?>},
+		            zoom: <?php echo esc_attr( $settings['zoom']['size'] ) ?>,
+		            disableDefaultUI: true,
+		            <?php if( $settings['prevent_scroll'] == 'yes' ) echo 'scrollwheel:  false'; ?>
+		        } );
+		    }
+		</script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $settings['api'] ) ?>&callback=initMap" async defer></script>
 
 		<?php
 	}

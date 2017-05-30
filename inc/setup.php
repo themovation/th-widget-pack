@@ -35,7 +35,7 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 require_once THEMO_PATH . 'inc/elementor-section.php';
 require_once  THEMO_PATH . 'inc/enqueue.php';
 require_once THEMO_PATH . 'inc/cpt_tours.php' ;
-require_once THEMO_PATH . 'inc/shortcodes.php' ;
+//require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 
 // GLOBAL VARIABLES
