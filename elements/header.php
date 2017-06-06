@@ -546,14 +546,14 @@ class Themo_Widget_Header extends Widget_Base {
 
         $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {
-            $elm_animation = 'elementor-animation-' . esc_attr($settings['hover_animation']);
+            $elm_animation = 'elementor-animation-' . esc_attr( $settings['hover_animation'] );
         }
         $this->add_render_attribute( 'icon', 'class', ['elementor-icon', $elm_animation] );
 
 		$icon_tag = 'span';
 
 		if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_render_attribute( 'link', 'href', esc_url($settings['link']['url']) );
+			$this->add_render_attribute( 'link', 'href', esc_url( $settings['link']['url'] ) );
 			$icon_tag = 'a';
 
 			if ( ! empty( $settings['link']['is_external'] ) ) {
@@ -561,7 +561,7 @@ class Themo_Widget_Header extends Widget_Base {
 			}
 		}
 
-		$this->add_render_attribute( 'i', 'class', esc_attr($settings['icon']) );
+		$this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-' . esc_attr( $settings['icon_size'] ) );
@@ -602,17 +602,17 @@ class Themo_Widget_Header extends Widget_Base {
 		?>
 		<div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper">
-                <?php if (isset($settings['icon']) && $settings['icon'] > ""){ ?>
+                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                     <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
                         <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
-                    </<?php echo esc_attr($icon_tag); ?>>
+                    </<?php echo esc_attr( $icon_tag ); ?>>
                 </div>
                 <?php } ?>
                 <div class="elementor-icon-box-content">
                     <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title">
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo wp_kses_post($icon_tag); ?>>
-                    </<?php echo esc_attr($settings['title_size']); ?>>
+                    </<?php echo esc_attr( $settings['title_size'] ); ?>>
                     <p class="elementor-icon-box-description"><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
 
                     <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] )  ) : ?>

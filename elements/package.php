@@ -330,7 +330,7 @@ class Themo_Widget_Package extends Widget_Base {
             }
             ?>
             <div class="th-pkg-img">
-                <?php echo wp_kses_post($image) ; ?>
+                <?php echo wp_kses_post( $image ) ; ?>
             </div>
 
 			<div class="th-pkg-content">
