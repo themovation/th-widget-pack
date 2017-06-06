@@ -185,7 +185,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 			<?php
 			$counter = 1; ?>
 			<?php foreach ( $tabs as $item ) : ?>
-				<div class="th-itin-single<?php echo ( esc_attr($settings['expanded']) ? ' th-itin-active' : ( $counter == 1 ? ' th-itin-active' : ' th-itin-inactive' ) ); ?>">
+				<div class="th-itin-single<?php echo ( esc_attr( $settings['expanded'] ) ? ' th-itin-active' : ( $counter == 1 ? ' th-itin-active' : ' th-itin-inactive' ) ); ?>">
 					<i class="th-itin-icon fa fa-circle-o"></i>
 					<div class="th-itin-title">
 						<span><?php echo esc_html( $item['tab_title'] ); ?></span>

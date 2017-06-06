@@ -146,7 +146,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 			<?php if( $settings['tooltip_title'] ) : ?>
 				<div <?php echo $this->get_render_attribute_string( 'th-cal-tooltip'); ?>><h3><?php echo esc_html( $settings['tooltip_title'] ); ?></h3></div>
 			<?php endif; ?>
-			<?php echo do_shortcode( sanitize_text_field($settings['calendar_shortcode']) ); ?>
+			<?php echo do_shortcode( sanitize_text_field( $settings['calendar_shortcode'] ) ); ?>
 		</div>
 		<?php
 	}

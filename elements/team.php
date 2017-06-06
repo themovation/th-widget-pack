@@ -283,10 +283,10 @@ class Themo_Widget_Team extends Widget_Base {
 		<div class="th-team-member">
             <?php if ( ! empty( $settings['url']['url'] ) ) : ?>
                 <a <?php echo $this->get_render_attribute_string( 'link' ); ?>>
-                    <?php echo wp_kses_post($image); ?>
+                    <?php echo wp_kses_post( $image ); ?>
                 </a>
             <?php else : ?>
-                <?php echo wp_kses_post($image); ?>
+                <?php echo wp_kses_post( $image ); ?>
             <?php endif; ?>
 			<div class="th-team-member-content">
                 <?php
@@ -311,7 +311,7 @@ class Themo_Widget_Team extends Widget_Base {
 					<?php foreach( $settings['social'] as $social ) {
 						if ( ! empty( $social['url']['url'] ) ) {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
-							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post($target) . '>';
+							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
 						}
 						if ( $social['icon'] ) : ?>
 							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>

@@ -365,7 +365,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
                         </a>
                     <?php endif; ?>
 
-                    <?php if ( ! empty( $settings['button_2_text']) ) : ?>
+                    <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
                         <a <?php echo $this->get_render_attribute_string( 'btn-2-link' ); ?>>
                             <?php if ( ! empty( $settings['button_2_text'] ) ) : ?>
                                 <?php echo esc_html( $settings['button_2_text'] ); ?>
