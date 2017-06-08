@@ -29,7 +29,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		$default_address = __( 'London Eye, London, United Kingdom', 'th-widget-pack' );
+		$default_address = __( 'New York City, NY, United States', 'th-widget-pack' );
 		$this->add_control(
 			'address',
 			[
@@ -72,6 +72,37 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                     'retro' => __( 'Retro', 'th-widget-pack' ),
                 ],
                 'default' => 'ultra_light',
+            ]
+        );
+
+        $this->add_control(
+            'header_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .map-info' => '{{VALUE}}',
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'margin-right: auto',
+                    'center' => 'margin: 0 auto',
+                    'right' => 'margin-left: auto',
+                ],
+                'default' => 'center',
             ]
         );
 
