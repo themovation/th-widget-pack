@@ -303,7 +303,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		<style>
 			.th-google-map {
-				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo esc_url( $address ) ?>&zoom=<?php echo esc_attr( $settings['zoom']['size'] ) ?>&key=<?php echo esc_attr( $settings['api'] ) ?>&size=2048x2048&scale=2&format=png<?php echo $th_map_style; ?>" );
+				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo esc_url( $address ) ?>&zoom=<?php echo esc_attr( $settings['zoom']['size'] ) ?>&key=<?php echo esc_attr( $settings['api'] ) ?>&size=2048x2048&format=png<?php echo $th_map_style; ?>" );
 
 
 			}
