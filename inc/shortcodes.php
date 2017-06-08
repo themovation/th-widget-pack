@@ -1440,6 +1440,7 @@ if ( ! function_exists( 'roots_gallery' ) ) :
             return '';
         }
 
+        $size = 'th_img_md_landscape';
         if (is_feed()) {
             $output = "\n";
             foreach ($attachments as $att_id => $attachment) {
