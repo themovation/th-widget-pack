@@ -122,9 +122,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                     '{{WRAPPER}} .map-info' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
-                    'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'left' => 'left: 50px; right: auto;',
+                    'center' => 'left: 50%; transform: translate(-50%, 0);',
+                    'right' => 'left: auto; right: 50px;',
                 ],
                 'default' => 'center',
             ]
