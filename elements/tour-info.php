@@ -68,15 +68,15 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'fa fa-compass', 'th-widget-pack' ),
+                        'icon' => __( 'th-trip travelpack-compass', 'th-widget-pack' ),
                         'text' => __( '4.5 Miles', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'fa fa-clock-o', 'th-widget-pack' ),
+                        'icon' => __( 'th-trip travelpack-clock-time', 'th-widget-pack' ),
                         'text' => __( '3 Hours', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'fa fa-user-o', 'th-widget-pack' ),
+                        'icon' => __( 'th-trip th-prsn travelpack-person-plus', 'th-widget-pack' ),
                         'text' => __( '3+ People', 'th-widget-pack' ),
                     ],
 

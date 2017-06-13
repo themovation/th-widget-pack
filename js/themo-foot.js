@@ -54,11 +54,6 @@ function themo_active_lightbox(){
 
 jQuery( function ( $ ) {
 
-   /* $('.th-pricing-table').on('load', function(){
-        // $(this).show();
-        console.log('load the iframe')
-    });*/
-
     // fix pricing columns
 	themo_adjust_pricing_table_height();
 
@@ -81,7 +76,6 @@ jQuery( function ( $ ) {
 
             // Get Parent Class
             if (filterValue == '*') {
-                console.log('NOTHING')
                 var parent_class = $(this).closest('.th-portfolio').attr("id");
             } else {
                 var parent_class = $(filterValue).closest('.th-portfolio').attr("id");
@@ -92,9 +86,6 @@ jQuery( function ( $ ) {
 
             // Add .current class to current filter link.
             $(this).addClass( "current" );
-
-            //console.log(filterValue);
-            //console.log(parent_class);
 
             // Get the container element to initialize isotope.
             var $container = $('#'+parent_class+' .th-portfolio-row');
@@ -110,12 +101,6 @@ jQuery( function ( $ ) {
         });
 
 
-        /* console.log('BEFORE');
-        if ($('.mas-blog').length){
-            console.log('FOUND IT');
-        }else{
-            console.log('NOT THERE');
-        }*/
         var $bloggrid = $('.mas-blog').isotope({
             itemSelector: '.mas-blog-post',
             transitionDuration: '0.2s',
@@ -127,15 +112,6 @@ jQuery( function ( $ ) {
 
             }
         });
-        //console.log('AFTER');
-		/*$('.mas-blog').isotope({
-		 itemSelector: '.grid-item',
-		 percentPosition: true,
-		 masonry: {
-		 columnWidth: '.grid-sizer',
-		 gutter: 10
-		 }
-		 });*/
 
         $bloggrid.on( 'layoutComplete', function( event, laidOutItems ) {
             console.log( 'layoutComplete with ' + laidOutItems.length + ' items' );
@@ -158,9 +134,6 @@ jQuery( function ( $ ) {
         // For each pricing-table element
         $('.th-pricing-table').each(function(){
             $tallestCol = 0;
-
-
-            console.log('CHECKING TABLE HEIGHT ');
 
             // Find the plan name
             $(this).find('> div .th-pricing-title').each(function(){

@@ -178,7 +178,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
 
         $this->end_controls_section();
 
-        $this->start_controls_section(
+        /*$this->start_controls_section(
             'section_style_content',
             [
                 'label' => __( 'Content', 'th-widget-pack' ),
@@ -186,7 +186,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             ]
         );
 
-        $this->end_controls_section();
+        $this->end_controls_section();*/
 
     }
 

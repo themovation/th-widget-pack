@@ -35,7 +35,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'th-trip travelpack-frontal-school-bus',
+                'default' => 'th-trip travelpack-bus',
 				'icons' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
@@ -425,7 +425,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             }
         }
 
-        $this->add_render_attribute( 'i', 'class', esc_attr($settings['icon']) );
+        $this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'. esc_attr( $settings['icon_size'] ) );
@@ -443,8 +443,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 </div>
                 <div class="elementor-icon-box-content">
                     <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title">
-                        <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr($icon_tag); ?>>
-                    </<?php echo esc_attr($settings['title_size']); ?>>
+                        <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
+                    </<?php echo esc_attr( $settings['title_size'] ); ?>>
                     <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
                 </div>
             </div>

@@ -236,3 +236,14 @@ if ( ! function_exists( 'th_hide_meta_box' ) ) {
     }
     add_filter('default_hidden_meta_boxes','th_hide_meta_box',10,2);
 }
+
+// Turn off commenting by default.
+
+function th_default_comments_off( $data ) {
+    if( $data['post_type'] == 'themo_tour' && $data['post_status'] == 'auto-draft' ) {
+        $data['comment_status'] = 0;
+    }
+
+    return $data;
+}
+add_filter( 'wp_insert_post_data', 'th_default_comments_off' );
