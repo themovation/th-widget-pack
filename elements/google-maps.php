@@ -29,9 +29,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		$default_address = __( 'London Eye, London, United Kingdom', 'th-widget-pack' );
-		$default_latitude = 51.503324;
-		$default_logitude = -0.119543;
+		$default_address = __( 'New York City, NY, United States', 'th-widget-pack' );
+		$default_latitude = 40.712784;
+		$default_logitude = -74.005941;
 		// $this->add_control(
 		// 	'address',
 		// 	[
@@ -86,7 +86,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'api',
 			[
 				'label' => __( 'Google Maps API', 'th-widget-pack' ),
-				'description' => __( '<a href="https://developers.google.com/maps/documentation/static-maps/" target="_blank">Get an API key</a>', 'th-widget-pack' ),
+				'description' => __( '<a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Get an API key</a>', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
