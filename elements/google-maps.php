@@ -29,14 +29,41 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		$default_address = __( 'New York City, NY, United States', 'th-widget-pack' );
+		//$default_address = __( 'New York City, NY, United States', 'th-widget-pack' );
+
+
+		$default_latitude = 49.293753;
+		$default_logitude = -123.053398;
+		// $this->add_control(
+		// 	'address',
+		// 	[
+		// 		'label' => __( 'Map Address', 'th-widget-pack' ),
+		// 		'type' => Controls_Manager::TEXT,
+		// 		'placeholder' => $default_address,
+		// 		'default' => $default_address,
+		// 		'label_block' => true,
+		// 	]
+		// );
+
 		$this->add_control(
-			'address',
+			'latitude',
 			[
-				'label' => __( 'Map Address', 'th-widget-pack' ),
+				'label' => __( 'Map Address : Latitude', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => $default_address,
-				'default' => $default_address,
+				'placeholder' => $default_latitude,
+				'default' => $default_latitude,
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'longitude',
+			[
+				'label' => __( 'Map Address : Longitude', 'th-widget-pack' ),
+                'description' => __( '<a href="http://www.latlong.net/" target="_blank">Find your Latitude & Longitude</a>', 'th-widget-pack' ),
+				'type' => Controls_Manager::TEXT,
+				'placeholder' => $default_logitude,
+				'default' => $default_logitude,
 				'label_block' => true,
 			]
 		);
@@ -47,7 +74,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Zoom Level', 'th-widget-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 10,
+					'size' => 12,
 				],
 				'range' => [
 					'px' => [
@@ -64,53 +91,26 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 'label' => __( 'Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'ultra_light' => __( 'Ultra Light with Labels', 'th-widget-pack' ),
+                    'standard' => __( 'Standard', 'th-widget-pack' ),
+                    'ultra_light' => __( 'Ultra Light', 'th-widget-pack' ),
                     'light_dream' => __( 'Light Dream', 'th-widget-pack' ),
                     'shades_of_gray' => __( 'Shades of Gray', 'th-widget-pack' ),
                     'subtle_grayscale' => __( 'Subtle Grayscale', 'th-widget-pack' ),
-                    'standard' => __( 'Standard', 'th-widget-pack' ),
                     'retro' => __( 'Retro', 'th-widget-pack' ),
+                    'apple_esque' => __( 'Apple-esque', 'th-widget-pack' ),
+                    'blue_essence' => __( 'Blue Essence', 'th-widget-pack' ),
                 ],
-                'default' => 'ultra_light',
+                'default' => 'standard',
             ]
         );
 
-        $this->add_control(
-            'header_horizontal_position',
-            [
-                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-left',
-                    ],
-                    'center' => [
-                        'title' => __( 'Center', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-center',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'th-widget-pack' ),
-                        'icon' => 'eicon-h-align-right',
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .map-info' => '{{VALUE}}',
-                ],
-                'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
-                    'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
-                ],
-                'default' => 'center',
-            ]
-        );
+
 
 		$this->add_control(
 			'api',
 			[
 				'label' => __( 'Google Maps API', 'th-widget-pack' ),
-				'description' => __( '<a href="https://developers.google.com/maps/documentation/static-maps/" target="_blank">Get an API key</a>', 'th-widget-pack' ),
+				'description' => __( '<a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Create an API key</a>', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
@@ -122,7 +122,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Height', 'th-widget-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 300,
+					'size' => 400,
 				],
 				'range' => [
 					'px' => [
@@ -131,7 +131,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .th-google-map' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .th-map' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -144,9 +144,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'default' => 'yes',
 				'label_on' => __( 'Yes', 'th-widget-pack' ),
 				'label_off' => __( 'No', 'th-widget-pack' ),
-				'selectors' => [
-					'{{WRAPPER}} iframe' => 'pointer-events: none;',
-				],
 			]
 		);
 
@@ -182,7 +179,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			'business_address',
 			[
 				'label' => __( 'Business Address', 'th-widget-pack' ),
-				'default' => __( "1366 Main Street\nancouver Canada\nV8V 3K6", 'th-widget-pack' ),
+				'default' => __( "1366 Main Street\nVancouver Canada\nV8V 3K6", 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
 			]
@@ -242,19 +239,46 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'header_horizontal_position',
+            [
+                'label' => __( 'Horizontal Position', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .map-info' => '{{VALUE}}',
+                ],
+                'selectors_dictionary' => [
+                    'left' => 'left: 50px; right: auto;',
+                    'center' => 'left: 50%; transform: translate(-50%, 0);',
+                    'right' => 'left: auto; right: 50px;',
+                ],
+                'default' => 'left',
+            ]
+        );
+
 		$this->end_controls_section();
 	}
 
 	protected function render() {
 		$settings = $this->get_settings();
-		// global $th_map_id;
-		// $map_id = 'th-map-' . ++$th_map_id;
+		global $th_map_id;
+		$map_id = 'th-map-' . ++$th_map_id;
 
-		$map_id = 'map';
-
-		if ( empty( $settings['address'] ) ) return;
-
-		if ( 0 === absint( $settings['zoom']['size'] ) ) $settings['zoom']['size'] = 10;
+		if ( 0 === absint( $settings['zoom']['size'] ) ) $settings['zoom']['size'] = 12;
 
 		if ( '' === $settings['api'] ) $settings['api'] = 'AIzaSyDb-ldlvqnIEXdh6maZVaonnw05xVAttQw';
 
@@ -262,61 +286,68 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
         switch ($settings['style']) {
             case 'ultra_light':
-                $th_map_style = '&maptype=roadmap&style=element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0x333333%7Csaturation:-100%7Clightness:30&style=element:labels.text.stroke%7Ccolor:0xffffff%7Clightness:16%7Cvisibility:on&style=feature:administrative%7Celement:geometry.fill%7Ccolor:0xfefefe%7Clightness:20&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xfefefe%7Clightness:17%7Cweight:1.2&style=feature:landscape%7Celement:geometry%7Ccolor:0xf5f5f5%7Clightness:20&style=feature:poi%7Celement:geometry%7Ccolor:0xf5f5f5%7Clightness:21&style=feature:poi.park%7Celement:geometry%7Ccolor:0xdedede%7Clightness:21&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xffffff%7Clightness:18&style=feature:road.highway%7Celement:geometry.fill%7Ccolor:0xffffff%7Clightness:17&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xffffff%7Clightness:29%7Cweight:0.2&style=feature:road.local%7Celement:geometry%7Ccolor:0xffffff%7Clightness:16&style=feature:transit%7Celement:geometry%7Ccolor:0xf2f2f2%7Clightness:19&style=feature:water%7Celement:geometry%7Ccolor:0xe9e9e9%7Clightness:17';
+                $th_map_style =  'styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}],';
             break;
             case 'subtle_grayscale':
-                $th_map_style = '&maptype=roadmap&style=feature:administrative%7Csaturation:-100&style=feature:administrative.province%7Cvisibility:off&style=feature:landscape%7Csaturation:-100%7Clightness:65%7Cvisibility:on&style=feature:poi%7Csaturation:-100%7Clightness:50%7Cvisibility:simplified&style=feature:road%7Csaturation:-100&style=feature:road.arterial%7Clightness:30&style=feature:road.highway%7Cvisibility:simplified&style=feature:road.local%7Clightness:40&style=feature:transit%7Csaturation:-100%7Cvisibility:simplified&style=feature:water%7Celement:geometry%7Chue:0xffff00%7Csaturation:-97%7Clightness:-25&style=feature:water%7Celement:labels%7Csaturation:-100%7Clightness:-25';
+                $th_map_style = 'styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}],';
             break;
             case 'shades_of_gray':
-                $th_map_style = '&maptype=roadmap&style=element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0x000000%7Csaturation:-100%7Clightness:40&style=element:labels.text.stroke%7Ccolor:0x000000%7Clightness:16%7Cvisibility:on&style=feature:administrative%7Celement:geometry.fill%7Ccolor:0x000000%7Clightness:20&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0x000000%7Clightness:17%7Cweight:1.2&style=feature:landscape%7Celement:geometry%7Ccolor:0x000000%7Clightness:20&style=feature:poi%7Celement:geometry%7Ccolor:0x000000%7Clightness:21&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x000000%7Clightness:18&style=feature:road.highway%7Celement:geometry.fill%7Ccolor:0x000000%7Clightness:17&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0x000000%7Clightness:29%7Cweight:0.2&style=feature:road.local%7Celement:geometry%7Ccolor:0x000000%7Clightness:16&style=feature:transit%7Celement:geometry%7Ccolor:0x000000%7Clightness:19&style=feature:water%7Celement:geometry%7Ccolor:0x000000%7Clightness:17';
+                $th_map_style = 'styles:[{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":21}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":16}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"},{"lightness":17}]}],';
             break;
             case 'light_dream':
-                $th_map_style = '&maptype=roadmap&style=feature:landscape%7Chue:0xFFBB00%7Csaturation:43.400000000000006%7Clightness:37.599999999999994%7Cgamma:1&style=feature:poi%7Chue:0x00FF6A%7Csaturation:-1.0989010989011234%7Clightness:11.200000000000017%7Cgamma:1&style=feature:road.arterial%7Chue:0xFF0300%7Csaturation:-100%7Clightness:51.19999999999999%7Cgamma:1&style=feature:road.highway%7Chue:0xFFC200%7Csaturation:-61.8%7Clightness:45.599999999999994%7Cgamma:1&style=feature:road.local%7Chue:0xFF0300%7Csaturation:-100%7Clightness:52%7Cgamma:1&style=feature:water%7Chue:0x0078FF%7Csaturation:-13.200000000000003%7Clightness:2.4000000000000057%7Cgamma:1';
+                $th_map_style = 'styles:[{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}],';
             break;
             case 'retro':
-                $th_map_style = '&maptype=roadmap&style=element:geometry%7Ccolor:0xebe3cd&style=element:labels.text.fill%7Ccolor:0x523735&style=element:labels.text.stroke%7Ccolor:0xf5f1e6&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style=feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style=feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style=feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style=feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style=feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62%7Cvisibility:simplified&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style=feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style=feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style=feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d';
+                $th_map_style = 'styles:[{"elementType":"geometry","stylers":[{"color":"#ebe3cd"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#523735"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f1e6"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#c9b2a6"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.stroke","stylers":[{"color":"#dcd2be"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#ae9e90"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#dfd2ae"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#dfd2ae"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#93817c"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#a5b076"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#447530"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#f5f1e6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#fdfcf8"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#f8c967"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#e9bc62"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry","stylers":[{"color":"#e98d58"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.stroke","stylers":[{"color":"#db8555"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#806b63"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#dfd2ae"}]},{"featureType":"transit.line","elementType":"labels.text.fill","stylers":[{"color":"#8f7d77"}]},{"featureType":"transit.line","elementType":"labels.text.stroke","stylers":[{"color":"#ebe3cd"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#dfd2ae"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#b9d3c2"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#92998d"}]}],';
+            break;
+            case 'blue_essence':
+                $th_map_style ='styles: [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}],';
+            break;
+            case 'apple_esque':
+                $th_map_style = 'styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}],';
             break;
             default:
-                $th_map_style = '&maptype=roadmap';
+                $th_map_style = false;
         }
 
 		// url encode the address
-		$address = urlencode( $settings['address'] );
+		//$address = urlencode( $settings['address'] );
 		?>
-		<div class="th-google-map">
-			<div class="map-info">
-				<h3><?php echo esc_html( $settings['title'] ) ?></h3>
-				<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
-				<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
-				<?php if ( $settings['link_1_url'] ) : ?>
-					<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
-						<?php echo esc_html( $settings['link_1_text'] ) ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( $settings['link_2_url'] ) : ?>
-					<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
-						<?php echo esc_html( $settings['link_2_text'] ) ?>
-					</a>
-				<?php endif; ?>
-			</div>
+
+		<div class="map-info">
+			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
+			<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
+			<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
+			<?php if ( $settings['link_1_url'] ) : ?>
+				<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
+					<?php echo esc_html( $settings['link_1_text'] ) ?>
+				</a>
+			<?php endif; ?>
+			<?php if ( $settings['link_2_url'] ) : ?>
+				<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
+					<?php echo esc_html( $settings['link_2_text'] ) ?>
+				</a>
+			<?php endif; ?>
 		</div>
 
-		<style>
-			.th-google-map {
-				background-image: url( "https://maps.googleapis.com/maps/api/staticmap?center=<?php echo esc_url( $address ) ?>&zoom=<?php echo esc_attr( $settings['zoom']['size'] ) ?>&key=<?php echo esc_attr( $settings['api'] ) ?>&size=2048x2048&format=png<?php echo $th_map_style; ?>" );
+		<div class="th-map" id="<?php echo esc_attr( $map_id ) ?>"></div>
 
+		<script>
+		    var map;
+		    function initMap() {
+		        map = new google.maps.Map(document.getElementById("<?php echo esc_attr( $map_id ) ?>"), {
+		            center: {lat: <?php echo esc_attr( $settings['latitude'] ) ?>, lng: <?php echo esc_attr( $settings['longitude'] ) ?>},
+		            zoom: <?php echo esc_attr( $settings['zoom']['size'] ) ?>,
+		            disableDefaultUI: true,
+                    <?php if( isset($th_map_style)) echo $th_map_style; ?>
+		            <?php if( $settings['prevent_scroll'] == 'yes' ) echo 'scrollwheel:  false'; ?>
+		        } );
+		    }
+		</script>
 
-			}
-
-		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $settings['api'] ) ?>&callback=initMap" async defer></script>
 
 		<?php
-
-        function th_inline_styles() {
-            $th_custom_css = "/* Hello from Gooogle Maps Widget */";
-            wp_add_inline_style( 'roots_app_2', $th_custom_css );
-        }
-        add_action( 'wp_enqueue_scripts', 'th_inline_styles', 101 );
 	}
 
 	protected function _content_template() {}
