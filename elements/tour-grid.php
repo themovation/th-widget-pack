@@ -370,7 +370,22 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 } else {
                                     if ( has_post_thumbnail( get_the_ID() ) ) {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
-                                        echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
+
+                                        $th_wanted_width = 605;
+                                        $th_wanted_height = 605;
+                                        $th_id = get_post_thumbnail_id(get_the_ID());
+                                        $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
+
+                                        if ($th_image){
+                                            list($width, $height) = getimagesize($th_image[0]);
+                                            if (($th_wanted_width == $width) && ($th_wanted_height == $height)){
+                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
+                                            }
+                                            else{
+                                                //default when no image
+                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
+                                            }
+                                        }
                                     }
                                 }
 
