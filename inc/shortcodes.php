@@ -1406,7 +1406,7 @@ if ( ! function_exists( 'roots_gallery' ) ) :
             'icontag'    => '',
             'captiontag' => '',
             'columns'    => 3,
-            'size'       => 'thumbnail',
+            'size'       => 'th_img_md_landscape',
             'include'    => '',
             'exclude'    => '',
             'link'       => ''
@@ -1440,7 +1440,7 @@ if ( ! function_exists( 'roots_gallery' ) ) :
             return '';
         }
 
-        $size = 'th_img_md_landscape';
+        //$size = 'th_img_md_landscape';
         if (is_feed()) {
             $output = "\n";
             foreach ($attachments as $att_id => $attachment) {
