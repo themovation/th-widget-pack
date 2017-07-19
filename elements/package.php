@@ -157,21 +157,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'price_background',
-			[
-				'label' => __( 'Price Background', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .th-pkg-info' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
+
 
 		$this->end_controls_section();
 
@@ -197,13 +183,86 @@ class Themo_Widget_Package extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
-			'section_style_background',
-			[
-				'label' => __( 'Content', 'th-widget-pack' ),
-				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
+
+        $this->start_controls_section(
+            'section_style_background',
+            [
+                'label' => __( 'Content', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'pre_title_color',
+            [
+                'label' => __( 'Pre Title Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-package-pre-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __( 'Title Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'content_color',
+            [
+                'label' => __( 'Content Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-package-content' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'background_color',
+            [
+                'label' => __( 'Background Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-content' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'section_style_price',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
         $this->add_control(
             'price_color',
@@ -237,52 +296,26 @@ class Themo_Widget_Package extends Widget_Base {
             ]
         );
 
-
-		$this->add_control(
-			'title_color',
-			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} h3' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-
-		$this->add_control(
-			'content_color',
-			[
-				'label' => __( 'Content Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .th-package-content' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
         $this->add_control(
-            'background_color',
+            'price_background',
             [
-                'label' => __( 'Background Color', 'th-widget-pack' ),
+                'label' => __( 'Price Background', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .th-pkg-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-pkg-info' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
+
+
+
 	}
 
 	protected function render() {
