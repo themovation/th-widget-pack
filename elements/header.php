@@ -148,6 +148,7 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => 'default',
                 'prefix_class' => 'elementor-view-',
             ]
+
         );
 
         $this->add_control(
@@ -203,7 +204,7 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
                 ],
                 'prefix_class' => 'elementor-position-',
-                'toggle' => false,
+                'toggle' => true,
             ]
         );
 
@@ -601,7 +602,7 @@ class Themo_Widget_Header extends Widget_Base {
 
 		?>
 		<div class="th-header-wrap">
-            <div class="elementor-icon-box-wrapper">
+            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
                 <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                     <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
@@ -649,10 +650,13 @@ class Themo_Widget_Header extends Widget_Base {
         var link = '',
         iconTag = 'span';
         icon_size = '';
+        icon_show = '';
+
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
+        if ( settings.icon ) { var icon_show = 'th-show-icon'}
                 #>
         <div class="th-header-wrap">
-            <div class="elementor-icon-box-wrapper">
+            <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <# if ( settings.icon ) { #>
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
