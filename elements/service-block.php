@@ -109,7 +109,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     ],
                 ],
                 'prefix_class' => 'elementor-position-',
-                'toggle' => false,
+                'toggle' => true,
             ]
         );
 
@@ -435,12 +435,14 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		?>
 		<div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper">
-                <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
-                    <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                        <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
-                    </<?php echo esc_attr($icon_tag); ?>>
-                </div>
+            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
+                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+                    <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
+                        <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
+                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                        </<?php echo esc_attr($icon_tag); ?>>
+                    </div>
+                <?php } ?>
                 <div class="elementor-icon-box-content">
                     <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title">
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
@@ -460,10 +462,13 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
         icon_size = '';
+        icon_show = '';
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
+        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+
         #>
         <div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper">
+            <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
                         <i class="{{ settings.icon }}"></i>
