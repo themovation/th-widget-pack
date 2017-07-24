@@ -310,8 +310,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 $th_map_style = false;
         }
 
-		// url encode the address
-		//$address = urlencode( $settings['address'] );
+		wp_register_script( 'google-maps-api', 'https://maps.google.com/maps/api/js?sensor=false&callback=initMap&key=' . esc_attr( $settings['api'] ) );
 		?>
 
 		<div class="map-info">
@@ -330,22 +329,25 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			<?php endif; ?>
 		</div>
 
+		<?php wp_print_scripts( 'google-maps-api' ); ?>
+
 		<div class="th-map" id="<?php echo esc_attr( $map_id ) ?>"></div>
 
-		<script>
-		    var map;
-		    function initMap() {
-		        map = new google.maps.Map(document.getElementById("<?php echo esc_attr( $map_id ) ?>"), {
-		            center: {lat: <?php echo esc_attr( $settings['latitude'] ) ?>, lng: <?php echo esc_attr( $settings['longitude'] ) ?>},
-		            zoom: <?php echo esc_attr( $settings['zoom']['size'] ) ?>,
-		            disableDefaultUI: true,
-                    <?php if( isset($th_map_style)) echo $th_map_style; ?>
-		            <?php if( $settings['prevent_scroll'] == 'yes' ) echo 'scrollwheel:  false'; ?>
-		        } );
-		    }
+		<script type="text/javascript">
+			var th_map_<?php echo $th_map_id ?>;
+			function th_set_gmaps_<?php echo $th_map_id ?>() {
+				var location = new google.maps.LatLng("<?php echo esc_attr( $settings['latitude'] ) ?>", "<?php echo esc_attr( $settings['longitude'] ) ?>");
+				var map_options = {
+					zoom: <?php echo esc_attr( $settings['zoom']['size'] ) ?>,
+					center: location,
+					scrollwheel: <?php echo ( $settings['prevent_scroll'] == 'yes' ? "false" : "true" ); ?>,
+					disableDefaultUI: true,
+					<?php if( isset( $th_map_style ) ) echo $th_map_style; ?>
+				}
+				th_map_<?php echo $th_map_id ?> = new google.maps.Map( document.getElementById( "<?php echo $map_id ; ?>" ), map_options );
+			}
+			th_set_gmaps_<?php echo $th_map_id ?>();
 		</script>
-
-		<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo esc_attr( $settings['api'] ) ?>&callback=initMap" async defer></script>
 
 		<?php
 	}
