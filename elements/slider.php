@@ -329,21 +329,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-        $th_repeater->add_control(
-            'slide_button_text_1_div',
-            [
-                'type' => Controls_Manager::DIVIDER,
-                /*'conditions' => [
-                    'terms' => [
-                        [
-                            'name' => 'slide_button_text_1_show',
-                            'operator' => '==',
-                            'value' => 'yes',
-                        ],
-                    ],
-                ],*/
-            ]
-        );
+
 
 
         $th_repeater->add_control(

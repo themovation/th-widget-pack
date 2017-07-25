@@ -191,10 +191,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                         ],
 					],
                     [
-                        'name' => 'price_col_button_1_div',
-                        'type' => Controls_Manager::DIVIDER,
-                    ],
-                    [
                         'name' => 'price_col_button_2_show',
                         'label' => __( 'Button 2', 'th-widget-pack' ),
                         'type' => Controls_Manager::SWITCHER,
@@ -260,10 +256,6 @@ class Themo_Widget_Pricing extends Widget_Base {
                                 ],
                             ],
                         ],
-                    ],
-                    [
-                        'name' => 'price_col_button_2_div',
-                        'type' => Controls_Manager::DIVIDER,
                     ],
                     [
                         'name' => 'price_col_featured',

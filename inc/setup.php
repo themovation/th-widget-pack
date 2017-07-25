@@ -223,3 +223,19 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
 }
 add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
 add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
+
+
+function add_elementor_page_settings_controls( \Elementor\PageSettings\Page $page ) {
+    $page->add_control(
+        'menu_item_color',
+        [
+            'label' => __( 'Menu Item Color', 'elementor' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .menu-item a' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+}
+
+add_action( 'elementor/element/page-settings/section_page_style/before_section_end', 'add_elementor_page_settings_controls' );

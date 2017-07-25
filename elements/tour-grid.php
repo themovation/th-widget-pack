@@ -71,8 +71,10 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             'filter',
             [
                 'label' => __( 'Show filter bar', 'th-widget-pack' ),
-                'type' => Controls_Manager::CHECKBOX,
-                'default' => false,
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
             ]
         );
 
@@ -230,7 +232,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         ?>
         <div id="<?php echo esc_attr($th_uid); ?>" class="th-portfolio">
 
-            <?php if ( $settings['filter'] ) : ?>
+            <?php if ( $settings['filter'] == 'yes' ) : ?>
 
                 <div id="filters" class="th-portfolio-filters">
                     <span><?php echo esc_html__( 'Sort:', 'th-widget-pack' ); ?></span>
