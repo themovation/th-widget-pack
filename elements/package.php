@@ -375,7 +375,7 @@ class Themo_Widget_Package extends Widget_Base {
 				<?php endif; ?>
 				<?php if ( ! empty( $settings['content'] ) ) : ?>
 					<div class="th-package-content">
-						<?php echo esc_html( $settings['content'] ); ?>
+						<?php echo wp_kses_post( $settings['content'] ); ?>
 					</div>
 				<?php endif; ?>
 			</div>

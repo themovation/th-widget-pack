@@ -353,7 +353,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
             <div class="elementor-icon-box-wrapper">
                 <div class="elementor-icon-box-content">
                     <h3 class="elementor-icon-box-title"><?php echo esc_html( $settings['title_text'] ); ?></h3>
-                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
+                    <p class="elementor-icon-box-description"><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
                 </div>
                 <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] ) ) : ?>
                 <div class="th-btn-wrap">

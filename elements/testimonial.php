@@ -314,7 +314,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
 
 			<?php if ( $has_content ) : ?>
-				<div class="elementor-testimonial-content"><?php echo esc_html( $settings['testimonial_content'] ); ?></div>
+				<div class="elementor-testimonial-content"><?php echo wp_kses_post( $settings['testimonial_content'] ); ?></div>
 			<?php endif; ?>
 
             <?php if ($settings['star_rating'] == 'yes') : ?>

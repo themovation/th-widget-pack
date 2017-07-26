@@ -305,7 +305,7 @@ class Themo_Widget_Team extends Widget_Base {
 					<h5 class="th-team-member-title"><?php echo esc_html( $settings['job']) ?></h5>
 				<?php endif;?>
 				<?php if ( ! empty( $settings['content'] ) ) : ?>
-					<div class="th-team-member-text"><?php echo esc_html( $settings['content'] ); ?></div>
+					<div class="th-team-member-text"><?php echo wp_kses_post( $settings['content'] ); ?></div>
 				<?php endif; ?>
 				<div class="th-team-member-social">
 					<?php foreach( $settings['social'] as $social ) {

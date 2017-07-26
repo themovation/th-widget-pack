@@ -394,6 +394,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -447,7 +448,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title">
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo esc_attr( $icon_tag ); ?>>
                     </<?php echo esc_attr( $settings['title_size'] ); ?>>
-                    <p class="elementor-icon-box-description"><?php echo esc_html( $settings['description_text'] ); ?></p>
+                    <p class="elementor-icon-box-description"><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
                 </div>
             </div>
 

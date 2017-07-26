@@ -201,7 +201,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		<div class="th-cta">
 			<?php if ( $settings['text'] ) : ?>
 		        <div class="th-cta-text">
-		            <span><?php echo esc_html( $settings['text'] ); ?></span>
+		            <span><?php echo wp_kses_post( $settings['text'] ); ?></span>
 		        </div>
 		    <?php endif; ?>
             <?php if ( ! empty( $settings['button_1_text'] )  || ! empty( $settings['button_2_text'] )  ) : ?>

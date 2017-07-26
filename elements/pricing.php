@@ -520,7 +520,6 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 				<?php foreach( $settings['pricing'] as $column ) { ?>
 
-
                     <div class="elementor-repeater-item-<?php echo esc_attr( $column['_id'] ) ?> th-pricing-column<?php echo( esc_attr(isset( $column['price_col_featured']) ) && $column['price_col_featured'] == 'yes' ? ' th-highlight' : '' ); echo esc_attr( $column_class ); ?>">
 
 	                    <?php if ( isset( $column['price_col_title'] ) && ! empty( $column['price_col_title'] ) ) : ?>
@@ -540,7 +539,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 	                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
 							<div class="th-pricing-features">
 								<ul>
-									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( esc_html( $column['price_col_description'] ), "\n\r" ) ) . '</li>'; ?>
+									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( wp_kses_post( $column['price_col_description'] ), "\n\r" ) ) . '</li>'; ?>
 								</ul>
 							</div>
 	                    <?php endif; ?>
