@@ -354,7 +354,13 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                             if( isset( $featured_url[0] ) ) {
                                 $link_url = $featured_url[0];
                             }
-                            $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
+                            $elementor_global_image_lightbox = get_option('elementor_global_image_lightbox');
+                            if (!empty($elementor_global_image_lightbox) && $elementor_global_image_lightbox == 'yes') {
+                                $link_target_markup = false;
+                            }else{
+                                $link_target_markup = ' data-toggle=lightbox data-gallery=multiimages';
+                            }
+
                             $link_title = the_title_attribute( 'echo=0' );
                         }
 

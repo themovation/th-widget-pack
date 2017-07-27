@@ -44,6 +44,7 @@ require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 // When plugin is installed for the first time, set global elementor settings.
 
+
 if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings' ) ) {
     function themovation_so_widgets_bundle_setup_elementor_settings()
     {
@@ -59,6 +60,9 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
         if (empty($elementor_disable_typography_schemes)) {
             update_option('elementor_disable_typography_schemes', 'yes');
         }
+
+        // Disable global lightbox by default.
+        update_option('elementor_global_image_lightbox', false);
 
         // Check for our custom post type, if it's not included, include it.
         $elementor_cpt_support = get_option('elementor_cpt_support');
@@ -161,6 +165,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         if ( empty( $page_title_selector ) ) {
             $page_title_selector = 'h1.entry-title';
         }
+
 
         $page->add_control(
             'themo_page_title_margin',

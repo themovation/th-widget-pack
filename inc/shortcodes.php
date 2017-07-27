@@ -582,7 +582,14 @@ function themo_video_play( $atts, $content = null ) {
         $icon = "";
     }
 
-    $output = "<a href='".$src."' data-toggle='lightbox' data-width='".$width."'>".$icon."</a>";
+    $elementor_global_image_lightbox = get_option('elementor_global_image_lightbox');
+    if (!empty($elementor_global_image_lightbox) && $elementor_global_image_lightbox == 'yes') {
+        $output = "<a href='".$src."'>".$icon."</a>";
+    }else{
+        $output = "<a href='".$src."' data-toggle='lightbox' data-width='".$width."'>".$icon."</a>";
+    }
+
+
 
     return $output;
 }
@@ -1349,7 +1356,14 @@ if ( ! function_exists( 'themo_slider_gallery' ) ) :
                 $image_src = wp_get_attachment_url( $attachment->ID );
             }
 
-            $output .= "<a href='".$image_large_src."' data-toggle='lightbox' data-gallery='multiimages'>";
+            $elementor_global_image_lightbox = get_option('elementor_global_image_lightbox');
+            if (!empty($elementor_global_image_lightbox) && $elementor_global_image_lightbox == 'yes') {
+                $output .= "<a href='".$image_large_src."'>";
+            }else{
+                $output .= "<a href='".$image_large_src."' data-toggle='lightbox' data-gallery='multiimages'>";
+            }
+
+
             $output .= "<img src='".$image_src."' $alt_text />";
             $output .= "</a>";
             $output .= "</li>";
