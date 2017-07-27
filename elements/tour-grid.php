@@ -36,7 +36,10 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             $id = get_the_ID();
             $title = get_the_title();
             $portfolio[$id] = $title;
-        endwhile; wp_reset_query();
+        endwhile;
+
+        //wp_reset_query();
+        wp_reset_postdata();
 
         return $portfolio;
     }

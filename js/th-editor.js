@@ -4,61 +4,108 @@
 jQuery( function( $ ) {
 
     // Page Settings Panel - onchange save and reload elementor window.
-    if ( undefined !== elementor.pageSettings ) {
+    if ( undefined !== elementor.settings.page ) {
 
         console.log('GETTING HERE');
 
+        //elementor.settings.page.addChangeCallback( 'themo_page_layout', handle_themo_page_layout );
+
+        function handle_themo_page_layout ( newValue ) {
+            console.log( newValue );
+            elementor.reloadPreview();
+
+            elementor.once( 'preview:loaded', function() {
+                elementor.getPanelView().setPage( 'page_settings' );
+            } );
+        }
+
+        //elementor.settings.page.addChangeCallback( 'themo_transparent_header', handle_themo_transparent_header );
+
+        function handle_themo_transparent_header ( newValue ) {
+            console.log( newValue );
+            elementor.reloadPreview();
+
+            /*elementor.once( 'preview:loaded', function() {
+                elementor.getPanelView().setPage( 'page_settings' );
+            } );*/
+        }
+
+        //elementor.settings.page.addChangeCallback( 'themo_header_content_style', handle_themo_header_content_style );
+
+        function handle_themo_header_content_style ( newValue ) {
+            console.log( newValue );
+            elementor.reloadPreview();
+
+            elementor.once( 'preview:loaded', function() {
+                elementor.getPanelView().setPage( 'page_settings' );
+            } );
+        }
+
+        //elementor.settings.page.addChangeCallback( 'themo_alt_logo', handle_themo_alt_logo );
+
+        function handle_themo_alt_logo ( newValue ) {
+            console.log( newValue );
+            elementor.reloadPreview();
+
+            elementor.once( 'preview:loaded', function() {
+                elementor.getPanelView().setPage( 'page_settings' );
+            } );
+        }
+
         // Page Layout Options
-        elementor.pageSettings.addChangeCallback( 'themo_page_layout', function( newValue ) {
+        elementor.settings.page.addChangeCallback( 'themo_page_layout', function( newValue ) {
             // Here you can do as you wish with the newValue
 
-            console.log('PAGE LAYOUT CHANGE.');
+            //console.log('PAGE LAYOUT CHANGE.');
 
             this.save( function() {
-                console.log('Calling Reload');
                 elementor.reloadPreview();
-                console.log('Reload Complete');
+
                 elementor.once( 'preview:loaded', function() {
-                    elementor.getPanelView().setPage( 'settingsPage' );
+                    elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
         } );
 
         // Header Transparency
-        elementor.pageSettings.addChangeCallback( 'themo_transparent_header', function( newValue ) {
+        elementor.settings.page.addChangeCallback( 'themo_transparent_header', function( newValue ) {
             // Here you can do as you wish with the newValue
+
+            console.log('NEW VALUE '+newValue);
 
             this.save( function() {
                 elementor.reloadPreview();
 
                 elementor.once( 'preview:loaded', function() {
-                    elementor.getPanelView().setPage( 'settingsPage' );
+                    elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
+
+
         } );
 
         // Header Contenet Style
-        elementor.pageSettings.addChangeCallback( 'themo_header_content_style', function( newValue ) {
+        elementor.settings.page.addChangeCallback( 'themo_header_content_style', function( newValue ) {
             // Here you can do as you wish with the newValue
 
             this.save( function() {
                 elementor.reloadPreview();
 
                 elementor.once( 'preview:loaded', function() {
-                    elementor.getPanelView().setPage( 'settingsPage' );
+                    elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
         } );
 
         // Alt Logo
-        elementor.pageSettings.addChangeCallback( 'themo_alt_logo', function( newValue ) {
+        elementor.settings.page.addChangeCallback( 'themo_alt_logo', function( newValue ) {
             // Here you can do as you wish with the newValue
 
             this.save( function() {
                 elementor.reloadPreview();
 
                 elementor.once( 'preview:loaded', function() {
-                    elementor.getPanelView().setPage( 'settingsPage' );
+                    elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
         } );

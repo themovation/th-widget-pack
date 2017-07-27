@@ -109,10 +109,10 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 
 // Top of section
 if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
-    function th_add_custom_controls_elem_page_settings_top($element, $args)
+    function th_add_custom_controls_elem_page_settings_top(\Elementor\Core\Settings\Page\Model $page)
     {
 
-        $element->add_control(
+        $page->add_control(
             'themo_transparent_header',
             [
                 'label' => __( 'Transparent Header', 'th-widget-pack' ),
@@ -124,7 +124,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             ]
         );
 
-        $element->add_control(
+        $page->add_control(
             'themo_header_content_style',
             [
                 'label' => __( 'Transparent Header Content Style', 'th-widget-pack' ),
@@ -141,7 +141,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             ]
         );
 
-        $element->add_control(
+        $page->add_control(
             'themo_alt_logo',
             [
                 'label' => __( 'Use Alternative Logo', 'th-widget-pack' ),
@@ -162,7 +162,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             $page_title_selector = 'h1.entry-title';
         }
 
-        $element->add_control(
+        $page->add_control(
             'themo_page_title_margin',
             [
                 'label' => __( 'Title  Margin', 'th-widget-pack' ),
@@ -192,10 +192,10 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
 }
 // Bottom of section
 if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
-    function th_add_custom_controls_elem_page_settings_bottom($element, $args)
+    function th_add_custom_controls_elem_page_settings_bottom( \Elementor\Core\Settings\Page\Model $page )
     {
 
-        $element->add_control(
+        $page->add_control(
             'themo_page_layout',
             [
                 'label' => __( 'Sidebar', 'th-widget-pack' ),

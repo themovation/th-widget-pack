@@ -816,7 +816,7 @@ class Themo_Widget_Slider extends Widget_Base {
         );
 
 		$this->add_control(
-			'animation',
+			'th_animation',
 			[
 				'label' => __( 'Transition Style', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
@@ -1138,10 +1138,11 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		<script>
 			jQuery( function ( $ ) {
+
 				themo_start_flex_slider(
 					'#main-flex-slider',
                     <?php echo esc_attr( $settings['autoplay'] ) ? 'true' : 'false'; ?>,
-					'<?php echo esc_attr( $settings['animation'] ); ?>',
+					'<?php echo esc_attr( $settings['th_animation'] ); ?>',
 					'<?php echo esc_attr( $settings['easing'] ); ?>',
 					<?php echo esc_attr( $settings['animation_loop'] ) ? 'true' : 'false'; ?>,
 					<?php echo esc_attr( $settings['smooth_height'] ) ? 'true' : 'false'; ?>,
