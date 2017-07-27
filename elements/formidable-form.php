@@ -76,6 +76,27 @@ class Themo_Widget_Formidable extends Widget_Base {
         );
 
         $this->add_control(
+            'button_1_style',
+            [
+                'label' => __( 'Button Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
             'slide_text_align',
             [
                 'label' => __( 'Align', 'th-widget-pack' ),
@@ -167,6 +188,8 @@ class Themo_Widget_Formidable extends Widget_Base {
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
+            $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
+            $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
 
 
             ?>
