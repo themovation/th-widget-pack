@@ -116,82 +116,92 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
     function th_add_custom_controls_elem_page_settings_top(\Elementor\Core\Settings\Page\Model $page)
     {
 
-        $page->add_control(
-            'themo_transparent_header',
-            [
-                'label' => __( 'Transparent Header', 'th-widget-pack' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'On', 'th-widget-pack' ),
-                'label_off' => __( 'Off', 'th-widget-pack' ),
-                'return_value' => 'on',
-            ]
-        );
+        if(isset($page) && $page->get_id() > ""){
+            $th_post_type = false;
+            $th_post_type = get_post_type($page->get_id());
+            if($th_post_type == 'page' || $th_post_type == 'themo_tour'){
 
-        $page->add_control(
-            'themo_header_content_style',
-            [
-                'label' => __( 'Transparent Header Content Style', 'th-widget-pack' ),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'label_block' => true,
-                'default' => 'light',
-                'options' => [
-                    'light' => __( 'Light', 'th-widget-pack' ),
-                    'dark' => __( 'Dark', 'th-widget-pack' ),
-                ],
-                'condition' => [
-                    'themo_transparent_header' => 'on',
-                ],
-            ]
-        );
+                $page->add_control(
+                    'themo_transparent_header',
+                    [
+                        'label' => __( 'Transparent Header', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'default' => 'Off',
+                        'label_on' => __( 'On', 'th-widget-pack' ),
+                        'label_off' => __( 'Off', 'th-widget-pack' ),
+                        'return_value' => 'on',
+                    ]
+                );
 
-        $page->add_control(
-            'themo_alt_logo',
-            [
-                'label' => __( 'Use Alternative Logo', 'th-widget-pack' ),
-                'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'th-widget-pack' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'default' => 'Off',
-                'label_on' => __( 'On', 'th-widget-pack' ),
-                'label_off' => __( 'Off', 'th-widget-pack' ),
-                'return_value' => 'on',
-                'condition' => [
-                    'themo_transparent_header' => 'on',
-                ],
-            ]
-        );
+                $page->add_control(
+                    'themo_header_content_style',
+                    [
+                        'label' => __( 'Transparent Header Content Style', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::SELECT,
+                        'label_block' => true,
+                        'default' => 'light',
+                        'options' => [
+                            'light' => __( 'Light', 'th-widget-pack' ),
+                            'dark' => __( 'Dark', 'th-widget-pack' ),
+                        ],
+                        'condition' => [
+                            'themo_transparent_header' => 'on',
+                        ],
+                    ]
+                );
 
-        $page_title_selector = get_option( 'elementor_page_title_selector' );
-        if ( empty( $page_title_selector ) ) {
-            $page_title_selector = 'h1.entry-title';
+                $page->add_control(
+                    'themo_alt_logo',
+                    [
+                        'label' => __( 'Use Alternative Logo', 'th-widget-pack' ),
+                        'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'default' => 'Off',
+                        'label_on' => __( 'On', 'th-widget-pack' ),
+                        'label_off' => __( 'Off', 'th-widget-pack' ),
+                        'return_value' => 'on',
+                        'condition' => [
+                            'themo_transparent_header' => 'on',
+                        ],
+                    ]
+                );
+
+                $page_title_selector = get_option( 'elementor_page_title_selector' );
+                if ( empty( $page_title_selector ) ) {
+                    $page_title_selector = 'h1.entry-title';
+                }
+
+
+                $page->add_control(
+                    'themo_page_title_margin',
+                    [
+                        'label' => __( 'Title  Margin', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::SLIDER,
+                        'default' => [
+                            'size' => 1,
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 1000,
+                                'step' => 5,
+                            ],
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'size_units' => [ 'px', '%' ],
+                        'selectors' => [
+                            '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+                );
+            }
         }
 
 
-        $page->add_control(
-            'themo_page_title_margin',
-            [
-                'label' => __( 'Title  Margin', 'th-widget-pack' ),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 1,
-                ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 5,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+
 
     }
 }
@@ -200,30 +210,38 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
     function th_add_custom_controls_elem_page_settings_bottom( \Elementor\Core\Settings\Page\Model $page )
     {
 
-        $page->add_control(
-            'themo_page_layout',
-            [
-                'label' => __( 'Sidebar', 'th-widget-pack' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'default' => 'full',
-                'options' => [
-                    'left'    => [
-                        'title' => __( 'Left', 'th-widget-pack' ),
-                        'icon' => 'fa fa-long-arrow-left',
-                    ],
-                    'full' => [
-                        'title' => __( 'No Sidebar', 'th-widget-pack' ),
-                        'icon' => 'fa fa-times',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'th-widget-pack' ),
-                        'icon' => 'fa fa-long-arrow-right',
-                    ],
+        if(isset($page) && $page->get_id() > "") {
+            $th_post_type = false;
+            $th_post_type = get_post_type($page->get_id());
+            if ($th_post_type == 'page' || $th_post_type == 'themo_tour') {
 
-                ],
-                'return_value' => 'yes',
-            ]
-        );
+                $page->add_control(
+                    'themo_page_layout',
+                    [
+                        'label' => __( 'Sidebar', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::CHOOSE,
+                        'default' => 'full',
+                        'options' => [
+                            'left'    => [
+                                'title' => __( 'Left', 'th-widget-pack' ),
+                                'icon' => 'fa fa-long-arrow-left',
+                            ],
+                            'full' => [
+                                'title' => __( 'No Sidebar', 'th-widget-pack' ),
+                                'icon' => 'fa fa-times',
+                            ],
+                            'right' => [
+                                'title' => __( 'Right', 'th-widget-pack' ),
+                                'icon' => 'fa fa-long-arrow-right',
+                            ],
+
+                        ],
+                        'return_value' => 'yes',
+                    ]
+                );
+            }
+        }
+
     }
 }
 add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);

@@ -143,7 +143,7 @@ if ( ! function_exists( 'th_check_meta_change' ) ) {
                         update_post_meta($post_id, '_elementor_page_settings', $elm_page_settings[0]);
                     }
                 } else {
-                    if ($ot_setting == 'off') {
+                    if ($ot_setting == 'off' || $ot_setting == '') {
                         $elm_page_settings[0]['hide_title'] = '';
                     } else {
                         $elm_page_settings[0]['hide_title'] = 'yes';
@@ -183,7 +183,7 @@ if ( ! function_exists( 'th_check_meta_change' ) ) {
                         update_post_meta($post_id, '_elementor_page_settings', $elm_page_settings[0]);
                     }
                 } else {
-                    if ($ot_themo_transparent_header == 'off') {
+                    if ($ot_themo_transparent_header == 'off' || $ot_themo_transparent_header == '') {
                         $elm_page_settings[0]['themo_transparent_header'] = '';
                     } else {
                         $elm_page_settings[0]['themo_transparent_header'] = 'on';
