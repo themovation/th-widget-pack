@@ -21,9 +21,9 @@ class Themo_Widget_Formidable extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
-	public function is_reload_preview_required() {
+	/*public function is_reload_preview_required() {
 		return true;
-	}
+	}*/
 
 	protected function _register_controls() {
 		$this->start_controls_section(
@@ -199,10 +199,10 @@ class Themo_Widget_Formidable extends Widget_Base {
 
 	}
 
-	public function render_plain_content() {
+	/*public function render_plain_content() {
 		// In plain mode, render without shortcode
 		echo sanitize_text_field($this->get_settings( 'shortcode' ));
-	}
+	}*/
 
 	protected function _content_template() {}
 }
