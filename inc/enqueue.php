@@ -63,7 +63,7 @@ add_action( 'elementor/preview/enqueue_styles', function() {
 
         if (isset($custom_css_outfall) && $custom_css_outfall > "") {
             echo "\n<!-- Theme Custom CSS outfall for Elementor Preview -->\n<style>\n";
-            echo sanitize_text_field($custom_css_outfall); // custom css sanitized just above
+           // echo sanitize_text_field($custom_css_outfall); // custom css sanitized just above
             echo "\n</style>\n";
         }
     }
