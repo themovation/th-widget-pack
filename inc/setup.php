@@ -33,7 +33,7 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 // Include scripts, custom post type, shortcodes
 require_once THEMO_PATH . 'inc/elementor-section.php';
-require_once  THEMO_PATH . 'inc/enqueue.php';
+require_once THEMO_PATH . 'inc/enqueue.php';
 require_once THEMO_PATH . 'inc/cpt_tours.php' ;
 require_once THEMO_PATH . 'inc/shortcodes.php' ;
 

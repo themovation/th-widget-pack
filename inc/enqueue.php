@@ -6,6 +6,9 @@ function themovation_so_wb_scripts() {
     //wp_enqueue_script( 'themo-js-head', THEMO_URL . 'js/themo-head.js', array('jquery'), THEMO_VERSION, false);
     wp_enqueue_script( 'themo-js-foot', THEMO_URL . 'js/themo-foot.js', array('jquery'), THEMO_VERSION, true);
 
+    // Enqueue font awesome on all pages
+    wp_enqueue_style( 'font-awesome' );
+
 	if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
 		wp_dequeue_script( 'booked-font-awesome' );
 	}
