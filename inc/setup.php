@@ -4,7 +4,6 @@
 require_once THEMO_PATH . 'fields/icons.php' ;
 require_once THEMO_PATH . 'inc/helper-functions.php' ;
 
-
 if ( ! function_exists( 'themovation_elements' ) ) {
     function themovation_elements()
     {
@@ -39,8 +38,8 @@ require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 
 // GLOBAL VARIABLES
-// global $th_map_id;
-// $th_map_id = 0;
+global $th_map_id;
+$th_map_id = 0;
 
 // When plugin is installed for the first time, set global elementor settings.
 
