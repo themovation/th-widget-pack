@@ -10,10 +10,8 @@ jQuery(function ($) {
 				center: { lat: $this.data( 'map-latitude' ), lng: $this.data( 'map-longitude' ) },
 				disableDefaultUI: true,
 				scrollwheel: $this.data( 'map-scroll' ),
-				style: $this.data( 'map-style' ),
+				styles: $this.data( 'map-style' ),
 			} );
-
-			$this.siblings('.map-info').append( '<p>' + $this.data( 'map-style' ) + '</p>' );
 
 		} );
 
