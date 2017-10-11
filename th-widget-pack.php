@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Embark Theme Widget Pack
+ * Plugin Name: Page Builder Widget Pack
  * Version: 1.0.2
  * Plugin URI: themovation.com
- * Description: A widget pack for the Embark Theme
+ * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation
  * Author URI: themovation.com
  * Text Domain: th-widget-pack
@@ -22,6 +22,12 @@ define( 'THEMO_ASSETS_URL', THEMO_URL . 'assets/' );
 define( 'THEMO_COLOR_PRIMARY', '#3A3B74' );
 define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
 
+$th_theme = wp_get_theme(); // get theme info and save theme name as constant.
+if($th_theme->get( 'Name' ) > ""){
+    $th_theme_name_arr = explode("-", $th_theme->get( 'Name' ), 2); // clean up child theme name
+    $th_theme_name = trim(strtolower($th_theme_name_arr[0]));
+    define( 'THEMO_CURRENT_THEME', $th_theme_name );
+};
 
 // Run Setup
 require_once THEMO_PATH . 'inc/setup.php';

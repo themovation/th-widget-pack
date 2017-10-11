@@ -129,7 +129,6 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-                //'default' => 'fa fa-star',
 				'icons' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
@@ -241,8 +240,8 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Discover the great outdoors', 'th-widget-pack' ),
-                'placeholder' => __( 'Discover the great outdoors', 'th-widget-pack' ),
+                'default' => __( 'Title Text', 'th-widget-pack' ),
+                'placeholder' => __( 'Title Text', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -252,7 +251,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                'default' => __( 'Nulla eget tortor ac ipsum gravida sollicitudin vel aliquet ligula. Phasellus vitae nisi at risus euismod.', 'th-widget-pack' ),
                 'placeholder' => __( 'Your Description', 'th-widget-pack' ),
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
@@ -311,8 +310,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                //'default' => __( 'View All Tours', 'th-widget-pack' ),
-                'placeholder' => __( 'View All Tours', 'th-widget-pack' ),
+                'placeholder' => __( 'Button Text', 'th-widget-pack' ),
             ]
         );
 
@@ -344,7 +342,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
             ]
         );
 
@@ -362,8 +360,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
-                //'default' => __( 'Book Tour', 'th-widget-pack' ),
+                'placeholder' => __( 'Button Text', 'th-widget-pack' ),
             ]
         );
 
@@ -394,7 +391,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
             ]
         );
 

@@ -34,8 +34,8 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Button Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Book Tour', 'th-widget-pack' ),
-				'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+				'default' => __( 'Button Text', 'th-widget-pack' ),
+				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
 		);
@@ -66,7 +66,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( '#booktour', 'th-widget-pack' ),
+				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
 			]
 		);
 
@@ -85,7 +85,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Button Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
 		);
@@ -117,7 +117,7 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => __( '#booktour', 'th-widget-pack' ),
+				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
 			]
 		);
 

@@ -53,20 +53,8 @@ class Themo_Widget_Package extends Widget_Base {
                     'th_img_sm_square' => __( 'Square', 'th-widget-pack' ),
                     'th_img_lg' => __( 'Large', 'th-widget-pack' ),
                 ],
-                /*'selectors' => [
-                    '{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner' => 'background-size: {{VALUE}}',
-                ]*/
             ]
         );
-
-        /*$this->add_group_control(
-            Group_Control_Image_Size::get_type(),
-            [
-                'name' => 'image', // Actually its `image_size`
-                'label' => __( 'Image Size', 'th-widget-pack' ),
-                'default' => 'large',
-            ]
-        );*/
 
         $this->add_control(
             'pre_title',
@@ -84,8 +72,8 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Chilko Tour', 'th-widget-pack' ),
-				'placeholder' => __( 'Chilko Tour', 'th-widget-pack' ),
+				'default' => __( 'Package Title', 'th-widget-pack' ),
+				'placeholder' => __( 'Package Title', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);
@@ -96,7 +84,7 @@ class Themo_Widget_Package extends Widget_Base {
 				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => 'Paddle the longest, continuous Class IV whitewater',
+				'default' => 'Maecenas tristique ullamcorper mauris, et elementum tortor.',
 			]
 		);
 
@@ -151,8 +139,8 @@ class Themo_Widget_Package extends Widget_Base {
 			[
 				'label' => __( 'Price Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '/person', 'th-widget-pack' ),
-				'placeholder' => __( '/person', 'th-widget-pack' ),
+				'default' => __( '/each', 'th-widget-pack' ),
+				'placeholder' => __( '/each', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);

@@ -35,8 +35,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'rows' => '10',
-				'default' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'th-widget-pack' ),
-				'placeholder' => __( '“Amazing trip; Great whitewater, food, and awesome guides. We had an amazing trip. Big group, but easily accommodated by Thrillz Co. The food was amazing, the weather was perfect, and the rafting was fun”', 'th-widget-pack' ),
+				'default' => __( '“Pellentesque vel purus vestibulum, commodo tellus iaculis, molestie nisi. Cras auctor, sapien eu ullamcorper tincidunt, eros felis congue arcu, id finibus libero neque ut tellus. Phasellus bibendum nibh tortor. Nam malesuada quam lorem, eu.”', 'th-widget-pack' ),
+				'placeholder' => __( '“Pellentesque vel purus vestibulum, commodo tellus iaculis, molestie nisi. Cras auctor, sapien eu ullamcorper tincidunt, eros felis congue arcu, id finibus libero neque ut tellus. Phasellus bibendum nibh tortor. Nam malesuada quam lorem, eu.”', 'th-widget-pack' ),
 			]
 		);
 
@@ -117,8 +117,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Job', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => 'Adventurer',
-				'placeholder' => 'Adventurer',
+				'default' => 'Customer',
+				'placeholder' => 'Customer',
 			]
 		);
 

@@ -495,8 +495,8 @@ class Themo_Widget_Slider extends Widget_Base {
 				'condition' => [
 					'slide_tooltip' => 'yes',
 				],
-                'default' => __( 'Book Your Tour Today', 'th-widget-pack' ),
-                'plcaeholder' => __( 'Book Your Tour Today', 'th-widget-pack' ),
+                'default' => __( 'Calendar Toolip', 'th-widget-pack' ),
+                'plcaeholder' => __( 'Calendar Toolip', 'th-widget-pack' ),
 			]
 		);
 
@@ -699,23 +699,23 @@ class Themo_Widget_Slider extends Widget_Base {
 				'show_label' => true,
                 'default' => [
                     [
-                        'slide_title' => __( 'Discover the great outdoors', 'th-widget-pack' ),
-                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
-                        'slide_button_text_1' => __( 'View all Tours', 'th-widget-pack' ),
-                        'slide_bg_color' => __( '#3A3B74', 'th-widget-pack' ),
+                        'slide_title' => __( 'In in dictum metus, nec.', 'th-widget-pack' ),
+                        'slide_text' => __( 'Donec ultrices libero id leo tempor, nec efficitur sem auctor. Duis dictum justo a risus ultricies.', 'th-widget-pack' ),
+                        'slide_button_text_1' => __( 'Button Text', 'th-widget-pack' ),
+                        'slide_bg_color' => __( '#CCC', 'th-widget-pack' ),
                         'slide_button_style_1' => __( 'ghost-light', 'th-widget-pack' ),
                     ],
                     [
-                        'slide_title' => __( 'Book Your Tickets', 'th-widget-pack' ),
-                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                        'slide_title' => __( 'Sed diam nunc, pretium vitae.', 'th-widget-pack' ),
+                        'slide_text' => __( 'Donec ultrices libero id leo tempor, nec efficitur sem auctor. Duis dictum justo a risus ultricies.', 'th-widget-pack' ),
                         'slide_bg_color' => __( '#4A4A4A', 'th-widget-pack' ),
                         'slide_button_text_1_show' => __( 'no', 'th-widget-pack' ),
                         'slide_shortcode' => __( '[booked-calendar]', 'th-widget-pack' ),
 
                     ],
                     [
-                        'slide_title' => __( 'Discover the great outdoors', 'th-widget-pack' ),
-                        'slide_text' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                        'slide_title' => __( 'In pellentesque ultricies nulla dapibus.', 'th-widget-pack' ),
+                        'slide_text' => __( 'Donec ultrices libero id leo tempor, nec efficitur sem auctor. Duis dictum justo a risus ultricies.', 'th-widget-pack' ),
                         'slide_bg_color' => __( '#7A85E8', 'th-widget-pack' ),
                         'inline_form' => __( 'inline', 'th-widget-pack' ),
                         'slide_button_text_1_show' => __( 'no', 'th-widget-pack' ),

@@ -133,8 +133,8 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Discover the great outdoors', 'th-widget-pack' ),
-                'placeholder' => __( 'Discover the great outdoors', 'th-widget-pack' ),
+                'default' => __( 'Title', 'th-widget-pack' ),
+                'placeholder' => __( 'Title', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -144,26 +144,13 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Come and join the thrill and excitement of white water rafting with the adventure rafting team!', 'th-widget-pack' ),
+                'default' => __( 'Nulla eget tortor ac ipsum gravida sollicitudin vel aliquet ligula. Phasellus vitae nisi at risus euismod.', 'th-widget-pack' ),
                 'placeholder' => __( 'Your Description', 'th-widget-pack' ),
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
             ]
         );
-
-
-
-        /*$this->add_control(
-            'description_align_override',
-            [
-                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'return_value' => 'yes',
-            ]
-        );*/
 
 
 
@@ -182,8 +169,8 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Link 1 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'View All Tours', 'th-widget-pack' ),
-                'placeholder' => __( 'View All Tours', 'th-widget-pack' ),
+                'default' => __( 'More Info', 'th-widget-pack' ),
+                'placeholder' => __( 'Link Text', 'th-widget-pack' ),
             ]
         );
 
@@ -192,7 +179,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Link 1', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
             ]
         );
@@ -203,8 +190,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Link 2 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
-                //'default' => __( 'Book Tour', 'th-widget-pack' ),
+                'placeholder' => __( 'Link Text', 'th-widget-pack' ),
             ]
         );
 
@@ -213,7 +199,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
             [
                 'label' => __( 'Link 2', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
             ]
         );

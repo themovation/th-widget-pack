@@ -3,14 +3,14 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_Tour_Grid extends Widget_Base {
+class Themo_Widget_Portfolio_Grid extends Widget_Base {
 
     public function get_name() {
-        return 'themo-tour-grid';
+        return 'themo-portfolio-grid';
     }
 
     public function get_title() {
-        return __( 'Tour Grid', 'th-widget-pack' );
+        return __( 'Portfolio Grid', 'th-widget-pack' );
     }
 
     public function get_icon() {
@@ -25,7 +25,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $portfolio = array();
 
         $loop = new \WP_Query( array(
-            'post_type' => array('themo_tour'),
+            'post_type' => array('themo_portfolio'),
             'posts_per_page' => -1,
             'post_status'=>array('publish'),
         ) );
@@ -44,12 +44,12 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         return $portfolio;
     }
 
-    private function get_tours_group_list() {
+    private function get_project_group_list() {
         $portfolio_group = array();
 
         $portfolio_group['none'] = __( 'None', 'th-widget-pack' );
 
-        $taxonomy = 'themo_tour_type';
+        $taxonomy = 'themo_project_type';
 
         $tax_terms = get_terms( $taxonomy );
 
@@ -101,7 +101,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'label_block' => true,
                 'multiple'    => true,
                 //'default' => 'none',
-                'options' => $this->get_tours_group_list()
+                'options' => $this->get_project_group_list()
             ]
         );
 
@@ -241,8 +241,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                     <span><?php echo esc_html__( 'Sort:', 'th-widget-pack' ); ?></span>
                     <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'th-widget-pack' ); ?></a>
                     <?php
-
-                    $taxonomy = 'themo_tour_type';
+                    $taxonomy = 'themo_project_type';
 
                     // Only show filter links for the groups selected.
                     $tax_args = array(
@@ -274,7 +273,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         $args['post__in'] = $post_ids;
                     }
                 }
-                $args['post_type'] = array( 'themo_tour' );
+                $args['post_type'] = array( 'themo_portfolio' );
                 if ( $settings['group'] ) {
                     if ( in_array( 'none', $settings['group'] ) ) {
                         $settings['group'] = array_diff( $settings['group'], array( 'none' ) );
@@ -283,9 +282,10 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         $project_type_id = $settings['group'];
                         $args['tax_query'] = array(
                             array(
-                                'taxonomy' => 'themo_tour_type',
+                                'taxonomy' => 'themo_project_type',
                                 'field'    => 'term_id',
                                 'terms'    => $project_type_id,
+                                //'operator' => 'IN',
                             ),
                         );
                     }
@@ -342,15 +342,32 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         }
 
                         // Get Project Format Options
-                        $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_tour_thumb', false );
+                        $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_project_thumb', false );
 
                         $fallback_lightbox_url = false;
 
                         if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
                             $alt = false;
+
+                            // Check if Image comes in Med size with Square crop / else get small
                             $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
+
+                            list($th_actual_width, $th_actual_height) = getimagesize($img_src);
+                            if ((605 !== $th_actual_width) && (605 !== $th_actual_height)){
+
+                                // Check if Image comes in Small size with Square crop / else get thumb
+                                $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_sm_square", true, $alt );
+
+                                list($th_actual_width, $th_actual_height) = getimagesize($img_src);
+
+                                if ((394 !== $th_actual_width) && (394 !== $th_actual_height)){
+                                    $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "thumbnail", true, $alt );
+                                }
+                            }
+
                             $alt_text = $alt;
                             $fallback_lightbox_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
+
                         }
 
                         //Image post type options
@@ -365,6 +382,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                 $link_url = $featured_url[0];
                             }
                             $elementor_global_image_lightbox = get_option('elementor_global_image_lightbox');
+
                             if (!empty($elementor_global_image_lightbox) && $elementor_global_image_lightbox == 'yes') {
                                 $link_target_markup = false;
                             }else{
@@ -375,12 +393,13 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         }
 
                         $filtering_links = array();
-                        $terms = get_the_terms( get_the_ID(), 'themo_tour_type' );
+                        $terms = get_the_terms( get_the_ID(), 'themo_project_type' );
                         if ( $terms && ! is_wp_error( $terms ) ) {
                             foreach ( $terms as $term ) {
                                 $filtering_links[] = 'p-' . $term->slug;
                             }
                         }
+
                         $classes = array_merge( $portfolio_item, $filtering_links );
                         ?>
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
@@ -392,69 +411,74 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                                     if ( has_post_thumbnail( get_the_ID() ) ) {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
 
-                                        $th_wanted_width = 605;
-                                        $th_wanted_height = 605;
                                         $th_id = get_post_thumbnail_id(get_the_ID());
                                         $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
 
                                         if ($th_image){
                                             list($width, $height) = getimagesize($th_image[0]);
-                                            if (($th_wanted_width == $width) && ($th_wanted_height == $height)){
+                                            if ((605 == $width) && (605 == $height)){
                                                 echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
                                             }
                                             else{
-                                                //default when no image
-                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
+                                                $th_image = wp_get_attachment_image_src($th_id, "th_img_sm_square");
+                                                list($width, $height) = getimagesize($th_image[0]);
+                                                if ((394 == $width) && (394 == $height)){
+                                                    echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
+                                                }else{
+                                                    //default when no image
+                                                    echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "thumbnail", $featured_img_attr ));
+                                                }
+
                                             }
                                         }
                                     }
                                 }
 
-                                $th_tour_title = get_the_title();
-                                $th_tour_title_meta = get_post_meta( get_the_ID(), 'th_tour_title', true );
-                                if( $th_tour_title_meta > "" ) {
-                                    $th_tour_title = $th_tour_title_meta;
+                                $th_project_title = get_the_title();
+                                $th_project_title_meta = get_post_meta( get_the_ID(), 'th_project_title', true );
+                                if( $th_project_title_meta > "" ) {
+                                    $th_project_title = $th_project_title_meta;
                                 }
 
-                                $th_tour_highlight = false;
-                                $th_tour_highlight = get_post_meta( get_the_ID(), 'th_tour_highlight', true );
+                                $th_project_highlight = false;
+                                $th_project_highlight = get_post_meta( get_the_ID(), 'th_project_highlight', true );
 
-                                $th_tour_intro = false;
-                                $th_tour_intro = get_post_meta( get_the_ID(), 'th_tour_intro', true );
-                                if( $th_tour_intro === false || empty( $th_tour_intro ) ) {
+                                $th_project_intro = false;
+                                $th_project_intro = get_post_meta( get_the_ID(), 'th_project_intro', true );
+                                if( $th_project_intro === false || empty( $th_project_intro ) ) {
                                     $automatic_post_excerpts = 'on';
                                     if ( function_exists( 'get_theme_mod' ) ) {
                                         $automatic_post_excerpts = get_theme_mod( 'themo_automatic_post_excerpts', 'on' );
                                     }
                                     if( $automatic_post_excerpts === 'off' ) {
-                                        $th_tour_intro = apply_filters( 'the_content', get_the_content() );
-                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        if( $th_tour_intro != "" ) {
-                                            $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
+                                        $th_project_intro = apply_filters( 'the_content', get_the_content() );
+                                        $th_project_intro = str_replace( ']]>', ']]&gt;', $th_project_intro );
+                                        if( $th_project_intro != "" ) {
+                                            $th_project_intro = '<p class="th-port-sub">' . $th_project_intro . '</p>';
                                         }
                                     } else {
-                                        $th_tour_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
-                                        $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        $th_tour_intro = str_replace( '<p', '<p class="th-port-sub"', $th_tour_intro );
+                                        $th_project_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
+                                        $th_project_intro = str_replace( ']]>', ']]&gt;', $th_project_intro );
+                                        $th_project_intro = str_replace( '<p', '<p class="th-port-sub"', $th_project_intro );
                                     }
                                 }else{
-                                    $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
+                                    $th_project_intro = '<p class="th-port-sub">' . $th_project_intro . '</p>';
                                 }
 
-                                $th_tour_button_text = false;
-                                $th_tour_button_text = get_post_meta( get_the_ID(), 'th_tour_button_text', true );
+                                $th_project_button_text = false;
+                                $th_project_button_text = get_post_meta( get_the_ID(), 'th_project_button_text', true );
                                 ?>
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
-                                    <?php if( $th_tour_highlight ) { ?>
-                                        <div class="th-port-top-text"><?php echo esc_html($th_tour_highlight); ?></div>
+                                    <?php if( $th_project_highlight ) { ?>
+                                        <div class="th-port-top-text"><?php echo esc_html($th_project_highlight); ?></div>
                                     <?php } ?>
                                     <div class="th-port-center">
-                                        <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
-                                        <?php echo wp_kses_post($th_tour_intro); ?>
-                                        <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
-                                            <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
+                                        <h3 class="th-port-title"><?php echo esc_html( $th_project_title ); ?></h3>
+                                        <?php echo wp_kses_post($th_project_intro); ?>
+                                        <?php if( ! $th_project_button_text === false || ! empty( $th_project_button_text ) ) { ?>
+                                            <span class="th-port-btn"><?php echo esc_html( $th_project_button_text ); ?></span>
                                         <?php } ?>
                                     </div>
                                     <?php echo '<a href="' . esc_url( $link_url ) . '" class="th-port-link" ' . esc_html( $link_target_markup ) . '></a>'; ?>
@@ -483,4 +507,4 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     protected function _content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Tour_Grid() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Portfolio_Grid() );

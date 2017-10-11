@@ -34,7 +34,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 			[
 				'label' => __( 'Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Does this look like fun, book tickets today!', 'th-widget-pack' ),
+				'default' => __( 'Phasellus semper viverra tristique. Sed justo tortor, iaculis.', 'th-widget-pack' ),
 				'placeholder' => __( 'Title', 'th-widget-pack' ),
 				'separator' => 'before',
 			]
@@ -54,8 +54,8 @@ class Themo_Widget_CallToAction extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Book Tour', 'th-widget-pack' ),
-                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
+                'default' => __( 'Button Text', 'th-widget-pack' ),
+                'placeholder' => __( 'Button Text', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -86,7 +86,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
             [
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
             ]
         );
 
@@ -104,8 +104,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
             [
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
-                //'default' => __( 'Book Tour', 'th-widget-pack' ),
+                'placeholder' => __( 'Button Text', 'th-widget-pack' ),
                 'separator' => 'before',
             ]
         );
@@ -137,7 +136,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
             [
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
-                'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
             ]
         );
 

@@ -17,10 +17,28 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/info-card.php';
         require_once THEMO_PATH . 'elements/team.php';
         require_once THEMO_PATH . 'elements/appointments.php';
-        require_once THEMO_PATH . 'elements/tour-grid.php';
-        require_once THEMO_PATH . 'elements/tour-info.php';
+
+        if('embark' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/tour-grid.php';
+        }elseif('stratus' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/portfolio-grid.php';
+        }
+
+
+        if('embark' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/tour-info.php';
+        }elseif('stratus' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/info-bar.php';
+        }
+
         require_once THEMO_PATH . 'elements/package.php';
-        require_once THEMO_PATH . 'elements/itinerary.php';
+
+        if('embark' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/itinerary.php';
+        }elseif('stratus' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/expand-list.php';
+        }
+
         require_once THEMO_PATH . 'elements/pricing.php';
         require_once THEMO_PATH . 'elements/blog.php';
         require_once THEMO_PATH . 'elements/image-gallery.php';
@@ -33,7 +51,12 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 // Include scripts, custom post type, shortcodes
 require_once THEMO_PATH . 'inc/elementor-section.php';
 require_once THEMO_PATH . 'inc/enqueue.php';
-require_once THEMO_PATH . 'inc/cpt_tours.php' ;
+
+if('embark' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'inc/cpt_tours.php' ;
+}elseif('stratus' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
+}
 require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 
@@ -42,6 +65,7 @@ global $th_map_id;
 $th_map_id = 0;
 
 // When plugin is installed for the first time, set global elementor settings.
+
 
 
 if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings' ) ) {
@@ -61,7 +85,7 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
         }
 
         // Disable global lightbox by default.
-        update_option('elementor_global_image_lightbox', false);
+        update_option('elementor_global_image_lightbox', '');
 
         // Check for our custom post type, if it's not included, include it.
         $elementor_cpt_support = get_option('elementor_cpt_support');
@@ -71,6 +95,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
 
         if (!in_array("themo_tour", $elementor_cpt_support)) {
             array_push($elementor_cpt_support,"themo_tour");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
+        if (!in_array("themo_portfolio", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"themo_portfolio");
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
@@ -95,11 +124,21 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
         // trigger our function that sets up Elementor Global Settings
         themovation_so_widgets_bundle_setup_elementor_settings();
 
-        // Regsiter Custom Post Types
-        themo_tour_custom_post_type();
+        if('embark' == THEMO_CURRENT_THEME){
+            // Regsiter Custom Post Types
+            themo_tour_custom_post_type();
 
-        // Register Custom Taxonomy
-        themo_tour_type();
+            // Register Custom Taxonomy
+            themo_tour_type();
+        }elseif('stratus' == THEMO_CURRENT_THEME){
+            // Regsiter Custom Post Types
+            themo_portfolio_custom_post_type();
+
+            // Register Custom Taxonomy
+            themo_project_type();
+        }
+
+
 
         // clear the permalinks after the post type has been registered
         flush_rewrite_rules();
@@ -118,7 +157,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         if(isset($page) && $page->get_id() > ""){
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if($th_post_type == 'page' || $th_post_type == 'themo_tour'){
+            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -212,7 +251,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
         if(isset($page) && $page->get_id() > "") {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if ($th_post_type == 'page' || $th_post_type == 'themo_tour') {
+            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio') {
 
                 $page->add_control(
                     'themo_page_layout',

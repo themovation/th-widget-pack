@@ -75,8 +75,8 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Job Title', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( 'Equipment', 'th-widget-pack' ),
-				'placeholder' => __( 'Equipment', 'th-widget-pack' ),
+				'default' => __( 'Job position', 'th-widget-pack' ),
+				'placeholder' => __( 'Job position', 'th-widget-pack' ),
 				'label_block' => true,
 			]
 		);

@@ -35,7 +35,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-                'default' => 'th-trip travelpack-bus',
+                'default' => 'th-linea icon-basic-star',
 				'icons' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
@@ -146,8 +146,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Title', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
-                'default' => __( 'Free Shuttle', 'th-widget-pack' ),
-                'placeholder' => __( 'Free Shuttle', 'th-widget-pack' ),
+                'default' => __( 'Title', 'th-widget-pack' ),
+                'placeholder' => __( 'Title', 'th-widget-pack' ),
                 'label_block' => true,
             ]
         );
@@ -157,8 +157,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             [
                 'label' => __( 'Description', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'th-widget-pack' ),
-                'placeholder' => __( 'Shuttle to and from rafting trip. Store your belongings safely.', 'th-widget-pack' ),
+                'default' => __( 'Maecenas accumsan, elit id hendrerit convallis, lectus lacus fermentum nisi.', 'th-widget-pack' ),
+                'placeholder' => __( 'Add a description', 'th-widget-pack' ),
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
