@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Page Builder Widget Pack
- * Version: 1.0.2
+ * Version: 1.0.3
  * Plugin URI: themovation.com
  * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation

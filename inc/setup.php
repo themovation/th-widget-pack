@@ -138,13 +138,12 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
             themo_project_type();
         }
 
-
-
         // clear the permalinks after the post type has been registered
         flush_rewrite_rules();
     }
 }
 register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install' );
+
 
 
 // Add custom controls to the Page Settings inside the Elementor Global Options.
