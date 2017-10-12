@@ -1,7 +1,12 @@
 <?php
 
 // Adding Custom Icons for Icon Control
-require_once THEMO_PATH . 'fields/icons.php' ;
+if('embark' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'fields/icons.php' ;
+}elseif('stratus' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'fields/stratus_icons.php' ;
+}
+
 require_once THEMO_PATH . 'inc/helper-functions.php' ;
 
 if ( ! function_exists( 'themovation_elements' ) ) {
