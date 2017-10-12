@@ -170,6 +170,20 @@ class Themo_Widget_Pricing extends Widget_Base {
                             ],
                         ],
                     ],
+                    [
+                        'name' => 'button_1_image',
+                        'label' => __( 'Button Graphic', 'th-widget-pack' ),
+                        'type' => Controls_Manager::MEDIA,
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_1_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
 					[
 						'name' => 'price_col_button_1_link',
 						'label' => __( 'Button 1 Link', 'th-widget-pack' ),
@@ -227,6 +241,20 @@ class Themo_Widget_Pricing extends Widget_Base {
                             'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
                             'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
                         ],
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'price_col_button_2_show',
+                                    'operator' => '==',
+                                    'value' => 'yes',
+                                ],
+                            ],
+                        ],
+                    ],
+                    [
+                        'name' => 'button_2_image',
+                        'label' => __( 'Button Graphic', 'th-widget-pack' ),
+                        'type' => Controls_Manager::MEDIA,
                         'conditions' => [
                             'terms' => [
                                 [
@@ -513,7 +541,9 @@ class Themo_Widget_Pricing extends Widget_Base {
 
 			<div class="row">
 
-				<?php foreach( $settings['pricing'] as $column ) { ?>
+				<?php $th_counter=0; foreach( $settings['pricing'] as $column ) { ?>
+
+                    <?php ++$th_counter; ?>
 
                     <div class="elementor-repeater-item-<?php echo esc_attr( $column['_id'] ) ?> th-pricing-column<?php echo( esc_attr(isset( $column['price_col_featured']) ) && $column['price_col_featured'] == 'yes' ? ' th-highlight' : '' ); echo esc_attr( $column_class ); ?>">
 
@@ -539,25 +569,115 @@ class Themo_Widget_Pricing extends Widget_Base {
 							</div>
 	                    <?php endif; ?>
 
+
+                        <?php
+
+                        // Graphic Button 1
+                        $button_1_image = false;
+                        if ( isset( $column['button_1_image']['id'] ) && $column['button_1_image']['id'] > "" ) {
+                            $button_1_image = wp_get_attachment_image( $column['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+                        }elseif ( ! empty( $column['button_1_image']['url'] ) ) {
+                            $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $column['button_1_image']['url'] ) );
+                            $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_1_image'] ) ) );
+                            $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_1_image'] ) ) );
+                            $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
+                        }
+                        // Graphic Button URL Styling 1
+                        if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
+                            // image button
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
+                        }else{ // Bootstrap Button URL Styling
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_1_style'] ) );
+                        }
+
+                        // Button URL 1
+                        if ( empty( $column['price_col_button_1_link']['url'] ) ) { $column['price_col_button_1_link']['url'] = '#'; };
+
+                        if ( ! empty( $column['price_col_button_1_link']['url'] ) ) {
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'href', esc_url( $column['price_col_button_1_link']['url'] ) );
+
+                            if ( ! empty( $column['price_col_button_1_link']['is_external'] ) ) {
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'target', '_blank' );
+                            }
+                        }
+
+                        // Graphic Button 2
+                        $button_2_image = false;
+                        if ( isset( $column['button_2_image']['id'] ) && $column['button_2_image']['id'] > "" ) {
+                            $button_2_image = wp_get_attachment_image( $column['button_2_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+                        }elseif ( ! empty( $column['button_2_image']['url'] ) ) {
+                            $this->add_render_attribute( 'button_2_image-'.$th_counter, 'src', esc_url( $column['button_2_image']['url'] ) );
+                            $this->add_render_attribute( 'button_2_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_2_image'] ) ) );
+                            $this->add_render_attribute( 'button_2_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_2_image'] ) ) );
+                            $button_2_image = '<img ' . $this->get_render_attribute_string( 'button_2_image-'.$th_counter ) . '>';
+                        }
+                        // Graphic Button URL Styling 2
+                        if ( isset($button_2_image) && ! empty( $button_2_image ) ) {
+                            // image button
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-image' );
+                        }else{ // Bootstrap Button URL Styling
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn' );
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_2_style'] ) );
+                        }
+
+                        // Button URL 2
+                        if ( empty( $column['price_col_button_2_link']['url'] ) ) { $column['price_col_button_2_link']['url'] = '#'; };
+
+                        if ( ! empty( $column['price_col_button_2_link']['url'] ) ) {
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'href', esc_url( $column['price_col_button_2_link']['url'] ) );
+
+                            if ( ! empty( $column['price_col_button_2_link']['is_external'] ) ) {
+                                $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'target', '_blank' );
+                            }
+                        }
+
+                        ?>
+
                         <div class="th-btn-wrap">
-							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] ) ) : ?>
+							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] || ! empty($button_1_image) || ! empty( $button_2_image ) ) ) : ?>
 	                            <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) : ?>
-	                                <?php $target = $column['price_col_button_1_link']['is_external'] ? ' target="_blank"' : ''; ?>
-	                                <?php $button_style = 'btn-' . $column['price_col_button_1_style']; ?>
-	                                <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $column['price_col_button_1_link']['url'] ) . '"' . wp_kses_post( $target ) . '>'; ?>
-		                                <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-		                                    <?php echo esc_html( $column['price_col_button_1_text'] ) ?>
-		                                <?php endif;?>
-	                                <?php echo '</a>'; ?>
+
+                                    <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
+                                        <?php if ( ! empty( $column['price_col_button_1_link']['url'] ) ) : ?>
+                                            <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                <?php echo wp_kses_post( $button_1_image ); ?>
+                                            </a>
+                                        <?php else : ?>
+                                            <?php echo wp_kses_post( $button_1_image ); ?>
+                                        <?php endif; ?>
+                                    <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                            <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                                <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
+                                            <?php endif; ?>
+                                        </a>
+                                    <?php endif; ?>
 	                            <?php endif; ?>
 	                            <?php if ( isset( $column['price_col_button_2_show'] ) && $column['price_col_button_2_show'] == 'yes' ) : ?>
-	                                <?php $target = $column['price_col_button_2_link']['is_external'] ? ' target="_blank"' : ''; ?>
-	                                <?php $button_style = 'btn-' . $column['price_col_button_2_style']; ?>
-	                                <?php echo '<a class="btn th-btn th-button th-button-2 ' . esc_attr( $button_style ) . '" href="' . esc_url( $column['price_col_button_2_link']['url'] ) . '"' . wp_kses_post( $target ) . '>'; ?>
-		                                <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
-		                                    <?php echo esc_html( $column['price_col_button_2_text'] ) ?>
-		                                <?php endif;?>
-	                                <?php echo '</a>'; ?>
+                                    <?php if ( isset($button_2_image) && ! empty( $button_2_image ) ) : ?>
+                                        <?php if ( ! empty( $column['price_col_button_2_link']['url'] ) ) : ?>
+                                            <a <?php echo $this->get_render_attribute_string( 'btn-2-link-'.$th_counter ); ?>>
+                                                <?php echo wp_kses_post( $button_2_image ); ?>
+                                            </a>
+                                        <?php else : ?>
+                                            <?php echo wp_kses_post( $button_2_image ); ?>
+                                        <?php endif; ?>
+                                    <?php elseif ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
+                                        <a <?php echo $this->get_render_attribute_string( 'btn-2-link-'.$th_counter ); ?>>
+                                            <?php if ( ! empty( $column['price_col_button_2_text'] ) ) : ?>
+                                                <?php echo esc_html( $column['price_col_button_2_text'] ); ?>
+                                            <?php endif; ?>
+                                        </a>
+                                    <?php endif; ?>
 	                            <?php endif; ?>
 							<?php endif; ?>
                         </div>

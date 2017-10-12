@@ -311,6 +311,26 @@ class Themo_Widget_Slider extends Widget_Base {
             ]
         );
 
+        $th_repeater->add_control(
+            'button_1_image',
+            [
+                'label' => __( 'Button Graphic', 'th-widget-pack' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    //'url' => Utils::get_placeholder_image_src(),
+                ],
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_1_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
 		$th_repeater->add_control(
 			'slide_button_link_1',
 			[
@@ -393,6 +413,26 @@ class Themo_Widget_Slider extends Widget_Base {
                 ],
 			]
 		);
+
+        $th_repeater->add_control(
+            'button_2_image',
+            [
+                'label' => __( 'Button Graphic', 'th-widget-pack' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    //'url' => Utils::get_placeholder_image_src(),
+                ],
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'slide_button_text_2_show',
+                            'operator' => '==',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
 
         $th_repeater->add_control(
             'slide_button_link_2',
@@ -990,7 +1030,81 @@ class Themo_Widget_Slider extends Widget_Base {
 
 		<div id="main-flex-slider" class="flexslider">
 			<ul class="slides">
-				<?php foreach( $settings['slides'] as $slide ) { ?>
+				<?php $th_counter=0; foreach( $settings['slides'] as $slide ) { ?>
+
+                    <?php ++$th_counter; ?>
+
+                    <?php
+
+                    // Graphic Button 1
+                    $button_1_image = false;
+                    if ( isset( $slide['button_1_image']['id'] ) && $slide['button_1_image']['id'] > "" ) {
+                        $button_1_image = wp_get_attachment_image( $slide['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+                    }elseif ( ! empty( $slide['button_1_image']['url'] ) ) {
+                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $slide['button_1_image']['url'] ) );
+                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $slide['button_1_image'] ) ) );
+                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $slide['button_1_image'] ) ) );
+                        $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
+                    }
+                    // Graphic Button URL Styling 1
+                    if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
+                        // image button
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
+                    }else{ // Bootstrap Button URL Styling
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $slide['slide_button_style_1'] ) );
+                    }
+
+                    // Button URL 1
+                    if ( empty( $slide['slide_button_link_1']['url'] ) ) { $slide['slide_button_link_1']['url'] = '#'; };
+
+                    if ( ! empty( $slide['slide_button_link_1']['url'] ) ) {
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'href', esc_url( $slide['slide_button_link_1']['url'] ) );
+
+                        if ( ! empty( $slide['slide_button_link_1']['is_external'] ) ) {
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'target', '_blank' );
+                        }
+                    }
+
+                    // Graphic Button 2
+                    $button_2_image = false;
+                    if ( isset( $slide['button_2_image']['id'] ) && $slide['button_2_image']['id'] > "" ) {
+                        $button_2_image = wp_get_attachment_image( $slide['button_2_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+                    }elseif ( ! empty( $slide['button_2_image']['url'] ) ) {
+                        $this->add_render_attribute( 'button_2_image-'.$th_counter, 'src', esc_url( $slide['button_2_image']['url'] ) );
+                        $this->add_render_attribute( 'button_2_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $slide['button_2_image'] ) ) );
+                        $this->add_render_attribute( 'button_2_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $slide['button_2_image'] ) ) );
+                        $button_2_image = '<img ' . $this->get_render_attribute_string( 'button_2_image-'.$th_counter ) . '>';
+                    }
+                    // Graphic Button URL Styling 2
+                    if ( isset($button_2_image) && ! empty( $button_2_image ) ) {
+                        // image button
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-image' );
+                    }else{ // Bootstrap Button URL Styling
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-' . esc_attr( $slide['slide_button_style_2'] ) );
+                    }
+
+                    // Button URL 2
+                    if ( empty( $slide['slide_button_link_2']['url'] ) ) { $slide['slide_button_link_2']['url'] = '#'; };
+
+                    if ( ! empty( $slide['slide_button_link_2']['url'] ) ) {
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'href', esc_url( $slide['slide_button_link_2']['url'] ) );
+
+                        if ( ! empty( $slide['slide_button_link_2']['is_external'] ) ) {
+                            $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'target', '_blank' );
+                        }
+                    }
+
+                    ?>
 
 					<?php if ( ! empty( $settings['button_size_1'] ) ) {
 						$this->add_render_attribute( 'th-button-1', 'class', 'th-button-size-' . esc_attr( $settings['button_size_1'] ) );
@@ -1057,17 +1171,41 @@ class Themo_Widget_Slider extends Widget_Base {
                                                 <p><?php echo esc_html( $slide['slide_text']) ?></p>
                                             </div>
                                         <?php endif;?>
-                                        <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                        <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) || ! empty($button_1_image) || ! empty( $button_2_image )) : ?>
                                             <div class="th-btn-wrap">
                                                 <?php if ( isset( $slide['slide_button_text_1_show'] ) && $slide['slide_button_text_1_show'] == 'yes' ) : ?>
-													<?php $target = $slide['slide_button_link_1']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                    <?php $button_style = 'btn-' . $slide['slide_button_style_1']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-1 ' . esc_attr( $button_style ) . '" href="' . esc_url( $slide['slide_button_link_1']['url'] ) . '"' . wp_kses_post( $target ) . '>' . esc_html( $slide['slide_button_text_1'] ) . '</a>'; ?>
+                                                    <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
+                                                        <?php if ( ! empty( $slide['slide_button_link_1']['url'] ) ) : ?>
+                                                            <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                                <?php echo wp_kses_post( $button_1_image ); ?>
+                                                            </a>
+                                                        <?php else : ?>
+                                                            <?php echo wp_kses_post( $button_1_image ); ?>
+                                                        <?php endif; ?>
+                                                    <?php elseif ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                            <?php if ( ! empty( $slide['slide_button_text_1'] ) ) : ?>
+                                                                <?php echo esc_html( $slide['slide_button_text_1'] ); ?>
+                                                            <?php endif; ?>
+                                                        </a>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
                                                 <?php if ( isset( $slide['slide_button_text_2_show'] ) && $slide['slide_button_text_2_show'] == 'yes' ) : ?>
-                                                    <?php $target = $slide['slide_button_link_2']['is_external'] ? ' target="_blank"' : ''; ?>
-                                                    <?php $button_style = 'btn-' . $slide['slide_button_style_2']; ?>
-                                                    <?php echo '<a class="btn th-btn th-button th-button-2 ' . esc_attr( $button_style ) . '" href="' . esc_url ( $slide['slide_button_link_2']['url'] ) . '"' . wp_kses_post( $target ) . '>' . esc_html( $slide['slide_button_text_2'] ) . '</a>'; ?>
+                                                    <?php if ( isset($button_2_image) && ! empty( $button_2_image ) ) : ?>
+                                                        <?php if ( ! empty( $slide['slide_button_link_2']['url'] ) ) : ?>
+                                                            <a <?php echo $this->get_render_attribute_string( 'btn-2-link-'.$th_counter ); ?>>
+                                                                <?php echo wp_kses_post( $button_2_image ); ?>
+                                                            </a>
+                                                        <?php else : ?>
+                                                            <?php echo wp_kses_post( $button_2_image ); ?>
+                                                        <?php endif; ?>
+                                                    <?php elseif ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                                        <a <?php echo $this->get_render_attribute_string( 'btn-2-link-'.$th_counter ); ?>>
+                                                            <?php if ( ! empty( $slide['slide_button_text_2'] ) ) : ?>
+                                                                <?php echo esc_html( $slide['slide_button_text_2'] ); ?>
+                                                            <?php endif; ?>
+                                                        </a>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>

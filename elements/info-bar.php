@@ -146,6 +146,17 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 
 
         $this->add_control(
+            'button_1_image',
+            [
+                'label' => __( 'Button Graphic', 'th-widget-pack' ),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    //'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
             'button_1_link',
             [
                 'label' => __( 'Link', 'th-widget-pack' ),
@@ -228,12 +239,33 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 
         $items = $this->get_settings( 'items' );
 
-        if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
+        // Graphic Button
+        $button_1_image = false;
+        if ( isset( $settings['button_1_image']['id'] ) && $settings['button_1_image']['id'] > "" ) {
+            $button_1_image = wp_get_attachment_image( $settings['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+        }elseif ( ! empty( $settings['button_1_image']['url'] ) ) {
+            $this->add_render_attribute( 'button_1_image', 'src', esc_url( $settings['button_1_image']['url'] ) );
+            $this->add_render_attribute( 'button_1_image', 'alt', esc_attr( Control_Media::get_image_alt( $settings['button_1_image'] ) ) );
+            $this->add_render_attribute( 'button_1_image', 'title', esc_attr( Control_Media::get_image_title( $settings['button_1_image'] ) ) );
+            $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image' ) . '>';
+        }
 
-        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
-        $this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
-        $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
-        $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr( $settings['button_1_style'] ) );
+
+        // Graphic Button URL Styling
+        if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
+            // image button
+            $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
+            $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
+            $this->add_render_attribute( 'btn-1-link', 'class', 'btn-image' );
+        }else{ // Bootstrap Button URL Styling
+            $this->add_render_attribute( 'btn-1-link', 'class', 'btn-1' );
+            $this->add_render_attribute( 'btn-1-link', 'class', 'btn' );
+            $this->add_render_attribute( 'btn-1-link', 'class', 'th-btn' );
+            $this->add_render_attribute( 'btn-1-link', 'class', 'btn-' . esc_attr( $settings['button_1_style'] ) );
+        }
+
+        // Button URL
+        if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
 
         if ( ! empty( $settings['button_1_link']['url'] ) ) {
             $this->add_render_attribute( 'btn-1-link', 'href', esc_url( $settings['button_1_link']['url'] ) );
@@ -242,6 +274,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 $this->add_render_attribute( 'btn-1-link', 'target', '_blank' );
             }
         }
+
 
 		?>
 		<div class="th-tour-nav">
@@ -252,13 +285,23 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             </div>
             <?php endif;?>
 
-            <?php if ( ! empty( $settings['button_1_text'] )  ) : ?>
+            <?php if ( ! empty( $settings['button_1_text'] ) || ! empty($button_1_image) ) : ?>
                 <div class="th-tour-nav-btn">
-                <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
-                    <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
-                        <?php echo esc_html( $settings['button_1_text'] ); ?>
+                    <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
+                        <?php if ( ! empty( $settings['button_1_link']['url'] ) ) : ?>
+                            <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
+                                <?php echo wp_kses_post( $button_1_image ); ?>
+                            </a>
+                        <?php else : ?>
+                            <?php echo wp_kses_post( $button_1_image ); ?>
+                        <?php endif; ?>
+                    <?php elseif ( ! empty( $settings['button_1_text'] ) ) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link' ); ?>>
+                            <?php if ( ! empty( $settings['button_1_text'] ) ) : ?>
+                                <?php echo esc_html( $settings['button_1_text'] ); ?>
+                            <?php endif; ?>
+                        </a>
                     <?php endif; ?>
-                </a>
                 </div>
             <?php endif; ?>
 
@@ -280,8 +323,13 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 
 	protected function _content_template() {
 		?>
-        <#  var button_1_link_url = '#';
+        <#
+
+        var button_1_link_url = '#';
+        var button_1_text = '';
+
         if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
+        if ( settings.button_1_text ) { var button_1_text = settings.button_1_text }
         #>
 
         <div class="th-tour-nav">
@@ -291,14 +339,19 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             </div>
             <# } #>
 
-            <# if ( button_1_link_url ) { #>
+            <# if ( button_1_link_url || settings.button_1_image ) { #>
                 <div class="th-tour-nav-btn">
-                    <a class="btn th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
-                        {{{ settings.button_1_text }}}
-
-                    </a>
+                    <# if ( settings.button_1_image && '' !== settings.button_1_image.url ) { #>
+                        <a class="btn-1 th-btn btn-image" href="{{ button_1_link_url }}">
+                            <img src="{{{ settings.button_1_image.url }}}" />
+                        </a>
+                    <# } else if ( button_1_text ) { #>
+                        <a class="btn btn-1 th-btn btn-{{ settings.button_1_style }}" href="{{ button_1_link_url }}">
+                            {{{ settings.button_1_text }}}
+                        </a>
+                    <# } #>
                 </div>
-            <# } #>
+                <# } #>
 
             <div class="th-tour-nav-items">
             <# if ( settings.items ) {
