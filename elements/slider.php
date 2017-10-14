@@ -1083,11 +1083,11 @@ class Themo_Widget_Slider extends Widget_Base {
                     // Graphic Button URL Styling 2
                     if ( isset($button_2_image) && ! empty( $button_2_image ) ) {
                         // image button
-                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-2' );
                         $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
                         $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-image' );
                     }else{ // Bootstrap Button URL Styling
-                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-1' );
+                        $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-2' );
                         $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn' );
                         $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'th-btn' );
                         $this->add_render_attribute( 'btn-2-link-'.$th_counter, 'class', 'btn-' . esc_attr( $slide['slide_button_style_2'] ) );
