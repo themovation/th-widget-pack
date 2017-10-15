@@ -60,12 +60,12 @@ jQuery( function ( $ ) {
     // start isotope
     themo_init_isotope();
 
-    /*jQuery('.th-parallax').parent().parallax();
-8
-    jQuery('.th-parallax').parent().css({"border-color": "#000",
-        "border-width":"10px",
-        "border-style":"solid"});
-        */
+    // Add class to section if parallax enabled and we detect an IOS or Andriod device .
+    if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) || (navigator.userAgent.match(/(Android)/))) {
+        //console.log('IOS or Android');
+        $(".th-parallax").addClass( "th-mobile" );
+    }
+
 
 
     //-----------------------------------------------------
