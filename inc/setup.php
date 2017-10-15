@@ -290,7 +290,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
 add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
 add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
 
-// Add Parallax Control to Section Element.
+// Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( \Elementor\Element_Section $section ) {
 
     $section->add_control(
@@ -307,7 +307,8 @@ function add_elementor_section_background_controls( \Elementor\Element_Section $
 
 add_action( 'elementor/element/section/section_background/before_section_end', 'add_elementor_section_background_controls' );
 
-add_action( 'elementor/frontend/element/before_render', function ( \Elementor\Element_Base $element ) {
+// Render section backgrou]d parallax
+function render_elementor_section_parallax_background( \Elementor\Element_Base $element ) {
 
     if('section' === $element->get_name()){
 
@@ -319,17 +320,39 @@ add_action( 'elementor/frontend/element/before_render', function ( \Elementor\El
             //echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
             //echo "</pre>";
 
-            //class="parallax-window" data-parallax="scroll" data-image-src="/path/to/image.jpg"
+            $element->add_render_attribute( '_wrapper', [
+                'class' => 'th-parallax',
+                'data-parallax' => 'scroll',
+                'data-image-src' => $th_background_URL,
+            ] ) ;
+        }
+    }
+}
+
+add_action( 'elementor/frontend/element/before_render', 'render_elementor_section_parallax_background' );
+
+
+/*add_action( 'elementor/frontend/element/before_render', function ( \Elementor\Element_Base $element ) {
+
+    if('section' === $element->get_name()){
+
+        if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
+
+            //echo "<pre>";
+            $th_background = $element->get_settings( 'background_image' );
+            $th_background_URL = $th_background['url'];
+            //echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
+            //echo "</pre>";
 
             $element->add_render_attribute( '_wrapper', [
                 'class' => 'th-parallax',
                 'data-parallax' => 'scroll',
-                'data-image' => $th_background_URL,
+                'data-image-src' => $th_background_URL,
             ] ) ;
         }
     }
 
-} );
+} );*/
 
 
 

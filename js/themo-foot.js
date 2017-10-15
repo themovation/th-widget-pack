@@ -60,6 +60,14 @@ jQuery( function ( $ ) {
     // start isotope
     themo_init_isotope();
 
+    /*jQuery('.th-parallax').parent().parallax();
+8
+    jQuery('.th-parallax').parent().css({"border-color": "#000",
+        "border-width":"10px",
+        "border-style":"solid"});
+        */
+
+
     //-----------------------------------------------------
     // Start isotope / for masonry blog and tours filtering
     //-----------------------------------------------------
@@ -228,3 +236,5 @@ jQuery(window).load(function($) {
 
 
 });
+
+
