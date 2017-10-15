@@ -332,27 +332,19 @@ function render_elementor_section_parallax_background( \Elementor\Element_Base $
 add_action( 'elementor/frontend/element/before_render', 'render_elementor_section_parallax_background' );
 
 
-/*add_action( 'elementor/frontend/element/before_render', function ( \Elementor\Element_Base $element ) {
-
-    if('section' === $element->get_name()){
-
-        if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
-
-            //echo "<pre>";
-            $th_background = $element->get_settings( 'background_image' );
-            $th_background_URL = $th_background['url'];
-            //echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
-            //echo "</pre>";
-
-            $element->add_render_attribute( '_wrapper', [
-                'class' => 'th-parallax',
-                'data-parallax' => 'scroll',
-                'data-image-src' => $th_background_URL,
-            ] ) ;
-        }
+// Future use - Get parallax working in Live Preview.
+// https://github.com/pojome/elementor/issues/2588
+/*add_action( 'elementor/element/print_template', function( $template, $element ) {
+    if ( 'section' === $element->get_name() ) {
+        echo '<pre>';
+        echo 'OVERHERE';
+        echo print_r($element);
+        echo print_r($template);
+        echo '</pre>';
+        //$old_template = '<a href="\' + settings.link.url + \'">\' + title_html + \'</a>';
+        //$new_template = '<a href="\' + settings.link.url + \'">\' + title_html + ( settings.link.is_external ? \'<i class="fa fa-external-link" aria-hidden="true"></i>\' : \'\' ) + \'</a>';
+        $template = str_replace( 'data-id', 'data-id-zzz', $template );
     }
 
-} );*/
-
-
-
+    return $template;
+}, 10, 2 );*/
