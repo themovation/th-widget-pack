@@ -143,12 +143,13 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
             themo_project_type();
         }
 
+
+
         // clear the permalinks after the post type has been registered
         flush_rewrite_rules();
     }
 }
 register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install' );
-
 
 
 // Add custom controls to the Page Settings inside the Elementor Global Options.
@@ -288,3 +289,47 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
 }
 add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
 add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
+
+// Add Parallax Control to Section Element.
+function add_elementor_section_background_controls( \Elementor\Element_Section $section ) {
+
+    $section->add_control(
+        'th_section_parallax',
+        [
+            'label' => __( 'Parallax', 'th-widget-pack' ),
+            'type' => \Elementor\Controls_Manager::SWITCHER,
+            'label_off' => __( 'Off', 'th-widget-pack' ),
+            'label_on' => __( 'On', 'th-widget-pack' ),
+            'default' => 'no',
+        ]
+    );
+}
+
+add_action( 'elementor/element/section/section_background/before_section_end', 'add_elementor_section_background_controls' );
+
+add_action( 'elementor/frontend/element/before_render', function ( \Elementor\Element_Base $element ) {
+
+    if('section' === $element->get_name()){
+
+        if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
+
+            //echo "<pre>";
+            $th_background = $element->get_settings( 'background_image' );
+            $th_background_URL = $th_background['url'];
+            //echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
+            //echo "</pre>";
+
+            //class="parallax-window" data-parallax="scroll" data-image-src="/path/to/image.jpg"
+
+            $element->add_render_attribute( '_wrapper', [
+                'class' => 'th-parallax',
+                'data-parallax' => 'scroll',
+                'data-image' => $th_background_URL,
+            ] ) ;
+        }
+    }
+
+} );
+
+
+
