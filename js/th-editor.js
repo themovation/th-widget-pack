@@ -9,7 +9,7 @@ jQuery( function( $ ) {
         //elementor.settings.page.addChangeCallback( 'themo_page_layout', handle_themo_page_layout );
 
         function handle_themo_page_layout ( newValue ) {
-            console.log( newValue );
+            //console.log( newValue );
             elementor.reloadPreview();
 
             elementor.once( 'preview:loaded', function() {
@@ -20,7 +20,7 @@ jQuery( function( $ ) {
         //elementor.settings.page.addChangeCallback( 'themo_transparent_header', handle_themo_transparent_header );
 
         function handle_themo_transparent_header ( newValue ) {
-            console.log( newValue );
+            //console.log( newValue );
             elementor.reloadPreview();
 
             /*elementor.once( 'preview:loaded', function() {
@@ -31,7 +31,7 @@ jQuery( function( $ ) {
         //elementor.settings.page.addChangeCallback( 'themo_header_content_style', handle_themo_header_content_style );
 
         function handle_themo_header_content_style ( newValue ) {
-            console.log( newValue );
+            //console.log( newValue );
             elementor.reloadPreview();
 
             elementor.once( 'preview:loaded', function() {
@@ -42,12 +42,12 @@ jQuery( function( $ ) {
         //elementor.settings.page.addChangeCallback( 'themo_alt_logo', handle_themo_alt_logo );
 
         function handle_themo_alt_logo ( newValue ) {
-            console.log( newValue );
+            //console.log( newValue );
             elementor.reloadPreview();
 
-            elementor.once( 'preview:loaded', function() {
+            /*elementor.once( 'preview:loaded', function() {
                 elementor.getPanelView().setPage( 'page_settings' );
-            } );
+            } );*/
         }
 
         // Page Layout Options
@@ -69,7 +69,7 @@ jQuery( function( $ ) {
         elementor.settings.page.addChangeCallback( 'themo_transparent_header', function( newValue ) {
             // Here you can do as you wish with the newValue
 
-            console.log('NEW VALUE '+newValue);
+            //console.log('NEW VALUE '+newValue);
 
             this.save( function() {
                 elementor.reloadPreview();
@@ -98,6 +98,8 @@ jQuery( function( $ ) {
         // Alt Logo
         elementor.settings.page.addChangeCallback( 'themo_alt_logo', function( newValue ) {
             // Here you can do as you wish with the newValue
+
+            //console.log('NEW VALUE ALT LOGO '+newValue);
 
             this.save( function() {
                 elementor.reloadPreview();

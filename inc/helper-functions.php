@@ -54,7 +54,7 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
             $elm_page_layout = $page->get_settings( 'themo_page_layout' );
             $elm_hide_title = $page->get_settings( 'hide_title' );
             $elm_header_content_style = $page->get_settings( 'themo_header_content_style' );
-            $elm_alt_logo = $page->get_settings( '$elm_alt_logo' );
+            $elm_alt_logo = $page->get_settings( 'themo_alt_logo' );
 
 
 
@@ -88,7 +88,6 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
                 }else{
                     $elm_hide_title = 'on';
                 }
-
 
                 update_post_meta($post_id,'themo_transparent_header',$elm_trans_header);
                 update_post_meta($post_id,'themo_page_layout',$elm_page_layout);
