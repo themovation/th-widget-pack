@@ -6,8 +6,6 @@ jQuery( function( $ ) {
     // Page Settings Panel - onchange save and reload elementor window.
     if ( undefined !== elementor.settings.page ) {
 
-        console.log('GETTING HERE');
-
         //elementor.settings.page.addChangeCallback( 'themo_page_layout', handle_themo_page_layout );
 
         function handle_themo_page_layout ( newValue ) {

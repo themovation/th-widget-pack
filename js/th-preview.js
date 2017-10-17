@@ -7,7 +7,6 @@
 (function() {
     var runMyCode = function($) {
         if ( undefined !== window.elementor ) {
-            console.log('We are in to the preview!');
             /*
              $( "header[data-transparent-header='true']:not('.headhesive--clone')" ).prepend( "<p class='hide-nav'><a href=''>Test</a></p>" );
              */
