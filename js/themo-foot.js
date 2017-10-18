@@ -123,6 +123,7 @@ jQuery( function ( $ ) {
 
         // layout Isotope after each image loads
         $bloggrid.imagesLoaded().progress( function() {
+            $bloggrid.isotope('layout');
             $bloggrid.on('layoutComplete', function (event, laidOutItems) {
                 console.log('layoutComplete with ' + laidOutItems.length + ' items');
             });
