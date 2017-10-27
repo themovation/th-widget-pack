@@ -643,7 +643,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         ?>
 
                         <div class="th-btn-wrap">
-							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text'] || ! empty($button_1_image) || ! empty( $button_2_image ) ) ) : ?>
+							<?php if ( ! empty( $column['price_col_button_1_text'] ) || ! empty( $column['price_col_button_2_text']) || ! empty($button_1_image) || ! empty( $button_2_image )  ) : ?>
 	                            <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) : ?>
 
                                     <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
