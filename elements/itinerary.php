@@ -59,7 +59,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 					[
 						'name' => 'tab_content',
 						'label' => __( 'Content', 'th-widget-pack' ),
-						'type' => Controls_Manager::WYSIWYG,
+						'type' => Controls_Manager::TEXTAREA,
 						'default' => __( 'Itinerary Content', 'th-widget-pack' ),
 						'show_label' => false,
 					],
