@@ -562,7 +562,7 @@ function themo_video_play( $atts, $content = null ) {
     $src = esc_url($src);
     $width = sanitize_text_field($width);
     $size = sanitize_html_class($size);
-    $icon = sanitize_html_class($icon);
+    $icon = sanitize_text_field($icon);
     $icon_halflings = sanitize_text_field($icon_halflings);
     $icon_social = sanitize_text_field($icon_social);
     $icon_filetype = sanitize_text_field($icon_filetype);
@@ -584,9 +584,9 @@ function themo_video_play( $atts, $content = null ) {
 
     $elementor_global_image_lightbox = get_option('elementor_global_image_lightbox');
     if (!empty($elementor_global_image_lightbox) && $elementor_global_image_lightbox == 'yes') {
-        $output = "<a href='".$src."'>".$icon."</a>";
+        $output = "<a href='".$src."' class='elementor-icon'>".$icon."</a>";
     }else{
-        $output = "<a href='".$src."' data-toggle='lightbox' data-width='".$width."'>".$icon."</a>";
+        $output = "<a href='".$src."' class='elementor-icon' data-toggle='lightbox' data-width='".$width."'>".$icon."</a>";
     }
 
 
