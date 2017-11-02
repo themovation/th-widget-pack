@@ -20,20 +20,25 @@ endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 // FRONTEND // After Elementor registers all styles.
-add_action( 'elementor/frontend/after_register_styles', function() {
+add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
+
+function th_enqueue_after_frontend() {
     wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
-} );
+}
 
 // EDITOR // Before the editor scripts enqueuing.
-add_action( 'elementor/editor/before_enqueue_scripts', function() {
+add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
+
+function th_enqueue_before_editor() {
     wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
     // JS for the Editor
     wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
-} );
-
+}
 
 // PREVIEW // Before the preview styles enqueuing.
-add_action( 'elementor/preview/enqueue_styles', function() {
+add_action( 'elementor/preview/enqueue_styles', 'th_enqueue_preview' );
+
+function th_enqueue_preview() {
     wp_enqueue_style( 'themo-preview', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-preview', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
-} );
+}
