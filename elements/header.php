@@ -129,7 +129,7 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
                 'type' => Controls_Manager::ICON,
-				'icons' => themo_icons(),
+				'options' => themo_icons(),
 				'include' => themo_fa_icons()
             ]
         );

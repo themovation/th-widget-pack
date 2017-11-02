@@ -841,6 +841,27 @@ function themo_icons() {
         'th-linea icon-weather-wind-sw' => 'weather-wind-sw',
         'th-linea icon-weather-wind-w' => 'weather-wind-w',
         'th-linea icon-weather-windgust' => 'weather-windgust',
+
+        // Font Awesome Social
+        'fa fa-facebook' => 'facebook',
+        'fa fa-facebook-official' => 'facebook-official',
+        'fa fa-facebook-square' => 'facebook-square',
+        'fa fa-google' => 'google',
+        'fa fa-google-plus' => 'google-plus',
+        'fa fa-google-plus-official' => 'google-plus-official',
+        'fa fa-google-plus-square' => 'google-plus-square',
+        'fa fa-instagram' => 'instagram',
+        'fa fa-linkedin' => 'linkedin',
+        'fa fa-linkedin-square' => 'linkedin-square',
+        'fa fa-pinterest' => 'pinterest',
+        'fa fa-pinterest-p' => 'pinterest-p',
+        'fa fa-pinterest-square' => 'pinterest-square',
+        'fa fa-slack' => 'slack',
+        'fa fa-twitter' => 'twitter',
+        'fa fa-twitter-square' => 'twitter-square',
+        'fa fa-youtube' => 'youtube',
+        'fa fa-youtube-play' => 'youtube-play',
+        'fa fa-youtube-square' => 'youtube-square',
     ];
 }
 

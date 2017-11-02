@@ -140,7 +140,7 @@ class Themo_Widget_Team extends Widget_Base {
 						'type' => Controls_Manager::ICON,
                         'label_block' => true,
                         'default' => 'fa fa-facebook',
-						'icons' => themo_icons(),
+						'options' => themo_icons(),
 						'include' => themo_fa_icons()
 					],
 					[
