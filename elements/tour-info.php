@@ -88,7 +88,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 						'type' => Controls_Manager::ICON,
 						'default' => '',
 						'label_block' => true,
-						'icons' => themo_icons(),
+						'options' => themo_icons(),
 						'include' => themo_fa_icons()
 					],
 					[
