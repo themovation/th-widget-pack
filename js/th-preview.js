@@ -18,6 +18,12 @@
                     // Animation complete.
                 });
             });
+
+            setTimeout(function() {
+                $( ".hide-nav-wrap" ).trigger( "click" ); // Hide Nav on Start.
+            }, 2000);
+
+
         }
     };
 
