@@ -114,7 +114,7 @@ if ( ! function_exists( 'th_check_meta_change' ) ) {
 
         // Hide Title Setting
         if ('themo_hide_title' == $meta_key) {
-            $ot_setting = get_post_meta($post_id, 'themo_hide_title', 'off');
+            $ot_setting = get_post_meta($post_id, 'themo_hide_title', true);
 
             // Are there settings from the Elementor Page Options?
             $elm_page_settings = get_post_meta($post_id, "_elementor_page_settings");
