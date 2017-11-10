@@ -4,7 +4,9 @@
 jQuery( function( $ ) {
 
     // Page Settings Panel - onchange save and reload elementor window.
-    if ( undefined !== elementor.settings.page ) {
+
+    if ( typeof elementor != "undefined" && typeof elementor.settings.page != "undefined") {
+
 
         //elementor.settings.page.addChangeCallback( 'themo_page_layout', handle_themo_page_layout );
 
