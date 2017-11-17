@@ -26,7 +26,6 @@ $th_theme = wp_get_theme(); // get theme info and save theme name as constant.
 if($th_theme->get( 'Name' ) > ""){
     $th_theme_name_arr = explode("-", $th_theme->get( 'Name' ), 2); // clean up child theme name
     $th_theme_name_arr2 = explode(" ", trim($th_theme_name_arr[0]), 2); // clean up child theme name
-    echo $th_theme_name_arr2[0];
     $th_theme_name = trim(strtolower($th_theme_name_arr2[0]));
     define( "THEMO_CURRENT_THEME", $th_theme_name );
 };
