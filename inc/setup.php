@@ -5,6 +5,8 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/icons.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/stratus_icons.php' ;
+}else{
+    require_once THEMO_PATH . 'fields/icons.php' ;
 }
 
 require_once THEMO_PATH . 'inc/helper-functions.php' ;
