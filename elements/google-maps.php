@@ -310,22 +310,43 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             default:
                 $th_map_style = false;
         }
+
+        // Link 1
+        if ( empty( $settings['link_1_url']['url'] ) ) { $settings['link_1_url']['url'] = '#'; };
+
+        if ( ! empty( $settings['link_1_url']['url'] ) ) {
+            $this->add_render_attribute( 'link-1', 'href', esc_url( $settings['link_1_url']['url'] ) );
+
+            if ( ! empty( $settings['link_1_url']['is_external'] ) ) {
+                $this->add_render_attribute( 'link-1', 'target', '_blank' );
+            }
+        }
+
+        // Link 2
+        if ( empty( $settings['link_2_url']['url'] ) ) { $settings['link_2_url']['url'] = '#'; };
+
+        if ( ! empty( $settings['link_2_url']['url'] ) ) {
+            $this->add_render_attribute( 'link-2', 'href', esc_url( $settings['link_2_url']['url'] ) );
+
+            if ( ! empty( $settings['link_2_url']['is_external'] ) ) {
+                $this->add_render_attribute( 'link-2', 'target', '_blank' );
+            }
+        }
 		?>
 
 		<div class="map-info">
 			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
 			<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
 			<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
-			<?php if ( $settings['link_1_url'] ) : ?>
-				<a href="<?php echo esc_url( $settings['link_1_url']['url'] ) ?>">
-					<?php echo esc_html( $settings['link_1_text'] ) ?>
-				</a>
-			<?php endif; ?>
-			<?php if ( $settings['link_2_url'] ) : ?>
-				<a href="<?php echo esc_url( $settings['link_2_url']['url'] ) ?>">
-					<?php echo esc_html( $settings['link_2_text'] ) ?>
-				</a>
-			<?php endif; ?>
+
+            <?php if ( ! empty( $settings['link_1_url']['url'] ) ) : ?>
+                <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>
+            <?php endif; ?>
+
+            <?php if ( ! empty( $settings['link_2_url']['url'] ) ) : ?>
+                <a <?php echo $this->get_render_attribute_string( 'link-2' ); ?>><?php echo esc_html( $settings['link_2_text'] ) ?></a>
+            <?php endif;  ?>
+
 		</div>
 
 		<div class="th-map" id="<?php echo $map_id ?>" data-map-api="<?php echo $settings['api'] ?>" data-map-latitude="<?php echo esc_attr( $settings['latitude'] ) ?>" data-map-longitude="<?php echo esc_attr( $settings['longitude'] ) ?>" data-map-zoom="<?php echo esc_attr( $settings['zoom']['size'] ) ?>" data-map-scroll="<?php echo ( $settings['prevent_scroll'] == 'yes' ? "false" : "true" ); ?>" data-map-style='<?php if( isset( $th_map_style ) ) echo $th_map_style; ?>'></div>
