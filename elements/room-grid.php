@@ -419,6 +419,12 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                 $th_tour_highlight = false;
                                 $th_tour_highlight = get_post_meta( get_the_ID(), 'th_room_highlight', true );
 
+                                $th_tour_price = false;
+                                $th_tour_price = get_post_meta( get_the_ID(), 'th_room_price', true );
+
+                                $th_tour_price_per = false;
+                                $th_tour_price_per = get_post_meta( get_the_ID(), 'th_room_price_per', true );
+
                                 $th_tour_intro = false;
                                 $th_tour_intro = get_post_meta( get_the_ID(), 'th_room_intro', true );
                                 if( $th_tour_intro === false || empty( $th_tour_intro ) ) {
@@ -453,6 +459,14 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                     <div class="th-port-center">
                                         <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
                                         <?php echo wp_kses_post($th_tour_intro); ?>
+
+                                        <?php if($th_tour_price > ""){
+                                            if($th_tour_price_per > ""){
+                                                $th_tour_price_per = '<span>'. $th_tour_price_per. '</span>';
+                                            }
+                                            echo '<div class="th-pricing-cost">', $th_tour_price,$th_tour_price_per,'</div>';
+                                        }?>
+
                                         <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>

@@ -232,6 +232,23 @@ class Themo_Widget_Header extends Widget_Base {
                     'h6' => __( 'H6', 'th-widget-pack' ),
                 ],
                 'default' => 'h1',
+                'separator' => 'none',
+            ]
+        );
+
+        $this->add_control(
+            'title_divider',
+            [
+                'label' => __( 'Title Divider', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Show', 'th-widget-pack' ),
+                'label_off' => __( 'Hide', 'th-widget-pack' ),
+                'return_value' => 'yes',
+                'condition' => [
+                    'title_size' => 'h2',
+                ],
+                'separator' => 'none',
             ]
         );
 
@@ -258,6 +275,8 @@ class Themo_Widget_Header extends Widget_Base {
                 'separator' => 'none',
             ]
         );
+
+
 
 
         $this->add_responsive_control(
@@ -506,21 +525,42 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'title_color',
-			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
-				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
-			]
-		);
+
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __( 'Title Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'divider_color',
+            [
+                'label' => __( 'Divider Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap h2.th-title-divider:after' => 'background-color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'condition' => [
+                    'title_size' => 'h2',
+                ],
+            ]
+        );
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -587,6 +627,13 @@ class Themo_Widget_Header extends Widget_Base {
 
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
 		$link_attributes = $this->get_render_attribute_string( 'link' );
+
+
+		// title_divider
+        $th_title_divider_class = false;
+        if ( 'yes' == $settings['title_divider'] ) {
+            $th_title_divider_class = ' th-title-divider';
+        }
 
         // BUTTON 1
 
@@ -673,7 +720,7 @@ class Themo_Widget_Header extends Widget_Base {
                 </div>
                 <?php } ?>
                 <div class="elementor-icon-box-content">
-                    <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title">
+                    <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title<?php echo $th_title_divider_class;?>">
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo wp_kses_post($icon_tag); ?>>
                     </<?php echo esc_attr( $settings['title_size'] ); ?>>
                     <p class="elementor-icon-box-description"><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
@@ -729,9 +776,11 @@ class Themo_Widget_Header extends Widget_Base {
         iconTag = 'span';
         icon_size = '';
         icon_show = '';
+        title_divider = '';
 
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
         if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.title_divider ) { var title_divider = 'th-title-divider'}
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
@@ -743,7 +792,7 @@ class Themo_Widget_Header extends Widget_Base {
                 </div>
                 <# } #>
                 <div class="elementor-icon-box-content">
-                    <{{{ settings.title_size }}} class="elementor-icon-box-title">
+                    <{{{ settings.title_size }}} class="elementor-icon-box-title {{{title_divider}}}">
                         <{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
                     </{{{ settings.title_size }}}>
                     <p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
