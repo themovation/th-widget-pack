@@ -236,7 +236,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        /*$this->add_control(
             'title_divider',
             [
                 'label' => __( 'Title Divider', 'th-widget-pack' ),
@@ -250,7 +250,7 @@ class Themo_Widget_Header extends Widget_Base {
                 ],
                 'separator' => 'none',
             ]
-        );
+        );*/
 
         $this->add_control(
             'title_text',
@@ -631,7 +631,7 @@ class Themo_Widget_Header extends Widget_Base {
 
 		// title_divider
         $th_title_divider_class = false;
-        if ( 'yes' == $settings['title_divider'] ) {
+        if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
             $th_title_divider_class = ' th-title-divider';
         }
 
