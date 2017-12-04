@@ -236,7 +236,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
+        $this->add_control(
             'title_divider',
             [
                 'label' => __( 'Title Divider', 'th-widget-pack' ),
@@ -245,12 +245,12 @@ class Themo_Widget_Header extends Widget_Base {
                 'label_on' => __( 'Show', 'th-widget-pack' ),
                 'label_off' => __( 'Hide', 'th-widget-pack' ),
                 'return_value' => 'yes',
-                'condition' => [
+                /*'condition' => [
                     'title_size' => 'h2',
-                ],
+                ],*/
                 'separator' => 'none',
             ]
-        );*/
+        );
 
         $this->add_control(
             'title_text',
