@@ -95,7 +95,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
 			[
 				'label' => __( 'Align Calendar', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'large',
+				'default' => 'centered',
 				'options' => [
 					'left' => __('Left', 'th-widget-pack'),
 					'centered' => __('Center', 'th-widget-pack'),
