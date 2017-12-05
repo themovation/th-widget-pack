@@ -23,7 +23,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/formidable-form.php';
         require_once THEMO_PATH . 'elements/info-card.php';
         require_once THEMO_PATH . 'elements/team.php';
-        require_once THEMO_PATH . 'elements/appointments.php';
+
+        if('embark' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/appointments.php';
+        }elseif('stratus' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/appointments.php';
+        }elseif('bellevue' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/wp-booking-system.php';
+        }
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/tour-grid.php';
