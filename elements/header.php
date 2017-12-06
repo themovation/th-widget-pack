@@ -108,9 +108,11 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
 
                 ],
+               //'return_value' => 'yes',
                 'selectors' => [
                     '{{WRAPPER}} .th-header-wrap .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
                 ],
+
             ]
         );
 
@@ -629,11 +631,7 @@ class Themo_Widget_Header extends Widget_Base {
 		$link_attributes = $this->get_render_attribute_string( 'link' );
 
 
-		// title_divider
-        $th_title_divider_class = false;
-        if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
-            $th_title_divider_class = ' th-title-divider';
-        }
+
 
         // BUTTON 1
 
@@ -709,6 +707,16 @@ class Themo_Widget_Header extends Widget_Base {
             }
         }
 
+        $this->add_render_attribute( 'th-header-class', 'class', 'elementor-icon-box-title' );
+
+        // Divider & Alignment Class
+
+        if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
+            $this->add_render_attribute( 'th_divider_span', 'class', 'th-header-divider' );
+        }
+
+        // <span class=“th-header-divider”></span>
+
 		?>
 		<div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
@@ -720,9 +728,12 @@ class Themo_Widget_Header extends Widget_Base {
                 </div>
                 <?php } ?>
                 <div class="elementor-icon-box-content">
-                    <<?php echo esc_attr($settings['title_size']); ?> class="elementor-icon-box-title<?php echo $th_title_divider_class;?>">
+                    <<?php echo esc_attr($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'th-header-class' );?>>
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo wp_kses_post($icon_tag); ?>>
                     </<?php echo esc_attr( $settings['title_size'] ); ?>>
+                    <?php if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {?>
+                        <span <?php echo $this->get_render_attribute_string( 'th_divider_span' ); ?>></span>
+                    <?php } ?>
                     <p class="elementor-icon-box-description"><?php echo wp_kses_post( $settings['description_text'] ); ?></p>
 
                     <?php if ( ! empty( $settings['button_1_text'] ) || ! empty( $settings['button_2_text'] )  || ! empty($button_1_image) || ! empty( $button_2_image ) ) : ?>
@@ -760,7 +771,7 @@ class Themo_Widget_Header extends Widget_Base {
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
-                </div>
+                </span>
             </div>
 
         </div>
@@ -776,11 +787,16 @@ class Themo_Widget_Header extends Widget_Base {
         iconTag = 'span';
         icon_size = '';
         icon_show = '';
-        title_divider = '';
+        var th_divder_span = '';
+        var th_header_class = 'elementor-icon-box-title';
+
+        // Divider & Alignment Class
+        if ( settings.title_divider  && 'yes' == settings.title_divider  ) {
+            var th_divder_span = "<span class='th-header-divider'></span>";
+        }
 
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
         if ( settings.icon ) { var icon_show = 'th-show-icon'}
-        if ( settings.title_divider ) { var title_divider = 'th-title-divider'}
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
@@ -792,9 +808,10 @@ class Themo_Widget_Header extends Widget_Base {
                 </div>
                 <# } #>
                 <div class="elementor-icon-box-content">
-                    <{{{ settings.title_size }}} class="elementor-icon-box-title {{{title_divider}}}">
+                    <{{{ settings.title_size }}} class="{{{th_header_class}}}">
                         <{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
                     </{{{ settings.title_size }}}>
+                    {{{th_divder_span}}}
                     <p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
 
                     <#  var button_1_link_url = '#';
