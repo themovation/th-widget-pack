@@ -108,11 +108,9 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
 
                 ],
-               //'return_value' => 'yes',
                 'selectors' => [
                     '{{WRAPPER}} .th-header-wrap .elementor-icon-box-wrapper' => 'text-align: {{VALUE}};',
                 ],
-
             ]
         );
 
@@ -552,14 +550,14 @@ class Themo_Widget_Header extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap h2.th-title-divider:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
                 'condition' => [
-                    'title_size' => 'h2',
+                    'title_divider' => 'yes',
                 ],
             ]
         );
@@ -599,6 +597,15 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
 		$this->end_controls_section();
 	}
 
@@ -629,9 +636,6 @@ class Themo_Widget_Header extends Widget_Base {
 
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
 		$link_attributes = $this->get_render_attribute_string( 'link' );
-
-
-
 
         // BUTTON 1
 
@@ -715,8 +719,6 @@ class Themo_Widget_Header extends Widget_Base {
             $this->add_render_attribute( 'th_divider_span', 'class', 'th-header-divider' );
         }
 
-        // <span class=“th-header-divider”></span>
-
 		?>
 		<div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
@@ -771,7 +773,7 @@ class Themo_Widget_Header extends Widget_Base {
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
-                </span>
+                </div>
             </div>
 
         </div>
