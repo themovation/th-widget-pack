@@ -233,7 +233,7 @@ add_action('updated_post_meta', 'th_check_meta_change', 0, 4);
  *
  */
 
-add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+/*add_action( 'elementor/widget/render_content', function( $content, $widget ) {
 
     // Wrap Sideba Widget with our own classes.
     if ( 'sidebar' === $widget->get_name() ) {
@@ -244,8 +244,37 @@ add_action( 'elementor/widget/render_content', function( $content, $widget ) {
     }
 
     return $content;
-}, 10, 2 );
+}, 10, 2 );*/
 
 
+/*
+ * Wrap the sidebar widget for our theme styling.
+ *
+ */
 
+add_action( 'elementor/frontend/widget/before_render', 'th_wrap_sidebar_before', 10, 2 );
 
+function th_wrap_sidebar_before( \Elementor\Widget_Base $widget ) {
+
+    if(is_object($widget)){
+        // Wrap Sidebar Widget with our own classes.
+        if ( 'sidebar' === $widget->get_name() ) {
+            echo '<!-- Themovaiton Sidebar Wrap before -->';
+            echo '<div class="sidebar th-widget-area th-sidebar-widget">';
+
+        }
+    }
+}
+
+add_action( 'elementor/frontend/widget/after_render', 'th_wrap_sidebar_after', 10, 2 );
+
+function th_wrap_sidebar_after( \Elementor\Widget_Base $widget ) {
+
+    if(is_object($widget)){
+        // Wrap Sidebar Widget with our own classes.
+        if ( 'sidebar' === $widget->get_name() ) {
+            echo '</div>';
+            echo '<!-- Themovaiton Sidebar Wrap after -->';
+        }
+    }
+}
