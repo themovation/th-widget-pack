@@ -181,6 +181,43 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+
+        $this->add_control(
+            'show_overlay_mobile',
+            [
+                'label' => __( 'Show Overlay Content for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
+                ],
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_mobile',
+            [
+                'label' => __( 'Hover Color for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_mobile' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
         $this->end_controls_section();
 
         /*$this->start_controls_section(
