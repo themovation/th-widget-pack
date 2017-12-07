@@ -10,7 +10,11 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Feature Bar', 'th-widget-pack' );
+        if('stratus' == THEMO_CURRENT_THEME) {
+            return __('Feature Bar', 'th-widget-pack');
+        }else{
+            return __('Info Bar', 'th-widget-pack');
+        }
 	}
 
 	public function get_icon() {

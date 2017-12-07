@@ -29,12 +29,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/tour-grid.php';
         }elseif('stratus' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/portfolio-grid.php';
+        }elseif('golf' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/course-guide.php';
         }
 
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/tour-info.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'golf' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/info-bar.php';
         }
 
@@ -42,7 +44,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/itinerary.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'golf' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/expand-list.php';
         }
 
@@ -63,7 +65,10 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_tours.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
+}elseif('golf' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'inc/cpt_hole.php' ;
 }
+
 require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 
@@ -120,6 +125,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
+        if (!in_array("themo_hole", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"themo_hole");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
         if (!in_array("product", $elementor_cpt_support)) {
             array_push($elementor_cpt_support,"product");
             update_option('elementor_cpt_support', $elementor_cpt_support);
@@ -148,6 +158,12 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
 
             // Register Custom Taxonomy
             themo_project_type();
+        }elseif('golf' == THEMO_CURRENT_THEME){
+            // Regsiter Custom Post Types
+            themo_hole_custom_post_type();
+
+            // Register Custom Taxonomy
+            themo_hole_type();
         }
 
 
@@ -169,7 +185,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         if(isset($page) && $page->get_id() > ""){
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'){
+            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_hole'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -263,7 +279,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
         if(isset($page) && $page->get_id() > "") {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio') {
+            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_hole') {
 
                 $page->add_control(
                     'themo_page_layout',

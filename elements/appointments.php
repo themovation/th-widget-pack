@@ -10,7 +10,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Booked Appointment Calendar', 'th-widget-pack' );
+		return __( 'Booked Calendar', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
