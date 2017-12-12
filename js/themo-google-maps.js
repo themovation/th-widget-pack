@@ -7,7 +7,7 @@ jQuery(function ($) {
 
 			var map = new google.maps.Map( document.getElementById($this.attr('id')), {
 				zoom: $this.data( 'map-zoom' ),
-				center: { lat: $this.data( 'map-latitude' ), lng: $this.data( 'map-longitude' ) },
+				center: { lat: parseFloat($this.data( 'map-latitude' )), lng: parseFloat($this.data( 'map-longitude' )) },
 				disableDefaultUI: true,
 				scrollwheel: $this.data( 'map-scroll' ),
 				styles: $this.data( 'map-style' ),

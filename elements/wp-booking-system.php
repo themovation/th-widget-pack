@@ -3,18 +3,18 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_Appointments extends Widget_Base {
+class Themo_Widget_WP_Booking_System extends Widget_Base {
 
 	public function get_name() {
-		return 'themo-appointments';
+		return 'themo-wp-boooking-system';
 	}
 
 	public function get_title() {
-		return __( 'Booked Appointment Calendar', 'th-widget-pack' );
+		return __( 'WP Booking Calendar', 'th-widget-pack' );
 	}
 
 	public function get_icon() {
-		return 'eicon-countdown';
+		return 'eicon-apps';
 	}
 
 	public function get_categories() {
@@ -71,7 +71,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 			[
 				'label' => __( 'Shortcode', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( '[booked-calendar]', 'th-widget-pack' ),
+				'default' => __( '[wpbs id="1" form="no-form"]', 'th-widget-pack' ),
 				'placeholder' => __( '[add_shortcode_here]', 'th-widget-pack' ),
 				'label_block' => true,
 			]
@@ -82,9 +82,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 			[
 				'label' => __( 'Calendar Size', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'large',
+				'default' => 'small',
 				'options' => [
-					'large' => __( 'Large', 'th-widget-pack' ),
+					//'large' => __( 'Large', 'th-widget-pack' ),
 					'small' => __( 'Small', 'th-widget-pack' ),
 				],
 			]
@@ -109,26 +109,44 @@ class Themo_Widget_Appointments extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_tooltip',
 			[
-				'label' => __( 'Tooltip Title', 'th-widget-pack' ),
+				'label' => __( 'Text Colors', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->add_control(
-			'tooltip_color',
-			[
-				'label' => __( 'Tooltip Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '#FFFFFF',
-				'selectors' => [
-					'{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
-				],
-			]
-		);
+
+
+        $this->add_control(
+            'tooltip_color',
+            [
+                'label' => __( 'Tooltip Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#FFFFFF',
+                'selectors' => [
+                    '{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'legend_color',
+            [
+                'label' => __( 'Legend Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#000',
+                'selectors' => [
+                    '{{WRAPPER}} .wpbs-legend .wpbs-legend-item p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 
@@ -154,4 +172,4 @@ class Themo_Widget_Appointments extends Widget_Base {
 	protected function _content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Appointments() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_WP_Booking_System() );
