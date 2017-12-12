@@ -207,6 +207,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
                 ],
+                'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
                 ],
