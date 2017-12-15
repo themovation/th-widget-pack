@@ -259,7 +259,7 @@ class Themo_Widget_Team extends Widget_Base {
 		}
 
         if ( empty( $settings['image']['url'] ) ) {
-            return;
+            $image = false;
         }
         if ( isset($settings['post_image_size']) &&  $settings['post_image_size'] > "") {
             $image_size = esc_attr( $settings['post_image_size'] );
@@ -288,6 +288,7 @@ class Themo_Widget_Team extends Widget_Base {
             <?php else : ?>
                 <?php echo wp_kses_post( $image ); ?>
             <?php endif; ?>
+
 			<div class="th-team-member-content">
                 <?php
                 if ( empty( $settings['name'] ) ) {
