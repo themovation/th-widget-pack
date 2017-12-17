@@ -1,9 +1,9 @@
 <?php
 //-----------------------------------------------------
-// themo_string_contains
+// th_string_contains
 // IF String contains any items in an array (case insensitive).
 //-----------------------------------------------------
-function themo_string_contains($str, $arr)
+function th_string_contains($str, $arr)
 {
     foreach($arr as $a) {
         if (stripos($str,$a) !== false) return true;
@@ -12,10 +12,10 @@ function themo_string_contains($str, $arr)
 }
 
 //-----------------------------------------------------
-// themo_RandNumber
+// th_RandNumber
 // Return a random number
 //-----------------------------------------------------
-function themo_RandNumber($e){
+function th_RandNumber($e){
     $rand = 0;
     for($i=0;$i<$e;$i++){
         $rand =  $rand .  rand(0, 9);
@@ -27,7 +27,7 @@ function themo_RandNumber($e){
 // Generate random string
 // @return string
 //-----------------------------------------------------
-function themo_randomString($length = 6) {
+function th_randomString($length = 6) {
     $str = "";
     $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
     $max = count($characters) - 1;
