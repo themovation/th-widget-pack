@@ -102,7 +102,7 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
 }
 add_action( 'admin_head', 'sync_ot_and_elem_page_settings' ); // When WP Admin is loaded
 add_action( 'template_redirect', 'sync_ot_and_elem_page_settings' ); // When Pages and posts are loaded
-add_action( 'elementor/editor/after_save', 'th_update_elem_page_settings_post_meta') ; // When Elementor Editor is saved.
+//add_action( 'elementor/editor/after_save', 'th_update_elem_page_settings_post_meta') ; // When Elementor Editor is saved.
 
 
 
