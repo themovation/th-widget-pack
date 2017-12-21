@@ -445,6 +445,8 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                                 echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
                                             }
                                         }
+                                    }else{
+                                        echo "<div class='th_missing_img'>No Featured Image found for this Post.</div>";
                                     }
                                 }
 
