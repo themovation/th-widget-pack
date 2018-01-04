@@ -15,6 +15,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
     function themovation_elements()
     {
         require_once THEMO_PATH . 'elements/slider.php';
+        require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         require_once THEMO_PATH . 'elements/header.php';
         require_once THEMO_PATH . 'elements/button.php';
         require_once THEMO_PATH . 'elements/call-to-action.php';
@@ -49,6 +50,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         }
 
         require_once THEMO_PATH . 'elements/pricing.php';
+        require_once THEMO_PATH . 'elements/pricing-list.php';
         require_once THEMO_PATH . 'elements/blog.php';
         require_once THEMO_PATH . 'elements/image-gallery.php';
         require_once THEMO_PATH . 'elements/google-maps.php';
