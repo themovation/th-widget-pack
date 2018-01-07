@@ -66,6 +66,8 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
+require_once THEMO_PATH . 'languages/wpml-translations.php' ;
+
 // Include scripts, custom post type, shortcodes
 require_once THEMO_PATH . 'inc/elementor-section.php';
 require_once THEMO_PATH . 'inc/enqueue.php';
