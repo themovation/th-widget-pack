@@ -2,6 +2,7 @@
 namespace Elementor;
 
 use Elementor\Themo_Widget_Formidable as Form;
+use Elementor\Themo_Widget_Itinerary as Itinerary;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -15,14 +16,22 @@ class Themo_Elementor_Translate {
 		add_action( 'init', [ $this, 'add_wpml_support' ] );
 	}
 
+	private function widgets_with_items() {
+		require THEMO_PATH . '/languages/wpml-itinerary.php';
+	}
+
 	private function includes() {
 		require_once THEMO_PATH . '/elements/formidable-form.php';
+		require_once THEMO_PATH . '/elements/itinerary.php';
 	}
 
 	public function add_wpml_support() {
 		$this->includes();
-		$widget = new Form();
-		$widget->add_wpml_support();
+		$this->widgets_with_items();
+		$form = new Form();
+		$form->add_wpml_support();
+		$itinerary = new Itinerary();
+		$itinerary->add_wpml_support();
 	}
 }
 
