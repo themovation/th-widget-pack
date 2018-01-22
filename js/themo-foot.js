@@ -55,7 +55,7 @@ function themo_active_lightbox(){
 jQuery( function ( $ ) {
 
     // fix pricing columns
-	themo_adjust_pricing_table_height();
+    themo_adjust_pricing_table_height();
 
     // start isotope
     themo_init_isotope();
@@ -134,8 +134,8 @@ jQuery( function ( $ ) {
     }
 
     //-----------------------------------------------------
-	// Adjust Pricing Table Height
-	//-----------------------------------------------------
+    // Adjust Pricing Table Height
+    //-----------------------------------------------------
 
     function themo_adjust_pricing_table_height(){
 
@@ -191,27 +191,27 @@ jQuery( function ( $ ) {
 
     // Intinerary Toggles
 
-	$( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
-		var $$ = $( this ),
-			$title = $$.find( '.th-itin-title' ),
-			$content = $$.find( '.th-itin-content' );
+    $( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
+        var $$ = $( this ),
+            $title = $$.find( '.th-itin-title' ),
+            $content = $$.find( '.th-itin-content' );
 
 
-		$title.on( 'click', function() {
-			if ( $$.hasClass( 'th-itin-active' ) ) {
+        $title.on( 'click', function() {
+            if ( $$.hasClass( 'th-itin-active' ) ) {
                 $content.slideUp('fast', function() {
                     $$.addClass( 'th-itin-inactive' );
                     $$.removeClass( 'th-itin-active' );
                 });
-			} else {
+            } else {
                 $content.slideDown('fast', function() {
                     $$.addClass( 'th-itin-active' );
                     $$.removeClass( 'th-itin-inactive' );
                 });
-			}
-		} );
+            }
+        } );
 
-	} );
+    } );
 
 
 
@@ -261,11 +261,34 @@ jQuery(window).on('elementor/frontend/init', function () {
         // console.log($image_carousel_div.id);
 
         //if ( $scope.find( ".elementor-widget-image-carousel" ) ){
-            //console.log('FOUND IT');
-            //console.log($scope.find( ".elementor-widget-image-carousel" ));
-           //$scope.find( ".elementor-widget-image-carousel" ).data( "settingsNEW", { slides_to_show: "10"} );
+        //console.log('FOUND IT');
+        //console.log($scope.find( ".elementor-widget-image-carousel" ));
+        //$scope.find( ".elementor-widget-image-carousel" ).data( "settingsNEW", { slides_to_show: "10"} );
         //}
 
         //console.log('HELLO');
     } );
 })
+
+//-----------------------------------------------------
+// Initialize Image Carousel Timeline Slick Slider
+//-----------------------------------------------------
+
+jQuery(document).ready(function ($) {
+
+    if (typeof jQuery.fn.slick === 'function' ) {
+        $('.th-image-carousel-timeline .elementor-image-carousel').slick();
+    }
+
+    // Reinitialize slick when "image carousel timeline" element changes.
+    if (typeof elementorFrontend !== 'undefined' && typeof elementorFrontend.hooks !== 'undefined') {
+        elementorFrontend.hooks.addAction('frontend/element_ready/themo-image-carousel-timeline.default', function ($scope) {
+            var $carousel = $scope.find('.elementor-image-carousel');
+            // Check if slick is not already initialized on the same element.
+            if (typeof jQuery.fn.slick === 'function' && ! $carousel.hasClass('slick-initialized')) {
+                $carousel.slick();
+            }
+        });
+    }
+
+});
