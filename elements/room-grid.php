@@ -322,6 +322,8 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                         'taxonomy' => $taxonomy,
                         'include' => $settings['group'],
                         'hide_empty' => false,
+                        'orderby' => 'slug',
+                        'order' => 'ASC',
                     );
 
                     $tax_terms = get_terms( $tax_args );
