@@ -367,6 +367,29 @@ class Themo_Widget_Feature_bar extends Widget_Base {
         </div>
         <?php
 	}
+
+	public function add_wpml_support() {
+		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions' => [ 'widgetType' => $this->get_name() ],
+			'fields'     => [
+				[
+					'field'       => 'price_text',
+					'type'        => __( 'Price Text', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+                [
+					'field'       => 'button_1_text',
+					'type'        => __( 'Button Text', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+			],
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Feature_bar() );

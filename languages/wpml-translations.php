@@ -6,6 +6,9 @@ use Elementor\Themo_Widget_Button as Button;
 use Elementor\Themo_Widget_CallToAction as CtoA;
 use Elementor\Themo_Widget_Formidable as Form;
 use Elementor\Themo_Widget_GoogleMaps as Map;
+use Elementor\Themo_Widget_Header as Header;
+use Elementor\Themo_Widget_Feature_bar as FeatureBar;
+use Elementor\Themo_Widget_Info_Card as InfoCard;
 use Elementor\Themo_Widget_Itinerary as Itinerary;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,7 +30,12 @@ class Themo_Elementor_Translate {
 	private function includes() {
 		require_once THEMO_PATH . '/elements/appointments.php';
 		require_once THEMO_PATH . '/elements/button.php';
+		require_once THEMO_PATH . '/elements/call-to-action.php';
 		require_once THEMO_PATH . '/elements/formidable-form.php';
+		require_once THEMO_PATH . '/elements/google-maps.php';
+		require_once THEMO_PATH . '/elements/header.php';
+		require_once THEMO_PATH . '/elements/info-bar.php';
+		require_once THEMO_PATH . '/elements/info-card.php';
 		//require_once THEMO_PATH . '/elements/itinerary.php';
 	}
 
@@ -44,6 +52,12 @@ class Themo_Elementor_Translate {
 		$form->add_wpml_support();
 		$map = new Map();
 		$map->add_wpml_support();
+		$header = new Header();
+		$header->add_wpml_support();
+		$featbar = new FeatureBar();
+		$featbar->add_wpml_support();
+		$infocard = new InfoCard();
+		$infocard->add_wpml_support();
 		// $itinerary = new Itinerary();
 		// $itinerary->add_wpml_support();
 	}
