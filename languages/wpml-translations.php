@@ -13,6 +13,10 @@ use Elementor\Themo_Widget_Itinerary as Itinerary;
 use Elementor\Themo_Widget_Package as Package;
 use Elementor\Themo_Widget_RoomInfo as RoomInfo;
 use Elementor\Themo_Widget_ServiceBlock as Service;
+use Elementor\Themo_Widget_Team as Team;
+use Elementor\Themo_Widget_Testimonial as Testimonial;
+use Elementor\Themo_Widget_TourInfo as TourInfo;
+use Elementor\Themo_Widget_WP_Booking_System as Booking;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -43,6 +47,10 @@ class Themo_Elementor_Translate {
 		require_once THEMO_PATH . '/elements/package.php';
 		require_once THEMO_PATH . '/elements/room-info.php';
 		require_once THEMO_PATH . '/elements/service-block.php';
+		require_once THEMO_PATH . '/elements/team.php';
+		require_once THEMO_PATH . '/elements/testimonial.php';
+		require_once THEMO_PATH . '/elements/tour-info.php';
+		require_once THEMO_PATH . '/elements/wp-booking-system.php';
 	}
 
 	public function add_wpml_support() {
@@ -72,6 +80,14 @@ class Themo_Elementor_Translate {
 		$roominfo->add_wpml_support();
 		$service = new Service();
 		$service->add_wpml_support();
+		$team = new Team();
+		$team->add_wpml_support();
+		$testimonial = new Testimonial();
+		$testimonial->add_wpml_support();
+		$tourinfo = new TourInfo();
+		$tourinfo->add_wpml_support();
+		$booking = new Booking();
+		$booking->add_wpml_support();
 	}
 }
 
