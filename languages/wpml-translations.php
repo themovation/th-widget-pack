@@ -3,7 +3,9 @@ namespace Elementor;
 
 use Elementor\Themo_Widget_Appointments as Appointment;
 use Elementor\Themo_Widget_Button as Button;
+use Elementor\Themo_Widget_CallToAction as CtoA;
 use Elementor\Themo_Widget_Formidable as Form;
+use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Itinerary as Itinerary;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -36,8 +38,12 @@ class Themo_Elementor_Translate {
 		$appointments->add_wpml_support();
 		$button = new Button();
 		$button->add_wpml_support();
+		$ctoa = new CtoA();
+		$ctoa->add_wpml_support();
 		$form = new Form();
 		$form->add_wpml_support();
+		$map = new Map();
+		$map->add_wpml_support();
 		// $itinerary = new Itinerary();
 		// $itinerary->add_wpml_support();
 	}

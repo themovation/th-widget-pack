@@ -357,6 +357,45 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	protected function _content_template() {}
+
+	public function add_wpml_support() {
+		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions' => [ 'widgetType' => $this->get_name() ],
+			'fields'     => [
+				[
+					'field'       => 'title',
+					'type'        => __( 'Title', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+                [
+					'field'       => 'business_address',
+					'type'        => __( 'Business Address', 'th-widget-pack' ),
+					'editor_type' => 'VISUAL'
+				],
+				[
+					'field'       => 'hours',
+					'type'        => __( 'Hours', 'th-widget-pack' ),
+					'editor_type' => 'VISUAL'
+				],
+				[
+					'field'       => 'link_1_text',
+					'type'        => __( 'Link 1 Text', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+
+				[
+					'field'       => 'link_2_text',
+					'type'        => __( 'Link 2 Text', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+			],
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_GoogleMaps() );
