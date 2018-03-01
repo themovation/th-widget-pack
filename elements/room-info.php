@@ -333,7 +333,8 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 					'type'        => __( 'Button Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
-			],
+            ],
+            'integration-class' => 'WPML_Themo_Room_Info',
 		];
 		return $widgets;
 	}

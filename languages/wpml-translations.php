@@ -37,6 +37,8 @@ class Themo_Elementor_Translate {
 		require THEMO_PATH . '/languages/wpml-itinerary.php';
 		require THEMO_PATH . '/languages/wpml-tour-info.php';
 		require THEMO_PATH . '/languages/wpml-info-bar.php';
+		require THEMO_PATH . '/languages/wpml-pricing.php';
+		require THEMO_PATH . '/languages/wpml-room-info.php';
 	}
 
 	private function includes() {
