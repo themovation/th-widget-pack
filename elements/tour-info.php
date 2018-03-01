@@ -332,7 +332,8 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'field'       => 'button_1_text',
 					'type'        => __( 'Button Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
-				],
+                ],
+                'integration-class' => 'WPML_Themo_Tour_Info',
 			],
 		];
 		return $widgets;
