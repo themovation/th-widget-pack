@@ -386,7 +386,8 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 					'type'        => __( 'Button Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
-			],
+            ],
+            'integration-class' => 'WPML_Themo_Feature_Bar',
 		];
 		return $widgets;
 	}
