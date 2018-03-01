@@ -4,6 +4,7 @@ namespace Elementor;
 use Elementor\Themo_Widget_Appointments as Appointment;
 use Elementor\Themo_Widget_Button as Button;
 use Elementor\Themo_Widget_CallToAction as CtoA;
+use Elementor\Themo_Widget_Expand_list as ExpandList;
 use Elementor\Themo_Widget_Formidable as Form;
 use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Header as Header;
@@ -31,19 +32,21 @@ class Themo_Elementor_Translate {
 	}
 
 	private function widgets_with_items() {
-		//require THEMO_PATH . '/languages/wpml-itinerary.php';
+		require THEMO_PATH . '/languages/wpml-expand-list.php';
+		require THEMO_PATH . '/languages/wpml-itinerary.php';
 	}
 
 	private function includes() {
 		require_once THEMO_PATH . '/elements/appointments.php';
 		require_once THEMO_PATH . '/elements/button.php';
 		require_once THEMO_PATH . '/elements/call-to-action.php';
+		require_once THEMO_PATH . '/elements/expand-list.php';
 		require_once THEMO_PATH . '/elements/formidable-form.php';
 		require_once THEMO_PATH . '/elements/google-maps.php';
 		require_once THEMO_PATH . '/elements/header.php';
 		require_once THEMO_PATH . '/elements/info-bar.php';
 		require_once THEMO_PATH . '/elements/info-card.php';
-		//require_once THEMO_PATH . '/elements/itinerary.php';
+		require_once THEMO_PATH . '/elements/itinerary.php';
 		require_once THEMO_PATH . '/elements/package.php';
 		require_once THEMO_PATH . '/elements/room-info.php';
 		require_once THEMO_PATH . '/elements/service-block.php';
@@ -62,6 +65,8 @@ class Themo_Elementor_Translate {
 		$button->add_wpml_support();
 		$ctoa = new CtoA();
 		$ctoa->add_wpml_support();
+		$expandlist = new ExpandList();
+		$expandlist->add_wpml_support();
 		$form = new Form();
 		$form->add_wpml_support();
 		$map = new Map();
@@ -72,8 +77,8 @@ class Themo_Elementor_Translate {
 		$featbar->add_wpml_support();
 		$infocard = new InfoCard();
 		$infocard->add_wpml_support();
-		// $itinerary = new Itinerary();
-		// $itinerary->add_wpml_support();
+		$itinerary = new Itinerary();
+		$itinerary->add_wpml_support();
 		$package = new Package();
 		$package->add_wpml_support();
 		$roominfo = new RoomInfo();

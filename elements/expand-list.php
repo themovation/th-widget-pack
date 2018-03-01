@@ -222,6 +222,15 @@ class Themo_Widget_Expand_list extends Widget_Base {
 		</div>
 		<?php
 	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions'        => [ 'widgetType' => $this->get_name() ],
+			'fields'            => array(),
+			'integration-class' => 'WPML_Themo_Expand_List',
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Expand_list() );
