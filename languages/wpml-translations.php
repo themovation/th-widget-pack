@@ -15,6 +15,7 @@ use Elementor\Themo_Widget_Package as Package;
 use Elementor\Themo_Widget_Pricing as Pricing;
 use Elementor\Themo_Widget_RoomInfo as RoomInfo;
 use Elementor\Themo_Widget_ServiceBlock as Service;
+use Elementor\Themo_Widget_Slider as Slider;
 use Elementor\Themo_Widget_Team as Team;
 use Elementor\Themo_Widget_Testimonial as Testimonial;
 use Elementor\Themo_Widget_TourInfo as TourInfo;
@@ -39,6 +40,7 @@ class Themo_Elementor_Translate {
 		require THEMO_PATH . '/languages/wpml-info-bar.php';
 		require THEMO_PATH . '/languages/wpml-pricing.php';
 		require THEMO_PATH . '/languages/wpml-room-info.php';
+		require THEMO_PATH . '/languages/wpml-slider.php';
 	}
 
 	private function includes() {
@@ -56,6 +58,7 @@ class Themo_Elementor_Translate {
 		require_once THEMO_PATH . '/elements/pricing.php';
 		require_once THEMO_PATH . '/elements/room-info.php';
 		require_once THEMO_PATH . '/elements/service-block.php';
+		require_once THEMO_PATH . '/elements/slider.php';
 		require_once THEMO_PATH . '/elements/team.php';
 		require_once THEMO_PATH . '/elements/testimonial.php';
 		require_once THEMO_PATH . '/elements/tour-info.php';
@@ -93,6 +96,8 @@ class Themo_Elementor_Translate {
 		$roominfo->add_wpml_support();
 		$service = new Service();
 		$service->add_wpml_support();
+		$slider = new Slider();
+		$slider->add_wpml_support();
 		$team = new Team();
 		$team->add_wpml_support();
 		$testimonial = new Testimonial();
