@@ -694,6 +694,10 @@ class Themo_Widget_Pricing extends Widget_Base {
 	}
 
     protected function _content_template() {}
+
+    public function add_wpml_support() {
+        add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+    }
         
     public function wpml_widgets_to_translate_filter( $widgets ) {
         $widgets[ $this->get_name() ] = [
