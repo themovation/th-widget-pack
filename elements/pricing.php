@@ -693,7 +693,16 @@ class Themo_Widget_Pricing extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+    protected function _content_template() {}
+        
+    public function wpml_widgets_to_translate_filter( $widgets ) {
+        $widgets[ $this->get_name() ] = [
+            'conditions'        => [ 'widgetType' => $this->get_name() ],
+            'fields'            => array(),
+            'integration-class' => 'WPML_Themo_Pricing',
+        ];
+        return $widgets;
+    }
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Pricing() );

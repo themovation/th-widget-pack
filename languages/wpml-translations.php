@@ -12,6 +12,7 @@ use Elementor\Themo_Widget_Feature_bar as FeatureBar;
 use Elementor\Themo_Widget_Info_Card as InfoCard;
 use Elementor\Themo_Widget_Itinerary as Itinerary;
 use Elementor\Themo_Widget_Package as Package;
+use Elementor\Themo_Widget_Pricing as Pricing;
 use Elementor\Themo_Widget_RoomInfo as RoomInfo;
 use Elementor\Themo_Widget_ServiceBlock as Service;
 use Elementor\Themo_Widget_Team as Team;
@@ -48,6 +49,7 @@ class Themo_Elementor_Translate {
 		require_once THEMO_PATH . '/elements/info-card.php';
 		require_once THEMO_PATH . '/elements/itinerary.php';
 		require_once THEMO_PATH . '/elements/package.php';
+		require_once THEMO_PATH . '/elements/pricing.php';
 		require_once THEMO_PATH . '/elements/room-info.php';
 		require_once THEMO_PATH . '/elements/service-block.php';
 		require_once THEMO_PATH . '/elements/team.php';
@@ -81,6 +83,8 @@ class Themo_Elementor_Translate {
 		$itinerary->add_wpml_support();
 		$package = new Package();
 		$package->add_wpml_support();
+		$pricing = new Pricing();
+		$pricing->add_wpml_support();
 		$roominfo = new RoomInfo();
 		$roominfo->add_wpml_support();
 		$service = new Service();
