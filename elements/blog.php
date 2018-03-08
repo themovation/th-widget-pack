@@ -115,6 +115,16 @@ class Themo_Widget_Blog extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'pagination_msg',
+            [
+                'type'    => Controls_Manager::RAW_HTML,
+                'raw' => __( '<small>(not supported on the Frontpage)</small>', 'your-plugin' ),
+                'content_classes' => 'your-class',
+                'separator' => 'none'
+            ]
+        );
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -383,7 +393,7 @@ class Themo_Widget_Blog extends Widget_Base {
                             <ul class="pager">
                                 <?php
                                 if( $use_bittersweet_pagination ) {
-                                    bittersweet_pagination();
+                                    th_bittersweet_pagination($widget_wp_query->max_num_pages);
                                 } else { ?>
                                 <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'westwood' ), $widget_wp_query->max_num_pages); ?></li>
                                 <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'westwood' ) ); ?></li>

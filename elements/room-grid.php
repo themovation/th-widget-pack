@@ -219,6 +219,41 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'show_overlay_tablet',
+            [
+                'label' => __( 'Show Overlay Content for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_tablet',
+            [
+                'label' => __( 'Hover Color for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_tablet' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
         $this->end_controls_section();
 
         /*$this->start_controls_section(
@@ -287,6 +322,8 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                         'taxonomy' => $taxonomy,
                         'include' => $settings['group'],
                         'hide_empty' => false,
+                        'orderby' => 'slug',
+                        'order' => 'ASC',
                     );
 
                     $tax_terms = get_terms( $tax_args );
