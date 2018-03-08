@@ -564,7 +564,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 	                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
 							<div class="th-pricing-features">
 								<ul>
-									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( wp_kses_post( $column['price_col_description'] ), "\n\r" ) ) . '</li>'; ?>
+									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( wp_kses_post( preg_replace('~<p>(.*?)</p>~is', '$1',$column['price_col_description'] )), "\n\r" ) ) . '</li>'; ?>
 								</ul>
 							</div>
 	                    <?php endif; ?>

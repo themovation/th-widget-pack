@@ -336,8 +336,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		<div class="map-info">
 			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
-			<?php echo wpautop( esc_html( $settings['business_address'] ) ); ?>
-			<?php echo wpautop( esc_html( $settings['hours'] ) ); ?>
+			<?php echo wpautop( wp_kses_post( $settings['business_address'] ) ); ?>
+			<?php echo wpautop( wp_kses_post( $settings['hours'] ) ); ?>
 
             <?php if ( ! empty( $settings['link_1_url']['url'] ) ) : ?>
                 <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>

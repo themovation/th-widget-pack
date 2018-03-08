@@ -36,7 +36,7 @@ class WPML_Themo_Slider extends WPML_Elementor_Module_With_Items  {
 				return esc_html__( 'Title', 'th-widget-pack' );
 
 			case 'slide_text':
-                return esc_html__( 'Content', 'th-widget-pack' );
+                return __( 'Content', 'th-widget-pack' );
                 
             case 'slide_button_text_1':
 				return esc_html__( 'Button 1 Text', 'th-widget-pack' );

@@ -17,7 +17,8 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
 	public function get_fields() {
 		return array( 
             'price_col_title', 
-            'price_col_sub_title', 
+            'price_col_sub_title',
+            'price_col_price',
             'price_col_text', 
             'price_col_description', 
             'price_col_button_1_text', 
@@ -37,6 +38,9 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
 
 			case 'price_col_sub_title':
                 return esc_html__( 'Sub Title', 'th-widget-pack' );
+
+            case 'price_col_price':
+                return esc_html__( 'Price', 'th-widget-pack' );
 
 			case 'price_col_text':
                 return esc_html__( 'Price text', 'th-widget-pack' );

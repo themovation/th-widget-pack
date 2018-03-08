@@ -431,7 +431,8 @@ class Themo_Widget_Package extends Widget_Base {
 		$widgets[ $this->get_name() ] = [
 			'conditions' => [ 'widgetType' => $this->get_name() ],
 			'fields'     => [
-				[
+
+                [
 					'field'       => 'pre_title',
 					'type'        => __( 'Pre Title', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
@@ -446,6 +447,11 @@ class Themo_Widget_Package extends Widget_Base {
 					'type'        => __( 'Content', 'th-widget-pack' ),
 					'editor_type' => 'VISUAL'
 				],
+                [
+                    'field'       => 'price',
+                    'type'        => __( 'Price', 'th-widget-pack' ),
+                    'editor_type' => 'LINE'
+                ],
 				[
 					'field'       => 'price_text',
 					'type'        => __( 'Price Text', 'th-widget-pack' ),
