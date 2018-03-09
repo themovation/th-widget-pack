@@ -1,25 +1,26 @@
 <?php
 namespace Elementor;
 
-use Elementor\Themo_Widget_Appointments as Appointment;
+use Elementor\Themo_Widget_Slider as Slider;
+use Elementor\Themo_Widget_Header as Header;
 use Elementor\Themo_Widget_Button as Button;
 use Elementor\Themo_Widget_CallToAction as CtoA;
-use Elementor\Themo_Widget_Expand_list as ExpandList;
+use Elementor\Themo_Widget_Testimonial as Testimonial;
+use Elementor\Themo_Widget_ServiceBlock as Service;
 use Elementor\Themo_Widget_Formidable as Form;
-use Elementor\Themo_Widget_GoogleMaps as Map;
-use Elementor\Themo_Widget_Header as Header;
-use Elementor\Themo_Widget_Feature_bar as FeatureBar;
 use Elementor\Themo_Widget_Info_Card as InfoCard;
+use Elementor\Themo_Widget_Team as Team;
+use Elementor\Themo_Widget_Appointments as Appointment;
+use Elementor\Themo_Widget_WP_Booking_System as Booking;
+use Elementor\Themo_Widget_Feature_bar as FeatureBar;
+use Elementor\Themo_Widget_RoomInfo as RoomInfo;
+use Elementor\Themo_Widget_TourInfo as TourInfo;
+use Elementor\Themo_Widget_Expand_list as ExpandList;
 use Elementor\Themo_Widget_Itinerary as Itinerary;
+use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Package as Package;
 use Elementor\Themo_Widget_Pricing as Pricing;
-use Elementor\Themo_Widget_RoomInfo as RoomInfo;
-use Elementor\Themo_Widget_ServiceBlock as Service;
-use Elementor\Themo_Widget_Slider as Slider;
-use Elementor\Themo_Widget_Team as Team;
-use Elementor\Themo_Widget_Testimonial as Testimonial;
-use Elementor\Themo_Widget_TourInfo as TourInfo;
-use Elementor\Themo_Widget_WP_Booking_System as Booking;
+
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -34,35 +35,63 @@ class Themo_Elementor_Translate {
 	}
 
 	private function widgets_with_items() {
-		require THEMO_PATH . '/languages/wpml-expand-list.php';
-		require THEMO_PATH . '/languages/wpml-itinerary.php';
-		require THEMO_PATH . '/languages/wpml-info-bar.php';
-		require THEMO_PATH . '/languages/wpml-pricing.php';
-		require THEMO_PATH . '/languages/wpml-room-info.php';
-		require THEMO_PATH . '/languages/wpml-slider.php';
-		require THEMO_PATH . '/languages/wpml-tour-info.php';
+        require THEMO_PATH . '/languages/wpml-slider.php';
+
+        //if('embark' == THEMO_CURRENT_THEME){
+            require THEMO_PATH . '/languages/wpml-tour-info.php';
+        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+            require THEMO_PATH . '/languages/wpml-info-bar.php';
+        //}elseif('bellevue' == THEMO_CURRENT_THEME){
+            require THEMO_PATH . '/languages/wpml-room-info.php';
+        //}
+
+        //if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
+            require THEMO_PATH . '/languages/wpml-itinerary.php';
+        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+            require THEMO_PATH . '/languages/wpml-expand-list.php';
+        //}
+
+	    require THEMO_PATH . '/languages/wpml-pricing.php';
 	}
 
 	private function includes() {
-		require_once THEMO_PATH . '/elements/appointments.php';
-		require_once THEMO_PATH . '/elements/button.php';
-		require_once THEMO_PATH . '/elements/call-to-action.php';
-		require_once THEMO_PATH . '/elements/expand-list.php';
-		require_once THEMO_PATH . '/elements/formidable-form.php';
-		require_once THEMO_PATH . '/elements/google-maps.php';
-		require_once THEMO_PATH . '/elements/header.php';
-		require_once THEMO_PATH . '/elements/info-bar.php';
-		require_once THEMO_PATH . '/elements/info-card.php';
-		require_once THEMO_PATH . '/elements/itinerary.php';
-		require_once THEMO_PATH . '/elements/package.php';
-		require_once THEMO_PATH . '/elements/pricing.php';
-		require_once THEMO_PATH . '/elements/room-info.php';
-		require_once THEMO_PATH . '/elements/service-block.php';
-		require_once THEMO_PATH . '/elements/slider.php';
-		require_once THEMO_PATH . '/elements/team.php';
-		require_once THEMO_PATH . '/elements/testimonial.php';
-		require_once THEMO_PATH . '/elements/tour-info.php';
-		require_once THEMO_PATH . '/elements/wp-booking-system.php';
+        require_once THEMO_PATH . '/elements/slider.php';
+        require_once THEMO_PATH . '/elements/header.php';
+        require_once THEMO_PATH . '/elements/button.php';
+        require_once THEMO_PATH . '/elements/call-to-action.php';
+        require_once THEMO_PATH . '/elements/testimonial.php';
+        require_once THEMO_PATH . '/elements/service-block.php';
+        require_once THEMO_PATH . '/elements/formidable-form.php';
+        require_once THEMO_PATH . '/elements/info-card.php';
+        require_once THEMO_PATH . '/elements/team.php';
+
+        //if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/appointments.php';
+        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME){
+            //require_once THEMO_PATH . '/elements/appointments.php';
+        //}elseif('bellevue' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/wp-booking-system.php';
+        //}
+
+        //if('embark' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/tour-info.php';
+        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/info-bar.php';
+        //}elseif('bellevue' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/room-info.php';
+        //}
+
+        require_once THEMO_PATH . '/elements/package.php';
+
+        //if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
+            require_once THEMO_PATH . '/elements/itinerary.php';
+        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . '/elements/expand-list.php';
+        //}
+
+        require_once THEMO_PATH . '/elements/pricing.php';
+        require_once THEMO_PATH . '/elements/google-maps.php';
+
 	}
 
 	public function add_wpml_support() {
