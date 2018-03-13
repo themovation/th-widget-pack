@@ -216,13 +216,13 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             [
                 'label' => __( 'Caption', 'elementor' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'caption_description',
+                'default' => 'title_caption',
                 'options' => [
                     '' => __( 'None', 'elementor' ),
                     'title' => __( 'Title', 'elementor' ),
                     'caption' => __( 'Caption', 'elementor' ),
-                    'description' => __( 'Description', 'elementor' ),
-                    'caption_description' => __( 'Caption & Description', 'elementor' ),
+                    //'description' => __( 'Description', 'elementor' ),
+                    'title_caption' => __( 'Title & Caption', 'elementor' ),
                 ],
             ]
         );
@@ -671,12 +671,20 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 $image_html = '<a ' . $this->get_render_attribute_string( $link_key ) . '>' . $image_html . '</a>';
             }
 
+            $image_title = $this->get_image_title( $attachment );
             $image_caption = $this->get_image_caption( $attachment );
+
 
             $slide_html = '<div class="slick-slide"><figure class="slick-slide-inner">' . $image_html;
 
-            if ( ! empty( $image_caption ) ) {
-                $slide_html .= '<figcaption class="elementor-image-carousel-caption">' . $image_caption . '</figcaption>';
+            $caption_type = $this->get_settings( 'caption_type' );
+
+            if ( 'caption' === $caption_type && ! empty( $image_caption )) {
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-caption”>' . $image_caption . '</span></figcaption>';
+            }elseif ( 'title' === $caption_type && ! empty( $image_title )) {
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-title”>' . $image_title . '</span></figcaption>';
+            } elseif ( 'title_caption' === $caption_type && (! empty( $image_caption ) ||  ! empty( $image_title ))) {
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-title”>' . $image_title .'</span><span class=“th-timeline-caption”>'.$image_caption.'</span></figcaption>';
             }
 
             $slide_html .= '</figure></div>';
@@ -809,13 +817,15 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @return string The caption of the image.
      */
     private function get_image_caption( $attachment ) {
-        $caption_type = $this->get_settings( 'caption_type' );
+
+        $attachment_post = get_post( $attachment['id'] );
+        return $attachment_post->post_excerpt;
+
+        /*$caption_type = $this->get_settings( 'caption_type' );
 
         if ( empty( $caption_type ) ) {
             return '';
         }
-
-        $attachment_post = get_post( $attachment['id'] );
 
         if ( 'caption' === $caption_type ) {
             return $attachment_post->post_excerpt;
@@ -826,6 +836,22 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         }
 
         return $attachment_post->post_content;
+        */
+    }
+
+    /**
+     * Retrieve image carousel title.
+     *
+     * @since 1.2.0
+     * @access private
+     *
+     * @param array $attachment
+     *
+     * @return string The caption of the image.
+     */
+    private function get_image_title( $attachment ) {
+        $attachment_post = get_post( $attachment['id'] );
+        return $attachment_post->post_title;
     }
 }
 
