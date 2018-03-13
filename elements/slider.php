@@ -519,7 +519,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		$th_repeater->add_control(
 			'slide_tooltip',
 			[
-				'label' => __( 'Booked Calendar Tooltip', 'th-widget-pack' ),
+				'label' => __( 'Calendar Tooltip', 'th-widget-pack' ),
 				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Yes', 'th-widget-pack' ),
 				'label_off' => __( 'No', 'th-widget-pack' ),
@@ -540,18 +540,35 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-        $th_repeater->add_control(
-            'th_cal_size',
-            [
-                'label' => __( 'Calendar Size', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'small',
-                'options' => [
-                    'small' => __( 'Small', 'th-widget-pack' ),
-                    'large' => __( 'Large', 'th-widget-pack' ),
+        if('bellevue' == THEMO_CURRENT_THEME){
+            $th_repeater->add_control(
+                'th_cal_size',
+                [
+                    'label' => __( 'Calendar Size', 'th-widget-pack' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'small',
+                    'options' => [
+                        'small' => __( 'Small', 'th-widget-pack' ),
+                    ]
                 ]
-            ]
-        );
+            );
+        }else{
+            $th_repeater->add_control(
+                'th_cal_size',
+                [
+                    'label' => __( 'Calendar Size', 'th-widget-pack' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'small',
+                    'options' => [
+                        'small' => __( 'Small', 'th-widget-pack' ),
+                        'large' => __( 'Large', 'th-widget-pack' ),
+                    ]
+                ]
+            );
+
+        }
+
+
 
 
 
@@ -709,6 +726,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p' => 'color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .wpbs-legend .wpbs-legend-item p' => 'color: {{VALUE}}',
 				],
                 'default' => '#FFFFFF',
 			]
@@ -1243,6 +1261,16 @@ class Themo_Widget_Slider extends Widget_Base {
                                                         $th_output .= '</div>';
                                                         break;
                                                     case 'booked-calendar':
+                                                        $th_output .= '<div class="th-book-cal-' . esc_attr( $th_cal_size ) . esc_attr( $th_cal_align_class ) .'">';
+                                                        if( $sth_show_tooltip ){
+                                                            $th_output .= '<div class="th-cal-tooltip">';
+                                                            $th_output .= '<h3>' . esc_html( $th_tooltip ) . '</h3>';
+                                                            $th_output .= '</div>';
+                                                        }
+                                                        $th_output .= do_shortcode( $th_shortcode );
+                                                        $th_output .= '</div>';
+                                                        break;
+                                                    case 'wpbs':
                                                         $th_output .= '<div class="th-book-cal-' . esc_attr( $th_cal_size ) . esc_attr( $th_cal_align_class ) .'">';
                                                         if( $sth_show_tooltip ){
                                                             $th_output .= '<div class="th-cal-tooltip">';

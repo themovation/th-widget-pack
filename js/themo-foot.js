@@ -55,7 +55,7 @@ function themo_active_lightbox(){
 jQuery( function ( $ ) {
 
     // fix pricing columns
-    themo_adjust_pricing_table_height();
+	themo_adjust_pricing_table_height();
 
     // start isotope
     themo_init_isotope();
@@ -134,8 +134,8 @@ jQuery( function ( $ ) {
     }
 
     //-----------------------------------------------------
-    // Adjust Pricing Table Height
-    //-----------------------------------------------------
+	// Adjust Pricing Table Height
+	//-----------------------------------------------------
 
     function themo_adjust_pricing_table_height(){
 
@@ -191,27 +191,27 @@ jQuery( function ( $ ) {
 
     // Intinerary Toggles
 
-    $( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
-        var $$ = $( this ),
-            $title = $$.find( '.th-itin-title' ),
-            $content = $$.find( '.th-itin-content' );
+	$( '.th-itinerary' ).find( '.th-itin-single' ).each( function() {
+		var $$ = $( this ),
+			$title = $$.find( '.th-itin-title' ),
+			$content = $$.find( '.th-itin-content' );
 
 
-        $title.on( 'click', function() {
-            if ( $$.hasClass( 'th-itin-active' ) ) {
+		$title.on( 'click', function() {
+			if ( $$.hasClass( 'th-itin-active' ) ) {
                 $content.slideUp('fast', function() {
                     $$.addClass( 'th-itin-inactive' );
                     $$.removeClass( 'th-itin-active' );
                 });
-            } else {
+			} else {
                 $content.slideDown('fast', function() {
                     $$.addClass( 'th-itin-active' );
                     $$.removeClass( 'th-itin-inactive' );
                 });
-            }
-        } );
+			}
+		} );
 
-    } );
+	} );
 
 
 

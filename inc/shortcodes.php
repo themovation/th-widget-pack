@@ -9,7 +9,7 @@
 Accordion
 ==========================================================
 */
-function themo_accordion( $atts, $content ){
+function th_accordion( $atts, $content ){
     extract( shortcode_atts( array(
         'title' => '',
         'icon' => ''
@@ -19,7 +19,7 @@ function themo_accordion( $atts, $content ){
 
     global $group_ID, $accordion_count;
 
-    $collapse_ID = themo_randomString();
+    $collapse_ID = th_randomString();
     $accordion_count++;
 
     if ($accordion_count == 1){
@@ -51,17 +51,17 @@ function themo_accordion( $atts, $content ){
     return $output;
 }
 
-add_shortcode( 'accordion', 'themo_accordion' );
+add_shortcode( 'accordion', 'th_accordion' );
 
 /*
 ==========================================================
 Accordion Group
 ==========================================================
 */
-function themo_accordion_group( $atts, $content ) {
+function th_accordion_group( $atts, $content ) {
 
     global $group_ID, $accordion_count;
-    $group_ID = themo_randomString();
+    $group_ID = th_randomString();
 
 
     $output = '<div class="panel-group" id="'.$group_ID.'">';
@@ -71,14 +71,14 @@ function themo_accordion_group( $atts, $content ) {
     return $output;
 }
 
-add_shortcode('accordion_group', 'themo_accordion_group');
+add_shortcode('accordion_group', 'th_accordion_group');
 
 /*
 ==========================================================
 Alerts
 ==========================================================
 */
-function themo_alerts( $atts, $content = null ) {
+function th_alerts( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'type' => 'alert-info', /* alert-info, alert-success, alert-danger, alert-warning */
         'block' => 'false',
@@ -108,14 +108,14 @@ function themo_alerts( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('alert', 'themo_alerts');
+add_shortcode('alert', 'th_alerts');
 
 /*
 ==========================================================
 Blockquotes
 ==========================================================
 */
-function themo_blockquotes( $atts, $content = null ) {
+function th_blockquotes( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'reverse' => '', /* on, off */
         'cite' => '', /* text for cite */
@@ -160,7 +160,7 @@ function themo_blockquotes( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('blockquote', 'themo_blockquotes');
+add_shortcode('blockquote', 'th_blockquotes');
 
 
 /*
@@ -168,7 +168,7 @@ add_shortcode('blockquote', 'themo_blockquotes');
 Button Group
 ==========================================================
 */
-function themo_button_group( $atts, $content ) {
+function th_button_group( $atts, $content ) {
     extract( shortcode_atts( array(
         'variation' => '',
     ), $atts ) );
@@ -184,14 +184,14 @@ function themo_button_group( $atts, $content ) {
     $output .= '</div>';
     return $output;}
 
-add_shortcode('button_group', 'themo_button_group');
+add_shortcode('button_group', 'th_button_group');
 
 /*
 ==========================================================
 Buttons
 ==========================================================
 */
-function themo_buttons( $atts, $content = null) {
+function th_buttons( $atts, $content = null) {
     extract( shortcode_atts( array(
         'type' => 'default', /* primary, default, info, success, danger, warning, inverse, cta */
         'size' => '', /* lg, sm, xs */
@@ -333,15 +333,15 @@ function themo_buttons( $atts, $content = null) {
     return $output;
 }
 
-add_shortcode('button', 'themo_buttons');
-add_shortcode('themo_button', 'themo_buttons');
+add_shortcode('button', 'th_buttons');
+add_shortcode('themo_button', 'th_buttons');
 
 /*
 ==========================================================
 Buttons Dropdown Items
 ==========================================================
 */
-function themo_button_dropdown_item( $atts, $content = null) {
+function th_button_dropdown_item( $atts, $content = null) {
     extract( shortcode_atts( array(
         'link' => '#',
         'target' => '_self', // blank, self, parent, top
@@ -395,7 +395,7 @@ function themo_button_dropdown_item( $atts, $content = null) {
     return $output;
 }
 
-add_shortcode('dropdown', 'themo_button_dropdown_item');
+add_shortcode('dropdown', 'th_button_dropdown_item');
 
 
 /*
@@ -403,7 +403,7 @@ add_shortcode('dropdown', 'themo_button_dropdown_item');
 Code Inline
 ==========================================================
 */
-function themo_code( $atts, $content ) {
+function th_code( $atts, $content ) {
     extract( shortcode_atts( array(
         'scroll' => 'off',
         'inline' => 'off'
@@ -433,14 +433,14 @@ function themo_code( $atts, $content ) {
     return $output;
 }
 
-add_shortcode('code', 'themo_code');
+add_shortcode('code', 'th_code');
 
 /*
 ==========================================================
 Columns
 ==========================================================
 */
-function themo_columns( $atts, $content ) {
+function th_columns( $atts, $content ) {
     extract( shortcode_atts( array(
         'span' => '12',
     ), $atts ) );
@@ -454,14 +454,14 @@ function themo_columns( $atts, $content ) {
     $output .= '</div>';
     return $output;}
 
-add_shortcode('column', 'themo_columns');
+add_shortcode('column', 'th_columns');
 
 /*
 ==========================================================
 Column Row
 ==========================================================
 */
-function themo_row( $atts, $content ) {
+function th_row( $atts, $content ) {
 
     // sanitize
     $content = wp_kses_post($content);
@@ -471,7 +471,7 @@ function themo_row( $atts, $content ) {
     $output .= '</div>';
     return $output;}
 
-add_shortcode('row', 'themo_row');
+add_shortcode('row', 'th_row');
 
 /*
 ==========================================================
@@ -479,7 +479,7 @@ Divider
 ==========================================================
 */
 
-function themo_ruler($atts) {
+function th_ruler($atts) {
     extract(shortcode_atts(array(
         'top' => 'false',
         'bottom'=> 'false',
@@ -509,14 +509,14 @@ function themo_ruler($atts) {
     return '<div class="ruler" '.$style.'></div>';
 }
 
-add_shortcode('ruler', 'themo_ruler');
+add_shortcode('ruler', 'th_ruler');
 
 /*
 ==========================================================
 Dropcaps
 ==========================================================
 */
-function themo_dropcaps( $atts, $content ) {
+function th_dropcaps( $atts, $content ) {
     extract( shortcode_atts( array(
         'style' => 'book',  // box, circle, book
     ), $atts ) );
@@ -538,7 +538,7 @@ function themo_dropcaps( $atts, $content ) {
     $output .= '</span>';
     return $output;}
 
-add_shortcode('dropcaps', 'themo_dropcaps');
+add_shortcode('dropcaps', 'th_dropcaps');
 
 
 /*
@@ -546,7 +546,7 @@ add_shortcode('dropcaps', 'themo_dropcaps');
 Full Width Video Play Button
 ==========================================================
 */
-function themo_video_play( $atts, $content = null ) {
+function th_video_play( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'src' => '', // Video SRC
         'width' => '1280', // Video Size
@@ -594,14 +594,14 @@ function themo_video_play( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('video_play', 'themo_video_play');
+add_shortcode('video_play', 'th_video_play');
 
 /*
 ==========================================================
 Icon / Glyphicons
 ==========================================================
 */
-function themo_glyphicon( $atts, $content = null ) {
+function th_glyphicon( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'icon' => '',
         'icon_halflings' => '',
@@ -625,7 +625,7 @@ function themo_glyphicon( $atts, $content = null ) {
 
     if($icon > ""){
         $glyphicon_sets = array("halflings","social","filetype");
-        if(!themo_string_contains($icon, $glyphicon_sets)){
+        if(!th_string_contains($icon, $glyphicon_sets)){
             $icon = "$icon";
         }
     }elseif($icon_halflings > ""){
@@ -643,7 +643,7 @@ function themo_glyphicon( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('glyphicon', 'themo_glyphicon');
+add_shortcode('glyphicon', 'th_glyphicon');
 
 
 /*
@@ -651,7 +651,7 @@ add_shortcode('glyphicon', 'themo_glyphicon');
 Image shapes
 ==========================================================
 */
-function themo_image_shapes( $atts, $content = null ) {
+function th_image_shapes( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'src' => '',
         'link' => '',
@@ -696,7 +696,7 @@ function themo_image_shapes( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('shape', 'themo_image_shapes');
+add_shortcode('shape', 'th_image_shapes');
 
 
 /*
@@ -704,7 +704,7 @@ add_shortcode('shape', 'themo_image_shapes');
 Jumbotron
 ==========================================================
 */
-function themo_jumbotron( $atts, $content ) {
+function th_jumbotron( $atts, $content ) {
     extract( shortcode_atts( array(
         'background' => '', /* alert-info, alert-success, alert-error */
         'color' => '',
@@ -719,14 +719,14 @@ function themo_jumbotron( $atts, $content ) {
     $output .= '</div>';
     return $output;}
 
-add_shortcode('jumbotron', 'themo_jumbotron');
+add_shortcode('jumbotron', 'th_jumbotron');
 
 /*
 ==========================================================
 Labels
 ==========================================================
 */
-function skematik_shortcode_labels( $atts, $content = null ) {
+function th_shortcode_labels( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'type' => 'default', /* primary, default, info, success, danger, warning, inverse */
         'text' => '',
@@ -752,7 +752,7 @@ function skematik_shortcode_labels( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('label', 'skematik_shortcode_labels');
+add_shortcode('label', 'th_shortcode_labels');
 
 /*
 ==========================================================
@@ -760,7 +760,7 @@ Lead
 ==========================================================
 */
 
-function themo_lead( $atts, $content ) {
+function th_lead( $atts, $content ) {
     extract( shortcode_atts( array(
         'align' => '',  // Left, Center, Right
     ), $atts ) );
@@ -789,14 +789,14 @@ function themo_lead( $atts, $content ) {
     $output .= '</p>';
     return $output;}
 
-add_shortcode('lead', 'themo_lead');
+add_shortcode('lead', 'th_lead');
 
 /*
 ==========================================================
 Link
 ==========================================================
 */
-function themo_link( $atts, $content = null ) {
+function th_link( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'url' => '#',
         'target' => '',	// _blank, _self, _parent, _top
@@ -852,7 +852,7 @@ function themo_link( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('link', 'themo_link');
+add_shortcode('link', 'th_link');
 
 
 /*
@@ -860,7 +860,7 @@ add_shortcode('link', 'themo_link');
 Modals
 ==========================================================
 */
-function wt_modal_window($atts, $content = null){
+function th_modal_window($atts, $content = null){
     extract(shortcode_atts( array(
         'button_type' => 'info',  /* primary, default, info, success, danger, warning, inverse, cta */
         'button_text' => 'More',
@@ -877,7 +877,7 @@ function wt_modal_window($atts, $content = null){
     $footer = sanitize_html_class($footer);
     $content = wp_kses_post($content);
 
-    $modal_ID = themo_randomString();
+    $modal_ID = th_randomString();
     // $modal_ID = "modal";
     $button = "<!-- Button trigger modal -->";
     $button .= do_shortcode("[button text='$button_text' type='$button_type' size='$button_size' data_toggle='modal' data_target='#$modal_ID']");
@@ -906,14 +906,14 @@ function wt_modal_window($atts, $content = null){
     return $modal;
 }
 
-add_shortcode("modal", "wt_modal_window");
+add_shortcode("modal", "th_modal_window");
 
 /*
 ==========================================================
 Page Header
 ==========================================================
 */
-function themo_page_header( $atts, $content = null ) {
+function th_page_header( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'text' => '',
         'subtext' => '',
@@ -934,7 +934,7 @@ function themo_page_header( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('header', 'themo_page_header');
+add_shortcode('header', 'th_page_header');
 
 /*
 ==========================================================
@@ -942,7 +942,7 @@ Panel with Heading
 ==========================================================
 */
 
-function themo_panel( $atts, $content = null ) {
+function th_panel( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'type' => 'default', //deafult, primary, success, info, warning, danger
         'heading' => '',
@@ -965,14 +965,14 @@ function themo_panel( $atts, $content = null ) {
     return $output;
 }
 
-add_shortcode('panel', 'themo_panel');
+add_shortcode('panel', 'th_panel');
 
 /*
 ==========================================================
 Popovers
 ==========================================================
 */
-function themo_popover( $atts, $content = null) {
+function th_popover( $atts, $content = null) {
     extract( shortcode_atts( array(
         'button_text' => '',
         'button_type' => '',
@@ -997,7 +997,7 @@ function themo_popover( $atts, $content = null) {
 
     return $button;}
 
-add_shortcode('popover', 'themo_popover');
+add_shortcode('popover', 'th_popover');
 
 
 /*
@@ -1005,7 +1005,7 @@ add_shortcode('popover', 'themo_popover');
 Popover Text
 ==========================================================
 */
-function themo_popover_text( $atts, $content = null) {
+function th_popover_text( $atts, $content = null) {
     extract( shortcode_atts( array(
         'popover_title' => '',
         'popover_content' => '',
@@ -1026,14 +1026,14 @@ function themo_popover_text( $atts, $content = null) {
 
     return $link;}
 
-add_shortcode('popover_text', 'themo_popover_text');
+add_shortcode('popover_text', 'th_popover_text');
 
 /*
 ==========================================================
 Progress Bar
 ==========================================================
 */
-function skematik_shortcode_progress_bar( $atts, $content = null ) {
+function th_shortcode_progress_bar( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'animate' => 'off',
         'type' => 'default', // success,  info,  warning,  danger
@@ -1079,7 +1079,7 @@ function skematik_shortcode_progress_bar( $atts, $content = null ) {
     $output = '<div class="progress '.$striped.' '.$animate.'"><div class="progress-bar '.$type.'" role="progressbar" style="width:'.$progress.'%;">'.$label.'</div></div>';
     return $output;}
 
-add_shortcode('progress', 'skematik_shortcode_progress_bar');
+add_shortcode('progress', 'th_shortcode_progress_bar');
 
 
 /*
@@ -1087,13 +1087,13 @@ add_shortcode('progress', 'skematik_shortcode_progress_bar');
 Tabs / Togglable
 ==========================================================
 */
-function themo_tab_wrap( $atts, $content ){
+function th_tab_wrap( $atts, $content ){
 
 
     $return = '';
     $GLOBALS['tab_count'] = 0;
     $iCount = 0;
-    $tagGroup = themo_RandNumber(3);
+    $tagGroup = th_RandNumber(3);
     $iCount = $tagGroup + $iCount;
     $isActive = "active";
     $fade = 'fade in';
@@ -1125,9 +1125,9 @@ function themo_tab_wrap( $atts, $content ){
     return $return;
 }
 
-add_shortcode( 'tabwrap', 'themo_tab_wrap' );
+add_shortcode( 'tabwrap', 'th_tab_wrap' );
 
-function themo_tab( $atts, $content ){
+function th_tab( $atts, $content ){
     extract(shortcode_atts(array(
         'title' => 'Tab %d'
     ), $atts));
@@ -1141,7 +1141,7 @@ function themo_tab( $atts, $content ){
     $GLOBALS['tab_count']++;
 }
 
-add_shortcode( 'tab', 'themo_tab' );
+add_shortcode( 'tab', 'th_tab' );
 
 
 
@@ -1152,7 +1152,7 @@ add_shortcode( 'tab', 'themo_tab' );
 Tooltip
 ==========================================================
 */
-function themo_tooltip( $atts, $content = null) {
+function th_tooltip( $atts, $content = null) {
     extract( shortcode_atts( array(
         'button_text' => '',
         'button_type' => '',
@@ -1177,7 +1177,7 @@ function themo_tooltip( $atts, $content = null) {
 
     return $button;}
 
-add_shortcode('tooltip', 'themo_tooltip');
+add_shortcode('tooltip', 'th_tooltip');
 
 
 /*
@@ -1185,7 +1185,7 @@ add_shortcode('tooltip', 'themo_tooltip');
 Tooltip Text
 ==========================================================
 */
-function themo_tooltip_text( $atts, $content = null) {
+function th_tooltip_text( $atts, $content = null) {
     extract( shortcode_atts( array(
         'tooltip_text' => '',
         'tooltip_placement' => 'top',
@@ -1202,7 +1202,7 @@ function themo_tooltip_text( $atts, $content = null) {
 
     return $link;}
 
-add_shortcode('tooltip_text', 'themo_tooltip_text');
+add_shortcode('tooltip_text', 'th_tooltip_text');
 
 
 /*
@@ -1211,8 +1211,8 @@ Highlights
 ==========================================================
 */
 
-if ( !function_exists( 'themo_highlight' ) ) {
-    function themo_highlight( $atts, $content = null ) {
+if ( !function_exists( 'th_highlight' ) ) {
+    function th_highlight( $atts, $content = null ) {
         extract( shortcode_atts( array(
             'color'	=> 'primary',
             'class'	=> '',
@@ -1230,7 +1230,7 @@ if ( !function_exists( 'themo_highlight' ) ) {
         return "<span class='$color $class'>" . do_shortcode( $content ) . "</span>";
 
     }
-    add_shortcode( 'highlight', 'themo_highlight' );
+    add_shortcode( 'highlight', 'th_highlight' );
 }
 
 /*
@@ -1238,8 +1238,8 @@ if ( !function_exists( 'themo_highlight' ) ) {
 Carousel / Flex Slider
 ==========================================================
 */
-if ( ! function_exists( 'themo_slider_gallery' ) ) :
-    function themo_slider_gallery( $atts, $content = null ) {
+if ( ! function_exists( 'th_slider_gallery' ) ) :
+    function th_slider_gallery( $atts, $content = null ) {
 
 
         if (!empty($atts['ids'])) {
@@ -1302,7 +1302,7 @@ if ( ! function_exists( 'themo_slider_gallery' ) ) :
                     $themo_flex_animationloop, $themo_flex_smoothheight, $themo_flex_slideshowspeed, $themo_flex_animationspeed,
                     $themo_flex_randomize, $themo_flex_pauseonhover, $themo_flex_touch, $themo_flex_directionnav";
 
-        $flex_ID = themo_randomString();
+        $flex_ID = th_randomString();
 
         global $post;
         $id = $post->ID;
@@ -1374,7 +1374,7 @@ if ( ! function_exists( 'themo_slider_gallery' ) ) :
         return $output;
     }
 
-    add_shortcode('slider_gallery', 'themo_slider_gallery');
+    add_shortcode('slider_gallery', 'th_slider_gallery');
 endif;
 
 /**

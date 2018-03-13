@@ -1,9 +1,9 @@
 <?php
 //-----------------------------------------------------
-// themo_string_contains
+// th_string_contains
 // IF String contains any items in an array (case insensitive).
 //-----------------------------------------------------
-function themo_string_contains($str, $arr)
+function th_string_contains($str, $arr)
 {
     foreach($arr as $a) {
         if (stripos($str,$a) !== false) return true;
@@ -12,10 +12,10 @@ function themo_string_contains($str, $arr)
 }
 
 //-----------------------------------------------------
-// themo_RandNumber
+// th_RandNumber
 // Return a random number
 //-----------------------------------------------------
-function themo_RandNumber($e){
+function th_RandNumber($e){
     $rand = 0;
     for($i=0;$i<$e;$i++){
         $rand =  $rand .  rand(0, 9);
@@ -27,7 +27,7 @@ function themo_RandNumber($e){
 // Generate random string
 // @return string
 //-----------------------------------------------------
-function themo_randomString($length = 6) {
+function th_randomString($length = 6) {
     $str = "";
     $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
     $max = count($characters) - 1;
@@ -102,7 +102,7 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
 }
 add_action( 'admin_head', 'sync_ot_and_elem_page_settings' ); // When WP Admin is loaded
 add_action( 'template_redirect', 'sync_ot_and_elem_page_settings' ); // When Pages and posts are loaded
-add_action( 'elementor/editor/after_save', 'th_update_elem_page_settings_post_meta') ; // When Elementor Editor is saved.
+//add_action( 'elementor/editor/after_save', 'th_update_elem_page_settings_post_meta') ; // When Elementor Editor is saved.
 
 
 
@@ -233,7 +233,7 @@ add_action('updated_post_meta', 'th_check_meta_change', 0, 4);
  *
  */
 
-add_action( 'elementor/widget/render_content', function( $content, $widget ) {
+/*add_action( 'elementor/widget/render_content', function( $content, $widget ) {
 
     // Wrap Sideba Widget with our own classes.
     if ( 'sidebar' === $widget->get_name() ) {
@@ -244,8 +244,37 @@ add_action( 'elementor/widget/render_content', function( $content, $widget ) {
     }
 
     return $content;
-}, 10, 2 );
+}, 10, 2 );*/
 
 
+/*
+ * Wrap the sidebar widget for our theme styling.
+ *
+ */
 
+add_action( 'elementor/frontend/widget/before_render', 'th_wrap_sidebar_before', 10, 2 );
 
+function th_wrap_sidebar_before( \Elementor\Widget_Base $widget ) {
+
+    if(is_object($widget)){
+        // Wrap Sidebar Widget with our own classes.
+        if ( 'sidebar' === $widget->get_name() ) {
+            echo '<!-- Themovaiton Sidebar Wrap before -->';
+            echo '<div class="sidebar th-widget-area th-sidebar-widget">';
+
+        }
+    }
+}
+
+add_action( 'elementor/frontend/widget/after_render', 'th_wrap_sidebar_after', 10, 2 );
+
+function th_wrap_sidebar_after( \Elementor\Widget_Base $widget ) {
+
+    if(is_object($widget)){
+        // Wrap Sidebar Widget with our own classes.
+        if ( 'sidebar' === $widget->get_name() ) {
+            echo '</div>';
+            echo '<!-- Themovaiton Sidebar Wrap after -->';
+        }
+    }
+}

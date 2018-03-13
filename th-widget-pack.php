@@ -11,9 +11,7 @@
  * License: GPL v3
  */
 
-
-define('THEMO_VERSION', '1.0.4');
-
+define('THEMO_VERSION', '1.0.5');
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );

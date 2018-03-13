@@ -66,6 +66,8 @@ add_action( 'elementor/preview/enqueue_styles', 'th_enqueue_preview' );
 function th_enqueue_preview() {
     wp_enqueue_style( 'themo-preview', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-preview', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
+    wp_enqueue_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
+
 }
 
 // FRONTEND // After Elementor registers all scripts.
@@ -74,4 +76,6 @@ add_action( 'elementor/frontend/after_enqueue_scripts', 'th_enqueue_after_fronte
 function th_enqueue_after_frontend_scripts() {
     // JS for the Editor
     wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+
+
 }
