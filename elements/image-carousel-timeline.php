@@ -106,7 +106,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-		$slides_to_show = range( 3, 7, 2 );
+		$slides_to_show = range( 1, 7, 2 );
 
         $slides_to_show = array_combine( $slides_to_show, $slides_to_show );
 
