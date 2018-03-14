@@ -36,22 +36,38 @@ class Themo_Elementor_Translate {
 
 	private function widgets_with_items() {
         require THEMO_PATH . '/languages/wpml-slider.php';
+		require THEMO_PATH . '/languages/wpml-pricing.php';
+		
+		switch (THEMO_CURRENT_THEME) {
+			case 'embark':
+				require_once THEMO_PATH . '/elements/itinerary.php';
+				require_once THEMO_PATH . '/elements/tour-info.php';
+				break;
 
-        //if('embark' == THEMO_CURRENT_THEME){
-            require THEMO_PATH . '/languages/wpml-tour-info.php';
-        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
-            require THEMO_PATH . '/languages/wpml-info-bar.php';
-        //}elseif('bellevue' == THEMO_CURRENT_THEME){
-            require THEMO_PATH . '/languages/wpml-room-info.php';
-        //}
+			case 'bellevue':
+				require_once THEMO_PATH . '/elements/itinerary.php';
+				require_once THEMO_PATH . '/elements/room-info.php';
+				break;
 
-        //if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
-            require THEMO_PATH . '/languages/wpml-itinerary.php';
-        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
-            require THEMO_PATH . '/languages/wpml-expand-list.php';
-        //}
+			case 'stratus':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				break;
 
-	    require THEMO_PATH . '/languages/wpml-pricing.php';
+			case 'pursuit':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				break;
+
+			case 'entrepreneur':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 	}
 
 	private function includes() {
@@ -64,65 +80,66 @@ class Themo_Elementor_Translate {
         require_once THEMO_PATH . '/elements/formidable-form.php';
         require_once THEMO_PATH . '/elements/info-card.php';
         require_once THEMO_PATH . '/elements/team.php';
-
-        //if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/appointments.php';
-        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME){
-            //require_once THEMO_PATH . '/elements/appointments.php';
-        //}elseif('bellevue' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/wp-booking-system.php';
-        //}
-
-        //if('embark' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/tour-info.php';
-        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/info-bar.php';
-        //}elseif('bellevue' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/room-info.php';
-        //}
-
         require_once THEMO_PATH . '/elements/package.php';
-
-        //if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
-            require_once THEMO_PATH . '/elements/itinerary.php';
-        //}elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . '/elements/expand-list.php';
-        //}
-
         require_once THEMO_PATH . '/elements/pricing.php';
-        require_once THEMO_PATH . '/elements/google-maps.php';
+		require_once THEMO_PATH . '/elements/google-maps.php';
+		
+		switch (THEMO_CURRENT_THEME) {
+			case 'embark':
+				require_once THEMO_PATH . '/elements/itinerary.php';
+				require_once THEMO_PATH . '/elements/tour-info.php';
+				require_once THEMO_PATH . '/elements/appointments.php';
+				break;
+
+			case 'bellevue':
+				require_once THEMO_PATH . '/elements/itinerary.php';
+				require_once THEMO_PATH . '/elements/room-info.php';
+				require_once THEMO_PATH . '/elements/wp-booking-system.php';
+				break;
+
+			case 'stratus':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				require_once THEMO_PATH . '/elements/appointments.php';
+				break;
+
+			case 'pursuit':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				require_once THEMO_PATH . '/elements/appointments.php';
+				break;
+
+			case 'entrepreneur':
+				require_once THEMO_PATH . '/elements/expand-list.php';
+				require_once THEMO_PATH . '/elements/info-bar.php';
+				require_once THEMO_PATH . '/elements/appointments.php';
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 
 	}
 
 	public function add_wpml_support() {
 		$this->includes();
 		$this->widgets_with_items();
-		$appointments = new Appointment();
-		$appointments->add_wpml_support();
 		$button = new Button();
 		$button->add_wpml_support();
 		$ctoa = new CtoA();
 		$ctoa->add_wpml_support();
-		$expandlist = new ExpandList();
-		$expandlist->add_wpml_support();
 		$form = new Form();
 		$form->add_wpml_support();
 		$map = new Map();
 		$map->add_wpml_support();
 		$header = new Header();
-		$header->add_wpml_support();
-		$featbar = new FeatureBar();
-		$featbar->add_wpml_support();
 		$infocard = new InfoCard();
 		$infocard->add_wpml_support();
-		$itinerary = new Itinerary();
-		$itinerary->add_wpml_support();
 		$package = new Package();
 		$package->add_wpml_support();
 		$pricing = new Pricing();
 		$pricing->add_wpml_support();
-		$roominfo = new RoomInfo();
-		$roominfo->add_wpml_support();
 		$service = new Service();
 		$service->add_wpml_support();
 		$slider = new Slider();
@@ -131,10 +148,58 @@ class Themo_Elementor_Translate {
 		$team->add_wpml_support();
 		$testimonial = new Testimonial();
 		$testimonial->add_wpml_support();
-		$tourinfo = new TourInfo();
-		$tourinfo->add_wpml_support();
-		$booking = new Booking();
-		$booking->add_wpml_support();
+
+		switch (THEMO_CURRENT_THEME) {
+			case 'embark':				
+				$itinerary = new Itinerary();
+				$itinerary->add_wpml_support();
+				$tourinfo = new TourInfo();
+				$tourinfo->add_wpml_support();
+				$appointments = new Appointment();
+				$appointments->add_wpml_support();
+				break;
+
+			case 'bellevue':				
+				$itinerary = new Itinerary();
+				$itinerary->add_wpml_support();
+				$roominfo = new RoomInfo();
+				$roominfo->add_wpml_support();
+				$booking = new Booking();
+				$booking->add_wpml_support();
+				break;
+
+			case 'stratus':
+				$expandlist = new ExpandList();
+				$expandlist->add_wpml_support();
+				$header->add_wpml_support();
+				$featbar = new FeatureBar();
+				$featbar->add_wpml_support();
+				$appointments = new Appointment();
+				$appointments->add_wpml_support();
+				break;
+
+			case 'pursuit':
+				$expandlist = new ExpandList();
+				$expandlist->add_wpml_support();
+				$header->add_wpml_support();
+				$featbar = new FeatureBar();
+				$appointments = new Appointment();
+				$appointments->add_wpml_support();
+				break;
+
+			case 'entrepreneur':
+				$expandlist = new ExpandList();
+				$expandlist->add_wpml_support();
+				$header->add_wpml_support();
+				$featbar = new FeatureBar();
+				$appointments = new Appointment();
+				$appointments->add_wpml_support();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 	}
 }
 
