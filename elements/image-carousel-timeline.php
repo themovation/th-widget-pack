@@ -680,11 +680,11 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             $caption_type = $this->get_settings( 'caption_type' );
 
             if ( 'caption' === $caption_type && ! empty( $image_caption )) {
-                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-caption”>' . $image_caption . '</span></figcaption>';
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class="th-timeline-caption">' . $image_caption . '</span></figcaption>';
             }elseif ( 'title' === $caption_type && ! empty( $image_title )) {
-                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-title”>' . $image_title . '</span></figcaption>';
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class="th-timeline-title">' . $image_title . '</span></figcaption>';
             } elseif ( 'title_caption' === $caption_type && (! empty( $image_caption ) ||  ! empty( $image_title ))) {
-                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class=“th-timeline-title”>' . $image_title .'</span><span class=“th-timeline-caption”>'.$image_caption.'</span></figcaption>';
+                    $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class="th-timeline-title">' . $image_title .'</span><span class="th-timeline-caption">'.$image_caption.'</span></figcaption>';
             }
 
             $slide_html .= '</figure></div>';
