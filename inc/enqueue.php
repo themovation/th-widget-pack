@@ -21,7 +21,7 @@ add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 
 
-if('golf' == THEMO_CURRENT_THEME){
+if('westwood' == THEMO_CURRENT_THEME){
     // GOLF
 // FRONTEND // After Elementor registers all styles.
     add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend_golf' );

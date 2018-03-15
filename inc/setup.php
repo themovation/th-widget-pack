@@ -5,7 +5,7 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/icons.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/stratus_icons.php' ;
-}elseif('golf' == THEMO_CURRENT_THEME){
+}elseif('westwood' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/golf_icons.php' ;
 }else{
     require_once THEMO_PATH . 'fields/icons.php' ;
@@ -32,14 +32,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/tour-grid.php';
         }elseif('stratus' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/portfolio-grid.php';
-        }elseif('golf' == THEMO_CURRENT_THEME){
+        }elseif('westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/course-guide.php';
         }
 
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/tour-info.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'golf' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/info-bar.php';
         }
 
@@ -47,7 +47,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/itinerary.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'golf' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/expand-list.php';
         }
 
@@ -69,7 +69,7 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_tours.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
-}elseif('golf' == THEMO_CURRENT_THEME){
+}elseif('westwood' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_hole.php' ;
 }
 
@@ -162,7 +162,7 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
 
             // Register Custom Taxonomy
             themo_project_type();
-        }elseif('golf' == THEMO_CURRENT_THEME){
+        }elseif('westwood' == THEMO_CURRENT_THEME){
             // Regsiter Custom Post Types
             themo_hole_custom_post_type();
 
