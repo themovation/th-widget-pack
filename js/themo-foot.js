@@ -239,3 +239,56 @@ jQuery(window).load(function($) {
 });
 
 
+jQuery(window).on('elementor/frontend/init', function () {
+    elementorFrontend.hooks.addAction( 'frontend/element_ready/image-carousel.default', function( $scope ) {
+
+        //var $carousel_wrapper = $scope.find( '.elementor-image-carousel-wrapper' );
+
+        //$carousel_wrapper.parents("div.elementor-widget-image-carousel").css("border",'red solid 5px');
+
+        //var $slick_div = $carousel_wrapper.parents("div.elementor-widget-image-carousel");
+
+
+        //$carousel_wrapper.parents("div.elementor-widget-image-carousel").data( "settingsNEW", "HELLO" );
+
+        //if ( $scope.find( '.elementor-image-carousel-wrapper' ) ){
+
+        //}
+
+        //$scope.find("[data-element_type='image-carousel.default']").data( "settingsNEW", { slides_to_show: "10"}) ;
+
+        //var $image_carousel_div = $scope.find( "elementor-widget-image-carousel" );
+        // console.log($image_carousel_div.id);
+
+        //if ( $scope.find( ".elementor-widget-image-carousel" ) ){
+        //console.log('FOUND IT');
+        //console.log($scope.find( ".elementor-widget-image-carousel" ));
+        //$scope.find( ".elementor-widget-image-carousel" ).data( "settingsNEW", { slides_to_show: "10"} );
+        //}
+
+        //console.log('HELLO');
+    } );
+})
+
+//-----------------------------------------------------
+// Initialize Image Carousel Timeline Slick Slider
+//-----------------------------------------------------
+
+jQuery(document).ready(function ($) {
+
+    if (typeof jQuery.fn.slick === 'function' ) {
+        $('.th-image-carousel-timeline .elementor-image-carousel').slick();
+    }
+
+    // Reinitialize slick when "image carousel timeline" element changes.
+    if (typeof elementorFrontend !== 'undefined' && typeof elementorFrontend.hooks !== 'undefined') {
+        elementorFrontend.hooks.addAction('frontend/element_ready/themo-image-carousel-timeline.default', function ($scope) {
+            var $carousel = $scope.find('.elementor-image-carousel');
+            // Check if slick is not already initialized on the same element.
+            if (typeof jQuery.fn.slick === 'function' && ! $carousel.hasClass('slick-initialized')) {
+                $carousel.slick();
+            }
+        });
+    }
+
+});
