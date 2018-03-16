@@ -66,7 +66,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
-if ( defined( 'WPML_ST_VERSION' ) ) {
+if ( is_plugin_active( 'wpml-translation-management/plugin.php' ) ) {
     require_once THEMO_PATH . 'languages/wpml-translations.php' ;
 }
 
