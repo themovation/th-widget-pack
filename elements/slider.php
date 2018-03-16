@@ -1186,7 +1186,7 @@ class Themo_Widget_Slider extends Widget_Base {
 
                                         <?php if ( ! empty( $slide['slide_text'] ) ) : ?>
                                             <div class="slider-subtitle">
-                                                <p><?php echo esc_html( $slide['slide_text']) ?></p>
+                                                <p><?php echo wp_kses_post( $slide['slide_text']) ?></p>
                                             </div>
                                         <?php endif;?>
                                         <?php if ( ! empty( $slide['slide_button_text_1'] ) || ! empty( $slide['slide_button_text_2'] ) || ! empty($button_1_image) || ! empty( $button_2_image )) : ?>
@@ -1326,6 +1326,19 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	protected function _content_template() {}
+
+	public function add_wpml_support() {
+		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions'        => [ 'widgetType' => $this->get_name() ],
+			'fields'            => array(),
+			'integration-class' => 'WPML_Themo_Slider',
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Slider() );

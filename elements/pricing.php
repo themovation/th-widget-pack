@@ -564,7 +564,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 	                    <?php if ( isset( $column['price_col_description'] ) && ! empty( $column['price_col_description'] ) ) : ?>
 							<div class="th-pricing-features">
 								<ul>
-									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( wp_kses_post( $column['price_col_description'] ), "\n\r" ) ) . '</li>'; ?>
+									<?php echo '<li>' . str_replace( array( "\r", "\n\n", "\n" ), array( '', "\n", "</li>\n<li>" ), trim( wp_kses_post( preg_replace('~<p>(.*?)</p>~is', '$1',$column['price_col_description'] )), "\n\r" ) ) . '</li>'; ?>
 								</ul>
 							</div>
 	                    <?php endif; ?>
@@ -693,7 +693,20 @@ class Themo_Widget_Pricing extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+    protected function _content_template() {}
+
+    public function add_wpml_support() {
+        add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+    }
+        
+    public function wpml_widgets_to_translate_filter( $widgets ) {
+        $widgets[ $this->get_name() ] = [
+            'conditions'        => [ 'widgetType' => $this->get_name() ],
+            'fields'            => array(),
+            'integration-class' => 'WPML_Themo_Pricing',
+        ];
+        return $widgets;
+    }
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Pricing() );

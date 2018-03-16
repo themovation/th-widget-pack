@@ -486,6 +486,29 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		<?php
 	}
+
+	public function add_wpml_support() {
+		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions' => [ 'widgetType' => $this->get_name() ],
+			'fields'     => [
+				[
+					'field'       => 'title_text',
+					'type'        => __( 'Title', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+				[
+					'field'       => 'description_text',
+					'type'        => __( 'Description', 'th-widget-pack' ),
+					'editor_type' => 'VISUAL'
+				],
+			],
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_ServiceBlock() );
