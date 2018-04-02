@@ -5,6 +5,8 @@ if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
     require_once THEMO_PATH . 'fields/icons.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/stratus_icons.php' ;
+}elseif('westwood' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'fields/golf_icons.php' ;
 }else{
     require_once THEMO_PATH . 'fields/icons.php' ;
 }
@@ -38,12 +40,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/portfolio-grid.php';
         }elseif('bellevue' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/room-grid.php';
+        }elseif('westwood' == THEMO_CURRENT_THEME){
+            require_once THEMO_PATH . 'elements/course-guide.php';
         }
 
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/tour-info.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/info-bar.php';
         }elseif('bellevue' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/room-info.php';
@@ -53,11 +57,15 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
         if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/itinerary.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/expand-list.php';
         }
 
         require_once THEMO_PATH . 'elements/pricing.php';
+        if('westwood' == THEMO_CURRENT_THEME) {
+            require_once THEMO_PATH . 'elements/pricing-list.php';
+            require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
+        }
         require_once THEMO_PATH . 'elements/blog.php';
         require_once THEMO_PATH . 'elements/image-gallery.php';
         require_once THEMO_PATH . 'elements/google-maps.php';
@@ -84,7 +92,10 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
+}elseif('westwood' == THEMO_CURRENT_THEME){
+    require_once THEMO_PATH . 'inc/cpt_hole.php' ;
 }
+
 require_once THEMO_PATH . 'inc/shortcodes.php' ;
 
 
@@ -146,6 +157,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
+        if (!in_array("themo_hole", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"themo_hole");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
         if (!in_array("product", $elementor_cpt_support)) {
             array_push($elementor_cpt_support,"product");
             update_option('elementor_cpt_support', $elementor_cpt_support);
@@ -180,6 +196,12 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
 
             // Register Custom Taxonomy
             themo_room_type();
+        }elseif('westwood' == THEMO_CURRENT_THEME){
+            // Regsiter Custom Post Types
+            themo_hole_custom_post_type();
+
+            // Register Custom Taxonomy
+            themo_hole_type();
         }
 
 
@@ -201,7 +223,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
         if(isset($page) && $page->get_id() > ""){
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room'){
+            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -295,7 +317,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
         if(isset($page) && $page->get_id() > "") {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room') {
+            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole') {
 
                 $page->add_control(
                     'themo_page_layout',

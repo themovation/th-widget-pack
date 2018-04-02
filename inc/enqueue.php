@@ -19,21 +19,46 @@ function themovation_so_wb_scripts() {
 endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
-// FRONTEND // After Elementor registers all styles.
-add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
 
-function th_enqueue_after_frontend() {
-    wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
-}
+
+if('westwood' == THEMO_CURRENT_THEME){
+    // GOLF
+// FRONTEND // After Elementor registers all styles.
+    add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend_golf' );
+
+    function th_enqueue_after_frontend_golf() {
+        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/golf_icons.css', array(), THEMO_VERSION);
+    }
+
+    // EDITOR // Before the editor scripts enqueuing.
+    add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor_golf' );
+
+    function th_enqueue_before_editor_golf() {
+        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/golf_icons.css', array(), THEMO_VERSION);
+        // JS for the Editor
+        //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+    }
+
+}else{
+    // FRONTEND // After Elementor registers all styles.
+    add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
+
+    function th_enqueue_after_frontend() {
+        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
+    }
 
 // EDITOR // Before the editor scripts enqueuing.
-add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
+    add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
 
-function th_enqueue_before_editor() {
-    wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
-    // JS for the Editor
-    //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+    function th_enqueue_before_editor() {
+        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
+        // JS for the Editor
+        //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+    }
 }
+
+
+
 
 // PREVIEW // Before the preview styles enqueuing.
 add_action( 'elementor/preview/enqueue_styles', 'th_enqueue_preview' );
