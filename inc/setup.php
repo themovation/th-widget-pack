@@ -26,7 +26,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/info-card.php';
         require_once THEMO_PATH . 'elements/team.php';
 
-        if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
+        if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
         }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
