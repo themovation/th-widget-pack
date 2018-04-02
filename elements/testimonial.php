@@ -357,6 +357,34 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 
 	protected function _content_template() {}
+
+	public function add_wpml_support() {
+		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+	}
+
+	public function wpml_widgets_to_translate_filter( $widgets ) {
+		$widgets[ $this->get_name() ] = [
+			'conditions' => [ 'widgetType' => $this->get_name() ],
+			'fields'     => [
+				[
+					'field'       => 'testimonial_content',
+					'type'        => __( 'Content', 'th-widget-pack' ),
+					'editor_type' => 'VISUAL'
+				],
+				[
+					'field'       => 'testimonial_name',
+					'type'        => __( 'Name', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+				[
+					'field'       => 'testimonial_job',
+					'type'        => __( 'Job', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+			],
+		];
+		return $widgets;
+	}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Testimonial() );
