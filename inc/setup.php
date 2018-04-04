@@ -75,12 +75,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 
+
 function th_check_some_other_plugin() {
     if ( is_plugin_active( 'wpml-translation-management/plugin.php' ) ) {
         require_once THEMO_PATH . 'languages/wpml-translations.php' ;
     }
 }
-add_action( 'admin_init', 'th_check_some_other_plugin' );
+add_action( 'plugins_loaded', 'th_check_some_other_plugin' );
+
 
 // Include scripts, custom post type, shortcodes
 require_once THEMO_PATH . 'inc/elementor-section.php';
