@@ -125,6 +125,8 @@ class Themo_Elementor_Translate {
 	public function add_wpml_support() {
 		$this->includes();
 		$this->widgets_with_items();
+        $header = new Header();
+        $header->add_wpml_support();
 		$button = new Button();
 		$button->add_wpml_support();
 		$ctoa = new CtoA();
