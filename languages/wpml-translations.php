@@ -184,7 +184,8 @@ class Themo_Elementor_Translate {
 				$expandlist = new ExpandList();
 				$expandlist->add_wpml_support();
 				$header->add_wpml_support();
-				$featbar = new FeatureBar();
+                $featbar = new FeatureBar();
+                $featbar->add_wpml_support();
 				$appointments = new Appointment();
 				$appointments->add_wpml_support();
 				break;
@@ -193,7 +194,8 @@ class Themo_Elementor_Translate {
 				$expandlist = new ExpandList();
 				$expandlist->add_wpml_support();
 				$header->add_wpml_support();
-				$featbar = new FeatureBar();
+                $featbar = new FeatureBar();
+                $featbar->add_wpml_support();
 				$appointments = new Appointment();
 				$appointments->add_wpml_support();
 				break;
