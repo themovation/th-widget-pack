@@ -77,9 +77,11 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 
 function th_check_some_other_plugin() {
-    if ( is_plugin_active( 'wpml-translation-management/plugin.php' ) ) {
-        require_once THEMO_PATH . 'languages/wpml-translations.php' ;
+    include_once(ABSPATH.'wp-admin/includes/plugin.php');
+    if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
+        return;
     }
+    require_once THEMO_PATH . 'languages/wpml-translations.php' ;
 }
 add_action( 'plugins_loaded', 'th_check_some_other_plugin' );
 
