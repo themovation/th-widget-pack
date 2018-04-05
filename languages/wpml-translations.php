@@ -40,28 +40,28 @@ class Themo_Elementor_Translate {
 		
 		switch (THEMO_CURRENT_THEME) {
 			case 'embark':
-				require_once THEMO_PATH . '/elements/itinerary.php';
-				require_once THEMO_PATH . '/elements/tour-info.php';
+                require THEMO_PATH . '/languages/wpml-itinerary.php';
+                require THEMO_PATH . '/languages/wpml-tour-info.php';
 				break;
 
 			case 'bellevue':
-				require_once THEMO_PATH . '/elements/itinerary.php';
-				require_once THEMO_PATH . '/elements/room-info.php';
+                require THEMO_PATH . '/languages/wpml-itinerary.php';
+                require THEMO_PATH . '/languages/wpml-room-info.php';
 				break;
 
 			case 'stratus':
-				require_once THEMO_PATH . '/elements/expand-list.php';
-				require_once THEMO_PATH . '/elements/info-bar.php';
+                require THEMO_PATH . '/languages/wpml-expand-list.php';
+                require THEMO_PATH . '/languages/wpml-info-bar.php';
 				break;
 
 			case 'pursuit':
-				require_once THEMO_PATH . '/elements/expand-list.php';
-				require_once THEMO_PATH . '/elements/info-bar.php';
+                require THEMO_PATH . '/languages/wpml-expand-list.php';
+                require THEMO_PATH . '/languages/wpml-info-bar.php';
 				break;
 
 			case 'entrepreneur':
-				require_once THEMO_PATH . '/elements/expand-list.php';
-				require_once THEMO_PATH . '/elements/info-bar.php';
+                require THEMO_PATH . '/languages/wpml-expand-list.php';
+                require THEMO_PATH . '/languages/wpml-info-bar.php';
 				break;
 			
 			default:
