@@ -221,7 +221,7 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 
 // Top of section
 if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
-    function th_add_custom_controls_elem_page_settings_top(\Elementor\Core\Settings\Page\Model $page)
+    function th_add_custom_controls_elem_page_settings_top(\Elementor\Core\DocumentTypes\Post $page)
     {
 
         if(isset($page) && $page->get_id() > ""){
@@ -308,14 +308,11 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             }
         }
 
-
-
-
     }
 }
 // Bottom of section
 if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
-    function th_add_custom_controls_elem_page_settings_bottom( \Elementor\Core\Settings\Page\Model $page )
+    function th_add_custom_controls_elem_page_settings_bottom( \Elementor\Core\DocumentTypes\Post $page )
     {
 
         if(isset($page) && $page->get_id() > "") {
@@ -352,8 +349,10 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
 
     }
 }
-add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
-add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
+//add_action( 'elementor/element/page-settings/section_page_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
+add_action( 'elementor/element/post/document_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
+add_action( 'elementor/element/post/document_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
+//add_action( 'elementor/element/page-settings/section_page_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
 
 // Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( \Elementor\Element_Section $section ) {
