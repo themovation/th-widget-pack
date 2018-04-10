@@ -443,6 +443,9 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                                 $th_project_highlight = false;
                                 $th_project_highlight = get_post_meta( get_the_ID(), 'th_project_highlight', true );
 
+                                $th_project_hole = false;
+                                $th_project_hole = get_post_meta( get_the_ID(), 'th_project_hole', true );
+
                                 $th_project_intro = false;
                                 $th_project_intro = get_post_meta( get_the_ID(), 'th_project_intro', true );
                                 if( $th_project_intro === false || empty( $th_project_intro ) ) {
@@ -471,12 +474,15 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
-                                    <?php if( $th_project_highlight ) { ?>
-                                        <div class="th-port-top-text"><?php echo esc_html($th_project_highlight); ?></div>
+                                    <?php if( $th_project_hole ) { ?>
+                                        <div class="th-hole-number"><?php echo esc_html($th_project_hole); ?></div>
                                     <?php } ?>
                                     <div class="th-port-center">
                                         <h3 class="th-port-title"><?php echo esc_html( $th_project_title ); ?></h3>
                                         <?php echo wp_kses_post($th_project_intro); ?>
+                                        <?php if( $th_project_highlight ) { ?>
+                                            <div class="th-port-top-text"><?php echo esc_html($th_project_highlight); ?></div>
+                                        <?php } ?>
                                         <?php if( ! $th_project_button_text === false || ! empty( $th_project_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_project_button_text ); ?></span>
                                         <?php } ?>
