@@ -474,14 +474,14 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
-                                    <?php if( $th_project_hole ) { ?>
-                                        <div class="th-hole-number"><?php echo esc_html($th_project_hole); ?></div>
-                                    <?php } ?>
                                     <div class="th-port-center">
+                                        <?php if( $th_project_hole ) { ?>
+                                            <div class="th-port-number"><?php echo esc_html($th_project_hole); ?></div>
+                                        <?php } ?>
                                         <h3 class="th-port-title"><?php echo esc_html( $th_project_title ); ?></h3>
                                         <?php echo wp_kses_post($th_project_intro); ?>
                                         <?php if( $th_project_highlight ) { ?>
-                                            <div class="th-port-top-text"><?php echo esc_html($th_project_highlight); ?></div>
+                                            <div class="th-port-highlight"><?php echo esc_html($th_project_highlight); ?></div>
                                         <?php } ?>
                                         <?php if( ! $th_project_button_text === false || ! empty( $th_project_button_text ) ) { ?>
                                             <span class="th-port-btn"><?php echo esc_html( $th_project_button_text ); ?></span>
