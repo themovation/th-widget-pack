@@ -24,6 +24,17 @@ jQuery( function( $ ) {
                     } );
                 }
             } );
+
+            // Start OLD Elementor V 1 Support
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'page_settings' );
+                } );
+            } );
+            // END OLD SUPPORT
+
         } );
 
         // Header Transparency
@@ -42,6 +53,15 @@ jQuery( function( $ ) {
                 }
             } );
 
+            // Start OLD Elementor V 1 Support
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'page_settings' );
+                } );
+            } );
+            // END OLD SUPPORT
 
 
         } );
@@ -61,6 +81,17 @@ jQuery( function( $ ) {
                     } );
                 }
             } );
+
+            // Start OLD Elementor V 1 Support
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'page_settings' );
+                } );
+            } );
+            // END OLD SUPPORT
+
         } );
 
         // Alt Logo
@@ -80,6 +111,16 @@ jQuery( function( $ ) {
                     } );
                 }
             } );
+
+            // Start OLD Elementor V 1 Support
+            this.save( function() {
+                elementor.reloadPreview();
+
+                elementor.once( 'preview:loaded', function() {
+                    elementor.getPanelView().setPage( 'page_settings' );
+                } );
+            } );
+            // END OLD SUPPORT
         } );
 
     }
