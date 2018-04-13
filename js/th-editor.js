@@ -7,57 +7,25 @@ jQuery( function( $ ) {
 
     if ( typeof elementor != "undefined" && typeof elementor.settings.page != "undefined") {
 
-
-        //elementor.settings.page.addChangeCallback( 'themo_page_layout', handle_themo_page_layout );
-
-        function handle_themo_page_layout ( newValue ) {
-            //console.log( newValue );
-            elementor.reloadPreview();
-
-            elementor.once( 'preview:loaded', function() {
-                elementor.getPanelView().setPage( 'page_settings' );
-            } );
-        }
-
-        //elementor.settings.page.addChangeCallback( 'themo_transparent_header', handle_themo_transparent_header );
-
-        function handle_themo_transparent_header ( newValue ) {
-            //console.log( newValue );
-            elementor.reloadPreview();
-
-            /*elementor.once( 'preview:loaded', function() {
-                elementor.getPanelView().setPage( 'page_settings' );
-            } );*/
-        }
-
-        //elementor.settings.page.addChangeCallback( 'themo_header_content_style', handle_themo_header_content_style );
-
-        function handle_themo_header_content_style ( newValue ) {
-            //console.log( newValue );
-            elementor.reloadPreview();
-
-            elementor.once( 'preview:loaded', function() {
-                elementor.getPanelView().setPage( 'page_settings' );
-            } );
-        }
-
-        //elementor.settings.page.addChangeCallback( 'themo_alt_logo', handle_themo_alt_logo );
-
-        function handle_themo_alt_logo ( newValue ) {
-            //console.log( newValue );
-            elementor.reloadPreview();
-
-            /*elementor.once( 'preview:loaded', function() {
-                elementor.getPanelView().setPage( 'page_settings' );
-            } );*/
-        }
-
         // Page Layout Options
         elementor.settings.page.addChangeCallback( 'themo_page_layout', function( newValue ) {
             // Here you can do as you wish with the newValue
 
             //console.log('PAGE LAYOUT CHANGE.');
 
+            elementor.saver.update( {
+                onSuccess: function() {
+
+                    //console.log('SAVE');
+                    elementor.reloadPreview();
+
+                    elementor.once( 'preview:loaded', function() {
+                        elementor.getPanelView().setPage( 'page_settings' );
+                    } );
+                }
+            } );
+
+            // Start OLD Elementor V 1 Support
             this.save( function() {
                 elementor.reloadPreview();
 
@@ -65,14 +33,27 @@ jQuery( function( $ ) {
                     elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
+            // END OLD SUPPORT
+
         } );
 
         // Header Transparency
         elementor.settings.page.addChangeCallback( 'themo_transparent_header', function( newValue ) {
             // Here you can do as you wish with the newValue
 
-            //console.log('NEW VALUE '+newValue);
+            elementor.saver.update( {
+                onSuccess: function() {
 
+                    //console.log('SAVE');
+                    elementor.reloadPreview();
+
+                    elementor.once( 'preview:loaded', function() {
+                        elementor.getPanelView().setPage( 'page_settings' );
+                    } );
+                }
+            } );
+
+            // Start OLD Elementor V 1 Support
             this.save( function() {
                 elementor.reloadPreview();
 
@@ -80,6 +61,7 @@ jQuery( function( $ ) {
                     elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
+            // END OLD SUPPORT
 
 
         } );
@@ -88,6 +70,19 @@ jQuery( function( $ ) {
         elementor.settings.page.addChangeCallback( 'themo_header_content_style', function( newValue ) {
             // Here you can do as you wish with the newValue
 
+            elementor.saver.update( {
+                onSuccess: function() {
+
+                    //console.log('SAVE');
+                    elementor.reloadPreview();
+
+                    elementor.once( 'preview:loaded', function() {
+                        elementor.getPanelView().setPage( 'page_settings' );
+                    } );
+                }
+            } );
+
+            // Start OLD Elementor V 1 Support
             this.save( function() {
                 elementor.reloadPreview();
 
@@ -95,6 +90,8 @@ jQuery( function( $ ) {
                     elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
+            // END OLD SUPPORT
+
         } );
 
         // Alt Logo
@@ -103,6 +100,19 @@ jQuery( function( $ ) {
 
             //console.log('NEW VALUE ALT LOGO '+newValue);
 
+            elementor.saver.update( {
+                onSuccess: function() {
+
+                    //console.log('SAVE');
+                    elementor.reloadPreview();
+
+                    elementor.once( 'preview:loaded', function() {
+                        elementor.getPanelView().setPage( 'page_settings' );
+                    } );
+                }
+            } );
+
+            // Start OLD Elementor V 1 Support
             this.save( function() {
                 elementor.reloadPreview();
 
@@ -110,6 +120,7 @@ jQuery( function( $ ) {
                     elementor.getPanelView().setPage( 'page_settings' );
                 } );
             } );
+            // END OLD SUPPORT
         } );
 
     }
