@@ -59,6 +59,11 @@ class Themo_Elementor_Translate {
                 require THEMO_PATH . '/languages/wpml-info-bar.php';
 				break;
 
+            case 'blockchain':
+                require THEMO_PATH . '/languages/wpml-expand-list.php';
+                require THEMO_PATH . '/languages/wpml-info-bar.php';
+                break;
+
 			case 'entrepreneur':
                 require THEMO_PATH . '/languages/wpml-expand-list.php';
                 require THEMO_PATH . '/languages/wpml-info-bar.php';
@@ -108,6 +113,12 @@ class Themo_Elementor_Translate {
 				require_once THEMO_PATH . '/elements/info-bar.php';
 				require_once THEMO_PATH . '/elements/appointments.php';
 				break;
+
+            case 'blockchain':
+                require_once THEMO_PATH . '/elements/expand-list.php';
+                require_once THEMO_PATH . '/elements/info-bar.php';
+                require_once THEMO_PATH . '/elements/appointments.php';
+                break;
 
 			case 'entrepreneur':
 				require_once THEMO_PATH . '/elements/expand-list.php';
@@ -189,6 +200,16 @@ class Themo_Elementor_Translate {
 				$appointments = new Appointment();
 				$appointments->add_wpml_support();
 				break;
+
+            case 'blockchain':
+                $expandlist = new ExpandList();
+                $expandlist->add_wpml_support();
+                $header->add_wpml_support();
+                $featbar = new FeatureBar();
+                $featbar->add_wpml_support();
+                $appointments = new Appointment();
+                $appointments->add_wpml_support();
+                break;
 
 			case 'entrepreneur':
 				$expandlist = new ExpandList();
