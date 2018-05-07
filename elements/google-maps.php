@@ -374,12 +374,12 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 [
 					'field'       => 'business_address',
 					'type'        => __( 'Business Address', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
 				[
 					'field'       => 'hours',
 					'type'        => __( 'Hours', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
 				[
 					'field'       => 'link_1_text',

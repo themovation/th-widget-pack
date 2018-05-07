@@ -66,7 +66,7 @@ class WPML_Themo_Slider extends WPML_Elementor_Module_With_Items  {
 				return 'LINE';
 
 			case 'slide_text':
-                return 'VISUAL';
+                return 'AREA';
                 
             case 'slide_button_text_1':
 				return 'LINE';

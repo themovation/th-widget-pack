@@ -445,7 +445,7 @@ class Themo_Widget_Package extends Widget_Base {
                 [
 					'field'       => 'content',
 					'type'        => __( 'Content', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
                 [
                     'field'       => 'price',

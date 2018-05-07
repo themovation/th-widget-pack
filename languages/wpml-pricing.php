@@ -79,7 +79,7 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
                 return 'LINE';
         
             case 'price_col_description':
-				return 'VISUAL';
+				return 'AREA';
 
 			case 'price_col_button_1_text':
                 return 'LINE';

@@ -503,7 +503,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				[
 					'field'       => 'description_text',
 					'type'        => __( 'Description', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
 			],
 		];

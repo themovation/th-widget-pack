@@ -426,7 +426,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				[
 					'field'       => 'description_text',
 					'type'        => __( 'Description Text', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
                 [
 					'field'       => 'button_1_text',

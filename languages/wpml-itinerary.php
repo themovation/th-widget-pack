@@ -47,7 +47,7 @@ class WPML_Themo_Itinerary extends WPML_Elementor_Module_With_Items  {
 				return 'LINE';
 
 			case 'tab_content':
-				return 'VISUAL';
+				return 'AREA';
 
 			default:
 				return '';

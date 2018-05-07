@@ -396,7 +396,7 @@ class Themo_Widget_Team extends Widget_Base {
 				[
 					'field'       => 'content',
 					'type'        => __( 'Content', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
 			],
 		];

@@ -369,7 +369,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				[
 					'field'       => 'testimonial_content',
 					'type'        => __( 'Content', 'th-widget-pack' ),
-					'editor_type' => 'VISUAL'
+					'editor_type' => 'AREA'
 				],
 				[
 					'field'       => 'testimonial_name',
