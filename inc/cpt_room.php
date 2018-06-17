@@ -123,6 +123,7 @@ add_action( 'admin_init', 'th_register_room_meta_boxes' );
 
 function th_register_room_meta_boxes()
 {
+
     //-----------------------------------------------------
     // Page Layout, Sidebar, Content Editor Sort Order
     //-----------------------------------------------------
