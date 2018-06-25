@@ -28,8 +28,10 @@ if($th_theme->get( 'Name' ) > ""){
     define( "THEMO_CURRENT_THEME", $th_theme_name );
 };
 
+if(defined('ELEMENTOR_PATH')){
 // Run Setup
-require_once THEMO_PATH . 'inc/setup.php';
+    require_once THEMO_PATH . 'inc/setup.php';
+}
 
 // Making the plugin translation ready
 if ( ! function_exists( 'th_translation_ready' ) ) :
