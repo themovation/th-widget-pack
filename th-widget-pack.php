@@ -20,6 +20,13 @@ define( 'THEMO_ASSETS_URL', THEMO_URL . 'assets/' );
 define( 'THEMO_COLOR_PRIMARY', '#3A3B74' );
 define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
 
+/**
+ * Define Elementor Partner ID
+ */
+if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
+    define( 'ELEMENTOR_PARTNER_ID', 1700 );
+}
+
 $th_theme = wp_get_theme(); // get theme info and save theme name as constant.
 if($th_theme->get( 'Name' ) > ""){
     $th_theme_name_arr = explode("-", $th_theme->get( 'Name' ), 2); // clean up child theme name
