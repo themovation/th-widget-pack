@@ -87,7 +87,12 @@ add_action( 'plugins_loaded', 'th_check_some_other_plugin' );
 
 
 // Include scripts, custom post type, shortcodes
-require_once THEMO_PATH . 'inc/elementor-section.php';
+// Older version of Elementor (older than version 2) use the old grouping.
+if(defined('ELEMENTOR_PATH') && intval('2') > intval(ELEMENTOR_VERSION) ){
+    require_once THEMO_PATH . 'inc/elementor-section-old.php';
+}else{
+    require_once THEMO_PATH . 'inc/elementor-section.php';
+}
 require_once THEMO_PATH . 'inc/enqueue.php';
 
 if('embark' == THEMO_CURRENT_THEME){
