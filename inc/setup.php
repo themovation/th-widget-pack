@@ -279,6 +279,21 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                     ]
                 );
 
+
+                $page->add_control(
+                    'themo_header_hide_shadow',
+                    [
+                        'label' => __( 'Hide Header Shadow', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::SWITCHER,
+                        'label_off' => __( 'No', 'elementor' ),
+                        'label_on' => __( 'Yes', 'elementor' ),
+
+                        'selectors' => [
+                            '{{WRAPPER}} .navbar-default' => 'border: none',
+                        ],
+                    ]
+                );
+
                 $page_title_selector = get_option( 'elementor_page_title_selector' );
                 if ( empty( $page_title_selector ) ) {
                     $page_title_selector = 'h1.entry-title';
