@@ -271,6 +271,30 @@ class Themo_Widget_Blog extends Widget_Base {
 
 		$this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_style_border',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'blog_border',
+            [
+                'label' => __( 'Borders', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Show', 'th-widget-pack' ),
+                'label_off' => __( 'Hide', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mas-blog-post .post-inner' => 'border-width:1px',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
 	}
 
 	protected function render() {
