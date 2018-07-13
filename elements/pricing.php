@@ -395,6 +395,22 @@ class Themo_Widget_Pricing extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'divider_color',
+            [
+                'label' => __( 'Divider Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-pricing-table ul li ' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
@@ -490,6 +506,22 @@ class Themo_Widget_Pricing extends Widget_Base {
 				],
 			]
 		);
+
+        $this->add_control(
+            'featured_divider_color',
+            [
+                'label' => __( 'Divider Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-pricing-column.th-highlight ul li' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
 
 
 		$this->end_controls_section();
