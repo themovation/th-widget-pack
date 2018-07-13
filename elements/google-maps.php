@@ -336,16 +336,29 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 
 		<div class="map-info">
 			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
-			<?php echo wpautop( wp_kses_post( $settings['business_address'] ) ); ?>
-			<?php echo wpautop( wp_kses_post( $settings['hours'] ) ); ?>
+			<?php if(!empty($settings['business_address'])){
+			    echo "<div class='th-gmap-address'>";
+			    echo wpautop( wp_kses_post( $settings['business_address'] ) );
+                echo "</div>";
+			}; ?>
 
-            <?php if ( ! empty( $settings['link_1_url']['url'] ) ) : ?>
-                <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>
-            <?php endif; ?>
+            <?php if(!empty($settings['hours'])){
+                echo "<div class='th-gmap-hoursop'>";
+                echo wpautop( wp_kses_post( $settings['hours'] ) );
+                echo "</div>";
+            }; ?>
 
-            <?php if ( ! empty( $settings['link_2_url']['url'] ) ) : ?>
-                <a <?php echo $this->get_render_attribute_string( 'link-2' ); ?>><?php echo esc_html( $settings['link_2_text'] ) ?></a>
-            <?php endif;  ?>
+            <?php if(!empty($settings['link_1_text']) || !empty($settings['link_2_text'])){ ?>
+            <div class="th-gmap-links">
+                <?php if ( ! empty( $settings['link_1_text'] ) ) : ?>
+                    <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $settings['link_2_text'] ) ) : ?>
+                    <a <?php echo $this->get_render_attribute_string( 'link-2' ); ?>><?php echo esc_html( $settings['link_2_text'] ) ?></a>
+                <?php endif;  ?>
+            </div>
+            <?php }; ?>
 
 		</div>
 
