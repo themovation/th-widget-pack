@@ -316,7 +316,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         $link_url = get_the_permalink();
                         $link_title = get_the_title();
                         $link_target_markup = false;
-                        $img_src = false;
+                        $th_image_url = false;
                         $alt_text = '';
 
                         // Link post type options
@@ -344,29 +344,44 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         // Get Project Format Options
                         $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_project_thumb', false );
 
-                        $fallback_lightbox_url = false;
+                        $fallback_lightbox_image = false;
 
                         if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
                             $alt = false;
 
                             // Check if Image comes in Med size with Square crop / else get small
-                            $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
 
-                            list($th_actual_width, $th_actual_height) = getimagesize($img_src);
-                            if ((605 !== $th_actual_width) && (605 !== $th_actual_height)){
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_md_square");
 
-                                // Check if Image comes in Small size with Square crop / else get thumb
-                                $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_sm_square", true, $alt );
+                            if ($th_image) {
 
-                                list($th_actual_width, $th_actual_height) = getimagesize($img_src);
+                                $width = $th_image[1];
+                                $height = $th_image[2];
 
-                                if ((394 !== $th_actual_width) && (394 !== $th_actual_height)){
-                                    $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "thumbnail", true, $alt );
+
+                                if ((605 !== $width) && (605 !== $height)){
+
+                                    // Check if Image comes in Small size with Square crop / else get thumb
+
+                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_sm_square");
+
+                                    $width = $th_image[1];
+                                    $height = $th_image[2];
+
+                                    if ((394 !== $width) && (394 !== $height)){
+
+                                        $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "thumbnail");
+                                    }
                                 }
                             }
+                            $th_image_url = false;
+                            if( isset( $th_image[0] ) ) {
+                                $th_image_url = $th_image[0];
 
-                            $alt_text = $alt;
-                            $fallback_lightbox_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
+                            }
+                            $alt_text = get_post_meta($project_thumb_alt_img[0], '_wp_attachment_image_alt', true);
+                            $fallback_lightbox_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_xl");
+
 
                         }
 
@@ -374,7 +389,10 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         if( isset( $format ) && $format == 'image' ) {
 
                             // Fallback lightbox url
-                            $link_url = $fallback_lightbox_url;
+                            if( isset( $fallback_lightbox_image[0] ) ) {
+                                $link_url = $fallback_lightbox_image[0];
+                            }
+
 
                             // lightbox mark up
                             $featured_url = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'th_img_xl' );
@@ -405,8 +423,8 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
-                                if ( isset( $img_src ) && $img_src > "" ) {
-                                    echo '<img class="img-responsive th-port-img" src="' . esc_url( $img_src ) . '" alt="' . esc_attr( $alt_text ) . '">';
+                                if ( isset( $th_image_url ) && $th_image_url > "" ) {
+                                    echo '<img class="img-responsive th-port-img" src="' . esc_url( $th_image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
                                 } else {
                                     if ( has_post_thumbnail( get_the_ID() ) ) {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
@@ -415,13 +433,19 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                                         $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
 
                                         if ($th_image){
-                                            list($width, $height) = getimagesize($th_image[0]);
+
+                                            $width = $th_image[1];
+                                            $height = $th_image[2];
+
+
                                             if ((605 == $width) && (605 == $height)){
                                                 echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
                                             }
                                             else{
                                                 $th_image = wp_get_attachment_image_src($th_id, "th_img_sm_square");
-                                                list($width, $height) = getimagesize($th_image[0]);
+                                                $width = $th_image[1];
+                                                $height = $th_image[2];
+
                                                 if ((394 == $width) && (394 == $height)){
                                                     echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
                                                 }else{
