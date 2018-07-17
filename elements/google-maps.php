@@ -262,9 +262,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                     '{{WRAPPER}} .map-info' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'left: 50px; right: auto;',
+                    'left' => 'left: 15px; right: auto;',
                     'center' => 'left: 50%; transform: translate(-50%, 0);',
-                    'right' => 'left: auto; right: 50px;',
+                    'right' => 'left: auto; right: 15px;',
                 ],
                 'default' => 'left',
             ]
@@ -333,34 +333,35 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             }
         }
 		?>
+        <div class="container th-gmap-wrap">
+            <div class="map-info">
+                <h3><?php echo esc_html( $settings['title'] ) ?></h3>
+                <?php if(!empty($settings['business_address'])){
+                    echo "<div class='th-gmap-address'>";
+                    echo wpautop( wp_kses_post( $settings['business_address'] ) );
+                    echo "</div>";
+                }; ?>
 
-		<div class="map-info">
-			<h3><?php echo esc_html( $settings['title'] ) ?></h3>
-			<?php if(!empty($settings['business_address'])){
-			    echo "<div class='th-gmap-address'>";
-			    echo wpautop( wp_kses_post( $settings['business_address'] ) );
-                echo "</div>";
-			}; ?>
+                <?php if(!empty($settings['hours'])){
+                    echo "<div class='th-gmap-hoursop'>";
+                    echo wpautop( wp_kses_post( $settings['hours'] ) );
+                    echo "</div>";
+                }; ?>
 
-            <?php if(!empty($settings['hours'])){
-                echo "<div class='th-gmap-hoursop'>";
-                echo wpautop( wp_kses_post( $settings['hours'] ) );
-                echo "</div>";
-            }; ?>
+                <?php if(!empty($settings['link_1_text']) || !empty($settings['link_2_text'])){ ?>
+                <div class="th-gmap-links">
+                    <?php if ( ! empty( $settings['link_1_text'] ) ) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>
+                    <?php endif; ?>
 
-            <?php if(!empty($settings['link_1_text']) || !empty($settings['link_2_text'])){ ?>
-            <div class="th-gmap-links">
-                <?php if ( ! empty( $settings['link_1_text'] ) ) : ?>
-                    <a <?php echo $this->get_render_attribute_string( 'link-1' ); ?>><?php echo esc_html( $settings['link_1_text'] ) ?></a>
-                <?php endif; ?>
+                    <?php if ( ! empty( $settings['link_2_text'] ) ) : ?>
+                        <a <?php echo $this->get_render_attribute_string( 'link-2' ); ?>><?php echo esc_html( $settings['link_2_text'] ) ?></a>
+                    <?php endif;  ?>
+                </div>
+                <?php }; ?>
 
-                <?php if ( ! empty( $settings['link_2_text'] ) ) : ?>
-                    <a <?php echo $this->get_render_attribute_string( 'link-2' ); ?>><?php echo esc_html( $settings['link_2_text'] ) ?></a>
-                <?php endif;  ?>
             </div>
-            <?php }; ?>
-
-		</div>
+        </div>
 
 		<div class="th-map" id="<?php echo $map_id ?>" data-map-api="<?php echo $settings['api'] ?>" data-map-latitude="<?php echo esc_attr( $settings['latitude'] ) ?>" data-map-longitude="<?php echo esc_attr( $settings['longitude'] ) ?>" data-map-zoom="<?php echo esc_attr( $settings['zoom']['size'] ) ?>" data-map-scroll="<?php echo ( $settings['prevent_scroll'] == 'yes' ? "false" : "true" ); ?>" data-map-style='<?php if( isset( $th_map_style ) ) echo $th_map_style; ?>'></div>
 
