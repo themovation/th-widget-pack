@@ -44,43 +44,6 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Pricing Table', 'th-widget-pack' ),
 				'type' => Controls_Manager::REPEATER,
-                'default' => [
-                    [
-                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
-                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
-                        'price_col_price' => __( '$59', 'th-widget-pack' ),
-                        'price_col_text' => __( '/each', 'th-widget-pack' ),
-                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
-                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
-                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
-                        'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
-                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
-                    ],
-                    [
-                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
-                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
-                        'price_col_price' => __( '$79', 'th-widget-pack' ),
-                        'price_col_text' => __( '/each', 'th-widget-pack' ),
-                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
-                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
-                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
-                        'price_col_button_1_style' => __( 'ghost-light', 'th-widget-pack' ),
-                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
-                        'price_col_featured' => __( 'yes', 'th-widget-pack' ),
-                    ],
-                    [
-                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
-                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
-                        'price_col_price' => __( '$99', 'th-widget-pack' ),
-                        'price_col_text' => __( '/each', 'th-widget-pack' ),
-                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
-                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
-                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
-                        'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
-                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
-                    ],
-
-                ],
 				'fields' => [
 					[
 						'name' => 'price_col_title',
@@ -88,6 +51,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'Price 1', 'th-widget-pack' ),
 						'label_block' => true,
+                        'default' => __( 'Title' , 'th-widget-pack' ),
 					],
                     [
                         'name' => 'price_col_sub_title',
@@ -300,6 +264,43 @@ class Themo_Widget_Pricing extends Widget_Base {
                         ],
                     ],
 				],
+                'default' => [
+                    [
+                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
+                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
+                        'price_col_price' => __( '$59', 'th-widget-pack' ),
+                        'price_col_text' => __( '/each', 'th-widget-pack' ),
+                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
+                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
+                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
+                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
+                    ],
+                    [
+                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
+                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
+                        'price_col_price' => __( '$79', 'th-widget-pack' ),
+                        'price_col_text' => __( '/each', 'th-widget-pack' ),
+                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
+                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
+                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'price_col_button_1_style' => __( 'ghost-light', 'th-widget-pack' ),
+                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
+                        'price_col_featured' => __( 'yes', 'th-widget-pack' ),
+                    ],
+                    [
+                        'price_col_title' => __( 'Title', 'th-widget-pack' ),
+                        'price_col_sub_title' => __( 'Sub Title', 'th-widget-pack' ),
+                        'price_col_price' => __( '$99', 'th-widget-pack' ),
+                        'price_col_text' => __( '/each', 'th-widget-pack' ),
+                        'price_col_description' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
+                        'price_col_button_1_show' => __( 'yes', 'th-widget-pack' ),
+                        'price_col_button_1_text' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'price_col_button_1_style' => __( 'ghost-primary', 'th-widget-pack' ),
+                        'price_col_button_1_link' => __( '#book', 'th-widget-pack' ),
+                    ],
+
+                ],
 				'title_field' => '{{{ price_col_title }}}',
 			]
 		);
