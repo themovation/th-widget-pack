@@ -97,6 +97,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
 						'placeholder' => '$29/month',
 						'label_block' => true,
+                        'default' => '$29/month',
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
