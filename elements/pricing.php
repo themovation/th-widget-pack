@@ -157,7 +157,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'label' => __( 'Button 1 Link', 'th-widget-pack' ),
 						'type' => Controls_Manager::URL,
 						'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
-                        'default' => __( 'http://your-link.com', 'th-widget-pack' ),
+                        //'default' => __( 'http://your-link.com', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -182,7 +182,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_text',
                         'label' => __( 'Button 2 Text', 'th-widget-pack' ),
                         'type' => Controls_Manager::TEXT,
-                        'default' => __( 'Click Here', 'th-widget-pack' ),
+                        //'default' => __( 'Click Here', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -197,7 +197,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_style',
                         'label' => __( 'Button 2 Style', 'th-widget-pack' ),
                         'type' => Controls_Manager::SELECT,
-                        'default' => 'standard-primary',
+                        //'default' => 'standard-primary',
                         'options' => [
                             'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
                             'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
