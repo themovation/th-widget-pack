@@ -63,6 +63,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'Title', 'th-widget-pack' ),
 						'label_block' => true,
+                        'default' => __( 'Title', 'th-widget-pack' ),
 					],
                     [
                         'name' => 'price_sub_title',
@@ -70,12 +71,14 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'Subtitle', 'th-widget-pack' ),
                         'label_block' => true,
+                        'default' => __( 'Subtitle', 'th-widget-pack' ),
                     ],
                     [
                         'name' => 'price_description',
                         'label' => __( 'Description', 'th-widget-pack' ),
                         'type' => Controls_Manager::TEXTAREA,
                         'placeholder' => __( "Add a description here.", 'th-widget-pack' ),
+                        'default' => __( "Add a description here.", 'th-widget-pack' ),
                         'label_block' => true,
                     ],
 					[
@@ -83,6 +86,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 						'label' => __( 'Price number', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
                         'placeholder' => __( '$99', 'th-widget-pack' ),
+                        'default' => __( '$99', 'th-widget-pack' ),
 						'label_block' => true,
 					],
 					[
@@ -90,6 +94,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 						'label' => __( 'Price text', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'each', 'th-widget-pack' ),
+                        'default' => __( 'each', 'th-widget-pack' ),
 						'label_block' => true,
 					],
                     [
@@ -97,6 +102,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'label' => __( 'Link', 'th-widget-pack' ),
                         'type' => Controls_Manager::URL,
                         'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
+                        'default' => __( 'http://your-link.com', 'th-widget-pack' ),
                     ],
 				],
 				'title_field' => '{{{ price_title }}}',
