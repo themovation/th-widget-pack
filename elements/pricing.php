@@ -57,7 +57,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_sub_title',
                         'label' => __( 'Sub Title', 'th-widget-pack' ),
                         'type' => Controls_Manager::TEXT,
-                        //'default' => __( 'Sub Title', 'th-widget-pack' ),
+                        'default' => __( 'Sub Title', 'th-widget-pack' ),
                         'placeholder' => __( 'Sub Title', 'th-widget-pack' ),
                         'label_block' => true,
                     ],
@@ -65,7 +65,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'name' => 'price_col_price',
 						'label' => __( 'Price', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
-                        //'default' => __( '$99', 'th-widget-pack' ),
+                        'default' => __( '$99', 'th-widget-pack' ),
                         'placeholder' => __( '$99', 'th-widget-pack' ),
 						'label_block' => true,
 					],
@@ -74,6 +74,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'label' => __( 'Price text', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
                         'placeholder' => __( '/each', 'th-widget-pack' ),
+                        'default' => __( '/each', 'th-widget-pack' ),
 						'label_block' => true,
 					],
 					[
@@ -82,6 +83,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'type' => Controls_Manager::TEXTAREA,
 						'placeholder' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
 						'label_block' => true,
+                        'default' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
 					],
                     [
                         'name' => 'price_col_button_1_show',
@@ -91,12 +93,14 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'label_off' => __( 'No', 'th-widget-pack' ),
                         'return_value' => 'yes',
                         'separator' => 'before',
+                        'default' => 'yes'
                     ],
 					[
 						'name' => 'price_col_button_1_text',
 						'label' => __( 'Button 1 Text', 'th-widget-pack' ),
 						'type' => Controls_Manager::TEXT,
 						'placeholder' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'default' => __( 'BUTTON TEXT', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -111,7 +115,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_1_style',
                         'label' => __( 'Button 1 Style', 'th-widget-pack' ),
                         'type' => Controls_Manager::SELECT,
-                        //'default' => 'cta-accent',
+                        'default' => 'ghost-primary',
                         'options' => [
                             'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
                             'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
@@ -153,6 +157,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'label' => __( 'Button 1 Link', 'th-widget-pack' ),
 						'type' => Controls_Manager::URL,
 						'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
+                        'default' => __( 'http://your-link.com', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -177,7 +182,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_text',
                         'label' => __( 'Button 2 Text', 'th-widget-pack' ),
                         'type' => Controls_Manager::TEXT,
-                        //'default' => __( 'Click Here', 'th-widget-pack' ),
+                        'default' => __( 'Click Here', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -192,7 +197,7 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_style',
                         'label' => __( 'Button 2 Style', 'th-widget-pack' ),
                         'type' => Controls_Manager::SELECT,
-                        //'default' => 'standard-primary',
+                        'default' => 'standard-primary',
                         'options' => [
                             'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
                             'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
