@@ -73,7 +73,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
         $this->add_control(
             'filter',
             [
-                'label' => __( 'Show filter bar', 'th-widget-pack' ),
+                'label' => __( 'Show Filter Bar', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
@@ -121,9 +121,9 @@ class Themo_Widget_Course_Guide extends Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Number of Columns to show', 'th-widget-pack' ),
+                'label' => __( 'Number of Columns to Show', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => '2',
+                'default' => '3',
                 'options' => [
                     '2' => __( '2', 'th-widget-pack' ),
                     '3' => __( '3', 'th-widget-pack' ),
@@ -168,7 +168,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
         $this->add_control(
             'hover_color',
             [
-                'label' => __( 'Hover Color', 'th-widget-pack' ),
+                'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -178,6 +178,137 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
                 ],
+                'separator' => 'before'
+            ]
+        );
+
+
+
+
+        $this->add_control(
+            'show_overlay_mobile',
+            [
+                'label' => __( 'Always Show Content for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
+                ],
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_mobile',
+            [
+                'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_mobile' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_overlay_tablet',
+            [
+                'label' => __( 'Always Show Content for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_tablet',
+            [
+                'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_tablet' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_overlay_desktop',
+            [
+                'label' => __( 'Always Show Content for Desktop', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(desktop){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_desktop',
+            [
+                'label' => __( 'Background Color for Desktop', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(desktop){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_desktop' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'hide_text_on_hover',
+            [
+                'label' => __( 'Hide Text on Hover', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    //'{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'opacity: 0;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-top-text' => 'opacity: 0;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-center' => 'opacity: 0;',
+                    //'(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
+                ],
+                //'separator' => 'before'
+
             ]
         );
 
@@ -248,6 +379,8 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                         'taxonomy' => $taxonomy,
                         'include' => $settings['group'],
                         'hide_empty' => false,
+                        'orderby' => 'slug',
+                        'order' => 'ASC',
                     );
 
                     $tax_terms = get_terms( $tax_args );
@@ -455,6 +588,8 @@ class Themo_Widget_Course_Guide extends Widget_Base {
 
                                             }
                                         }
+                                    }else{
+                                        echo "<div class='th_missing_img'>". __( 'No featured image found for this post.', 'th-widget-pack' ). "</div>";
                                     }
                                 }
 
