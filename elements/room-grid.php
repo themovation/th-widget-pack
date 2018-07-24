@@ -589,7 +589,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                             }
                                         }
                                     }else{
-                                        echo "<div class='th_missing_img'>No Featured Image found for this Post.</div>";
+                                        echo "<div class='th_missing_img'>". __( 'No featured image found for this post.', 'th-widget-pack' ). "</div>";
                                     }
                                 }
 
