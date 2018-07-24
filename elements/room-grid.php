@@ -73,7 +73,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->add_control(
             'filter',
             [
-                'label' => __( 'Show filter bar', 'th-widget-pack' ),
+                'label' => __( 'Show Filter Bar', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
@@ -121,7 +121,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Number of Columns to show', 'th-widget-pack' ),
+                'label' => __( 'Number of Columns to Show', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => '3',
                 'options' => [
