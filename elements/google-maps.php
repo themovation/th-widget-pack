@@ -279,7 +279,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$map_id = 'th-map-' .  ++$th_map_id;
 
 		if ( 0 === absint( $settings['zoom']['size'] ) ) $settings['zoom']['size'] = 12;
-		if ( '' === $settings['api'] ) $settings['api'] = 'AIzaSyDb-ldlvqnIEXdh6maZVaonnw05xVAttQw';
+		if ( '' === $settings['api'] ) $settings['api'] = '';
 		if ( '' === $settings['latitude'] ) $settings['latitude'] = 49.293753;
 		if ( '' === $settings['longitude'] ) $settings['longitude'] = -123.053398;
 
