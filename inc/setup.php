@@ -552,7 +552,7 @@ function render_elementor_section_parallax_background( \Elementor\Element_Base $
     }
 }
 
-add_action( 'elementor/frontend/element/before_render', 'render_elementor_section_parallax_background' );
+add_action( 'elementor/frontend/section/before_render', 'render_elementor_section_parallax_background' );
 
 
 // Future use - Get parallax working in Live Preview.
