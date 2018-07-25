@@ -73,7 +73,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         $this->add_control(
             'filter',
             [
-                'label' => __( 'Show filter bar', 'th-widget-pack' ),
+                'label' => __( 'Show Filter Bar', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
                 'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
@@ -121,9 +121,9 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         $this->add_control(
             'columns',
             [
-                'label' => __( 'Number of Columns to show', 'th-widget-pack' ),
+                'label' => __( 'Number of Columns to Show', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => '2',
+                'default' => '3',
                 'options' => [
                     '2' => __( '2', 'th-widget-pack' ),
                     '3' => __( '3', 'th-widget-pack' ),
@@ -168,7 +168,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         $this->add_control(
             'hover_color',
             [
-                'label' => __( 'Hover Color', 'th-widget-pack' ),
+                'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -178,6 +178,137 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
                 ],
+                'separator' => 'before'
+            ]
+        );
+
+
+
+
+        $this->add_control(
+            'show_overlay_mobile',
+            [
+                'label' => __( 'Always Show Content for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
+                ],
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_mobile',
+            [
+                'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_mobile' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_overlay_tablet',
+            [
+                'label' => __( 'Always Show Content for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_tablet',
+            [
+                'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_tablet' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'show_overlay_desktop',
+            [
+                'label' => __( 'Always Show Content for Desktop', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '(desktop){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_color_desktop',
+            [
+                'label' => __( 'Background Color for Desktop', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => $default_rgba,
+                'selectors' => [
+                    '(desktop){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_overlay_desktop' => 'yes',
+                ],
+                'separator' => 'none',
+                //'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'hide_text_on_hover',
+            [
+                'label' => __( 'Hide Text on Hover', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    //'{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'opacity: 0;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-top-text' => 'opacity: 0;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-center' => 'opacity: 0;',
+                    //'(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
+                ],
+                //'separator' => 'before'
+
             ]
         );
 
@@ -248,6 +379,8 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         'taxonomy' => $taxonomy,
                         'include' => $settings['group'],
                         'hide_empty' => false,
+                        'orderby' => 'slug',
+                        'order' => 'ASC',
                     );
 
                     $tax_terms = get_terms( $tax_args );
@@ -316,7 +449,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         $link_url = get_the_permalink();
                         $link_title = get_the_title();
                         $link_target_markup = false;
-                        $img_src = false;
+                        $th_image_url = false;
                         $alt_text = '';
 
                         // Link post type options
@@ -344,29 +477,44 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         // Get Project Format Options
                         $project_thumb_alt_img = get_post_meta( get_the_ID(), 'th_project_thumb', false );
 
-                        $fallback_lightbox_url = false;
+                        $fallback_lightbox_image = false;
 
                         if ( isset( $project_thumb_alt_img[0] ) && $project_thumb_alt_img[0] > "" ) {
                             $alt = false;
 
                             // Check if Image comes in Med size with Square crop / else get small
-                            $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_md_square", true, $alt );
 
-                            list($th_actual_width, $th_actual_height) = getimagesize($img_src);
-                            if ((605 !== $th_actual_width) && (605 !== $th_actual_height)){
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_md_square");
 
-                                // Check if Image comes in Small size with Square crop / else get thumb
-                                $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_sm_square", true, $alt );
+                            if ($th_image) {
 
-                                list($th_actual_width, $th_actual_height) = getimagesize($img_src);
+                                $width = $th_image[1];
+                                $height = $th_image[2];
 
-                                if ((394 !== $th_actual_width) && (394 !== $th_actual_height)){
-                                    $img_src = themo_return_metabox_image( $project_thumb_alt_img[0], null, "thumbnail", true, $alt );
+
+                                if ((605 !== $width) && (605 !== $height)){
+
+                                    // Check if Image comes in Small size with Square crop / else get thumb
+
+                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_sm_square");
+
+                                    $width = $th_image[1];
+                                    $height = $th_image[2];
+
+                                    if ((394 !== $width) && (394 !== $height)){
+
+                                        $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "thumbnail");
+                                    }
                                 }
                             }
+                            $th_image_url = false;
+                            if( isset( $th_image[0] ) ) {
+                                $th_image_url = $th_image[0];
 
-                            $alt_text = $alt;
-                            $fallback_lightbox_url = themo_return_metabox_image( $project_thumb_alt_img[0], null, "th_img_xl", true, $alt );
+                            }
+                            $alt_text = get_post_meta($project_thumb_alt_img[0], '_wp_attachment_image_alt', true);
+                            $fallback_lightbox_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_xl");
+
 
                         }
 
@@ -374,7 +522,10 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         if( isset( $format ) && $format == 'image' ) {
 
                             // Fallback lightbox url
-                            $link_url = $fallback_lightbox_url;
+                            if( isset( $fallback_lightbox_image[0] ) ) {
+                                $link_url = $fallback_lightbox_image[0];
+                            }
+
 
                             // lightbox mark up
                             $featured_url = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'th_img_xl' );
@@ -405,8 +556,8 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
-                                if ( isset( $img_src ) && $img_src > "" ) {
-                                    echo '<img class="img-responsive th-port-img" src="' . esc_url( $img_src ) . '" alt="' . esc_attr( $alt_text ) . '">';
+                                if ( isset( $th_image_url ) && $th_image_url > "" ) {
+                                    echo '<img class="img-responsive th-port-img" src="' . esc_url( $th_image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
                                 } else {
                                     if ( has_post_thumbnail( get_the_ID() ) ) {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
@@ -415,13 +566,19 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                                         $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
 
                                         if ($th_image){
-                                            list($width, $height) = getimagesize($th_image[0]);
+
+                                            $width = $th_image[1];
+                                            $height = $th_image[2];
+
+
                                             if ((605 == $width) && (605 == $height)){
                                                 echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
                                             }
                                             else{
                                                 $th_image = wp_get_attachment_image_src($th_id, "th_img_sm_square");
-                                                list($width, $height) = getimagesize($th_image[0]);
+                                                $width = $th_image[1];
+                                                $height = $th_image[2];
+
                                                 if ((394 == $width) && (394 == $height)){
                                                     echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_sm_square", $featured_img_attr ));
                                                 }else{
@@ -431,6 +588,10 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
 
                                             }
                                         }
+                                    }else{
+                                        echo '<img width="605" height="605" src="https://via.placeholder.com/605x605?'.
+                                            __('text=No+featured+image+found','th-widget-pack').
+                                            '" class="img-responsive th-port-img wp-post-image" alt="">';
                                     }
                                 }
 

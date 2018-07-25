@@ -589,7 +589,9 @@ class Themo_Widget_Course_Guide extends Widget_Base {
                                             }
                                         }
                                     }else{
-                                        echo "<div class='th_missing_img'>". __( 'No featured image found for this post.', 'th-widget-pack' ). "</div>";
+                                        echo '<img width="605" height="605" src="https://via.placeholder.com/605x605?'.
+                                            __('text=No+featured+image+found','th-widget-pack').
+                                            '" class="img-responsive th-port-img wp-post-image" alt="">';
                                     }
                                 }
 
