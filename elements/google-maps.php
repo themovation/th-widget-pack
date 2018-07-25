@@ -109,8 +109,8 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		$this->add_control(
 			'api',
 			[
-				'label' => __( 'Google Maps API', 'th-widget-pack' ),
-				'description' => __( '<a href="https://developers.google.com/maps/documentation/javascript/" target="_blank">Create an API key</a>', 'th-widget-pack' ),
+				'label' => __( 'Google Maps API Key', 'th-widget-pack' ),
+				'description' => __( '<a href="https://themovation.helpscoutdocs.com/article/215-how-to-setup-a-google-api-key" target="_blank">Setup your Google Maps API Key</a>', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
 			]
