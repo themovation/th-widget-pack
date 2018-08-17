@@ -147,6 +147,19 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         );
 
 
+
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'section_style_background',
+            [
+                'label' => __( 'Grid', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
         $default_rgba = 'rgba(0, 0, 0, 0.75)'; // Fallback RGBA\
 
         if ( function_exists( 'get_theme_mod' ) ) {
@@ -309,6 +322,87 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 ],
                 //'separator' => 'before'
 
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+
+        $this->start_controls_section(
+            'section_style_filter_bar',
+            [
+                'label' => __( 'Filter Bar', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        
+
+        $this->add_control(
+            'filter_bar_text_color',
+            [
+                'label' => __( 'Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_bar_link_color',
+            [
+                'label' => __( 'Link Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_bar_hover_color',
+            [
+                'label' => __( 'Hover Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_bar_active_color',
+            [
+                'label' => __( 'Active Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
+                ],
             ]
         );
 
