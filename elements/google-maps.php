@@ -271,6 +271,32 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
         );
 
 		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_background',
+            [
+                'label' => __( 'Content', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'link_colour',
+            [
+                'label' => __( 'Link Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .map-info .th-gmap-links a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
