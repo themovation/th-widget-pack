@@ -336,7 +336,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-        
+
 
         $this->add_control(
             'filter_bar_text_color',
