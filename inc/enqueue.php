@@ -6,7 +6,7 @@ function themovation_so_wb_scripts() {
 
     //wp_enqueue_script( 'themo-js-head', THEMO_URL . 'js/themo-head.js', array('jquery'), THEMO_VERSION, false);
     wp_enqueue_script( 'themo-js-foot', THEMO_URL . 'js/themo-foot.js', array('jquery'), THEMO_VERSION, true);
-
+    wp_enqueue_script( 'themo-tween', THEMO_URL . 'js/TweenMax.min.js', array('jquery'), THEMO_VERSION, true);
     wp_register_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
 
     // Enqueue font awesome on all pages
