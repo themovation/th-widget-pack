@@ -292,7 +292,7 @@ jQuery(document).ready(function ($) {
         .to($img, 8, {
             backgroundSize: "+=20% +=20%",
             autoRound:false,
-            ease: Power1.ease0ut
+            ease: Power0.ease0ut
         })
         .progress(1).progress(0)
         .play();
