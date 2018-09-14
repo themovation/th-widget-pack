@@ -290,7 +290,7 @@ jQuery(document).ready(function ($) {
         .set($img,{backgroundSize:"100% 100%"})
         // animate CSS autoAlpha to 1
         .to($img, 8, {
-            backgroundSize: "+=15% +=15%",
+            backgroundSize: "+=20% +=20%",
             autoRound:false,
             ease: Power1.ease0ut
         })
