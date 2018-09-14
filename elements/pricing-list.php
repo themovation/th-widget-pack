@@ -39,11 +39,11 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'pricing',
-			[
-				'label' => __( 'Pricing List', 'th-widget-pack' ),
-				'type' => Controls_Manager::REPEATER,
+        $this->add_control(
+            'pricing',
+            [
+                'label' => __( 'Pricing List', 'th-widget-pack' ),
+                'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
                         'price_title' => __( 'Title', 'th-widget-pack' ),
@@ -52,19 +52,19 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'price_price' => __( '$59', 'th-widget-pack' ),
                         'price_text' => __( 'each', 'th-widget-pack' ),
                         'price_divider' => __( 'yes', 'th-widget-pack' ),
-                        'price_link' => __( '#book', 'th-widget-pack' ),
+                        'url' => 'http://your-link.com'
                     ],
 
                 ],
-				'fields' => [
-					[
-						'name' => 'price_title',
-						'label' => __( 'Title', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
+                'fields' => [
+                    [
+                        'name' => 'price_title',
+                        'label' => __( 'Title', 'th-widget-pack' ),
+                        'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'Title', 'th-widget-pack' ),
-						'label_block' => true,
+                        'label_block' => true,
                         'default' => __( 'Title', 'th-widget-pack' ),
-					],
+                    ],
                     [
                         'name' => 'price_sub_title',
                         'label' => __( 'Subtitle', 'th-widget-pack' ),
@@ -81,33 +81,37 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'default' => __( "Add a description here.", 'th-widget-pack' ),
                         'label_block' => true,
                     ],
-					[
-						'name' => 'price_price',
-						'label' => __( 'Price number', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
+                    [
+                        'name' => 'price_price',
+                        'label' => __( 'Price number', 'th-widget-pack' ),
+                        'type' => Controls_Manager::TEXT,
                         'placeholder' => __( '$99', 'th-widget-pack' ),
                         'default' => __( '$99', 'th-widget-pack' ),
-						'label_block' => true,
-					],
-					[
-						'name' => 'price_text',
-						'label' => __( 'Price text', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
+                        'label_block' => true,
+                    ],
+                    [
+                        'name' => 'price_text',
+                        'label' => __( 'Price text', 'th-widget-pack' ),
+                        'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'each', 'th-widget-pack' ),
                         'default' => __( 'each', 'th-widget-pack' ),
-						'label_block' => true,
-					],
+                        'label_block' => true,
+                    ],
                     [
                         'name' => 'price_link',
                         'label' => __( 'Link', 'th-widget-pack' ),
                         'type' => Controls_Manager::URL,
-                        'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
-                        'default' => __( 'http://your-link.com', 'th-widget-pack' ),
+                        'placeholder' => 'http://your-link.com',
+                        'default' => [
+                            'url' => '',
+                        ],
+
                     ],
-				],
-				'title_field' => '{{{ price_title }}}',
-			]
-		);
+                ],
+                //'fields' => array_values( $this->get_controls() ),
+                'title_field' => '{{{ price_title }}}',
+            ]
+        );
 
         $this->add_control(
             'price_divider',
