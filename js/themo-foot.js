@@ -276,27 +276,6 @@ jQuery(window).on('elementor/frontend/init', function () {
 
 jQuery(document).ready(function ($) {
 
-    // cache element in variable
-    var $img = $('#themozoom');
-    var freewayEaseTween = new TimelineMax({
-        //reversed:true,
-        paused:true,
-        repeat:0
-        //yoyo:true,
-    });
-// set initial CSS autoAlpha to 0
-// GSAP handles the cross browser vendor prefixes
-    freewayEaseTween
-        .set($img,{backgroundSize:"100% 100%"})
-        // animate CSS autoAlpha to 1
-        .to($img, 8, {
-            backgroundSize: "+=20% +=20%",
-            autoRound:false,
-            ease: Power1.ease0ut
-        })
-        .progress(1).progress(0)
-        .play();
-
     if (typeof jQuery.fn.slick === 'function' ) {
         $('.th-image-carousel-timeline .elementor-image-carousel').slick();
     }
