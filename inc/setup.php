@@ -5,7 +5,7 @@ if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
     require_once THEMO_PATH . 'fields/icons.php' ;
 }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/stratus_icons.php' ;
-}elseif('westwood' == THEMO_CURRENT_THEME){
+}elseif('uplands' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'fields/golf_icons.php' ;
 }else{
     require_once THEMO_PATH . 'fields/icons.php' ;
@@ -26,7 +26,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/info-card.php';
         require_once THEMO_PATH . 'elements/team.php';
 
-        if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
+        if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'uplands' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
         }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
@@ -40,14 +40,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/portfolio-grid.php';
         }elseif('bellevue' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/room-grid.php';
-        }elseif('westwood' == THEMO_CURRENT_THEME){
+        }elseif('uplands' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/course-guide.php';
         }
 
 
         if('embark' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/tour-info.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'uplands' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/info-bar.php';
         }elseif('bellevue' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/room-info.php';
@@ -57,12 +57,12 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
         if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/itinerary.php';
-        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'westwood' == THEMO_CURRENT_THEME){
+        }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'uplands' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/expand-list.php';
         }
 
         require_once THEMO_PATH . 'elements/pricing.php';
-        if('westwood' == THEMO_CURRENT_THEME) {
+        if('uplands' == THEMO_CURRENT_THEME) {
             require_once THEMO_PATH . 'elements/pricing-list.php';
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
@@ -101,7 +101,7 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
-}elseif('westwood' == THEMO_CURRENT_THEME){
+}elseif('uplands' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_hole.php' ;
 }
 
@@ -205,7 +205,7 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_install' ) ) {
 
             // Register Custom Taxonomy
             themo_room_type();
-        }elseif('westwood' == THEMO_CURRENT_THEME){
+        }elseif('uplands' == THEMO_CURRENT_THEME){
             // Regsiter Custom Post Types
             themo_hole_custom_post_type();
 
@@ -537,11 +537,11 @@ function render_elementor_section_parallax_background( \Elementor\Element_Base $
 
         if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
 
-            //echo "<pre>";
+            echo "<pre>";
             $th_background = $element->get_settings( 'background_image' );
             $th_background_URL = $th_background['url'];
-            //echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
-            //echo "</pre>";
+            echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
+            echo "</pre>";
 
             $element->add_render_attribute( '_wrapper', [
                 'class' => 'th-parallax',
@@ -549,6 +549,7 @@ function render_elementor_section_parallax_background( \Elementor\Element_Base $
                 'data-image-src' => $th_background_URL,
             ] ) ;
         }
+
     }
 }
 

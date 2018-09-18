@@ -128,7 +128,7 @@ function th_register_project_meta_boxes()
     //-----------------------------------------------------
     $themo_portfolio_meta_box = array(
         'id' => 'th_portfolios_meta_box',
-        'title' => __('Portfolio Grid Options', 'westwood'),
+        'title' => __('Portfolio Grid Options', 'uplands'),
         'pages' => array('themo_portfolio'),
         'context' => 'normal',
         'priority' => 'sorted',
@@ -139,29 +139,29 @@ function th_register_project_meta_boxes()
                 'id' => 'th_project_highlight',
                 'label' => 'Highlight',
                 'type' => 'text',
-                'desc' => __('Displayed above the title.', 'westwood'),
+                'desc' => __('Displayed above the title.', 'uplands'),
             ),
             array(
                 'id' => 'th_project_title',
                 'label' => 'Title',
                 'type' => 'text',
-                'desc' => __('Defaults to the page title', 'westwood'),
+                'desc' => __('Defaults to the page title', 'uplands'),
             ),
             array(
                 'id' => 'th_project_intro',
                 'label' => 'Intro',
                 'type' => 'text',
-                'desc' => __('Displayed below the title. 8 - 10 words recommended', 'westwood'),
+                'desc' => __('Displayed below the title. 8 - 10 words recommended', 'uplands'),
             ),
             array(
                 'id' => 'th_project_button_text',
                 'label' => 'Button Text',
                 'type' => 'text',
-                'desc' => __('Displayed below the intro.', 'westwood'),
+                'desc' => __('Displayed below the intro.', 'uplands'),
             ),
             array(
                 'id'          => "th_project_thumb",
-                'label'       => __( 'Alternative Grid Image', 'westwood'),
+                'label'       => __( 'Alternative Grid Image', 'uplands'),
                 'type'        => 'upload',
                 'class'       => 'ot-upload-attachment-id',
                 'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the portfolio grid and the Featured Image for the lightbox.',

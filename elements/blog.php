@@ -419,8 +419,8 @@ class Themo_Widget_Blog extends Widget_Base {
                                 if( $use_bittersweet_pagination ) {
                                     th_bittersweet_pagination($widget_wp_query->max_num_pages);
                                 } else { ?>
-                                <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'westwood' ), $widget_wp_query->max_num_pages); ?></li>
-                                <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'westwood' ) ); ?></li>
+                                <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'uplands' ), $widget_wp_query->max_num_pages); ?></li>
+                                <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'uplands' ) ); ?></li>
                                <?php }?>
                             </ul>
                         </nav>
