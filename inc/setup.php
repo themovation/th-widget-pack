@@ -537,11 +537,8 @@ function render_elementor_section_parallax_background( \Elementor\Element_Base $
 
         if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
 
-            echo "<pre>";
             $th_background = $element->get_settings( 'background_image' );
             $th_background_URL = $th_background['url'];
-            echo "SECTION PARALLAX: ".$element->get_settings( 'th_section_parallax' );
-            echo "</pre>";
 
             $element->add_render_attribute( '_wrapper', [
                 'class' => 'th-parallax',
