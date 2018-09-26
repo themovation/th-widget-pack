@@ -24,7 +24,7 @@ define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
  * Define Elementor Partner ID
  */
 if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
-    define( 'ELEMENTOR_PARTNER_ID', 1700 );
+    define( 'ELEMENTOR_PARTNER_ID', 2129 );
 }
 
 $th_theme = wp_get_theme(); // get theme info and save theme name as constant.
