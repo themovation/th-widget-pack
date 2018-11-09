@@ -52,6 +52,7 @@ function themo_active_lightbox(){
     });
 }
 
+
 jQuery( function ( $ ) {
 
     // fix pricing columns
@@ -68,11 +69,68 @@ jQuery( function ( $ ) {
 
 
 
+
+
+
     //-----------------------------------------------------
     // Start isotope / for masonry blog and tours filtering
     //-----------------------------------------------------
 
     function themo_init_isotope() {
+
+        // Equalize Heights
+        $.fn.equalizeHeights = function() {
+
+            // construct an array that contains the height of every <div> element
+            var two = $(this).map(function(i, e) {
+                return $(e).height();
+            });
+
+
+            return this.height(    // set the height of element <div> element to...
+                Math.max.apply(    // the largest value in...
+                    this,two.get() // the array of height values
+                )
+            ); // ...and finally, return the original jQuery object to enable chaining
+        };
+
+        // init Isotope
+        /*var $container = $('th-portfolio-row').isotope({
+            itemSelector: '.th-portfolio-item',
+            layoutMode: 'fitRows'
+        });*/
+        // layout Isotope after each image loads
+       /* $container.imagesLoaded().progress( function() {
+            $container.isotope('layout');
+            $container.on('layoutComplete', function (event, laidOutItems) {
+                console.log('layoutComplete with ' + laidOutItems.length + ' items');
+            });
+        });*/
+
+
+
+        // Room Grid / Portfolio
+        var $container = $('.th-portfolio-row');
+
+        // init
+        $container.isotope({
+        // options
+            itemSelector: '.th-portfolio-item',
+            layoutMode: 'fitRows'
+        });
+
+
+        // layout Isotope after each image loads
+        //$container.imagesLoaded().progress( function() {
+        //    $container.isotope('layout');
+        //});
+
+
+
+        var $th_cardbody = $('.th-portfolio-row .th-port-card-body');
+
+        // Equalize Card Body
+        $($th_cardbody).equalizeHeights();
 
         // filter items on click handler
         $('.th-portfolio-filters').on( 'click', 'a', function(e) {
@@ -96,18 +154,13 @@ jQuery( function ( $ ) {
             $(this).addClass( "current" );
 
             // Get the container element to initialize isotope.
-            var $container = $('#'+parent_class+' .th-portfolio-row');
-            // init
-            $container.isotope({
-                // options
-                itemSelector: '.th-portfolio-item',
-                layoutMode: 'fitRows'
-            });
+           var $thiscontainer = $('#'+parent_class+' .th-portfolio-row');
 
-            $container.isotope({ filter: filterValue });
+            $thiscontainer.isotope({ filter: filterValue });
 
         });
 
+        // Masonry Blog
 
         var $bloggrid = $('.mas-blog').isotope({
             itemSelector: '.mas-blog-post',
@@ -128,6 +181,7 @@ jQuery( function ( $ ) {
                 console.log('layoutComplete with ' + laidOutItems.length + ' items');
             });
         });
+
 
 
 
