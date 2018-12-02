@@ -91,6 +91,22 @@ class Themo_Widget_Testimonial extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'star_rating_position',
+            [
+                'label' => __( 'Star Rating Position', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'top' => __( 'Top', 'th-widget-pack' ),
+                    'bottom' => __( 'Bottom', 'th-widget-pack' ),
+                ],
+                'default' => 'bottom',
+                'condition' => [
+                    'star_rating' => 'yes',
+                ],
+            ]
+        );
+
 		$this->add_control(
 			'testimonial_image',
 			[
@@ -309,23 +325,31 @@ class Themo_Widget_Testimonial extends Widget_Base {
             $th_rating = sprintf("%02d", $th_rating);
             $this->add_render_attribute( 'star-rating', 'class', 'th-star-rating th-star-' . esc_attr( $th_rating ) );
         }
+        if ( $settings['star_rating_position'] == 'top' ) {
+            $this->add_render_attribute( 'star-rating', 'class', 'th-star-rating-top');
+        }
 
 		?>
+        <?php if ($settings['star_rating'] == 'yes') :
+            //$th_rating_class = $this->get_render_attribute_string( 'star-rating' );
+            $th_rating_markup = "<div " . $this->get_render_attribute_string( 'star-rating' ) . ">\n";
+            $th_rating_markup .= "<span class=\"th-star-1 fa\"></span>\n";
+            $th_rating_markup .= "<span class=\"th-star-2 fa\"></span>\n";
+            $th_rating_markup .= "<span class=\"th-star-3 fa\"></span>\n";
+            $th_rating_markup .= "<span class=\"th-star-4 fa\"></span>\n";
+            $th_rating_markup .= "<span class=\"th-star-5 fa\"></span>\n";
+            $th_rating_markup .= "</div>";
+         endif; ?>
+
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+
+            <?php if($settings['star_rating'] == 'yes' && $settings['star_rating_position'] == 'top') : echo $th_rating_markup; endif; ?>
 
 			<?php if ( $has_content ) : ?>
 				<div class="elementor-testimonial-content"><?php echo wp_kses_post( $settings['testimonial_content'] ); ?></div>
 			<?php endif; ?>
 
-            <?php if ($settings['star_rating'] == 'yes') : ?>
-                <div <?php echo $this->get_render_attribute_string( 'star-rating' ); ?>>
-                    <span class="th-star-1 fa"></span>
-                    <span class="th-star-2 fa"></span>
-                    <span class="th-star-3 fa"></span>
-                    <span class="th-star-4 fa"></span>
-                    <span class="th-star-5 fa"></span>
-                </div>
-            <?php endif; ?>
+            <?php if($settings['star_rating'] == 'yes' && $settings['star_rating_position'] == 'bottom') : echo $th_rating_markup; endif; ?>
 
 			<?php if ( $has_image || $has_name || $has_job ) : ?>
 

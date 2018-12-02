@@ -134,6 +134,19 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         );
 
         $this->add_control(
+            'style',
+            [
+                'label' => __( 'Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'style_1',
+                'options' => [
+                    'style_1' => __( 'Style 1', 'th-widget-pack' ),
+                    'style_2' => __( 'Style 2', 'th-widget-pack' )
+                ],
+            ]
+        );
+
+        $this->add_control(
             'gutter',
             [
                 'label' => __( 'Gutter', 'th-widget-pack' ),
@@ -151,12 +164,138 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'card_price_style',
+            [
+                'label' => __( 'Price & Image Overlay', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style' => 'style_2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_price_color',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#FFF',
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p' => 'color: {{VALUE}};',
+                ],
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'image_gradient',
+                'label' => __( 'Image Gradient', 'th-widget-pack' ),
+                'types' => ['gradient'],
+                'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after',
+                'description' => 'Control the image overlay gradient.',
+
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'card_style_background',
+            [
+                'label' => __( 'Title & Text', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style' => 'style_2',
+                ],
+            ]
+        );
+
+        /*$this->add_control(
+            'card_price_background_color',
+            [
+                'label' => __( 'Price Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after' => 'background-color: {{VALUE}};',
+                ],
+
+            ]
+        );*/
+
+
+
+        $this->add_control(
+            'card_title_color',
+            [
+                'label' => __( 'Title', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#2C2C33',
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-style-2 .th-port-title' => 'color: {{VALUE}};',
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'card_text_color',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#888888',
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-style-2 .th-port-sub' => 'color: {{VALUE}};',
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'card_background_color',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#FFF',
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-default' => 'background-color: {{VALUE}};',
+                ],
+
+            ]
+        );
+
+        $this->end_controls_section();
 
         $this->start_controls_section(
             'section_style_background',
             [
                 'label' => __( 'Grid', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style' => 'style_1',
+                ],
             ]
         );
 
@@ -442,7 +581,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 break;
             case 5:
                 $portfolio_row = ' five-columns';
-                $portfolio_item = array('th-portfolio-item', 'item', 'col-md-2', 'col-sm-6');
+                $portfolio_item = array('th-portfolio-item', 'item', 'col-md-2', 'col-sm-6', 'row-eq-height');
                 break;
             default:
                 $portfolio_row = '';
@@ -451,6 +590,12 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
         if ( isset( $settings['gutter'] ) &&  $settings['gutter'] == 'on' ){
             $portfolio_row .= ' th-port-gutter';
+        }
+
+        $th_port_style_2 = false;
+        if ( isset( $settings['style'] ) &&  $settings['style'] == 'style_2' ){
+            $portfolio_row .= ' th-port-style-2 display-flex';
+            $th_port_style_2 = true;
         }
 
         ?>
@@ -648,7 +793,14 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                         $classes = array_merge( $portfolio_item, $filtering_links );
                         ?>
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+
+                            <?php if($th_port_style_2){ ?>
+                            <div class="th-port-card th-port-card-default">
+                                <?php echo '<a href="' . esc_url( $link_url ) . '" class="th-port-card-link" ' . esc_html( $link_target_markup ) . '>'; ?>
+                                <span class="th-port-card-img">
+                            <?php }else { ?>
                             <div class="th-port-wrap">
+                            <?php } ?>
                                 <?php
                                 if ( isset( $th_image_url ) && $th_image_url > "" ) {
                                     echo '<img class="img-responsive th-port-img" src="' . esc_url( $th_image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
@@ -729,7 +881,19 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                 $th_tour_button_text = false;
                                 $th_tour_button_text = get_post_meta( get_the_ID(), 'th_room_button_text', true );
                                 ?>
+                                <?php if($th_port_style_2){ ?>
+                                    <?php if($th_tour_price > ""){
+                                        echo '<div class="th-port-card-caption th-pricing-cost"><p>', $th_tour_price,$th_tour_price_per,'</p></div>';
+                                    }?>
+                                    </span>
+                                    <span class="th-port-card-body">
+                                      <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
+                                      <?php echo wp_kses_post($th_tour_intro); ?>
+                                    </span>
+                                    </a>
+                                </div>
 
+                                <?php }else { ?>
                                 <div class="th-port-overlay"></div>
                                 <div class="th-port-inner">
                                     <?php if( $th_tour_highlight ) { ?>
@@ -753,6 +917,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                     <?php echo '<a href="' . esc_url( $link_url ) . '" class="th-port-link" ' . esc_html( $link_target_markup ) . '></a>'; ?>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                         <?php
                     }

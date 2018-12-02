@@ -87,6 +87,7 @@ jQuery( function ( $ ) {
             });
 
 
+
             return this.height(    // set the height of element <div> element to...
                 Math.max.apply(    // the largest value in...
                     this,two.get() // the array of height values
@@ -110,7 +111,7 @@ jQuery( function ( $ ) {
 
 
         // Room Grid / Portfolio
-        var $container = $('.th-portfolio-row');
+        var $container = $('.th-portfolio-row').not('.elementor-element-edit-mode .th-portfolio-row');
 
         // init
         $container.isotope({
@@ -131,6 +132,7 @@ jQuery( function ( $ ) {
 
         // Equalize Card Body
         $($th_cardbody).equalizeHeights();
+
 
         // filter items on click handler
         $('.th-portfolio-filters').on( 'click', 'a', function(e) {
@@ -174,8 +176,12 @@ jQuery( function ( $ ) {
             }
         });
 
+
+
+
         // layout Isotope after each image loads
         $bloggrid.imagesLoaded().progress( function() {
+
             $bloggrid.isotope('layout');
             $bloggrid.on('layoutComplete', function (event, laidOutItems) {
                 console.log('layoutComplete with ' + laidOutItems.length + ' items');
@@ -288,7 +294,6 @@ jQuery(window).load(function($) {
 
     // Initiate Lightbox
     themo_active_lightbox();
-
 
 });
 

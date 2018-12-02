@@ -24,7 +24,12 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/service-block.php';
         require_once THEMO_PATH . 'elements/formidable-form.php';
         require_once THEMO_PATH . 'elements/info-card.php';
-        require_once THEMO_PATH . 'elements/team.php';
+
+        if('bellevue' == THEMO_CURRENT_THEME ){
+            require_once THEMO_PATH . 'elements/team_2.php';
+        }else{
+            require_once THEMO_PATH . 'elements/team.php';
+        }
 
         if('embark' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'uplands' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
@@ -53,7 +58,12 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/room-info.php';
         }
 
-        require_once THEMO_PATH . 'elements/package.php';
+        if('bellevue' == THEMO_CURRENT_THEME ){
+            require_once THEMO_PATH . 'elements/package_2.php';
+        }else{
+            require_once THEMO_PATH . 'elements/package.php';
+        }
+
 
         if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/itinerary.php';
@@ -62,7 +72,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         }
 
         require_once THEMO_PATH . 'elements/pricing.php';
-        if('uplands' == THEMO_CURRENT_THEME) {
+        if('uplands' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME) {
             require_once THEMO_PATH . 'elements/pricing-list.php';
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }

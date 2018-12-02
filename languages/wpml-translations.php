@@ -20,6 +20,7 @@ use Elementor\Themo_Widget_Itinerary as Itinerary;
 use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Package as Package;
 use Elementor\Themo_Widget_Pricing as Pricing;
+use Elementor\Themo_Widget_Pricing_List as PricingList;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -37,7 +38,8 @@ class Themo_Elementor_Translate {
 	private function widgets_with_items() {
         require THEMO_PATH . '/languages/wpml-slider.php';
 		require THEMO_PATH . '/languages/wpml-pricing.php';
-		
+		require THEMO_PATH . '/languages/wpml-pricing-list.php';
+
 		switch (THEMO_CURRENT_THEME) {
 			case 'embark':
                 require THEMO_PATH . '/languages/wpml-itinerary.php';
@@ -68,6 +70,11 @@ class Themo_Elementor_Translate {
                 require THEMO_PATH . '/languages/wpml-expand-list.php';
                 require THEMO_PATH . '/languages/wpml-info-bar.php';
 				break;
+
+            case 'uplands':
+                require THEMO_PATH . '/languages/wpml-expand-list.php';
+                require THEMO_PATH . '/languages/wpml-info-bar.php';
+                break;
 			
 			default:
 				# code...
@@ -84,47 +91,67 @@ class Themo_Elementor_Translate {
         require_once THEMO_PATH . '/elements/service-block.php';
         require_once THEMO_PATH . '/elements/formidable-form.php';
         require_once THEMO_PATH . '/elements/info-card.php';
-        require_once THEMO_PATH . '/elements/team.php';
-        require_once THEMO_PATH . '/elements/package.php';
         require_once THEMO_PATH . '/elements/pricing.php';
 		require_once THEMO_PATH . '/elements/google-maps.php';
 		
 		switch (THEMO_CURRENT_THEME) {
 			case 'embark':
-				require_once THEMO_PATH . '/elements/itinerary.php';
+                require_once THEMO_PATH . '/elements/team.php';
+			    require_once THEMO_PATH . '/elements/package.php';
+			    require_once THEMO_PATH . '/elements/itinerary.php';
 				require_once THEMO_PATH . '/elements/tour-info.php';
 				require_once THEMO_PATH . '/elements/appointments.php';
 				break;
 
 			case 'bellevue':
-				require_once THEMO_PATH . '/elements/itinerary.php';
+                require_once THEMO_PATH . '/elements/team_2.php';
+			    require_once THEMO_PATH . '/elements/package_2.php';
+			    require_once THEMO_PATH . '/elements/itinerary.php';
 				require_once THEMO_PATH . '/elements/room-info.php';
 				require_once THEMO_PATH . '/elements/wp-booking-system.php';
+                require_once THEMO_PATH . '/elements/pricing-list.php';
 				break;
 
 			case 'stratus':
-				require_once THEMO_PATH . '/elements/expand-list.php';
+                require_once THEMO_PATH . '/elements/team.php';
+			    require_once THEMO_PATH . '/elements/package.php';
+			    require_once THEMO_PATH . '/elements/expand-list.php';
 				require_once THEMO_PATH . '/elements/info-bar.php';
 				require_once THEMO_PATH . '/elements/appointments.php';
 				break;
 
 			case 'pursuit':
-				require_once THEMO_PATH . '/elements/expand-list.php';
+                require_once THEMO_PATH . '/elements/team.php';
+			    require_once THEMO_PATH . '/elements/package.php';
+			    require_once THEMO_PATH . '/elements/expand-list.php';
 				require_once THEMO_PATH . '/elements/info-bar.php';
 				require_once THEMO_PATH . '/elements/appointments.php';
 				break;
 
             case 'blockchain':
+                require_once THEMO_PATH . '/elements/team.php';
+                require_once THEMO_PATH . '/elements/package.php';
                 require_once THEMO_PATH . '/elements/expand-list.php';
                 require_once THEMO_PATH . '/elements/info-bar.php';
                 require_once THEMO_PATH . '/elements/appointments.php';
                 break;
 
 			case 'entrepreneur':
-				require_once THEMO_PATH . '/elements/expand-list.php';
+                require_once THEMO_PATH . '/elements/team.php';
+			    require_once THEMO_PATH . '/elements/package.php';
+			    require_once THEMO_PATH . '/elements/expand-list.php';
 				require_once THEMO_PATH . '/elements/info-bar.php';
 				require_once THEMO_PATH . '/elements/appointments.php';
 				break;
+
+            case 'uplands':
+                require_once THEMO_PATH . '/elements/team.php';
+                require_once THEMO_PATH . '/elements/package.php';
+                require_once THEMO_PATH . '/elements/expand-list.php';
+                require_once THEMO_PATH . '/elements/info-bar.php';
+                require_once THEMO_PATH . '/elements/appointments.php';
+                require_once THEMO_PATH . '/elements/pricing-list.php';
+                break;
 			
 			default:
 				# code...
@@ -146,7 +173,6 @@ class Themo_Elementor_Translate {
 		$form->add_wpml_support();
 		$map = new Map();
 		$map->add_wpml_support();
-		$header = new Header();
 		$infocard = new InfoCard();
 		$infocard->add_wpml_support();
 		$package = new Package();
@@ -172,8 +198,10 @@ class Themo_Elementor_Translate {
 				$appointments->add_wpml_support();
 				break;
 
-			case 'bellevue':				
-				$itinerary = new Itinerary();
+			case 'bellevue':
+                $pricinglist = new PricingList();
+                $pricinglist->add_wpml_support();
+			    $itinerary = new Itinerary();
 				$itinerary->add_wpml_support();
 				$roominfo = new RoomInfo();
 				$roominfo->add_wpml_support();
@@ -181,10 +209,20 @@ class Themo_Elementor_Translate {
 				$booking->add_wpml_support();
 				break;
 
+            case 'uplands':
+                $pricinglist = new PricingList();
+                $pricinglist->add_wpml_support();
+                $expandlist = new ExpandList();
+                $expandlist->add_wpml_support();
+                $featbar = new FeatureBar();
+                $featbar->add_wpml_support();
+                $appointments = new Appointment();
+                $appointments->add_wpml_support();
+                break;
+
 			case 'stratus':
 				$expandlist = new ExpandList();
 				$expandlist->add_wpml_support();
-				$header->add_wpml_support();
 				$featbar = new FeatureBar();
 				$featbar->add_wpml_support();
 				$appointments = new Appointment();
@@ -194,7 +232,6 @@ class Themo_Elementor_Translate {
 			case 'pursuit':
 				$expandlist = new ExpandList();
 				$expandlist->add_wpml_support();
-				$header->add_wpml_support();
                 $featbar = new FeatureBar();
                 $featbar->add_wpml_support();
 				$appointments = new Appointment();
@@ -204,7 +241,6 @@ class Themo_Elementor_Translate {
             case 'blockchain':
                 $expandlist = new ExpandList();
                 $expandlist->add_wpml_support();
-                $header->add_wpml_support();
                 $featbar = new FeatureBar();
                 $featbar->add_wpml_support();
                 $appointments = new Appointment();
@@ -214,7 +250,6 @@ class Themo_Elementor_Translate {
 			case 'entrepreneur':
 				$expandlist = new ExpandList();
 				$expandlist->add_wpml_support();
-				$header->add_wpml_support();
                 $featbar = new FeatureBar();
                 $featbar->add_wpml_support();
 				$appointments = new Appointment();
