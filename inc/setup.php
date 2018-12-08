@@ -242,7 +242,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
         if(isset($page) && $page->get_id() > ""){
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole'){
+            if($th_post_type == 'page' || $th_post_type == 'revision' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -348,7 +348,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
         if(isset($page) && $page->get_id() > "") {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
-            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole') {
+            if ($th_post_type == 'page' || $th_post_type == 'revision' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole') {
 
                 $page->add_control(
                     'themo_page_layout',
