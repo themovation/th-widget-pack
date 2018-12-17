@@ -95,37 +95,22 @@ jQuery( function ( $ ) {
             ); // ...and finally, return the original jQuery object to enable chaining
         };
 
-        // init Isotope
-        /*var $container = $('th-portfolio-row').isotope({
-            itemSelector: '.th-portfolio-item',
-            layoutMode: 'fitRows'
-        });*/
-        // layout Isotope after each image loads
-       /* $container.imagesLoaded().progress( function() {
-            $container.isotope('layout');
-            $container.on('layoutComplete', function (event, laidOutItems) {
-                console.log('layoutComplete with ' + laidOutItems.length + ' items');
-            });
-        });*/
-
 
 
         // Room Grid / Portfolio
         var $container = $('.th-portfolio-row').not('.elementor-element-edit-mode .th-portfolio-row');
 
         // init
-        $container.isotope({
+        var $port_grid = $container.isotope({
         // options
             itemSelector: '.th-portfolio-item',
             layoutMode: 'fitRows'
         });
 
-
         // layout Isotope after each image loads
-        //$container.imagesLoaded().progress( function() {
-        //    $container.isotope('layout');
-        //});
-
+        $port_grid.imagesLoaded().progress( function() {
+            $port_grid.isotope('layout');
+        });
 
 
         var $th_cardbody = $('.th-portfolio-row .th-port-card-body');
@@ -184,7 +169,7 @@ jQuery( function ( $ ) {
 
             $bloggrid.isotope('layout');
             $bloggrid.on('layoutComplete', function (event, laidOutItems) {
-                console.log('layoutComplete with ' + laidOutItems.length + ' items');
+                //console.log('layoutComplete with ' + laidOutItems.length + ' items');
             });
         });
 
@@ -241,9 +226,6 @@ jQuery( function ( $ ) {
             $(this).find('> div .th-pricing-features').css('height',$tallestCol);
 
 
-
-            //th-btn-wrap
-
             // END FEATURES UL
 
         });
@@ -290,7 +272,6 @@ jQuery( function ( $ ) {
 //======================================================================
 jQuery(window).load(function($) {
     "use strict";
-
 
     // Initiate Lightbox
     themo_active_lightbox();
