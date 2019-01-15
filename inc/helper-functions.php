@@ -242,7 +242,6 @@ function th_wrap_sidebar_before( \Elementor\Widget_Base $widget ) {
         if ( 'sidebar' === $widget->get_name() ) {
             echo '<!-- Themovaiton Sidebar Wrap before -->';
             echo '<div class="sidebar th-widget-area th-sidebar-widget">';
-
         }
     }
 }
