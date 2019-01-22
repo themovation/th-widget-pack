@@ -108,7 +108,7 @@ class Themo_Elementor_Translate {
 			    require_once THEMO_PATH . '/elements/package_2.php';
 			    require_once THEMO_PATH . '/elements/itinerary.php';
 				require_once THEMO_PATH . '/elements/room-info.php';
-				require_once THEMO_PATH . '/elements/wp-booking-system.php';
+				require_once THEMO_PATH . '/elements/mphb_availability_calendar.php';
                 require_once THEMO_PATH . '/elements/pricing-list.php';
 				break;
 
