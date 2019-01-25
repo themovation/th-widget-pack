@@ -46,7 +46,35 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             'label'       => __('Months to display', 'th-widget-pack'),
             //'description' => __('How many calendar months would you like to show?', 'th-widget-pack'),
             'default'     => '3'
+
+            //.themo_mphb_availability_calendar{max-width:850px;}
         ));
+
+        $this->add_control(
+            'content_max_width',
+            [
+                'label' => __( 'Calendar Width', 'th-widget-pack' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'size' => '650',
+                    'unit' => 'px',
+                ],
+                'size_units' => [ '%', 'px' ],
+                'selectors' => [
+                    '{{WRAPPER}} .themo_mphb_availability_calendar' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_control(
             'calendar_align',
@@ -57,7 +85,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_availability_calendar-wrapper .mphb-calendar .datepick' => 'margin: auto;',
+                    '{{WRAPPER}} .themo_mphb_availability_calendar' => 'margin: auto;',
                     //'(mobile){{WRAPPER}} .mphb_sc_availability_calendar-wrapper .mphb-calendar .datepick' => 'margin: auto;'
                 ],
             ]
@@ -85,7 +113,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
             ?>
-            <div class="elementor-shortcode"><?php echo $th_shortcode; ?></div>
+            <div class="elementor-shortcode themo_mphb_availability_calendar"><?php echo $th_shortcode; ?></div>
             <?php
         }
     }
