@@ -308,8 +308,16 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
             $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
+
+            $themo_form_styling = false;
+            if ( function_exists( 'get_theme_mod' ) ) {
+                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+                if ($themo_mphb_styling == true) {
+                    $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
+                }
+            }
             ?>
-            <div <?php echo $this->get_render_attribute_string( 'th-form-class'); ?>><?php echo $th_shortcode; ?></div>
+            <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
             <?php
         }
     }
