@@ -38,6 +38,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         }elseif('bellevue' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/mphb_availability_calendar.php';
             require_once THEMO_PATH . 'elements/mphb_booking_form.php';
+            require_once THEMO_PATH . 'elements/mphb_checkout_form.php';
         }
 
         if('embark' == THEMO_CURRENT_THEME){
