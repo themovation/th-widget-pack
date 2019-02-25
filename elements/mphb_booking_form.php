@@ -50,7 +50,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'options' => [
                     'none' => __( 'Default', 'th-widget-pack' ),
                     'inline' => __( 'Inline', 'th-widget-pack' ),
-                    'stacked' => __( 'Stacked', 'th-widget-pack' ),
+                    'stacked' => __( 'Stretched', 'th-widget-pack' ),
 
                 ],
             ]

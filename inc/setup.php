@@ -39,6 +39,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/mphb_availability_calendar.php';
             require_once THEMO_PATH . 'elements/mphb_booking_form.php';
             require_once THEMO_PATH . 'elements/mphb_checkout_form.php';
+            require_once THEMO_PATH . 'elements/mphb_room_details.php';
         }
 
         if('embark' == THEMO_CURRENT_THEME){
