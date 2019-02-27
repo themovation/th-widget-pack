@@ -210,7 +210,20 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
 
     protected function render() {
 
+        global $post;
+
         $settings = $this->get_settings();
+
+        // If Accommodation type id field is empty, try to get the id automatically.
+        if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {
+            if(isset($post->ID )&& $post->ID > ""){
+                $postID = $post->ID;
+                $themo_post_type = get_post_type($postID);
+                if(isset($themo_post_type) && $themo_post_type=='mphb_room_type'){
+                    $settings['type_id'] = $postID;
+                }
+            }
+        }
 
         if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
 

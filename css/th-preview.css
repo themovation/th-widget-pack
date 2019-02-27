@@ -25,7 +25,9 @@
     font-size:12px;
 }
 
-
+body.elementor-editor-active div#loader-wrapper {
+    display: none;
+}
 
 
 
