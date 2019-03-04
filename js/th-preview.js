@@ -16,13 +16,18 @@
             if($( "header" ).hasClass( "gm-navbar" )){
                 console.log('Groovy Menu is active');
                 var themo_gm_menu_pos = $('header .gm-wrapper').css('position');
+                /*if($( "header div" ).hasClass( "gm-padding" )){
+                    console.log('Groovy Menu has padding.');
+                    var themo_gm_menu_padding = $('.gm-padding').css("padding-top");
+                    console.log('Groovy menu top padding: '+themo_gm_menu_padding);
+                }*/
+
                 if(themo_gm_menu_pos == 'absolute'){
                     console.log('Groovy menu position: '+themo_gm_menu_pos);
-
                     $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide/Show Header</div> </div>" ).insertAfter( "header.gm-navbar" );
 
                     $( ".hide-nav-wrap" ).click(function() {
-                        $( "header.gm-navbar .gm-wrapper" ).fadeToggle( "fast", function() {
+                        $( "header.gm-navbar .gm-wrapper, header.gm-navbar .gm-padding" ).fadeToggle( "fast", function() {
                             // Animation complete.
                         });
                     });
