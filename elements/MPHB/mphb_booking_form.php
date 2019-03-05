@@ -3,14 +3,14 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
+class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
 
     public function get_name() {
-        return 'themo-mphb-checkout-form';
+        return 'themo-mphb-booking-form';
     }
 
     public function get_title() {
-        return __( 'Hotel Checkout Form', 'th-widget-pack' );
+        return __( 'Hotel Booking Form', 'th-widget-pack' );
     }
 
     public function get_icon() {
@@ -29,14 +29,20 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
         $this->start_controls_section(
             'section_shortcode',
             [
-                'label' => __( 'Checkout Form', 'th-widget-pack' ),
+                'label' => __( 'Availability Calendar', 'th-widget-pack' ),
             ]
         );
 
 
+        $this->add_control('type_id', array(
+            'type'        => Controls_Manager::TEXT,
+            'label'       => __('Accommodation Type ID', 'th-widget-pack'),
+            //'description' => __('ID of Accommodation Type to display availability.', 'th-widget-pack'),
+            'default'     => '',
+            'label_block' => true,
+        ));
 
-
-        /*$this->add_control(
+        $this->add_control(
             'inline_form',
             [
                 'label' => __( 'Formidable Form Style', 'th-widget-pack' ),
@@ -44,13 +50,14 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'default' => 'none',
                 'options' => [
                     'none' => __( 'Default', 'th-widget-pack' ),
-                    'stacked' => __( 'Fill', 'th-widget-pack' ),
+                    'inline' => __( 'Inline', 'th-widget-pack' ),
+                    'stacked' => __( 'Stretched', 'th-widget-pack' ),
 
                 ],
             ]
-        );*/
+        );
 
-        /*$this->add_control(
+        $this->add_control(
             'slide_shortcode_border',
             [
                 'label' => __( 'Form Background', 'th-widget-pack' ),
@@ -66,7 +73,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                     'inline_form' => 'stacked',
                 ],
             ]
-        );*/
+        );
 
         $this->add_control(
             'button_1_style',
@@ -89,7 +96,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
+        $this->add_control(
             'slide_text_align',
             [
                 'label' => __( 'Align', 'th-widget-pack' ),
@@ -111,7 +118,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 ],
                 'default' => 'center',
             ]
-        );*/
+        );
 
         /*$this->add_control(
             'calendar_align',
@@ -141,21 +148,6 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             ]
         );*/
 
-        $this->add_control(
-            'full_width_submit_button',
-            [
-                'label' => __( 'Full Width Submit Button', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-submit-wrapper.frm_submit input' => 'width:100%;',
-
-                ],
-            ]
-        );
-
 
         $this->add_control(
             'hide_required_notices',
@@ -166,13 +158,13 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-wrapper .mphb-required-fields-tip' => 'display:none;',
-                    '{{WRAPPER}} .mphb_sc_checkout-wrapper label abbr' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-required-fields-tip' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label abbr' => 'display:none;',
                 ],
             ]
         );
 
-        /*$this->add_control(
+        $this->add_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -192,7 +184,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
-        );*/
+        );
 
 
         $this->end_controls_section();
@@ -201,70 +193,15 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
         $this->start_controls_section(
             'section_style_content',
             [
-                'label' => __( 'Colors', 'th-widget-pack' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
-            'headings_1_color',
-            [
-                'label' => __( 'Heading 1', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} h3' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-
-            ]
-        );
-
-        $this->add_control(
-            'headings_2_color',
-            [
-                'label' => __( 'Heading 2', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} h4' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-
-            ]
-        );
-
-        $this->add_control(
-            'text_color',
-            [
-                'label' => __( 'Text', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} li' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} th' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} td' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-
-            ]
-        );
-
-
-        $this->add_control(
             'tip_color',
             [
-                'label' => __( 'Required Tips', 'th-widget-pack' ),
+                'label' => __( 'Required Tips Colour', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -278,41 +215,78 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'tip_color_typography',
+                'selector' => '{{WRAPPER}} .mphb-required-fields-tip',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+
+            ]
+        );
 
         $this->add_control(
-            'label_color',
+            'title_color',
             [
-                'label' => __( 'Labels', 'th-widget-pack' ),
+                'label' => __( 'Label Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
+                'separator' => 'before',
             ]
         );
 
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_color_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper label',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
 
         $this->end_controls_section();
     }
 
     protected function render() {
 
+        global $post;
+
         $settings = $this->get_settings();
 
-        //if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
+        // If Accommodation type id field is empty, try to get the id automatically.
+        if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {
+            if(isset($post->ID )&& $post->ID > ""){
+                $postID = $post->ID;
+                $themo_post_type = get_post_type($postID);
+                if(isset($themo_post_type) && $themo_post_type=='mphb_room_type'){
+                    $settings['type_id'] = $postID;
+                }
+            }
+        }
 
+        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
 
-            $th_shortcode = '[mphb_checkout]';
+            /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
+                $th_monthstoshow = $settings['months_to_show'];
+            }else{
+                $th_monthstoshow=2;
+            }*/
+
+            $th_shortcode = '[mphb_availability id='.$settings['type_id'].']';
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
             $th_form_border_class = false;
             $th_formidable_class = 'th-form-default';
-            /*if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
+            if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
                 switch ( $settings['inline_form'] ) {
                     case 'stacked':
                         $th_formidable_class = 'th-form-stacked';
@@ -324,9 +298,9 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                         $th_formidable_class = 'th-conversion';
                         break;
                 }
-            endif;*/
+            endif;
 
-            /* Form Styling
+            /* Form Styling */
             $th_cal_align_class = false;
             if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
                 switch ( $settings['slide_text_align'] ) {
@@ -340,10 +314,10 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                         $th_cal_align_class = ' th-right';
                         break;
                 }
-            }*/
+            }
 
             $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
-            //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
+            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
             $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
@@ -359,7 +333,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             ?>
             <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
             <?php
-        //}
+        }
     }
 
     public function render_plain_content() {
@@ -371,4 +345,4 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Checkout_Form() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Booking_Form() );

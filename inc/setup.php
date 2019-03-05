@@ -35,11 +35,6 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/appointments.php';
         }elseif('stratus' == THEMO_CURRENT_THEME || 'pursuit' == THEMO_CURRENT_THEME || 'blockchain' == THEMO_CURRENT_THEME){
             require_once THEMO_PATH . 'elements/appointments.php';
-        }elseif('bellevue' == THEMO_CURRENT_THEME){
-            require_once THEMO_PATH . 'elements/mphb_availability_calendar.php';
-            require_once THEMO_PATH . 'elements/mphb_booking_form.php';
-            require_once THEMO_PATH . 'elements/mphb_checkout_form.php';
-            require_once THEMO_PATH . 'elements/mphb_room_details.php';
         }
 
         if('embark' == THEMO_CURRENT_THEME){
@@ -82,6 +77,18 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/blog.php';
         require_once THEMO_PATH . 'elements/image-gallery.php';
         require_once THEMO_PATH . 'elements/google-maps.php';
+
+        if('bellevue' == THEMO_CURRENT_THEME){
+            // Check if the MotoPress Hotel Booking is active
+            if (class_exists('HotelBookingPlugin')) {
+                require_once THEMO_PATH . 'elements/MPHB/mphb_availability_calendar.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_booking_form.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_checkout_form.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_details.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_rates.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_service_details.php';
+            }
+        }
     }
 }
 // Include Custom Widgets
@@ -184,6 +191,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
+        if (!in_array("mphb_room_service", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"mphb_room_service");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+
         if (!in_array("themo_hole", $elementor_cpt_support)) {
             array_push($elementor_cpt_support,"themo_hole");
             update_option('elementor_cpt_support', $elementor_cpt_support);
@@ -251,7 +263,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
             if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' ||
-                $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'){
+                $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'||
+                $th_post_type == 'mphb_room_service'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -358,7 +371,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
             if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
-                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type') {
+                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
+                || $th_post_type == 'mphb_room_service') {
 
                 $page->add_control(
                     'themo_page_layout',
@@ -406,7 +420,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
             if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
-                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'){
+                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
+                || $th_post_type == 'mphb_room_service'){
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -501,7 +516,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
             if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
-                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type') {
+                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
+                || $th_post_type == 'mphb_room_service') {
 
                 $page->add_control(
                     'themo_page_layout',

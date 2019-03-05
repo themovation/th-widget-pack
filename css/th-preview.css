@@ -29,6 +29,10 @@ body.elementor-editor-active div#loader-wrapper {
     display: none;
 }
 
+.elementor-control-raw-html {
+    line-height: 17px;
+}
+
 
 
 

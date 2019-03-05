@@ -3,14 +3,14 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_MPHB_Room_Details extends Widget_Base {
+class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
 
     public function get_name() {
-        return 'themo-mphb-room-details';
+        return 'themo-mphb-accommodation-rates';
     }
 
     public function get_title() {
-        return __( 'Hotel Room Details', 'th-widget-pack' );
+        return __( 'Accommodation Rates', 'th-widget-pack' );
     }
 
     public function get_icon() {
@@ -29,18 +29,19 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
         $this->start_controls_section(
             'section_shortcode',
             [
-                'label' => __( 'Room Details', 'th-widget-pack' ),
+                'label' => __( 'Accommodation Rates', 'th-widget-pack' ),
             ]
         );
 
         $this->add_control('type_id', array(
             'type'        => Controls_Manager::TEXT,
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
-            'default'     => ''
+            'default'     => '',
+            'label_block' => true,
         ));
 
 
-        $this->add_control(
+        /*$this->add_control(
             'show_titles',
             [
                 'label' => __( 'Show Titles', 'th-widget-pack' ),
@@ -55,7 +56,7 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
                     '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'display: inherit;'
                 ],
             ]
-        );
+        );*/
 
         $this->end_controls_section();
 
@@ -71,13 +72,13 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
         );
 
         $this->add_control(
-            'icon_color',
+            'text_color',
             [
-                'label' => __( 'Icon Color', 'th-widget-pack' ),
+                'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li:before' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -89,126 +90,87 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'icon_typography',
-                'label' => __( 'Icon Typography', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li:before',
+                'name' => 'text_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'exclude' => [ 'font_family','font_weight','text_transform','font_style','text_decoration','letter_spacing'],
             ]
         );
 
-
         $this->add_control(
-            'title_color',
+            'price_color',
             [
-                'label' => __( 'Title Color', 'th-widget-pack' ),
+                'label' => __( 'Price Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
-                'condition' => [
-                    'show_titles' => 'yes',
-                ],
+                'separator' => 'before',
             ]
         );
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_typography',
-                'label' => __( 'Title Typography', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title',
+                'name' => 'price_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
 
         $this->add_control(
-            'value_color',
+            'price_period_color',
             [
-                'label' => __( 'Value Color', 'th-widget-pack' ),
+                'label' => __( 'Price Period Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price-period' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
-                'condition' => [
-                    'show_titles' => 'yes',
-                ],
+                'separator' => 'before',
             ]
         );
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'value_typography',
-                'label' => __( 'Value Typography', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value',
+                'name' => 'price_period_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price-period',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
 
         $this->add_control(
-            'value_link_color',
+            'price_period_clear',
             [
-                'label' => __( 'Value Link Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
+                'label' => __( 'Remove Plugin Styling', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
                 'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value a,
-                    {{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value a:link' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                    '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price-period' => 'border-bottom: none;cursor: initial',
 
+                ],
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_style_spacing',
-            [
-                'label' => __( 'Spacing', 'th-widget-pack' ),
-                'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'value_spacing',
-            [
-                'label' => __( 'Value Spacing', 'th-widget-pack' ),
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
-                ],
-                'default' => [
-                    'size' => '0',
-                    'unit' => 'px',
-                ],
-                'size_units' => [ 'px' ],
-                'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details ul span.mphb-attribute-value' => 'padding-left: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
         $this->end_controls_section();
     }
 
     protected function render() {
+
 
         global $post;
 
@@ -227,18 +189,12 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
 
         if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
 
-            if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
-                $th_monthstoshow = $settings['months_to_show'];
-            }else{
-                $th_monthstoshow=2;
-            }
-
-            $th_shortcode = '[mphb_room id='.$settings['type_id'].' title="false" featured_image="false" gallery="false" excerpt="false" book_button="false" price="false"]';
+            $th_shortcode = '[mphb_rates id='.$settings['type_id'].']';
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
             ?>
-            <div class="elementor-shortcode themo_mphb_room_details"><?php echo $th_shortcode; ?></div>
+            <div class="elementor-shortcode themo_mphb_room_rates"><?php echo $th_shortcode; ?></div>
             <?php
         }
     }
@@ -252,4 +208,4 @@ class Themo_Widget_MPHB_Room_Details extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Room_Details() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Accommodation_Rates() );
