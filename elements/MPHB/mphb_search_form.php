@@ -3,14 +3,14 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
+class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
     public function get_name() {
-        return 'themo-mphb-booking-form';
+        return 'themo-mphb-search-form';
     }
 
     public function get_title() {
-        return __( 'Hotel Booking Form', 'th-widget-pack' );
+        return __( 'Hotel Search Availability Form', 'th-widget-pack' );
     }
 
     public function get_icon() {
@@ -26,21 +26,52 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
     }
 
     protected function _register_controls() {
+
+        // Check that the class exists before trying to use it
+
+    if(is_object(MPHB())){
+        $minAdults   = MPHB()->settings()->main()->getMinAdults();
+        $maxAdults   = MPHB()->settings()->main()->getSearchMaxAdults();
+        $minChildren = MPHB()->settings()->main()->getMinChildren();
+        $maxChildren = MPHB()->settings()->main()->getSearchMaxChildren();
+    }else{
+        $minAdults   = '1';
+        $maxAdults   = '30';
+        $minChildren = '0';
+        $maxChildren = '10';
+    }
+
+    /*
+    echo "<pre>";
+    var_dump(MPHB());   //true
+    echo "</pre>";
+    */
+
         $this->start_controls_section(
             'section_shortcode',
             [
-                'label' => __( 'Availability Calendar', 'th-widget-pack' ),
+                'label' => __( 'Search Form', 'th-widget-pack' ),
             ]
         );
 
-
-        $this->add_control('type_id', array(
-            'type'        => Controls_Manager::TEXT,
-            'label'       => __('Accommodation Type ID', 'th-widget-pack'),
-            //'description' => __('ID of Accommodation Type to display availability.', 'th-widget-pack'),
-            'default'     => '',
-            'label_block' => true,
+        $this->add_control('adults', array(
+            'type'        => Controls_Manager::NUMBER,
+            'label'       => __('Adults', 'mphb-elementor'),
+            'description' => __('The number of adults presetted in the search form.', 'mphb-elementor'),
+            'default'     => $minAdults,
+            'min'         => $minAdults,
+            'max'         => $maxAdults
         ));
+
+        $this->add_control('children', array(
+            'type'        => Controls_Manager::NUMBER,
+            'label'       => __('Children', 'mphb-elementor'),
+            'description' => __('The number of children presetted in the search form.', 'mphb-elementor'),
+            'default'     => $minChildren,
+            'min'         => $minChildren,
+            'max'         => $maxChildren
+        ));
+
 
         $this->add_control(
             'inline_form',
@@ -120,34 +151,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
-            'calendar_align',
-            [
-                'label' => __( 'Center Align', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper' => 'margin: auto;',
-                    //'(mobile){{WRAPPER}} .mphb_sc_availability_calendar-wrapper .mphb-calendar .datepick' => 'margin: auto;'
-                ],
-            ]
-        );
-        $this->add_control(
-            'text_align',
-            [
-                'label' => __( 'Text Align', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper' => 'text-align: center;',
-                ],
-            ]
-        );*/
-
 
         $this->add_control(
             'hide_required_notices',
@@ -158,8 +161,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-required-fields-tip' => 'display:none;',
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label abbr' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-required-fields-tip' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper label abbr' => 'display:none;',
                 ],
             ]
         );
@@ -232,7 +235,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper label' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -247,7 +250,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_color_typography',
-                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper label',
+                'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper label',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
@@ -261,79 +264,60 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
 
         $settings = $this->get_settings();
 
-        // If Accommodation type id field is empty, try to get the id automatically.
-        if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {
-            if(isset($post->ID )&& $post->ID > ""){
-                $postID = $post->ID;
-                $themo_post_type = get_post_type($postID);
-                if(isset($themo_post_type) && $themo_post_type=='mphb_room_type'){
-                    $settings['type_id'] = $postID;
-                }
+        $th_shortcode = '[mphb_availability_search adults='.$settings['adults'].' children='.$settings['children'].']';
+        $th_shortcode = sanitize_text_field( $th_shortcode );
+        $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
+
+        $th_form_border_class = false;
+        $th_formidable_class = 'th-form-default';
+        if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
+            switch ( $settings['inline_form'] ) {
+                case 'stacked':
+                    $th_formidable_class = 'th-form-stacked';
+                    if ( isset( $settings['slide_shortcode_border'] ) && $settings['slide_shortcode_border'] != 'none' ) {
+                        $th_form_border_class = $settings['slide_shortcode_border'];
+                    }
+                    break;
+                case 'inline':
+                    $th_formidable_class = 'th-conversion';
+                    break;
+            }
+        endif;
+
+        /* Form Styling */
+        $th_cal_align_class = false;
+        if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
+            switch ( $settings['slide_text_align'] ) {
+                case 'left':
+                    $th_cal_align_class = ' th-left';
+                    break;
+                case 'center':
+                    $th_cal_align_class = ' th-centered';
+                    break;
+                case 'right':
+                    $th_cal_align_class = ' th-right';
+                    break;
             }
         }
 
-        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
+        $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
+        $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
+        $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
+        $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
+        $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
+        $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
 
-            /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
-                $th_monthstoshow = $settings['months_to_show'];
-            }else{
-                $th_monthstoshow=2;
-            }*/
-
-            $th_shortcode = '[mphb_availability id='.$settings['type_id'].']';
-            $th_shortcode = sanitize_text_field( $th_shortcode );
-            $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
-
-            $th_form_border_class = false;
-            $th_formidable_class = 'th-form-default';
-            if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
-                switch ( $settings['inline_form'] ) {
-                    case 'stacked':
-                        $th_formidable_class = 'th-form-stacked';
-                        if ( isset( $settings['slide_shortcode_border'] ) && $settings['slide_shortcode_border'] != 'none' ) {
-                            $th_form_border_class = $settings['slide_shortcode_border'];
-                        }
-                        break;
-                    case 'inline':
-                        $th_formidable_class = 'th-conversion';
-                        break;
-                }
-            endif;
-
-            /* Form Styling */
-            $th_cal_align_class = false;
-            if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
-                switch ( $settings['slide_text_align'] ) {
-                    case 'left':
-                        $th_cal_align_class = ' th-left';
-                        break;
-                    case 'center':
-                        $th_cal_align_class = ' th-centered';
-                        break;
-                    case 'right':
-                        $th_cal_align_class = ' th-right';
-                        break;
-                }
+        $themo_form_styling = false;
+        if ( function_exists( 'get_theme_mod' ) ) {
+            $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+            if ($themo_mphb_styling == true) {
+                $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
             }
-
-            $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
-            $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
-
-            $themo_form_styling = false;
-            if ( function_exists( 'get_theme_mod' ) ) {
-                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
-                if ($themo_mphb_styling == true) {
-                    $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
-                }
-            }
-            ?>
-            <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
-            <?php
         }
+        ?>
+        <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
+        <?php
+
     }
 
     public function render_plain_content() {
@@ -345,4 +329,4 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Booking_Form() );
+Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Search_Form() );
