@@ -88,6 +88,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
                 require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_rates.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_service_details.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_search_form.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_search_results.php';
             }
         }
     }
