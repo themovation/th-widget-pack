@@ -36,7 +36,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
         $this->add_control('counter_text', array(
             'type'        => Controls_Manager::SWITCHER,
-            'label'       => __('Hide Section', 'th-widget-pack'),
+            'label'       => __('Section', 'th-widget-pack'),
             'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
             'label_on' => __( 'On', 'th-widget-pack' ),
             'label_off' => __( 'Off', 'th-widget-pack' ),
@@ -56,9 +56,21 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             ]
         );
 
+        $this->add_control('recommendation_content', array(
+            'type'        => Controls_Manager::SWITCHER,
+            'label'       => __('Section', 'th-widget-pack'),
+            'description' => __('Displays above Search Results. It recommends the best set of accommodations according to a number of guests in a list.', 'th-widget-pack'),
+            'label_on' => __( 'On', 'th-widget-pack' ),
+            'label_off' => __( 'Off', 'th-widget-pack' ),
+            'selectors' => [
+                '{{WRAPPER}} .themo_mphb_search_recommend_wrapper' => 'display:none',
+            ],
+            'default' => '',
+        ));
+
         $this->add_control('recommendation_title', array(
             'type'        => Controls_Manager::SWITCHER,
-            'label'       => __('Hide Title', 'th-widget-pack'),
+            'label'       => __('Title', 'th-widget-pack'),
             //'description' => __('Whether to display title of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'On', 'th-widget-pack' ),
             'label_off' => __( 'Off', 'th-widget-pack' ),
@@ -66,16 +78,30 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 '{{WRAPPER}} .mphb-recommendation-title' => 'display:none',
             ],
             'default' => '',
+            'condition' => [
+                'recommendation_content' => '',
+            ],
         ));
 
-        $this->add_control('recommendation_content', array(
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_reservation_details_block',
+            [
+                'label' => __( 'Reservation Details & Cart', 'th-widget-pack' ),
+            ]
+        );
+
+        $this->add_control('cart_empty', array(
             'type'        => Controls_Manager::SWITCHER,
-            'label'       => __('Hide Recommendations', 'th-widget-pack'),
-            'description' => __('Displays above Search Results. It recommends the best set of accommodations according to a number of guests in a list.', 'th-widget-pack'),
+            'label'       => __('Hide Empty Cart Message', 'th-widget-pack'),
+            //'description' => __('Displays above Search Results. It recommends the best set of accommodations according to a number of guests in a list.', 'th-widget-pack'),
             'label_on' => __( 'On', 'th-widget-pack' ),
             'label_off' => __( 'Off', 'th-widget-pack' ),
             'selectors' => [
-                '{{WRAPPER}} #mphb-recommendation' => 'display:none',
+                '{{WRAPPER}} .mphb-empty-cart-message' => 'display:none',
             ],
             'default' => '',
         ));
@@ -89,7 +115,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             ]
         );
 
-        $this->add_control('section_heading', array(
+        /*$this->add_control('section_heading', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Section Heading', 'th-widget-pack'),
             //'description' => __('Whether to display title of the accommodation type.', 'th-widget-pack'),
@@ -99,12 +125,11 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 '{{WRAPPER}} .mphb-reservation-details' => 'display:none',
             ],
             'default' => '',
-        ));
+        ));*/
 
         $this->add_control('title', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Title', 'th-widget-pack'),
-            //'description' => __('Whether to display title of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -114,7 +139,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         $this->add_control('featured_image', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Featured image', 'th-widget-pack'),
-            //'description' => __('Whether to display featured image of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -125,7 +149,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         $this->add_control('gallery', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Gallery', 'th-widget-pack'),
-            //'description' => __('Whether to display gallery of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -136,7 +159,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         $this->add_control('excerpt', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Excerpt', 'th-widget-pack'),
-            //'description' => __('Whether to display excerpt (short description) of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -147,7 +169,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         $this->add_control('details', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Details', 'th-widget-pack'),
-            //'description' => __('Whether to display details of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -155,10 +176,26 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'separator' => 'before'
         ));
 
+        $this->add_control(
+            'show_icon_titles',
+            [
+                'label' => __( 'Icon Titles', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'devices' => [ 'desktop', 'tablet', 'mobile' ],
+                'desktop_default' => '',
+                'tablet_default' => '',
+                'mobile_default'=> '',
+                'label_on' => __( 'Show', 'th-widget-pack' ),
+                'label_off' => __( 'Hide', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'display: inherit;'
+                ],
+            ]
+        );
+
         $this->add_control('price', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Price', 'th-widget-pack'),
-            //'description' => __('Whether to display price of the accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
             'return_value' => 'yes',
@@ -168,7 +205,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
         $this->add_control('view_button', array(
             'type'        => Controls_Manager::SWITCHER,
-            'label'       => __('View button', 'th-widget-pack'),
+            'label'       => __('View Link', 'th-widget-pack'),
             //'description' => __('Whether to display "View Details" button with the link to accommodation type.', 'th-widget-pack'),
             'label_on' => __( 'Show', 'th-widget-pack' ),
             'label_off' => __( 'Hide', 'th-widget-pack' ),
@@ -176,60 +213,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'default' => 'yes',
             'separator' => 'before'
         ));
-
-        /*$this->add_control(
-            'full_width_submit_button',
-            [
-                'label' => __( 'Full Width Submit Button', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-submit-wrapper.frm_submit input' => 'width:100%;',
-
-                ],
-                'separator' => 'before'
-            ]
-        );*/
-
-        $this->add_control(
-            'button_1_style',
-            [
-                'label' => __( 'Button Style', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'standard-primary',
-                'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
-                ],
-                'separator' => 'before'
-            ]
-        );
-
-
-
-
-
-        /*$this->add_control(
-            'important_note',
-            [
-                //'label' => __( 'Note', 'th-widget-pack' ),
-                'type' => Controls_Manager::RAW_HTML,
-                'raw' => __( '<p style="line-height: 17px;">This widget is designed to work inside the Checkout Page. See: Accommodation / Settings / General / Checkout Page. 
-                              <p style="line-height: 17px; margin-top: 10px;">Use the booking form on the front-end to preview your styling changes.</p>', 'th-widget-pack' ),
-                'content_classes' => 'themo-elem-html-control',
-                'separator' => 'before'
-            ]
-        );*/
 
 
         $this->end_controls_section();
@@ -301,113 +284,593 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
 
         $this->start_controls_section(
-            'section_style_content',
+            'section_counter_block_style',
             [
-                'label' => __( 'Colors', 'th-widget-pack' ),
+                'label' => __( 'Information Section', 'th-widget-pack' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'headings_1_color',
-            [
-                'label' => __( 'Heading 1', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} h3' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
 
             ]
         );
 
         $this->add_control(
-            'headings_2_color',
+            'important_note',
             [
-                'label' => __( 'Heading 2', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} h4' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-
+                //'label' => __( 'Note', 'th-widget-pack' ),
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => __( '<p style="line-height: 17px;">Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]</p>', 'th-widget-pack' ),
+                'content_classes' => 'themo-elem-html-control',
             ]
         );
 
         $this->add_control(
-            'text_color',
+            'info_color',
             [
-                'label' => __( 'Text', 'th-widget-pack' ),
+                'label' => __( 'Colour', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} li' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} th' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_search_results-info' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
+                'label_block'=>true,
 
             ]
         );
 
-
-        $this->add_control(
-            'tip_color',
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Required Tips', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .mphb-required-fields-tip' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                'name' => 'info_color_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_search_results-info',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 
             ]
         );
 
-
-        $this->add_control(
-            'label_color',
+        $this->add_responsive_control(
+            'text_align',
             [
-                'label' => __( 'Labels', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-wrapper label' => 'color: {{VALUE}};',
+                'label' => __( 'Alignment', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'default'=>'left',
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search_results-info' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
 
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_recommendation_block_style',
+            [
+                'label' => __( 'Recommendation Section', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+
+        $this->add_control(
+            'important_note_2',
+            [
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => __( '<p style="line-height: 17px;">Displays above Search Results. It recommends the best set of accommodations according to a number of guests in a list.</p>', 'th-widget-pack' ),
+                'content_classes' => 'themo-elem-html-control',
+            ]
+        );
+
+        $this->add_control(
+            'recommendation_heading_color',
+            [
+                'label' => __( 'Heading', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} h2.mphb-recommendation-title' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'recommendation_heading_typography',
+                'selector' => '{{WRAPPER}} h2.mphb-recommendation-title',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+
+        $this->add_control(
+            'recommendation_list_color',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} ul.mphb-recommendation-details-list li' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'recommendation_list_typography',
+                'selector' => '{{WRAPPER}} ul.mphb-recommendation-details-list li',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'recommendation_price_color',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-recommendation-total-title' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'recommendation_price_typography',
+                'selector' => '{{WRAPPER}} .mphb-recommendation-total-title',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'button_reserve_style',
+            [
+                'label' => __( 'Reserve Button', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
+            'section_reservation_details_style',
+            [
+                'label' => __( 'Reservation Details & Cart', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'cart_text_color',
+            [
+                'label' => __( 'Cart Text', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-cart-message' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'cart_text_typography',
+                'selector' => '{{WRAPPER}} .mphb-cart-message',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'cart_price_color',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-cart-total-price' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'cart_price_typography',
+                'selector' => '{{WRAPPER}} .mphb-cart-total-price',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'button_confirm_style',
+            [
+                'label' => __( 'Confirm Button', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_search_results_style',
+            [
+                'label' => __( 'Search Results', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __( 'Title', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type-title' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} .mphb-room-type-title',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'excerpt_details_color',
+            [
+                'label' => __( 'Excerpt', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type p' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'label_block'=>true,
+                'separator' => 'before'
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'excerpt_details_typography',
+                'selector' => '{{WRAPPER}} .mphb-room-type p',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        // DETAILS
+
+        $this->add_control(
+            'icon_details_color',
+            [
+                'label' => __( 'Attribute Icon', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li:before' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'icon_details_typography',
+                'label' => __( 'Size', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li:before',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'exclude' => [ 'font_family','font_weight','text_transform','font_style','text_decoration','letter_spacing'],
+            ]
+        );
+
+
+        $this->add_control(
+            'icon_title_color',
+            [
+                'label' => __( 'Attribute Title', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'condition' => [
+                    'show_icon_titles' => 'yes',
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'icon_title_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-title',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'condition' => [
+                    'show_icon_titles' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'value_details_color',
+            [
+                'label' => __( 'Attribute Value', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'value_details_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'value_details_link_color',
+            [
+                'label' => __( 'Attribute Link', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value a,
+                    {{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value a:link' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'search_result_price_description_color',
+            [
+                'label' => __( 'Price Description', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-regular-price' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'search_result_price_description_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-regular-price',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'search_result_price_color',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-regular-price .mphb-price' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'search_result_price_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-regular-price .mphb-price',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'search_result_view_link_color',
+            [
+                'label' => __( 'View Link', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-room-type .mphb-view-details-button' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'search_result_view_link_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .mphb-room-type .mphb-view-details-button',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+        $this->add_control(
+            'button_book_style',
+            [
+                'label' => __( 'Book Button', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+                'separator' => 'before'
+            ]
+        );
+
+        $this->end_controls_section();
+        // Button styles
+
     }
 
     protected function render() {
 
         $settings = $this->get_settings();
-
-
-
         $atts = $this->get_settings();
+
+        // Cart Wrapper
+
+
+
 
         //echo '<pre>';
         //print_r($atts);
@@ -436,8 +899,8 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
             //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
             //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
-            $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
+            //$this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
+            //$this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
 
             $themo_form_styling = false;
             if ( function_exists( 'get_theme_mod' ) ) {
@@ -452,7 +915,52 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 do_action('mphbe_before_search_results_widget_render', $atts);
 
                 $shortcode = MPHB()->getShortcodes()->getSearchResults();
-                echo $shortcode->render($atts, null, $shortcode->getName());
+
+                /*echo "<pre>";
+                print_r($shortcode);
+                echo "</pre>";*/
+                $themo_shortcode_render = $shortcode->render($atts, null, $shortcode->getName());
+
+
+                // Wrapper
+                $themo_shortcode_render = str_replace(
+                    'mphb_sc_search_results-wrapper',
+                    'mphb_sc_search_results-wrapper frm_forms with_frm_style',
+                    $themo_shortcode_render
+                );
+
+
+                // Book Button Style
+                $themo_shortcode_render = str_replace(
+                    'mphb-book-button',
+                    'mphb-book-button btn th-btn btn-'.esc_attr( $settings['button_book_style']),
+                    $themo_shortcode_render
+                );
+
+                // Reserve Button Style
+                $themo_shortcode_render = str_replace(
+                    'mphb-recommendation-reserve-button',
+                    'mphb-recommendation-reserve-button btn th-btn btn-'.esc_attr( $settings['button_reserve_style']),
+                    $themo_shortcode_render
+                );
+
+                // Confirm Button Style
+                $themo_shortcode_render = str_replace(
+                    'mphb-confirm-reservation',
+                    'mphb-confirm-reservation btn th-btn btn-'.esc_attr( $settings['button_confirm_style']),
+                    $themo_shortcode_render
+                );
+
+                // Dropdowns
+                $themo_shortcode_render = str_replace(
+                    'mphb-reserve-room-section',
+                    'mphb-reserve-room-section frm_form_field',
+                    $themo_shortcode_render
+                );
+
+
+
+                echo $themo_shortcode_render;
 
                 do_action('mphbe_after_search_results_widget_render', $atts);
                 ?>
