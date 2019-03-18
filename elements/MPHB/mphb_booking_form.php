@@ -10,11 +10,11 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Booking Form', 'th-widget-pack' );
+        return __( 'Accommodation Booking Request', 'th-widget-pack' );
     }
 
     public function get_icon() {
-        return 'eicon-form-horizontal';
+        return 'eicon-form-vertical';
     }
 
     public function get_categories() {

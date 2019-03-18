@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-bullet-list';
+        return 'eicon-price-list';
     }
 
     public function get_categories() {

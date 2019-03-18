@@ -10,7 +10,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Checkout Form', 'th-widget-pack' );
+        return __( 'Booking Confirmation Form', 'th-widget-pack' );
     }
 
     public function get_icon() {

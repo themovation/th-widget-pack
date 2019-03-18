@@ -81,14 +81,15 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         if('bellevue' == THEMO_CURRENT_THEME){
             // Check if the MotoPress Hotel Booking is active
             if (class_exists('HotelBookingPlugin')) {
+                require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_grid.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_availability_calendar.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_booking_form.php';
-                require_once THEMO_PATH . 'elements/MPHB/mphb_checkout_form.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_details.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_accommodation_rates.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_service_details.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_search_form.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_search_results.php';
+                require_once THEMO_PATH . 'elements/MPHB/mphb_checkout_form.php';
             }
         }
     }
@@ -123,6 +124,9 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
+    if (class_exists('HotelBookingPlugin')) {
+        require_once THEMO_PATH . 'inc/MPHB/cpt_mphb_room_type.php';
+    }
 }elseif('uplands' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_hole.php' ;
 }

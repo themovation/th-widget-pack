@@ -10,7 +10,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Accommodation Details', 'th-widget-pack' );
+        return __( 'Accommodation Details', 'th-widget-pack' );
     }
 
     public function get_icon() {

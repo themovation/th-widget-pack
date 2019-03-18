@@ -10,11 +10,11 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Search Availability Form', 'th-widget-pack' );
+        return __( 'Accommodation Availability Search', 'th-widget-pack' );
     }
 
     public function get_icon() {
-        return 'eicon-form-horizontal';
+        return 'eicon-site-search';
     }
 
     public function get_categories() {

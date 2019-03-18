@@ -10,11 +10,11 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Booking Availability Calendar', 'th-widget-pack' );
+        return __( 'Accommodation Availability Calendar', 'th-widget-pack' );
     }
 
     public function get_icon() {
-        return 'eicon-countdown';
+        return 'eicon-archive-posts';
     }
 
     public function get_categories() {

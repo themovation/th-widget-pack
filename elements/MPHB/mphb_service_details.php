@@ -10,11 +10,11 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Hotel Service Details', 'th-widget-pack' );
+        return __( 'Accommodation Service Details', 'th-widget-pack' );
     }
 
     public function get_icon() {
-        return 'eicon-bullet-list';
+        return 'eicon-menu-card';
     }
 
     public function get_categories() {
