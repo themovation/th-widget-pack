@@ -90,72 +90,38 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
-            'slide_text_align',
+        $this->add_control(
+            'inline_form',
             [
-                'label' => __( 'Align', 'th-widget-pack' ),
-                'type' => Controls_Manager::CHOOSE,
-                'label_block' => false,
+                'label' => __( 'Form Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'stacked',
                 'options' => [
-                    'left' => [
-                        'title' => __( 'Left', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __( 'Center', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-center',
-                    ],
-                    'right' => [
-                        'title' => __( 'Right', 'th-widget-pack' ),
-                        'icon' => 'fa fa-align-right',
-                    ],
-                ],
-                'default' => 'center',
-            ]
-        );*/
-
-        /*$this->add_control(
-            'calendar_align',
-            [
-                'label' => __( 'Center Align', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper' => 'margin: auto;',
-                    //'(mobile){{WRAPPER}} .mphb_sc_availability_calendar-wrapper .mphb-calendar .datepick' => 'margin: auto;'
-                ],
-            ]
-        );
-        $this->add_control(
-            'text_align',
-            [
-                'label' => __( 'Text Align', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper' => 'text-align: center;',
-                ],
-            ]
-        );*/
-
-        $this->add_control(
-            'full_width_submit_button',
-            [
-                'label' => __( 'Full Width Submit Button', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_checkout-submit-wrapper.frm_submit input' => 'width:100%;',
+                    'none' => __( 'Default', 'th-widget-pack' ),
+                    'stacked' => __( 'Stretched', 'th-widget-pack' ),
 
                 ],
             ]
         );
+
+        $this->add_control(
+            'slide_shortcode_border',
+            [
+                'label' => __( 'Form Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'none' => __( 'None', 'th-widget-pack' ),
+                    'th-form-bg th-light-bg' => __( 'Light', 'th-widget-pack' ),
+                    'th-form-bg th-dark-bg' => __( 'Dark', 'th-widget-pack' ),
+
+                ],
+                'condition' => [
+                    'inline_form' => 'stacked',
+                ],
+            ]
+        );
+
 
 
         $this->add_control(
@@ -323,9 +289,101 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
+
+            if ( function_exists( 'get_theme_mod' ) ) {
+                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+                if ($themo_mphb_styling == true) {
+
+                    // Add in special classes
+                    // Hotel Booking Form
+                    // Form Wrapper
+                    $th_shortcode = str_replace(
+                        'mphb_sc_checkout-wrapper',
+                        'mphb_sc_checkout-wrapper frm_forms with_frm_style',
+                        $th_shortcode
+                    );
+
+                    // Dropdowns Adults
+                    $th_shortcode = str_replace(
+                        'mphb-adults-chooser',
+                        'mphb-adults-chooser frm_form_field ',
+                        $th_shortcode
+                    );
+                    // Dropdowns Children
+                    $th_shortcode = str_replace(
+                        'mphb-children-chooser',
+                        'mphb-children-chooser frm_form_field ',
+                        $th_shortcode
+                    );
+
+                    // Dropdowns Guest Name
+                    $th_shortcode = str_replace(
+                        'mphb-guest-name-wrapper',
+                        'mphb-guest-name-wrapper frm_form_field ',
+                        $th_shortcode
+                    );
+
+                    // Additional Services
+                    $th_shortcode = str_replace(
+                        'mphb_checkout-services-list',
+                        'mphb_checkout-services-list frm_form_field frm_checkbox frm_radio ',
+                        $th_shortcode
+                    );
+
+                    // Book Now Button
+                    $th_shortcode = str_replace(
+                        'mphb_sc_checkout-submit-wrapper',
+                        'mphb_sc_checkout-submit-wrapper frm_submit',
+                        $th_shortcode
+                    );
+
+                    // Your Information Sections (name, email, phone, country, notes)
+
+                    $th_shortcode = str_replace(
+                        'mphb-customer-name',
+                        'mphb-customer-name frm_form_field ',
+                        $th_shortcode
+                    );
+                    $th_shortcode = str_replace(
+                        'mphb-customer-last-name',
+                        'mphb-customer-last-name frm_form_field ',
+                        $th_shortcode
+                    );
+                    $th_shortcode = str_replace(
+                        'mphb-customer-email',
+                        'mphb-customer-email frm_form_field ',
+                        $th_shortcode
+                    );
+                    $th_shortcode = str_replace(
+                        'mphb-customer-phone',
+                        'mphb-customer-phone frm_form_field ',
+                        $th_shortcode
+                    );
+                    $th_shortcode = str_replace(
+                        'mphb-customer-country',
+                        'mphb-customer-country frm_form_field ',
+                        $th_shortcode
+                    );
+                    $th_shortcode = str_replace(
+                        'mphb-customer-note',
+                        'mphb-customer-note frm_form_field ',
+                        $th_shortcode
+                    );
+
+                    //btn-1 btn th-btn btn-standard-primary
+                    $th_shortcode = str_replace(
+                        'mphb-apply-coupon-code-button',
+                        'mphb-apply-coupon-code-button btn th-btn btn-standard-primary',
+                        $th_shortcode
+                    );
+                }
+            }
+
+
             $th_form_border_class = false;
             $th_formidable_class = 'th-form-default';
-            /*if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
+
+            if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
                 switch ( $settings['inline_form'] ) {
                     case 'stacked':
                         $th_formidable_class = 'th-form-stacked';
@@ -337,23 +395,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                         $th_formidable_class = 'th-conversion';
                         break;
                 }
-            endif;*/
-
-            /* Form Styling
-            $th_cal_align_class = false;
-            if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
-                switch ( $settings['slide_text_align'] ) {
-                    case 'left':
-                        $th_cal_align_class = ' th-left';
-                        break;
-                    case 'center':
-                        $th_cal_align_class = ' th-centered';
-                        break;
-                    case 'right':
-                        $th_cal_align_class = ' th-right';
-                        break;
-                }
-            }*/
+            endif;
 
             $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
             //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );

@@ -59,8 +59,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
         );
 
         $this->end_controls_section();
-
-        //.mphb-loop-room-type-attributes li:before, .mphb-single-room-type-attributes li:before, .mphb-widget-room-type-attributes li:before
+        
 
 
         $this->start_controls_section(

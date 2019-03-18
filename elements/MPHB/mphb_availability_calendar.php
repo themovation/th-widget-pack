@@ -37,7 +37,6 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         $this->add_control('type_id', array(
             'type'        => Controls_Manager::TEXT,
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
-            //'description' => __('ID of Accommodation Type to display availability.', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
         ));
@@ -45,10 +44,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         $this->add_control('months_to_show', array(
             'type'        => Controls_Manager::TEXT,
             'label'       => __('Months to display', 'th-widget-pack'),
-            //'description' => __('How many calendar months would you like to show?', 'th-widget-pack'),
             'default'     => '3'
-
-            //.themo_mphb_availability_calendar{max-width:850px;}
         ));
 
         $this->add_control(
@@ -87,7 +83,6 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_availability_calendar' => 'margin: auto;',
-                    //'(mobile){{WRAPPER}} .mphb_sc_availability_calendar-wrapper .mphb-calendar .datepick' => 'margin: auto;'
                 ],
             ]
         );

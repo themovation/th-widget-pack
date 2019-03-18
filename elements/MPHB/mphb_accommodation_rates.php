@@ -40,27 +40,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
             'label_block' => true,
         ));
 
-
-        /*$this->add_control(
-            'show_titles',
-            [
-                'label' => __( 'Show Titles', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'devices' => [ 'desktop', 'tablet', 'mobile' ],
-                'desktop_default' => '',
-                'tablet_default' => '',
-                'mobile_default'=> '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'display: inherit;'
-                ],
-            ]
-        );*/
-
         $this->end_controls_section();
-
-        //.mphb-loop-room-type-attributes li:before, .mphb-single-room-type-attributes li:before, .mphb-widget-room-type-attributes li:before
 
 
         $this->start_controls_section(

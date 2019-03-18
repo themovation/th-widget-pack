@@ -45,7 +45,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
         $this->add_control(
             'inline_form',
             [
-                'label' => __( 'Formidable Form Style', 'th-widget-pack' ),
+                'label' => __( 'Form Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
                 'default' => 'none',
                 'options' => [
@@ -272,6 +272,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }
         }
 
+        //echo $settings['type_id'];
         if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
 
             /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
@@ -280,9 +281,64 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 $th_monthstoshow=2;
             }*/
 
-            $th_shortcode = '[mphb_availability id='.$settings['type_id'].']';
+            $th_shortcode = '[mphb_availability id="'.$settings['type_id'].'"]';
+
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
+
+            // Add in special classes
+
+            if ( function_exists( 'get_theme_mod' ) ) {
+                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+                if ($themo_mphb_styling == true) {
+
+                    // Check Availabilty button
+                    $th_shortcode = str_replace(
+                        'mphb-reserve-btn-wrapper',
+                        'mphb-reserve-btn-wrapper frm_submit',
+                        $th_shortcode
+                    );
+                    // Confirm Reservation button
+                    $th_shortcode = str_replace(
+                        'mphb-reserve-room-section',
+                        'mphb-reserve-room-section frm_submit',
+                        $th_shortcode
+                    );
+                    // Date picker / checkin / checkout form
+                    $th_shortcode = str_replace(
+                        'mphb_sc_booking_form-wrapper',
+                        'mphb_sc_booking_form-wrapper frm_forms with_frm_style',
+                        $th_shortcode
+                    );
+                    // Check-in field
+                    $th_shortcode = str_replace(
+                        'mphb-check-in-date-wrapper',
+                        'mphb-check-in-date-wrapper frm_form_field',
+                        $th_shortcode
+                    );
+                    // Check-out field
+                    $th_shortcode = str_replace(
+                        'mphb-check-out-date-wrapper',
+                        'mphb-check-out-date-wrapper frm_form_field',
+                        $th_shortcode
+                    );
+
+                    // Dropdowns Adults
+                    $th_shortcode = str_replace(
+                        'mphb-adults-wrapper',
+                        'mphb-adults-wrapper frm_form_field',
+                        $th_shortcode
+                    );
+                    // Dropdowns Children
+                    $th_shortcode = str_replace(
+                        'mphb-check-children-date-wrapper',
+                        'mphb-check-children-date-wrapper frm_form_field',
+                        $th_shortcode
+                    );
+                }
+            }
+
+
 
             $th_form_border_class = false;
             $th_formidable_class = 'th-form-default';

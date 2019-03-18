@@ -115,18 +115,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             ]
         );
 
-        /*$this->add_control('section_heading', array(
-            'type'        => Controls_Manager::SWITCHER,
-            'label'       => __('Section Heading', 'th-widget-pack'),
-            //'description' => __('Whether to display title of the accommodation type.', 'th-widget-pack'),
-            'label_on' => __( 'On', 'th-widget-pack' ),
-            'label_off' => __( 'Off', 'th-widget-pack' ),
-            'selectors' => [
-                '{{WRAPPER}} .mphb-reservation-details' => 'display:none',
-            ],
-            'default' => '',
-        ));*/
-
         $this->add_control('title', array(
             'type'        => Controls_Manager::SWITCHER,
             'label'       => __('Title', 'th-widget-pack'),
@@ -227,19 +215,11 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'default'     => 'menu_order',
             'options'     => array(
                 'none'           => __('No order', 'th-widget-pack'),
-                //'ID'             => __('Post ID', 'th-widget-pack'),
-                //'author'         => __('Post author', 'th-widget-pack'),
                 'title'          => __('Post title', 'th-widget-pack'),
                 'name'           => __('Post name (post slug)', 'th-widget-pack'),
                 'date'           => __('Post date', 'th-widget-pack'),
-                //'modified'       => __('Last modified date', 'th-widget-pack'),
-                //'parent'         => __('Parent ID', 'th-widget-pack'),
                 'rand'           => __('Random order', 'th-widget-pack'),
-                //'comment_count'  => __('Number of comments', 'th-widget-pack'),
-                //'relevance'      => __('Relevance', 'th-widget-pack'),
                 'menu_order'     => __('Page order', 'th-widget-pack'),
-                //'meta_value'     => __('Meta value', 'th-widget-pack'),
-                //'meta_value_num' => __('Numeric meta value', 'th-widget-pack'),
                 'post__in'       => __('Price', 'th-widget-pack')
             )
         ));
@@ -253,32 +233,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'DESC'           => __('Descending (3,2,1)', 'th-widget-pack')
             )
         ));
-
-        /*$this->add_control('meta_key', array(
-            'type'        => Controls_Manager::TEXT,
-            'label'       => __('Meta Name', 'th-widget-pack'),
-            'description' => __('Custom field name. Required if "orderby" is one of the "meta_value", "meta_value_num" or "meta_value_*".', 'th-widget-pack'),
-            'default'     => ''
-        ));*/
-
-        /*$this->add_control('meta_type', array(
-            'type'        => Controls_Manager::SELECT,
-            'label'       => __('Meta Type', 'th-widget-pack'),
-            'description' => __('Specified type of the custom field. Can be used in conjunction with "orderby" = "meta_value".', 'th-widget-pack'),
-            'default'     => '',
-            'options'     => array(
-                ''               => __('Any', 'th-widget-pack'),
-                'NUMERIC'        => __('Numeric', 'th-widget-pack'),
-                'BINARY'         => __('Binary', 'th-widget-pack'),
-                'CHAR'           => __('String', 'th-widget-pack'),
-                'DATE'           => __('Date', 'th-widget-pack'),
-                'TIME'           => __('Time', 'th-widget-pack'),
-                'DATETIME'       => __('Date and time', 'th-widget-pack'),
-                'DECIMAL'        => __('Decimal number', 'th-widget-pack'),
-                'SIGNED'         => __('Signed number', 'th-widget-pack'),
-                'UNSIGNED'       => __('Unsigned number', 'th-widget-pack')
-            )
-        ));*/
 
         $this->end_controls_section();
 
@@ -412,7 +366,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'recommendation_list_color',
             [
                 'label' => __( 'Text', 'th-widget-pack' ),
-                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -441,7 +394,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'recommendation_price_color',
             [
                 'label' => __( 'Price', 'th-widget-pack' ),
-                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -503,7 +455,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'cart_text_color',
             [
                 'label' => __( 'Cart Text', 'th-widget-pack' ),
-                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -531,7 +482,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             'cart_price_color',
             [
                 'label' => __( 'Price', 'th-widget-pack' ),
-                //'description' => __('Displays above Recommendation Section. Example: "2 accommodations found from [Start Date] - till [End Date]', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -867,40 +817,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         $settings = $this->get_settings();
         $atts = $this->get_settings();
 
-        // Cart Wrapper
-
-
-
-
-        //echo '<pre>';
-        //print_r($atts);
-        //echo '</pre>';
-
-        //do_action('mphbe_before_search_results_widget_render', $atts);
-
-        //echo '<pre>';
-        //print_r($atts);
-        //echo '</pre>';
-
-        //$shortcode = MPHB()->getShortcodes()->getSearchResults();
-        //echo $shortcode->render($atts, null, $shortcode->getName());
-
-        //do_action('mphbe_after_search_results_widget_render', $atts);
-
-
-            //$th_shortcode = '[mphb_search_results'.$atts.']';
-            //$th_shortcode = sanitize_text_field( $th_shortcode );
-            //$th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
-
-            $th_form_border_class = false;
-            //$th_formidable_class = 'th-form-default';
-
-            //$this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
-            //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
-            //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
-            //$this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
-            //$this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
-            //$this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
 
             $themo_form_styling = false;
             if ( function_exists( 'get_theme_mod' ) ) {
@@ -916,11 +832,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
                 $shortcode = MPHB()->getShortcodes()->getSearchResults();
 
-                /*echo "<pre>";
-                print_r($shortcode);
-                echo "</pre>";*/
                 $themo_shortcode_render = $shortcode->render($atts, null, $shortcode->getName());
-
 
                 // Wrapper
                 $themo_shortcode_render = str_replace(
@@ -928,7 +840,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                     'mphb_sc_search_results-wrapper frm_forms with_frm_style',
                     $themo_shortcode_render
                 );
-
 
                 // Book Button Style
                 $themo_shortcode_render = str_replace(
@@ -957,8 +868,6 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                     'mphb-reserve-room-section frm_form_field',
                     $themo_shortcode_render
                 );
-
-
 
                 echo $themo_shortcode_render;
 
