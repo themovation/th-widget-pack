@@ -91,6 +91,9 @@ if ( ! function_exists( 'themovation_elements' ) ) {
                 require_once THEMO_PATH . 'elements/MPHB/mphb_search_results.php';
                 require_once THEMO_PATH . 'elements/MPHB/mphb_checkout_form.php';
             }
+            if (function_exists('wpbs_menu')) {
+                require_once THEMO_PATH . 'elements/WPBS/wp-booking-system.php';
+            }
         }
     }
 }
@@ -101,6 +104,7 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
+
     if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
         return;
     }
