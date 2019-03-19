@@ -27,6 +27,59 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
     protected function _register_controls() {
         $this->start_controls_section(
+            'section_tooltip',
+            [
+                'label' => __( 'Tooltip Title', 'th-widget-pack' ),
+            ]
+        );
+
+        $this->add_control(
+            'tooltip_title',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => __( 'Book Today', 'th-widget-pack' ),
+                'placeholder' => __( 'Book here', 'th-widget-pack' ),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'tooltip_color',
+            [
+                'label' => __( 'Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#FFFFFF',
+                'selectors' => [
+                    '{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tooltip_background',
+            [
+                'label' => __( 'Background Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-cal-tooltip' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-cal-tooltip:after' => 'border-top-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'section_shortcode',
             [
                 'label' => __( 'Availability Calendar', 'th-widget-pack' ),
@@ -98,6 +151,8 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
         $settings = $this->get_settings();
 
+        $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip' );
+
         // If Accommodation type id field is empty, try to get the id automatically.
         if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {
             if(isset($post->ID )&& $post->ID > ""){
@@ -123,7 +178,12 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
             ?>
-            <div class="elementor-shortcode themo_mphb_availability_calendar"><?php echo $th_shortcode; ?></div>
+            <div class="elementor-shortcode themo_mphb_availability_calendar">
+                <?php if( $settings['tooltip_title'] ) : ?>
+                    <div <?php echo $this->get_render_attribute_string( 'th-cal-tooltip'); ?>><h3><?php echo esc_html( $settings['tooltip_title'] ); ?></h3></div>
+                <?php endif; ?>
+                <?php echo $th_shortcode; ?>
+            </div>
             <?php
         }
     }
