@@ -14,7 +14,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-insert-image';
+		return 'eicon-gallery-grid';
 	}
 
     public function get_categories() {
