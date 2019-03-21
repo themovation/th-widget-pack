@@ -131,7 +131,7 @@ function th_register_project_meta_boxes()
         'title' => __('Course Guide Options', 'th-widget-pack'),
         'pages' => array('themo_hole'),
         'context' => 'normal',
-        'priority' => 'sorted',
+        'priority' => 'default',
         'fields' => array(
             // START PAGE LAYOUT META BOX
 

@@ -130,9 +130,9 @@ function th_register_room_meta_boxes()
     $themo_rooms_meta_box = array(
         'id' => 'th_rooms_meta_box',
         'title' => __('Room Grid Options', 'bellevue'),
-        'pages' => array('themo_room','mphb_room_type'),
+        'pages' => array('themo_room'),
         'context' => 'normal',
-        'priority' => 'sorted',
+        'priority' => 'default',
         'fields' => array(
             // START PAGE LAYOUT META BOX
 

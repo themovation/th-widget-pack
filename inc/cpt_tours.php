@@ -131,7 +131,7 @@ function th_register_tour_meta_boxes()
         'title' => __('Tour Grid Options', 'th-widget-pack'),
         'pages' => array('themo_tour'),
         'context' => 'normal',
-        'priority' => 'sorted',
+        'priority' => 'default',
         'fields' => array(
             // START PAGE LAYOUT META BOX
 

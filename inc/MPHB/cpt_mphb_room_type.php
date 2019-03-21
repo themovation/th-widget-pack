@@ -18,7 +18,7 @@ function th_register_mphb_room_type_meta_boxes()
         'title' => __('Accommodation Grid Options', 'bellevue'),
         'pages' => array('mphb_room_type'),
         'context' => 'normal',
-        'priority' => 'sorted',
+        'priority' => 'default',
         'fields' => array(
             // START PAGE LAYOUT META BOX
 
