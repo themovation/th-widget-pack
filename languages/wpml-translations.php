@@ -108,7 +108,9 @@ class Themo_Elementor_Translate {
 			    require_once THEMO_PATH . '/elements/package_2.php';
 			    require_once THEMO_PATH . '/elements/itinerary.php';
 				require_once THEMO_PATH . '/elements/room-info.php';
-				require_once THEMO_PATH . '/elements/MPHB/mphb_availability_calendar.php';
+                if (class_exists('HotelBookingPlugin')) {
+                    require_once THEMO_PATH . '/elements/MPHB/mphb_availability_calendar.php';
+                }
                 require_once THEMO_PATH . '/elements/pricing-list.php';
 				break;
 
@@ -205,8 +207,11 @@ class Themo_Elementor_Translate {
 				$itinerary->add_wpml_support();
 				$roominfo = new RoomInfo();
 				$roominfo->add_wpml_support();
-				$booking = new Booking();
-				$booking->add_wpml_support();
+
+				if(class_exists('Booking')){
+                    $booking = new Booking();
+                    $booking->add_wpml_support();
+                }
 				break;
 
             case 'uplands':
