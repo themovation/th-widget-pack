@@ -160,6 +160,19 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
                 $themo_post_type = get_post_type($postID);
                 if(isset($themo_post_type) && $themo_post_type=='mphb_room_type'){
                     $settings['type_id'] = $postID;
+                }else{
+                    $themo_mphb_args = array(
+                        'orderby' => 'rand',
+                        'posts_per_page' => '1',
+                        'post_type' => 'mphb_room_type'
+                    );
+                    $mphb_room_type_loop = new \WP_Query( $themo_mphb_args );
+                    while ( $mphb_room_type_loop->have_posts() ) : $mphb_room_type_loop->the_post();
+                        $mphb_room_type_id = get_the_ID();
+                        $settings['type_id'] = $mphb_room_type_id;
+                    endwhile;
+
+
                 }
             }
         }
