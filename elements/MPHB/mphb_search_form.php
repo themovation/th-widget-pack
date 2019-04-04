@@ -78,7 +78,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'label' => __( 'Formidable Form Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'none',
+                'default' => 'inline',
                 'options' => [
                     'none' => __( 'Default', 'th-widget-pack' ),
                     'inline' => __( 'Inline', 'th-widget-pack' ),
@@ -157,7 +157,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'label' => __( 'Hide Required Tips', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => '',
+                'default' => 'label_on',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
@@ -267,6 +267,49 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         $th_shortcode = '[mphb_availability_search adults='.$settings['adults'].' children='.$settings['children'].']';
         $th_shortcode = sanitize_text_field( $th_shortcode );
         $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
+
+
+        // Form Wrapper
+        $th_shortcode = str_replace(
+            'mphb_sc_search-wrapper',
+            'mphb_sc_search-wrapper frm_forms with_frm_style',
+            $th_shortcode
+        );
+
+        // Check-in field
+        $th_shortcode = str_replace(
+            'mphb_sc_search-check-in-date',
+            'mphb_sc_search-check-in-date frm_form_field',
+            $th_shortcode
+        );
+
+        // Check-out field
+        $th_shortcode = str_replace(
+            'mphb_sc_search-check-out-date',
+            'mphb_sc_search-check-out-date frm_form_field',
+            $th_shortcode
+        );
+
+        // Dropdowns Adults
+        $th_shortcode = str_replace(
+            'mphb_sc_search-adults',
+            'mphb_sc_search-adults frm_form_field',
+            $th_shortcode
+        );
+        // Dropdowns Children
+        $th_shortcode = str_replace(
+            'mphb_sc_search-children',
+            'mphb_sc_search-children frm_form_field',
+            $th_shortcode
+        );
+
+        // Confirm Reservation button
+        $th_shortcode = str_replace(
+            'mphb_sc_search-submit-button-wrapper',
+            'mphb_sc_search-submit-button-wrapper frm_submit',
+            $th_shortcode
+        );
+
 
         $th_form_border_class = false;
         $th_formidable_class = 'th-form-default';
