@@ -330,6 +330,13 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                         $th_shortcode
                     );
 
+                    // Payment Gateways
+                    $th_shortcode = str_replace(
+                        'mphb-gateways-list',
+                        'mphb-gateways-list frm_form_field frm_checkbox frm_radio ',
+                        $th_shortcode
+                    );
+
                     // Book Now Button
                     $th_shortcode = str_replace(
                         'mphb_sc_checkout-submit-wrapper',
