@@ -283,7 +283,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             ]
         );
 
-        error_log("RGBA NEW: ".$default_rgba,0);
+        
 
         $this->add_control(
             'hover_color_desktop',
