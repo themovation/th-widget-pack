@@ -425,10 +425,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Desktop', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+
                 'default' => $default_rgba,
                 'selectors' => [
                     '(desktop){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
