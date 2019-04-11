@@ -206,10 +206,10 @@ class Themo_Widget_Course_Guide extends Widget_Base {
             [
                 'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
+                /*'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
-                ],
+                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -241,10 +241,10 @@ class Themo_Widget_Course_Guide extends Widget_Base {
             [
                 'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
+                /*'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
-                ],
+                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
