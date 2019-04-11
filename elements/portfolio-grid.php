@@ -174,7 +174,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 $default_rgba = $default_hex;
             }
 
-            //error_log("RGBA: ".$default_rgba,0);
+
         }
 
 
@@ -208,9 +208,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
-                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
                 ],
-                //'label_block' => true,
             ]
         );
 
@@ -245,6 +243,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-port-center' => 'opacity: 1;',
+
                 ],
             ]
         );
@@ -284,15 +283,13 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             ]
         );
 
+        error_log("RGBA NEW: ".$default_rgba,0);
+
         $this->add_control(
             'hover_color_desktop',
             [
                 'label' => __( 'Background Color for Desktop', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => $default_rgba,
                 'selectors' => [
                     '(desktop){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -314,13 +311,9 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    //'{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'opacity: 0;',
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-top-text' => 'opacity: 0;',
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-center' => 'opacity: 0;',
-                    //'(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
-                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
                 ],
-                //'separator' => 'before'
 
             ]
         );
