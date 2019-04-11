@@ -174,7 +174,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 $default_rgba = $default_hex;
             }
 
-            error_log("RGBA: ".$default_rgba,0);
+            //error_log("RGBA: ".$default_rgba,0);
         }
 
 
