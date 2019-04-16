@@ -625,7 +625,7 @@ function th_glyphicon( $atts, $content = null ) {
 
     if($icon > ""){
         $glyphicon_sets = array("halflings","social","filetype");
-        if(!th_string_contains($icon, $glyphicon_sets)){
+        if(function_exists('th_string_contains') && !th_string_contains($icon, $glyphicon_sets)){
             $icon = "$icon";
         }
     }elseif($icon_halflings > ""){
