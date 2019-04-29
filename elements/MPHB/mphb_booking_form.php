@@ -273,7 +273,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
         }
 
         //echo $settings['type_id'];
-        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
+        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id']) && is_numeric($settings['type_id']) ) {
 
             /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
                 $th_monthstoshow = $settings['months_to_show'];
