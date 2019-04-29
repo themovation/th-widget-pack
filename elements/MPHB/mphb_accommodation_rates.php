@@ -167,7 +167,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
             }
         }
 
-        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id'] && is_numeric($settings['type_id'])) ) {
+        if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id']) && is_numeric($settings['type_id']) ) {
 
             $th_shortcode = '[mphb_rates id='.$settings['type_id'].']';
             $th_shortcode = sanitize_text_field( $th_shortcode );
