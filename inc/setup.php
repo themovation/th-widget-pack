@@ -268,13 +268,19 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
     function th_add_custom_controls_elem_post_settings_top(\Elementor\Core\DocumentTypes\Post $page)
     {
+        // Is elementor Pro loaded
+        $elm_pro_loaded = false;
+        if( function_exists( 'elementor_pro_load_plugin' ) ) {
+            $elm_pro_loaded = true;
+        }
+
 
         if(isset($page) && $page->get_id() > ""){
             $th_post_type = false;
             $th_post_type = get_post_type($page->get_id());
             if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' ||
                 $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'||
-                $th_post_type == 'mphb_room_service'){
+                $th_post_type == 'mphb_room_service' || ($elm_pro_loaded && $th_post_type == 'post')  || ($elm_pro_loaded && $th_post_type == 'revision')){
 
                 $page->add_control(
                     'themo_transparent_header',
