@@ -14,7 +14,7 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-slideshow';
+		return 'th-linea icon-arrows-square-right';
 	}
 
 	public function get_categories() {
