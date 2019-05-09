@@ -14,7 +14,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-animation-text';
+		return 'th-linea icon-software-character';
 	}
 
 	public function get_categories() {
