@@ -56,8 +56,8 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         $this->add_control('adults', array(
             'type'        => Controls_Manager::NUMBER,
-            'label'       => __('Adults', 'mphb-elementor'),
-            'description' => __('The number of adults presetted in the search form.', 'mphb-elementor'),
+            'label'       => __('Adults', 'th-widget-pack'),
+            'description' => __('The number of adults presetted in the search form.', 'th-widget-pack'),
             'default'     => $minAdults,
             'min'         => $minAdults,
             'max'         => $maxAdults
@@ -65,11 +65,19 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         $this->add_control('children', array(
             'type'        => Controls_Manager::NUMBER,
-            'label'       => __('Children', 'mphb-elementor'),
-            'description' => __('The number of children presetted in the search form.', 'mphb-elementor'),
+            'label'       => __('Children', 'th-widget-pack'),
+            'description' => __('The number of children presetted in the search form.', 'th-widget-pack'),
             'default'     => $minChildren,
             'min'         => $minChildren,
             'max'         => $maxChildren
+        ));
+
+        $this->add_control('attributes', array(
+            'type'        => Controls_Manager::TEXT,
+            'label'       => __('Attributes', 'th-widget-pack'),
+            'description' => __('Custom attributes for advanced search.', 'th-widget-pack'),
+            'placeholder' => __('Slugs of attributes', 'th-widget-pack'),
+            'default'     => ''
         ));
 
 
@@ -264,51 +272,32 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         $settings = $this->get_settings();
 
-        $th_shortcode = '[mphb_availability_search adults='.$settings['adults'].' children='.$settings['children'].']';
-        $th_shortcode = sanitize_text_field( $th_shortcode );
-        $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
+        // Include MPHB hook
+        do_action('mphbe_before_search_form_widget_render', $settings);
 
+        if(is_object(MPHB())){
+            $themo_MPHB_shortcode = MPHB()->getShortcodes()->getSearch();
+            $th_shortcode = $themo_MPHB_shortcode->render($settings, null, $themo_MPHB_shortcode->getName());
+        }
 
-        // Form Wrapper
-        $th_shortcode = str_replace(
-            'mphb_sc_search-wrapper',
-            'mphb_sc_search-wrapper frm_forms with_frm_style',
-            $th_shortcode
-        );
+        /*
+        *  We need to add our own form style classes here to match the style of the theme.
+        *  Add frm_form_field class to all classes starting with mphb_sc_search-
+        *  Exclude classes mphb_sc_search-wrapper , mphb_sc_search-form, mphb_sc_search-submit
+        */
+        $themo_pattern = '/mphb_sc_search-(?!wrapper|form|submit-button-wrapper)([^"]*)/';
+        $themo_replacement = 'mphb_sc_search-$1 frm_form_field';
+        $th_shortcode = preg_replace($themo_pattern, $themo_replacement,$th_shortcode);
 
-        // Check-in field
-        $th_shortcode = str_replace(
-            'mphb_sc_search-check-in-date',
-            'mphb_sc_search-check-in-date frm_form_field',
-            $th_shortcode
-        );
+        // Add with_frm_style to wrapper classes
+        $themo_pattern = '/mphb_sc_search-wrapper([^"]*)/';
+        $themo_replacement = 'mphb_sc_search-wrapper$1 frm_forms with_frm_style';
+        $th_shortcode = preg_replace($themo_pattern, $themo_replacement,$th_shortcode);
 
-        // Check-out field
-        $th_shortcode = str_replace(
-            'mphb_sc_search-check-out-date',
-            'mphb_sc_search-check-out-date frm_form_field',
-            $th_shortcode
-        );
-
-        // Dropdowns Adults
-        $th_shortcode = str_replace(
-            'mphb_sc_search-adults',
-            'mphb_sc_search-adults frm_form_field',
-            $th_shortcode
-        );
-        // Dropdowns Children
-        $th_shortcode = str_replace(
-            'mphb_sc_search-children',
-            'mphb_sc_search-children frm_form_field',
-            $th_shortcode
-        );
-
-        // Confirm Reservation button
-        $th_shortcode = str_replace(
-            'mphb_sc_search-submit-button-wrapper',
-            'mphb_sc_search-submit-button-wrapper frm_submit',
-            $th_shortcode
-        );
+        // Add frm_submit to submit button class
+        $themo_pattern = '/mphb_sc_search-submit-button-wrapper([^"]*)/';
+        $themo_replacement = 'mphb_sc_search-submit-button-wrapper$1 frm_submit';
+        $th_shortcode = preg_replace($themo_pattern, $themo_replacement,$th_shortcode);
 
 
         $th_form_border_class = false;
@@ -357,9 +346,12 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
             }
         }
+
         ?>
         <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
         <?php
+        // Include MPHB hook
+        do_action('mphbe_after_search_form_widget_render', $settings);
 
     }
 
