@@ -1,3 +1,8 @@
+/* Elementor Widget Icon Styling */
+.elementor-panel .elementor-element .icon .th-linea{
+  font-size: 23px;
+}
+
 /* Linea Arrows */
 
 @font-face {
