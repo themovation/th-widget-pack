@@ -651,7 +651,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
-                                echo '<img width="605" height="605" src="http://deelay.me/1000/https://maddie.themovation.com/embark/wp-content/uploads/2019/10/tour6-605x605.jpg" class="img-responsive th-port-img wp-post-image" alt="">';
+                                echo '<img width="605" height="605" src="http://deelay.me/1000/https://source.unsplash.com/random/605x605" class="img-responsive th-port-img wp-post-image" alt="">';
                                 /*if ( isset( $th_image_url ) && $th_image_url > "" ) {
                                     echo '<img class="img-responsive th-port-img" src="' . esc_url( $th_image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
                                 } else {
