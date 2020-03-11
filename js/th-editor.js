@@ -5,22 +5,28 @@ jQuery( function( $ ) {
 
     if (typeof $e != "undefined" ){
 
-        console.log("Loading Page Settings Panel");
+        //console.log("Loading Page Settings Panel");
 
         // Page Layout Options
         elementor.settings.page.addChangeCallback( 'themo_page_layout', function( newValue ) {
             // Here you can do as you wish with the newValue
             //console.log("themo_page_layout");
 
-            $e.run('document/save/auto', {
-                force:true,
-                onSuccess:function(){
-                    elementor.reloadPreview();
-                    elementor.once('preview:loaded',function(){
-                        $e.route('panel/page-settings/settings')}
-                    )
-                }
-            });
+            try{
+            //code that causes an error
+                $e.run('document/save/auto', {
+                    force:true,
+                    onSuccess:function(){
+                        elementor.reloadPreview();
+                        elementor.once('preview:loaded',function(){
+                            $e.route('panel/page-settings/settings')}
+                        )
+                    }
+                });
+
+            }catch(e){
+                console.log("Failed to update Page Settings.");
+            }
 
         } );
 
@@ -30,15 +36,21 @@ jQuery( function( $ ) {
 
             //onsole.log("themo_transparent_header");
 
-            $e.run('document/save/auto', {
-                force:true,
-                onSuccess:function(){
-                    elementor.reloadPreview();
-                    elementor.once('preview:loaded',function(){
-                        $e.route('panel/page-settings/settings')}
-                    )
-                }
-            });
+            try{
+                //code that causes an error
+                $e.run('document/save/auto', {
+                    force:true,
+                    onSuccess:function(){
+                        elementor.reloadPreview();
+                        elementor.once('preview:loaded',function(){
+                            $e.route('panel/page-settings/settings')}
+                        )
+                    }
+                });
+
+            }catch(e){
+                console.log("Failed to update Page Settings.");
+            }
 
 
         } );
@@ -49,15 +61,21 @@ jQuery( function( $ ) {
 
             //console.log("themo_header_content_style");
 
-            $e.run('document/save/auto', {
-                force:true,
-                onSuccess:function(){
-                    elementor.reloadPreview();
-                    elementor.once('preview:loaded',function(){
-                        $e.route('panel/page-settings/settings')}
-                    )
-                }
-            });
+            try{
+                //code that causes an error
+                $e.run('document/save/auto', {
+                    force:true,
+                    onSuccess:function(){
+                        elementor.reloadPreview();
+                        elementor.once('preview:loaded',function(){
+                            $e.route('panel/page-settings/settings')}
+                        )
+                    }
+                });
+
+            }catch(e){
+                console.log("Failed to update Page Settings.");
+            }
 
         } );
 
@@ -67,15 +85,21 @@ jQuery( function( $ ) {
 
             //console.log("themo_alt_logo");
 
-            $e.run('document/save/auto', {
-                force:true,
-                onSuccess:function(){
-                    elementor.reloadPreview();
-                    elementor.once('preview:loaded',function(){
-                        $e.route('panel/page-settings/settings')}
-                    )
-                }
-            });
+            try{
+                //code that causes an error
+                $e.run('document/save/auto', {
+                    force:true,
+                    onSuccess:function(){
+                        elementor.reloadPreview();
+                        elementor.once('preview:loaded',function(){
+                            $e.route('panel/page-settings/settings')}
+                        )
+                    }
+                });
+
+            }catch(e){
+                console.log("Failed to update Page Settings.");
+            }
         });
     }
 });
