@@ -80,8 +80,8 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
     }
 }
 if( function_exists( 'elementor_load_plugin_textdomain' ) ) {
-    add_action('admin_head', 'sync_ot_and_elem_page_settings'); // When WP Admin is loaded
-    add_action('template_redirect', 'sync_ot_and_elem_page_settings'); // When Pages and posts are loaded
+    //add_action('admin_head', 'sync_ot_and_elem_page_settings'); // When WP Admin is loaded
+    //add_action('template_redirect', 'sync_ot_and_elem_page_settings'); // When Pages and posts are loaded
     //add_action( 'elementor/editor/after_save', 'th_update_elem_page_settings_post_meta') ; // When Elementor Editor is saved.
 }
 
@@ -258,3 +258,30 @@ function th_wrap_sidebar_after( \Elementor\Widget_Base $widget ) {
         }
     }
 }
+
+// On Elementor save, update old page settings post meta
+if ( ! function_exists( 'themov_update_meta' ) ) {
+    function themov_update_meta($doc, $data){
+
+        if(isset($doc) && isset($data)){
+
+            $post_id = $doc->get_post()->ID;
+
+            $elm_trans_header = isset( $data['settings']['themo_transparent_header'] ) ? $data['settings']['themo_transparent_header'] : 'off';
+            $elm_page_layout = isset( $data['settings']['themo_page_layout'] ) ? $data['settings']['themo_page_layout'] : '';
+            $elm_hide_title = isset( $data['settings']['hide_title'] ) ? $data['settings']['hide_title'] : 'off';
+            $elm_header_content_style = isset( $data['settings']['themo_header_content_style'] ) ? $data['settings']['themo_header_content_style'] : 'dark';
+            $elm_alt_logo = isset( $data['settings']['themo_alt_logo'] ) ? $data['settings']['themo_alt_logo'] : 'on';
+
+            update_post_meta($post_id, 'themo_transparent_header', $elm_trans_header);
+            update_post_meta($post_id, 'themo_page_layout', $elm_page_layout);
+            update_post_meta($post_id, 'themo_hide_title', $elm_hide_title); //hide_title
+            update_post_meta($post_id, 'themo_header_content_style', $elm_header_content_style);
+            update_post_meta($post_id, 'themo_alt_logo', $elm_alt_logo);
+        }
+
+    }
+}
+
+// Update Meta Data
+add_action( 'elementor/document/before_save', 'themov_update_meta', 10, 2 );

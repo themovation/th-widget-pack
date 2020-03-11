@@ -5,8 +5,12 @@
 
 
 (function() {
+
     var runMyCode = function($) {
-        if ( undefined !== window.elementor ) {
+
+
+        if ( undefined !== window.elementorModules ) {
+
             /*
              $( "header[data-transparent-header='true']:not('.headhesive--clone')" ).prepend( "<p class='hide-nav'><a href=''>Test</a></p>" );
              */
@@ -49,10 +53,6 @@
                     $( ".hide-nav-wrap" ).trigger( "click" ); // Hide Nav on Start.
                 }, 2000);
             }
-
-
-
-
 
         }
     };
