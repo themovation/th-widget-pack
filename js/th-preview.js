@@ -8,9 +8,8 @@
 
     var runMyCode = function($) {
 
-
-        if ( undefined !== window.elementorModules ) {
-
+        /* Only for Elementor Live Preview */
+        if ( (typeof window.window.frameElement.id != "undefined" && window.frameElement.id === "elementor-preview-iframe") ) {
             /*
              $( "header[data-transparent-header='true']:not('.headhesive--clone')" ).prepend( "<p class='hide-nav'><a href=''>Test</a></p>" );
              */
