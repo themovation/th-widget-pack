@@ -270,7 +270,7 @@ if ( ! function_exists( 'themov_update_meta' ) ) {
             $elm_trans_header = isset( $data['settings']['themo_transparent_header'] ) ? $data['settings']['themo_transparent_header'] : 'off';
             $elm_page_layout = isset( $data['settings']['themo_page_layout'] ) ? $data['settings']['themo_page_layout'] : '';
             $elm_hide_title = isset( $data['settings']['hide_title'] ) ? $data['settings']['hide_title'] : 'off';
-            $elm_header_content_style = isset( $data['settings']['themo_header_content_style'] ) ? $data['settings']['themo_header_content_style'] : 'dark';
+            $elm_header_content_style = isset( $data['settings']['themo_header_content_style'] ) ? $data['settings']['themo_header_content_style'] : 'light';
             $elm_alt_logo = isset( $data['settings']['themo_alt_logo'] ) ? $data['settings']['themo_alt_logo'] : 'on';
 
             update_post_meta($post_id, 'themo_transparent_header', $elm_trans_header);
