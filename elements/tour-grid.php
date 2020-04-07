@@ -424,7 +424,8 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         $folio_id = 'th-portfolio-' . ++$th_folio_count;
 
 
-        switch( $settings['columns'] ) {
+
+         switch( $settings['columns'] ) {
             case 2:
                 $portfolio_row = ' two-columns';
                 $portfolio_item = array('th-portfolio-item', 'item', 'col-sm-6');
@@ -445,6 +446,9 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 $portfolio_row = '';
                 $portfolio_item = array();
         }
+
+
+
 
         if ( isset( $settings['gutter'] ) &&  $settings['gutter'] == 'on' ){
             $portfolio_row .= ' th-port-gutter';
@@ -647,6 +651,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                         <div id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
                             <div class="th-port-wrap">
                                 <?php
+
                                 if ( isset( $th_image_url ) && $th_image_url > "" ) {
                                     echo '<img class="img-responsive th-port-img" src="' . esc_url( $th_image_url ) . '" alt="' . esc_attr( $alt_text ) . '">';
                                 } else {
