@@ -22,6 +22,7 @@ class WPML_Themo_Pricing_List extends WPML_Elementor_Module_With_Items  {
             'price_price',
             'price_text',
             'price_col_button_1_text',
+            'price_link',
         );
 	}
 
@@ -49,6 +50,9 @@ class WPML_Themo_Pricing_List extends WPML_Elementor_Module_With_Items  {
 
 			case 'price_col_button_1_text':
                 return esc_html__( 'Button Text', 'th-widget-pack' );
+
+            case 'price_link':
+                return esc_html__( 'Link', 'th-widget-pack' );
 
 			default:
 				return '';
@@ -79,6 +83,9 @@ class WPML_Themo_Pricing_List extends WPML_Elementor_Module_With_Items  {
 
 			case 'price_col_button_1_text':
                 return 'LINE';
+
+            case 'price_link':
+                return 'LINK';
 
 			default:
 				return '';

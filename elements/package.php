@@ -457,6 +457,12 @@ class Themo_Widget_Package extends Widget_Base {
 					'type'        => __( 'Price Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+                'url' => [
+                    'field'        => 'url',
+                    'field_id'    => 'url', // New key
+                    'type'        => __('Link URL', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 			],
 		];
 		return $widgets;

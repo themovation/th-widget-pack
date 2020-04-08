@@ -505,6 +505,12 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'type'        => __( 'Description', 'th-widget-pack' ),
 					'editor_type' => 'AREA'
 				],
+                'link' => [
+                    'field'        => 'url',
+                    'field_id'    => 'link', // New key
+                    'type'        => __('Link to', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 			],
 		];
 		return $widgets;

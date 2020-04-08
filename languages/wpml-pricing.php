@@ -22,7 +22,9 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
             'price_col_text', 
             'price_col_description', 
             'price_col_button_1_text', 
-            'price_col_button_2_text'
+            'price_col_button_1_link' => array( 'url' ),
+            'price_col_button_2_text',
+            //'price_col_button_2_link' => array( 'url' ),
         );
 	}
 
@@ -51,9 +53,15 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
 			case 'price_col_button_1_text':
                 return esc_html__( 'Button 1 Text', 'th-widget-pack' );
 
+            case 'url':
+                return esc_html__( 'Button 1 Link', 'th-widget-pack' );
+
             case 'price_col_button_2_text':
                 return esc_html__( 'Button 2 Text', 'th-widget-pack' );
 
+            /*case 'price_col_button_2_link':
+                return esc_html__( 'Button 2 Link', 'th-widget-pack' );
+            */
 			default:
 				return '';
 		}
@@ -84,9 +92,15 @@ class WPML_Themo_Pricing extends WPML_Elementor_Module_With_Items  {
 			case 'price_col_button_1_text':
                 return 'LINE';
 
+            case 'url':
+                return 'LINK';
+
             case 'price_col_button_2_text':
                 return 'LINE';
 
+            /*case 'price_col_button_2_link':
+                return 'LINK';
+            */
 			default:
 				return '';
 		}
