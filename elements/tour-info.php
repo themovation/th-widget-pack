@@ -38,6 +38,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'default' => __( '$299', 'th-widget-pack' ),
                 'placeholder' => __( '$299', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -49,6 +52,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'default' => __( '/person', 'th-widget-pack' ),
                 'placeholder' => __( '/person', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -89,7 +95,8 @@ class Themo_Widget_TourInfo extends Widget_Base {
 						'default' => '',
 						'label_block' => true,
 						'options' => themo_icons(),
-						'include' => themo_fa_icons()
+						'include' => themo_fa_icons(),
+
 					],
 					[
 						'name' => 'text',
@@ -101,6 +108,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -121,6 +131,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'default' => __( 'Book Tour', 'th-widget-pack' ),
                 'placeholder' => __( 'Book Tour', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -152,6 +165,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#booktour', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -194,6 +210,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price span' => 'color: {{VALUE}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -206,6 +225,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -218,6 +240,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
