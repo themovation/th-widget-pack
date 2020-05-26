@@ -37,6 +37,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'default' => __( 'Button Text', 'th-widget-pack' ),
 				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -77,12 +80,12 @@ class Themo_Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
-                'dynamic' => [
-                    'active' => true,
-                ],
 				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
                 'default' => [
                     'url' => '#',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
 			]
 		);
@@ -104,6 +107,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -145,6 +151,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 

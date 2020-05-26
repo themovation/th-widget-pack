@@ -96,7 +96,6 @@ class Themo_Widget_TourInfo extends Widget_Base {
 						'label_block' => true,
 						'options' => themo_icons(),
 						'include' => themo_fa_icons(),
-
 					],
 					[
 						'name' => 'text',
@@ -105,12 +104,13 @@ class Themo_Widget_TourInfo extends Widget_Base {
 						'placeholder' => 'Feature',
 						'label_block' => true,
                         'default' => 'Feature',
+                        'dynamic' => [
+                            'active' => true,
+                        ],
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
-                'dynamic' => [
-                    'active' => true,
-                ],
+
 			]
 		);
 
