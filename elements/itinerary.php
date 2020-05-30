@@ -55,6 +55,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
 						'label_block' => true,
 						'default' => __( 'Itinerary Title' , 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
 					],
 					[
 						'name' => 'tab_content',
@@ -62,6 +65,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 						'type' => Controls_Manager::TEXTAREA,
 						'default' => __( 'Itinerary Content', 'th-widget-pack' ),
 						'show_label' => false,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
 					],
 				],
 				'title_field' => '{{{ tab_title }}}',
@@ -133,6 +139,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-title' => 'color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -144,6 +153,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -155,6 +167,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -166,6 +181,9 @@ class Themo_Widget_Itinerary extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
