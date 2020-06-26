@@ -233,6 +233,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-errors-wrapper p' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -282,7 +284,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }*/
 
             $th_shortcode = '[mphb_availability id="'.$settings['type_id'].'"]';
-
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
