@@ -149,6 +149,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'default' => __( 'Title', 'th-widget-pack' ),
                 'placeholder' => __( 'Title', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -162,6 +165,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -185,6 +191,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -215,12 +224,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     ],
                 ],
                 'size_units' => [ '%', 'px' ],
-                /*'default' => [
-                    'size' => '100',
-                    'unit' => '%',
-                ],*/
                 'selectors' => [
                     '{{WRAPPER}} .th-service-block-w' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );
@@ -306,6 +314,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -322,6 +333,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -364,6 +378,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_1,
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -400,6 +417,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'type' => Scheme_Color::get_type(),
 					'value' => Scheme_Color::COLOR_3,
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -505,6 +525,12 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'type'        => __( 'Description', 'th-widget-pack' ),
 					'editor_type' => 'AREA'
 				],
+                'link' => [
+                    'field'        => 'url',
+                    'field_id'    => 'link', // New key
+                    'type'        => __('Link to', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 			],
 		];
 		return $widgets;

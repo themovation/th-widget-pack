@@ -18,8 +18,10 @@ class WPML_Themo_Slider extends WPML_Elementor_Module_With_Items  {
 		return array( 
             'slide_title', 
             'slide_text', 
-            'slide_button_text_1', 
-            'slide_button_text_2', 
+            'slide_button_text_1',
+            'slide_button_link_1' => array( 'url' ),
+            'slide_button_text_2',
+            /*'slide_button_link_2' => array( 'url' ),*/
             'slide_shortcode', 
             'slide_tooltip_text'
         );
@@ -41,8 +43,15 @@ class WPML_Themo_Slider extends WPML_Elementor_Module_With_Items  {
             case 'slide_button_text_1':
 				return esc_html__( 'Button 1 Text', 'th-widget-pack' );
 
+            case 'url':
+                return esc_html__( 'Button 1 Link', 'th-widget-pack' );
+
 			case 'slide_button_text_2':
                 return esc_html__( 'Button 2 Text', 'th-widget-pack' );
+
+            /*case 'slide_button_link_2':
+                return esc_html__( 'Button 2 Link', 'th-widget-pack' );
+            */
         
             case 'slide_shortcode':
 				return esc_html__( 'Shortcode', 'th-widget-pack' );
@@ -71,9 +80,15 @@ class WPML_Themo_Slider extends WPML_Elementor_Module_With_Items  {
             case 'slide_button_text_1':
 				return 'LINE';
 
+            case 'url':
+                return 'LINK';
+
 			case 'slide_button_text_2':
                 return 'LINE';
-        
+
+           /*case 'slide_button_link_2':
+                return 'LINK';
+           */
             case 'slide_shortcode':
 				return 'LINE';
 

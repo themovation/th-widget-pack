@@ -378,6 +378,11 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 			'conditions' => [ 'widgetType' => $this->get_name() ],
 			'fields'     => [
 				[
+					'field'       => 'price',
+					'type'        => __( 'Price', 'th-widget-pack' ),
+					'editor_type' => 'LINE'
+				],
+                [
 					'field'       => 'price_text',
 					'type'        => __( 'Price Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
@@ -387,6 +392,12 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 					'type'        => __( 'Button Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+                'button_1_link' => [
+                    'field'        => 'url',
+                    'field_id'    => 'button_1_link', // New key
+                    'type'        => __('Link', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
             ],
             'integration-class' => 'WPML_Themo_Feature_Bar',
 		];

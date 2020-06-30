@@ -37,6 +37,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'default' => __( 'Button Text', 'th-widget-pack' ),
 				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -78,6 +81,12 @@ class Themo_Widget_Button extends Widget_Base {
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'default' => [
+                    'url' => '#',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -98,6 +107,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => __( 'Button Text', 'th-widget-pack' ),
 				'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -139,6 +151,9 @@ class Themo_Widget_Button extends Widget_Base {
 				'label' => __( 'Link', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -339,14 +354,27 @@ class Themo_Widget_Button extends Widget_Base {
 			'fields'     => [
 				[
 					'field'       => 'button_1_text',
-					'type'        => __( 'Button Text', 'th-widget-pack' ),
+					'type'        => __( 'Button Text 1', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+                'button_1_link' => [
+                    'field'        => 'url',
+                    'field_id'    => 'button_1_link', // New key
+                    'type'        => __('Button URL 1', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 				[
 					'field'       => 'button_2_text',
-					'type'        => __( 'Button Text', 'th-widget-pack' ),
+					'type'        => __( 'Button Text 2', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+
+                'button_2_link' => [
+                    'field'        => 'url',
+                    'field_id'    => 'button_2_link', // New key
+                    'type'        => __('Button URL 2', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 			],
 		];
 		return $widgets;

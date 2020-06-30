@@ -426,12 +426,24 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 					'type'        => __( 'Link 1 Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+                'link_1_url' => [
+                    'field'        => 'url',
+                    'field_id'    => 'link_1_url', // New key
+                    'type'        => __('Link 1 URL', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 
 				[
 					'field'       => 'link_2_text',
 					'type'        => __( 'Link 2 Text', 'th-widget-pack' ),
 					'editor_type' => 'LINE'
 				],
+                'link_2_url' => [
+                    'field'        => 'url',
+                    'field_id'    => 'link_2_url', // New key
+                    'type'        => __('Link 2 URL', 'th-widget-pack'),
+                    'editor_type' => 'LINK' // Or 'LINK' but then relative links won't work
+                ],
 			],
 		];
 		return $widgets;

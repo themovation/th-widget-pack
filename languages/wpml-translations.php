@@ -21,6 +21,8 @@ use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Package as Package;
 use Elementor\Themo_Widget_Pricing as Pricing;
 use Elementor\Themo_Widget_Pricing_List as PricingList;
+use Elementor\Themo_Widget_MPHB_Availability_Calendar as MPHB_Availability_Calendar;
+use Elementor\Themo_Widget_MPHB_Booking_Form as MPHB_Booking_Form;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -110,6 +112,7 @@ class Themo_Elementor_Translate {
 				require_once THEMO_PATH . '/elements/room-info.php';
                 if (class_exists('HotelBookingPlugin')) {
                     require_once THEMO_PATH . '/elements/MPHB/mphb_availability_calendar.php';
+                    require_once THEMO_PATH . '/elements/MPHB/mphb_booking_form.php';
                 }
                 require_once THEMO_PATH . '/elements/pricing-list.php';
 				break;
@@ -208,6 +211,13 @@ class Themo_Elementor_Translate {
 				$roominfo = new RoomInfo();
 				$roominfo->add_wpml_support();
 
+                if (class_exists('HotelBookingPlugin')) {
+                    $mphb_availability_calendar = new MPHB_Availability_Calendar();
+                    $mphb_availability_calendar->add_wpml_support();
+
+                    $mphb_booking_form = new MPHB_Booking_Form();
+                    $mphb_booking_form->add_wpml_support();
+                }
 				if(class_exists('Booking')){
                     $booking = new Booking();
                     $booking->add_wpml_support();

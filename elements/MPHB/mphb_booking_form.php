@@ -233,6 +233,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-errors-wrapper p' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -282,7 +284,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }*/
 
             $th_shortcode = '[mphb_availability id="'.$settings['type_id'].'"]';
-
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
@@ -398,6 +399,25 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
     }
 
     protected function _content_template() {}
+
+    public function add_wpml_support() {
+        add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
+    }
+
+    public function wpml_widgets_to_translate_filter( $widgets ) {
+        $widgets[ $this->get_name() ] = [
+            'conditions' => [ 'widgetType' => $this->get_name() ],
+            'fields'     => [
+
+                [
+                    'field'       => 'type_id',
+                    'type'        => __( 'Type ID', 'th-widget-pack' ),
+                    'editor_type' => 'LINE'
+                ],
+            ],
+        ];
+        return $widgets;
+    }
 
 }
 
