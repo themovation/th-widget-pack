@@ -37,6 +37,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 				'default' => __( 'Book Today', 'th-widget-pack' ),
 				'placeholder' => __( 'Book here', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -74,6 +77,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 				'default' => __( '[booked-calendar]', 'th-widget-pack' ),
 				'placeholder' => __( '[add_shortcode_here]', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 

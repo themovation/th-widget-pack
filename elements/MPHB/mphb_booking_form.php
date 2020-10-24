@@ -37,9 +37,11 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
         $this->add_control('type_id', array(
             'type'        => Controls_Manager::TEXT,
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
-            //'description' => __('ID of Accommodation Type to display availability.', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
         $this->add_control(
@@ -182,6 +184,9 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'size_units' => [ '%', 'px' ],
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );

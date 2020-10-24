@@ -60,7 +60,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'description' => __('The number of adults presetted in the search form.', 'th-widget-pack'),
             'default'     => $minAdults,
             'min'         => $minAdults,
-            'max'         => $maxAdults
+            'max'         => $maxAdults,
+            'dynamic' => [
+                'active' => true,
+            ],
         ));
 
         $this->add_control('children', array(
@@ -69,7 +72,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'description' => __('The number of children presetted in the search form.', 'th-widget-pack'),
             'default'     => $minChildren,
             'min'         => $minChildren,
-            'max'         => $maxChildren
+            'max'         => $maxChildren,
+            'dynamic' => [
+                'active' => true,
+            ],
         ));
 
         $this->add_control('attributes', array(
@@ -77,7 +83,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'label'       => __('Attributes', 'th-widget-pack'),
             'description' => __('Custom attributes for advanced search.', 'th-widget-pack'),
             'placeholder' => __('Slugs of attributes', 'th-widget-pack'),
-            'default'     => ''
+            'default'     => '',
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
 
@@ -193,6 +202,9 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'size_units' => [ '%', 'px' ],
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );

@@ -38,6 +38,9 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
 
@@ -204,6 +207,9 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'size_units' => [ 'px' ],
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_details ul span.mphb-attribute-value' => 'padding-left: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );

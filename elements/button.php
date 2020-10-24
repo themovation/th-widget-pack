@@ -72,6 +72,9 @@ class Themo_Widget_Button extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
             ]
         );
 
@@ -142,6 +145,9 @@ class Themo_Widget_Button extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
             ]
         );
 

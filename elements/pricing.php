@@ -52,6 +52,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'placeholder' => __( 'Price 1', 'th-widget-pack' ),
 						'label_block' => true,
                         'default' => __( 'Title' , 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ]
 					],
                     [
                         'name' => 'price_col_sub_title',
@@ -60,6 +63,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'default' => __( 'Sub Title', 'th-widget-pack' ),
                         'placeholder' => __( 'Sub Title', 'th-widget-pack' ),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ]
                     ],
 					[
 						'name' => 'price_col_price',
@@ -68,6 +74,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'default' => __( '$99', 'th-widget-pack' ),
                         'placeholder' => __( '$99', 'th-widget-pack' ),
 						'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ]
 					],
 					[
 						'name' => 'price_col_text',
@@ -76,6 +85,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'placeholder' => __( '/each', 'th-widget-pack' ),
                         'default' => __( '/each', 'th-widget-pack' ),
 						'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ]
 					],
 					[
 						'name' => 'price_col_description',
@@ -83,6 +95,9 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'type' => Controls_Manager::TEXTAREA,
 						'placeholder' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
 						'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'default' => __( "Maecenas tristique\nUllamcorper mauris\nElementum tortor\nClass aptent", 'th-widget-pack' ),
 					],
                     [
@@ -101,6 +116,9 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
 						'placeholder' => __( 'BUTTON TEXT', 'th-widget-pack' ),
                         'default' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -142,6 +160,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'button_1_image',
                         'label' => __( 'Button Graphic', 'th-widget-pack' ),
                         'type' => Controls_Manager::MEDIA,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -157,7 +178,6 @@ class Themo_Widget_Pricing extends Widget_Base {
 						'label' => __( 'Button 1 Link', 'th-widget-pack' ),
 						'type' => Controls_Manager::URL,
 						'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
-                        //'default' => __( 'http://your-link.com', 'th-widget-pack' ),
                         'conditions' => [
                             'terms' => [
                                 [
@@ -166,6 +186,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                                     'value' => 'yes',
                                 ],
                             ],
+                        ],
+                        'dynamic' => [
+                            'active' => true,
                         ],
 					],
                     [
@@ -182,7 +205,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'price_col_button_2_text',
                         'label' => __( 'Button 2 Text', 'th-widget-pack' ),
                         'type' => Controls_Manager::TEXT,
-                        //'default' => __( 'Click Here', 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -224,6 +249,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                         'name' => 'button_2_image',
                         'label' => __( 'Button Graphic', 'th-widget-pack' ),
                         'type' => Controls_Manager::MEDIA,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -247,6 +275,9 @@ class Themo_Widget_Pricing extends Widget_Base {
                                     'value' => 'yes',
                                 ],
                             ],
+                        ],
+                        'dynamic' => [
+                            'active' => true,
                         ],
                     ],
                     [

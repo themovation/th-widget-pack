@@ -38,6 +38,9 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
         $this->end_controls_section();

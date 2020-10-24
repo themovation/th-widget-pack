@@ -39,7 +39,10 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'label' => __( 'Shortcode', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( '[formidable id=3]', 'th-widget-pack' ),
-                'default' => __( '[formidable id=3]', 'th-widget-pack' )
+                'default' => __( '[formidable id=3]', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -138,6 +141,9 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'size_units' => [ '%', 'px' ],
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );

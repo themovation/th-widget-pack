@@ -55,6 +55,9 @@ class Themo_Widget_Expand_list extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
 						'label_block' => true,
 						'default' => __( 'List Title' , 'th-widget-pack' ),
+						'dynamic' => [
+							'active' => true,
+						]
 					],
 					[
 						'name' => 'tab_content',
@@ -62,6 +65,9 @@ class Themo_Widget_Expand_list extends Widget_Base {
 						'type' => Controls_Manager::WYSIWYG,
 						'default' => __( 'List Content', 'th-widget-pack' ),
 						'show_label' => false,
+						'dynamic' => [
+		                    'active' => true,
+		                ],
 					],
 				],
 				'title_field' => '{{{ tab_title }}}',

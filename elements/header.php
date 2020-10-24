@@ -53,6 +53,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-header-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -260,6 +263,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => __( 'Title Text', 'th-widget-pack' ),
                 'placeholder' => __( 'Title Text', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -273,6 +279,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -330,6 +339,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -363,6 +375,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -372,6 +387,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -390,6 +408,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -422,6 +443,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -431,6 +455,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 

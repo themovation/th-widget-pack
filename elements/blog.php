@@ -52,6 +52,9 @@ class Themo_Widget_Blog extends Widget_Base {
 				'type' => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default' => 10,
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 

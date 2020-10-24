@@ -56,6 +56,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-info-card-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -136,6 +139,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'default' => __( 'Title', 'th-widget-pack' ),
                 'placeholder' => __( 'Title', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -149,6 +155,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -171,6 +180,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::TEXT,
                 'default' => __( 'More Info', 'th-widget-pack' ),
                 'placeholder' => __( 'Link Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -181,6 +193,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -191,6 +206,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'label' => __( 'Link 2 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Link Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -201,6 +219,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 

@@ -374,6 +374,9 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                         'selectors' => [
                             '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
                         ],
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ]
                 );
             }
@@ -515,6 +518,9 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
                         'size_units' => [ 'px', '%' ],
                         'selectors' => [
                             '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
+                        ],
+                        'dynamic' => [
+                            'active' => true,
                         ],
                     ]
                 );

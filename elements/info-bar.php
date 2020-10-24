@@ -38,6 +38,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'default' => __( '$29', 'th-widget-pack' ),
                 'placeholder' => __( '$29', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -49,6 +52,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'default' => __( '/month', 'th-widget-pack' ),
                 'placeholder' => __( '/month', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -98,6 +104,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 						'placeholder' => 'Feature',
 						'label_block' => true,
                         'default' => 'Feature',
+                        'dynamic' => [
+                            'active' => true,
+                        ]
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
@@ -121,6 +130,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'default' => __( 'Button Text', 'th-widget-pack' ),
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -154,6 +166,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -163,6 +178,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
