@@ -88,7 +88,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -208,7 +208,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -233,7 +233,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),

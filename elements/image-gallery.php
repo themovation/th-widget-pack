@@ -120,7 +120,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'gallery_display_caption',
 			[
 				'label' => __( 'Display', 'th-widget-pack' ),
@@ -136,7 +136,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'align',
 			[
 				'label' => __( 'Alignment', 'th-widget-pack' ),

@@ -127,7 +127,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'height',
 			[
 				'label' => __( 'Height', 'th-widget-pack' ),
@@ -275,7 +275,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),

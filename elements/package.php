@@ -100,7 +100,7 @@ class Themo_Widget_Package extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
+        $this->add_responsive_control(
             'package_text_align',
             [
                 'label' => __( 'Content Align', 'th-widget-pack' ),

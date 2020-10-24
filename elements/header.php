@@ -30,7 +30,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -59,7 +59,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -185,7 +185,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -205,13 +205,11 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position-%s',
                 'toggle' => true,
             ]
         );
-
-
-
+        
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -461,7 +459,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_align',
             [
                 'label' => __( 'Alignment Override', 'th-widget-pack' ),

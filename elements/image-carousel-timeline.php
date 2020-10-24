@@ -400,7 +400,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'arrows_size',
             [
                 'label' => __( 'Arrows Size', 'elementor' ),
@@ -465,7 +465,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'dots_size',
             [
                 'label' => __( 'Dots Size', 'elementor' ),
@@ -528,7 +528,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_spacing_custom',
             [
                 'label' => __( 'Image Spacing', 'elementor' ),
@@ -590,7 +590,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'caption_align',
             [
                 'label' => __( 'Alignment', 'elementor' ),

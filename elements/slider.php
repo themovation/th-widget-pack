@@ -71,7 +71,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_repeat',
 			[
 				'label' => __( 'Background Repeat', 'th-widget-pack' ),
@@ -98,7 +98,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_attachment',
 			[
 				'label' => __( 'Background Attachment', 'th-widget-pack' ),
@@ -123,7 +123,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_position',
 			[
 				'label' => __( 'Background Position', 'th-widget-pack' ),
@@ -155,7 +155,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_size',
 			[
 				'label' => __( 'Background Size', 'th-widget-pack' ),
@@ -634,7 +634,7 @@ class Themo_Widget_Slider extends Widget_Base {
         );
 
 
-        $th_repeater->add_control(
+        $th_repeater->add_responsive_control(
             'slide_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -666,7 +666,7 @@ class Themo_Widget_Slider extends Widget_Base {
             ]
         );
 
-        $th_repeater->add_control(
+        $th_repeater->add_responsive_control(
 			'slide_vertical_position',
 			[
 				'label' => __( 'Vertical Position', 'th-widget-pack' ),
@@ -699,7 +699,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_text_align',
 			[
 				'label' => __( 'Text Align', 'th-widget-pack' ),

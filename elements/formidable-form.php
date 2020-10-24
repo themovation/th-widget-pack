@@ -123,10 +123,10 @@ class Themo_Widget_Formidable extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'th-widget-pack' ),
+                'label' => __( 'Content Width', 'elementor' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -147,7 +147,7 @@ class Themo_Widget_Formidable extends Widget_Base {
                 ],
             ]
         );
-
+        
 		$this->end_controls_section();
 	}
 
