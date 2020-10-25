@@ -21,6 +21,10 @@ class Themo_Widget_Blog extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	private function get_blog_categories_list() {
 		$categories = array('all' => __('All Categories', 'th-widget-pack'));
 		$get_categories = get_categories( array(

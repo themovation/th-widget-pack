@@ -21,9 +21,9 @@ class Themo_Widget_Formidable extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
-	/*public function is_reload_preview_required() {
-		return true;
-	}*/
+	public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
 
 	protected function _register_controls() {
 		$this->start_controls_section(

@@ -74,6 +74,10 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         return [ 'jquery-slick' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     /**
      * Register image carousel widget controls.
      *

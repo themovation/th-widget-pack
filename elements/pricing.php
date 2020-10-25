@@ -21,6 +21,10 @@ class Themo_Widget_Pricing extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	public static function get_button_sizes() {
 		return [
 			'xs' => __( 'Extra Small', 'elementor-pro' ),

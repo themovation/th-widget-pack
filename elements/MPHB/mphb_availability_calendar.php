@@ -17,6 +17,10 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         return 'eicon-archive-posts';
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function get_categories() {
         return [ 'themo-elements' ];
     }

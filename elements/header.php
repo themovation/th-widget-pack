@@ -21,6 +21,10 @@ class Themo_Widget_Header extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
 
         $this->start_controls_section(

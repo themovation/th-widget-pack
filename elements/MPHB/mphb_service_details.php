@@ -21,6 +21,10 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function is_reload_preview_required() {
         return true;
     }
