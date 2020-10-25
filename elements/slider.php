@@ -71,6 +71,16 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+		$th_repeater->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg',
+				'separator' => 'before',
+			]
+		);
+
 		$th_repeater->add_responsive_control(
 			'slide_bg_repeat',
 			[
