@@ -334,6 +334,24 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+            'section_image_heading',
+            [
+                'label' => __( 'Image', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} .th-img-stretch',
+			]
+		);
+
 		$this->end_controls_section();
 	}
 

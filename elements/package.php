@@ -389,6 +389,24 @@ class Themo_Widget_Package extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'package_image_heading',
+            [
+                'label' => __( 'Image', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Css_Filter::get_type(),
+            [
+                'name' => 'css_filters',
+                'label' => __( 'CSS Filters', 'elementor' ),
+                'selector' => '{{WRAPPER}} .th-pkg-img img',
+            ]
+        );
+
         $this->end_controls_section();
 	}
 
