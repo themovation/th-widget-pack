@@ -253,15 +253,23 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
+        $this->add_control(
+            'section_title_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -274,10 +282,36 @@ class Themo_Widget_Info_Card extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_title_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_heading',
+            [
+                'label' => __( 'Description', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -290,10 +324,28 @@ class Themo_Widget_Info_Card extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description',
+            ]
+        );
+
+        $this->add_control(
+            'section_link_1_heading',
+            [
+                'label' => __( 'Link 1', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'link_1_color',
             [
-                'label' => __( 'Link 1 Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -303,6 +355,24 @@ class Themo_Widget_Info_Card extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_link_1_typography',
+                'selector' => '{{WRAPPER}} .th-btn-wrap a.th-btn-1',
+            ]
+        );
+
+        $this->add_control(
+            'section_link_2_heading',
+            [
+                'label' => __( 'Link 2', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -319,6 +389,15 @@ class Themo_Widget_Info_Card extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_link_2_typography',
+                'selector' => '{{WRAPPER}} .th-btn-wrap a.th-btn-2',
             ]
         );
 

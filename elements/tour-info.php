@@ -176,15 +176,23 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
         $this->add_control(
+            'section_content_price_heading',
+            [
+                'label' => __( 'Price', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
+        $this->add_control(
             'price_color',
             [
-                'label' => __( 'Price Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -197,10 +205,28 @@ class Themo_Widget_TourInfo extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_price_typography',
+                'selector' => '{{WRAPPER}} .th-tour-nav-price',
+            ]
+        );
+
+        $this->add_control(
+            'section_price_text_heading',
+            [
+                'label' => __( 'Price Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'price_text_color',
             [
-                'label' => __( 'Price Text Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -216,10 +242,28 @@ class Themo_Widget_TourInfo extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_price_text_typography',
+                'selector' => '{{WRAPPER}} .th-tour-nav-price span',
+            ]
+        );
+
+        $this->add_control(
+            'section_price_icon_heading',
+            [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'icon',
 			[
-				'label' => __( 'Icon Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
@@ -231,10 +275,19 @@ class Themo_Widget_TourInfo extends Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'section_text_heading',
+            [
+                'label' => __( 'Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'text',
 			[
-				'label' => __( 'Text Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
@@ -245,6 +298,55 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 ],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_text_typography',
+                'selector' => '{{WRAPPER}} .th-tour-nav-item span',
+            ]
+        );
+
+        $this->add_control(
+            'section_button_text_heading',
+            [
+                'label' => __( 'Button Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-btn .th-btn' => 'color: {{VALUE}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_button_text_typography',
+                'selector' => '{{WRAPPER}} .th-tour-nav-btn .th-btn',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .th-tour-nav-btn .th-btn',
+            ]
+        );
 
 		$this->end_controls_section();
 	}

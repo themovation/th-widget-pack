@@ -485,10 +485,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-
         $this->end_controls_section();
-
-
 
         $this->start_controls_section(
 			'section_style_icon',
@@ -550,8 +547,6 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-
-
         $this->add_control(
             'title_color',
             [
@@ -595,6 +590,14 @@ class Themo_Widget_Header extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
 
 		$this->add_control(
 			'heading_description',
@@ -739,7 +742,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_render_attribute( 'th-header-class', 'class', 'elementor-icon-box-title' );
 
         // Divider & Alignment Class
-
+        
         if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
             $this->add_render_attribute( 'th_divider_span', 'class', 'th-header-divider' );
         }

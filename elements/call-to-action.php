@@ -188,15 +188,23 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
+        $this->add_control(
+            'section_content_title_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
 		$this->add_control(
-			'text_color',
+			'title_color',
 			[
-				'label' => __( 'Text Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-cta-text span' => 'color: {{VALUE}};',
@@ -204,8 +212,45 @@ class Themo_Widget_CallToAction extends Widget_Base {
 			]
 		);
 
-		$this->end_controls_section();
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_title_typography',
+                'selector' => '{{WRAPPER}} .th-cta-text span',
+            ]
+        );
 
+        $this->add_control(
+            'section_content_content_heading',
+            [
+                'label' => __( 'Content', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'content_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-cta p' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_content_typography',
+                'selector' => '{{WRAPPER}} .th-cta p',
+            ]
+        );
+
+		$this->end_controls_section();
 	}
 
 	protected function render() {

@@ -200,7 +200,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
         $this->end_controls_section();
 
-
         $this->start_controls_section(
             'section_align',
             [
@@ -303,7 +302,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -339,12 +338,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-
-
-
 		$this->end_controls_section();
-
-
 
 		$this->start_controls_section(
 			'section_style_content',
@@ -364,11 +358,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -384,16 +377,24 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'label' => 'Typography',
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'section_content_title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+        
 		$this->add_control(
 			'heading_description',
 			[
@@ -406,7 +407,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -422,6 +423,15 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 ],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description, {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a',
+            ]
+        );
 
 		$this->end_controls_section();
 	}

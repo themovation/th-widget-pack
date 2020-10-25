@@ -188,20 +188,18 @@ class Themo_Widget_Team extends Widget_Base {
 		);
 
 		$this->add_control(
-			'background_color',
-			[
-				'label' => __( 'Background Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
-				],
-			]
-		);
+            'section_name_heading',
+            [
+                'label' => __( 'Name', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
-		$this->add_control(
+        $this->add_control(
 			'name_color',
 			[
-				'label' => __( 'Name Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -214,10 +212,28 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_name_typography',
+                'selector' => '{{WRAPPER}} h4',
+            ]
+        );
+
+        $this->add_control(
+            'section_job_title_heading',
+            [
+                'label' => __( 'Job title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
 			'job_color',
 			[
-				'label' => __( 'Job Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -230,10 +246,28 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_job_title_typography',
+                'selector' => '{{WRAPPER}} h5',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_heading',
+            [
+                'label' => __( 'Content', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'content_color',
             [
-                'label' => __( 'Content Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -246,10 +280,28 @@ class Themo_Widget_Team extends Widget_Base {
             ]
         );
 
-		$this->add_control(
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_typography',
+                'selector' => '{{WRAPPER}} .th-team-member-text',
+            ]
+        );
+
+        $this->add_control(
+            'section_icon_heading',
+            [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
 			'icon_color',
 			[
-				'label' => __( 'Icon Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -258,6 +310,26 @@ class Themo_Widget_Team extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} i' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_control(
+            'section_background_heading',
+            [
+                'label' => __( 'Background', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_control(
+			'background_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
 				],
 			]
 		);

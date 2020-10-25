@@ -748,6 +748,15 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+		$th_repeater->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'slide_title_shadow',
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
+			]
+		);
+		
+
 		$th_repeater->add_control(
 			'slide_content_color',
 			[

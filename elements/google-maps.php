@@ -29,9 +29,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 			]
 		);
 
-		//$default_address = __( 'New York City, NY, United States', 'th-widget-pack' );
-
-
 		$default_latitude = 49.293753;
 		$default_logitude = -123.053398;
 		// $this->add_control(
@@ -317,6 +314,101 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
         );
 
         $this->add_control(
+            'section_content_title_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
+		$this->add_control(
+			'title_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .map-info > h3' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_title_typography',
+                'selector' => '{{WRAPPER}} .map-info > h3',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_address_heading',
+            [
+                'label' => __( 'Business Address', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_control(
+			'address_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .map-info .th-gmap-address' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_address_typography',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-address',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_hours_heading',
+            [
+                'label' => __( 'Hours', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_control(
+			'hours_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .map-info .th-gmap-hoursop' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_hours_typography',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-hoursop',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_links_heading',
+            [
+                'label' => __( 'Link', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
             'link_colour',
             [
                 'label' => __( 'Link Color', 'th-widget-pack' ),
@@ -329,6 +421,15 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .map-info .th-gmap-links a' => 'color: {{VALUE}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_link_typography',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-links a',
             ]
         );
 

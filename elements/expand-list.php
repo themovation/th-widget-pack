@@ -126,15 +126,23 @@ class Themo_Widget_Expand_list extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_colors',
 			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
+            'section_content_title_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
+		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-title' => 'color: {{VALUE}};',
@@ -142,10 +150,36 @@ class Themo_Widget_Expand_list extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_title_typography',
+                'selector' => '{{WRAPPER}} .th-itin-title',
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'section_content_title_shadow',
+				'selector' => '{{WRAPPER}} .th-itin-title',
+			]
+		);
+
+        $this->add_control(
+            'section_content_content_heading',
+            [
+                'label' => __( 'Content', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'content_color',
 			[
-				'label' => __( 'Content Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
@@ -153,30 +187,24 @@ class Themo_Widget_Expand_list extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'vertical_line_color',
-			[
-				'label' => __( 'Vertical Line Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_content_content_typography',
+                'selector' => '{{WRAPPER}} .th-itin-content *',
+            ]
+        );
 
-		$this->add_control(
-			'dot_color',
+        $this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
 			[
-				'label' => __( 'Dot Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
-				],
+				'name' => 'section_content_content_shadow',
+				'selector' => '{{WRAPPER}} .th-itin-title',
 			]
 		);
 
 		$this->end_controls_section();
-
 	}
 
 	protected function render() {

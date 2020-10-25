@@ -186,6 +186,15 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .image-title, {{WRAPPER}} .icaption',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
