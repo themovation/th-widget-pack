@@ -433,6 +433,24 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'section_content_map_heading',
+            [
+                'label' => __( 'Map', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} .th-map',
+			]
+		);
+
         $this->end_controls_section();
 	}
 
