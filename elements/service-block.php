@@ -398,6 +398,23 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
             ]
         );
+
+        $this->add_responsive_control(
+            'section_title_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
         
 		$this->add_control(
 			'heading_description',
@@ -416,7 +433,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -434,6 +450,24 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_description_typography',
                 'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description, {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_description_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
             ]
         );
 

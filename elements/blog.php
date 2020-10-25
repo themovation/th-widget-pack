@@ -281,8 +281,20 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->start_controls_section(
             'section_style_border',
             [
-                'label' => __( 'Border', 'th-widget-pack' ),
+                'label' => __( 'Appearance', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'blog_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .mas-blog-post .post-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -299,6 +311,21 @@ class Themo_Widget_Blog extends Widget_Base {
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+			'blog_content_border_radius',
+			[
+				'label' => __( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'selectors' => [
+					'{{WRAPPER}} .mas-blog-post .post-inner' => 'border-radius: {{VALUE}}px;',
+				],
+				'condition' => [
+					'blog_border!' => '',
+				],
+			]
+		);
 
         $this->end_controls_section();
 

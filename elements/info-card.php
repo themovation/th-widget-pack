@@ -162,8 +162,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -172,7 +170,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'label' => __( 'Links', 'th-widget-pack' ),
             ]
         );
-
 
         $this->add_control(
             'button_1_text',
@@ -261,6 +258,18 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
+
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_control(
             'section_title_heading',
@@ -405,7 +414,49 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-		$this->end_controls_section();
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+            ]
+        );
+        
+        $this->end_controls_section();
 	}
 
 	protected function render() {
