@@ -53,6 +53,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'placeholder' => $default_latitude,
 				'default' => $default_latitude,
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -65,6 +68,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'placeholder' => $default_logitude,
 				'default' => $default_logitude,
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -82,6 +88,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 						'max' => 20,
 					],
 				],
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -104,8 +113,6 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             ]
         );
 
-
-
 		$this->add_control(
 			'api',
 			[
@@ -113,6 +120,10 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'description' => __( '<a href="https://themovation.helpscoutdocs.com/article/215-how-to-setup-a-google-api-key" target="_blank">Setup your Google Maps API Key</a>', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				],
+				'label_block' => true,
 			]
 		);
 
@@ -133,6 +144,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .th-map' => 'height: {{SIZE}}{{UNIT}};',
 				],
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -172,6 +186,10 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'default' => __( 'Company Co.', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				],
+				'label_block' => true,
 			]
 		);
 
@@ -181,6 +199,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Business Address', 'th-widget-pack' ),
 				'default' => __( "1366 Main Street\nVancouver Canada\nV8V 3K6", 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
+				'dynamic' => [
+					'active' => true,
+				],
 				'separator' => 'before',
 			]
 		);
@@ -192,6 +213,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'default' => __( "Monday to Friday: 10am - 6pm\nSaturday: 11am - 4pm\nSunday: Closed", 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -202,6 +226,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'default' => __( 'Call Us', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -214,6 +241,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 'default' => [
                     'url' => 'tel:222-2222',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -224,6 +254,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 'default' => __( 'Email Us', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'separator' => 'before',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -235,6 +268,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
                 'default' => [
                     'url' => 'mailto:info@companyco.com',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
 			]
 		);
@@ -300,7 +336,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 		global $th_map_id;
 		$map_id = 'th-map-' .  ++$th_map_id;
 

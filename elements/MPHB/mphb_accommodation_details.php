@@ -38,6 +38,9 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
 
@@ -205,6 +208,9 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_details ul span.mphb-attribute-value' => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
         $this->end_controls_section();
@@ -214,7 +220,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // If Accommodation type id field is empty, try to get the id automatically.
         if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {

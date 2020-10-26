@@ -34,6 +34,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
+				'dynamic' => [
+					'active' => true,
+				],
 				'rows' => '10',
 				'default' => __( '“Pellentesque vel purus vestibulum, commodo tellus iaculis, molestie nisi. Cras auctor, sapien eu ullamcorper tincidunt, eros felis congue arcu, id finibus libero neque ut tellus. Phasellus bibendum nibh tortor. Nam malesuada quam lorem, eu.”', 'th-widget-pack' ),
 				'placeholder' => __( '“Pellentesque vel purus vestibulum, commodo tellus iaculis, molestie nisi. Cras auctor, sapien eu ullamcorper tincidunt, eros felis congue arcu, id finibus libero neque ut tellus. Phasellus bibendum nibh tortor. Nam malesuada quam lorem, eu.”', 'th-widget-pack' ),
@@ -84,9 +87,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
                 'condition' => [
                     'star_rating' => 'yes',
                 ],
-                /*'selectors' => [
-                    '{{WRAPPER}} .box' => 'data-blah: {{SIZE}};',
-                ],*/
+                'dynamic' => [
+                    'active' => true,
+                ],
                 'separator' => 'none',
             ]
         );
@@ -115,6 +118,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -125,6 +131,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => 'Doug Martin',
 				'placeholder' => 'Doug Martin',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -135,6 +144,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => 'Customer',
 				'placeholder' => 'Customer',
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -273,7 +285,8 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
 	protected function render() {
 
-	    $settings = $this->get_settings();
+	    $settings = $this->get_settings_for_display();
+        $settings = $this->get_settings_for_display();
 
 
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-wrapper' );

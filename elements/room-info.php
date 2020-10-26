@@ -38,6 +38,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 'default' => __( '$299', 'th-widget-pack' ),
                 'placeholder' => __( '$299', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -49,6 +52,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 'default' => __( '/person', 'th-widget-pack' ),
                 'placeholder' => __( '/person', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -98,6 +104,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 						'placeholder' => 'Feature',
 						'label_block' => true,
                         'default' => 'Feature',
+                        'dynamic' => [
+                            'active' => true,
+                        ]
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
@@ -121,6 +130,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 'default' => __( 'Book Room', 'th-widget-pack' ),
                 'placeholder' => __( 'Book Room', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -152,6 +164,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#bookroom', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -225,9 +240,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-        $items = $this->get_settings( 'items' );
+        $items = $this->get_settings_for_display( 'items' );
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
 

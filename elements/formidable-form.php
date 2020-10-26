@@ -39,7 +39,10 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'label' => __( 'Shortcode', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( '[formidable id=3]', 'th-widget-pack' ),
-                'default' => __( '[formidable id=3]', 'th-widget-pack' )
+                'default' => __( '[formidable id=3]', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -139,6 +142,9 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -147,7 +153,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 
 	protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( isset( $settings['shortcode'] ) && ! empty( $settings['shortcode'] ) ) {
             $th_shortcode = sanitize_text_field( $settings['shortcode'] );

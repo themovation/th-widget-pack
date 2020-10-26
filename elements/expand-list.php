@@ -55,6 +55,9 @@ class Themo_Widget_Expand_list extends Widget_Base {
 						'type' => Controls_Manager::TEXT,
 						'label_block' => true,
 						'default' => __( 'List Title' , 'th-widget-pack' ),
+						'dynamic' => [
+							'active' => true,
+						]
 					],
 					[
 						'name' => 'tab_content',
@@ -62,6 +65,9 @@ class Themo_Widget_Expand_list extends Widget_Base {
 						'type' => Controls_Manager::WYSIWYG,
 						'default' => __( 'List Content', 'th-widget-pack' ),
 						'show_label' => false,
+						'dynamic' => [
+		                    'active' => true,
+		                ],
 					],
 				],
 				'title_field' => '{{{ tab_title }}}',
@@ -174,8 +180,8 @@ class Themo_Widget_Expand_list extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
-		$tabs = $this->get_settings( 'tabs' );
+		$settings = $this->get_settings_for_display();
+		$tabs = $this->get_settings_for_display( 'tabs' );
 
 		$this->add_render_attribute( 'itin-main', 'class', 'th-itinerary' );
 		$this->add_render_attribute( 'itin-main', 'class', esc_attr( $settings['width'] ) );

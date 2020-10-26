@@ -64,6 +64,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'placeholder' => __( 'Title', 'th-widget-pack' ),
                         'label_block' => true,
                         'default' => __( 'Title', 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ]
                     ],
                     [
                         'name' => 'price_sub_title',
@@ -72,6 +75,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'placeholder' => __( 'Subtitle', 'th-widget-pack' ),
                         'label_block' => true,
                         'default' => __( 'Subtitle', 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ]
                     ],
                     [
                         'name' => 'price_description',
@@ -80,6 +86,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'placeholder' => __( "Add a description here.", 'th-widget-pack' ),
                         'default' => __( "Add a description here.", 'th-widget-pack' ),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
                     [
                         'name' => 'price_div',
@@ -103,6 +112,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'type' => Controls_Manager::TEXT,
                         'placeholder' => __( 'BUTTON TEXT', 'th-widget-pack' ),
                         'default' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -144,6 +156,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'name' => 'button_1_image',
                         'label' => __( 'Button Graphic', 'th-widget-pack' ),
                         'type' => Controls_Manager::MEDIA,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -161,6 +176,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'placeholder' => __( '$99', 'th-widget-pack' ),
                         'default' => __( '$99', 'th-widget-pack' ),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -178,6 +196,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'placeholder' => __( 'each', 'th-widget-pack' ),
                         'default' => __( 'each', 'th-widget-pack' ),
                         'label_block' => true,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                         'conditions' => [
                             'terms' => [
                                 [
@@ -196,7 +217,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'default' => [
                             'url' => '',
                         ],
-
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ],
 
 
@@ -427,7 +450,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['pricing'] ) ) {
 			return;

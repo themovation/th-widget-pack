@@ -605,7 +605,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
     }
 
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         global $th_folio_count;
         $folio_id = 'th-portfolio-' . ++$th_folio_count;

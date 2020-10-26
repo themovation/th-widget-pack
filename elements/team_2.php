@@ -37,6 +37,9 @@ class Themo_Widget_Team extends Widget_Base {
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -67,6 +70,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'default' => __( 'Justin Case', 'th-widget-pack' ),
 				'placeholder' => __( 'Justin Case', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -78,6 +84,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'default' => __( 'Job position', 'th-widget-pack' ),
 				'placeholder' => __( 'Job position', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -87,6 +96,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'label' => __( 'Content', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 				'default' => __( 'Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis.', 'th-widget-pack' ),
 
 			]
@@ -110,6 +122,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'default' => [
 					'url' => '',
 				],
+				'dynamic' => [
+                    'active' => true,
+                ],
 				'separator' => 'before',
 			]
 		);
@@ -151,6 +166,9 @@ class Themo_Widget_Team extends Widget_Base {
 						'default' => [
 							'url' => '',
 						],
+						'dynamic' => [
+		                    'active' => true,
+		                ],
 						'separator' => 'before',
 						'label_block' => true,
 					],
@@ -273,7 +291,7 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
 			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );

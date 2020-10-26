@@ -37,6 +37,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
 				'default' => __( 'Phasellus semper viverra tristique. Sed justo tortor, iaculis.', 'th-widget-pack' ),
 				'placeholder' => __( 'Title', 'th-widget-pack' ),
 				'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ]
 			]
 		);
 
@@ -57,6 +60,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'default' => __( 'Button Text', 'th-widget-pack' ),
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -89,6 +95,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -98,6 +107,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -117,6 +129,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -150,6 +165,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -159,6 +177,9 @@ class Themo_Widget_CallToAction extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -188,7 +209,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Graphic Button
         $button_1_image = false;

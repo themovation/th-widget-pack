@@ -37,6 +37,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -64,6 +67,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'default' => __( '25% Off', 'th-widget-pack' ),
                 'placeholder' => __( '25% Off', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -75,6 +81,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'default' => __( 'Package Title', 'th-widget-pack' ),
                 'placeholder' => __( 'Package Title', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -85,6 +94,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'type' => Controls_Manager::TEXTAREA,
                 'label_block' => true,
                 'default' => 'Maecenas tristique ullamcorper mauris, et elementum tortor.',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -131,6 +143,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'default' => __( '$299', 'th-widget-pack' ),
                 'placeholder' => __( '$299', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -142,6 +157,9 @@ class Themo_Widget_Package extends Widget_Base {
                 'default' => __( '/each', 'th-widget-pack' ),
                 'placeholder' => __( '/each', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -166,6 +184,9 @@ class Themo_Widget_Package extends Widget_Base {
                     'url' => '',
                 ],
                 'separator' => 'before',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -348,7 +369,7 @@ class Themo_Widget_Package extends Widget_Base {
     }
 
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( ! empty( $settings['url']['url'] ) ) {
             $this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
