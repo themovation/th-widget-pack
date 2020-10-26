@@ -699,7 +699,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_responsive_control(
+		$th_repeater->add_control(
 			'slide_text_align',
 			[
 				'label' => __( 'Text Align', 'th-widget-pack' ),
@@ -719,7 +719,6 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
-
                 'default' => 'center',
 			]
 		);
