@@ -450,7 +450,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['pricing'] ) ) {
 			return;

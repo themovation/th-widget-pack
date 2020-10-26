@@ -117,7 +117,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( is_singular( 'mphb_room_service') && function_exists('mphb_tmpl_the_service_price')) { // check if function exists and if we are on a room service single.
             ?>

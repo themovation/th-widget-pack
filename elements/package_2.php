@@ -369,7 +369,7 @@ class Themo_Widget_Package extends Widget_Base {
     }
 
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( ! empty( $settings['url']['url'] ) ) {
             $this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );

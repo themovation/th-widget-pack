@@ -161,7 +161,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip' );
 

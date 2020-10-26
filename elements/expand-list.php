@@ -180,8 +180,8 @@ class Themo_Widget_Expand_list extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
-		$tabs = $this->get_settings( 'tabs' );
+		$settings = $this->get_settings_for_display();
+		$tabs = $this->get_settings_for_display( 'tabs' );
 
 		$this->add_render_attribute( 'itin-main', 'class', 'th-itinerary' );
 		$this->add_render_attribute( 'itin-main', 'class', esc_attr( $settings['width'] ) );

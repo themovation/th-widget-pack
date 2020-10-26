@@ -655,7 +655,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( empty( $settings['carousel'] ) ) {
             return;
@@ -698,7 +698,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
 
             $slide_html = '<div class="slick-slide"><figure class="slick-slide-inner">' . $image_html;
 
-            $caption_type = $this->get_settings( 'caption_type' );
+            $caption_type = $this->get_settings_for_display( 'caption_type' );
 
             if ( 'caption' === $caption_type && ! empty( $image_caption )) {
                     $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class="th-timeline-caption">' . $image_caption . '</span></figcaption>';
@@ -842,7 +842,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         $attachment_post = get_post( $attachment['id'] );
         return $attachment_post->post_excerpt;
 
-        /*$caption_type = $this->get_settings( 'caption_type' );
+        /*$caption_type = $this->get_settings_for_display( 'caption_type' );
 
         if ( empty( $caption_type ) ) {
             return '';

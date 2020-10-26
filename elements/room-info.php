@@ -240,9 +240,9 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-        $items = $this->get_settings( 'items' );
+        $items = $this->get_settings_for_display( 'items' );
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
 

@@ -254,9 +254,9 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-        $items = $this->get_settings( 'items' );
+        $items = $this->get_settings_for_display( 'items' );
 
         // Graphic Button
         $button_1_image = false;

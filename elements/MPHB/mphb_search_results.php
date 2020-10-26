@@ -814,8 +814,8 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
-        $atts = $this->get_settings();
+        $settings = $this->get_settings_for_display();
+        $atts = $this->get_settings_for_display();
 
 
             $themo_form_styling = false;

@@ -336,7 +336,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 		global $th_map_id;
 		$map_id = 'th-map-' .  ++$th_map_id;
 

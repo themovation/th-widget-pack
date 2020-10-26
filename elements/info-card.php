@@ -329,7 +329,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };

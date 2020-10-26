@@ -153,7 +153,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 
 	protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( isset( $settings['shortcode'] ) && ! empty( $settings['shortcode'] ) ) {
             $th_shortcode = sanitize_text_field( $settings['shortcode'] );

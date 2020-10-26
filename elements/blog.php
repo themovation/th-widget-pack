@@ -301,7 +301,7 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	protected function render() {
-	    $settings = $this->get_settings();
+	    $settings = $this->get_settings_for_display();
 
 		// WP_Query arguments
 		$args = array (

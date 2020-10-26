@@ -141,7 +141,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr( $settings['calendar_size'] ) );
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr( $settings['calendar_align'] ) );

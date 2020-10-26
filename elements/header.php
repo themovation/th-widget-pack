@@ -637,7 +637,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {

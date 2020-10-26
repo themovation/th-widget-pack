@@ -601,9 +601,9 @@ function render_elementor_section_parallax_background( Elementor\Element_Base $e
 
     if('section' === $element->get_name()){
 
-        if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
+        if ( 'yes' === $element->get_settings_for_display( 'th_section_parallax' ) ) {
 
-            $th_background = $element->get_settings( 'background_image' );
+            $th_background = $element->get_settings_for_display( 'background_image' );
             $th_background_URL = $th_background['url'];
 
             $element->add_render_attribute( '_wrapper', [
