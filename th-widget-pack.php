@@ -12,7 +12,7 @@
  */
 
 
-define('THEMO_VERSION', '1.5.14');
+define( 'THEMO_VERSION', '1.5.14' );
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
@@ -50,3 +50,9 @@ if ( ! function_exists( 'th_translation_ready' ) ) :
     }
 endif;
 add_action( 'plugins_loaded', 'th_translation_ready' );
+
+
+
+
+
+

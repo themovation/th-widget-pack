@@ -30,16 +30,29 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
+        // $this->add_control(
+        //     'icon',
+        //     [
+        //         'label' => __( 'Choose Icon', 'th-widget-pack' ),
+        //         'type' => Controls_Manager::ICON,
+        //         'default' => 'th-linea icon-basic-star',
+		// 		'options' => themo_icons(),
+		// 		'include' => themo_fa_icons()
+        //     ]
+        // );
         $this->add_control(
-            'icon',
+            'new_icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-                'default' => 'th-linea icon-basic-star',
-				'options' => themo_icons(),
-				'include' => themo_fa_icons()
+                'fa4compatibility' => 'icon',
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
             ]
-        );
+        );		
 
         $this->add_control(
             'view',
@@ -446,8 +459,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             }
         }
 
-        $this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
-
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'. esc_attr( $settings['icon_size'] ) );
 
@@ -456,11 +467,20 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		?>
 		<div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
-                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+            <div class="elementor-icon-box-wrapper <?php if ( (isset($settings['icon'] ) && $settings['icon'] > "") || is_array($settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
+                <?php if ( (isset($settings['icon'] ) && $settings['icon'] > "") || is_array($settings['new_icon'] ) ){ ?>
                     <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                            <?php
+                            // new icon render
+                            $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
+                            $is_new = empty( $settings['icon'] );
+                            if ( $is_new || $migrated ) {
+                                \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+                            } else {
+                                ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
+                            }
+                            ?>
                         </<?php echo esc_attr($icon_tag); ?>>
                     </div>
                 <?php } ?>
