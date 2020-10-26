@@ -78,6 +78,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
+
                 'selectors' => [
                     '{{WRAPPER}} .th-info-card-wrap' => '{{VALUE}}',
                 ],
