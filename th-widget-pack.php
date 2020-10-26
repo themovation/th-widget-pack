@@ -11,11 +11,8 @@
  * License: GPL v3
  */
 
-<<<<<<< Updated upstream
+
 define('THEMO_VERSION', '1.5.14');
-=======
-define( 'THEMO_VERSION', '1.5.13' );
->>>>>>> Stashed changes
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
