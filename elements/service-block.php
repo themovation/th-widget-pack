@@ -259,9 +259,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
             ]
         );
