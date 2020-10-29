@@ -65,18 +65,31 @@ if('uplands' == THEMO_CURRENT_THEME){
 add_action( 'elementor/preview/enqueue_styles', 'th_enqueue_preview' );
 
 function th_enqueue_preview() {
-    wp_enqueue_style( 'themo-preview', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
-    wp_enqueue_script( 'themo-preview', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
+    wp_enqueue_style( 'themo-preview-style', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
+    wp_enqueue_script( 'themo-preview-script', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
 
 }
 
 // FRONTEND // After Elementor registers all scripts.
-add_action( 'elementor/frontend/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
+add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 
 function th_enqueue_after_frontend_scripts() {
     // JS for the Editor
     //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+    wp_enqueue_style( 'thmv-library-style', THEMO_URL . 'css/th-library.css', [ 'elementor-editor' ], THEMO_VERSION );
+    wp_enqueue_script( 'thmv-library-script', THEMO_URL . 'js/th-library.js', [ 'elementor-editor', 'jquery-hover-intent' ], THEMO_VERSION, true );
+
+    $localized_data = [
+        'i18n' => [
+            'templatesEmptyTitle' => esc_html__( 'No Templates Found', 'th-widget-pack' ),
+            'templatesEmptyMessage' => esc_html__( 'Try different category or sync for new templates.', 'th-widget-pack' ),
+            'templatesNoResultsTitle' => esc_html__( 'No Results Found', 'th-widget-pack' ),
+            'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different word.', 'th-widget-pack' ),
+        ]
+    ];
+
+    wp_localize_script( 'thmv-library-script', 'ThBlockEditor', $localized_data );
 
 
 }
