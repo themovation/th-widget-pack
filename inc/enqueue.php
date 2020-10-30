@@ -75,21 +75,23 @@ function th_enqueue_preview() {
 add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 
 function th_enqueue_after_frontend_scripts() {
-    // JS for the Editor
-    //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
-    wp_enqueue_style( 'thmv-library-style', THEMO_URL . 'css/th-library.css', [ 'elementor-editor' ], THEMO_VERSION );
-    wp_enqueue_script( 'thmv-library-script', THEMO_URL . 'js/th-library.js', [ 'elementor-editor', 'jquery-hover-intent' ], THEMO_VERSION, true );
+    
+    if ( ENABLE_BLOCK_LIBRARY === true ) {
+        // JS for the Editor
+        //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
+        wp_enqueue_style( 'thmv-library-style', THEMO_URL . 'css/th-library.css', [ 'elementor-editor' ], THEMO_VERSION );
+        wp_enqueue_script( 'thmv-library-script', THEMO_URL . 'js/th-library.js', [ 'elementor-editor', 'jquery-hover-intent' ], THEMO_VERSION, true );
 
-    $localized_data = [
-        'i18n' => [
-            'templatesEmptyTitle' => esc_html__( 'No Templates Found', 'th-widget-pack' ),
-            'templatesEmptyMessage' => esc_html__( 'Try different category or sync for new templates.', 'th-widget-pack' ),
-            'templatesNoResultsTitle' => esc_html__( 'No Results Found', 'th-widget-pack' ),
-            'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different word.', 'th-widget-pack' ),
-        ]
-    ];
+        $localized_data = [
+            'i18n' => [
+                'templatesEmptyTitle' => esc_html__( 'No Templates Found', 'th-widget-pack' ),
+                'templatesEmptyMessage' => esc_html__( 'Try different category or sync for new templates.', 'th-widget-pack' ),
+                'templatesNoResultsTitle' => esc_html__( 'No Results Found', 'th-widget-pack' ),
+                'templatesNoResultsMessage' => esc_html__( 'Please make sure your search is spelled correctly or try a different word.', 'th-widget-pack' ),
+            ]
+        ];
 
-    wp_localize_script( 'thmv-library-script', 'ThBlockEditor', $localized_data );
-
+        wp_localize_script( 'thmv-library-script', 'ThBlockEditor', $localized_data );
+    }
 
 }

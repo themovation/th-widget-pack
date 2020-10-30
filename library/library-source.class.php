@@ -99,8 +99,6 @@ class Block_Library_Source extends Source_Base {
 		return $theme_url;
 	}
 
-
-
 	/**
 	 * Get library data from remote source and cache
 	 *
@@ -108,14 +106,20 @@ class Block_Library_Source extends Source_Base {
 	 * @return array
 	 */
 	private static function request_library_data( $force_update = false ) {
-		$library_cache_id = 'thmv_'.self::api_url_by_theme_name( get_option("stylesheet") ).'_cache_id';
+		if ( get_template_directory() !== get_stylesheet_directory() ) {
+			$theme_name = wp_get_theme()->parent()->get( 'Name' );
+		} else {
+			$theme_name = get_option("stylesheet");
+		}
+
+		$library_cache_id = 'thmv_'.self::api_url_by_theme_name( $theme_name ).'_cache_id';
 
 		$data = get_option( $library_cache_id );
 
 		if ( $force_update || false === $data ) {
 			$timeout = ( $force_update ) ? 25 : 8;
 
-			$response = wp_remote_get( 'https://library.themovation.com/'.self::api_url_by_theme_name( get_option("stylesheet") ).'/wp-json/thmv/v1/library-config', [
+			$response = wp_remote_get( 'https://library.themovation.com/'.self::api_url_by_theme_name( $theme_name ).'/wp-json/thmv/v1/library-config', [
 				'timeout' => $timeout,
 			] );
 
@@ -144,7 +148,13 @@ class Block_Library_Source extends Source_Base {
 	 * @return array
 	 */
 	public static function get_library_data( $force_update = false ) {
-		$library_cache_id = 'thmv_'.self::api_url_by_theme_name( get_option("stylesheet") ).'_cache_id';
+		if ( get_template_directory() !== get_stylesheet_directory() ) {
+			$theme_name = wp_get_theme()->parent()->get( 'Name' );
+		} else {
+			$theme_name = get_option("stylesheet");
+		}
+
+		$library_cache_id = 'thmv_'.self::api_url_by_theme_name( $theme_name ).'_cache_id';
 
 		self::request_library_data( $force_update );
 
@@ -167,6 +177,12 @@ class Block_Library_Source extends Source_Base {
 	 * @return array Remote template.
 	 */
 	public function get_item( $template_id ) {
+		if ( get_template_directory() !== get_stylesheet_directory() ) {
+			$theme_name = wp_get_theme()->parent()->get( 'Name' );
+		} else {
+			$theme_name = get_option("stylesheet");
+		}
+		
 		$templates = $this->get_items();
 
 		return $templates[ $template_id ];
@@ -183,7 +199,7 @@ class Block_Library_Source extends Source_Base {
 		];
 
 		$response = wp_remote_get(
-			'https://library.themovation.com/'.self::api_url_by_theme_name( get_option("stylesheet") ).'/wp-json/thmv/v1/library/' . $template_id,
+			'https://library.themovation.com/'.self::api_url_by_theme_name( $theme_name ).'/wp-json/thmv/v1/library/' . $template_id,
 			[
 				'body' => $body,
 				'timeout' => 25

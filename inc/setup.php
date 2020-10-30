@@ -97,13 +97,15 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         }
     }
 }
+
+
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-    if ( is_user_logged_in() ) {
+    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) ) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
         include_once THEMO_PATH . 'library/library-source.class.php' ;   
     }
