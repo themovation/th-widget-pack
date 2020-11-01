@@ -325,7 +325,6 @@ class Themo_Widget_Team extends Widget_Base {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
 							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
 						}
-
 						// new icon render
 						$migrated = isset( $social['__fa4_migrated']['new_icon'] );
 						$is_new = empty( $social['icon'] );
@@ -334,12 +333,6 @@ class Themo_Widget_Team extends Widget_Base {
 						} else {
 							?><i class="<?php echo $social['icon']; ?>" aria-hidden="true"></i><?php
 						}
-
-/*
-						if ( $social['icon'] ) : ?>
-							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
-						<?php endif;
-*/
 						if ( ! empty( $social['url']['url'] ) ) {
 							echo '</a>';
 						}

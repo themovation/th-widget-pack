@@ -467,8 +467,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		?>
 		<div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper <?php if ( (isset($settings['icon'] ) && $settings['icon'] > "") || is_array($settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
-                <?php if ( (isset($settings['icon'] ) && $settings['icon'] > "") || is_array($settings['new_icon'] ) ){ ?>
+            <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "") || is_array( $settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
+                <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || is_array( $settings['new_icon'] ) ){ ?>
                     <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
                             <?php
@@ -500,22 +500,21 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	protected function _content_template() {
 		?>
         <# 
-        
         var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
-        
+        migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
         icon_size = '';
         icon_show = '';
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
-        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.icon || settings.new_icon) { var icon_show = 'th-show-icon'}
 
         #>
         <div class="th-service-block-w">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <# if ( iconHTML.rendered && ! settings.old_icon ) { #>
+                        <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
 					        {{{ iconHTML.value }}}
 				        <# } else { #>
 					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
