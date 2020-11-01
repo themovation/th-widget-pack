@@ -499,7 +499,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 	protected function _content_template() {
 		?>
-        <#
+        <# 
+        
+        var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+        
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
         icon_size = '';
@@ -512,7 +515,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <i class="{{ settings.icon }}"></i>
+                        <# if ( iconHTML.rendered && ! settings.old_icon ) { #>
+					        {{{ iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+				        <# } #>
                     </{{{ iconTag }}}>
                 </div>
                 <div class="elementor-icon-box-content">
