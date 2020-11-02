@@ -140,10 +140,10 @@ class Themo_Widget_Header extends Widget_Base {
                 'fa4compatibility' => 'icon',
                 'type' => Controls_Manager::ICONS,
                 'label_block' => true,
-                'default' => [
+                /*'default' => [
                     'value' => 'fas fa-star',
                     'library' => 'fa-solid',
-                ],
+                ],*/
             ]
         );		
 
