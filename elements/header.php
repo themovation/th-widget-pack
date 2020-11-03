@@ -209,7 +209,7 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-%s',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );

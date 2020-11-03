@@ -197,7 +197,7 @@ class Themo_Widget_Button extends Widget_Base {
                     ],
                 ],
                 'separator' => 'none',
-                'prefix_class' => 'th-btn-align-%s',
+                'prefix_class' => 'th-btn-align%s-',
             ]
         );
 

@@ -112,7 +112,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
