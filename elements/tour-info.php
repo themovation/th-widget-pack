@@ -74,29 +74,51 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'th-trip travelpack-compass', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip travelpack-compass', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip travelpack-compass',
+							'library' => 'th-trip',  
+                        ],
                         'text' => __( '4.5 Miles', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-trip travelpack-clock-time', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip travelpack-clock-time', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip travelpack-clock-time',
+							'library' => 'th-linea',  
+                        ],
                         'text' => __( '3 Hours', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-trip th-prsn travelpack-person-plus', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip th-prsn travelpack-person-plus', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip th-prsn travelpack-person-plus',
+							'library' => 'th-trip',  
+                        ],
                         'text' => __( '3+ People', 'th-widget-pack' ),
                     ],
-
                 ],
 				'fields' => [
-					[
-						'name' => 'icon',
+					// [
+					// 	'name' => 'icon',
+					// 	'label' => __( 'Icon', 'th-widget-pack' ),
+					// 	'type' => Controls_Manager::ICON,
+					// 	'default' => '',
+					// 	'label_block' => true,
+					// 	'options' => themo_icons(),
+					// 	'include' => themo_fa_icons(),
+                    // ],
+                    [
+						'name' => 'new_icon',
+						'fa4compatibility' => 'icon',
 						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICON,
-						'default' => '',
+						'type' => Controls_Manager::ICONS,
 						'label_block' => true,
-						'options' => themo_icons(),
-						'include' => themo_fa_icons(),
-					],
+						'default' => [
+							'value' => 'fas fa-star',
+							'library' => 'fa-solid',
+						],
+					],	
 					[
 						'name' => 'text',
 						'label' => __( 'Text', 'th-widget-pack' ),
@@ -109,7 +131,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                         ],
 					],
 				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
+				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ text }}}',
 
 			]
 		);
@@ -293,7 +315,16 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				$counter = 1; ?>
                 <?php foreach ( $items as $item ) : ?>
 					<span class="th-tour-nav-item">
-						<i class="<?php echo esc_attr( $item['icon'] ); ?>" aria-hidden="true"></i>
+                        <?php
+                        // new icon render
+						$migrated = isset( $item['__fa4_migrated']['new_icon'] );
+						$is_new = empty( $item['icon'] );
+						if ( $is_new || $migrated ) {
+							\Elementor\Icons_Manager::render_icon( $item['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+						} else {
+							?><i class="<?php echo $item['icon']; ?>" aria-hidden="true"></i><?php
+                        }
+                        ?>
 						<span><?php echo esc_html( $item['text'] ); ?></span>
 					</span>
                     <?php
@@ -328,9 +359,16 @@ class Themo_Widget_TourInfo extends Widget_Base {
 
             <div class="th-tour-nav-items">
             <# if ( settings.items ) {
-                    _.each(settings.items, function( item ) { #>
+                _.each(settings.items, function( item ) { 
+                        item.iconHTML = elementor.helpers.renderIcon( view, item.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+                        item.migrated = elementor.helpers.isIconMigrated( item, 'new_icon' );
+                        #>
                     <span class="th-tour-nav-item">
-                        <i class="{{{ item.icon }}}" aria-hidden="true"></i>
+                        <# if ( item.iconHTML.rendered && ( ! item.icon || item.migrated ) ) { #>
+					        {{{ item.iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ item.icon }}" aria-hidden="true"></i>
+				        <# } #>
                         <span>{{{ item.text }}}</span>
                     </span>
 
