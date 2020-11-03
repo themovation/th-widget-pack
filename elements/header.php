@@ -733,8 +733,8 @@ class Themo_Widget_Header extends Widget_Base {
 
 		?>
 		<div class="th-header-wrap">
-            <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || is_array( $settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
-                <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || is_array( $settings['new_icon'] ) ){ ?>
+        <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ echo "th-show-icon"; } ?>">
+            <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                     <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
                         <?php
