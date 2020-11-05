@@ -270,12 +270,12 @@ jQuery( function ( $ ) {
 //======================================================================
 // On Window Load - executes when complete page is fully loaded, including all frames, objects and images
 //======================================================================
-jQuery(window).load(function($) {
+
+jQuery(window).on('load',function ($) {
     "use strict";
 
     // Initiate Lightbox
     themo_active_lightbox();
-
 });
 
 

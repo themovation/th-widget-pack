@@ -39,9 +39,6 @@ if($th_theme->get( 'Name' ) > ""){
 if(defined('ELEMENTOR_PATH')){
 // Run Setup
     require_once THEMO_PATH . 'inc/setup.php';
-    require_once THEMO_PATH . 'inc/icons-manager-icons-packs.php';
-
-    Themo_IconsManager_IconsPacks::getInstance();
 }
 
 // Making the plugin translation ready
