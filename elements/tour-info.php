@@ -344,11 +344,15 @@ class Themo_Widget_TourInfo extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Text_Shadow::get_type(),
+        $this->add_responsive_control(
+            'tour_section_padding',
             [
-                'name' => 'title_shadow',
-                'selector' => '{{WRAPPER}} .th-tour-nav-btn .th-btn',
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-btn .th-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 

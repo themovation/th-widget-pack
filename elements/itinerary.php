@@ -163,14 +163,6 @@ class Themo_Widget_Itinerary extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'section_content_title_shadow',
-				'selector' => '{{WRAPPER}} .th-itin-title',
-			]
-		);
-
         $this->add_control(
             'section_content_content_heading',
             [
@@ -200,11 +192,34 @@ class Themo_Widget_Itinerary extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
+        $this->add_control(
+            'section_vertical_line_heading',
+            [
+                'label' => __( 'Vertical line', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_control(
+			'readd_color',
 			[
-				'name' => 'section_content_content_shadow',
-				'selector' => '{{WRAPPER}} .th-itin-title',
+				'label' => __( 'Readd - Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'readd_dot_color',
+			[
+				'label' => __( 'Readd - Dot Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
+				],
 			]
 		);
 

@@ -323,25 +323,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'secondary_color',
-			[
-				'label' => __( 'Secondary Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'condition' => [
-					'view!' => 'default',
-				],
-				'selectors' => [
-					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
-				],
-                'dynamic' => [
-                    'active' => true,
-                ],
-			]
-		);
-
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -369,7 +350,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -385,7 +366,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
                 'label' => 'Typography',
 			]
@@ -395,7 +376,8 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'section_content_title_shadow',
-                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+                'label' => 'Text Shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
             ]
         );
 

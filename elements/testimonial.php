@@ -227,7 +227,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->add_control(
 			'content_content_color',
 			[
-				'label' => __( 'Text', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -261,7 +261,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->add_control(
 			'name_text_color',
 			[
-				'label' => __( 'Name', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -345,7 +345,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->add_control(
             'section_image_heading',
             [
-                'label' => __( 'Image', 'elementor' ),
+                'label' => __( 'Photo', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]

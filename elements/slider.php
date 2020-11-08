@@ -56,7 +56,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4A4A4A',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -70,7 +70,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'active' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}})',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}});',
 				],
 			]
 		);
@@ -87,9 +87,9 @@ class Themo_Widget_Slider extends Widget_Base {
 		$th_repeater->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			[
-				'name' => 'css_filters',
+				'name' => 'slider_current_css_filter',
 				'label'	=> __( 'CSS Filters', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg',
+				'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .slider-bg',
 			]
 		);
 
@@ -106,7 +106,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'repeat-y' => __( 'Repeat Vertically ', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -131,7 +131,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'scroll' => __( 'Scroll', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -163,7 +163,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'right bottom' =>  __( 'Right Bottom', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -188,7 +188,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'auto' => __( 'Auto', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -231,7 +231,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => 'rgba(0, 0, 0, 0.5)',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -773,6 +773,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'slide_title_shadow',
+				'label'	=> 'Text Shadow',
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 			]
 		);
@@ -790,9 +791,6 @@ class Themo_Widget_Slider extends Widget_Base {
                 'default' => '#FFFFFF',
 			]
 		);
-
-
-
 
 		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),

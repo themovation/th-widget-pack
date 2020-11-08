@@ -360,7 +360,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .map-info .th-gmap-address' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .map-info .th-gmap-address p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -370,7 +370,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_address_typography',
-                'selector' => '{{WRAPPER}} .map-info .th-gmap-address',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-address p',
             ]
         );
 
@@ -389,7 +389,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .map-info .th-gmap-hoursop' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .map-info .th-gmap-hoursop p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -399,7 +399,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_hours_typography',
-                'selector' => '{{WRAPPER}} .map-info .th-gmap-hoursop',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-hoursop p',
             ]
         );
 
@@ -437,15 +437,16 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'section_content_map_heading',
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_css_map',
             [
-                'label' => __( 'Map', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => __( 'Map', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-
+        
         $this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			[

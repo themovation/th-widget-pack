@@ -259,18 +259,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
 			]
 		);
 
-        $this->add_responsive_control(
-            'section_padding',
-            [
-                'label' => __( 'Padding', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-info-card-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
         $this->add_control(
             'section_title_heading',
             [
@@ -411,6 +399,18 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_link_2_typography',
                 'selector' => '{{WRAPPER}} .th-btn-wrap a.th-btn-2',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 

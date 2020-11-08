@@ -319,7 +319,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
         $this->add_control(
             'section_button_text_heading',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -328,7 +328,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
         $this->add_control(
             'button_text_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-btn .btn-1' => 'color: {{VALUE}};',
@@ -345,11 +345,15 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Text_Shadow::get_type(),
+        $this->add_responsive_control(
+            'button_text_padding',
             [
-                'name' => 'button_text_shadow',
-                'selector' => '{{WRAPPER}} .th-tour-nav-btn .btn-1',
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-btn .btn-1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 

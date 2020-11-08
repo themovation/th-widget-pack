@@ -215,6 +215,15 @@ class Themo_Widget_Package extends Widget_Base {
                 ],
             ]
         );
+
+        $this->add_group_control(
+            Group_Control_Css_Filter::get_type(),
+            [
+                'name' => 'photo_css_filters',
+                'label' => __( 'CSS Filters', 'elementor' ),
+                'selector' => '{{WRAPPER}} .th-pkg-img img',
+            ]
+        );
         
         $this->end_controls_section();
 
@@ -223,30 +232,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_responsive_control(
-            'section_padding',
-            [
-                'label' => __( 'Padding', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-pkg-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'package_content_border_radius',
-            [
-                'label' => __( 'Border Radius', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-pkg-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
             ]
         );
 
@@ -352,23 +337,56 @@ class Themo_Widget_Package extends Widget_Base {
         );
 
         $this->add_control(
-            'section_price_heading',
+            'background_color',
             [
-                'label' => __( 'Price', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => __( 'Background Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-content' => 'background-color: {{VALUE}};',
+                ],
             ]
         );
 
         $this->add_responsive_control(
-            'price_border_radius',
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'package_content_border_radius',
             [
                 'label' => __( 'Border Radius', 'elementor' ),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .th-pkg-info' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .th-pkg-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_price_section',
+            [
+                'label' => __( 'Price', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'section_price_heading',
+            [
+                'label' => __( 'Price', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -432,40 +450,25 @@ class Themo_Widget_Package extends Widget_Base {
         );
 
         $this->add_control(
-            'section_background_heading',
+            'price_background_color',
             [
-                'label' => __( 'Background', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
-            'background_color',
-            [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .th-pkg-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-pkg-info' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
-        $this->add_control(
-            'package_image_heading',
+        $this->add_responsive_control(
+            'price_border_radius',
             [
-                'label' => __( 'Image', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Css_Filter::get_type(),
-            [
-                'name' => 'css_filters',
-                'label' => __( 'CSS Filters', 'elementor' ),
-                'selector' => '{{WRAPPER}} .th-pkg-img img',
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-info' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 

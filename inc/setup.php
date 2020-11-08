@@ -70,8 +70,8 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         }
 
         require_once THEMO_PATH . 'elements/pricing.php';
-        if('uplands' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME) {
             require_once THEMO_PATH . 'elements/pricing-list.php';
+        if('uplands' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME) {
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
         require_once THEMO_PATH . 'elements/blog.php';

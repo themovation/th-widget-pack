@@ -451,18 +451,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         );
 
         $this->add_control(
-            'section_divider_heading',
-            [
-                'label' => __( 'Divider', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
             'divider_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Divider Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),

@@ -202,6 +202,15 @@ class Themo_Widget_Team extends Widget_Base {
                 ],
             ]
         );
+
+        $this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} .th-team-member > img',
+			]
+		);
         
         $this->end_controls_section();
 
@@ -213,30 +222,6 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
-            'section_padding',
-            [
-                'label' => __( 'Padding', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-team-member-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'member_content_border_radius',
-            [
-                'label' => __( 'Border Radius', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-team-member-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        
 		$this->add_control(
             'section_name_heading',
             [
@@ -340,18 +325,9 @@ class Themo_Widget_Team extends Widget_Base {
         );
 
         $this->add_control(
-            'section_icon_heading',
-            [
-                'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
 			'icon_color',
 			[
-				'label' => __( 'Color', 'th-widget-pack' ),
+				'label' => __( 'Icon Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -364,19 +340,10 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
-            'section_background_heading',
-            [
-                'label' => __( 'Background', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
 		$this->add_control(
 			'background_color',
 			[
-				'label' => __( 'Color', 'th-widget-pack' ),
+				'label' => __( 'Background Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
@@ -384,23 +351,29 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-            'section_image_heading',
+		$this->add_responsive_control(
+            'section_padding',
             [
-                'label' => __( 'Image', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
-        $this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'css_filters',
-				'label'	=> __( 'CSS Filters', 'elementor' ),
-				'selector' => '{{WRAPPER}} .th-img-stretch',
-			]
-		);
+        $this->add_responsive_control(
+            'member_content_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 	}
