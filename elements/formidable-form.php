@@ -21,9 +21,9 @@ class Themo_Widget_Formidable extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
-	/*public function is_reload_preview_required() {
-		return true;
-	}*/
+	public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
 
 	protected function _register_controls() {
 		$this->start_controls_section(
@@ -123,10 +123,10 @@ class Themo_Widget_Formidable extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'th-widget-pack' ),
+                'label' => __( 'Content Width', 'elementor' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -147,7 +147,7 @@ class Themo_Widget_Formidable extends Widget_Base {
                 ],
             ]
         );
-
+        
 		$this->end_controls_section();
 	}
 

@@ -21,6 +21,10 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_gallery',
@@ -115,13 +119,22 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->start_controls_section(
 			'section_caption',
 			[
-				'label' => __( 'Caption', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		$this->add_control(
-			'gallery_display_caption',
+            'section_gallery_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_responsive_control(
+			'gallery_display_title',
 			[
 				'label' => __( 'Display', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
@@ -137,6 +150,94 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		);
 
 		$this->add_control(
+			'text_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .image-title' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'gallery_display_title' => '',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'text_title_typography',
+				'selector' => '{{WRAPPER}} .image-title',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'condition' => [
+					'gallery_display_title' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+            'section_gallery_caption',
+            [
+                'label' => __( 'Caption', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_responsive_control(
+			'gallery_display_caption',
+			[
+				'label' => __( 'Display', 'th-widget-pack' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'none',
+				'options' => [
+					'' => __( 'Show', 'th-widget-pack' ),
+					'none' => __( 'Hide', 'th-widget-pack' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .gallery-text .caption' => 'display: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'caption_text_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .caption' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'gallery_display_caption' => '',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'caption_title_typography',
+				'selector' => '{{WRAPPER}} .caption',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'condition' => [
+					'gallery_display_caption' => '',
+				],
+			]
+		);
+
+		$this->add_control(
+            'section_gallery_alignment',
+            [
+                'label' => __( 'Alignment (aligns both title and caption text)', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$this->add_responsive_control(
 			'align',
 			[
 				'label' => __( 'Alignment', 'th-widget-pack' ),
@@ -163,25 +264,6 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .image-title' => 'text-align: {{VALUE}};',
 					'{{WRAPPER}} .caption' => 'text-align: {{VALUE}};',
-				],
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);
-
-		$this->add_control(
-			'text_color',
-			[
-				'label' => __( 'Text Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .image-title' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .icaption' => 'color: {{VALUE}};',
-				],
-				'condition' => [
-					'gallery_display_caption' => '',
 				],
 			]
 		);

@@ -21,6 +21,10 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_testimonial',
@@ -206,15 +210,24 @@ class Themo_Widget_Testimonial extends Widget_Base {
         $this->start_controls_section(
             'section_style_testimonial_content',
             [
-                'label' => __( 'Colors', 'th-widget-pack' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
-		$this->add_control(
+        $this->add_control(
+            'section_text_heading',
+            [
+                'label' => __( 'Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
 			'content_content_color',
 			[
-				'label' => __( 'Content', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -227,27 +240,28 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
-            'star_rating_color',
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Star Rating', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .th-star-rating' => 'color: {{VALUE}};',
-                ],
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_text_typography',
+                'selector' => '{{WRAPPER}} .elementor-testimonial-content',
             ]
         );
 
+        $this->add_control(
+            'section_name_heading',
+            [
+                'label' => __( 'Name', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
-		$this->add_control(
+        $this->add_control(
 			'name_text_color',
 			[
-				'label' => __( 'Name', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -260,11 +274,28 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_name_text_typography',
+                'selector' => '{{WRAPPER}} .elementor-testimonial-name',
+            ]
+        );
 
-		$this->add_control(
+        $this->add_control(
+            'section_job_heading',
+            [
+                'label' => __( 'Job', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
 			'job_text_color',
 			[
-				'label' => __( 'Job', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -277,10 +308,59 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_job_typography',
+                'selector' => '{{WRAPPER}} .elementor-testimonial-job',
+            ]
+        );
+
+        $this->add_control(
+            'section_star_heading',
+            [
+                'label' => __( 'Star Rating', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'star_rating_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-star-rating' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'section_image_heading',
+            [
+                'label' => __( 'Photo', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} .th-team-member-image',
+			]
+		);
 
 		$this->end_controls_section();
-
-
 	}
 
 	protected function render() {

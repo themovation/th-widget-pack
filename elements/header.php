@@ -21,6 +21,10 @@ class Themo_Widget_Header extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
 
         $this->start_controls_section(
@@ -30,7 +34,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -59,7 +63,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -82,9 +86,9 @@ class Themo_Widget_Header extends Widget_Base {
                     '{{WRAPPER}} .th-header-wrap' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -199,7 +203,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -219,13 +223,11 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
-
-
-
+        
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -475,7 +477,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_align',
             [
                 'label' => __( 'Alignment Override', 'th-widget-pack' ),
@@ -501,10 +503,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-
         $this->end_controls_section();
-
-
 
         $this->start_controls_section(
 			'section_style_icon',
@@ -566,8 +565,6 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-
-
         $this->add_control(
             'title_color',
             [
@@ -611,6 +608,14 @@ class Themo_Widget_Header extends Widget_Base {
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
 
 		$this->add_control(
 			'heading_description',
@@ -753,7 +758,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_render_attribute( 'th-header-class', 'class', 'elementor-icon-box-title' );
 
         // Divider & Alignment Class
-
+        
         if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
             $this->add_render_attribute( 'th_divider_span', 'class', 'th-header-divider' );
         }

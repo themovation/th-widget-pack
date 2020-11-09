@@ -21,6 +21,10 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     private function get_tours_list() {
         $portfolio = array();
 
