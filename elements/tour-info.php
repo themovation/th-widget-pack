@@ -114,7 +114,6 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					],
 				],
 				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
-
 			]
 		);
 

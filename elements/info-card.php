@@ -402,6 +402,14 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'section_appearance_heading',
+            [
+                'label' => __( 'Appearance', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
         $this->add_responsive_control(
             'section_padding',
             [
