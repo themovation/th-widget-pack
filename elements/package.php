@@ -215,15 +215,6 @@ class Themo_Widget_Package extends Widget_Base {
                 ],
             ]
         );
-
-        $this->add_group_control(
-            Group_Control_Css_Filter::get_type(),
-            [
-                'name' => 'photo_css_filters',
-                'label' => __( 'CSS Filters', 'elementor' ),
-                'selector' => '{{WRAPPER}} .th-pkg-img img',
-            ]
-        );
         
         $this->end_controls_section();
 
@@ -476,7 +467,7 @@ class Themo_Widget_Package extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
 			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
