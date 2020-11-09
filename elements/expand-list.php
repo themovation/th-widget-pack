@@ -179,6 +179,7 @@ class Themo_Widget_Expand_list extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-itin-content' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -188,7 +189,7 @@ class Themo_Widget_Expand_list extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_content_typography',
-                'selector' => '{{WRAPPER}} .th-itin-content *',
+                'selector' => '{{WRAPPER}} .th-itin-content *, {{WRAPPER}} .th-itin-content',
             ]
         );
 
@@ -201,27 +202,27 @@ class Themo_Widget_Expand_list extends Widget_Base {
             ]
         );
 
-		$this->add_control(
-			'readd_color',
-			[
-				'label' => __( 'Readd - Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
+        $this->add_control(
+            'vertical_line_color',
+            [
+                'label' => __( 'Vertical Line Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
 
-		$this->add_control(
-			'readd_dot_color',
-			[
-				'label' => __( 'Readd - Dot Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
-				],
-			]
-		);
+        $this->add_control(
+            'dot_color',
+            [
+                'label' => __( 'Dot Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 	}
