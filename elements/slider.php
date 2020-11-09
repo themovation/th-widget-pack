@@ -770,7 +770,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		);
 
 		$th_repeater->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
+			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'slide_title_shadow',
 				'label'	=> 'Text Shadow',

@@ -517,7 +517,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         $this->add_control(
             'Border',
             [
-                'label' => __( 'border', 'th-widget-pack' ),
+                'label' => __( 'Border', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
