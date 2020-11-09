@@ -226,7 +226,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         );
 
         $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
+            Group_Control_Text_Shadow::get_type(),
             [
                 'name' => 'section_title_text_shadow',
                 'label' => esc_html__( 'Text Shadow', 'elementor' ),
