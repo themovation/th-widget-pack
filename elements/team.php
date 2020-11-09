@@ -231,7 +231,7 @@ class Themo_Widget_Team extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+		$this->add_control(
 			'name_color',
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
