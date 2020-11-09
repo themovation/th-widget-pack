@@ -286,7 +286,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Include MPHB hook
         do_action('mphbe_before_search_form_widget_render', $settings);

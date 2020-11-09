@@ -205,7 +205,7 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         // BUTTON 1

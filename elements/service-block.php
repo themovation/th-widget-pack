@@ -34,14 +34,28 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-        $this->add_control(
+        /*$this->add_control(
             'icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
+                'type' => Controls_Manager::ICONS,
                 'default' => 'th-linea icon-basic-star',
 				'options' => themo_icons(),
 				'include' => themo_fa_icons()
+            ]
+        );*/
+
+
+        $this->add_control(
+            'icon',
+            [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::ICONS,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
             ]
         );
 
@@ -536,6 +550,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		<?php
 	}
+
+    public function on_import( $element ) {
+        return Icons_Manager::on_import_migration( $element, 'icon', 'icon', true );
+    }
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );

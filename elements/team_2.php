@@ -154,13 +154,15 @@ class Themo_Widget_Team extends Widget_Base {
 				],
 				'fields' => [
 					[
-						'name' => 'icon',
+						'name' => 'new_icon',
+						'fa4compatibility' => 'icon',
 						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICON,
-                        'label_block' => true,
-                        'default' => 'fa fa-facebook',
-						'options' => themo_icons(),
-						'include' => themo_fa_icons()
+						'type' => Controls_Manager::ICONS,
+						'label_block' => true,
+						'default' => [
+							'value' => 'fab fa-facebook',
+							'library' => 'fa-brands',
+						],
 					],
 					[
 						'name' => 'url',
@@ -177,7 +179,7 @@ class Themo_Widget_Team extends Widget_Base {
 						'label_block' => true,
 					],
 				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ url.url }}}',
+				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ url.url }}}',
 			]
 		);
 
@@ -409,7 +411,7 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
 			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
@@ -482,26 +484,31 @@ class Themo_Widget_Team extends Widget_Base {
 
                     <?php
                     // clean out empty values before checking
-                    foreach( $settings['social'] as $social) {
+                    /*foreach( $settings['social'] as $social) {
                         if (empty($social['icon'])) {
                             unset($settings['social']);
                         }
-                    } ?>
+                    }*/ ?>
                     <?php if ( ! empty( $settings['social'] ) ) : ?>
-                    <div class="th-team-member-social">
-                        <?php foreach( $settings['social'] as $social ) {
-                            if ( ! empty( $social['url']['url'] ) ) {
-                                $target = $social['url']['is_external'] ? ' target="_blank"' : '';
-                                echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
-                            }
-                            if ( $social['icon'] ) : ?>
-                                <i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
-                            <?php endif;
-                            if ( ! empty( $social['url']['url'] ) ) {
-                                echo '</a>';
-                            }
-                        } ?>
-                    </div>
+                        <div class="th-team-member-social">
+                            <?php foreach( $settings['social'] as $social ) {
+                                if ( ! empty( $social['url']['url'] ) ) {
+                                    $target = $social['url']['is_external'] ? ' target="_blank"' : '';
+                                    echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
+                                }
+                                // new icon render
+                                $migrated = isset( $social['__fa4_migrated']['new_icon'] );
+                                $is_new = empty( $social['icon'] );
+                                if ( $is_new || $migrated ) {
+                                    \Elementor\Icons_Manager::render_icon( $social['new_icon'], [ 'aria-hidden' => 'true' ] );
+                                } else {
+                                    ?><i class="<?php echo $social['icon']; ?>" aria-hidden="true"></i><?php
+                                }
+                                if ( ! empty( $social['url']['url'] ) ) {
+                                    echo '</a>';
+                                }
+                            } ?>
+                        </div>
                     <?php endif; ?>
                 </figcaption>
             </figure>
@@ -541,9 +548,14 @@ class Themo_Widget_Team extends Widget_Base {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
 							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
 						}
-						if ( $social['icon'] ) : ?>
-							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
-						<?php endif;
+						// new icon render
+						$migrated = isset( $social['__fa4_migrated']['new_icon'] );
+						$is_new = empty( $social['icon'] );
+						if ( $is_new || $migrated ) {
+							\Elementor\Icons_Manager::render_icon( $social['new_icon'], [ 'aria-hidden' => 'true' ] );
+						} else {
+							?><i class="<?php echo $social['icon']; ?>" aria-hidden="true"></i><?php
+						}
 						if ( ! empty( $social['url']['url'] ) ) {
 							echo '</a>';
 						}
