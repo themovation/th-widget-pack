@@ -55,6 +55,12 @@ class Block_Library_Source extends Source_Base {
 		return ( ! empty( $library_data['categories'] ) ? $library_data['categories'] : [] );
 	}
 
+	public function get_type_tags() {
+		$library_data = self::get_library_data();
+
+		return ( ! empty( $library_data['type_tags'] ) ? $library_data['type_tags'] : [] );
+	}
+
 	/**
 	 * Prepare template items to match model
 	 *

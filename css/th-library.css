@@ -31,10 +31,13 @@
 	        justify-content: space-between;
 }
 
-#thmv-templateLibrary-toolbar-search,
+#thmv-templateLibrary-toolbar-search {
+	float: right;
+}
+
 #thmv-templateLibrary-toolbar-filter {
 	position: relative; 
-	width: 200px;
+	width: 25%;
 }
 
 #thmv-templateLibrary-toolbar-search i,
@@ -103,12 +106,14 @@
 
 .thmv-templateLibrary-templates-window {
 	position: relative; 
+	display: flex;
 	overflow-y: auto;
 	margin: 10px -15px 0;
 	height: calc(100% - 45px);
 }
 
 #thmv-templateLibrary-templates-list {
+	width: 75%;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

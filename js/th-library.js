@@ -62,7 +62,23 @@
             };
         },
         onClick: function () {
-            thmv.library.showBlocksView();
+            thmv.library.showTemplatesView();
+        },
+    })),
+    (i.LibraryViews.Menu = Marionette.ItemView.extend({
+        template: "#template-thmv-TemplateLibrary_header-menu",
+        id: "elementor-template-library-header-menu",
+        className: "thmv-TemplateLibrary_header-menu",
+        templateHelpers: function () {
+            return thmv.library.getTabs();
+        },
+        ui: { menuItem: ".elementor-template-library-menu-item" },
+        events: { "click @ui.menuItem": "onMenuItemClick" },
+        onMenuItemClick: function (e) {
+            thmv.library.setFilter("category", ""), 
+            thmv.library.setFilter("text", ""), 
+            thmv.library.setFilter("type", e.currentTarget.dataset.tab, !0), 
+            thmv.library.showTemplatesView();
         },
     })),
     (i.LibraryViews.EmptyTemplateCollection = Marionette.ItemView.extend({
@@ -141,6 +157,9 @@
     (i.LibraryViews.TemplateCollection = Marionette.CompositeView.extend({
         template: "#template-thmv-templateLibrary-templates",
         id: "thmv-templateLibrary-templates",
+        className: function () {
+            return "thmv-templateLibrary-templates thmv-templateLibrary-templates--" + thmv.library.getFilter("type");
+        },
         childViewContainer: "#thmv-templateLibrary-templates-list",
         emptyView: function () {
             return new i.LibraryViews.EmptyTemplateCollection();
@@ -148,12 +167,12 @@
         ui: {
             templatesWindow: ".thmv-templateLibrary-templates-window",
             textFilter: "#thmv-templateLibrary-search",
-            categoryFilter: "#thmv-templateLibrary-filter-category",
+            categoryFilter: ".thmv-templateLibrary-category-filter-item",
             filterBar: "#thmv-templateLibrary-toolbar-filter"
         },
         events: {
             "input @ui.textFilter": "onTextFilterInput",
-            "change @ui.categoryFilter": "onCategoryFilterClick"
+            "click @ui.categoryFilter": "onCategoryFilterClick"
         },
         getChildView: function (e) {
             return i.LibraryViews.Template;
@@ -176,11 +195,13 @@
             );
         },
         setMasonrySkin: function () {
-            var e = new elementorModules.utils.Masonry({
-                container: this.$childViewContainer,
-                items: this.$childViewContainer.children()
-            });
-            this.$childViewContainer.imagesLoaded(e.run.bind(e));
+            if ("block" === thmv.library.getFilter("type")) {
+                var e = new elementorModules.utils.Masonry({
+                    container: this.$childViewContainer,
+                    items: this.$childViewContainer.children()
+                });
+                this.$childViewContainer.imagesLoaded(e.run.bind(e));
+            }
         },
         onRenderCollection: function () {
             this.setMasonrySkin(), this.updatePerfectScrollbar();
@@ -192,7 +213,7 @@
             });
         },
         onCategoryFilterClick: function (t) {
-            var i = t.currentTarget.selectedOptions[0].value;
+            var i = t.currentTarget.getAttribute('value');
             thmv.library.setFilter("category", i);
         },
         updatePerfectScrollbar: function () {
@@ -201,7 +222,7 @@
             })), (this.perfectScrollbar.isRtl = !1), this.perfectScrollbar.update();
         },
         onRender: function () {
-            this.$("#thmv-templateLibrary-filter-category").select2({ placeholder: "Filter By Category", allowClear: !0, width: 200 }), this.updatePerfectScrollbar();
+            this.updatePerfectScrollbar();
         },
     })),
     (i.LibraryViews.Template = Marionette.ItemView.extend({
@@ -245,7 +266,7 @@
                 title: "Block Library"
             });
             var e = this.getHeaderView();
-            e.tools.show(new i.LibraryViews.Actions());
+            e.tools.show(new i.LibraryViews.Actions()), e.menuArea.show(new i.LibraryViews.Menu());
         },
         showPreviewView: function (e) {
             var t = this.getHeaderView();
@@ -260,6 +281,9 @@
             this.modalContent.show(new i.LibraryViews.TemplateCollection({
                 collection: e
             }));
+        },
+        showTemplatesView: function (e) {
+            this.showDefaultHeader(), this.modalContent.show(new i.LibraryViews.TemplateCollection({ collection: e }));
         },
     })),
     (i.LibraryManager = function () {
@@ -278,27 +302,28 @@
             var t = e.find(FIND_SELECTOR);
             t.length && t.before($thmvLibraryButton), e.on("click.onAddElement", ".elementor-editor-section-settings .elementor-editor-element-add", a);
         }
-
+        function r(t, i) {
+            i.addClass("elementor-active").siblings().removeClass("elementor-active");
+        }
         function o() {
             var e = window.elementor.$previewContents,
                 t = setInterval(function () {
                     n(e), e.find(".elementor-add-new-section").length > 0 && clearInterval(t);
                 }, 100);
-            e.on("click.onAddTemplateButton", ".elementor-add-thmv-button", m.showModal.bind(m));
+            e.on("click.onAddTemplateButton", ".elementor-add-thmv-button", m.showModal.bind(m)), this.channels.tabs.on("change:device", r);
         }
         var l,
             s,
             d,
             c,
+            p,
             m = this;
         (FIND_SELECTOR = ".elementor-add-new-section .elementor-add-section-drag-title"),
         ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="th-linea icon-basic-settings"></i></div>'),
         (this.atIndex = -1),
-        (this.channels = {
-            templates: Backbone.Radio.channel("templates")
-        }),
+        (this.channels = { tabs: Backbone.Radio.channel("tabs"), templates: Backbone.Radio.channel("templates") }),
         (this.updateBlocksView = function () {
-            m.setFilter("category", "", !0), m.setFilter("text", "", !0), m.getModal().showBlocksView(d);
+            m.setFilter("category", "", !0), m.setFilter("text", "", !0), m.getModal().showTemplatesView(d);
         }),
         (this.setFilter = function (e, t, i) {
             m.channels.templates.reply("filter:" + e, t), i || m.channels.templates.trigger("filter:change");
@@ -326,10 +351,15 @@
                         );
                     },
                 },
+                type: {
+                    callback: function (e) {
+                        return this.get("type") === e;
+                    },
+                },
             };
         }),
         (this.showModal = function () {
-            m.getModal().showModal(), m.showBlocksView();
+            m.getModal().showModal(), m.showTemplatesView();
         }),
         (this.closeModal = function () {
             this.getModal().hideModal();
@@ -338,17 +368,33 @@
             return l || (l = new i.Modal()), l;
         }),
         (this.init = function () {
-            t.on("preview:loaded", o.bind(this));
+            m.setFilter("type", "block", !0), t.on("preview:loaded", o.bind(this));
+        }),
+        (this.getTabs = function () {
+            var e = this.getFilter("type");
+            return (
+                (tabs = { block: { title: "Blocks" }, page: { title: "Pages" } }),
+                _.each(tabs, function (t, i) {
+                    e === i && (tabs[e].active = !0);
+                }),
+                { tabs: tabs }
+            );
         }),
         (this.getCategory = function () {
             return s;
         }),
-        (this.showBlocksView = function () {
-            m.getModal().showDefaultHeader(),
-                m.setFilter("category", "", !0),
-                m.loadTemplates(function () {
-                    m.getModal().showBlocksView(d);
-                });
+        (this.getTypeCategory = function () {
+            var e = m.getFilter("type");
+            return d[e];
+        }),
+        (this.showTemplatesView = function () {
+            m.setFilter("category", "", !0),
+                m.setFilter("text", "", !0),
+                d
+                    ? m.getModal().showTemplatesView(d)
+                    : m.loadTemplates(function () {
+                          m.getModal().showTemplatesView(d);
+                      });
         }),
         (this.showPreviewView = function (e) {
             m.getModal().showPreviewView(e);
@@ -367,7 +413,10 @@
             var t = {
                 data: {},
                 success: function (t) {
-                    (d = new i.LibraryCollections.Template(t.templates)), t.category && (s = t.category), e.onUpdate && e.onUpdate();
+                    (d = new i.LibraryCollections.Template(t.templates)), 
+                    t.category && (s = t.category), 
+                    t.type_tags && (p = t.type_tags), 
+                    e.onUpdate && e.onUpdate();
                 },
             };
             e.forceSync && (t.data.sync = !0), elementorCommon.ajax.addRequest("thmv_get_template_library_data", t);

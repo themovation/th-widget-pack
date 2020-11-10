@@ -17,6 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<span><?php echo __( 'Back to Library', 'th-widget-pack' ); ?></span>
 </script>
 
+<script type="text/template" id="template-thmv-TemplateLibrary_header-menu">
+	<# _.each( tabs, function( args, tab ) { var activeClass = args.active ? 'elementor-active' : ''; #>
+		<div class="elementor-component-tab elementor-template-library-menu-item {{activeClass}}" data-tab="{{{ tab }}}">{{{ args.title }}}</div>
+	<# } ); #>
+</script>
+
 <script type="text/template" id="template-thmv-templateLibrary-header-actions">
 	<div id="thmv-templateLibrary-header-sync" class="elementor-templates-modal__header__item">
 		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'th-widget-pack' ); ?>"></i>
@@ -56,19 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 
 <script type="text/template" id="template-thmv-templateLibrary-templates">
-	<div id="thmv-templateLibrary-toolbar">
-		<div id="thmv-templateLibrary-toolbar-filter" class="thmv-templateLibrary-toolbar-filter">
-			<# if ( thmv.library.getCategory() ) { #>
-	
-				<select id="thmv-templateLibrary-filter-category" class="thmv-templateLibrary-filter-category">
-					<option value="" data-tag=""><?php esc_html_e( 'All Demos', 'th-widget-pack' ); ?></option>
-					<# _.each( thmv.library.getCategory(), function( name, slug ) { #>
-						<option value="{{ slug }}" data-tag="{{ slug }}">{{{ name }}}</option>
-					<# } ); #>
-				</select>
-			<# } #>
-		</div>
-
+	<div id="thmv-templateLibrary-toolbar">			
 		<div id="thmv-templateLibrary-toolbar-search">
 			<label for="thmv-templateLibrary-search" class="elementor-screen-only"><?php esc_html_e( 'Search Templates:', 'th-widget-pack' ); ?></label>
 			<input id="thmv-templateLibrary-search" placeholder="<?php esc_attr_e( 'Search', 'th-widget-pack' ); ?>">
@@ -77,6 +71,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 
 	<div class="thmv-templateLibrary-templates-window">
+		<div id="thmv-templateLibrary-toolbar-filter" class="thmv-templateLibrary-toolbar-filter">
+			<# console.log(thmv.library.getTypeCategory()) #>
+			<# if ( thmv.library.getCategory() ) { #>
+				<ul id="thmv-templateLibrary-filter-category" class="thmv-templateLibrary-filter-category">
+					<# _.each( thmv.library.getCategory(), function( slug ) { #>
+						<li class="thmv-templateLibrary-category-filter-item" value="{{ slug }}" data-tag="{{ slug }}">{{{ slug }}}</li>
+					<# } ); #>
+				</ul>
+			<# } #>
+		</div>	
 		<div id="thmv-templateLibrary-templates-list"></div>
 	</div>
 </script>

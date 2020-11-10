@@ -100,6 +100,7 @@ class Block_Library_Manager {
 		return [
 			'templates' => $source->get_items(),
 			'category' => $source->get_categories(),
+			'type_tags' => $source->get_type_tags(),
 		];
 	}
 }
