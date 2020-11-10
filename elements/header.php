@@ -307,7 +307,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_responsive_control(
             'description_align',
             [
-                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
+                'label' => __( 'Description Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -857,7 +857,7 @@ class Themo_Widget_Header extends Widget_Base {
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
-                <# if ( settings.icon || settings.new_icon ) { #>
+                <# if ( settings.icon || ( iconHTML.rendered && ( ! settings.icon || migrated ) ) ) { #>
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
                         <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>

@@ -34,24 +34,23 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
-        /*$this->add_control(
-            'icon',
+        // $this->add_control(
+        //     'icon',
+        //     [
+        //         'label' => __( 'Choose Icon', 'th-widget-pack' ),
+        //         'type' => Controls_Manager::ICON,
+        //         'default' => 'th-linea icon-basic-star',
+		// 		'options' => themo_icons(),
+		// 		'include' => themo_fa_icons()
+        //     ]
+        // );
+        $this->add_control(
+            'new_icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICONS,
-                'default' => 'th-linea icon-basic-star',
-				'options' => themo_icons(),
-				'include' => themo_fa_icons()
-            ]
-        );*/
-
-
-        $this->add_control(
-            'icon',
-            [
-                'label' => __( 'Icon', 'elementor' ),
-                'type' => Controls_Manager::ICONS,
                 'fa4compatibility' => 'icon',
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
                 'default' => [
                     'value' => 'fas fa-star',
                     'library' => 'fa-solid',
@@ -218,6 +217,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
         $this->end_controls_section();
 
+
         $this->start_controls_section(
             'section_align',
             [
@@ -337,7 +337,31 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'secondary_color',
+			[
+				'label' => __( 'Secondary Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'condition' => [
+					'view!' => 'default',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
+				],
+                'dynamic' => [
+                    'active' => true,
+                ],
+			]
+		);
+
+
+
+
 		$this->end_controls_section();
+
+
 
 		$this->start_controls_section(
 			'section_style_content',
@@ -357,6 +381,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
+
 		$this->add_control(
 			'title_color',
 			[
@@ -375,6 +400,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 ],
 			]
 		);
+
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -429,6 +455,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -490,8 +517,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             }
         }
 
-        $this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
-
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'. esc_attr( $settings['icon_size'] ) );
 
@@ -500,11 +525,20 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		?>
 		<div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
-                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+            <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "") || is_array( $settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
+                <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || is_array( $settings['new_icon'] ) ){ ?>
                     <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                            <?php
+                            // new icon render
+                            $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
+                            $is_new = empty( $settings['icon'] );
+                            if ( $is_new || $migrated ) {
+                                \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] );
+                            } else {
+                                ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
+                            }
+                            ?>
                         </<?php echo esc_attr($icon_tag); ?>>
                     </div>
                 <?php } ?>
@@ -524,19 +558,25 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	protected function _content_template() {
 		?>
         <#
+        var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' );
+        migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
         icon_size = '';
         icon_show = '';
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
-        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.icon || settings.new_icon) { var icon_show = 'th-show-icon'}
 
         #>
         <div class="th-service-block-w">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <i class="{{ settings.icon }}"></i>
+                        <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+					        {{{ iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+				        <# } #>
                     </{{{ iconTag }}}>
                 </div>
                 <div class="elementor-icon-box-content">
@@ -550,10 +590,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		<?php
 	}
-
-    public function on_import( $element ) {
-        return Icons_Manager::on_import_migration( $element, 'icon', 'icon', true );
-    }
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
