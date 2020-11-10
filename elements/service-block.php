@@ -435,6 +435,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'margin-top: {{SIZE}}{{UNIT}}',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
         
@@ -490,6 +493,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'margin-top: {{SIZE}}{{UNIT}}',
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );

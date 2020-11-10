@@ -324,6 +324,9 @@ class Themo_Widget_Blog extends Widget_Base {
 				'condition' => [
 					'blog_border!' => '',
 				],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 

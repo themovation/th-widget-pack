@@ -492,6 +492,9 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-gmap-wrap .map-info' => 'top: {{SIZE}}{{UNIT}}',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
