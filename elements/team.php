@@ -210,6 +210,7 @@ class Themo_Widget_Team extends Widget_Base {
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .th-team-member > a > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -219,7 +220,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'name' => 'css_filters',
 				'label'	=> __( 'CSS Filters', 'elementor' ),
-				'selector' => '{{WRAPPER}} .th-team-member > img',
+				'selector' => '{{WRAPPER}} .th-team-member > img, {{WRAPPER}} .th-team-member > a > img',
 			]
 		);
         
@@ -245,7 +246,7 @@ class Themo_Widget_Team extends Widget_Base {
 		$this->add_control(
 			'name_color',
 			[
-				'label' => __( 'Color', 'th-widget-pack' ),
+				'label' => __( 'Name Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -336,20 +337,85 @@ class Themo_Widget_Team extends Widget_Base {
         );
 
         $this->add_control(
-			'icon_color',
-			[
-				'label' => __( 'Icon Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} i' => 'color: {{VALUE}};',
-				],
-			]
-		);
+            'section_price_icon_heading',
+            [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'icon_color',
+            [
+                'label' => __( 'Icon Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'alpha' => false,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_opacity',
+            [
+                'label' => __( 'Opacity (%)', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'max' => 1,
+                        'min' => 0.10,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_opacity_hover',
+            [
+                'label' => __( 'Hover Opacity (%)', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'max' => 1,
+                        'min' => 0.10,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social a i:hover' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 300,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
 
 		$this->add_control(
 			'background_color',
@@ -358,7 +424,9 @@ class Themo_Widget_Team extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-team-member' => 'background:none;',
 				],
+                'separator' => 'before',
 			]
 		);
 
@@ -371,6 +439,7 @@ class Themo_Widget_Team extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'separator' => 'before',
             ]
         );
 
@@ -383,6 +452,7 @@ class Themo_Widget_Team extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'separator' => 'before',
             ]
         );
 
