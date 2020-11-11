@@ -309,6 +309,23 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 			]
 		);
 
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 300,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
             'section_icon_text_heading',
             [
@@ -380,7 +397,100 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             ]
         );
 
+
+
+
 		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_padding_content',
+            [
+                'label' => __( 'Padding', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_background_content',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'section_background',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'background-color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
