@@ -261,9 +261,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price span' => 'color: {{VALUE}};',
                 ],
-                'dynamic' => [
-                    'active' => true,
-                ],
+
             ]
         );
 
@@ -294,9 +292,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
-                'dynamic' => [
-                    'active' => true,
-                ],
+
 			]
 		);
 
@@ -318,9 +314,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
-                'dynamic' => [
-                    'active' => true,
-                ],
+
 			]
 		);
 
@@ -350,9 +344,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-btn .th-btn' => 'color: {{VALUE}};',
                 ],
-                'dynamic' => [
-                    'active' => true,
-                ],
+
             ]
         );
 
