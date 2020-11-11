@@ -451,6 +451,55 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         );
 
         $this->add_control(
+            'section_button_text_heading',
+            [
+                'label' => __( 'Button Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn' => 'color: {{VALUE}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_button_text_typography',
+                'selector' => '{{WRAPPER}} .th-price-list .th-btn',
+
+            ]
+        );
+
+        $this->add_responsive_control(
+            'tour_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+
+        $this->add_control(
             'divider_color',
             [
                 'label' => __( 'Divider Color', 'th-widget-pack' ),
@@ -463,6 +512,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-show-divider .th-plist-item' => 'border-color: {{VALUE}};',
                 ],
+                'separator' => 'before',
                 'condition' => [
                     'style' => 'style_1',
                 ],

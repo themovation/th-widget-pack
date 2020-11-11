@@ -469,7 +469,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'dots_size',
             [
                 'label' => __( 'Dots Size', 'elementor' ),
