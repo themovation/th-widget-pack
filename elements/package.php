@@ -452,6 +452,18 @@ class Themo_Widget_Package extends Widget_Base {
         );
 
         $this->add_responsive_control(
+            'price_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-pkg-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
             'price_border_radius',
             [
                 'label' => __( 'Border Radius', 'elementor' ),
