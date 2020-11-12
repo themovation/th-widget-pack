@@ -308,6 +308,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_off' => __( 'Hide', 'th-widget-pack' ),
                 'selectors' => [
                     '{{WRAPPER}} .mas-blog-post .post-inner' => 'border-width:1px',
+
                 ],
             ]
         );
@@ -319,10 +320,11 @@ class Themo_Widget_Blog extends Widget_Base {
 				'type' => Controls_Manager::NUMBER,
 				'min' => 0,
 				'selectors' => [
-					'{{WRAPPER}} .mas-blog-post .post-inner' => 'border-radius: {{VALUE}}px;',
-				],
-				'condition' => [
-					'blog_border!' => '',
+					'{{WRAPPER}} .mas-blog-post .post-inner' => 'border-radius:{{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post.format-video .post-inner, {{WRAPPER}} .mas-blog-post.format-image .post-inner,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .post-inner, {{WRAPPER}} .mas-blog-post.has-post-thumbnail .post-inner' => 'border-radius:0 0 {{VALUE}}px {{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post .th-pkg-img img, {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li a img,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li img, {{WRAPPER}} .mas-blog-post a img.wp-post-image' => 'border-radius: {{VALUE}}px {{VALUE}}px 0 0;',
 				],
                 'dynamic' => [
                     'active' => true,
