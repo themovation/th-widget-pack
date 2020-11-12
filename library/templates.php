@@ -72,11 +72,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="thmv-templateLibrary-templates-window">
 		<div id="thmv-templateLibrary-toolbar-filter" class="thmv-templateLibrary-toolbar-filter">
-			<# console.log(thmv.library.getTypeCategory()) #>
-			<# if ( thmv.library.getCategory() ) { #>
+			<# if ( thmv.library.getTypeCategory() ) { #>
 				<ul id="thmv-templateLibrary-filter-category" class="thmv-templateLibrary-filter-category">
-					<# _.each( thmv.library.getCategory(), function( slug ) { #>
-						<li class="thmv-templateLibrary-category-filter-item" value="{{ slug }}" data-tag="{{ slug }}">{{{ slug }}}</li>
+					<li class="thmv-templateLibrary-category-filter-item active" value="" data-tag="">All</li>
+					<# _.each( thmv.library.getTypeCategory(), function( slug ) { #>
+						<li class="thmv-templateLibrary-category-filter-item" value="{{ slug }}" data-tag="{{ slug }}">{{{ thmv.library.getCategory()[slug] }}}</li>
 					<# } ); #>
 				</ul>
 			<# } #>

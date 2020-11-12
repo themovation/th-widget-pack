@@ -213,7 +213,9 @@
             });
         },
         onCategoryFilterClick: function (t) {
+            var tar = e(t.currentTarget);
             var i = t.currentTarget.getAttribute('value');
+            tar.addClass("active").siblings().removeClass("active");
             thmv.library.setFilter("category", i);
         },
         updatePerfectScrollbar: function () {
@@ -315,8 +317,8 @@
         var l,
             s,
             d,
+            src,
             c,
-            p,
             m = this;
         (FIND_SELECTOR = ".elementor-add-new-section .elementor-add-section-drag-title"),
         ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="th-linea icon-basic-settings"></i></div>'),
@@ -385,7 +387,7 @@
         }),
         (this.getTypeCategory = function () {
             var e = m.getFilter("type");
-            return d[e];
+            return src[e];
         }),
         (this.showTemplatesView = function () {
             m.setFilter("category", "", !0),
@@ -415,7 +417,7 @@
                 success: function (t) {
                     (d = new i.LibraryCollections.Template(t.templates)), 
                     t.category && (s = t.category), 
-                    t.type_tags && (p = t.type_tags), 
+                    t.type_tags && (src = t.type_tags), 
                     e.onUpdate && e.onUpdate();
                 },
             };
