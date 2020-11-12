@@ -206,7 +206,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         );
 
 		$this->add_control(
-			'title_color',
+			'text_color',
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
