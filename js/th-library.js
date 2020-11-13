@@ -417,7 +417,7 @@
                 success: function (t) {
                     (d = new i.LibraryCollections.Template(t.templates)), 
                     t.category && (s = t.category), 
-                    t.type_tags && (src = t.type_tags), 
+                    t.type_category && (src = t.type_category), 
                     e.onUpdate && e.onUpdate();
                 },
             };
