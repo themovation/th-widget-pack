@@ -21,6 +21,10 @@ class Themo_Widget_Button extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_button_1',
@@ -72,6 +76,9 @@ class Themo_Widget_Button extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
             ]
         );
 
@@ -142,6 +149,9 @@ class Themo_Widget_Button extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
             ]
         );
 
@@ -167,38 +177,35 @@ class Themo_Widget_Button extends Widget_Base {
             ]
         );
 
-
-
-        $this->add_control(
-			'button_align',
-			[
-				'label' => __( 'Alignment', 'th-widget-pack' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left'    => [
-						'title' => __( 'Left', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-right',
-					],
-
-				],
-				'prefix_class' => 'th-btn-align-',
-				'default' => '',
-			]
-		);
+        $this->add_responsive_control(
+            'button_align',
+            [
+                'label' => __( 'Alignment', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'separator' => 'none',
+                'prefix_class' => 'th-btn-align%s-',
+            ]
+        );
 
         $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         // BUTTON 1

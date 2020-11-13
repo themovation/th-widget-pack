@@ -21,10 +21,11 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
-
-
-
 
         $this->start_controls_section(
             'section_align',
@@ -33,7 +34,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -56,10 +57,13 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-info-card-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -82,9 +86,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                     '{{WRAPPER}} .th-info-card-wrap' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -136,6 +140,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'default' => __( 'Title', 'th-widget-pack' ),
                 'placeholder' => __( 'Title', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -149,10 +156,11 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
-
-
 
         $this->end_controls_section();
 
@@ -163,7 +171,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-
         $this->add_control(
             'button_1_text',
             [
@@ -171,6 +178,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::TEXT,
                 'default' => __( 'More Info', 'th-widget-pack' ),
                 'placeholder' => __( 'Link Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -181,6 +191,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -191,6 +204,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'label' => __( 'Link 2 Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Link Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -201,6 +217,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#link', 'th-widget-pack' ),
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -235,15 +254,23 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => __( 'Colors', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
+        $this->add_control(
+            'section_title_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+            ]
+        );
+
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -256,10 +283,36 @@ class Themo_Widget_Info_Card extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_title_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
+        $this->add_control(
+            'section_content_heading',
+            [
+                'label' => __( 'Description', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -272,10 +325,28 @@ class Themo_Widget_Info_Card extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description',
+            ]
+        );
+
+        $this->add_control(
+            'section_link_1_heading',
+            [
+                'label' => __( 'Link 1', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'link_1_color',
             [
-                'label' => __( 'Link 1 Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
@@ -285,6 +356,24 @@ class Themo_Widget_Info_Card extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_3,
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_link_1_typography',
+                'selector' => '{{WRAPPER}} .th-btn-wrap a.th-btn-1',
+            ]
+        );
+
+        $this->add_control(
+            'section_link_2_heading',
+            [
+                'label' => __( 'Link 2', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -304,11 +393,82 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-		$this->end_controls_section();
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_link_2_typography',
+                'selector' => '{{WRAPPER}} .th-btn-wrap a.th-btn-2',
+            ]
+        );
+
+        $this->add_control(
+            'section_appearance_heading',
+            [
+                'label' => __( 'Appearance', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+            ]
+        );
+        
+        $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };

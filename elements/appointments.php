@@ -21,6 +21,10 @@ class Themo_Widget_Appointments extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_tooltip',
@@ -37,6 +41,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 				'default' => __( 'Book Today', 'th-widget-pack' ),
 				'placeholder' => __( 'Book here', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -74,6 +81,9 @@ class Themo_Widget_Appointments extends Widget_Base {
 				'default' => __( '[booked-calendar]', 'th-widget-pack' ),
 				'placeholder' => __( '[add_shortcode_here]', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -135,7 +145,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr( $settings['calendar_size'] ) );
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr( $settings['calendar_align'] ) );

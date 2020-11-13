@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Page Builder Widget Pack
- * Version: 1.5.13
+ * Version: 1.5.14
  * Plugin URI: themovation.com
  * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation
@@ -11,7 +11,8 @@
  * License: GPL v3
  */
 
-define('THEMO_VERSION', '1.5.13');
+
+define( 'THEMO_VERSION', '1.5.14' );
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
@@ -49,3 +50,9 @@ if ( ! function_exists( 'th_translation_ready' ) ) :
     }
 endif;
 add_action( 'plugins_loaded', 'th_translation_ready' );
+
+
+
+
+
+

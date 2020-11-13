@@ -21,6 +21,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
 
 		$this->start_controls_section(
@@ -30,14 +34,27 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			]
 		);
 
+        // $this->add_control(
+        //     'icon',
+        //     [
+        //         'label' => __( 'Choose Icon', 'th-widget-pack' ),
+        //         'type' => Controls_Manager::ICON,
+        //         'default' => 'th-linea icon-basic-star',
+		// 		'options' => themo_icons(),
+		// 		'include' => themo_fa_icons()
+        //     ]
+        // );
         $this->add_control(
-            'icon',
+            'new_icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-                'default' => 'th-linea icon-basic-star',
-				'options' => themo_icons(),
-				'include' => themo_fa_icons()
+                'fa4compatibility' => 'icon',
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
             ]
         );
 
@@ -88,7 +105,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -108,7 +125,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
@@ -208,7 +225,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -233,7 +250,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -256,9 +273,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
             ]
         );
@@ -303,7 +320,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -368,11 +385,11 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
 					'type' => Scheme_Color::get_type(),
@@ -389,11 +406,41 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'label' => 'Typography',
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'section_content_title_shadow',
+                'label' => 'Text Shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_title_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+        
 		$this->add_control(
 			'heading_description',
 			[
@@ -406,7 +453,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -422,6 +469,36 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                 ],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description, {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_description_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 	}
@@ -446,8 +523,6 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             }
         }
 
-        $this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
-
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-'. esc_attr( $settings['icon_size'] ) );
 
@@ -456,11 +531,20 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 
 		?>
 		<div class="th-service-block-w">
-            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
-                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+            <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "") || is_array( $settings['new_icon'] ) ){ echo "th-show-icon"; } ?>">
+                <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || is_array( $settings['new_icon'] ) ){ ?>
                     <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                         <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                            <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                            <?php
+                            // new icon render
+                            $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
+                            $is_new = empty( $settings['icon'] );
+                            if ( $is_new || $migrated ) {
+                                \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] );
+                            } else {
+                                ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
+                            }
+                            ?>
                         </<?php echo esc_attr($icon_tag); ?>>
                     </div>
                 <?php } ?>
@@ -480,19 +564,25 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	protected function _content_template() {
 		?>
         <#
+        var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' );
+        migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
         icon_size = '';
         icon_show = '';
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
-        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.icon || settings.new_icon) { var icon_show = 'th-show-icon'}
 
         #>
         <div class="th-service-block-w">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <i class="{{ settings.icon }}"></i>
+                        <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+					        {{{ iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+				        <# } #>
                     </{{{ iconTag }}}>
                 </div>
                 <div class="elementor-icon-box-content">

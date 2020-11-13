@@ -17,6 +17,10 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         return 'eicon-archive-posts';
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function get_categories() {
         return [ 'themo-elements' ];
     }
@@ -41,6 +45,9 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
                 'default' => __( 'Book Today', 'th-widget-pack' ),
                 'placeholder' => __( 'Book here', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ]
             ]
         );
 
@@ -92,12 +99,18 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
         $this->add_control('months_to_show', array(
             'type'        => Controls_Manager::TEXT,
             'label'       => __('Months to display', 'th-widget-pack'),
-            'default'     => '3'
+            'default'     => '3',
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
         $this->add_control(
@@ -122,6 +135,9 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
                 'size_units' => [ '%', 'px' ],
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_availability_calendar' => 'max-width: {{SIZE}}{{UNIT}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );
@@ -149,7 +165,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip' );
 
