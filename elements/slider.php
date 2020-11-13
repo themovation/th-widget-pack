@@ -825,7 +825,7 @@ class Themo_Widget_Slider extends Widget_Base {
                         'slide_bg_color' => __( '#7A85E8', 'th-widget-pack' ),
                         'inline_form' => __( 'inline', 'th-widget-pack' ),
                         'slide_button_text_1_show' => __( 'no', 'th-widget-pack' ),
-                        'slide_shortcode' => __( '[formidable id="3"]', 'th-widget-pack' ),
+                        'slide_shortcode' => __( '[formidable id="2"]', 'th-widget-pack' ),
                     ],
 
                 ],
