@@ -120,7 +120,7 @@ li.thmv-templateLibrary-category-filter-item.active {
 	position: relative; 
 	display: flex;
 	overflow-y: auto;
-	margin: 25px -15px 0;
+	margin: 5px -15px 0;
 	height: calc(100% - 45px);
 }
 
@@ -192,9 +192,6 @@ li.thmv-templateLibrary-category-filter-item.active {
 .thmv-templateLibrary-template-thumbnail {
 	display: block;
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	-o-object-fit: cover;
 }
 .thmv-templateLibrary-template-footer {
 	position: absolute;

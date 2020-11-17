@@ -110,8 +110,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	<div class="elementor-template-library-blank-title"></div>
 	<div class="elementor-template-library-blank-message"></div>
-	<div class="elementor-template-library-blank-footer">
-		<?php esc_html_e( 'Want to learn more about the Exclusive Addons?', 'th-widget-pack' ); ?>
-		<a class="elementor-template-library-blank-footer-link" href="http://exclusiveaddons.com/" target="_blank"><?php echo __( 'Click here', 'th-widget-pack' ); ?></a>
-	</div>
 </script>
