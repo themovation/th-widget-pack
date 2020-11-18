@@ -341,10 +341,16 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                     );
                     // Dropdowns Children
                     $th_shortcode = str_replace(
+                        'mphb-children-wrapper',
+                        'mphb-children-wrapper frm_form_field',
+                        $th_shortcode
+                    );
+                    // Dropdowns Children
+                    /*$th_shortcode = str_replace(
                         'mphb-check-children-date-wrapper',
                         'mphb-check-children-date-wrapper frm_form_field',
                         $th_shortcode
-                    );
+                    );*/
                 }
             }
 
