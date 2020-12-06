@@ -51,6 +51,20 @@ if ( ! function_exists( 'th_translation_ready' ) ) :
 endif;
 add_action( 'plugins_loaded', 'th_translation_ready' );
 
+/**
+ * Load the header footer class loader.
+ */
+require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
+
+/**
+ * Load the Plugin Class.
+ */
+function thmv_hfe_init() {
+	Header_Footer_Elementor::instance();
+}
+
+add_action( 'plugins_loaded', 'thmv_hfe_init' );
+
 
 
 
