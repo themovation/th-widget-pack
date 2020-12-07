@@ -5,28 +5,28 @@
  * @package  header-footer-elementor
  */
 
-use HFE\Lib\Astra_Target_Rules_Fields;
+use THHF\Lib\Astra_Target_Rules_Fields;
 
 defined( 'ABSPATH' ) or exit;
 
 /**
- * HFE_Admin setup
+ * THHF_Admin setup
  *
  * @since 1.0
  */
-class HFE_Admin {
+class THHF_Admin {
 
 	/**
-	 * Instance of HFE_Admin
+	 * Instance of THHF_Admin
 	 *
-	 * @var HFE_Admin
+	 * @var THHF_Admin
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Instance of HFE_Admin
+	 * Instance of THHF_Admin
 	 *
-	 * @return HFE_Admin Instance of HFE_Admin
+	 * @return THHF_Admin Instance of THHF_Admin
 	 */
 	public static function instance() {
 		if ( ! isset( self::$_instance ) ) {
@@ -58,13 +58,13 @@ class HFE_Admin {
 
 		// Register the icons styles.
 		wp_register_style(
-			'hfe-style',
-			THEMO_URL . 'assets/css/style.css',
+			'thhf-style',
+			THEMO_URL . 'header-footer/assets/css/style.css',
 			[],
 			THEMO_VERSION
 		);
 
-		wp_enqueue_style( 'hfe-style' );
+		wp_enqueue_style( 'thhf-style' );
 	}
 
 	/**
@@ -112,7 +112,7 @@ class HFE_Admin {
 			],
 		];
 
-		wp_enqueue_script( 'hfe-elementor-pro-compatibility', THEMO_URL . 'inc/js/hfe-elementor-pro-compatibility.js', [ 'jquery' ], THEMO_VERSION, true );
+		wp_enqueue_script( 'hfe-elementor-pro-compatibility', THEMO_URL . 'header-footer/inc/js/hfe-elementor-pro-compatibility.js', [ 'jquery' ], THEMO_VERSION, true );
 
 		wp_localize_script(
 			'hfe-elementor-pro-compatibility',
@@ -245,7 +245,7 @@ class HFE_Admin {
 			'supports'            => [ 'title', 'thumbnail', 'elementor' ],
 		];
 
-		register_post_type( 'elementor-hf', $args );
+		register_post_type( 'elementor-thhf', $args );
 	}
 
 	/**
@@ -257,11 +257,11 @@ class HFE_Admin {
 	 */
 	public function register_admin_menu() {
 		add_submenu_page(
-			'themes.php',
+			'stratus_dashboard',
 			__( 'Header Footer & Blocks', 'header-footer-elementor' ),
 			__( 'Header Footer & Blocks', 'header-footer-elementor' ),
 			'edit_pages',
-			'edit.php?post_type=elementor-hf'
+			'edit.php?post_type=elementor-thhf'
 		);
 	}
 
@@ -276,7 +276,7 @@ class HFE_Admin {
 				$this,
 				'efh_metabox_render',
 			],
-			'elementor-hf',
+			'elementor-thhf',
 			'normal',
 			'high'
 		);
@@ -477,7 +477,7 @@ class HFE_Admin {
 		global $pagenow;
 		global $post;
 
-		if ( 'post.php' != $pagenow || ! is_object( $post ) || 'elementor-hf' != $post->post_type ) {
+		if ( 'post.php' != $pagenow || ! is_object( $post ) || 'elementor-thhf' != $post->post_type ) {
 			return;
 		}
 
@@ -521,7 +521,7 @@ class HFE_Admin {
 	 * @since  1.0.0
 	 */
 	public function block_template_frontend() {
-		if ( is_singular( 'elementor-hf' ) && ! current_user_can( 'edit_posts' ) ) {
+		if ( is_singular( 'elementor-thhf' ) && ! current_user_can( 'edit_posts' ) ) {
 			wp_redirect( site_url(), 301 );
 			die;
 		}
@@ -537,7 +537,7 @@ class HFE_Admin {
 	function load_canvas_template( $single_template ) {
 		global $post;
 
-		if ( 'elementor-hf' == $post->post_type ) {
+		if ( 'elementor-thhf' == $post->post_type ) {
 			$elementor_2_0_canvas = ELEMENTOR_PATH . '/modules/page-templates/templates/canvas.php';
 
 			if ( file_exists( $elementor_2_0_canvas ) ) {
@@ -589,4 +589,4 @@ class HFE_Admin {
 	}
 }
 
-HFE_Admin::instance();
+THHF_Admin::instance();

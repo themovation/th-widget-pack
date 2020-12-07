@@ -6,7 +6,7 @@
  * @author Brainstorm Force
  */
 
-namespace HFE\WidgetsManager\Widgets;
+namespace THHF\WidgetsManager\Widgets;
 
 /**
  * Exit if accessed directly.

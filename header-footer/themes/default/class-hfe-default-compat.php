@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-namespace HFE\Themes;
+namespace THHF\Themes;
 
 /**
  * Astra theme compatibility.

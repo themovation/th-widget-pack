@@ -8,7 +8,7 @@
  * @package hfe
  */
 
-namespace HFE\Themes;
+namespace THHF\Themes;
 
 /**
  * Class HFE Theme Fallback support.
@@ -128,9 +128,9 @@ class HFE_Fallback_Theme_Support {
 		$hfe_compatibility_option = get_option( 'hfe_compatibility_option', '1' );
 
 		if ( '1' === $hfe_compatibility_option ) {
-			require THEMO_PATH . 'themes/default/class-hfe-default-compat.php';
+			require THEMO_PATH . 'header-footer/themes/default/class-hfe-default-compat.php';
 		} elseif ( '2' === $hfe_compatibility_option ) {
-			require THEMO_PATH . 'themes/default/class-global-theme-compatibility.php';
+			require THEMO_PATH . 'header-footer/themes/default/class-global-theme-compatibility.php';
 		}
 	}
 

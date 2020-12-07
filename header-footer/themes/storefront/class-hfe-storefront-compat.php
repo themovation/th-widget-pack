@@ -74,7 +74,7 @@ class HFE_Storefront_Compat {
 			}';
 		}
 
-		wp_add_inline_style( 'hfe-style', $css );
+		wp_add_inline_style( 'thhf-style', $css );
 	}
 
 	/**

@@ -9,7 +9,7 @@
  * @since       HFE 1.2.0
  */
 
-namespace HFE\WidgetsManager;
+namespace THHF\WidgetsManager;
 
 use Elementor\Plugin;
 
@@ -73,7 +73,7 @@ class Widgets_Loader {
 	public static function get_widget_script() {
 		$js_files = [
 			'hfe-frontend-js' => [
-				'path'      => 'inc/js/frontend.js',
+				'path'      => 'header-footer/inc/js/frontend.js',
 				'dep'       => [ 'jquery' ],
 				'in_footer' => true,
 			],
@@ -120,7 +120,7 @@ class Widgets_Loader {
 
 		if ( ! empty( $widget_list ) ) {
 			foreach ( $widget_list as $handle => $data ) {
-				require_once THEMO_PATH . '/inc/widgets-manager/widgets/class-' . $data . '.php';
+				require_once THEMO_PATH . 'header-footer/inc/widgets-manager/widgets/class-' . $data . '.php';
 			}
 		}
 
@@ -131,7 +131,7 @@ class Widgets_Loader {
 		}
 
 		// Emqueue the widgets style.
-		wp_enqueue_style( 'hfe-widgets-style', THEMO_URL . 'inc/widgets-css/frontend.css', [], THEMO_VERSION );
+		wp_enqueue_style( 'hfe-widgets-style', THEMO_URL . 'header-footer/inc/widgets-css/frontend.css', [], THEMO_VERSION );
 	}
 
 	/**
@@ -229,11 +229,11 @@ class Widgets_Loader {
 
 		ob_start();
 
-		include THEMO_PATH . '/inc/widgets-manager/widgets/class-cart.php';
+		include THEMO_PATH . 'header-footer/inc/widgets-manager/widgets/class-cart.php';
 
 		$cart_type = get_option( 'hfe_cart_widget_type' );
 
-		\HFE\WidgetsManager\Widgets\Cart::get_cart_link( $cart_type );
+		\THHF\WidgetsManager\Widgets\Cart::get_cart_link( $cart_type );
 
 		$fragments['body:not(.elementor-editor-active) a.hfe-cart-container'] = ob_get_clean();
 

@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-namespace HFE\Themes;
+namespace THHF\Themes;
 
 /**
  * Global theme compatibility.
@@ -71,7 +71,7 @@ class Global_Theme_Compatibility {
 			}';
 		}
 
-		wp_add_inline_style( 'hfe-style', $css );
+		wp_add_inline_style( 'thhf-style', $css );
 	}
 
 	/**

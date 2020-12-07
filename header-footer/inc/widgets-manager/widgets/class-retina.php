@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-namespace HFE\WidgetsManager\Widgets;
+namespace THHF\WidgetsManager\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Control_Media;
@@ -610,22 +610,10 @@ class Retina extends Widget_Base {
 	 */
 	protected function register_helpful_information() {
 
-			$help_link_1 = HFE_DOMAIN . 'docs/introducing-retina-image-widget';
-
 			$this->start_controls_section(
 				'section_helpful_info',
 				[
 					'label' => __( 'Helpful Information', 'header-footer-elementor' ),
-				]
-			);
-
-			$this->add_control(
-				'help_doc_1',
-				[
-					'type'            => Controls_Manager::RAW_HTML,
-					/* translators: %1$s doc link */
-					'raw'             => sprintf( __( '%1$s Getting started article » %2$s', 'header-footer-elementor' ), '<a href=' . $help_link_1 . 'docs/introducing-retina-image-widget/" target="_blank" rel="noopener">', '</a>' ),
-					'content_classes' => 'hfe-editor-doc',
 				]
 			);
 

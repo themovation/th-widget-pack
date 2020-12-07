@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-use HFE\Lib\Astra_Target_Rules_Fields;
+use THHF\Lib\Astra_Target_Rules_Fields;
 
 /**
  * Class Header_Footer_Elementor
@@ -27,7 +27,7 @@ class Header_Footer_Elementor {
 	private static $elementor_instance;
 
 	/**
-	 * Instance of HFE_Admin
+	 * Instance of THHF_Admin
 	 *
 	 * @var Header_Footer_Elementor
 	 */
@@ -246,7 +246,7 @@ class Header_Footer_Elementor {
 	 * Enqueue styles and scripts.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'hfe-style', THEMO_URL . 'header-footer/assets/css/header-footer-elementor.css', [], THEMO_VERSION );
+		wp_enqueue_style( 'thhf-style', THEMO_URL . 'header-footer/assets/css/header-footer-elementor.css', [], THEMO_VERSION );
 
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$elementor = \Elementor\Plugin::instance();
@@ -295,7 +295,7 @@ class Header_Footer_Elementor {
 		global $pagenow;
 		$screen = get_current_screen();
 
-		if ( ( 'elementor-hf' == $screen->id && ( 'post.php' == $pagenow || 'post-new.php' == $pagenow ) ) || ( 'edit.php' == $pagenow && 'edit-elementor-hf' == $screen->id ) ) {
+		if ( ( 'elementor-thhf' == $screen->id && ( 'post.php' == $pagenow || 'post-new.php' == $pagenow ) ) || ( 'edit.php' == $pagenow && 'edit-elementor-hf' == $screen->id ) ) {
 			wp_enqueue_style( 'hfe-admin-style', THEMO_URL . 'header-footer/admin/assets/css/ehf-admin.css', [], THEMO_VERSION );
 			wp_enqueue_script( 'hfe-admin-script', THEMO_URL . 'header-footer/admin/assets/js/ehf-admin.js', [], THEMO_VERSION );
 		}
@@ -393,7 +393,7 @@ class Header_Footer_Elementor {
 			'users'     => 'ehf_target_user_roles',
 		];
 
-		$hfe_templates = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( 'elementor-hf', $option );
+		$hfe_templates = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( 'elementor-thhf', $option );
 
 		foreach ( $hfe_templates as $template ) {
 			if ( get_post_meta( absint( $template['id'] ), 'ehf_template_type', true ) === $type ) {

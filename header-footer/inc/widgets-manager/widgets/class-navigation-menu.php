@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-namespace HFE\WidgetsManager\Widgets;
+namespace THHF\WidgetsManager\Widgets;
 
 // Elementor Classes.
 use Elementor\Controls_Manager;

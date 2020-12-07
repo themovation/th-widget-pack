@@ -112,7 +112,7 @@ if ( ! class_exists( 'HFE_Update' ) ) {
 		 */
 		public function get_legacy_template_id( $type ) {
 			$args = [
-				'post_type'    => 'elementor-hf',
+				'post_type'    => 'elementor-thhf',
 				'meta_key'     => 'ehf_template_type',
 				'meta_value'   => $type,
 				'meta_type'    => 'post',
