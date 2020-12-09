@@ -15,6 +15,7 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Scheme_Color;
 use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
+use \Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly.
@@ -127,15 +128,12 @@ class Cart extends Widget_Base {
 		$this->add_control(
 			'icon',
 			[
-				'label'        => __( 'Icon', 'header-footer-elementor' ),
-				'type'         => Controls_Manager::SELECT,
-				'options'      => [
-					'bag-light'  => __( 'Bag Light', 'header-footer-elementor' ),
-					'bag-medium' => __( 'Bag Medium', 'header-footer-elementor' ),
-					'bag-solid'  => __( 'Bag Solid', 'header-footer-elementor' ),
+				'label' => __( 'Icon', 'header-footer-elementor' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-shopping-bag',
+					'library' => 'solid',
 				],
-				'default'      => 'bag-light',
-				'prefix_class' => 'toggle-icon--',
 				'condition'    => [
 					'hfe_cart_type' => 'custom',
 				],
@@ -555,7 +553,8 @@ class Cart extends Widget_Base {
 	 * @param string $cart_type Menu Cart type.
 	 * @access public
 	 */
-	public static function get_cart_link( $cart_type ) {
+	public static function get_cart_link( $cart_type, $settings ) {
+
 		if ( null === WC()->cart ) {
 			return;
 		}
@@ -578,7 +577,7 @@ class Cart extends Widget_Base {
 					<?php echo WC()->cart->get_cart_subtotal(); ?>
 				</span>
 				<span class="elementor-button-icon" data-counter="<?php echo WC()->cart->get_cart_contents_count(); ?>">
-					<i class="eicon" aria-hidden="true"></i>
+					<?php Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 					<span class="elementor-screen-only"><?php _e( 'Cart', 'header-footer-elementor' ); ?></span>
 				</span>
 			</a>	
@@ -611,11 +610,11 @@ class Cart extends Widget_Base {
 				<?php
 				if ( 'default' === $cart_type ) {
 
-					$this->get_cart_link( 'default' );
+					$this->get_cart_link( 'default', $settings );
 				} else {
 					?>
 						<div class="hfe-menu-cart__toggle elementor-button-wrapper">
-							<?php $this->get_cart_link( 'custom' ); ?>
+							<?php $this->get_cart_link( 'custom', $settings ); ?>
 						</div>
 					<?php } ?>            
 				</div>

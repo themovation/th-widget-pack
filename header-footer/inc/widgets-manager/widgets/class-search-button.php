@@ -15,6 +15,7 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
+use \Elementor\Icons_Manager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly.
@@ -136,6 +137,21 @@ class Search_Button extends Widget_Base {
 				],
 				'prefix_class' => 'hfe-search-layout-',
 				'render_type'  => 'template',
+			]
+		);
+
+		$this->add_control(
+			'search_icon',
+			[
+				'label' => __( 'Icon', 'header-footer-elementor' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-search',
+					'library' => 'solid',
+				],
+				'condition'    => [
+					'layout' => 'icon',
+				],
 			]
 		);
 
@@ -956,7 +972,7 @@ class Search_Button extends Widget_Base {
 			<?php if ( 'icon' === $settings['layout'] ) { ?>
 			<div class = "hfe-search-icon-toggle">
 				<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-				<i class="fas fa-search" aria-hidden="true"></i>
+				<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 			</div>
 			<?php } else { ?>
 			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>

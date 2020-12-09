@@ -1668,7 +1668,7 @@ a.hfe-menu-item.elementor-button {
     display: none; 
 }
 
-.elementor-widget-hfe-cart.toggle-icon--bag-light .hfe-menu-cart__toggle .elementor-button-icon i:before {
+/* .elementor-widget-hfe-cart.toggle-icon--bag-light .hfe-menu-cart__toggle .elementor-button-icon i:before {
     content: '\e8e3'; 
 }
 
@@ -1678,7 +1678,7 @@ a.hfe-menu-item.elementor-button {
 
 .elementor-widget-hfe-cart.toggle-icon--bag-solid .hfe-menu-cart__toggle .elementor-button-icon i:before {
     content: '\e8e5'; 
-}
+} */
 
 .hfe-menu-cart__toggle .elementor-button {
     background: transparent;
