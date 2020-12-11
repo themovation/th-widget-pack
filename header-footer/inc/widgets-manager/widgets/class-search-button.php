@@ -794,7 +794,7 @@ class Search_Button extends Widget_Base {
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hfe-search-icon-toggle i' => 'color: {{VALUE}}; border-color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .thhf-search-icon-toggle i' => 'color: {{VALUE}}; border-color: {{VALUE}}; fill: {{VALUE}};',
 				],
 			]
 		);
@@ -814,7 +814,7 @@ class Search_Button extends Widget_Base {
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hfe-search-icon-toggle i:hover' => 'color: {{VALUE}}; border-color: {{VALUE}}',
+					'{{WRAPPER}} .thhf-search-icon-toggle i:hover' => 'color: {{VALUE}}; border-color: {{VALUE}}',
 				],
 			]
 		);
@@ -832,9 +832,7 @@ class Search_Button extends Widget_Base {
 					'size' => 15,
 				],
 				'selectors'   => [
-					'{{WRAPPER}} .hfe-search-icon-toggle input[type=search]' => 'padding: 0 calc( {{SIZE}}{{UNIT}} / 2);',
-					'{{WRAPPER}} .hfe-search-icon-toggle i.fa-search:before' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .hfe-search-icon-toggle i.fa-search, {{WRAPPER}} .hfe-search-icon-toggle' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .thhf-search-icon-toggle i' => 'font-size: {{SIZE}}{{UNIT}};'
 
 				],
 				'condition'   => [
@@ -968,11 +966,15 @@ class Search_Button extends Widget_Base {
 			]
 		);
 		?>
-		<div class="thhf-search-form-wrapper">
 			<form class="hfe-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
 				<?php if ( 'icon' === $settings['layout'] ) { ?>
-					<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-					<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					<div class="thhf-search-icon-toggle">
+						<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					</div>
+					<div class="thhf-search-form-wrapper">
+						<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
+						<div class="thhf-search-overlay-close">Close</div>
+					</div>
 				<?php } else { ?>
 				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
 					<?php if ( 'text' === $settings['layout'] ) { ?>
@@ -992,11 +994,6 @@ class Search_Button extends Widget_Base {
 				</div>
 			<?php } ?>
 			</form>
-			<div class="thhf-search-overlay-close">Close</div>
-		</div>
-		<div class = "thhf-search-icon-toggle">
-		<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-		</div>
 		<?php
 	}
 }

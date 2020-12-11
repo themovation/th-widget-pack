@@ -1747,17 +1747,19 @@ a.hfe-menu-item.elementor-button {
 
 .thhf-search-form-wrapper {
     background: #fff;
-    position: fixed;
+    opacity: 0;
+    display: none;
     transition: opacity .2s linear,left 0s linear .2s;
     width: 100%;
     z-index: 999;
-    opacity: 0;
     top: 0;
     right: 0;
     bottom: 0;
     left: -9999rem;
 }   
 .thhf-search-form-wrapper.active {
+    position: fixed;
+    display: block;
     left: 0;
     opacity: 1;
     transition: opacity .2s linear;
@@ -1765,6 +1767,19 @@ a.hfe-menu-item.elementor-button {
     width: 100vw;
     height: 100vh;
 } 
+
+.hfe-search-button-wrapper .thhf-search-form-wrapper.active input[type=search] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+}
+
+.thhf-search-icon-toggle {
+    cursor: pointer;
+}
+
 
 .thhf-search-overlay-close {
     position: absolute;
@@ -1776,8 +1791,6 @@ a.hfe-menu-item.elementor-button {
 .hfe-search-button-wrapper {
     display: block;
     vertical-align: middle;
-    top: 50%;
-    left: 40%;
 }
 
 .hfe-search-form__container {
