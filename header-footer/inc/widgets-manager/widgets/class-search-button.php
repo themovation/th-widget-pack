@@ -968,31 +968,35 @@ class Search_Button extends Widget_Base {
 			]
 		);
 		?>
-		<form class="hfe-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
-			<?php if ( 'icon' === $settings['layout'] ) { ?>
-			<div class = "hfe-search-icon-toggle">
-				<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-				<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-			</div>
-			<?php } else { ?>
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
-				<?php if ( 'text' === $settings['layout'] ) { ?>
+		<div class="thhf-search-form-wrapper">
+			<form class="hfe-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
+				<?php if ( 'icon' === $settings['layout'] ) { ?>
 					<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-						<button id="clear" type="reset">
-							<i class="fas fa-times clearable__clear" aria-hidden="true"></i>
-						</button>
+					<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 				<?php } else { ?>
-					<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-					<button id="clear-with-button" type="reset">
-						<i class="fas fa-times" aria-hidden="true"></i>
-					</button>
-					<button class="hfe-search-submit" type="submit">
-						<i class="fas fa-search" aria-hidden="true"></i>
-					</button>
-				<?php } ?>
-			</div>
-		<?php } ?>
-		</form>
+				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
+					<?php if ( 'text' === $settings['layout'] ) { ?>
+						<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
+							<button id="clear" type="reset">
+								<i class="fas fa-times clearable__clear" aria-hidden="true"></i>
+							</button>
+					<?php } else { ?>
+						<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
+						<button id="clear-with-button" type="reset">
+							<i class="fas fa-times" aria-hidden="true"></i>
+						</button>
+						<button class="hfe-search-submit" type="submit">
+							<i class="fas fa-search" aria-hidden="true"></i>
+						</button>
+					<?php } ?>
+				</div>
+			<?php } ?>
+			</form>
+			<div class="thhf-search-overlay-close">Close</div>
+		</div>
+		<div class = "thhf-search-icon-toggle">
+		<?php Icons_Manager::render_icon( $settings['search_icon'], [ 'aria-hidden' => 'true' ] ); ?>
+		</div>
 		<?php
 	}
 }

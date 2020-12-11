@@ -1643,6 +1643,33 @@ class Navigation_Menu extends Widget_Base {
 				]
 			);
 
+			$this->add_control(
+				'left-maring',
+				[
+					'label' => __( 'Left Spacing', 'plugin-domain' ),
+					'type' => Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 100,
+							'step' => 1,
+						],
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 0,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .hfe-nav-menu li.elementor-button-wrapper' => 'margin-left: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+
 			$this->start_controls_tabs( '_button_style' );
 
 				$this->start_controls_tab(

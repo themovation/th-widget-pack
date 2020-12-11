@@ -1745,11 +1745,39 @@ a.hfe-menu-item.elementor-button {
 
 /*Search Box CSS*/
 
+.thhf-search-form-wrapper {
+    background: #fff;
+    position: fixed;
+    transition: opacity .2s linear,left 0s linear .2s;
+    width: 100%;
+    z-index: 999;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -9999rem;
+}   
+.thhf-search-form-wrapper.active {
+    left: 0;
+    opacity: 1;
+    transition: opacity .2s linear;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+} 
+
+.thhf-search-overlay-close {
+    position: absolute;
+    cursor: pointer;
+    top: 50px;
+    right: 50px;
+}
+
 .hfe-search-button-wrapper {
     display: block;
-    cursor: pointer;
     vertical-align: middle;
-    text-align: right;
+    top: 50%;
+    left: 40%;
 }
 
 .hfe-search-form__container {
@@ -1775,7 +1803,6 @@ a.hfe-menu-item.elementor-button {
 /*search icon toggle css*/
 
 .hfe-search-button-wrapper input[type=search] {
-    border: 0;
     padding: 10px;
     cursor: pointer;
     border-radius: 0;
@@ -1802,7 +1829,6 @@ a.hfe-menu-item.elementor-button {
 }
 
 .hfe-search-layout-icon .hfe-search-icon-toggle .hfe-search-form__input {
-    background-color: unset;
     height: 100%;
 }
 
@@ -1859,10 +1885,8 @@ a.hfe-menu-item.elementor-button {
 }
 
 .hfe-search-button-wrapper .hfe-search-icon-toggle .hfe-search-form__input {
-    position: absolute;
-    width: 0;
+    width: 200px;
     right: 0;
-    background-color: transparent;
 }
 
 .hfe-search-icon-toggle {

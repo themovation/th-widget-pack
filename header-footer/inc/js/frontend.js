@@ -15,13 +15,21 @@
 			var $search_button = $scope.find( ".hfe-search-submit" );
 			var $toggle_search = $scope.find( ".hfe-search-icon-toggle input" );
 
-		$scope.find( '.hfe-search-icon-toggle' ).on( 'click', function( ){
-			$scope.find( ".hfe-search-form__input" ).focus();						
+		$scope.find( '.thhf-search-icon-toggle' ).on( 'click', function( ){
+			$scope.find( ".thhf-search-form-wrapper" ).addClass( "active" );
+			//$scope.find( ".hfe-search-form__input" ).focus();						
 		});	
+		$scope.find( '.thhf-search-overlay-close' ).on( 'click', function( ){
+			$scope.find( ".thhf-search-form-wrapper" ).removeClass( "active" );
+			//$scope.find( ".hfe-search-form__input" ).focus();						
+		});	
+
 		
-		$scope.find( ".hfe-search-form__input" ).focus( function(){
-			$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
-		});
+		
+		// $scope.find( ".hfe-search-form__input" ).focus( function(){
+		// 	$scope.find( ".thhf-search-form-wrapper" ).addClass( "active" );
+		// 	//$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
+		// });
 
 		$scope.find( ".hfe-search-form__input" ).blur( function() {
 			$scope.find( ".hfe-search-button-wrapper" ).removeClass( "hfe-input-focus" );
