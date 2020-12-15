@@ -31,6 +31,14 @@ class HFE_Default_Compat {
 			add_action( 'hfe_header', 'hfe_render_header' );
 		}
 
+		if ( hfe_sticky_header_enabled() ) {
+			// Replace header.php template.
+			add_action( 'get_header', [ $this, 'override_header' ] );
+
+			// Display HFE's sticky header in the replaced header.
+			add_action( 'hfe_sticky_header', 'hfe_render_sticky_header' );
+		}
+
 		if ( hfe_footer_enabled() || hfe_is_before_footer_enabled() ) {
 			// Replace footer.php template.
 			add_action( 'get_footer', [ $this, 'override_footer' ] );
@@ -54,7 +62,7 @@ class HFE_Default_Compat {
 	 * @return void
 	 */
 	public function override_header() {
-		require THEMO_PATH . 'themes/default/hfe-header.php';
+		require THEMO_PATH . 'header-footer/themes/default/hfe-header.php';
 		$templates   = [];
 		$templates[] = 'header.php';
 		// Avoid running wp_head hooks again.
@@ -72,7 +80,7 @@ class HFE_Default_Compat {
 	 * @return void
 	 */
 	public function override_footer() {
-		require THEMO_PATH . 'themes/default/hfe-footer.php';
+		require THEMO_PATH . 'header-footer/themes/default/hfe-footer.php';
 		$templates   = [];
 		$templates[] = 'footer.php';
 		// Avoid running wp_footer hooks again.

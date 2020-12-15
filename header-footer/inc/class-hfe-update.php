@@ -84,12 +84,18 @@ if ( ! class_exists( 'HFE_Update' ) ) {
 			];
 
 			$header_id        = $this->get_legacy_template_id( 'type_header' );
+			$sticky_header_id = $this->get_legacy_template_id( 'type_header_sticky' );
 			$footer_id        = $this->get_legacy_template_id( 'type_footer' );
 			$before_footer_id = $this->get_legacy_template_id( 'type_before_footer' );
 
 			// Header.
 			if ( ! empty( $header_id ) ) {
 				update_post_meta( $header_id, 'ehf_target_include_locations', $default_include_locations );
+			}
+
+			// Sticky Header.
+			if ( ! empty( $sticky_header_id ) ) {
+				update_post_meta( $sticky_header_id, 'ehf_target_include_locations', $default_include_locations );
 			}
 
 			// Footer.

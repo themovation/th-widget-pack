@@ -103,6 +103,10 @@ class THHF_Admin {
 				'value' => 'Header',
 			],
 			[
+				'id'    => get_hfe_sticky_header_id(),
+				'value' => 'Sticky Header',
+			],
+			[
 				'id'    => get_hfe_footer_id(),
 				'value' => 'Footer',
 			],
@@ -307,6 +311,7 @@ class THHF_Admin {
 						<select name="ehf_template_type" id="ehf_template_type">
 							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'header-footer-elementor' ); ?></option>
 							<option value="type_header" <?php selected( $template_type, 'type_header' ); ?>><?php _e( 'Header', 'header-footer-elementor' ); ?></option>
+							<option value="type_header_sticky" <?php selected( $template_type, 'type_header_sticky' ); ?>><?php _e( 'Sticky Header', 'header-footer-elementor' ); ?></option>
 							<option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
 							<option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>

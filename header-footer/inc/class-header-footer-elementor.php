@@ -268,6 +268,16 @@ class Header_Footer_Elementor {
 			$css_file->enqueue();
 		}
 
+		if ( hfe_sticky_header_enabled() ) {
+			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
+				$css_file = new \Elementor\Core\Files\CSS\Post( get_hfe_sticky_header_id() );
+			} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
+				$css_file = new \Elementor\Post_CSS_File( get_hfe_sticky_header_id() );
+			}
+
+			$css_file->enqueue();
+		}
+
 		if ( hfe_footer_enabled() ) {
 			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
 				$css_file = new \Elementor\Core\Files\CSS\Post( get_hfe_footer_id() );
@@ -342,6 +352,13 @@ class Header_Footer_Elementor {
 	}
 
 	/**
+	 * Prints the Header content.
+	 */
+	public static function get_sticky_header_content() {
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_hfe_sticky_header_id() );
+	}
+
+	/**
 	 * Prints the Footer content.
 	 */
 	public static function get_footer_content() {
@@ -368,7 +385,7 @@ class Header_Footer_Elementor {
 	 * @return mixed.
 	 */
 	public static function get_settings( $setting = '', $default = '' ) {
-		if ( 'type_header' == $setting || 'type_footer' == $setting || 'type_before_footer' == $setting ) {
+		if ( 'type_header' == $setting || 'type_header_sticky' == $setting || 'type_footer' == $setting || 'type_before_footer' == $setting ) {
 			$templates = self::get_template_id( $setting );
 
 			$template = ! is_array( $templates ) ? $templates : $templates[0];

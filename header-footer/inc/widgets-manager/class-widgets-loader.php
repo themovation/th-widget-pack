@@ -74,7 +74,7 @@ class Widgets_Loader {
 		$js_files = [
 			'hfe-frontend-js' => [
 				'path'      => 'header-footer/inc/js/frontend.js',
-				'dep'       => [ 'jquery' ],
+				'dep'       => [ 'jquery', 'elementor-waypoints' ],
 				'in_footer' => true,
 			],
 		];

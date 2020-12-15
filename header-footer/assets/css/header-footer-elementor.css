@@ -1,3 +1,11 @@
+/* Sticky Header */
+
+#thhf-masthead-sticky {
+    opacity:1;
+    width: 100%;
+    z-index:500;
+}
+
 .footer-width-fixer {
     width: 100%;
 }

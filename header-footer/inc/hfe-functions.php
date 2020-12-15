@@ -23,6 +23,23 @@ function hfe_header_enabled() {
 }
 
 /**
+ * Checks if Sticky Header is enabled from HFE.
+ *
+ * @since  1.0.2
+ * @return bool True if sticky header is enabled. False if header is not enabled
+ */
+function hfe_sticky_header_enabled() {
+	$header_id = Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
+	$status    = false;
+
+	if ( '' !== $header_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_sticky_header_enabled', $status );
+}
+
+/**
  * Checks if Footer is enabled from HFE.
  *
  * @since  1.0.2
@@ -53,6 +70,22 @@ function get_hfe_header_id() {
 	}
 
 	return apply_filters( 'get_hfe_header_id', $header_id );
+}
+
+/**
+ * Get HFE Sticky Header ID
+ *
+ * @since  1.0.2
+ * @return (String|boolean) sticky header id if it is set else returns false.
+ */
+function get_hfe_sticky_header_id() {
+	$sticky_header_id = Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
+
+	if ( '' === $sticky_header_id ) {
+		$sticky_header_id = false;
+	}
+
+	return apply_filters( 'get_hfe_sticky_header_id', $sticky_header_id );
 }
 
 /**
@@ -90,7 +123,7 @@ function hfe_render_header() {
 	}
 
 	?>
-		<header id="masthead" class="<?php echo $render_class; ?>" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
+		<header id="thhf-masthead" class="<?php echo $render_class; ?>" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 			<p class="main-title bhf-hidden" itemprop="headline"><a href="<?php echo bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php Header_Footer_Elementor::get_header_content(); ?>
 		</header>
@@ -98,6 +131,35 @@ function hfe_render_header() {
 	<?php
 
 }
+
+/**
+ * Display sticky header markup.
+ *
+ * @since  1.0.2
+ */
+function hfe_render_sticky_header() {
+
+	if ( false == apply_filters( 'enable_hfe_render_sticky_header', true ) ) {
+		return;
+	}
+
+	$transparent_header = get_post_meta( get_hfe_sticky_header_id(), 'transparent-header', true );
+
+	$render_class = 'sticky-header';
+	if ( $transparent_header ) {
+		$render_class .= ' transparent-header';  
+	}
+
+	?>
+		<header id="thhf-masthead-sticky" class="<?php echo $render_class; ?>" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
+			<p class="main-title bhf-hidden" itemprop="headline"><a href="<?php echo bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<?php Header_Footer_Elementor::get_sticky_header_content(); ?>
+		</header>
+
+	<?php
+
+}
+
 
 /**
  * Display footer markup.

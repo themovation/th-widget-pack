@@ -21,3 +21,4 @@
 <div id="page" class="hfeed site">
 
 <?php do_action( 'hfe_header' ); ?>
+<?php do_action( 'hfe_sticky_header' ); ?>

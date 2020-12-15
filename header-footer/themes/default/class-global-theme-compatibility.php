@@ -31,6 +31,14 @@ class Global_Theme_Compatibility {
 			add_action( 'hfe_fallback_header', [ 'Header_Footer_Elementor', 'get_header_content' ] );
 		}
 
+		if ( hfe_sticky_header_enabled() ) {
+			// Replace header.php.
+			add_action( 'get_header', [ $this, 'option_sticky_override_header' ] );
+
+			add_action( 'wp_body_open', [ 'Header_Footer_Elementor', 'get_sticky_header_content' ] );
+			add_action( 'hfe_fallback_sticky_header', [ 'Header_Footer_Elementor', 'get_sticky_header_content' ] );
+		}
+
 		if ( hfe_is_before_footer_enabled() ) {
 			add_action( 'wp_footer', [ 'Header_Footer_Elementor', 'get_before_footer_content' ], 20 );
 		}
@@ -92,5 +100,25 @@ class Global_Theme_Compatibility {
 			echo '</div>';
 		}
 	}
+
+	/**
+	 * Function overriding the sticky header in the wp_body_open way.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @return void
+	 */
+	public function option_override_sticky_header() {
+		$templates   = [];
+		$templates[] = 'header.php';
+		locate_template( $templates, true );
+
+		if ( ! did_action( 'wp_body_open' ) ) {
+			echo '<div class="force-stretched-header">';
+			do_action( 'hfe_fallback_sticky_header' );
+			echo '</div>';
+		}
+	}
+
 }
 new Global_Theme_Compatibility();

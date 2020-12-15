@@ -1,5 +1,73 @@
 ( function( $ ) {
 
+
+	/**
+	 * Sticky Header JS
+	 * 
+	 */
+
+	function scrollFunction() {
+        var sticky1 = $('#thhf-masthead-sticky');
+		var $wpAdminBar = $( '#wpadminbar' );
+
+        sticky1.css({
+            position: "static",
+            top: 0
+        });
+    
+        $('body').css({
+            "padding-top": 0
+        });
+
+        var topOffset1 = sticky1.offset().top;
+
+        var stickyHeight1 = sticky1.outerHeight();
+
+        var scrollHeight = $(window).scrollTop();
+
+        if (topOffset1 <= scrollHeight) {
+            sticky1.css({
+                position: "fixed",
+                top: 0 + $wpAdminBar.height()
+            });
+            $('body').css({
+                "padding-top": stickyHeight1
+            });
+        } else if (scrollHeight >= stickyHeight1) {
+            sticky1.css({
+                position: "fixed",
+                top: -(scrollHeight - stickyHeight1) + $wpAdminBar.height()
+            });
+        
+            $('body').css({
+                "padding-top": stickyHeight1
+            });
+        } else if (scrollHeight >= topOffset1) {
+            sticky1.css({
+                position: "static"
+            });
+            
+            $('body').css({
+                "padding-top": stickyHeight1
+            });
+        } else {
+            sticky1.css({
+                position: "static",
+                top: 0 + $wpAdminBar.height()
+            });
+            
+            $('body').css({
+                "padding-top": 0
+            });
+        }
+
+    }
+
+    $(window).scroll(scrollFunction);
+
+	
+	
+
 	/**
 	* Search widget JS
 	*/
