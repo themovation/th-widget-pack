@@ -65,6 +65,12 @@ function thmv_hfe_init() {
 
 add_action( 'plugins_loaded', 'thmv_hfe_init' );
 
+// Enable white label for HFE and deactivate analytics tracking.
+function thmv_set_white_label_opt(){
+    $thmv_white_label_opt = array("option" => true);
+    return $thmv_white_label_opt;
+}
+add_filter( 'bsf_white_label_options', 'thmv_set_white_label_opt' );
 
 
 
