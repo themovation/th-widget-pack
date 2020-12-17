@@ -553,7 +553,7 @@ class Cart extends Widget_Base {
 	 * @param string $cart_type Menu Cart type.
 	 * @access public
 	 */
-	public static function get_cart_link( $cart_type, $settings ) {
+	public static function get_cart_link( $cart_type, $settings = null ) {
 
 		if ( null === WC()->cart ) {
 			return;

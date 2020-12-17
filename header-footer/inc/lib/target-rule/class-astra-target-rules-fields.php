@@ -1,8 +1,8 @@
 <?php
 /**
- * Astra Advanced Headers Bar Post Meta Box
+ * Header Bar Post Meta Box
  *
- * @package   Astra Pro
+ * @package   Th Widget Pack
  */
 
 namespace THHF\Lib;
@@ -10,7 +10,7 @@ namespace THHF\Lib;
 /**
  * Meta Boxes setup
  */
-class Astra_Target_Rules_Fields {
+class TH_Header_Footer_Fields {
 
 
 	/**
@@ -121,7 +121,7 @@ class Astra_Target_Rules_Fields {
 		$args['_builtin'] = false;
 		$custom_post_type = get_post_types( $args, 'objects' );
 
-		$post_types = apply_filters( 'astra_location_rule_post_types', array_merge( $post_types, $custom_post_type ) );
+		$post_types = array_merge( $post_types, $custom_post_type );
 
 		$special_pages = array(
 			'special-404'    => __( '404 Page', 'header-footer-elementor' ),
@@ -1621,4 +1621,4 @@ class Astra_Target_Rules_Fields {
 /**
  * Kicking this off by calling 'get_instance()' method
  */
-Astra_Target_Rules_Fields::get_instance();
+TH_Header_Footer_Fields::get_instance();

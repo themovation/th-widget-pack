@@ -1,13 +1,12 @@
 ( function( $ ) {
 
-
 	/**
 	 * Sticky Header JS
 	 * 
 	 */
 
 	function scrollFunction() {
-        var sticky1 = $('#thhf-masthead-sticky');
+		var sticky1 = $('#thhf-masthead-sticky');
 		var $wpAdminBar = $( '#wpadminbar' );
 
         sticky1.css({
@@ -21,7 +20,7 @@
 
         var topOffset1 = sticky1.offset().top;
 
-        var stickyHeight1 = sticky1.outerHeight();
+        var stickyHeight1 = sticky1.height();
 
         var scrollHeight = $(window).scrollTop();
 
@@ -36,7 +35,7 @@
         } else if (scrollHeight >= stickyHeight1) {
             sticky1.css({
                 position: "fixed",
-                top: -(scrollHeight - stickyHeight1) + $wpAdminBar.height()
+                top: 0 + $wpAdminBar.height()
             });
         
             $('body').css({
@@ -62,8 +61,10 @@
         }
 
     }
-
-    $(window).scroll(scrollFunction);
+	
+	$(window).on('scroll resize load', function () {
+		scrollFunction();
+	});
 
 	
 	

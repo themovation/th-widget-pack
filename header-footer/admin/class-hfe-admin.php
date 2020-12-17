@@ -5,7 +5,7 @@
  * @package  header-footer-elementor
  */
 
-use THHF\Lib\Astra_Target_Rules_Fields;
+use THHF\Lib\TH_Header_Footer_Fields;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -175,7 +175,7 @@ class THHF_Admin {
 				if ( isset( $users[0] ) && ! empty( $users[0] ) ) {
 					$user_label = [];
 					foreach ( $users as $user ) {
-						$user_label[] = Astra_Target_Rules_Fields::get_user_by_key( $user );
+						$user_label[] = TH_Header_Footer_Fields::get_user_by_key( $user );
 					}
 					echo '<div class="ast-advanced-headers-users-wrap">';
 					echo '<strong>Users: </strong>';
@@ -202,12 +202,12 @@ class THHF_Admin {
 
 		if ( isset( $locations['rule'] ) && is_array( $locations['rule'] ) ) {
 			foreach ( $locations['rule'] as $location ) {
-				$location_label[] = Astra_Target_Rules_Fields::get_location_by_key( $location );
+				$location_label[] = TH_Header_Footer_Fields::get_location_by_key( $location );
 			}
 		}
 		if ( isset( $locations['specific'] ) && is_array( $locations['specific'] ) ) {
 			foreach ( $locations['specific'] as $location ) {
-				$location_label[] = Astra_Target_Rules_Fields::get_location_by_key( $location );
+				$location_label[] = TH_Header_Footer_Fields::get_location_by_key( $location );
 			}
 		}
 
@@ -379,7 +379,7 @@ class THHF_Admin {
 	 */
 	public function display_rules_tab() {
 		// Load Target Rule assets.
-		Astra_Target_Rules_Fields::get_instance()->admin_styles();
+		TH_Header_Footer_Fields::get_instance()->admin_styles();
 
 		$include_locations = get_post_meta( get_the_id(), 'ehf_target_include_locations', true );
 		$exclude_locations = get_post_meta( get_the_id(), 'ehf_target_exclude_locations', true );
@@ -393,7 +393,7 @@ class THHF_Admin {
 			</td>
 			<td class="bsf-target-rules-row-content hfe-options-row-content">
 				<?php
-				Astra_Target_Rules_Fields::target_rule_settings_field(
+				TH_Header_Footer_Fields::target_rule_settings_field(
 					'bsf-target-rules-location',
 					[
 						'title'          => __( 'Display Rules', 'header-footer-elementor' ),
@@ -415,7 +415,7 @@ class THHF_Admin {
 			</td>
 			<td class="bsf-target-rules-row-content hfe-options-row-content">
 				<?php
-				Astra_Target_Rules_Fields::target_rule_settings_field(
+				TH_Header_Footer_Fields::target_rule_settings_field(
 					'bsf-target-rules-exclusion',
 					[
 						'title'          => __( 'Exclude On', 'header-footer-elementor' ),
@@ -436,7 +436,7 @@ class THHF_Admin {
 			</td>
 			<td class="bsf-target-rules-row-content hfe-options-row-content">
 				<?php
-				Astra_Target_Rules_Fields::target_user_role_settings_field(
+				TH_Header_Footer_Fields::target_user_role_settings_field(
 					'bsf-target-rules-users',
 					[
 						'title'          => __( 'Users', 'header-footer-elementor' ),
@@ -476,8 +476,8 @@ class THHF_Admin {
 			return;
 		}
 
-		$target_locations = Astra_Target_Rules_Fields::get_format_rule_value( $_POST, 'bsf-target-rules-location' );
-		$target_exclusion = Astra_Target_Rules_Fields::get_format_rule_value( $_POST, 'bsf-target-rules-exclusion' );
+		$target_locations = TH_Header_Footer_Fields::get_format_rule_value( $_POST, 'bsf-target-rules-location' );
+		$target_exclusion = TH_Header_Footer_Fields::get_format_rule_value( $_POST, 'bsf-target-rules-exclusion' );
 		$target_users     = [];
 
 		if ( isset( $_POST['bsf-target-rules-users'] ) ) {

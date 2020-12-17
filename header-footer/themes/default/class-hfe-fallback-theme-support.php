@@ -37,7 +37,7 @@ class HFE_Fallback_Theme_Support {
 	 * @return void
 	 */
 	public function hfe_global_css() {
-		wp_enqueue_style( 'hfe-admin-style', THEMO_URL . 'admin/assets/css/ehf-admin.css', [], THEMO_VERSION );
+		wp_enqueue_style( 'hfe-admin-style', THEMO_URL . 'header-footer/admin/assets/css/ehf-admin.css', [], THEMO_VERSION );
 	}
 
 	/**
@@ -88,7 +88,7 @@ class HFE_Fallback_Theme_Support {
 	 */
 	public function hfe_compatibility_option_callback() {
 		$hfe_radio_button = get_option( 'hfe_compatibility_option', '1' );
-			wp_enqueue_style( 'hfe-admin-style', THEMO_URL . 'admin/assets/css/ehf-admin.css', [], THEMO_VERSION );
+			wp_enqueue_style( 'hfe-admin-style', THEMO_URL . 'header-footer/admin/assets/css/ehf-admin.css', [], THEMO_VERSION );
 		?>
 
 		<label>

@@ -5,7 +5,7 @@
  * @package header-footer-elementor
  */
 
-use THHF\Lib\Astra_Target_Rules_Fields;
+use THHF\Lib\TH_Header_Footer_Fields;
 
 /**
  * Class Header_Footer_Elementor
@@ -410,7 +410,7 @@ class Header_Footer_Elementor {
 			'users'     => 'ehf_target_user_roles',
 		];
 
-		$hfe_templates = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( 'elementor-thhf', $option );
+		$hfe_templates = TH_Header_Footer_Fields::get_instance()->get_posts_by_conditions( 'elementor-thhf', $option );
 
 		foreach ( $hfe_templates as $template ) {
 			if ( get_post_meta( absint( $template['id'] ), 'ehf_template_type', true ) === $type ) {

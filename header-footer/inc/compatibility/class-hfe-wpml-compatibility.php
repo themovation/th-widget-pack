@@ -14,10 +14,10 @@ defined( 'ABSPATH' ) or exit;
 /**
  * Set up WPML Compatibiblity Class.
  */
-class HFE_WPML_Compatibility {
+class THHF_WPML_Compatibility {
 
 	/**
-	 * Instance of HFE_WPML_Compatibility.
+	 * Instance of THHF_WPML_Compatibility.
 	 *
 	 * @since  1.0.9
 	 * @var null
@@ -25,10 +25,10 @@ class HFE_WPML_Compatibility {
 	private static $_instance = null;
 
 	/**
-	 * Get instance of HFE_WPML_Compatibility
+	 * Get instance of THHF_WPML_Compatibility
 	 *
 	 * @since  1.0.9
-	 * @return HFE_WPML_Compatibility
+	 * @return THHF_WPML_Compatibility
 	 */
 	public static function instance() {
 		if ( ! isset( self::$_instance ) ) {
@@ -85,4 +85,4 @@ class HFE_WPML_Compatibility {
 /**
  * Initiate the class.
  */
-HFE_WPML_Compatibility::instance();
+THHF_WPML_Compatibility::instance();

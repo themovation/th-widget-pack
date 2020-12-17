@@ -126,7 +126,7 @@ class Widgets_Loader {
 
 		if ( ! empty( $js_files ) ) {
 			foreach ( $js_files as $handle => $data ) {
-				wp_register_script( $handle, THEMO_URL . $data['path'], $data['dep'], THEMO_VERSION, $data['in_footer'] );
+				wp_enqueue_script( $handle, THEMO_URL . $data['path'], $data['dep'], THEMO_VERSION, $data['in_footer'] );
 			}
 		}
 
