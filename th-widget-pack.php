@@ -20,6 +20,7 @@ define( 'THEMO_PATH', plugin_dir_path( THEMO__FILE__ ) );
 define( 'THEMO_ASSETS_URL', THEMO_URL . 'assets/' );
 define( 'THEMO_COLOR_PRIMARY', '#3A3B74' );
 define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
+define( 'ENABLE_BLOCK_LIBRARY', true );
 
 /**
  * Define Elementor Partner ID
@@ -49,10 +50,5 @@ if ( ! function_exists( 'th_translation_ready' ) ) :
         load_plugin_textdomain( 'th-widget-pack', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
     }
 endif;
+
 add_action( 'plugins_loaded', 'th_translation_ready' );
-
-
-
-
-
-
