@@ -381,6 +381,9 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                         'selectors' => [
                             '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
                         ],
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ]
                 );
             }
@@ -523,6 +526,9 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
                         'selectors' => [
                             '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
                         ],
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ]
                 );
             }
@@ -602,9 +608,9 @@ function render_elementor_section_parallax_background( Elementor\Element_Base $e
 
     if('section' === $element->get_name()){
 
-        if ( 'yes' === $element->get_settings( 'th_section_parallax' ) ) {
+        if ( 'yes' === $element->get_settings_for_display( 'th_section_parallax' ) ) {
 
-            $th_background = $element->get_settings( 'background_image' );
+            $th_background = $element->get_settings_for_display( 'background_image' );
             $th_background_URL = $th_background['url'];
 
             $element->add_render_attribute( '_wrapper', [
@@ -636,3 +642,58 @@ add_action( 'elementor/frontend/section/before_render', 'render_elementor_sectio
 
     return $template;
 }, 10, 2 );*/
+
+
+
+// Adding custom icons to icon control in Elementor
+function th_add_custom_icons_tab( $tabs = array() ) {
+
+    $trip_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-trip') === 0;}, ARRAY_FILTER_USE_KEY));
+    $linea_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-linea') === 0;}, ARRAY_FILTER_USE_KEY));
+    $golf_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-golf') === 0;}, ARRAY_FILTER_USE_KEY));
+
+	if (!empty($trip_icons)) {
+        $tabs['th-trip'] = array(
+            'name'          => 'th-trip',
+            'label'         => __( 'Themovation Trip', 'th-widget-pack' ),
+            'labelIcon'     => 'fas fa-icons',
+            'prefix'        => 'th-trip travelpack-',
+            'displayPrefix' => 'th-trip travelpack',
+            'url'           => THEMO_ASSETS_URL . 'icons/icons.css',
+            'icons'         => $trip_icons,
+            'ver'           => THEMO_VERSION,
+        );
+    }
+
+    if (!empty($linea_icons)) {
+        $tabs['th-linea'] = array(
+            'name'          => 'th-linea',
+            'label'         => __( 'Themovation Linea', 'th-widget-pack' ),
+            'labelIcon'     => 'fas fa-icons',
+            'prefix'        => 'th-linea icon-',
+            'displayPrefix' => 'th-linea icon',
+            'url'           => THEMO_ASSETS_URL . 'icons/icons.css',
+            'icons'         => $linea_icons,
+            'ver'           => THEMO_VERSION,
+        );
+    }
+    
+    if (!empty($golf_icons)) {
+        $tabs['th-golf'] = array(
+            'name'          => 'th-golf',
+            'label'         => __( 'Themovation Golf', 'th-widget-pack' ),
+            'labelIcon'     => 'fas fa-icons',
+            'prefix'        => 'th-golf golfpack-',
+            'displayPrefix' => 'th-golf golfpack',
+            'url'           => THEMO_ASSETS_URL . 'icons/golf_icons.css',
+            'icons'         => $golf_icons,
+            'ver'           => THEMO_VERSION,
+        );
+    }
+
+
+
+	return $tabs;
+}
+
+add_filter( 'elementor/icons_manager/additional_tabs', 'th_add_custom_icons_tab' );

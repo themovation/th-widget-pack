@@ -21,6 +21,10 @@ class Themo_Widget_Blog extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	private function get_blog_categories_list() {
 		$categories = array('all' => __('All Categories', 'th-widget-pack'));
 		$get_categories = get_categories( array(
@@ -52,6 +56,9 @@ class Themo_Widget_Blog extends Widget_Base {
 				'type' => Controls_Manager::NUMBER,
 				'label_block' => true,
 				'default' => 10,
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -274,8 +281,20 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->start_controls_section(
             'section_style_border',
             [
-                'label' => __( 'Border', 'th-widget-pack' ),
+                'label' => __( 'Appearance', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'blog_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .mas-blog-post .post-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -289,16 +308,36 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_off' => __( 'Hide', 'th-widget-pack' ),
                 'selectors' => [
                     '{{WRAPPER}} .mas-blog-post .post-inner' => 'border-width:1px',
+
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+			'blog_content_border_radius',
+			[
+				'label' => __( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'selectors' => [
+					'{{WRAPPER}} .mas-blog-post .post-inner' => 'border-radius:{{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post.format-video .post-inner, {{WRAPPER}} .mas-blog-post.format-image .post-inner,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .post-inner, {{WRAPPER}} .mas-blog-post.has-post-thumbnail .post-inner' => 'border-radius:0 0 {{VALUE}}px {{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post .th-pkg-img img, {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li a img,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li img, {{WRAPPER}} .mas-blog-post a img.wp-post-image' => 'border-radius: {{VALUE}}px {{VALUE}}px 0 0;',
+				],
+                'dynamic' => [
+                    'active' => true,
+                ],
+			]
+		);
 
         $this->end_controls_section();
 
 	}
 
 	protected function render() {
-	    $settings = $this->get_settings();
+	    $settings = $this->get_settings_for_display();
 
 		// WP_Query arguments
 		$args = array (

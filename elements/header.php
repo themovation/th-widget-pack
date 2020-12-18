@@ -21,6 +21,10 @@ class Themo_Widget_Header extends Widget_Base {
 		return [ 'themo-elements' ];
 	}
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
 	protected function _register_controls() {
 
         $this->start_controls_section(
@@ -30,7 +34,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -53,10 +57,13 @@ class Themo_Widget_Header extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-header-wrap' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -79,9 +86,9 @@ class Themo_Widget_Header extends Widget_Base {
                     '{{WRAPPER}} .th-header-wrap' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -124,15 +131,29 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
+        // $this->add_control(
+        //     'icon',
+        //     [
+        //         'label' => __( 'Choose Icon', 'th-widget-pack' ),
+        //         'type' => Controls_Manager::ICON,
+		// 		'options' => themo_icons(),
+		// 		'include' => themo_fa_icons()
+        //     ]
+        // );
         $this->add_control(
-            'icon',
+            'new_icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-				'options' => themo_icons(),
-				'include' => themo_fa_icons()
+                'fa4compatibility' => 'icon',
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+                /*'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],*/
             ]
-        );
+        );		
+
 
         $this->add_control(
             'view',
@@ -182,7 +203,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -202,13 +223,11 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
-
-
-
+        
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -260,6 +279,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => __( 'Title Text', 'th-widget-pack' ),
                 'placeholder' => __( 'Title Text', 'th-widget-pack' ),
                 'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -273,6 +295,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'title' => __( 'Input icon text here', 'th-widget-pack' ),
                 'rows' => 10,
                 'separator' => 'none',
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -282,7 +307,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_responsive_control(
             'description_align',
             [
-                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
+                'label' => __( 'Description Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -330,6 +355,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -363,6 +391,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -372,6 +403,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -390,6 +424,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Button Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( 'Button Text', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -422,6 +459,9 @@ class Themo_Widget_Header extends Widget_Base {
                 'default' => [
                     //'url' => Utils::get_placeholder_image_src(),
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -431,10 +471,13 @@ class Themo_Widget_Header extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( '#buttonlink', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'button_align',
             [
                 'label' => __( 'Alignment Override', 'th-widget-pack' ),
@@ -460,10 +503,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-
         $this->end_controls_section();
-
-
 
         $this->start_controls_section(
 			'section_style_icon',
@@ -525,8 +565,6 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
-
-
         $this->add_control(
             'title_color',
             [
@@ -571,6 +609,14 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'title_shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
 		$this->add_control(
 			'heading_description',
 			[
@@ -610,7 +656,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {
@@ -628,8 +674,6 @@ class Themo_Widget_Header extends Widget_Base {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
 			}
 		}
-
-		$this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-' . esc_attr( $settings['icon_size'] ) );
@@ -714,18 +758,27 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_render_attribute( 'th-header-class', 'class', 'elementor-icon-box-title' );
 
         // Divider & Alignment Class
-
+        
         if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {
             $this->add_render_attribute( 'th_divider_span', 'class', 'th-header-divider' );
         }
 
 		?>
 		<div class="th-header-wrap">
-            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
-                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+        <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ echo "th-show-icon"; } ?>">
+            <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
                     <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                        <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                        <?php
+                        // new icon render
+                        $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
+                        $is_new = empty( $settings['icon'] );
+                        if ( $is_new || $migrated ) {
+                            \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+                        } else {
+                            ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
+                        }
+                        ?>
                     </<?php echo esc_attr( $icon_tag ); ?>>
                 </div>
                 <?php } ?>
@@ -785,6 +838,8 @@ class Themo_Widget_Header extends Widget_Base {
 		?>
 
 		<#
+        iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+        migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = '',
         iconTag = 'span';
         icon_size = '';
@@ -798,14 +853,18 @@ class Themo_Widget_Header extends Widget_Base {
         }
 
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
-        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.icon || settings.new_icon) { var icon_show = 'th-show-icon'}
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
-                <# if ( settings.icon ) { #>
+                <# if ( settings.icon || ( iconHTML.rendered && ( ! settings.icon || migrated ) ) ) { #>
                 <div class="elementor-icon-box-icon {{ icon_size }}">
                     <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <i class="{{ settings.icon }}"></i>
+                        <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+					        {{{ iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+				        <# } #>
                     </{{{ iconTag }}}>
                 </div>
                 <# } #>

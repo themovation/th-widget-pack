@@ -21,6 +21,10 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function is_reload_preview_required() {
         return true;
     }
@@ -38,6 +42,9 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
             'label'       => __('Accommodation Type ID', 'th-widget-pack'),
             'default'     => '',
             'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
         $this->end_controls_section();
@@ -154,7 +161,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // If Accommodation type id field is empty, try to get the id automatically.
         if ( !isset( $settings['type_id'] ) || empty( $settings['type_id']) ) {

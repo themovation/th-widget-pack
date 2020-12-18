@@ -21,6 +21,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function is_reload_preview_required() {
         return true;
     }
@@ -60,7 +64,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'description' => __('The number of adults presetted in the search form.', 'th-widget-pack'),
             'default'     => $minAdults,
             'min'         => $minAdults,
-            'max'         => $maxAdults
+            'max'         => $maxAdults,
+            'dynamic' => [
+                'active' => true,
+            ],
         ));
 
         $this->add_control('children', array(
@@ -69,7 +76,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'description' => __('The number of children presetted in the search form.', 'th-widget-pack'),
             'default'     => $minChildren,
             'min'         => $minChildren,
-            'max'         => $maxChildren
+            'max'         => $maxChildren,
+            'dynamic' => [
+                'active' => true,
+            ],
         ));
 
         $this->add_control('attributes', array(
@@ -77,7 +87,10 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             'label'       => __('Attributes', 'th-widget-pack'),
             'description' => __('Custom attributes for advanced search.', 'th-widget-pack'),
             'placeholder' => __('Slugs of attributes', 'th-widget-pack'),
-            'default'     => ''
+            'default'     => '',
+            'dynamic' => [
+                'active' => true,
+            ]
         ));
 
 
@@ -194,6 +207,9 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -270,7 +286,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Include MPHB hook
         do_action('mphbe_before_search_form_widget_render', $settings);

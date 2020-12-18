@@ -14,13 +14,17 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-slideshow';
+		return 'eicon-slides';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	public static function get_button_sizes() {
 		return [
 			'xs' => __( 'Extra Small', 'elementor-pro' ),
@@ -52,7 +56,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4A4A4A',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -62,16 +66,25 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Background Image', 'th-widget-pack' ),
 				'type' => Controls_Manager::MEDIA,
-                /*'default' => [
-                    'url' => Utils::get_placeholder_image_src(),
-                ],*/
+                'dynamic' => [
+					'active' => true,
+				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}})',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}});',
 				],
 			]
 		);
 
 		$th_repeater->add_control(
+            'section_bg_heading',
+            [
+                'label' => __( 'Image', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+		$th_repeater->add_responsive_control(
 			'slide_bg_repeat',
 			[
 				'label' => __( 'Background Repeat', 'th-widget-pack' ),
@@ -84,7 +97,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'repeat-y' => __( 'Repeat Vertically ', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -98,7 +111,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_attachment',
 			[
 				'label' => __( 'Background Attachment', 'th-widget-pack' ),
@@ -109,7 +122,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'scroll' => __( 'Scroll', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -123,7 +136,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_position',
 			[
 				'label' => __( 'Background Position', 'th-widget-pack' ),
@@ -141,7 +154,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'right bottom' =>  __( 'Right Bottom', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -155,7 +168,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_control(
+		$th_repeater->add_responsive_control(
 			'slide_bg_size',
 			[
 				'label' => __( 'Background Size', 'th-widget-pack' ),
@@ -166,7 +179,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'auto' => __( 'Auto', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -209,7 +222,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => 'rgba(0, 0, 0, 0.5)',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -234,6 +247,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Slide Title', 'th-widget-pack' ),
 				'label_block' => true,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -244,6 +260,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => __( 'Slide Content', 'th-widget-pack' ),
 				'show_label' => false,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -268,6 +287,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Button 1 Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Button Text', 'th-widget-pack' ),
+				'dynamic' => [
+					'active' => true,
+				],
                 'conditions' => [
                     'terms' => [
                         [
@@ -316,9 +338,9 @@ class Themo_Widget_Slider extends Widget_Base {
             [
                 'label' => __( 'Button Graphic', 'th-widget-pack' ),
                 'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    //'url' => Utils::get_placeholder_image_src(),
-                ],
+                'dynamic' => [
+					'active' => true,
+				],
                 'conditions' => [
                     'terms' => [
                         [
@@ -346,6 +368,9 @@ class Themo_Widget_Slider extends Widget_Base {
                         ],
                     ],
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -372,6 +397,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Button 2 Text', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'More Info', 'th-widget-pack' ),
+				'dynamic' => [
+					'active' => true,
+				],
                 'conditions' => [
                     'terms' => [
                         [
@@ -419,9 +447,9 @@ class Themo_Widget_Slider extends Widget_Base {
             [
                 'label' => __( 'Button Graphic', 'th-widget-pack' ),
                 'type' => Controls_Manager::MEDIA,
-                'default' => [
-                    //'url' => Utils::get_placeholder_image_src(),
-                ],
+                'dynamic' => [
+					'active' => true,
+				],
                 'conditions' => [
                     'terms' => [
                         [
@@ -440,6 +468,9 @@ class Themo_Widget_Slider extends Widget_Base {
                 'label' => __( 'Button 2 Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::URL,
                 'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
+                'dynamic' => [
+					'active' => true,
+				],
                 'conditions' => [
                     'terms' => [
                         [
@@ -456,7 +487,10 @@ class Themo_Widget_Slider extends Widget_Base {
 			'slide_image',
 			[
 				'label' => __( 'Image', 'th-widget-pack' ),
-				'type' => Controls_Manager::MEDIA
+				'type' => Controls_Manager::MEDIA,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -466,6 +500,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'label' => __( 'Image URL', 'th-widget-pack' ),
 				'type' => Controls_Manager::URL,
 				'placeholder' => __( 'http://your-link.com', 'th-widget-pack' ),
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -474,6 +511,9 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'label' => __( 'Shortcode', 'th-widget-pack' ),
 				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -491,7 +531,9 @@ class Themo_Widget_Slider extends Widget_Base {
                     'stacked' => __( 'Stacked', 'th-widget-pack' ),
 
                 ],
-
+                'dynamic' => [
+					'active' => true,
+				],
             ]
         );
 
@@ -510,11 +552,11 @@ class Themo_Widget_Slider extends Widget_Base {
                 'condition' => [
                     'inline_form' => 'stacked',
                 ],
+                'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
-
-
-
 
 		$th_repeater->add_control(
 			'slide_tooltip',
@@ -537,6 +579,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
                 'default' => __( 'Calendar Toolip', 'th-widget-pack' ),
                 'plcaeholder' => __( 'Calendar Toolip', 'th-widget-pack' ),
+                'dynamic' => [
+					'active' => true,
+				],
 			]
 		);
 
@@ -568,15 +613,9 @@ class Themo_Widget_Slider extends Widget_Base {
 
         }
 
-
-
-
-
 		$th_repeater->end_controls_tab();
 
 		$th_repeater->start_controls_tab( 'slide_style', [ 'label' => __( 'Style', 'th-widget-pack' ) ] );
-
-
 
         $th_repeater->add_responsive_control(
             'content_max_width',
@@ -601,11 +640,14 @@ class Themo_Widget_Slider extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .th-slide-content' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
 
-        $th_repeater->add_control(
+        $th_repeater->add_responsive_control(
             'slide_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -629,15 +671,15 @@ class Themo_Widget_Slider extends Widget_Base {
                     '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-content' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
         );
 
-        $th_repeater->add_control(
+        $th_repeater->add_responsive_control(
 			'slide_vertical_position',
 			[
 				'label' => __( 'Vertical Position', 'th-widget-pack' ),
@@ -690,7 +732,6 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
-
                 'default' => 'center',
 			]
 		);
@@ -719,6 +760,16 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
+		$th_repeater->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'slide_title_shadow',
+				'label'	=> 'Text Shadow',
+				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
+			]
+		);
+		
+
 		$th_repeater->add_control(
 			'slide_content_color',
 			[
@@ -731,9 +782,6 @@ class Themo_Widget_Slider extends Widget_Base {
                 'default' => '#FFFFFF',
 			]
 		);
-
-
-
 
 		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -777,7 +825,7 @@ class Themo_Widget_Slider extends Widget_Base {
                         'slide_bg_color' => __( '#7A85E8', 'th-widget-pack' ),
                         'inline_form' => __( 'inline', 'th-widget-pack' ),
                         'slide_button_text_1_show' => __( 'no', 'th-widget-pack' ),
-                        'slide_shortcode' => __( '[formidable id="3"]', 'th-widget-pack' ),
+                        'slide_shortcode' => __( '[formidable id="2"]', 'th-widget-pack' ),
                     ],
 
                 ],
@@ -810,6 +858,9 @@ class Themo_Widget_Slider extends Widget_Base {
 					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -833,6 +884,9 @@ class Themo_Widget_Slider extends Widget_Base {
 				'condition' => [
 					'slides_down_arrow' => 'yes',
 				],
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -942,6 +996,9 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'description' => __( 'Set the speed of the slideshow cycling, in milliseconds (1 s = 1000 ms)', 'th-widget-pack' ),
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -960,6 +1017,9 @@ class Themo_Widget_Slider extends Widget_Base {
 					],
 				],
 				'description' => __( 'Set the speed of animations, in milliseconds (1 s = 1000 ms)', 'th-widget-pack' ),
+				'dynamic' => [
+                    'active' => true,
+                ],
 			]
 		);
 
@@ -1034,7 +1094,7 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['slides'] ) ) {
 			return;
