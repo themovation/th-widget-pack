@@ -321,7 +321,7 @@
             c,
             m = this;
         (FIND_SELECTOR = ".elementor-add-new-section .elementor-add-section-drag-title"),
-        ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="fas fa-cloud-download-alt"></i></div>'),
+        ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="eicon-file-download"></i></div>'),
         (this.atIndex = -1),
         (this.channels = { tabs: Backbone.Radio.channel("tabs"), templates: Backbone.Radio.channel("templates") }),
         (this.updateBlocksView = function () {
