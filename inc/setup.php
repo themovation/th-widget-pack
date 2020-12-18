@@ -105,9 +105,9 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) ) {
+    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('stratus' == THEMO_CURRENT_THEME) ) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
-        include_once THEMO_PATH . 'library/library-source.class.php' ;   
+        include_once THEMO_PATH . 'library/library-source.class.php' ;
     }
 
     if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
