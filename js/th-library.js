@@ -321,7 +321,7 @@
             c,
             m = this;
         (FIND_SELECTOR = ".elementor-add-new-section .elementor-add-section-drag-title"),
-        ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="th-linea icon-basic-settings"></i></div>'),
+        ($thmvLibraryButton = '<div class="elementor-add-section-area-button elementor-add-thmv-button"><i class="fas fa-cloud-download-alt"></i></div>'),
         (this.atIndex = -1),
         (this.channels = { tabs: Backbone.Radio.channel("tabs"), templates: Backbone.Radio.channel("templates") }),
         (this.updateBlocksView = function () {
@@ -370,12 +370,12 @@
             return l || (l = new i.Modal()), l;
         }),
         (this.init = function () {
-            m.setFilter("type", "block", !0), t.on("preview:loaded", o.bind(this));
+            m.setFilter("type", "page", !0), t.on("preview:loaded", o.bind(this));
         }),
         (this.getTabs = function () {
             var e = this.getFilter("type");
             return (
-                (tabs = { block: { title: "Blocks" }, page: { title: "Pages" } }),
+                (tabs = { page: { title: "Pages" }, block: { title: "Blocks" } }),
                 _.each(tabs, function (t, i) {
                     e === i && (tabs[e].active = !0);
                 }),
