@@ -6,10 +6,10 @@
 	 */
 
 	function scrollFunction() {
-		var sticky1 = $('#thhf-masthead-sticky');
+		var stickyHeader = $('#thhf-masthead-sticky');
 		var $wpAdminBar = $( '#wpadminbar' );
 
-        sticky1.css({
+        stickyHeader.css({
             position: "static",
             top: 0
         });
@@ -18,39 +18,39 @@
             "padding-top": 0
         });
 
-        var topOffset1 = sticky1.offset().top;
+        var topOffset = stickyHeader.offset().top;
 
-        var stickyHeight1 = sticky1.height();
+        var stickyHeaderHeight = stickyHeader.height();
 
         var scrollHeight = $(window).scrollTop();
 
-        if (topOffset1 <= scrollHeight) {
-            sticky1.css({
+        if (topOffset <= scrollHeight) {
+            stickyHeader.css({
                 position: "fixed",
                 top: 0 + $wpAdminBar.height()
             });
             $('body').css({
-                "padding-top": stickyHeight1
+                "padding-top": stickyHeaderHeight
             });
-        } else if (scrollHeight >= stickyHeight1) {
-            sticky1.css({
+        } else if (scrollHeight >= stickyHeaderHeight) {
+            stickyHeader.css({
                 position: "fixed",
                 top: 0 + $wpAdminBar.height()
             });
         
             $('body').css({
-                "padding-top": stickyHeight1
+                "padding-top": stickyHeaderHeight
             });
-        } else if (scrollHeight >= topOffset1) {
-            sticky1.css({
+        } else if (scrollHeight >= topOffset) {
+            stickyHeader.css({
                 position: "static"
             });
             
             $('body').css({
-                "padding-top": stickyHeight1
+                "padding-top": stickyHeaderHeight
             });
         } else {
-            sticky1.css({
+            stickyHeader.css({
                 position: "static",
                 top: 0 + $wpAdminBar.height()
             });
