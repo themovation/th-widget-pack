@@ -296,7 +296,6 @@ class THHF_Admin {
 		$template_type     = isset( $values['ehf_template_type'] ) ? esc_attr( $values['ehf_template_type'][0] ) : '';
 		$display_on_canvas = isset( $values['display-on-canvas-template'] ) ? true : false;
 		$transparent_header = isset( $values['transparent-header'] ) ? true : false;
-		$sticky_header = isset( $values['sticky-header'] ) ? true : false;
 
 		// We'll use this nonce field later on when saving.
 		wp_nonce_field( 'ehf_meta_nounce', 'ehf_meta_nounce' );
@@ -341,18 +340,6 @@ class THHF_Admin {
 					</td>
 					<td class="hfe-options-row-content">
 						<input type="checkbox" id="transparent-header" name="transparent-header" value="1" <?php checked( $transparent_header, true ); ?> />
-					</td>
-				</tr>
-
-				<tr class="hfe-options-row sticky-header">
-					<td class="hfe-options-row-heading">
-						<label for="sticky-header">
-							<?php _e( 'Sticky Header Support', 'header-footer-elementor' ); ?>
-						</label>
-						<i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'This option will make the header sticky.', 'header-footer-elementor' ); ?>"></i>
-					</td>
-					<td class="hfe-options-row-content">
-						<input type="checkbox" id="sticky-header" name="sticky-header" value="1" <?php checked( $sticky_header, true ); ?> />
 					</td>
 				</tr>
 
@@ -496,12 +483,6 @@ class THHF_Admin {
 			update_post_meta( $post_id, 'transparent-header', esc_attr( $_POST['transparent-header'] ) );
 		} else {
 			delete_post_meta( $post_id, 'transparent-header' );
-		}
-
-		if ( isset( $_POST['sticky-header'] ) ) {
-			update_post_meta( $post_id, 'sticky-header', esc_attr( $_POST['sticky-header'] ) );
-		} else {
-			delete_post_meta( $post_id, 'sticky-header' );
 		}
 
 		if ( isset( $_POST['display-on-canvas-template'] ) ) {
