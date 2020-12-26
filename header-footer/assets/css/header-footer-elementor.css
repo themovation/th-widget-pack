@@ -34,7 +34,7 @@
     display: none
 }
 
-.ehf-header #thhf-masthead.transparent-header, .ehf-header #thhf-masthead-sticky.transparent-header {
+#thhf-masthead.transparent-header, #thhf-masthead-sticky.transparent-header {
     background: transparent;
     position: absolute;
     overflow:visible;
@@ -42,7 +42,7 @@
 }    
 
 /* Fix: Header hidden below the page content */
-.ehf-header #thhf-masthead, .ehf-header #thhf-masthead-sticky {
+#thhf-masthead, #thhf-masthead-sticky {
 	z-index: 99;
     position: relative;
 }
