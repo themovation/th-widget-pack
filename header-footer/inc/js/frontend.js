@@ -21,37 +21,47 @@
             top: 0
         });
     
-        $('body').css({
-            "padding-top": 0
-        });
 
-		var topOffset = stickyHeader.offset().top;
+		var stickyTopOffset = stickyHeader.offset().top;
 		
-		var offsetWithAdminBar = topOffset - $wpAdminBarHeight;
-
-        var stickyHeaderHeight = stickyHeader.height();
+		var stickyOffsetAdminBar = stickyTopOffset - $wpAdminBarHeight;
 
 		var scrollHeight = $(window).scrollTop();
 
-        if (offsetWithAdminBar < scrollHeight) {
-            stickyHeader.css({
-                position: "fixed",
-                top: 0 + $wpAdminBar.height()
-			});
-			regularHeader.hide();
-            $('body').css({
-                "padding-top": stickyHeaderHeight
-            });
-        } else {
-            stickyHeader.css({
-                position: "static",
-                top: 0 + $wpAdminBar.height()
-			});
-			regularHeader.show();
-            $('body').css({
-                "padding-top": 0
-            });
-        }
+
+		if ( regularHeader.hasClass("transparent-header") && stickyHeader.hasClass("transparent-header") )  {
+			if ( regularHeader.height() < scrollHeight ) {
+				stickyHeader.show();
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $wpAdminBar.height()
+				});
+			} else {
+				stickyHeader.hide();
+				stickyHeader.css({
+					position: "static",
+					top: 0 + $wpAdminBar.height()
+				});
+			}
+		} else {
+			if ( stickyOffsetAdminBar < scrollHeight ) {
+
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $wpAdminBar.height()
+				});
+				regularHeader.hide();
+				
+			} else {
+				stickyHeader.css({
+					position: "static",
+					top: 0 + $wpAdminBar.height()
+				});
+				
+				regularHeader.show();
+	
+			}
+		}
 
     }
 	

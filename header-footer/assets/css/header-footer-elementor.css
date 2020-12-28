@@ -34,9 +34,15 @@
     display: none
 }
 
-#thhf-masthead.transparent-header, #thhf-masthead-sticky.transparent-header {
-    background: transparent;
+#thhf-masthead.transparent-header {
     position: absolute;
+    background: transparent;
+    overflow:visible;
+    width: 100%;
+}
+
+#thhf-masthead-sticky.transparent-header {
+    background: transparent;
     overflow:visible;
     width: 100%;
 }    
