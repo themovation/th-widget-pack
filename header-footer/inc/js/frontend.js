@@ -15,52 +15,43 @@
 		} else {
 			var $wpAdminBarHeight = 0;
 		}
-
-        stickyHeader.css({
-            position: "static",
-            top: 0
-        });
-    
-
-		var stickyTopOffset = stickyHeader.offset().top;
 		
-		var stickyOffsetAdminBar = stickyTopOffset - $wpAdminBarHeight;
 
 		var scrollHeight = $(window).scrollTop();
 
 
 		if ( regularHeader.hasClass("transparent-header") && stickyHeader.hasClass("transparent-header") )  {
+			stickyHeader.css({
+				position: "fixed",
+				top: 0 + $wpAdminBarHeight
+			});
 			if ( regularHeader.height() < scrollHeight ) {
 				stickyHeader.show();
-				stickyHeader.css({
-					position: "fixed",
-					top: 0 + $wpAdminBar.height()
-				});
 			} else {
 				stickyHeader.hide();
-				stickyHeader.css({
-					position: "static",
-					top: 0 + $wpAdminBar.height()
-				});
 			}
 		} else {
-			if ( stickyOffsetAdminBar < scrollHeight ) {
+			if ( regularHeader.height() < scrollHeight ) {
 
 				stickyHeader.css({
 					position: "fixed",
-					top: 0 + $wpAdminBar.height()
+					top: 0 + $wpAdminBarHeight
 				});
-				regularHeader.hide();
 				
+			}
+			if ( stickyHeader.height() < scrollHeight ) {
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $wpAdminBarHeight
+				});
+
 			} else {
 				stickyHeader.css({
 					position: "static",
-					top: 0 + $wpAdminBar.height()
+					top: 0 + $wpAdminBarHeight
 				});
-				
-				regularHeader.show();
 	
-			}
+			} 
 		}
 
     }
