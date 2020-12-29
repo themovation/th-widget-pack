@@ -1,10 +1,4 @@
-/* Sticky Header */
 
-#thhf-masthead-sticky {
-    opacity:1;
-    width: 100%;
-    z-index:500;
-}
 
 .footer-width-fixer {
     width: 100%;
@@ -34,12 +28,22 @@
     display: none
 }
 
+/* Sticky Header */
+
+#thhf-masthead-sticky {
+    width: 100%;
+    z-index:500;
+    /* transition:all 0.7s ease 0s;
+	-webkit-transition:all 0.7s ease 0s; */
+}
+
 #thhf-masthead.transparent-header {
     position: absolute;
     background: transparent;
     overflow:visible;
     width: 100%;
 }
+
 
 #thhf-masthead-sticky.transparent-header {
     background: transparent;

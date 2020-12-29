@@ -9,49 +9,53 @@
 		var regularHeader = $('#thhf-masthead');
 		var stickyHeader = $('#thhf-masthead-sticky');
 		var $wpAdminBar = $( '#wpadminbar' );
+		var scrollHeight = $(window).scrollTop();
 
 		if ($wpAdminBar.length) {
 			var $wpAdminBarHeight = $wpAdminBar.height();
 		} else {
 			var $wpAdminBarHeight = 0;
 		}
-		
-
-		var scrollHeight = $(window).scrollTop();
-
 
 		if ( regularHeader.hasClass("transparent-header") && stickyHeader.hasClass("transparent-header") )  {
 			stickyHeader.css({
 				position: "fixed",
-				top: 0 + $wpAdminBarHeight
+				top: 0 + $wpAdminBarHeight,
+				left: 0
 			});
 			if ( regularHeader.height() < scrollHeight ) {
 				stickyHeader.show();
 			} else {
 				stickyHeader.hide();
 			}
-		} else {
-			if ( regularHeader.height() < scrollHeight ) {
-
-				stickyHeader.css({
-					position: "fixed",
-					top: 0 + $wpAdminBarHeight
-				});
-				
-			}
+		} else if( regularHeader.length && stickyHeader.length ) {
 			if ( stickyHeader.height() < scrollHeight ) {
 				stickyHeader.css({
 					position: "fixed",
-					top: 0 + $wpAdminBarHeight
+					top: 0 + $wpAdminBarHeight,
+					left: 0
 				});
 
 			} else {
 				stickyHeader.css({
-					position: "static",
-					top: 0 + $wpAdminBarHeight
+					position: "absolute",
+					top: 0 + regularHeader.height() + $wpAdminBarHeight,
+					left: 0
 				});
 	
 			} 
+		} else {
+			stickyHeader.css({
+				position: "fixed",
+			});
+			if ( stickyHeader.height() < scrollHeight ) {
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $wpAdminBarHeight,
+					left: 0
+				});	
+			}
+
 		}
 
     }
