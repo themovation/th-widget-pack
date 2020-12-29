@@ -38,18 +38,18 @@ class HFE_Genesis_Compat {
 			add_action( 'template_redirect', [ $this, 'genesis_setup_header' ] );
 			add_action( 'genesis_header', [ $this, 'genesis_header_markup_open' ], 16 );
 			add_action( 'genesis_header', [ $this, 'genesis_header_markup_close' ], 25 );
-			add_action( 'genesis_header', [ 'Header_Footer_Elementor', 'get_header_content' ], 16 );
+			add_action( 'genesis_header', [ 'THHF_Header_Footer_Elementor', 'get_header_content' ], 16 );
 		}
 
 		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'genesis_footer', [ 'Header_Footer_Elementor', 'get_before_footer_content' ], 16 );
+			add_action( 'genesis_footer', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 16 );
 		}
 
 		if ( hfe_footer_enabled() ) {
 			add_action( 'template_redirect', [ $this, 'genesis_setup_footer' ] );
 			add_action( 'genesis_footer', [ $this, 'genesis_footer_markup_open' ], 16 );
 			add_action( 'genesis_footer', [ $this, 'genesis_footer_markup_close' ], 25 );
-			add_action( 'genesis_footer', [ 'Header_Footer_Elementor', 'get_footer_content' ], 16 );
+			add_action( 'genesis_footer', [ 'THHF_Header_Footer_Elementor', 'get_footer_content' ], 16 );
 		}
 	}
 

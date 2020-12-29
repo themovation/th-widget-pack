@@ -60,7 +60,7 @@ require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
  * Load the Plugin Class.
  */
 function thmv_hfe_init() {
-	Header_Footer_Elementor::instance();
+	THHF_Header_Footer_Elementor::instance();
 }
 
 add_action( 'plugins_loaded', 'thmv_hfe_init' );

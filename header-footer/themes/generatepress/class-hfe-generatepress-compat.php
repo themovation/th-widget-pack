@@ -42,7 +42,7 @@ class HFE_GeneratePress_Compat {
 		}
 
 		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'generate_footer', [ 'Header_Footer_Elementor', 'get_before_footer_content' ], 5 );
+			add_action( 'generate_footer', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 5 );
 		}
 
 		if ( hfe_footer_enabled() ) {

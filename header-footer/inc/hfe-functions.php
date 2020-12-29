@@ -12,7 +12,7 @@
  * @return bool True if header is enabled. False if header is not enabled
  */
 function hfe_header_enabled() {
-	$header_id = Header_Footer_Elementor::get_settings( 'type_header', '' );
+	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header', '' );
 	$status    = false;
 
 	if ( '' !== $header_id ) {
@@ -29,7 +29,7 @@ function hfe_header_enabled() {
  * @return bool True if sticky header is enabled. False if header is not enabled
  */
 function hfe_sticky_header_enabled() {
-	$header_id = Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
+	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
 	$status    = false;
 
 	if ( '' !== $header_id ) {
@@ -46,7 +46,7 @@ function hfe_sticky_header_enabled() {
  * @return bool True if header is enabled. False if header is not enabled.
  */
 function hfe_footer_enabled() {
-	$footer_id = Header_Footer_Elementor::get_settings( 'type_footer', '' );
+	$footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_footer', '' );
 	$status    = false;
 
 	if ( '' !== $footer_id ) {
@@ -63,7 +63,7 @@ function hfe_footer_enabled() {
  * @return (String|boolean) header id if it is set else returns false.
  */
 function get_hfe_header_id() {
-	$header_id = Header_Footer_Elementor::get_settings( 'type_header', '' );
+	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header', '' );
 
 	if ( '' === $header_id ) {
 		$header_id = false;
@@ -79,7 +79,7 @@ function get_hfe_header_id() {
  * @return (String|boolean) sticky header id if it is set else returns false.
  */
 function get_hfe_sticky_header_id() {
-	$sticky_header_id = Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
+	$sticky_header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
 
 	if ( '' === $sticky_header_id ) {
 		$sticky_header_id = false;
@@ -95,7 +95,7 @@ function get_hfe_sticky_header_id() {
  * @return (String|boolean) header id if it is set else returns false.
  */
 function get_hfe_footer_id() {
-	$footer_id = Header_Footer_Elementor::get_settings( 'type_footer', '' );
+	$footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_footer', '' );
 
 	if ( '' === $footer_id ) {
 		$footer_id = false;
@@ -125,7 +125,7 @@ function hfe_render_header() {
 	?>
 		<header id="thhf-masthead" class="<?php echo $render_class; ?>" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 			<p class="main-title bhf-hidden" itemprop="headline"><a href="<?php echo bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php Header_Footer_Elementor::get_header_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_header_content(); ?>
 		</header>
 
 	<?php
@@ -153,7 +153,7 @@ function hfe_render_sticky_header() {
 	?>
 		<header id="thhf-masthead-sticky" class="<?php echo $render_class; ?>" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 			<p class="main-title bhf-hidden" itemprop="headline"><a href="<?php echo bloginfo( 'url' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php Header_Footer_Elementor::get_sticky_header_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_sticky_header_content(); ?>
 		</header>
 
 	<?php
@@ -174,7 +174,7 @@ function hfe_render_footer() {
 
 	?>
 		<footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo">
-			<?php Header_Footer_Elementor::get_footer_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_footer_content(); ?>
 		</footer>
 	<?php
 
@@ -189,7 +189,7 @@ function hfe_render_footer() {
  */
 function hfe_get_before_footer_id() {
 
-	$before_footer_id = Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
+	$before_footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
 
 	if ( '' === $before_footer_id ) {
 		$before_footer_id = false;
@@ -206,7 +206,7 @@ function hfe_get_before_footer_id() {
  */
 function hfe_is_before_footer_enabled() {
 
-	$before_footer_id = Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
+	$before_footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
 	$status           = false;
 
 	if ( '' !== $before_footer_id ) {
@@ -229,7 +229,7 @@ function hfe_render_before_footer() {
 
 	?>
 		<div class="hfe-before-footer-wrap">
-			<?php Header_Footer_Elementor::get_before_footer_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_before_footer_content(); ?>
 		</div>
 	<?php
 

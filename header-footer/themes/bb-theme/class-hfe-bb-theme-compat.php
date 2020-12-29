@@ -42,7 +42,7 @@ class HFE_BB_Theme_Compat {
 		}
 
 		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'fl_after_content', [ 'Header_Footer_Elementor', 'get_before_footer_content' ], 10 );
+			add_action( 'fl_after_content', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 10 );
 		}
 
 		if ( hfe_footer_enabled() ) {
@@ -66,7 +66,7 @@ class HFE_BB_Theme_Compat {
 			<p class="main-title bhf-hidden" itemprop="headline"><a href="<?php echo bloginfo( 'url' ); ?>"
 																	title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"
 																	rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php Header_Footer_Elementor::get_header_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_header_content(); ?>
 		</header>
 		<?php
 	}
@@ -81,7 +81,7 @@ class HFE_BB_Theme_Compat {
 
 		?>
 		<footer itemscope="itemscope" itemtype="https://schema.org/WPFooter">
-			<?php Header_Footer_Elementor::get_footer_content(); ?>
+			<?php THHF_Header_Footer_Elementor::get_footer_content(); ?>
 		</footer>
 		<?php
 	}

@@ -8,9 +8,9 @@
 use THHF\Lib\TH_Header_Footer_Fields;
 
 /**
- * Class Header_Footer_Elementor
+ * Class THHF_Header_Footer_Elementor
  */
-class Header_Footer_Elementor {
+class THHF_Header_Footer_Elementor {
 
 	/**
 	 * Current theme template
@@ -29,14 +29,14 @@ class Header_Footer_Elementor {
 	/**
 	 * Instance of THHF_Admin
 	 *
-	 * @var Header_Footer_Elementor
+	 * @var THHF_Header_Footer_Elementor
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Instance of Header_Footer_Elementor
+	 * Instance of THHF_Header_Footer_Elementor
 	 *
-	 * @return Header_Footer_Elementor Instance of Header_Footer_Elementor
+	 * @return THHF_Header_Footer_Elementor Instance of THHF_Header_Footer_Elementor
 	 */
 	public static function instance() {
 		if ( ! isset( self::$_instance ) ) {

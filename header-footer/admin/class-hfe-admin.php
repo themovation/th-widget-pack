@@ -509,7 +509,7 @@ class THHF_Admin {
 		$template_type = get_post_meta( $post->ID, 'ehf_template_type', true );
 
 		if ( '' !== $template_type ) {
-			$templates = Header_Footer_Elementor::get_template_id( $template_type );
+			$templates = THHF_Header_Footer_Elementor::get_template_id( $template_type );
 
 			// Check if more than one template is selected for current template type.
 			if ( is_array( $templates ) && isset( $templates[1] ) && $post->ID != $templates[0] ) {

@@ -50,7 +50,7 @@ class HFE_Default_Compat {
 		}
 
 		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'hfe_footer_before', [ 'Header_Footer_Elementor', 'get_before_footer_content' ] );
+			add_action( 'hfe_footer_before', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ] );
 		}
 	}
 

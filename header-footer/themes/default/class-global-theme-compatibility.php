@@ -27,24 +27,24 @@ class Global_Theme_Compatibility {
 			// Replace header.php.
 			add_action( 'get_header', [ $this, 'option_override_header' ] );
 
-			add_action( 'wp_body_open', [ 'Header_Footer_Elementor', 'get_header_content' ] );
-			add_action( 'hfe_fallback_header', [ 'Header_Footer_Elementor', 'get_header_content' ] );
+			add_action( 'wp_body_open', [ 'THHF_Header_Footer_Elementor', 'get_header_content' ] );
+			add_action( 'hfe_fallback_header', [ 'THHF_Header_Footer_Elementor', 'get_header_content' ] );
 		}
 
 		if ( hfe_sticky_header_enabled() ) {
 			// Replace header.php.
 			add_action( 'get_header', [ $this, 'option_sticky_override_header' ] );
 
-			add_action( 'wp_body_open', [ 'Header_Footer_Elementor', 'get_sticky_header_content' ] );
-			add_action( 'hfe_fallback_sticky_header', [ 'Header_Footer_Elementor', 'get_sticky_header_content' ] );
+			add_action( 'wp_body_open', [ 'THHF_Header_Footer_Elementor', 'get_sticky_header_content' ] );
+			add_action( 'hfe_fallback_sticky_header', [ 'THHF_Header_Footer_Elementor', 'get_sticky_header_content' ] );
 		}
 
 		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'wp_footer', [ 'Header_Footer_Elementor', 'get_before_footer_content' ], 20 );
+			add_action( 'wp_footer', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 20 );
 		}
 
 		if ( hfe_footer_enabled() ) {
-			add_action( 'wp_footer', [ 'Header_Footer_Elementor', 'get_footer_content' ], 50 );
+			add_action( 'wp_footer', [ 'THHF_Header_Footer_Elementor', 'get_footer_content' ], 50 );
 		}
 
 		if ( hfe_header_enabled() || hfe_footer_enabled() ) {
