@@ -17,11 +17,16 @@
 			var $wpAdminBarHeight = 0;
 		}
 
+		if (window.matchMedia("(max-width: 600px)").matches) {
+			$mobileAdminBar = 0;
+		} else {
+			$mobileAdminBar = $wpAdminBarHeight;
+		}
+
 		if ( regularHeader.hasClass("transparent-header") && stickyHeader.hasClass("transparent-header") )  {
 			stickyHeader.css({
 				position: "fixed",
 				top: 0 + $wpAdminBarHeight,
-				left: 0
 			});
 			if ( regularHeader.height() < scrollHeight ) {
 				stickyHeader.show();
@@ -32,30 +37,38 @@
 			if ( stickyHeader.height() < scrollHeight ) {
 				stickyHeader.css({
 					position: "fixed",
-					top: 0 + $wpAdminBarHeight,
-					left: 0
+					top: 0 + $wpAdminBarHeight
 				});
-
 			} else {
 				stickyHeader.css({
 					position: "absolute",
-					top: 0 + regularHeader.height() + $wpAdminBarHeight,
-					left: 0
+					top: 0 + regularHeader.height() + $wpAdminBarHeight
 				});
-	
 			} 
-		} else {
-			stickyHeader.css({
-				position: "fixed",
-			});
+		} else if ( stickyHeader.hasClass("transparent-header") ) {
 			if ( stickyHeader.height() < scrollHeight ) {
 				stickyHeader.css({
 					position: "fixed",
-					top: 0 + $wpAdminBarHeight,
-					left: 0
+					top: 0 + $mobileAdminBar,
 				});	
+			} else {
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $wpAdminBarHeight,
+				});
 			}
-
+		} else {
+			if ( stickyHeader.height() < scrollHeight ) {
+				stickyHeader.css({
+					position: "fixed",
+					top: 0 + $mobileAdminBar
+				});	
+			} else {
+				stickyHeader.css({
+					position: "relative",
+					top: 0
+				});
+			}
 		}
 
     }
@@ -64,8 +77,6 @@
 		scrollFunction();
 	});
 
-	
-	
 
 	/**
 	* Search widget JS

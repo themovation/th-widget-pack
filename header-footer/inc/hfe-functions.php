@@ -145,7 +145,7 @@ function hfe_render_sticky_header() {
 
 	$transparent_header = get_post_meta( get_hfe_sticky_header_id(), 'transparent-header', true );
 
-	$render_class = 'sticky-header';
+	$render_class = '';
 	if ( $transparent_header ) {
 		$render_class .= ' transparent-header';  
 	}
