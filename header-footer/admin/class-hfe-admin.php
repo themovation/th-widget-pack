@@ -296,6 +296,7 @@ class THHF_Admin {
 		$template_type     = isset( $values['ehf_template_type'] ) ? esc_attr( $values['ehf_template_type'][0] ) : '';
 		$display_on_canvas = isset( $values['display-on-canvas-template'] ) ? true : false;
 		$transparent_header = isset( $values['transparent-header'] ) ? true : false;
+		$sticky_stacked = isset( $values['sticky-stacked'] ) ? true : false;
 
 		// We'll use this nonce field later on when saving.
 		wp_nonce_field( 'ehf_meta_nounce', 'ehf_meta_nounce' );
@@ -331,6 +332,19 @@ class THHF_Admin {
 						</span>
 					</td>
 				</tr>
+
+				<tr class="hfe-options-row sticky-stacked">
+					<td class="hfe-options-row-heading">
+						<label for="sticky-stacked">
+							<?php _e( 'Sticky Stacked', 'header-footer-elementor' ); ?>
+						</label>
+						<i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Enable this for Sticky Header Type only.', 'header-footer-elementor' ); ?>"></i>
+					</td>
+					<td class="hfe-options-row-content">
+						<input type="checkbox" id="sticky-stacked" name="sticky-stacked" value="1" <?php checked( $sticky_stacked, true ); ?> />
+					</td>
+				</tr>
+				
 				<tr class="hfe-options-row transparent-header">
 					<td class="hfe-options-row-heading">
 						<label for="transparent-header">
@@ -477,6 +491,12 @@ class THHF_Admin {
 
 		if ( isset( $_POST['ehf_template_type'] ) ) {
 			update_post_meta( $post_id, 'ehf_template_type', esc_attr( $_POST['ehf_template_type'] ) );
+		}
+
+		if ( isset( $_POST['sticky-stacked'] ) ) {
+			update_post_meta( $post_id, 'sticky-stacked', esc_attr( $_POST['sticky-stacked'] ) );
+		} else {
+			delete_post_meta( $post_id, 'sticky-stacked' );
 		}
 
 		if ( isset( $_POST['transparent-header'] ) ) {

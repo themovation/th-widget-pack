@@ -24,27 +24,23 @@
 		}
 
 		if ( regularHeader.length && stickyHeader.length )  {
-			stickyHeader.css({
-				"position": "fixed",
-				"top": 0 + $wpAdminBarHeight,
-			});
 			if ( regularHeader.height() < scrollHeight ) {
+				stickyHeader.css({
+					"position": "fixed",
+					"top": 0 + $wpAdminBarHeight,
+				});
 				stickyHeader.show();
 			} else {
-				stickyHeader.hide();
+				stickyHeader.css({
+					"position": "relative",
+					"top": 0,
+				});
+				if ( stickyHeader.hasClass("sticky-stacked") ) {
+					stickyHeader.show();
+				} else {
+					stickyHeader.hide();
+				}
 			}
-		// } else if( regularHeader.length && stickyHeader.length ) {
-		// 	if ( stickyHeader.height() < scrollHeight ) {
-		// 		stickyHeader.css({
-		// 			"position": "fixed",
-		// 			"top": 0 + $wpAdminBarHeight
-		// 		});
-		// 	} else {
-		// 		stickyHeader.css({
-		// 			"position": "absolute",
-		// 			"top": 0 + regularHeader.height() + $wpAdminBarHeight
-		// 		});
-		// 	} 
 		} else if ( stickyHeader.hasClass("transparent-header") ) {
 			if ( stickyHeader.height() < scrollHeight ) {
 				stickyHeader.css({

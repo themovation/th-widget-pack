@@ -54,5 +54,5 @@
 /* Fix: Header hidden below the page content */
 #thhf-masthead, #thhf-masthead-sticky {
 	z-index: 999;
-    position: relative;
+    /*position: relative;*/
 }

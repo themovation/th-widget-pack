@@ -144,10 +144,14 @@ function hfe_render_sticky_header() {
 	}
 
 	$transparent_header = get_post_meta( get_hfe_sticky_header_id(), 'transparent-header', true );
+	$sticky_stacked = get_post_meta( get_hfe_sticky_header_id(), 'sticky-stacked', true );
 
 	$render_class = '';
 	if ( $transparent_header ) {
 		$render_class .= ' transparent-header';  
+	}
+	if ( $sticky_stacked ) {
+		$render_class .= ' sticky-stacked';
 	}
 
 	?>
