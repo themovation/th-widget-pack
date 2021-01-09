@@ -41,35 +41,11 @@
 					stickyHeader.hide();
 				}
 			}
-		} else if ( stickyHeader.hasClass("transparent-header") ) {
-			if ( stickyHeader.height() < scrollHeight ) {
-				stickyHeader.css({
-					"position": "fixed",
-					"top": 0 + $mobileAdminBar,
-				});	
-			} else {
-				stickyHeader.css({
-					"position": "fixed",
-					"top": 0 + $wpAdminBarHeight,
-				});
-			}
 		} else {
-			if ( stickyHeader.height() < scrollHeight ) {
-				stickyHeader.css({
-					"position": "fixed",
-					"top": 0 + $mobileAdminBar
-				});	
-
-				$("body").css("padding-top", stickyHeader.height() );
-
-			} else {
-				stickyHeader.css({
-					"position": "relative",
-					"top": 0
-				});
-
-				$("body").css("padding-top", 0 );
-			}
+			stickyHeader.css({
+				"position": "fixed",
+				"top": 0 + $mobileAdminBar,
+			});
 		}
 
     }
