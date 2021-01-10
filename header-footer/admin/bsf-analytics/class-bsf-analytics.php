@@ -39,7 +39,6 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 			add_action( 'admin_init', [ $this, 'handle_optin_optout' ] );
 			add_action( 'cron_schedules', [ $this, 'every_two_days_schedule' ] );
-			add_action( 'admin_notices', [ $this, 'option_notice' ] );
 			add_action( 'astra_notice_before_markup_bsf-optin-notice', [ $this, 'enqueue_assets' ] );
 
 			add_action( 'init', [ $this, 'schedule_unschedule_event' ] );
@@ -156,78 +155,6 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 			}
 
 			return $is_enabled;
-		}
-
-		/**
-		 * Display admin notice for usage tracking.
-		 *
-		 * @since 1.0.0
-		 */
-		public function option_notice() {
-
-			if ( ! current_user_can( 'manage_options' ) ) {
-				return;
-			}
-
-			// Don't display the notice if tracking is disabled or White Label is enabled for any of our plugins.
-			if ( false !== get_site_option( 'bsf_analytics_optin', false ) || $this->is_white_label_enabled() ) {
-				return;
-			}
-
-			// Show tracker consent notice after 24 hours from installed time.
-			if ( strtotime( '+24 hours', $this->get_analytics_install_time() ) > time() ) {
-				return;
-			}
-
-			/* translators: %s product name */
-			$notice_string = __( 'Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. ', 'header-footer-elementor' );
-
-			if ( is_multisite() ) {
-				$notice_string .= __( 'This will be applicable for all sites from the network.', 'header-footer-elementor' );
-			}
-
-			Astra_Notices::add_notice(
-				[
-					'id'                         => 'bsf-optin-notice',
-					'type'                       => '',
-					'message'                    => sprintf(
-						'<div class="notice-content">
-								<div class="notice-heading">
-									%1$s
-								</div>
-								<div class="astra-notices-container">
-									<a href="%2$s" class="astra-notices button-primary">
-									%3$s
-									</a>
-									<a href="%4$s" data-repeat-notice-after="%5$s" class="astra-notices button-secondary">
-									%6$s
-									</a>
-								</div>
-							</div>',
-						/* translators: %s usage doc link */
-						sprintf( $notice_string . '<a href="%2s" target="_blank" rel="noreferrer noopener">%3s</a>', $this->get_product_name(), esc_url( $this->usage_doc_link ), __( ' Know More.', 'header-footer-elementor' ) ),
-						add_query_arg(
-							[
-								'bsf_analytics_optin' => 'yes',
-								'bsf_analytics_nonce' => wp_create_nonce( 'bsf_analytics_optin' ),
-							]
-						),
-						__( 'Yes! Allow it', 'header-footer-elementor' ),
-						add_query_arg(
-							[
-								'bsf_analytics_optin' => 'no',
-								'bsf_analytics_nonce' => wp_create_nonce( 'bsf_analytics_optin' ),
-							]
-						),
-						MONTH_IN_SECONDS,
-						__( 'No Thanks', 'header-footer-elementor' )
-					),
-					'show_if'                    => true,
-					'repeat-notice-after'        => false,
-					'priority'                   => 18,
-					'display-with-other-notices' => true,
-				]
-			);
 		}
 
 		/**

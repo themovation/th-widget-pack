@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'hfe';
+    font-family: 'thhf';
     src:  url('../fonts/hfe.eot?ejqak3');
     src:  url('../fonts/hfe.eot?ejqak3#iefix') format('embedded-opentype'),
         url('../fonts/hfe.ttf?ejqak3') format('truetype'),
@@ -9,9 +9,9 @@
     font-style: normal;
 }
 
-[class^="hfe-icon-"], [class*=" hfe-icon-"] {
+[class^="thhf-icon-"], [class*=" thhf-icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'hfe' !important;
+    font-family: 'thhf' !important;
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -24,7 +24,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.elementor-element [class*="hfe-icon-"]:after {
+.elementor-element [class*="thhf-icon-"]:after {
   content: "THHF";
   position: absolute;
   top: 0;
@@ -40,33 +40,33 @@
   border-style: solid;
 }
 
-.hfe-icon-search:before {
+.thhf-icon-search:before {
   content: "\e908";
   color: #556068;
 }
-.hfe-icon-site-logo:before {
+.thhf-icon-site-logo:before {
   content: "\e900";
 }
-.hfe-icon-site-title:before {
+.thhf-icon-site-title:before {
   content: "\e901";
 }
-.hfe-icon-site-tagline:before {
+.thhf-icon-site-tagline:before {
   content: "\e902";
 }
-.hfe-icon-page-title:before {
+.thhf-icon-page-title:before {
   content: "\e903";
 }
-.hfe-icon-navigation-menu:before {
+.thhf-icon-navigation-menu:before {
   content: "\e904";
   color: #556068;
 }
-.hfe-icon-menu-cart:before {
+.thhf-icon-menu-cart:before {
   content: "\e905";
   color: #556068;
 }
-.hfe-icon-copyright-widget:before {
+.thhf-icon-copyright-widget:before {
   content: "\e906";
 }
-.hfe-icon-retina-image:before {
+.thhf-icon-retina-image:before {
   content: "\e907";
 }

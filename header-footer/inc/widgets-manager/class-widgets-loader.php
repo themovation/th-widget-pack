@@ -72,7 +72,7 @@ class Widgets_Loader {
 	 */
 	public static function get_widget_script() {
 		$js_files = [
-			'hfe-frontend-js' => [
+			'thhf-frontend-js' => [
 				'path'      => 'header-footer/inc/js/frontend.js',
 				'dep'       => [ 'jquery', 'elementor-waypoints' ],
 				'in_footer' => true,
@@ -131,7 +131,7 @@ class Widgets_Loader {
 		}
 
 		// Emqueue the widgets style.
-		wp_enqueue_style( 'hfe-widgets-style', THEMO_URL . 'header-footer/inc/widgets-css/frontend.css', [], THEMO_VERSION );
+		wp_enqueue_style( 'thhf-widgets-style', THEMO_URL . 'header-footer/inc/widgets-css/frontend.css', [], THEMO_VERSION );
 	}
 
 	/**
@@ -155,10 +155,10 @@ class Widgets_Loader {
 	 * @param object $this_cat class.
 	 */
 	public function register_widget_category( $this_cat ) {
-		$category = __( 'Header, Footer & Blocks', 'header-footer-elementor' );
+		$category = __( 'Themovation Elements', 'th-widget-pack' );
 
 		$this_cat->add_category(
-			'hfe-widgets',
+			'themo-elements',
 			[
 				'title' => $category,
 				'icon'  => 'eicon-font',

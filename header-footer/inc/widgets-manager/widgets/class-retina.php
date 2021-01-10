@@ -43,7 +43,7 @@ class Retina extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'retina';
+		return 'thhf-retina';
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Retina extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-retina-image';
+		return 'thhf-icon-retina-image';
 	}
 
 	/**
@@ -87,7 +87,7 @@ class Retina extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**

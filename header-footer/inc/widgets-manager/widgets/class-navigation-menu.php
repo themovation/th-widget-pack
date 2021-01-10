@@ -47,7 +47,7 @@ class Navigation_Menu extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'navigation-menu';
+		return 'thhf-navigation-menu';
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Navigation_Menu extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-navigation-menu';
+		return 'thhf-icon-navigation-menu';
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Navigation_Menu extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**
@@ -105,7 +105,7 @@ class Navigation_Menu extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'hfe-frontend-js' ];
+		return [ 'thhf-frontend-js' ];
 	}
 
 	/**

@@ -45,7 +45,7 @@ class Site_Logo extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'site-logo';
+		return 'thhf-site-logo';
 	}
 
 	/**
@@ -71,7 +71,7 @@ class Site_Logo extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-site-logo';
+		return 'thhf-icon-site-logo';
 	}
 
 	/**
@@ -89,7 +89,7 @@ class Site_Logo extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**

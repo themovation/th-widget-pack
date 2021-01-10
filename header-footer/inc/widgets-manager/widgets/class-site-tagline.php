@@ -37,7 +37,7 @@ class Site_Tagline extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'hfe-site-tagline';
+		return 'thhf-site-tagline';
 	}
 
 	/**
@@ -63,7 +63,7 @@ class Site_Tagline extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-site-tagline';
+		return 'thhf-icon-site-tagline';
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Site_Tagline extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**
@@ -156,7 +156,7 @@ class Site_Tagline extends Widget_Base {
 					'icon[value]!' => '',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .hfe-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .thhf-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -209,8 +209,8 @@ class Site_Tagline extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .hfe-site-tagline' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .hfe-icon i'       => 'color: {{VALUE}};',
-					'{{WRAPPER}} .hfe-icon svg'     => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon i'       => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon svg'     => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -229,8 +229,8 @@ class Site_Tagline extends Widget_Base {
 				],
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-icon i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .hfe-icon svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -244,8 +244,8 @@ class Site_Tagline extends Widget_Base {
 				],
 				'default'   => '',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-icon:hover i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .hfe-icon:hover svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon:hover i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thhf-icon:hover svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);

@@ -86,9 +86,9 @@ class TH_Header_Footer_Fields {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		define( 'AST_TARGET_RULE_URI', plugins_url( '/', __FILE__ ) );
-		define( 'AST_TARGET_RULE_VER', '1.0.0' );
-		define( 'AST_TARGET_RULE_DIR', plugin_dir_path( __FILE__ ) );
+		define( 'THHF_TARGET_RULE_URI', plugins_url( '/', __FILE__ ) );
+		define( 'THHF_TARGET_RULE_VER', '1.0.0' );
+		define( 'THHF_TARGET_RULE_DIR', plugin_dir_path( __FILE__ ) );
 
 		add_action( 'admin_action_edit', array( $this, 'initialize_options' ) );
 		add_action( 'wp_ajax_hfe_get_posts_by_query', array( $this, 'hfe_get_posts_by_query' ) );
@@ -451,7 +451,7 @@ class TH_Header_Footer_Fields {
 	 * Function Description: admin_styles.
 	 */
 	public function admin_styles() {
-		wp_enqueue_script( 'astra-select2', AST_TARGET_RULE_URI . 'select2.js', array( 'jquery' ), AST_TARGET_RULE_VER, true );
+		wp_enqueue_script( 'astra-select2', THHF_TARGET_RULE_URI . 'select2.js', array( 'jquery' ), THHF_TARGET_RULE_VER, true );
 
 		$wp_lang  = get_locale();
 		$ast_lang = '';
@@ -571,16 +571,16 @@ class TH_Header_Footer_Fields {
 				'zh_HK'          => 'zh',
 			);
 
-			if ( isset( $select2_lang[ $wp_lang ] ) && file_exists( AST_TARGET_RULE_DIR . 'i18n/' . $select2_lang[ $wp_lang ] . '.js' ) ) {
+			if ( isset( $select2_lang[ $wp_lang ] ) && file_exists( THHF_TARGET_RULE_DIR . 'i18n/' . $select2_lang[ $wp_lang ] . '.js' ) ) {
 				$ast_lang = $select2_lang[ $wp_lang ];
 				wp_enqueue_script(
 					'astra-select2-lang',
-					AST_TARGET_RULE_URI . 'i18n/' . $select2_lang[ $wp_lang ] . '.js',
+					THHF_TARGET_RULE_URI . 'i18n/' . $select2_lang[ $wp_lang ] . '.js',
 					array(
 						'jquery',
 						'astra-select2',
 					),
-					AST_TARGET_RULE_VER,
+					THHF_TARGET_RULE_VER,
 					true
 				);
 			}
@@ -588,12 +588,12 @@ class TH_Header_Footer_Fields {
 
 		wp_register_script(
 			'astra-target-rule',
-			AST_TARGET_RULE_URI . 'target-rule.js',
+			THHF_TARGET_RULE_URI . 'target-rule.js',
 			array(
 				'jquery',
 				'astra-select2',
 			),
-			AST_TARGET_RULE_VER,
+			THHF_TARGET_RULE_VER,
 			true
 		);
 
@@ -601,19 +601,19 @@ class TH_Header_Footer_Fields {
 
 		wp_register_script(
 			'astra-user-role',
-			AST_TARGET_RULE_URI . 'user-role.js',
+			THHF_TARGET_RULE_URI . 'user-role.js',
 			array(
 				'jquery',
 			),
-			AST_TARGET_RULE_VER,
+			THHF_TARGET_RULE_VER,
 			true
 		);
 
 		wp_enqueue_script( 'astra-user-role' );
 
-		wp_register_style( 'astra-select2', AST_TARGET_RULE_URI . 'select2.css', '', AST_TARGET_RULE_VER );
+		wp_register_style( 'astra-select2', THHF_TARGET_RULE_URI . 'select2.css', '', THHF_TARGET_RULE_VER );
 		wp_enqueue_style( 'astra-select2' );
-		wp_register_style( 'astra-target-rule', AST_TARGET_RULE_URI . 'target-rule.css', '', AST_TARGET_RULE_VER );
+		wp_register_style( 'astra-target-rule', THHF_TARGET_RULE_URI . 'target-rule.css', '', THHF_TARGET_RULE_VER );
 		wp_enqueue_style( 'astra-target-rule' );
 
 		/**

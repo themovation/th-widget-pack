@@ -11,7 +11,7 @@
  * @since  1.0.2
  * @return bool True if header is enabled. False if header is not enabled
  */
-function hfe_header_enabled() {
+function thhf_header_enabled() {
 	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header', '' );
 	$status    = false;
 
@@ -19,7 +19,7 @@ function hfe_header_enabled() {
 		$status = true;
 	}
 
-	return apply_filters( 'hfe_header_enabled', $status );
+	return apply_filters( 'thhf_header_enabled', $status );
 }
 
 /**
@@ -28,7 +28,7 @@ function hfe_header_enabled() {
  * @since  1.0.2
  * @return bool True if sticky header is enabled. False if header is not enabled
  */
-function hfe_sticky_header_enabled() {
+function thhf_sticky_header_enabled() {
 	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
 	$status    = false;
 
@@ -36,7 +36,7 @@ function hfe_sticky_header_enabled() {
 		$status = true;
 	}
 
-	return apply_filters( 'hfe_sticky_header_enabled', $status );
+	return apply_filters( 'thhf_sticky_header_enabled', $status );
 }
 
 /**
@@ -45,7 +45,7 @@ function hfe_sticky_header_enabled() {
  * @since  1.0.2
  * @return bool True if header is enabled. False if header is not enabled.
  */
-function hfe_footer_enabled() {
+function thhf_footer_enabled() {
 	$footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_footer', '' );
 	$status    = false;
 
@@ -53,7 +53,7 @@ function hfe_footer_enabled() {
 		$status = true;
 	}
 
-	return apply_filters( 'hfe_footer_enabled', $status );
+	return apply_filters( 'thhf_footer_enabled', $status );
 }
 
 /**
@@ -62,14 +62,14 @@ function hfe_footer_enabled() {
  * @since  1.0.2
  * @return (String|boolean) header id if it is set else returns false.
  */
-function get_hfe_header_id() {
+function get_thhf_header_id() {
 	$header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header', '' );
 
 	if ( '' === $header_id ) {
 		$header_id = false;
 	}
 
-	return apply_filters( 'get_hfe_header_id', $header_id );
+	return apply_filters( 'get_thhf_header_id', $header_id );
 }
 
 /**
@@ -78,14 +78,14 @@ function get_hfe_header_id() {
  * @since  1.0.2
  * @return (String|boolean) sticky header id if it is set else returns false.
  */
-function get_hfe_sticky_header_id() {
+function get_thhf_sticky_header_id() {
 	$sticky_header_id = THHF_Header_Footer_Elementor::get_settings( 'type_header_sticky', '' );
 
 	if ( '' === $sticky_header_id ) {
 		$sticky_header_id = false;
 	}
 
-	return apply_filters( 'get_hfe_sticky_header_id', $sticky_header_id );
+	return apply_filters( 'get_thhf_sticky_header_id', $sticky_header_id );
 }
 
 /**
@@ -94,14 +94,14 @@ function get_hfe_sticky_header_id() {
  * @since  1.0.2
  * @return (String|boolean) header id if it is set else returns false.
  */
-function get_hfe_footer_id() {
+function get_thhf_footer_id() {
 	$footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_footer', '' );
 
 	if ( '' === $footer_id ) {
 		$footer_id = false;
 	}
 
-	return apply_filters( 'get_hfe_footer_id', $footer_id );
+	return apply_filters( 'get_thhf_footer_id', $footer_id );
 }
 
 /**
@@ -109,13 +109,13 @@ function get_hfe_footer_id() {
  *
  * @since  1.0.2
  */
-function hfe_render_header() {
+function thhf_render_header() {
 
-	if ( false == apply_filters( 'enable_hfe_render_header', true ) ) {
+	if ( false == apply_filters( 'enable_thhf_render_header', true ) ) {
 		return;
 	}
 
-	$transparent_header = get_post_meta( get_hfe_header_id(), 'transparent-header', true );
+	$transparent_header = get_post_meta( get_thhf_header_id(), 'transparent-header', true );
 
 	$render_class = '';
 	if ( $transparent_header ) {
@@ -137,18 +137,18 @@ function hfe_render_header() {
  *
  * @since  1.0.2
  */
-function hfe_render_sticky_header() {
+function thhf_render_sticky_header() {
 
-	if ( false == apply_filters( 'enable_hfe_render_sticky_header', true ) ) {
+	if ( false == apply_filters( 'enable_thhf_render_sticky_header', true ) ) {
 		return;
 	}
 
-	$transparent_header = get_post_meta( get_hfe_sticky_header_id(), 'transparent-header', true );
-	$sticky_stacked = get_post_meta( get_hfe_sticky_header_id(), 'sticky-stacked', true );
+	$transparent_header = get_post_meta( get_thhf_sticky_header_id(), 'transparent-header', true );
+	$sticky_stacked = get_post_meta( get_thhf_sticky_header_id(), 'sticky-stacked', true );
 
 	$render_class = '';
 	if ( $transparent_header ) {
-		$render_class .= ' transparent-header';  
+		$render_class .= 'transparent-header';
 	}
 	if ( $sticky_stacked ) {
 		$render_class .= ' sticky-stacked';
@@ -170,9 +170,9 @@ function hfe_render_sticky_header() {
  *
  * @since  1.0.2
  */
-function hfe_render_footer() {
+function thhf_render_footer() {
 
-	if ( false == apply_filters( 'enable_hfe_render_footer', true ) ) {
+	if ( false == apply_filters( 'enable_thhf_render_footer', true ) ) {
 		return;
 	}
 
@@ -191,7 +191,7 @@ function hfe_render_footer() {
  * @since  1.0.2
  * @return String|boolean before footer id if it is set else returns false.
  */
-function hfe_get_before_footer_id() {
+function thhf_get_before_footer_id() {
 
 	$before_footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
 
@@ -208,7 +208,7 @@ function hfe_get_before_footer_id() {
  * @since  1.0.2
  * @return bool True if before footer is enabled. False if before footer is not enabled.
  */
-function hfe_is_before_footer_enabled() {
+function thhf_is_before_footer_enabled() {
 
 	$before_footer_id = THHF_Header_Footer_Elementor::get_settings( 'type_before_footer', '' );
 	$status           = false;
@@ -225,9 +225,9 @@ function hfe_is_before_footer_enabled() {
  *
  * @since  1.0.2
  */
-function hfe_render_before_footer() {
+function thhf_render_before_footer() {
 
-	if ( false == apply_filters( 'enable_hfe_render_before_footer', true ) ) {
+	if ( false == apply_filters( 'enable_thhf_render_before_footer', true ) ) {
 		return;
 	}
 

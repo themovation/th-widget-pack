@@ -36,16 +36,16 @@ class HFE_BB_Theme_Compat {
 	 * Run all the Actions / Filters.
 	 */
 	public function hooks() {
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			add_filter( 'fl_header_enabled', '__return_false' );
 			add_action( 'fl_before_header', [ $this, 'get_header_content' ] );
 		}
 
-		if ( hfe_is_before_footer_enabled() ) {
+		if ( thhf_is_before_footer_enabled() ) {
 			add_action( 'fl_after_content', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 10 );
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			add_filter( 'fl_footer_enabled', '__return_false' );
 			add_action( 'fl_after_content', [ $this, 'get_footer_content' ] );
 		}

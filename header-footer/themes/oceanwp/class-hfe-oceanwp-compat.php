@@ -34,18 +34,18 @@ class HFE_OceanWP_Compat {
 	 * Run all the Actions / Filters.
 	 */
 	public function hooks() {
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			add_action( 'template_redirect', [ $this, 'setup_header' ], 10 );
-			add_action( 'ocean_header', 'hfe_render_header' );
+			add_action( 'ocean_header', 'thhf_render_header' );
 		}
 
-		if ( hfe_is_before_footer_enabled() ) {
+		if ( thhf_is_before_footer_enabled() ) {
 			add_action( 'ocean_footer', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ], 5 );
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			add_action( 'template_redirect', [ $this, 'setup_footer' ], 10 );
-			add_action( 'ocean_footer', 'hfe_render_footer' );
+			add_action( 'ocean_footer', 'thhf_render_footer' );
 		}
 	}
 

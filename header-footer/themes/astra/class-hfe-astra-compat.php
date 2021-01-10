@@ -34,18 +34,18 @@ class HFE_Astra_Compat {
 	 * Run all the Actions / Filters.
 	 */
 	public function hooks() {
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			add_action( 'template_redirect', [ $this, 'astra_setup_header' ], 10 );
-			add_action( 'astra_header', 'hfe_render_header' );
+			add_action( 'astra_header', 'thhf_render_header' );
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			add_action( 'template_redirect', [ $this, 'astra_setup_footer' ], 10 );
-			add_action( 'astra_footer', 'hfe_render_footer' );
+			add_action( 'astra_footer', 'thhf_render_footer' );
 		}
 
-		if ( hfe_is_before_footer_enabled() ) {
-			add_action( 'astra_footer_before', 'hfe_render_before_footer' );
+		if ( thhf_is_before_footer_enabled() ) {
+			add_action( 'astra_footer_before', 'thhf_render_before_footer' );
 		}
 	}
 

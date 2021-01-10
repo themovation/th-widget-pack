@@ -23,33 +23,33 @@ class HFE_Default_Compat {
 	 * Run all the Actions / Filters.
 	 */
 	public function hooks() {
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			// Replace header.php template.
 			add_action( 'get_header', [ $this, 'override_header' ] );
 
 			// Display HFE's header in the replaced header.
-			add_action( 'hfe_header', 'hfe_render_header' );
+			add_action( 'hfe_header', 'thhf_render_header' );
 		}
 
-		if ( hfe_sticky_header_enabled() ) {
+		if ( thhf_sticky_header_enabled() ) {
 			// Replace header.php template.
 			add_action( 'get_header', [ $this, 'override_header' ] );
 
 			// Display HFE's sticky header in the replaced header.
-			add_action( 'hfe_sticky_header', 'hfe_render_sticky_header' );
+			add_action( 'hfe_sticky_header', 'thhf_render_sticky_header' );
 		}
 
-		if ( hfe_footer_enabled() || hfe_is_before_footer_enabled() ) {
+		if ( thhf_footer_enabled() || thhf_is_before_footer_enabled() ) {
 			// Replace footer.php template.
 			add_action( 'get_footer', [ $this, 'override_footer' ] );
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			// Display HFE's footer in the replaced header.
-			add_action( 'hfe_footer', 'hfe_render_footer' );
+			add_action( 'hfe_footer', 'thhf_render_footer' );
 		}
 
-		if ( hfe_is_before_footer_enabled() ) {
+		if ( thhf_is_before_footer_enabled() ) {
 			add_action( 'hfe_footer_before', [ 'THHF_Header_Footer_Elementor', 'get_before_footer_content' ] );
 		}
 	}

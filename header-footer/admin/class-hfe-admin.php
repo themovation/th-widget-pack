@@ -99,19 +99,19 @@ class THHF_Admin {
 	public function register_hfe_epro_script() {
 		$ids_array = [
 			[
-				'id'    => get_hfe_header_id(),
+				'id'    => get_thhf_header_id(),
 				'value' => 'Header',
 			],
 			[
-				'id'    => get_hfe_sticky_header_id(),
+				'id'    => get_thhf_sticky_header_id(),
 				'value' => 'Sticky Header',
 			],
 			[
-				'id'    => get_hfe_footer_id(),
+				'id'    => get_thhf_footer_id(),
 				'value' => 'Footer',
 			],
 			[
-				'id'    => hfe_get_before_footer_id(),
+				'id'    => thhf_get_before_footer_id(),
 				'value' => 'Before Footer',
 			],
 		];

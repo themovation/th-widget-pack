@@ -39,7 +39,7 @@ class Search_Button extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'hfe-search-button';
+		return 'thhf-search-button';
 	}
 
 	/**
@@ -65,7 +65,7 @@ class Search_Button extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-search';
+		return 'thhf-icon-search';
 	}
 
 	/**
@@ -83,7 +83,7 @@ class Search_Button extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Search_Button extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'hfe-frontend-js' ];
+		return [ 'thhf-frontend-js' ];
 	}
 
 	/**

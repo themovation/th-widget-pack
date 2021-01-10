@@ -37,7 +37,7 @@ class Copyright extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'copyright';
+		return 'thhf-copyright';
 	}
 	/**
 	 * Retrieve the widget title.
@@ -61,7 +61,7 @@ class Copyright extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-copyright-widget';
+		return 'thhf-icon-copyright-widget';
 	}
 	/**
 	 * Retrieve the list of categories the widget belongs to.
@@ -78,7 +78,7 @@ class Copyright extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 	/**
 	 * Register Copyright controls.

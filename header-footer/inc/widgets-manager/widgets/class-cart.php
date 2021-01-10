@@ -38,7 +38,7 @@ class Cart extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'hfe-cart';
+		return 'thhf-cart';
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Cart extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'hfe-icon-menu-cart';
+		return 'thhf-icon-menu-cart';
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Cart extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'hfe-widgets' ];
+		return [ 'themo-elements' ];
 	}
 
 	/**

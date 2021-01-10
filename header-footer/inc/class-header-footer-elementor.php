@@ -87,7 +87,6 @@ class THHF_Header_Footer_Elementor {
 			add_shortcode( 'hfe_template', [ $this, 'render_template' ] );
 
 			add_action( 'astra_notice_before_markup_header-footer-elementor-rating', [ $this, 'rating_notice_css' ] );
-			add_action( 'admin_notices', [ $this, 'register_notices' ] );
 
 			// BSF Analytics Tracker.
 			require_once THEMO_PATH . 'header-footer/admin/bsf-analytics/class-bsf-analytics.php';
@@ -107,59 +106,6 @@ class THHF_Header_Footer_Elementor {
 	 */
 	public function reset_unsupported_theme_notice() {
 		delete_user_meta( get_current_user_id(), 'unsupported-theme' );
-	}
-
-	/**
-	 * Register Astra Notices.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @return void
-	 */
-	public function register_notices() {
-		$image_path = THEMO_URL . 'header-footer/assets/images/header-footer-elementor-icon.svg';
-		Astra_Notices::add_notice(
-			[
-				'id'                         => 'header-footer-elementor-rating',
-				'type'                       => '',
-				'message'                    => sprintf(
-					'<div class="notice-image">
-						<img src="%1$s" class="custom-logo" alt="Sidebar Manager" itemprop="logo"></div> 
-						<div class="notice-content">
-							<div class="notice-heading">
-								%2$s
-							</div>
-							%3$s<br />
-							<div class="astra-review-notice-container">
-								<a href="%4$s" class="astra-notice-close astra-review-notice button-primary" target="_blank">
-								%5$s
-								</a>
-							<span class="dashicons dashicons-calendar"></span>
-								<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close astra-review-notice">
-								%7$s
-								</a>
-							<span class="dashicons dashicons-smiley"></span>
-								<a href="#" class="astra-notice-close astra-review-notice">
-								%8$s
-								</a>
-							</div>
-						</div>',
-					$image_path,
-					__( 'Hello! Seems like you have used Elementor - Header, Footer & Blocks to build this website — Thanks a ton!', 'header-footer-elementor' ),
-					__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This would boost our motivation and help other users make a comfortable decision while choosing the Elementor - Header, Footer & Blocks.', 'header-footer-elementor' ),
-					'https://wordpress.org/support/plugin/header-footer-elementor/reviews/?filter=5#new-post',
-					__( 'Ok, you deserve it', 'header-footer-elementor' ),
-					MONTH_IN_SECONDS,
-					__( 'Nope, maybe later', 'header-footer-elementor' ),
-					__( 'I already did', 'header-footer-elementor' )
-				),
-				'show_if'                    => ( hfe_header_enabled() || hfe_footer_enabled() || hfe_is_before_footer_enabled() ) ? true : false,
-				'repeat-notice-after'        => MONTH_IN_SECONDS,
-				'display-notice-after'       => 1296000, // Display notice after 15 days.
-				'priority'                   => 18,
-				'display-with-other-notices' => false,
-			]
-		);
 	}
 
 	/**
@@ -258,41 +204,41 @@ class THHF_Header_Footer_Elementor {
 			$elementor_pro->enqueue_styles();
 		}
 
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-				$css_file = new \Elementor\Core\Files\CSS\Post( get_hfe_header_id() );
+				$css_file = new \Elementor\Core\Files\CSS\Post( get_thhf_header_id() );
 			} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
-				$css_file = new \Elementor\Post_CSS_File( get_hfe_header_id() );
+				$css_file = new \Elementor\Post_CSS_File( get_thhf_header_id() );
 			}
 
 			$css_file->enqueue();
 		}
 
-		if ( hfe_sticky_header_enabled() ) {
+		if ( thhf_sticky_header_enabled() ) {
 			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-				$css_file = new \Elementor\Core\Files\CSS\Post( get_hfe_sticky_header_id() );
+				$css_file = new \Elementor\Core\Files\CSS\Post( get_thhf_sticky_header_id() );
 			} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
-				$css_file = new \Elementor\Post_CSS_File( get_hfe_sticky_header_id() );
+				$css_file = new \Elementor\Post_CSS_File( get_thhf_sticky_header_id() );
 			}
 
 			$css_file->enqueue();
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-				$css_file = new \Elementor\Core\Files\CSS\Post( get_hfe_footer_id() );
+				$css_file = new \Elementor\Core\Files\CSS\Post( get_thhf_footer_id() );
 			} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
-				$css_file = new \Elementor\Post_CSS_File( get_hfe_footer_id() );
+				$css_file = new \Elementor\Post_CSS_File( get_thhf_footer_id() );
 			}
 
 			$css_file->enqueue();
 		}
 
-		if ( hfe_is_before_footer_enabled() ) {
+		if ( thhf_is_before_footer_enabled() ) {
 			if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
-				$css_file = new \Elementor\Core\Files\CSS\Post( hfe_get_before_footer_id() );
+				$css_file = new \Elementor\Core\Files\CSS\Post( thhf_get_before_footer_id() );
 			} elseif ( class_exists( '\Elementor\Post_CSS_File' ) ) {
-				$css_file = new \Elementor\Post_CSS_File( hfe_get_before_footer_id() );
+				$css_file = new \Elementor\Post_CSS_File( thhf_get_before_footer_id() );
 			}
 			$css_file->enqueue();
 		}
@@ -319,11 +265,11 @@ class THHF_Header_Footer_Elementor {
 	 * @return Array          array with class names for the body tag.
 	 */
 	public function body_class( $classes ) {
-		if ( hfe_header_enabled() ) {
+		if ( thhf_header_enabled() ) {
 			$classes[] = 'ehf-header';
 		}
 
-		if ( hfe_footer_enabled() ) {
+		if ( thhf_footer_enabled() ) {
 			$classes[] = 'ehf-footer';
 		}
 
@@ -348,14 +294,14 @@ class THHF_Header_Footer_Elementor {
 	 * Prints the Header content.
 	 */
 	public static function get_header_content() {
-		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_hfe_header_id() );
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_header_id() );
 	}
 
 	/**
 	 * Prints the Header content.
 	 */
 	public static function get_sticky_header_content() {
-		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_hfe_sticky_header_id() );
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_sticky_header_id() );
 	}
 
 	/**
@@ -363,7 +309,7 @@ class THHF_Header_Footer_Elementor {
 	 */
 	public static function get_footer_content() {
 		echo "<div class='footer-width-fixer'>";
-		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_hfe_footer_id() );
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_footer_id() );
 		echo '</div>';
 	}
 
@@ -372,7 +318,7 @@ class THHF_Header_Footer_Elementor {
 	 */
 	public static function get_before_footer_content() {
 		echo "<div class='footer-width-fixer'>";
-		echo self::$elementor_instance->frontend->get_builder_content_for_display( hfe_get_before_footer_id() );
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( thhf_get_before_footer_id() );
 		echo '</div>';
 	}
 
