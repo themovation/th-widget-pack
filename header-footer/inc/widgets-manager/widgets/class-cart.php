@@ -126,7 +126,7 @@ class Cart extends Widget_Base {
 		);
 
 		$this->add_control(
-			'icon',
+			'cart_icon',
 			[
 				'label' => __( 'Icon', 'header-footer-elementor' ),
 				'type' => Controls_Manager::ICONS,
@@ -553,7 +553,7 @@ class Cart extends Widget_Base {
 	 * @param string $cart_type Menu Cart type.
 	 * @access public
 	 */
-	public static function get_cart_link( $cart_type, $settings = null ) {
+	public static function get_cart_link( $cart_type, $settings ) {
 
 		if ( null === WC()->cart ) {
 			return;
@@ -576,8 +576,9 @@ class Cart extends Widget_Base {
 				<span class="elementor-button-text">
 					<?php echo WC()->cart->get_cart_subtotal(); ?>
 				</span>
+				<?php //var_dump($settings); ?>
 				<span class="elementor-button-icon" data-counter="<?php echo WC()->cart->get_cart_contents_count(); ?>">
-					<?php Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+					<?php Icons_Manager::render_icon( $settings['cart_icon'], [ 'aria-hidden' => 'true' ] ); ?>
 					<span class="elementor-screen-only"><?php _e( 'Cart', 'header-footer-elementor' ); ?></span>
 				</span>
 			</a>	

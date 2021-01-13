@@ -1768,7 +1768,7 @@ a.hfe-menu-item.elementor-button {
     height: 100vh;
 } 
 
-.hfe-search-button-wrapper .thhf-search-form-wrapper.active input[type=search] {
+.thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search] {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1788,7 +1788,7 @@ a.hfe-menu-item.elementor-button {
     right: 50px;
 }
 
-.hfe-search-button-wrapper {
+.thhf-search-button-wrapper {
     display: block;
     vertical-align: middle;
 }
@@ -1798,11 +1798,11 @@ a.hfe-menu-item.elementor-button {
     overflow: hidden;
 }
 
-.hfe-search-form__input {
+.thhf-search-form__input {
     flex-basis: 100%;
 }
 
-.hfe-search-icon-toggle i.fa-search {
+.thhf-search-icon-toggle i.fa-search {
     display: inline-block;
     position: absolute;
     width: 20px;
@@ -1810,12 +1810,12 @@ a.hfe-menu-item.elementor-button {
     padding: 10px;
 }
 
-.hfe-search-icon-toggle i:before {
+.thhf-search-icon-toggle i:before {
     vertical-align: middle;
 }
 /*search icon toggle css*/
 
-.hfe-search-button-wrapper input[type=search] {
+.thhf-search-button-wrapper input[type=search] {
     padding: 10px;
     cursor: pointer;
     border-radius: 0;
@@ -1824,28 +1824,28 @@ a.hfe-menu-item.elementor-button {
     outline: none;
 }
 
-.hfe-search-button-wrapper button {
+.thhf-search-button-wrapper button {
     border: none;
     border-radius: 0;
     padding: 0;
 }
 
-.hfe-search-button-wrapper input[type=search]:focus {
+.thhf-search-button-wrapper input[type=search]:focus {
     cursor: auto;
     border: none;
     box-shadow: none;
 }
 
-.hfe-search-icon-toggle input:-moz-placeholder,
-.hfe-search-icon-toggle input::-webkit-input-placeholder {
+.thhf-search-icon-toggle input:-moz-placeholder,
+.thhf-search-icon-toggle input::-webkit-input-placeholder {
     color: transparent;
 }
 
-.hfe-search-layout-icon .hfe-search-icon-toggle .hfe-search-form__input {
+.hfe-search-layout-icon .thhf-search-icon-toggle .thhf-search-form__input {
     height: 100%;
 }
 
-.hfe-search-button-wrapper.hfe-input-focus {
+.thhf-search-button-wrapper.hfe-input-focus {
     display: flex;
 }
 
@@ -1855,7 +1855,7 @@ a.hfe-menu-item.elementor-button {
 }
 
 .hfe-search-form__container button#clear,
-.hfe-search-icon-toggle button#clear {
+.thhf-search-icon-toggle button#clear {
     visibility: hidden;
     position: absolute;
     right:0; 
@@ -1869,10 +1869,10 @@ a.hfe-menu-item.elementor-button {
     background-color: transparent;
 }
 
-.hfe-search-button-wrapper input[type="search"]::-webkit-search-decoration,
-.hfe-search-button-wrapper input[type="search"]::-webkit-search-cancel-button,
-.hfe-search-button-wrapper input[type="search"]::-webkit-search-results-button,
-.hfe-search-button-wrapper input[type="search"]::-webkit-search-results-decoration { 
+.thhf-search-button-wrapper input[type="search"]::-webkit-search-decoration,
+.thhf-search-button-wrapper input[type="search"]::-webkit-search-cancel-button,
+.thhf-search-button-wrapper input[type="search"]::-webkit-search-results-button,
+.thhf-search-button-wrapper input[type="search"]::-webkit-search-results-decoration { 
     display: none; 
 }
 
@@ -1889,24 +1889,24 @@ a.hfe-menu-item.elementor-button {
     background-color: transparent;
 }
 
-.hfe-search-button-wrapper, 
+.thhf-search-button-wrapper, 
 .hfe-search-form__container,
-.hfe-search-icon-toggle,
-.hfe-search-button-wrapper .hfe-search-icon-toggle i,
-.hfe-search-button-wrapper .hfe-search-icon-toggle i:before {
+.thhf-search-icon-toggle,
+.thhf-search-button-wrapper .thhf-search-icon-toggle i,
+.thhf-search-button-wrapper .thhf-search-icon-toggle i:before {
     position: relative;
 }
 
-.hfe-search-button-wrapper .hfe-search-icon-toggle .hfe-search-form__input {
+.thhf-search-button-wrapper .thhf-search-icon-toggle .thhf-search-form__input {
     width: 200px;
     right: 0;
 }
 
-.hfe-search-icon-toggle {
+.thhf-search-icon-toggle {
     width: 100%!important;
 }
 
-.hfe-search-button-wrapper.hfe-input-focus .hfe-search-icon-toggle .hfe-search-form__input{
+.thhf-search-button-wrapper.hfe-input-focus .thhf-search-icon-toggle .thhf-search-form__input{
     position: absolute;
     width: 250px;
     right: 0;
@@ -1914,12 +1914,12 @@ a.hfe-menu-item.elementor-button {
 
 .hfe-search-layout-text .hfe-search-form__container,
 .hfe-search-layout-icon_text .hfe-search-form__container,
-.hfe-search-layout-text .hfe-search-form__container .hfe-search-form__input,
-.hfe-search-layout-icon_text .hfe-search-form__container .hfe-search-form__input {
+.hfe-search-layout-text .hfe-search-form__container .thhf-search-form__input,
+.hfe-search-layout-icon_text .hfe-search-form__container .thhf-search-form__input {
     width: 100%;
 }
 
-.hfe-search-icon-toggle {
+.thhf-search-icon-toggle {
     line-height: 1.5;
 }
 
