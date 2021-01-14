@@ -658,7 +658,7 @@
 
 	$( window ).on( 'elementor/frontend/init', function () {
 
-		elementorFrontend.hooks.addAction( 'frontend/element_ready/navigation-menu.default', WidgethfeNavMenuHandler );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/thhf-navigation-menu.default', WidgethfeNavMenuHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/thhf-search-button.default', WidgethfeSearchButton );
 	});
 } )( jQuery );
