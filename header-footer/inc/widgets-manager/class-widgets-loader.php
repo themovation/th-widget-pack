@@ -60,7 +60,7 @@ class Widgets_Loader {
 		// Refresh the cart fragments.
 		if ( class_exists( 'woocommerce' ) ) {
 			add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'init_cart' ], 10, 0 );
-			add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'wc_refresh_mini_cart_count' ] );
+			//add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'wc_refresh_mini_cart_count' ] );
 		}
 	}
 
