@@ -142,50 +142,57 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'new_icon', [
+			'fa4compatibility' => 'icon',
+			'label' => __( 'Icon', 'th-widget-pack' ),
+			'type' => Controls_Manager::ICONS,
+			'label_block' => true,
+			'default' => [
+				'value' => 'fab fa-facebook',
+				'library' => 'fa-brands',
+			],
+			]
+		);
+
+		$repeater->add_control(
+			'url', [
+			'label' => __( 'Link URL', 'th-widget-pack' ),
+			'type' => Controls_Manager::URL,
+			'placeholder' => 'http://your-link.com',
+			'default' => [
+				'url' => '',
+			],
+			'dynamic' => [
+				'active' => true,
+			],
+			'separator' => 'before',
+			'label_block' => true,
+			]
+		);	
+
 		$this->add_control(
 			'social',
 			[
-				'label' => __( 'Social Icons', 'th-widget-pack' ),
+				'label' => __( 'Social Icons', 'plugin-domain' ),
 				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
 				'default' => [
 					[
-						'url' => 'http://your-link.com'
-					]
-				],
-				'fields' => [
-					// [
-					// 	'name' => 'icon',
-					// 	'label' => __( 'Icon', 'th-widget-pack' ),
-					// 	'type' => Controls_Manager::ICON,
-               //          'label_block' => true,
-               //          'default' => 'fa fa-facebook',
-					// 	'options' => themo_icons(),
-					// 	'include' => themo_fa_icons()
-					// ],
-					[
-						'name' => 'new_icon',
-						'fa4compatibility' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICONS,
-						'label_block' => true,
-						'default' => [
+					'new_icon' => [
 							'value' => 'fab fa-facebook',
 							'library' => 'fa-brands',
-						],
-					],					
+							],
+					'url' => __( '#', 'plugin-domain' ),
+					],
 					[
-						'name' => 'url',
-						'label' => __( 'Link URL', 'th-widget-pack' ),
-						'type' => Controls_Manager::URL,
-						'placeholder' => 'http://your-link.com',
-						'default' => [
-							'url' => '',
+					'new_icon' => [
+						'value' => 'fab fa-facebook',
+						'library' => 'fa-brands',
 						],
-						'dynamic' => [
-		                    'active' => true,
-		                ],
-						'separator' => 'before',
-						'label_block' => true,
+					'url' => __( '#', 'plugin-domain' ),
 					],
 				],
 				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ url.url }}}',
