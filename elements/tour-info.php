@@ -69,7 +69,35 @@ class Themo_Widget_TourInfo extends Widget_Base {
 			[
 				'label' => __( 'Items', 'th-widget-pack' ),
 			]
-		);
+        );
+        
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+            'new_icon', [
+            'fa4compatibility' => 'icon',
+            'label' => __( 'Icon', 'th-widget-pack' ),
+            'type' => Controls_Manager::ICONS,
+            'label_block' => true,
+            'default' => [
+                'value' => 'fas fa-star',
+                'library' => 'fa-solid',
+            ],
+            ]
+        );    
+
+        $repeater->add_control(
+            'text', [
+            'label' => __( 'Text', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => 'Feature',
+            'label_block' => true,
+            'default' => 'Feature',
+            'dynamic' => [
+                'active' => true,
+            ]
+            ]
+        );   
 
 		$this->add_control(
 			'items',
@@ -102,39 +130,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
                         'text' => __( '3+ People', 'th-widget-pack' ),
                     ],
                 ],
-				'fields' => [
-					// [
-					// 	'name' => 'icon',
-					// 	'label' => __( 'Icon', 'th-widget-pack' ),
-					// 	'type' => Controls_Manager::ICON,
-					// 	'default' => '',
-					// 	'label_block' => true,
-					// 	'options' => themo_icons(),
-					// 	'include' => themo_fa_icons(),
-                    // ],
-                    [
-						'name' => 'new_icon',
-						'fa4compatibility' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICONS,
-						'label_block' => true,
-						'default' => [
-							'value' => 'fas fa-star',
-							'library' => 'fa-solid',
-						],
-					],	
-					[
-						'name' => 'text',
-						'label' => __( 'Text', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
-						'placeholder' => 'Feature',
-						'label_block' => true,
-                        'default' => 'Feature',
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-					],
-				],
+                'fields' => $repeater->get_controls(),
 				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ text }}}',
 			]
 		);

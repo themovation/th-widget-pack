@@ -829,7 +829,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     ],
 
                 ],
-				'fields' => array_values( $th_repeater->get_controls() ),
+				'fields' => $th_repeater->get_controls(),
 				'title_field' => '{{{ slide_title }}}',
 			]
 		);
