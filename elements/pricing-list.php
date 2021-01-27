@@ -43,6 +43,196 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 			]
 		);
 
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+            'price_title', [
+            'label' => __( 'Title', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => __( 'Title', 'th-widget-pack' ),
+            'label_block' => true,
+            'default' => __( 'Title', 'th-widget-pack' ),
+            'dynamic' => [
+                'active' => true,
+            ]
+            ]
+        );
+
+        $repeater->add_control(
+            'price_sub_title', [
+            'label' => __( 'Subtitle', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => __( 'Subtitle', 'th-widget-pack' ),
+            'label_block' => true,
+            'default' => __( 'Subtitle', 'th-widget-pack' ),
+            'dynamic' => [
+                'active' => true,
+            ]
+            ]
+        );    
+
+        $repeater->add_control(
+            'price_description', [
+            'label' => __( 'Description', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXTAREA,
+            'placeholder' => __( "Add a description here.", 'th-widget-pack' ),
+            'default' => __( "Add a description here.", 'th-widget-pack' ),
+            'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ],
+            ]
+        );    
+
+        $repeater->add_control(
+            'price_div', [
+            'label' => __( 'Divider', 'th-widget-pack' ),
+            'type' => Controls_Manager::DIVIDER,
+            'style' => 'thick'
+            ]
+        );
+
+        $repeater->add_control(
+            'price_col_button_1_show', [
+            'label' => __( 'Use button', 'th-widget-pack' ),
+            'type' => Controls_Manager::SWITCHER,
+            'label_on' => __( 'Yes', 'th-widget-pack' ),
+            'label_off' => __( 'No', 'th-widget-pack' ),
+            'return_value' => 'yes',
+            'default' => '',
+            ]
+        );
+        
+        $repeater->add_control(
+        'price_col_button_1_text', [
+            'label' => __( 'Button Text', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+            'default' => __( 'BUTTON TEXT', 'th-widget-pack' ),
+            'dynamic' => [
+                'active' => true,
+            ],
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'operator' => '==',
+                        'value' => 'yes',
+                    ],
+                ],
+            ],
+            ]
+        );    
+
+        $repeater->add_control(
+            'price_col_button_1_style', [
+            'label' => __( 'Button Style', 'th-widget-pack' ),
+            'type' => Controls_Manager::SELECT,
+            'default' => 'ghost-primary',
+            'options' => [
+                'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+            ],
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'operator' => '==',
+                        'value' => 'yes',
+                    ],
+                ],
+            ],
+            ]
+        );    
+
+
+        $repeater->add_control(
+            'button_1_image', [
+            'label' => __( 'Button Graphic', 'th-widget-pack' ),
+            'type' => Controls_Manager::MEDIA,
+            'dynamic' => [
+                'active' => true,
+            ],
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'operator' => '==',
+                        'value' => 'yes',
+                    ],
+                ],
+            ],
+            ]
+        );
+
+        $repeater->add_control(
+            'price_price', [
+            'label' => __( 'Price number', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => __( '$99', 'th-widget-pack' ),
+            'default' => __( '$99', 'th-widget-pack' ),
+            'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ],
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'operator' => '==',
+                        'value' => '',
+                    ],
+                ],
+            ],
+            ]
+        );
+        
+        
+        $repeater->add_control(
+            'price_text', [
+            'label' => __( 'Price text', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => __( 'each', 'th-widget-pack' ),
+            'default' => __( 'each', 'th-widget-pack' ),
+            'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ],
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'price_col_button_1_show',
+                        'operator' => '==',
+                        'value' => '',
+                    ],
+                ],
+            ],
+            ]
+        );
+        
+        
+        $repeater->add_control(
+            'price_link', [
+            'label' => __( 'Link', 'th-widget-pack' ),
+            'type' => Controls_Manager::URL,
+            'placeholder' => 'http://your-link.com',
+            'default' => [
+                'url' => '',
+            ],
+            'dynamic' => [
+                'active' => true,
+            ],
+            ]
+        );    
+
         $this->add_control(
             'pricing',
             [
@@ -60,175 +250,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                     ],
 
                 ],
-                'fields' => [
-                    [
-                        'name' => 'price_title',
-                        'label' => __( 'Title', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( 'Title', 'th-widget-pack' ),
-                        'label_block' => true,
-                        'default' => __( 'Title', 'th-widget-pack' ),
-                        'dynamic' => [
-                            'active' => true,
-                        ]
-                    ],
-                    [
-                        'name' => 'price_sub_title',
-                        'label' => __( 'Subtitle', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( 'Subtitle', 'th-widget-pack' ),
-                        'label_block' => true,
-                        'default' => __( 'Subtitle', 'th-widget-pack' ),
-                        'dynamic' => [
-                            'active' => true,
-                        ]
-                    ],
-                    [
-                        'name' => 'price_description',
-                        'label' => __( 'Description', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXTAREA,
-                        'placeholder' => __( "Add a description here.", 'th-widget-pack' ),
-                        'default' => __( "Add a description here.", 'th-widget-pack' ),
-                        'label_block' => true,
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                    ],
-                    [
-                        'name' => 'price_div',
-                        'label' => __( 'Divider', 'th-widget-pack' ),
-                        'type' => Controls_Manager::DIVIDER,
-                        'style' => 'thick'
-
-                    ],
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'label' => __( 'Use button', 'th-widget-pack' ),
-                        'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __( 'Yes', 'th-widget-pack' ),
-                        'label_off' => __( 'No', 'th-widget-pack' ),
-                        'return_value' => 'yes',
-                        'default' => '',
-                    ],
-                    [
-                        'name' => 'price_col_button_1_text',
-                        'label' => __( 'Button Text', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( 'BUTTON TEXT', 'th-widget-pack' ),
-                        'default' => __( 'BUTTON TEXT', 'th-widget-pack' ),
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'name' => 'price_col_button_1_style',
-                        'label' => __( 'Button Style', 'th-widget-pack' ),
-                        'type' => Controls_Manager::SELECT,
-                        'default' => 'ghost-primary',
-                        'options' => [
-                            'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                            'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                            'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                            'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                            'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                            'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                            'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                            'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                            'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                            'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'name' => 'button_1_image',
-                        'label' => __( 'Button Graphic', 'th-widget-pack' ),
-                        'type' => Controls_Manager::MEDIA,
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => 'yes',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'name' => 'price_price',
-                        'label' => __( 'Price number', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( '$99', 'th-widget-pack' ),
-                        'default' => __( '$99', 'th-widget-pack' ),
-                        'label_block' => true,
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => '',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'name' => 'price_text',
-                        'label' => __( 'Price text', 'th-widget-pack' ),
-                        'type' => Controls_Manager::TEXT,
-                        'placeholder' => __( 'each', 'th-widget-pack' ),
-                        'default' => __( 'each', 'th-widget-pack' ),
-                        'label_block' => true,
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                        'conditions' => [
-                            'terms' => [
-                                [
-                                    'name' => 'price_col_button_1_show',
-                                    'operator' => '==',
-                                    'value' => '',
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'name' => 'price_link',
-                        'label' => __( 'Link', 'th-widget-pack' ),
-                        'type' => Controls_Manager::URL,
-                        'placeholder' => 'http://your-link.com',
-                        'default' => [
-                            'url' => '',
-                        ],
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                    ],
-
-
-
-                ],
+                'fields' => $repeater->get_controls(),
                 //'fields' => array_values( $this->get_controls() ),
                 'title_field' => '{{{ price_title }}}',
             ]
