@@ -1,0 +1,263 @@
+.thmv-templateLibrary-preview {
+	overflow: hidden;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: width .2s, height .2s;
+	        transition: width .2s, height .2s;
+}
+
+.thmv-templateLibrary-preview > iframe {
+	width: 150%;
+	height: 150%;
+	-webkit-transform: scale(.666) translateX(-25%) translateY(-25%);
+	    -ms-transform: scale(.666) translateX(-25%) translateY(-25%);
+	        transform: scale(.666) translateX(-25%) translateY(-25%);
+}
+
+
+/* #thmv-templateLibrary-toolbar {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center; 
+	-ms-flex-align: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+} */
+
+#thmv-templateLibrary-toolbar-search {
+	width: 25%;
+}
+
+#thmv-templateLibrary-toolbar-filter {
+	position: relative; 
+	width: 25%;
+	padding: 0 15px;
+	overflow-x: auto;
+}
+
+#thmv-templateLibrary-toolbar-search i,
+.thmv-templateLibrary-filter-btn i {
+	position: absolute;
+	top: 100px;
+	right: 74%;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
+}
+
+.thmv-templateLibrary-filter-btn {
+	display: block; 
+	text-align: left;
+	cursor: pointer;
+}
+
+#thmv-templateLibrary-search {
+	border: none;
+}
+
+#thmv-templateLibrary-search,
+.thmv-templateLibrary-filter-btn {
+	padding: 8px 15px 8px 0; 
+	border-bottom: 1px solid #d5dadf;
+	border-radius: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+}
+
+.thmv-templateLibrary-header-logo{
+	height: 40px;
+}
+.thmv-templateLibrary-header-logo img{
+	height: 100%;
+}
+.elementor-templates-modal__header{
+	height: 60px;
+}
+.thmv-templateLibrary-template-title{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 5px 0;
+	background: #fff;
+	width: 100%;
+	text-align: center;
+}
+.thmv-templateLibrary-template-title span{
+	display: block;
+	font-size: 14px;
+	color: #000;
+}
+
+#elementor-template-thmv-templateLibrary-header-menu .thmv-TemplateLibrary-menu-item {
+    display: inline-block;
+    padding: 12px 0;
+    width: 115px;
+    cursor: pointer;
+}
+
+li.thmv-templateLibrary-category-filter-item {
+    margin: 10px 0;
+	text-align: left;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #505050;
+	cursor: pointer;
+}
+li.thmv-templateLibrary-category-filter-item.active {
+    color: #71d8f6;
+}
+
+#thmv-templateLibrary-templates {
+	height: calc(100% + 30px);
+}
+
+.thmv-templateLibrary-templates-window {
+	position: relative; 
+	display: flex;
+	overflow-y: auto;
+	margin: 5px -15px 0;
+	height: calc(100% - 45px);
+}
+
+#thmv-templateLibrary-templates-list {
+	width: 75%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	        align-items: flex-start; 
+	-ms-flex-align: start;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+	overflow-x: auto;
+}
+
+.thmv-templateLibrary-template {
+	position: relative;
+	overflow: hidden;
+	margin: 15px;
+	width: calc(33.333% - 30px);
+	border-radius: 2px; 
+	background-color: #fff;
+	box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .07);
+}
+.thmv-templateLibrary-template-body {
+	position: relative;
+}
+.thmv-templateLibrary-template-preview {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	opacity: 0;
+	cursor: pointer; 
+	-webkit-transition: opacity .5s;
+	        transition: opacity .5s;
+}
+.thmv-templateLibrary-template-preview i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #d5dadf;
+	font-size: 20px;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+}
+.thmv-templateLibrary-template-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: inline-block;
+	padding: 2px 4px;
+	border-radius: 2px; 
+	background-color: #e8357c;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: .5px;
+	font-size: 10px;
+}
+.thmv-templateLibrary-template:hover .thmv-templateLibrary-template-preview {
+	opacity: 1;
+}
+.thmv-templateLibrary-template-thumbnail {
+	display: block;
+	width: 100%;
+}
+.thmv-templateLibrary-template-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-ms-flex-align: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding: 10px;
+	width: 100%;
+	background-color: #fff;
+	font-size: 11px;
+	line-height: 1;
+	-webkit-transition: -webkit-transform .5s;
+	        transition: -webkit-transform .5s;
+	        transition:         transform .5s;
+	        transition:         transform .5s, -webkit-transform .5s; 
+	-webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	        transform: translateY(100%);
+}
+.thmv-templateLibrary-template:hover .thmv-templateLibrary-template-footer {
+	-webkit-transform: translateY(0);
+	    -ms-transform: translateY(0);
+	        transform: translateY(0);
+}
+
+
+#elementor-template-library-header-preview .thmv-templateLibrary-insert-button {
+	background-color: #4440db;
+	color: #fff;
+}
+#elementor-template-library-header-preview .thmv-templateLibrary-insert-button:hover,
+#elementor-template-library-header-preview .thmv-templateLibrary-insert-button:focus {
+	background-color: #7857dd; 
+	color: #fff;
+}
+
+#thmv-templateLibrary-toolbar-filter .select2-container--default .select2-selection--single{
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #d5dadf;
+	border-radius: 0;
+	font-family: Roboto,Arial,Helvetica,Verdana,sans-serif;
+	text-transform: uppercase;
+	color: #e0e1e3;
+	text-align: left;
+}
+#thmv-templateLibrary-toolbar-filter .select2-container--default .select2-selection--single .select2-selection__rendered{
+	padding: 0;
+}
+
+#thmv-templateLibrary-toolbar-filter .select2-container--default .select2-selection--single .select2-selection__placeholder{
+	color: #e0e1e3 !important;
+	font-size: 11px;
+}
+
+

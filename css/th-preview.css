@@ -33,6 +33,15 @@ body.elementor-editor-active div#loader-wrapper {
     line-height: 17px;
 }
 
+.elementor-add-new-section .elementor-add-thmv-button {
+    background-color: #4440db;
+    position: relative;
+    margin-left: 5px;
+}
+.elementor-add-new-section .elementor-add-thmv-button i {
+    font-size: 16px;
+}
+
 
 
 

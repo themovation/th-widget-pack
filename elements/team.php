@@ -142,7 +142,8 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
-		$repeater = new \Elementor\Repeater();
+
+		$repeater = new Repeater();
 
 		$repeater->add_control(
 			'new_icon', [
@@ -180,15 +181,13 @@ class Themo_Widget_Team extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
-					[
-					'new_icon' => [
+					[ 'new_icon' => [
 							'value' => 'fab fa-facebook',
 							'library' => 'fa-brands',
 							],
 					'url' => __( '#', 'plugin-domain' ),
 					],
-					[
-					'new_icon' => [
+					[ 'new_icon' => [
 						'value' => 'fab fa-facebook',
 						'library' => 'fa-brands',
 						],
