@@ -142,6 +142,7 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+
 		$repeater = new Repeater();
 
 		$repeater->add_control(

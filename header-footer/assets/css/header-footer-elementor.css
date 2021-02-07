@@ -1,0 +1,58 @@
+
+
+.footer-width-fixer {
+    width: 100%;
+}
+
+/* Container fix for genesis themes */
+
+.ehf-template-genesis.ehf-header .site-header .wrap,
+.ehf-template-genesis.ehf-footer .site-footer .wrap,
+.ehf-template-generatepress.ehf-header .site-header .inside-header {
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+}
+
+/* Container fix for generatepress theme */
+
+.ehf-template-generatepress.ehf-header .site-header,
+.ehf-template-generatepress.ehf-footer .site-footer {
+    width: 100%;
+    padding: 0;
+    max-width: 100%;
+    background-color: transparent !important; /* override generatepress default white color for header */
+}
+
+.bhf-hidden {
+    display: none
+}
+
+/* Sticky Header */
+
+#thhf-masthead-sticky {
+    width: 100%;
+    left: 0;
+    /* transition:all 0.7s ease 0s;
+	-webkit-transition:all 0.7s ease 0s; */
+}
+
+#thhf-masthead.transparent-header {
+    position: absolute;
+    background: transparent;
+    overflow:visible;
+    width: 100%;
+}
+
+
+#thhf-masthead-sticky.transparent-header {
+    background: transparent;
+    overflow:visible;
+    width: 100%;
+}    
+
+/* Fix: Header hidden below the page content */
+#thhf-masthead, #thhf-masthead-sticky {
+	z-index: 999;
+    /*position: relative;*/
+}
