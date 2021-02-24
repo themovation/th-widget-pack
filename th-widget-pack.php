@@ -58,7 +58,7 @@ add_action( 'plugins_loaded', 'th_translation_ready' );
  */
 require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
 
-require_once THEMO_PATH . 'megamenu/rest-api.php';
+//require_once THEMO_PATH . 'megamenu/rest-api.php';
 
 /**
  * 
