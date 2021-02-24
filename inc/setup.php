@@ -277,7 +277,7 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 // Top of section
 if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
 
-    function th_add_custom_controls_elem_post_settings_top(Elementor\Core\DocumentTypes\Post $page)
+    function th_add_custom_controls_elem_post_settings_top(Elementor\Core\DocumentTypes\PageBase $page)
     {
         // Is elementor Pro loaded
         $elm_pro_loaded = false;
@@ -294,6 +294,26 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
             if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' ||
                 $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'||
                 $th_post_type == 'mphb_room_service' || ($elm_pro_loaded && $th_post_type == 'post')  || ($elm_pro_loaded && $th_post_type == 'revision')){
+
+                // Standard Header Options
+                $page->start_controls_section(
+                    'thmv_doc_settings_header',
+                    [
+                        'label' => __( 'Standard Header', 'molotov-form' ),
+                        'tab' => \Elementor\Controls_Manager::TAB_SETTINGS,
+                    ]
+                );
+
+                $page->add_control(
+                    'important_note',
+                    [
+                        //'label' => __( 'Note', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::RAW_HTML,
+                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%1$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
+                        'content_classes' => 'themo-elem-html-control',
+                        'separator' => 'before'
+                    ]
+                );
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -389,22 +409,21 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                         ],
                     ]
                 );
+                $page->end_controls_section();
             }
-        }
 
-    }
-}
-// Bottom of section
-if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
-    function th_add_custom_controls_elem_post_settings_bottom( Elementor\Core\DocumentTypes\Post $page )
-    {
-
-        if(isset($page) && $page->get_id() > "") {
-            $th_post_type = false;
-            $th_post_type = get_post_type($page->get_id());
             if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
                 || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
                 || $th_post_type == 'mphb_room_service') {
+
+                // Standard Header Options
+                $page->start_controls_section(
+                    'thmv_doc_settings_sidebar',
+                    [
+                        'label' => __( 'Sidebar', 'molotov-form' ),
+                        'tab' => \Elementor\Controls_Manager::TAB_SETTINGS,
+                    ]
+                );
 
                 $page->add_control(
                     'themo_page_layout',
@@ -430,13 +449,24 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
                         'return_value' => 'yes',
                     ]
                 );
+
+                $page->end_controls_section();
             }
         }
 
     }
 }
+// Bottom of section
+if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
+    function th_add_custom_controls_elem_post_settings_bottom( Elementor\Core\DocumentTypes\PageBase $page )
+    {
 
-add_action( 'elementor/element/wp-post/document_settings/after_section_start', 'th_add_custom_controls_elem_post_settings_top',10, 2);
+
+
+    }
+}
+
+add_action( 'elementor/element/wp-post/document_settings/before_section_start', 'th_add_custom_controls_elem_post_settings_top',10, 2);
 add_action( 'elementor/element/wp-post/document_settings/before_section_end', 'th_add_custom_controls_elem_post_settings_bottom',10, 2);
 
 
