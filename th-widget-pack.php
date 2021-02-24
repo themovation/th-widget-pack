@@ -58,6 +58,17 @@ add_action( 'plugins_loaded', 'th_translation_ready' );
  */
 require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
 
+require_once THEMO_PATH . 'megamenu/rest-api.php';
+
+/**
+ * 
+ * Load the Megamenu
+ */
+require_once THEMO_PATH . 'megamenu/init.php';
+if(class_exists('ThWidgetPack\Modules\Megamenu\Init')){
+ new ThWidgetPack\Modules\Megamenu\Init();
+}
+
 /**
  * Load the Plugin Class.
  */
