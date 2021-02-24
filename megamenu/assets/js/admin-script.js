@@ -36,7 +36,7 @@ jQuery(document).ready(function (e) {
     }),
         e("#elementskit-menu-builder-trigger").on("click", function () {
             var t = e("#elementskit-menu-modal-menu-id").val(),
-                n = window.elementskit.resturl + "dynamic-content/content_editor/megamenu/menuitem" + t;
+                n = "https://dev.local/wp-json/elementskit/v1/dynamic-content/content_editor/megamenu/menuitem" + t;
             e("#elementskit-menu-builder-iframe").attr("src", n);
         }),
         e("body").on("DOMSubtreeModified", "#menu-to-edit", function () {
