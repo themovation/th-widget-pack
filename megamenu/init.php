@@ -57,7 +57,8 @@ class Init{
 		$screen = get_current_screen();
 		if($screen->base == 'nav-menus'){
 			wp_enqueue_script( 'fonticonpicker', $this->url . 'assets/js/jquery.fonticonpicker.min.js', array( 'jquery'), THEMO_VERSION, true );
-			wp_enqueue_script( 'elementskit-menu-admin-script', $this->url . 'assets/js/admin-script.js', array( 'jquery', 'wp-color-picker' ), THEMO_VERSION, true );
+			wp_enqueue_script( 'elementskit-menu-admin-modal-script', $this->url . 'assets/js/admin-modal.js', array( 'jquery' ), THEMO_VERSION, true );
+			wp_enqueue_script( 'elementskit-menu-admin-script', $this->url . 'assets/js/admin-script.js', array( 'jquery', 'wp-color-picker', 'elementskit-menu-admin-modal-script' ), THEMO_VERSION, true );
 		}
 	}
 }
