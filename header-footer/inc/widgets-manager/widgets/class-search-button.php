@@ -161,9 +161,6 @@ class Search_Button extends Widget_Base {
 				'label'     => __( 'Placeholder', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => __( 'Type & Hit Enter', 'header-footer-elementor' ) . '...',
-				'condition' => [
-					'layout!' => 'icon',
-				],
 			]
 		);
 
@@ -279,9 +276,6 @@ class Search_Button extends Widget_Base {
 					'{{WRAPPER}} .thhf-search-form__input::placeholder' => 'color: {{VALUE}}',
 				],
 				'default'   => '#7A7A7A6B',
-				'condition' => [
-					'layout!' => 'icon',
-				],
 			]
 		);
 

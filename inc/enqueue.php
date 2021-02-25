@@ -93,3 +93,26 @@ function th_enqueue_after_frontend_scripts() {
     }
 
 }
+
+
+add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
+
+
+/* If Elementor P is not active, tuck away widgets. */
+if ( ! function_exists ( 'thmv_tuck_pro_widgets' ) ) {
+    function thmv_tuck_pro_widgets(){
+        ?>
+        <style>
+            #elementor-panel-category-pro-elements,
+            #elementor-panel-category-woocommerce-elements,
+            #elementor-panel-category-theme-elements {
+                display: none;
+            }
+        </style>
+<?php
+    }
+}
+
+if ( !defined( 'ELEMENTOR_PRO_VERSION' )) {
+    add_action( 'elementor/editor/footer', 'thmv_tuck_pro_widgets' );
+}

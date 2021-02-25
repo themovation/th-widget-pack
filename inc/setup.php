@@ -277,7 +277,7 @@ register_activation_hook( THEMO__FILE__, 'themovation_so_widgets_bundle_install'
 // Top of section
 if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
 
-    function th_add_custom_controls_elem_post_settings_top(Elementor\Core\DocumentTypes\Post $page)
+    function th_add_custom_controls_elem_post_settings_top(Elementor\Core\DocumentTypes\PageBase $page)
     {
         // Is elementor Pro loaded
         $elm_pro_loaded = false;
@@ -294,6 +294,26 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
             if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio' ||
                 $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'||
                 $th_post_type == 'mphb_room_service' || ($elm_pro_loaded && $th_post_type == 'post')  || ($elm_pro_loaded && $th_post_type == 'revision')){
+
+                // Standard Header Options
+                $page->start_controls_section(
+                    'thmv_doc_settings_header',
+                    [
+                        'label' => __( 'Standard Header', 'molotov-form' ),
+                        'tab' => \Elementor\Controls_Manager::TAB_SETTINGS,
+                    ]
+                );
+
+                $page->add_control(
+                    'important_note',
+                    [
+                        //'label' => __( 'Note', 'th-widget-pack' ),
+                        'type' => \Elementor\Controls_Manager::RAW_HTML,
+                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%1$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
+                        'content_classes' => 'themo-elem-html-control',
+                        'separator' => 'before'
+                    ]
+                );
 
                 $page->add_control(
                     'themo_transparent_header',
@@ -389,22 +409,21 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                         ],
                     ]
                 );
+                $page->end_controls_section();
             }
-        }
 
-    }
-}
-// Bottom of section
-if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
-    function th_add_custom_controls_elem_post_settings_bottom( Elementor\Core\DocumentTypes\Post $page )
-    {
-
-        if(isset($page) && $page->get_id() > "") {
-            $th_post_type = false;
-            $th_post_type = get_post_type($page->get_id());
             if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
                 || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
                 || $th_post_type == 'mphb_room_service') {
+
+                // Standard Header Options
+                $page->start_controls_section(
+                    'thmv_doc_settings_sidebar',
+                    [
+                        'label' => __( 'Sidebar', 'molotov-form' ),
+                        'tab' => \Elementor\Controls_Manager::TAB_SETTINGS,
+                    ]
+                );
 
                 $page->add_control(
                     'themo_page_layout',
@@ -430,154 +449,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_bottom' ) ) {
                         'return_value' => 'yes',
                     ]
                 );
-            }
-        }
 
-    }
-}
-
-add_action( 'elementor/element/wp-post/document_settings/after_section_start', 'th_add_custom_controls_elem_post_settings_top',10, 2);
-add_action( 'elementor/element/wp-post/document_settings/before_section_end', 'th_add_custom_controls_elem_post_settings_bottom',10, 2);
-
-
-
-// Add custom controls to the Page Settings inside the Elementor Global Options.
-
-// Top of section
-if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_top' ) ) {
-    function th_add_custom_controls_elem_page_settings_top(Elementor\Core\DocumentTypes\Page $page)
-    {
-
-        if(isset($page) && $page->get_id() > ""){
-            $th_post_type = false;
-            $th_post_type = get_post_type($page->get_id());
-            if($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
-                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
-                || $th_post_type == 'mphb_room_service'){
-
-                $page->add_control(
-                    'themo_transparent_header',
-                    [
-                        'label' => __( 'Transparent Header', 'th-widget-pack' ),
-                        'type' => Elementor\Controls_Manager::SWITCHER,
-                        'default' => 'Off',
-                        'label_on' => __( 'On', 'th-widget-pack' ),
-                        'label_off' => __( 'Off', 'th-widget-pack' ),
-                        'return_value' => 'on',
-                    ]
-                );
-
-                $page->add_control(
-                    'themo_header_content_style',
-                    [
-                        'label' => __( 'Transparent Header Content Style', 'th-widget-pack' ),
-                        'type' => Elementor\Controls_Manager::SELECT,
-                        'label_block' => true,
-                        'default' => 'light',
-                        'options' => [
-                            'light' => __( 'Light', 'th-widget-pack' ),
-                            'dark' => __( 'Dark', 'th-widget-pack' ),
-                        ],
-                        'condition' => [
-                            'themo_transparent_header' => 'on',
-                        ],
-                    ]
-                );
-
-                $page->add_control(
-                    'themo_alt_logo',
-                    [
-                        'label' => __( 'Use Alternative Logo', 'th-widget-pack' ),
-                        'description' => __( 'You can upload an alternative logo under Appearance / Customize / Theme Options / Logo / ', 'th-widget-pack' ),
-                        'type' => Elementor\Controls_Manager::SWITCHER,
-                        'default' => 'Off',
-                        'label_on' => __( 'On', 'th-widget-pack' ),
-                        'label_off' => __( 'Off', 'th-widget-pack' ),
-                        'return_value' => 'on',
-                        'condition' => [
-                            'themo_transparent_header' => 'on',
-                        ],
-                    ]
-                );
-
-                $page_title_selector = get_option( 'elementor_page_title_selector' );
-                if ( empty( $page_title_selector ) ) {
-                    $page_title_selector = 'h1.entry-title';
-                }
-
-
-                $page->add_control(
-                    'themo_page_title_margin',
-                    [
-                        'label' => __( 'Title  Margin', 'th-widget-pack' ),
-                        'type' => Elementor\Controls_Manager::SLIDER,
-                        'default' => [
-                            'size' => 1,
-                        ],
-                        'range' => [
-                            'px' => [
-                                'min' => 0,
-                                'max' => 1000,
-                                'step' => 5,
-                            ],
-                            '%' => [
-                                'min' => 0,
-                                'max' => 100,
-                            ],
-                        ],
-                        'size_units' => [ 'px', '%' ],
-                        'selectors' => [
-                            '{{WRAPPER}} ' . $page_title_selector => 'margin-top: {{SIZE}}{{UNIT}};',
-                        ],
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-                    ]
-                );
-            }
-        }
-
-
-
-
-    }
-}
-// Bottom of section
-if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
-    function th_add_custom_controls_elem_page_settings_bottom( Elementor\Core\DocumentTypes\Page $page )
-    {
-
-        if(isset($page) && $page->get_id() > "") {
-            $th_post_type = false;
-            $th_post_type = get_post_type($page->get_id());
-            if ($th_post_type == 'page' || $th_post_type == 'themo_tour' || $th_post_type == 'themo_portfolio'
-                || $th_post_type == 'themo_room' || $th_post_type == 'themo_hole' || $th_post_type == 'mphb_room_type'
-                || $th_post_type == 'mphb_room_service') {
-
-                $page->add_control(
-                    'themo_page_layout',
-                    [
-                        'label' => __( 'Sidebar', 'th-widget-pack' ),
-                        'type' => Elementor\Controls_Manager::CHOOSE,
-                        'default' => 'full',
-                        'options' => [
-                            'left'    => [
-                                'title' => __( 'Left', 'th-widget-pack' ),
-                                'icon' => 'fa fa-long-arrow-left',
-                            ],
-                            'full' => [
-                                'title' => __( 'No Sidebar', 'th-widget-pack' ),
-                                'icon' => 'fa fa-times',
-                            ],
-                            'right' => [
-                                'title' => __( 'Right', 'th-widget-pack' ),
-                                'icon' => 'fa fa-long-arrow-right',
-                            ],
-
-                        ],
-                        'return_value' => 'yes',
-                    ]
-                );
+                $page->end_controls_section();
             }
         }
 
@@ -585,9 +458,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_page_settings_bottom' ) ) {
 }
 
 
-
-add_action( 'elementor/element/wp-page/document_settings/after_section_start', 'th_add_custom_controls_elem_page_settings_top',10, 2);
-add_action( 'elementor/element/wp-page/document_settings/before_section_end', 'th_add_custom_controls_elem_page_settings_bottom',10, 2);
+add_action( 'elementor/element/wp-post/document_settings/before_section_start', 'th_add_custom_controls_elem_post_settings_top',10, 2);
+add_action( 'elementor/element/wp-page/document_settings/before_section_start', 'th_add_custom_controls_elem_post_settings_top',10, 2);
 
 // Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( Elementor\Element_Section $section ) {
@@ -700,3 +572,5 @@ function th_add_custom_icons_tab( $tabs = array() ) {
 }
 
 add_filter( 'elementor/icons_manager/additional_tabs', 'th_add_custom_icons_tab' );
+
+
