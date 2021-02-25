@@ -344,6 +344,7 @@ class Cart extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .hfe-menu-cart__toggle .elementor-button-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .hfe-menu-cart__toggle .elementor-button-icon svg' => 'fill: {{VALUE}}',
 				],
 				'condition' => [
 					'hfe_cart_type' => 'custom',
