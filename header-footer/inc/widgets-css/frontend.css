@@ -119,7 +119,7 @@ div.hfe-nav-menu,
 }
 
 
-/* Alignemnt CSS */
+/* Alignment CSS */
 .hfe-nav-menu__align-right .hfe-nav-menu {
   margin-left: auto;
   -webkit-box-pack: end;
@@ -1903,7 +1903,7 @@ a.hfe-menu-item.elementor-button {
 }
 
 .thhf-search-icon-toggle {
-    width: 100%!important;
+    /*width: 100%!important; */
 }
 
 .thhf-search-button-wrapper.hfe-input-focus .thhf-search-icon-toggle .thhf-search-form__input{
@@ -1967,3 +1967,74 @@ a.hfe-menu-item.elementor-button {
     opacity:1;
     height:100%;
 }
+
+/* ==========================================================================
+   Themovation Additions
+   ========================================================================== */
+
+/* Mobile menu styling */
+
+@media (max-width:767px) {
+    .hfe-nav-menu__breakpoint-mobile ul.hfe-nav-menu {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width:1024px) {
+    .hfe-nav-menu__breakpoint-tablet ul.hfe-nav-menu {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+.hfe-nav-menu__breakpoint-mobile .hfe-menu-toggle:hover,
+.hfe-nav-menu__breakpoint-tablet .hfe-menu-toggle:hover {border:0}
+
+/* Desktop menu styling */
+
+@media (min-width:768px) {
+    .hfe-nav-menu__breakpoint-mobile.hfe-submenu-icon-classic .hfe-nav-menu li.menu-item a span.hfe-menu-toggle
+    {display:none}
+
+    .hfe-nav-menu__breakpoint-mobile .hfe-nav-menu li ul.sub-menu {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .hfe-nav-menu__breakpoint-mobile .hfe-nav-menu li ul.sub-menu li ul.sub-menu {margin-top: -10px !important}
+}
+
+@media (min-width:1025px) {
+    .hfe-nav-menu__breakpoint-tablet.hfe-submenu-icon-classic .hfe-nav-menu li.menu-item a span.hfe-menu-toggle
+    {display:none}
+
+    .hfe-nav-menu__breakpoint-tablet .hfe-nav-menu li ul.sub-menu {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+/* Search widget */
+
+.hfe-search-layout-icon .thhf-search-icon-toggle {width:20px}
+
+.hfe-search-form__container input,
+.hfe-search-form__container input:focus {border:0 !important}
+
+.thhf-search-form-wrapper {background:#131313;}
+.thhf-search-form-wrapper.active {
+    opacity:0.99;
+    transition: opacity .5s ease-in-out;
+}
+
+.thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search] {
+    border:0;
+    border-radius:5px;
+}
+
+.thhf-search-overlay-close {color:#fff}
+
+/* Cart widget */
+
+.elementor-widget-thhf-cart:not(.hfe-menu-cart--show-subtotal-yes) .hfe-menu-cart__toggle .elementor-button-text
+    {display:none}
