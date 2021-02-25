@@ -403,7 +403,6 @@ div.hfe-nav-menu,
 .hfe-active-menu.hfe-active-menu-full-width + .hfe-nav-menu__layout-expandible,
 .hfe-active-menu.hfe-active-menu-full-width + .hfe-nav-menu__layout-horizontal,
 .hfe-active-menu.hfe-active-menu-full-width + .hfe-nav-menu__layout-vertical {
-    position: absolute;
     top: 100%;
 }
 
