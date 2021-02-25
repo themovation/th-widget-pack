@@ -322,6 +322,7 @@ class TH_Header_Footer_Fields {
 		$post_types = get_post_types( $args, $output, $operator );
 
 		unset( $post_types['elementor-thhf'] ); //Exclude EHF templates.
+        unset( $post_types['elementor_library'] ); //Exclude Elementor templates.
 
 		$post_types['Posts'] = 'post';
 		$post_types['Pages'] = 'page';
