@@ -592,9 +592,8 @@
 		}
 		// Clean up width and
 		if (!$( '.elementor-element-' + id + ' nav').hasClass('hfe-dropdown')) {
-			console.log('Clean up width, left etc...');
+			//console.log('Clean up width, left etc...');
 			$( '.elementor-element-' + id + ' nav').removeAttr("style");
-			//$( '.elementor-element-' + id + ' nav').css( 'position', 'relative' );
 		}
 	}
 
