@@ -111,7 +111,7 @@ class Copyright extends Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
-				'default' => __( 'Copyright © [hfe_current_year] [hfe_site_title] | Powered by [hfe_site_title]', 'header-footer-elementor' ),
+				'default' => __( 'Copyright © [thmv_current_year] [thmv_site_title] | Powered by [thmv_site_title]', 'header-footer-elementor' ),
 			]
 		);
 

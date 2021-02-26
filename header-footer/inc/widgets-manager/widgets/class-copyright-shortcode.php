@@ -27,21 +27,21 @@ class Copyright_Shortcode {
 	 */
 	public function __construct() {
 
-		add_shortcode( 'hfe_current_year', [ $this, 'display_current_year' ] );
-		add_shortcode( 'hfe_site_title', [ $this, 'display_site_title' ] );
+		add_shortcode( 'thmv_current_year', [ $this, 'display_current_year' ] );
+		add_shortcode( 'thmv_site_title', [ $this, 'display_site_title' ] );
 	}
 
 	/**
-	 * Get the hfe_current_year Details.
+	 * Get the thmv_current_year Details.
 	 *
-	 * @return array $hfe_current_year Get Current Year Details.
+	 * @return array $thmv_current_year Get Current Year Details.
 	 */
 	public function display_current_year() {
 
-		$hfe_current_year = gmdate( 'Y' );
-		$hfe_current_year = do_shortcode( shortcode_unautop( $hfe_current_year ) );
-		if ( ! empty( $hfe_current_year ) ) {
-			return $hfe_current_year;
+		$thmv_current_year = gmdate( 'Y' );
+		$thmv_current_year = do_shortcode( shortcode_unautop( $thmv_current_year ) );
+		if ( ! empty( $thmv_current_year ) ) {
+			return $thmv_current_year;
 		}
 	}
 
@@ -52,10 +52,10 @@ class Copyright_Shortcode {
 	 */
 	public function display_site_title() {
 
-		$hfe_site_title = get_bloginfo( 'name' );
+		$thmv_site_title = get_bloginfo( 'name' );
 
-		if ( ! empty( $hfe_site_title ) ) {
-			return $hfe_site_title;
+		if ( ! empty( $thmv_site_title ) ) {
+			return $thmv_site_title;
 		}
 	}
 
