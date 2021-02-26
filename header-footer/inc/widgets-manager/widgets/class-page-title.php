@@ -400,6 +400,10 @@ class Page_Title extends Widget_Base {
                         'min' => 15,
                     ],
                 ],
+                'default'     => [
+                    'size' => 15,
+                    'unit' => 'px',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .hfe-page-title-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
                     '{{WRAPPER}} .hfe-page-title-icon svg' => 'width: {{SIZE}}px;',
