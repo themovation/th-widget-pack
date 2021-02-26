@@ -100,7 +100,7 @@ class Retina extends Widget_Base {
 		$this->register_content_retina_image_controls();
 		$this->register_retina_image_styling_controls();
 		$this->register_retina_caption_styling_controls();
-		$this->register_helpful_information();
+		//$this->register_helpful_information();
 	}
 
 	/**
@@ -608,7 +608,7 @@ class Retina extends Widget_Base {
 	 * @since 1.2.0
 	 * @access protected
 	 */
-	protected function register_helpful_information() {
+	/*protected function register_helpful_information() {
 
 			$this->start_controls_section(
 				'section_helpful_info',
@@ -618,7 +618,7 @@ class Retina extends Widget_Base {
 			);
 
 			$this->end_controls_section();
-	}
+	}*/
 
 	/**
 	 * Check if the current widget has caption
