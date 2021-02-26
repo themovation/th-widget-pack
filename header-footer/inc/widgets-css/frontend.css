@@ -1978,6 +1978,7 @@ a.hfe-menu-item.elementor-button {
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    .hfe-nav-menu__breakpoint-mobile .hfe-dropdown.menu-is-active {z-index:9999}
 }
 
 @media (max-width:1024px) {
@@ -1985,6 +1986,7 @@ a.hfe-menu-item.elementor-button {
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    .hfe-nav-menu__breakpoint-tablet .hfe-dropdown.menu-is-active {z-index:9999}
 }
 
 .hfe-nav-menu__breakpoint-mobile .hfe-menu-toggle:hover,
@@ -2011,6 +2013,7 @@ a.hfe-menu-item.elementor-button {
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    .hfe-nav-menu__breakpoint-tablet .hfe-nav-menu li ul.sub-menu li ul.sub-menu {margin-top: -10px !important}
 }
 
 /* Search widget */
