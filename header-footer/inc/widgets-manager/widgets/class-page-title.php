@@ -390,6 +390,23 @@ class Page_Title extends Widget_Base {
 				],
 			]
 		);
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label'     => __( 'Icon Size', 'header-footer-elementor' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 15,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .hfe-page-title-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .hfe-page-title-icon svg' => 'width: {{SIZE}}px;',
+                ],
+                'separator' => 'before',
+            ]
+        );
 
 		$this->end_controls_section();
 	}
