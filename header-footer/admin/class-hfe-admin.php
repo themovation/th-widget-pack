@@ -333,7 +333,7 @@ class THHF_Admin {
 					</td>
 				</tr>
 
-				<tr class="hfe-options-row sticky-stacked">
+				<!--tr class="hfe-options-row sticky-stacked">
 					<td class="hfe-options-row-heading">
 						<label for="sticky-stacked">
 							<?php _e( 'Sticky Stacked', 'header-footer-elementor' ); ?>
@@ -343,14 +343,14 @@ class THHF_Admin {
 					<td class="hfe-options-row-content">
 						<input type="checkbox" id="sticky-stacked" name="sticky-stacked" value="1" <?php checked( $sticky_stacked, true ); ?> />
 					</td>
-				</tr>
+				</tr-->
 				
 				<tr class="hfe-options-row transparent-header">
 					<td class="hfe-options-row-heading">
 						<label for="transparent-header">
 							<?php _e( 'Transparent Header Support', 'header-footer-elementor' ); ?>
 						</label>
-						<i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'This option will make the header transparent.', 'header-footer-elementor' ); ?>"></i>
+						<i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php _e( 'Make this header the top layer and overlap page content. A great effect with semi-transparent header backgrounds.', 'header-footer-elementor' ); ?>"></i>
 					</td>
 					<td class="hfe-options-row-content">
 						<input type="checkbox" id="transparent-header" name="transparent-header" value="1" <?php checked( $transparent_header, true ); ?> />
