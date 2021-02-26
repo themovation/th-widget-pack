@@ -1538,7 +1538,7 @@ class Navigation_Menu extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .hfe-nav-menu-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .hfe-nav-menu-icon svg' => 'font-size: {{SIZE}}px;line-height: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
+                    '{{WRAPPER}} .hfe-nav-menu-icon svg' => 'width: {{SIZE}}px;',
 				],
 				'separator' => 'before',
 			]
