@@ -142,6 +142,27 @@ class Site_Tagline extends Widget_Base {
 			]
 		);
 
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label'     => __( 'Icon Size', 'header-footer-elementor' ),
+                'type'      => Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 15,
+                    ],
+                ],
+                'default'     => [
+                    'size' => 15,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .thhf-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .thhf-icon svg' => 'width: {{SIZE}}px;',
+                ],
+            ]
+        );
+
 		$this->add_control(
 			'icon_indent',
 			[
@@ -266,7 +287,7 @@ class Site_Tagline extends Widget_Base {
 		?>
 		<div class="hfe-site-tagline hfe-site-tagline-wrapper">
 			<?php if ( '' !== $settings['icon']['value'] ) { ?>
-				<span class="hfe-icon">
+				<span class="thhf-icon">
 					<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>					
 				</span>
 			<?php } ?>
@@ -300,7 +321,7 @@ class Site_Tagline extends Widget_Base {
 		<# var iconHTML = elementor.helpers.renderIcon( view, settings.icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
 		<div class="hfe-site-tagline hfe-site-tagline-wrapper">
 			<# if( '' != settings.icon.value ){ #>
-				<span class="hfe-icon">
+				<span class="thhf-icon">
 					{{{iconHTML.value}}}					
 				</span>
 			<# } #>
