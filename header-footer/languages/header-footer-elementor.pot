@@ -751,8 +751,8 @@ msgstr ""
 
 #: inc/widgets-manager/widgets/class-copyright.php:114
 msgid ""
-"Copyright © [hfe_current_year] [hfe_site_title] | Powered by "
-"[hfe_site_title]"
+"Copyright © [hfe_current_year] [thmv_site_title] | Powered by "
+"[thmv_site_title]"
 msgstr ""
 
 #: inc/widgets-manager/widgets/class-copyright.php:121
