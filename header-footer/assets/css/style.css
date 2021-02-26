@@ -24,7 +24,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.elementor-element [class*="thhf-icon-"]:after {
+/*.elementor-element [class*="thhf-icon-"]:after {
   content: "THHF";
   position: absolute;
   top: 0;
@@ -38,11 +38,10 @@
   border-width: 0 0 1px 1px;
   border-color: #e0e0e0;
   border-style: solid;
-}
+}*/
 
 .thhf-icon-search:before {
   content: "\e908";
-  color: #556068;
 }
 .thhf-icon-site-logo:before {
   content: "\e900";
@@ -58,11 +57,10 @@
 }
 .thhf-icon-navigation-menu:before {
   content: "\e904";
-  color: #556068;
+
 }
 .thhf-icon-menu-cart:before {
   content: "\e905";
-  color: #556068;
 }
 .thhf-icon-copyright-widget:before {
   content: "\e906";
