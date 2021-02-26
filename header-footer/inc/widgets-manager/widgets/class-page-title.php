@@ -180,7 +180,7 @@ class Page_Title extends Widget_Base {
 					'default' => __( 'Default', 'header-footer-elementor' ),
 					'none'    => __( 'None', 'header-footer-elementor' ),
 				],
-				'default' => 'default',
+				'default' => 'none',
 			]
 		);
 
