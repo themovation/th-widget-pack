@@ -32,12 +32,12 @@ class Init{
 		new Options();
 	}
 	
+	
 	public function include_files(){
 		//include $this->dir . 'cpt.php';
 		//include $this->dir . 'cpt-init.php';
-		include $this->dir . 'rest-api.php';
 		include $this->dir . 'api.php';
-		include $this->dir . 'cpt-api.php';
+		//include $this->dir . 'cpt-api.php';
 		include $this->dir . 'options.php';
 		include $this->dir . 'walker-nav-menu.php';
 

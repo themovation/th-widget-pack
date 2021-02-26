@@ -58,6 +58,13 @@ add_action( 'plugins_loaded', 'th_translation_ready' );
  */
 require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
 
+/* Handler API */
+
+include THEMO_PATH . 'megamenu/rest-api.php';
+
+require_once THEMO_PATH . 'dynamic-content/init.php';
+
+new ThWidgetPack\Modules\Dynamic_Content\Init();
 //require_once THEMO_PATH . 'megamenu/rest-api.php';
 
 /**
