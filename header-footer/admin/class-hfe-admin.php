@@ -262,8 +262,8 @@ class THHF_Admin {
 	public function register_admin_menu() {
 		add_submenu_page(
 			'stratus_dashboard',
-			__( 'Header Footer & Blocks', 'header-footer-elementor' ),
-			__( 'Header Footer & Blocks', 'header-footer-elementor' ),
+			__( 'Header & Footer', 'header-footer-elementor' ),
+			__( 'Header & Footer', 'header-footer-elementor' ),
 			'edit_pages',
 			'edit.php?post_type=elementor-thhf'
 		);
