@@ -276,7 +276,6 @@ class Search_Button extends Widget_Base {
 					'{{WRAPPER}} .thhf-search-form__input::placeholder' => 'color: {{VALUE}}',
 				],
 				'default'   => '#7A7A7A6B',
-                'separator' => 'before',
 			]
 		);
 
@@ -291,11 +290,11 @@ class Search_Button extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .thhf-search-icon-toggle .thhf-search-form__input' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search]' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'layout' => 'icon',
                 ],
-                'separator' => 'before',
             ]
         );
 		$this->add_control(
@@ -512,141 +511,141 @@ class Search_Button extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+        /*
+                $this->add_control(
+                    'icon_text_color_focus',
+                    [
+                        'label'     => __( 'Focus Text Color', 'header-footer-elementor' ),
+                        'type'      => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form__input:focus' => 'color: {{VALUE}}',
+                            //'{{WRAPPER}} .thhf-search-button-wrapper input[type=search]' => 'color: {{VALUE}}'
+                        ],
+                        'condition' => [
+                            'layout' => 'icon',
+                        ],
+                        'separator' => 'before',
+                    ]
+                );
 
-		$this->add_control(
-			'icon_text_color_focus',
-			[
-				'label'     => __( 'Focus Text Color', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form__input:focus' => 'color: {{VALUE}}',
-                    //'{{WRAPPER}} .thhf-search-button-wrapper input[type=search]' => 'color: {{VALUE}}'
-				],
-				'condition' => [
-					'layout' => 'icon',
-				],
-				'separator' => 'before',
-			]
-		);
+                        $this->add_control(
+                            'icon_text_background_color_focus',
+                            [
+                                'label'     => __( 'Focus Background Color', 'header-footer-elementor' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'default'   => '#ededed',
+                                'selectors' => [
+                                    '{{WRAPPER}} .thhf-search-form__input:focus' => 'background-color: {{VALUE}}',
+                                ],
+                                'condition' => [
+                                    'layout' => 'icon',
+                                ],
+                            ]
+                        );
 
-		$this->add_control(
-			'icon_text_background_color_focus',
-			[
-				'label'     => __( 'Focus Background Color', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#ededed',
-				'selectors' => [
-					'{{WRAPPER}} .thhf-search-form__input:focus' => 'background-color: {{VALUE}}',
-				],
-				'condition' => [
-					'layout' => 'icon',
-				],
-			]
-		);
+                        $this->add_group_control(
+                            Group_Control_Box_Shadow::get_type(),
+                            [
+                                'label'     => __( 'Focus Box Shadow', 'header-footer-elementor' ),
+                                'name'           => 'icon_box_shadow_focus',
+                                'selector'       =>
+                                '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus',
+                                'fields_options' => [
+                                    'box_shadow_type' => [
+                                        'separator' => 'default',
+                                    ],
+                                ],
+                                'condition'      => [
+                                    'layout' => 'icon',
+                                ],
+                            ]
+                        );
 
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-                'label'     => __( 'Focus Box Shadow', 'header-footer-elementor' ),
-                'name'           => 'icon_box_shadow_focus',
-				'selector'       =>
-				'{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus',
-				'fields_options' => [
-					'box_shadow_type' => [
-						'separator' => 'default',
-					],
-				],
-				'condition'      => [
-					'layout' => 'icon',
-				],
-			]
-		);
+                        $this->add_control(
+                            'icon_border_style',
+                            [
+                                'label'       => __( 'Focus Border Style', 'header-footer-elementor' ),
+                                'type'        => Controls_Manager::SELECT,
+                                'default'     => 'none',
+                                'label_block' => false,
+                                'options'     => [
+                                    'none'   => __( 'None', 'header-footer-elementor' ),
+                                    'solid'  => __( 'Solid', 'header-footer-elementor' ),
+                                    'double' => __( 'Double', 'header-footer-elementor' ),
+                                    'dotted' => __( 'Dotted', 'header-footer-elementor' ),
+                                    'dashed' => __( 'Dashed', 'header-footer-elementor' ),
+                                ],
+                                'selectors'   => [
+                                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-style: {{VALUE}};',
+                                ],
+                                'condition'   => [
+                                    'layout' => 'icon',
+                                ],
+                            ]
+                        );
 
-		$this->add_control(
-			'icon_border_style',
-			[
-				'label'       => __( 'Focus Border Style', 'header-footer-elementor' ),
-				'type'        => Controls_Manager::SELECT,
-				'default'     => 'none',
-				'label_block' => false,
-				'options'     => [
-					'none'   => __( 'None', 'header-footer-elementor' ),
-					'solid'  => __( 'Solid', 'header-footer-elementor' ),
-					'double' => __( 'Double', 'header-footer-elementor' ),
-					'dotted' => __( 'Dotted', 'header-footer-elementor' ),
-					'dashed' => __( 'Dashed', 'header-footer-elementor' ),
-				],
-				'selectors'   => [
-					'{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-style: {{VALUE}};',
-				],
-				'condition'   => [
-					'layout' => 'icon',
-				],
-			]
-		);
+                        $this->add_control(
+                            'icon_border_color_focus',
+                            [
+                                'label'     => __( 'Focus Border Color', 'header-footer-elementor' ),
+                                'type'      => Controls_Manager::COLOR,
+                                'selectors' => [
+                                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-color: {{VALUE}};',
+                                ],
+                                'condition' => [
+                                    'layout'             => 'icon',
+                                    'icon_border_style!' => 'none',
+                                ],
+                            ]
+                        );
 
-		$this->add_control(
-			'icon_border_color_focus',
-			[
-				'label'     => __( 'Focus Border Color', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-color: {{VALUE}};',
-				],
-				'condition' => [
-					'layout'             => 'icon',
-					'icon_border_style!' => 'none',
-				],
-			]
-		);
+                        $this->add_control(
+                            'icon_border_width',
+                            [
+                                'label'      => __( 'Focus Border Width', 'header-footer-elementor' ),
+                                'type'       => Controls_Manager::DIMENSIONS,
+                                'size_units' => [ 'px' ],
+                                'default'    => [
+                                    'top'    => '1',
+                                    'bottom' => '1',
+                                    'left'   => '1',
+                                    'right'  => '1',
+                                    'unit'   => 'px',
+                                ],
+                                'condition'  => [
+                                    'icon_border_style!' => 'none',
+                                    'layout'             => 'icon',
+                                ],
+                                'selectors'  => [
+                                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                                ],
+                            ]
+                        );
 
-		$this->add_control(
-			'icon_border_width',
-			[
-				'label'      => __( 'Focus Border Width', 'header-footer-elementor' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
-				'default'    => [
-					'top'    => '1',
-					'bottom' => '1',
-					'left'   => '1',
-					'right'  => '1',
-					'unit'   => 'px',
-				],
-				'condition'  => [
-					'icon_border_style!' => 'none',
-					'layout'             => 'icon',
-				],
-				'selectors'  => [
-					'{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input:focus' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'icon_focus_border_radius',
-			[
-				'label'     => __( 'Border Radius', 'header-footer-elementor' ),
-				'type'      => Controls_Manager::SLIDER,
-				'range'     => [
-					'px' => [
-						'min' => 0,
-						'max' => 200,
-					],
-				],
-				'default'   => [
-					'size' => 3,
-					'unit' => 'px',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input' => 'border-radius: {{SIZE}}{{UNIT}}',
-				],
-				'condition' => [
-					'layout' => 'icon',
-				],
-                'separator' => 'before',
-			]
-		);
+                        $this->add_control(
+                            'icon_focus_border_radius',
+                            [
+                                'label'     => __( 'Border Radius', 'header-footer-elementor' ),
+                                'type'      => Controls_Manager::SLIDER,
+                                'range'     => [
+                                    'px' => [
+                                        'min' => 0,
+                                        'max' => 200,
+                                    ],
+                                ],
+                                'default'   => [
+                                    'size' => 3,
+                                    'unit' => 'px',
+                                ],
+                                'selectors' => [
+                                    '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search].thhf-search-form__input' => 'border-radius: {{SIZE}}{{UNIT}}',
+                                ],
+                                'condition' => [
+                                    'layout' => 'icon',
+                                ],
+                                'separator' => 'before',
+                            ]
+                        );*/
 
 		$this->end_controls_section();
 
@@ -859,13 +858,13 @@ class Search_Button extends Widget_Base {
 
 		$this->end_controls_section();
 
-		$this->start_controls_section(
+		/*$this->start_controls_section(
 			'section_close_icon',
 			[
 				'label'     => __( 'Close Icon', 'header-footer-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'layout!' => 'icon',
+					'layout' => 'icon',
 				],
 			]
 		);
@@ -945,7 +944,7 @@ class Search_Button extends Widget_Base {
 
 		$this->end_controls_tabs();
 
-		$this->end_controls_section();
+		$this->end_controls_section();*/
 
 	}
 	/**
@@ -987,7 +986,7 @@ class Search_Button extends Widget_Base {
 					</div>
 					<div class="thhf-search-form-wrapper">
 						<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-						<div class="thhf-search-overlay-close">Close</div>
+						<div class="thhf-search-overlay-close"><?php esc_html_e( 'Close', 'header-footer-elementor' );?></div>
 					</div>
 				<?php } else { ?>
 				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
