@@ -6,6 +6,7 @@
 	 */
 
 	function scrollFunction() {
+
 		var regularHeader = $('#thhf-masthead');
 		var stickyHeader = $('#thhf-masthead-sticky');
 		var $wpAdminBar = $( '#wpadminbar' );
@@ -17,11 +18,15 @@
 			var $wpAdminBarHeight = 0;
 		}
 
-		if (window.matchMedia("(max-width: 600px)").matches) {
+
+		$mobileAdminBar = $wpAdminBarHeight;
+
+		/*if (window.matchMedia("(max-width: 600px)").matches) {
 			$mobileAdminBar = 0;
 		} else {
 			$mobileAdminBar = $wpAdminBarHeight;
-		}
+		}*/
+
 
 		if ( regularHeader.length && stickyHeader.length )  {
 			if ( regularHeader.height() < scrollHeight ) {
@@ -29,8 +34,10 @@
 					"position": "fixed",
 					"top": 0 + $wpAdminBarHeight,
 				});
+
 				stickyHeader.show();
 			} else {
+
 				stickyHeader.css({
 					"position": "relative",
 					"top": 0,
@@ -45,6 +52,10 @@
 			stickyHeader.css({
 				"position": "fixed",
 				"top": 0 + $mobileAdminBar,
+			});
+			$wpAdminBar.css({
+				"position": "fixed",
+				"top": 0,
 			});
 		}
 
@@ -592,7 +603,6 @@
 		}
 		// Clean up width and
 		if (!$( '.elementor-element-' + id + ' nav').hasClass('hfe-dropdown')) {
-			//console.log('Clean up width, left etc...');
 			$( '.elementor-element-' + id + ' nav').removeAttr("style");
 		}
 	}
