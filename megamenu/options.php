@@ -96,7 +96,7 @@ class Options{
         }
         
         $menu_id = $this->current_menu_id();
-        $data = get_option(Init::$megamenu_settings_key, []);
+        $data = $this->get_option(Init::$megamenu_settings_key, []);
         $data = (isset($data['menu_location_' . $menu_id])) ? $data['menu_location_' . $menu_id] : [];
         
         include 'views/options-megamenu.php';
