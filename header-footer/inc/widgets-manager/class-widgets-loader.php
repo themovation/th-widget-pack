@@ -180,17 +180,19 @@ class Widgets_Loader {
 		// Its is now safe to include Widgets files.
 		$this->include_widgets_files();
 		// Register Widgets.
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Retina() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Copyright() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Navigation_Menu() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Page_Title() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Site_Title() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Site_Tagline() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Site_Logo() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Search_Button() );
-		if ( class_exists( 'woocommerce' ) ) {
-			Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Cart() );
-		}
+        if('stratus' == THEMO_CURRENT_THEME) {
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Retina());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Copyright());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Navigation_Menu());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Page_Title());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Title());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Tagline());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Logo());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Search_Button());
+            if (class_exists('woocommerce')) {
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
+            }
+        }
 
 	}
 
