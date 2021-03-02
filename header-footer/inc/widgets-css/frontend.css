@@ -1990,7 +1990,7 @@ a.hfe-menu-item.elementor-button {
 }
 
 .hfe-nav-menu__breakpoint-mobile .hfe-menu-toggle:hover,
-.hfe-nav-menu__breakpoint-tablet .hfe-menu-toggle:hover {border:0}
+.hfe-nav-menu__breakpoint-tablet .hfe-menu-toggle:hover {border-color:transparent}
 
 /* Desktop menu styling */
 
