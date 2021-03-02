@@ -260,6 +260,8 @@ class THHF_Admin {
 	 *         Moved the menu under Appearance -> Header Footer & Blocks Builder
 	 */
 	public function register_admin_menu() {
+
+        if('stratus' == THEMO_CURRENT_THEME){
 		add_submenu_page(
 			'stratus_dashboard',
 			__( 'Header & Footer', 'header-footer-elementor' ),
@@ -267,6 +269,15 @@ class THHF_Admin {
 			'edit_pages',
 			'edit.php?post_type=elementor-thhf'
 		);
+        }else{
+            add_submenu_page(
+                'themes.php',
+                __( 'Header & Footer', 'header-footer-elementor' ),
+                __( 'Header & Footer', 'header-footer-elementor' ),
+                'edit_pages',
+                'edit.php?post_type=elementor-thhf'
+            );
+        }
 	}
 
 	/**
