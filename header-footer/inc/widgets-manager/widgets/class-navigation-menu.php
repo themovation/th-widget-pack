@@ -1878,12 +1878,12 @@ class Navigation_Menu extends Widget_Base {
 			'walker'      => new Menu_Walker,
 		];
 
-		if ( 'yes' === $settings['schema_support'] ) {
+		/*if ( 'yes' === $settings['schema_support'] ) {
 			$this->add_render_attribute( 'hfe-nav-menu', 'itemscope', 'itemscope' );
 			$this->add_render_attribute( 'hfe-nav-menu', 'itemtype', 'http://schema.org/SiteNavigationElement' );
 
 			add_filter( 'hfe_nav_menu_attrs', [ $this, 'handle_link_attrs' ] );
-		}
+		}*/
 
 		$menu_html = wp_nav_menu( $args );
 
