@@ -182,7 +182,7 @@ class Cart extends Widget_Base {
 				'label_off'    => __( 'No', 'header-footer-elementor' ),
 				'return_value' => 'hide',
 				'prefix_class' => 'hfe-menu-cart--empty-indicator-',
-				'description'  => __( 'This will hide the items count until the cart is empty', 'header-footer-elementor' ),
+				'description'  => __( 'Hide items count when cart is empty', 'header-footer-elementor' ),
 				'condition'    => [
 					'items_indicator!' => 'none',
 					'hfe_cart_type'    => 'custom',
@@ -485,7 +485,7 @@ class Cart extends Widget_Base {
 				'label'     => __( 'Items Count', 'header-footer-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'icon[value]!'     => '',
+					'cart_icon[value]!'     => '',
 					'items_indicator!' => 'none',
 					'hfe_cart_type'    => 'custom',
 				],

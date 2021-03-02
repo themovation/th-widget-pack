@@ -460,7 +460,7 @@ class Search_Button extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		/*$this->add_control(
 			'input_background_color_focus',
 			[
 				'label'     => __( 'Background Color', 'header-footer-elementor' ),
@@ -506,7 +506,7 @@ class Search_Button extends Widget_Base {
 					'layout!' => 'icon',
 				],
 			]
-		);
+		);*/
 
 		$this->end_controls_tab();
 
