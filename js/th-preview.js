@@ -40,7 +40,6 @@
                     }, 2000);
                 }
             }else if($("#thhf-masthead-sticky")){ // For StickY header.
-                console.log('YO!');
                 $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide/Show Header</div> </div>" ).insertAfter( "#thhf-masthead-sticky" );
                 $( ".hide-nav-wrap" ).click(function() {
                     $( "#thhf-masthead-sticky" ).fadeToggle( "fast", function() {
