@@ -23,6 +23,7 @@ class Init{
 		$this->url = plugins_url('/', __FILE__);
 		
 		// enqueue scripts
+		add_action( 'wp_enqueue_scripts', [$this, 'enqueue_frontend_styles'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'enqueue_styles'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'enqueue_scripts'] );
 
@@ -45,6 +46,11 @@ class Init{
 		// if(file_exists($backward_class_file)){
 		// 	include $backward_class_file;
 		// }
+	}
+
+	public function enqueue_frontend_styles() {
+		wp_enqueue_style( 'main-menu', $this->url . 'assets/css/main-menu.css', false, THEMO_VERSION );
+		wp_enqueue_script( 'widget-script', $this->url . 'assets/js/widget-script.js', array( 'jquery'), THEMO_VERSION, true );
 	}
 
 	public function enqueue_styles() {

@@ -1,16 +1,21 @@
 <?php
-namespace ElementsKit_Lite;
-
-use \ElementsKit_Lite\Modules\Megamenu\Init;
-use \ElementsKit_Lite\Libs\Framework\Attr;
+namespace ThWidgetPack;
 
 class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
 {
     public $menu_Settings;
 
+    private static $key = 'elementskit_options';
+    public static $menuitem_settings_key = 'elementskit_menuitem_settings';
+
+    public function get_option($key, $default = ''){
+        $data_all = get_option(self::$key);
+        return (isset($data_all[$key]) && $data_all[$key] != '') ? $data_all[$key] : $default;
+    }
+
     // custom methods
     public function get_item_meta($menu_item_id){
-        $meta_key = Init::$menuitem_settings_key;
+        $meta_key = self::$menuitem_settings_key;
         $data = get_post_meta($menu_item_id, $meta_key, true);
         $data = (array) json_decode($data);
 
@@ -43,16 +48,15 @@ class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
         $return = 0;
 
         
-        $modules_all = \ElementsKit_Lite\Config\Module_List::instance()->get_list();
-        $modules_active = \ElementsKit_Lite\Libs\Framework\Classes\Utils::instance()->get_option('module_list', $modules_all);
-        $modules_active = (!isset($modules_active[0]) ? array_keys($modules_active) : $modules_active);
+        // $modules_all = \ElementsKit_Lite\Config\Module_List::instance()->get_list();
+        // $modules_active = \ElementsKit_Lite\Libs\Framework\Classes\Utils::instance()->get_option('module_list', $modules_all);
+        // $modules_active = (!isset($modules_active[0]) ? array_keys($modules_active) : $modules_active);
 
 
-        $settings = Attr::instance()->utils->get_option(Init::$megamenu_settings_key, []);
+        $settings = $this->get_option(self::$menuitem_settings_key, []);
         $term = get_term_by('slug', $menu_slug, 'nav_menu');
 
-        if( in_array('megamenu', $modules_active)
-            && isset($term->term_id)
+        if( isset($term->term_id)
             && isset($settings['menu_location_' . $term->term_id])
             && $settings['menu_location_' . $term->term_id]['is_enabled'] == '1' ){
 
@@ -300,7 +304,7 @@ class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
      */
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
         if ($depth === 0) {
-            if($this->is_megamenu($args->menu) == 1){
+            //if($this->is_megamenu($args->menu) == 1){
                 $item_meta = $this->get_item_meta($item->ID);
 
                 if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
@@ -316,7 +320,7 @@ class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
 
                     $output .= '</ul>';
                 }
-            }
+            //}
             $output .= "</li>\n";
         }
     }

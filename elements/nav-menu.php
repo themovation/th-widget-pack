@@ -81,11 +81,6 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
             ]
 
-
-
-
-
-
         );
 
         $this->end_controls_section();
@@ -1482,7 +1477,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'depth'           => 4,
                 'echo'            => true,
                 'fallback_cb'     => 'wp_page_menu',
-                //'walker'          => (class_exists('\ElementsKit_Lite\ElementsKit_Menu_Walker') ? new \ElementsKit_Lite\ElementsKit_Menu_Walker() : '' )
+                'walker'          => (class_exists('\ThWidgetPack\ElementsKit_Menu_Walker') ? new \ThWidgetPack\ElementsKit_Menu_Walker() : '' )
             ];
 
             wp_nav_menu($args);
