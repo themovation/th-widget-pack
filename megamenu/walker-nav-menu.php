@@ -1,12 +1,13 @@
 <?php
 namespace ThWidgetPack;
 
-class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
+class Menu_Walker extends \Walker_Nav_Menu
 {
     public $menu_Settings;
 
     private static $key = 'elementskit_options';
     public static $menuitem_settings_key = 'elementskit_menuitem_settings';
+    public static $megamenu_settings_key = 'megamenu_settings';
 
     public function get_option($key, $default = ''){
         $data_all = get_option(self::$key);
@@ -53,7 +54,7 @@ class ElementsKit_Menu_Walker extends \Walker_Nav_Menu
         // $modules_active = (!isset($modules_active[0]) ? array_keys($modules_active) : $modules_active);
 
 
-        $settings = $this->get_option(self::$menuitem_settings_key, []);
+        $settings = $this->get_option(self::$megamenu_settings_key, []);
         $term = get_term_by('slug', $menu_slug, 'nav_menu');
 
         if( isset($term->term_id)

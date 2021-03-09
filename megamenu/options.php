@@ -1,6 +1,5 @@
 <?php 
 namespace ThWidgetPack\Modules\Megamenu;
-//use ElementsKit_Lite\Libs\Framework\Attr;
 
 defined( 'ABSPATH' ) || exit;
 

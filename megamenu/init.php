@@ -10,9 +10,6 @@ class Init{
 	public $dir;
 	
 	public $url;
-		
-	public static $menuitem_settings_key = 'elementskit_menuitem_settings';
-	public static $megamenu_settings_key = 'megamenu_settings';
 	
     public function __construct(){
 
@@ -35,17 +32,9 @@ class Init{
 	
 	
 	public function include_files(){
-		//include $this->dir . 'cpt.php';
-		//include $this->dir . 'cpt-init.php';
 		include $this->dir . 'api.php';
-		//include $this->dir . 'cpt-api.php';
 		include $this->dir . 'options.php';
 		include $this->dir . 'walker-nav-menu.php';
-
-		// $backward_class_file = ElementsKit_Lite::plugin_dir() . 'compatibility/backward/walker-nav-menu-backward-compatiblity.php';
-		// if(file_exists($backward_class_file)){
-		// 	include $backward_class_file;
-		// }
 	}
 
 	public function enqueue_frontend_styles() {
