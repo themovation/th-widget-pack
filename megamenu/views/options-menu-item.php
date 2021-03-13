@@ -30,7 +30,7 @@
                             <button disabled type="button" id="elementskit-menu-builder-trigger"
                                 class="elementskit-menu-elementor-button button" data-attr-toggle="modal"
                                 data-target="#elementskit-menu-builder-modal">
-                                <img src="<?php echo esc_url($this->url); ?>megamenu/assets/images/elementor-icon.png"
+                                <img src="https://dev.local/wp-content/plugins/th-widget-pack/megamenu/assets/images/elementor-icon.png"
                                     alt="elementskit megamenu" />
                                 <?php esc_html_e('Edit megamenu content', 'elementskit-lite'); ?>
                             </button>

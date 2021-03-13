@@ -14,10 +14,10 @@ class Cpt{
     public function post_type() {
         
         $labels = array(
-            'name'                  => _x( 'WidgetPack items', 'Post Type General Name', 'elementskit-lite' ),
-            'singular_name'         => _x( 'WidgetPack item', 'Post Type Singular Name', 'elementskit-lite' ),
-            'menu_name'             => esc_html__( 'WidgetPack item', 'elementskit-lite' ),
-            'name_admin_bar'        => esc_html__( 'WidgetPack item', 'elementskit-lite' ),
+            'name'                  => _x( 'ElementsKit items', 'Post Type General Name', 'elementskit-lite' ),
+            'singular_name'         => _x( 'ElementsKit item', 'Post Type Singular Name', 'elementskit-lite' ),
+            'menu_name'             => esc_html__( 'ElementsKit item', 'elementskit-lite' ),
+            'name_admin_bar'        => esc_html__( 'ElementsKit item', 'elementskit-lite' ),
             'archives'              => esc_html__( 'Item Archives', 'elementskit-lite' ),
             'attributes'            => esc_html__( 'Item Attributes', 'elementskit-lite' ),
             'parent_item_colon'     => esc_html__( 'Parent Item:', 'elementskit-lite' ),
@@ -43,14 +43,14 @@ class Cpt{
             'filter_items_list'     => esc_html__( 'Filter items list', 'elementskit-lite' ),
         );
         $rewrite = array(
-            'slug'                  => 'thwidgetpack-content',
+            'slug'                  => 'elementskit-content',
             'with_front'            => true,
             'pages'                 => false,
             'feeds'                 => false,
         );
         $args = array(
-            'label'                 => esc_html__( 'WidgetPack item', 'elementskit-lite' ),
-            'description'           => esc_html__( 'thwidgetpack_content', 'elementskit-lite' ),
+            'label'                 => esc_html__( 'ElementsKit item', 'elementskit-lite' ),
+            'description'           => esc_html__( 'elementskit_content', 'elementskit-lite' ),
             'labels'                => $labels,
             'supports'              => array( 'title', 'editor', 'elementor', 'permalink' ),
             'hierarchical'          => true,
@@ -69,9 +69,9 @@ class Cpt{
             'publicly_queryable'    => true,
             'capability_type'       => 'page',
             'show_in_rest'          => true,
-            'rest_base'             => 'thwidgetpack-content',
+            'rest_base'             => 'elementskit-content',
         );
-        register_post_type( 'thwidgetpack_content', $args );
+        register_post_type( 'elementskit_content', $args );
     }
 
     public function flush_rewrites() {

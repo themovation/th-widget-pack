@@ -24,7 +24,7 @@ jQuery(document).ready(function (e) {
             };
         t.addClass("loading"),
             e.ajax({
-                url: thwidgetpack.resturl + "/megamenu/save_menuitem_settings",
+                url: "https://dev.local/wp-json/elementskit/v1/megamenu/save_menuitem_settings",
                 type: "get",
                 data: i,
                 headers: { "X-WP-Nonce": n },
@@ -36,7 +36,7 @@ jQuery(document).ready(function (e) {
     }),
         e("#elementskit-menu-builder-trigger").on("click", function () {
             var t = e("#elementskit-menu-modal-menu-id").val(),
-                n = thwidgetpack.resturl + "/dynamic-content/content_editor/megamenu/menuitem" + t;
+                n = "https://dev.local/wp-json/elementskit/v1/dynamic-content/content_editor/megamenu/menuitem" + t;
             e("#elementskit-menu-builder-iframe").attr("src", n);
         }),
         e("body").on("DOMSubtreeModified", "#menu-to-edit", function () {
@@ -64,7 +64,7 @@ jQuery(document).ready(function (e) {
             e("#elementskit-menu-modal-menu-id").val(l), e("#elementskit-menu-modal-menu-has-child").val(o);
             var u = { menu_id: l, nocache: Math.floor(Date.now() / 1e3) };
             e.ajax({
-                url: thwidgetpack.resturl + "/megamenu/get_menuitem_settings",
+                url: "https://dev.local/wp-json/elementskit/v1/megamenu/get_menuitem_settings",
                 type: "get",
                 data: u,
                 headers: { "X-WP-Nonce": n },

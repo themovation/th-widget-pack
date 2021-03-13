@@ -21,7 +21,7 @@ class Megamenu_Api extends Core\Handler_Api {
 
         return [
             'saved' => 1,
-            'message' => esc_html__('Saved', 'th-widget-pack'),
+            'message' => esc_html__('Saved', 'elementskit-lite'),
         ];
     }
 

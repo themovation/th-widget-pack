@@ -18,7 +18,7 @@ class Handler_Api{
 
     public function init(){
         add_action( 'rest_api_init', function () {
-            register_rest_route( untrailingslashit('thwidgetpack/v1/' . $this->prefix), '/(?P<action>\w+)/' . ltrim($this->param, '/'), array(
+            register_rest_route( untrailingslashit('elementskit/v1/' . $this->prefix), '/(?P<action>\w+)/' . ltrim($this->param, '/'), array(
                 'methods' => \WP_REST_Server::ALLMETHODS,
                 'callback' => [$this, 'callback'],
                 'permission_callback' => '__return_true', 

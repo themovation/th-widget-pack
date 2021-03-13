@@ -3,7 +3,7 @@ namespace ThWidgetPack;
 
 defined( 'ABSPATH' ) || exit;
 
-class Cpt_Api extends Core\Handler_Api {
+class ElementsKit_Cpt_Api extends Core\Handler_Api {
 
     public function config(){
         $this->prefix = 'dynamic-content';
@@ -15,14 +15,14 @@ class Cpt_Api extends Core\Handler_Api {
         $content_type = $this->request['type'];
         
         $builder_post_title = 'dynamic-content-' . $content_type . '-' . $content_key;
-        $builder_post_id = get_page_by_title($builder_post_title, OBJECT, 'thwidgetpack_content');
+        $builder_post_id = get_page_by_title($builder_post_title, OBJECT, 'elementskit_content');
 
         if(is_null($builder_post_id)){
             $defaults = array(
                 'post_content' => '',
                 'post_title' => $builder_post_title,
                 'post_status' => 'publish',
-                'post_type' => 'thwidgetpack_content',
+                'post_type' => 'elementskit_content',
             );
             $builder_post_id = wp_insert_post($defaults);
 
@@ -37,4 +37,4 @@ class Cpt_Api extends Core\Handler_Api {
     }
 
 }
-new Cpt_Api();
+new ElementsKit_Cpt_Api();
