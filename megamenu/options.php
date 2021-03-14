@@ -8,6 +8,7 @@ class Options{
     private $url;
 
     private static $key = 'elementskit_options';
+    public static $megamenu_settings_key = 'megamenu_settings';
 
     protected $current_menu_id = null;
 
@@ -95,7 +96,7 @@ class Options{
         }
         
         $menu_id = $this->current_menu_id();
-        $data = $this->get_option(Init::$megamenu_settings_key, []);
+        $data = $this->get_option(self::$megamenu_settings_key, []);
         $data = (isset($data['menu_location_' . $menu_id])) ? $data['menu_location_' . $menu_id] : [];
         
         include 'views/options-megamenu.php';
@@ -114,12 +115,12 @@ class Options{
         $menu_id = isset($_POST['menu']) ? $_POST['menu'] : 0;
         $is_enabled = isset($_POST['is_enabled']) ? $_POST['is_enabled'] : 0;
 
-        $data = $this->get_option(Init::$megamenu_settings_key, []);
+        $data = $this->get_option(self::$megamenu_settings_key, []);
         $data['menu_location_' . $menu_id] = [
             'is_enabled' => $is_enabled,
         ];
 
-        $this->save_option(Init::$megamenu_settings_key, $data);
+        $this->save_option(self::$megamenu_settings_key, $data);
 
     }
 }

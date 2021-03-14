@@ -37,6 +37,20 @@ class Init{
 		include $this->dir . 'walker-nav-menu.php';
 	}
 
+	// scripts for common end, admin & frontend
+    public function common_js(){
+		ob_start(); ?>
+
+		var elementskit = {
+            resturl: '<?php echo get_rest_url() . 'elementskit/v1/'; ?>',
+        }
+
+		<?php
+        $output = ob_get_contents();
+        ob_end_clean();
+        return $output;
+    }
+
 	public function enqueue_frontend_styles() {
 		wp_enqueue_style( 'main-menu', $this->url . 'assets/css/main-menu.css', false, THEMO_VERSION );
 		wp_enqueue_script( 'widget-script', $this->url . 'assets/js/widget-script.js', array( 'jquery'), THEMO_VERSION, true );
@@ -57,6 +71,14 @@ class Init{
 			wp_enqueue_script( 'fonticonpicker', $this->url . 'assets/js/jquery.fonticonpicker.min.js', array( 'jquery'), THEMO_VERSION, true );
 			wp_enqueue_script( 'elementskit-menu-admin-modal-script', $this->url . 'assets/js/admin-modal.js', array( 'jquery' ), THEMO_VERSION, true );
 			wp_enqueue_script( 'elementskit-menu-admin-script', $this->url . 'assets/js/admin-script.js', array( 'jquery', 'wp-color-picker', 'elementskit-menu-admin-modal-script' ), THEMO_VERSION, true );
+			// wp_localize_script( 'elementskit-menu-admin-script', 'frontend_ajax_object',
+			// 	array( 
+			// 		'resturl' => get_rest_url() . 'elementskit/v1/',
+			// 	)
+			// );
+
+			$js = $this->common_js();
+        	wp_add_inline_script('elementskit-menu-admin-script', $js);
 		}
 	}
 }

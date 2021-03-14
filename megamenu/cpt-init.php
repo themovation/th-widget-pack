@@ -20,7 +20,7 @@ class Init{
 
     private function include_files(){
         // Controls_Manager
-        include_once self::get_dir() . 'cpt.php';
-        include_once self::get_dir() . 'cpt-api.php';
+        //include_once self::get_dir() . 'cpt.php';
+        //include_once self::get_dir() . 'cpt-api.php';
     }
 }
