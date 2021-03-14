@@ -17,7 +17,7 @@ class Options{
         $this->dir = dirname(__FILE__) . '/';
 
         // get current module's url
-        $this->url = plugins_url( 'modules/megamenu/', __FILE__ );
+        $this->url = plugins_url( 'megamenu/', __FILE__ );
         
         add_action( 'admin_footer', [ $this, 'options_menu_item'] );
         add_action( 'admin_footer', [ $this, 'options_megamenu'] );
