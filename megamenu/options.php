@@ -7,7 +7,7 @@ class Options{
     private $dir;
     private $url;
 
-    private static $key = 'elementskit_options';
+    private static $key = 'thwidgetpack_options';
     public static $megamenu_settings_key = 'megamenu_settings';
 
     protected $current_menu_id = null;
@@ -27,7 +27,7 @@ class Options{
     public function save_option($key, $value = ''){
         $data_all = get_option(self::$key);
         $data_all[$key] = $value;
-        update_option('elementskit_options', $data_all);
+        update_option('thwidgetpack_options', $data_all);
     }
 
     public function current_menu_id() {

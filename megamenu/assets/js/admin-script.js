@@ -1,21 +1,21 @@
 jQuery(document).ready(function (e) {
     "use strict";
-    e(".elementskit-menu-wpcolor-picker").wpColorPicker();
-    var t = e(".elementskit-menu-icon-picker").fontIconPicker(),
-        n = window.elementskit_megamenu_nonce;
-    e(".elementskit-menu-item-save").on("click", function () {
+    e(".thwidgetpack-menu-wpcolor-picker").wpColorPicker();
+    var t = e(".thwidgetpack-menu-icon-picker").fontIconPicker(),
+        n = window.thwidgetpack_megamenu_nonce;
+    e(".thwidgetpack-menu-item-save").on("click", function () {
         var t = e(this).parent().find(".spinner"),
             i = {
                 settings: {
-                    menu_id: e("#elementskit-menu-modal-menu-id").val(),
-                    menu_has_child: e("#elementskit-menu-modal-menu-has-child").val(),
-                    menu_enable: e("#elementskit-menu-item-enable:checked").val(),
-                    menu_icon: e("#elementskit-menu-icon-field").val(),
-                    menu_icon_color: e("#elementskit-menu-icon-color-field").val(),
-                    menu_badge_text: e("#elementskit-menu-badge-text-field").val(),
-                    menu_badge_color: e("#elementskit-menu-badge-color-field").val(),
-                    menu_badge_background: e("#elementskit-menu-badge-background-field").val(),
-                    vertical_menu_width: e("#elementskit-menu-vertical-menu-width-field").val(),
+                    menu_id: e("#thwidgetpack-menu-modal-menu-id").val(),
+                    menu_has_child: e("#thwidgetpack-menu-modal-menu-has-child").val(),
+                    menu_enable: e("#thwidgetpack-menu-item-enable:checked").val(),
+                    menu_icon: e("#thwidgetpack-menu-icon-field").val(),
+                    menu_icon_color: e("#thwidgetpack-menu-icon-color-field").val(),
+                    menu_badge_text: e("#thwidgetpack-menu-badge-text-field").val(),
+                    menu_badge_color: e("#thwidgetpack-menu-badge-color-field").val(),
+                    menu_badge_background: e("#thwidgetpack-menu-badge-background-field").val(),
+                    vertical_menu_width: e("#thwidgetpack-menu-vertical-menu-width-field").val(),
                     mobile_submenu_content_type: e("#mobile_submenu_content_type input[name=content_type]:checked").val(),
                     vertical_megamenu_position_type: e("#vertical_megamenu_position_type input[name=position_type]:checked").val(),
                     megamenu_width_type: e("#xs_megamenu_width_type input[name=width_type]:checked").val(),
@@ -24,7 +24,7 @@ jQuery(document).ready(function (e) {
             };
         t.addClass("loading"),
             e.ajax({
-                url: "https://dev.local/wp-json/elementskit/v1/megamenu/save_menuitem_settings",
+                url: "https://dev.local/wp-json/thwidgetpack/v1/megamenu/save_menuitem_settings",
                 type: "get",
                 data: i,
                 headers: { "X-WP-Nonce": n },
@@ -34,10 +34,10 @@ jQuery(document).ready(function (e) {
                 },
             });
     }),
-        e("#elementskit-menu-builder-trigger").on("click", function () {
-            var t = e("#elementskit-menu-modal-menu-id").val(),
-                n = "https://dev.local/wp-json/elementskit/v1/dynamic-content/content_editor/megamenu/menuitem" + t;
-            e("#elementskit-menu-builder-iframe").attr("src", n);
+        e("#thwidgetpack-menu-builder-trigger").on("click", function () {
+            var t = e("#thwidgetpack-menu-modal-menu-id").val(),
+                n = "https://dev.local/wp-json/thwidgetpack/v1/dynamic-content/content_editor/megamenu/menuitem" + t;
+            e("#thwidgetpack-menu-builder-iframe").attr("src", n);
         }),
         e("body").on("DOMSubtreeModified", "#menu-to-edit", function () {
             setTimeout(function () {
@@ -61,23 +61,23 @@ jQuery(document).ready(function (e) {
                 o = 1;
                 a.addClass("elementskit-menu-has-child"), e("#attr_icon_nav").addClass("attr-active"), e("#attr_icon_tab").addClass("attr-active");
             }
-            e("#elementskit-menu-modal-menu-id").val(l), e("#elementskit-menu-modal-menu-has-child").val(o);
+            e("#thwidgetpack-menu-modal-menu-id").val(l), e("#thwidgetpack-menu-modal-menu-has-child").val(o);
             var u = { menu_id: l, nocache: Math.floor(Date.now() / 1e3) };
             e.ajax({
-                url: "https://dev.local/wp-json/elementskit/v1/megamenu/get_menuitem_settings",
+                url: "https://dev.local/wp-json/thwidgetpack/v1/megamenu/get_menuitem_settings",
                 type: "get",
                 data: u,
                 headers: { "X-WP-Nonce": n },
                 dataType: "json",
                 success: function (n) {
-                    e("#elementskit-menu-item-enable").prop("checked", !1),
-                        e("#elementskit-menu-icon-color-field").wpColorPicker("color", n.menu_icon_color),
-                        e("#elementskit-menu-icon-field").val(n.menu_icon),
-                        e("#elementskit-menu-badge-text-field").val(n.menu_badge_text),
-                        e("#elementskit-menu-badge-color-field").wpColorPicker("color", n.menu_badge_color),
-                        e("#elementskit-menu-badge-background-field").wpColorPicker("color", n.menu_badge_background),
-                        e("#elementskit-menu-vertical-menu-width-field").val(n.vertical_menu_width),
-                        "undefined" != typeof n.menu_enable && 1 == n.menu_enable ? e("#elementskit-menu-item-enable").prop("checked", !0) : e("#elementskit-menu-item-enable").prop("checked", !1),
+                    e("#thwidgetpack-menu-item-enable").prop("checked", !1),
+                        e("#thwidgetpack-menu-icon-color-field").wpColorPicker("color", n.menu_icon_color),
+                        e("#thwidgetpack-menu-icon-field").val(n.menu_icon),
+                        e("#thwidgetpack-menu-badge-text-field").val(n.menu_badge_text),
+                        e("#thwidgetpack-menu-badge-color-field").wpColorPicker("color", n.menu_badge_color),
+                        e("#thwidgetpack-menu-badge-background-field").wpColorPicker("color", n.menu_badge_background),
+                        e("#thwidgetpack-menu-vertical-menu-width-field").val(n.vertical_menu_width),
+                        "undefined" != typeof n.menu_enable && 1 == n.menu_enable ? e("#thwidgetpack-menu-item-enable").prop("checked", !0) : e("#thwidgetpack-menu-item-enable").prop("checked", !1),
                         e("#mobile_submenu_content_type input").prop("checked", !1),
                         "undefined" == typeof n.mobile_submenu_content_type || "builder_content" == n.mobile_submenu_content_type
                             ? e("#mobile_submenu_content_type input[value=builder_content]").prop("checked", !0)
@@ -98,7 +98,7 @@ jQuery(document).ready(function (e) {
                             })
                             .trigger("change"),
                         e("#width_type_custom").is(":checked") ? e(".menu-width-container").addClass("is_enabled") : e(".menu-width-container").removeClass("is_enabled"),
-                        e("#elementskit-menu-item-enable").trigger("change"),
+                        e("#thwidgetpack-menu-item-enable").trigger("change"),
                         t.refreshPicker(),
                         setTimeout(function () {
                             a.removeClass("elementskit-menu-modal-loading");
@@ -106,17 +106,17 @@ jQuery(document).ready(function (e) {
                 },
             });
         }),
-        e("#elementskit-menu-item-enable").on("change", function () {
+        e("#thwidgetpack-menu-item-enable").on("change", function () {
             e(this).is(":checked")
-                ? (e("#elementskit-menu-builder-trigger").prop("disabled", !1), e("#elementskit-menu-builder-warper").addClass("is_enabled"))
-                : (e("#elementskit-menu-item-enable").prop("checked", !1), e("#elementskit-menu-builder-warper").removeClass("is_enabled"), e("#elementskit-menu-builder-trigger").prop("disabled", !0));
+                ? (e("#thwidgetpack-menu-builder-trigger").prop("disabled", !1), e("#thwidgetpack-menu-builder-warper").addClass("is_enabled"))
+                : (e("#thwidgetpack-menu-item-enable").prop("checked", !1), e("#thwidgetpack-menu-builder-warper").removeClass("is_enabled"), e("#thwidgetpack-menu-builder-trigger").prop("disabled", !0));
         }),
         e("#post-body-content").on("change.ekit", "#elementskit-menu-metabox-input-is-enabled", function () {
             e(this).is(":checked") ? e("body").addClass("is_mega_enabled").removeClass("is_mega_disabled") : e("body").removeClass("is_mega_enabled").addClass("is_mega_disabled");
         }),
-        e("#post-body-content").prepend(window.elementskit_options_megamenu_markup).find("#elementskit-menu-metabox-input-is-enabled").trigger("change.ekit");
-    var i = e("#elementskit-menu-builder-modal"),
-        a = document.getElementById("elementskit-menu-builder-iframe"),
+        e("#post-body-content").prepend(window.thwidgetpack_options_megamenu_markup).find("#elementskit-menu-metabox-input-is-enabled").trigger("change.ekit");
+    var i = e("#thwidgetpack-menu-builder-modal"),
+        a = document.getElementById("thwidgetpack-menu-builder-iframe"),
         m = a.contentWindow || a.contentDocument;
     i.on("hide.bs.attr-modal", function (e) {
         m.jQuery("#elementor-panel-saver-button-publish").hasClass("elementor-disabled") || confirm("Changes you made may not be saved.") || e.preventDefault(), m.jQuery(m).off("beforeunload");

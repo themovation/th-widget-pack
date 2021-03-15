@@ -41,8 +41,8 @@ class Init{
     public function common_js(){
 		ob_start(); ?>
 
-		var elementskit = {
-            resturl: '<?php echo get_rest_url() . 'elementskit/v1/'; ?>',
+		var thwidgetpack = {
+            resturl: '<?php echo get_rest_url() . 'thwidgetpack/v1/'; ?>',
         }
 
 		<?php
@@ -61,7 +61,7 @@ class Init{
 		if($screen->base == 'nav-menus'){
 			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_style( 'fonticonpicker', $this->url . 'assets/css/jquery.fonticonpicker.css', false, THEMO_VERSION );
-			wp_enqueue_style( 'elementskit-menu-admin-style', $this->url . 'assets/css/admin-style.css', false, THEMO_VERSION );
+			wp_enqueue_style( 'thwidgetpack-menu-admin-style', $this->url . 'assets/css/admin-style.css', false, THEMO_VERSION );
 		}
 	}
 
@@ -69,16 +69,16 @@ class Init{
 		$screen = get_current_screen();
 		if($screen->base == 'nav-menus'){
 			wp_enqueue_script( 'fonticonpicker', $this->url . 'assets/js/jquery.fonticonpicker.min.js', array( 'jquery'), THEMO_VERSION, true );
-			wp_enqueue_script( 'elementskit-menu-admin-modal-script', $this->url . 'assets/js/admin-modal.js', array( 'jquery' ), THEMO_VERSION, true );
-			wp_enqueue_script( 'elementskit-menu-admin-script', $this->url . 'assets/js/admin-script.js', array( 'jquery', 'wp-color-picker', 'elementskit-menu-admin-modal-script' ), THEMO_VERSION, true );
-			// wp_localize_script( 'elementskit-menu-admin-script', 'frontend_ajax_object',
+			wp_enqueue_script( 'thwidgetpack-menu-admin-modal-script', $this->url . 'assets/js/admin-modal.js', array( 'jquery' ), THEMO_VERSION, true );
+			wp_enqueue_script( 'thwidgetpack-menu-admin-script', $this->url . 'assets/js/admin-script.js', array( 'jquery', 'wp-color-picker', 'thwidgetpack-menu-admin-modal-script' ), THEMO_VERSION, true );
+			// wp_localize_script( 'thwidgetpack-menu-admin-script', 'frontend_ajax_object',
 			// 	array( 
-			// 		'resturl' => get_rest_url() . 'elementskit/v1/',
+			// 		'resturl' => get_rest_url() . 'thwidgetpack/v1/',
 			// 	)
 			// );
 
 			$js = $this->common_js();
-        	wp_add_inline_script('elementskit-menu-admin-script', $js);
+        	wp_add_inline_script('thwidgetpack-menu-admin-script', $js);
 		}
 	}
 }

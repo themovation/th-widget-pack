@@ -60,7 +60,7 @@
 .is_mega_disabled .elementskit_menu_trigger {
     visibility: hidden !important;
 }
-.elementskit-menu-modal-loading #elementskit-menu-modal-spinner {
+.elementskit-menu-modal-loading #thwidgetpack-menu-modal-spinner {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -229,34 +229,34 @@
     content: "";
     position: absolute;
 }
-.elementskit-menu-mega-submenu {
+.thwidgetpack-menu-mega-submenu {
     font-size: 12px;
     display: block;
     margin-top: 5px;
 }
-.elementskit-menu-mega-submenu.enabled_item {
+.thwidgetpack-menu-mega-submenu.enabled_item {
     color: #81c784;
     display: none;
 }
-.elementskit-menu-mega-submenu.disabled_item {
+.thwidgetpack-menu-mega-submenu.disabled_item {
     color: #aaa;
 }
-#elementskit-menu-builder-warper {
+#thwidgetpack-menu-builder-warper {
     text-align: center;
 }
-#elementskit-menu-builder-warper .enabled_item {
+#thwidgetpack-menu-builder-warper .enabled_item {
     display: none;
 }
-#elementskit-menu-builder-warper img {
+#thwidgetpack-menu-builder-warper img {
     height: 30px;
     margin-right: 5px;
     border-radius: 2px;
 }
-.rtl #elementskit-menu-builder-warper img {
+.rtl #thwidgetpack-menu-builder-warper img {
     margin-left: 5px;
     margin-right: 0;
 }
-#elementskit-menu-builder-warper .button {
+#thwidgetpack-menu-builder-warper .button {
     height: 46px;
     font-size: 16px;
     text-transform: uppercase;
@@ -269,10 +269,10 @@
     -ms-flex-align: center;
     align-items: center;
 }
-#elementskit-menu-builder-warper.is_enabled .disabled_item {
+#thwidgetpack-menu-builder-warper.is_enabled .disabled_item {
     display: none;
 }
-#elementskit-menu-builder-warper.is_enabled .enabled_item {
+#thwidgetpack-menu-builder-warper.is_enabled .enabled_item {
     display: block;
 }
 #elementskit-menu-item-settings-modal .no-elementor-notice {
@@ -344,7 +344,7 @@
 #elementskit-menu-item-settings-modal .icons-selector .selected-icon i {
     line-height: inherit;
 }
-#elementskit-menu-item-settings-modal #elementskit-menu-badge-text-field {
+#elementskit-menu-item-settings-modal #thwidgetpack-menu-badge-text-field {
     width: 103.03px;
     border-radius: 3px;
     margin: 0;
@@ -364,7 +364,7 @@
     position: relative;
     float: none;
 }
-#elementskit-menu-item-settings-modal #elementskit-menu-modal-spinner {
+#elementskit-menu-item-settings-modal #thwidgetpack-menu-modal-spinner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -377,34 +377,34 @@
 #elementskit-menu-item-settings-modal .uk-switcher {
     min-height: 130px;
 }
-#elementskit-menu-builder-modal {
+#thwidgetpack-menu-builder-modal {
     width: 95%;
     height: 100%;
     max-width: 100%;
     min-height: auto;
     padding: 40px !important;
 }
-#elementskit-menu-builder-modal .attr-modal-content {
+#thwidgetpack-menu-builder-modal .attr-modal-content {
     height: 100%;
 }
-#elementskit-menu-builder-modal .attr-modal-body {
+#thwidgetpack-menu-builder-modal .attr-modal-body {
     min-height: auto;
     height: 100%;
 }
-#elementskit-menu-builder-modal .attr-modal-dialog {
+#thwidgetpack-menu-builder-modal .attr-modal-dialog {
     height: 100%;
     width: 100%;
     min-width: 100%;
     min-height: auto;
 }
-#elementskit-menu-builder-modal #elementskit-menu-builder-iframe {
+#thwidgetpack-menu-builder-modal #thwidgetpack-menu-builder-iframe {
     height: 100%;
     width: 100%;
 }
-#elementskit-menu-builder-modal .attr-modal-body {
+#thwidgetpack-menu-builder-modal .attr-modal-body {
     padding: 0;
 }
-#elementskit-menu-builder-modal .ekit_close {
+#thwidgetpack-menu-builder-modal .ekit_close {
     top: 0;
     left: 0;
     background: #d30c5c;
@@ -649,7 +649,7 @@
 .right-content .spinner {
     float: none;
 }
-.ekit_menu_modal_content #elementskit-menu-modal-spinner {
+.ekit_menu_modal_content #thwidgetpack-menu-modal-spinner {
     position: absolute;
     top: 50%;
     left: 50%;

@@ -1,5 +1,5 @@
 <script>
-    var elementskit_options_megamenu_markup = `
+    var thwidgetpack_options_megamenu_markup = `
     <fieldset class="menu-settings-group elementskit-options-megamenu" id="elementskit-options-megamenu">
         <legend class="menu-settings-group-name attr-text-bold"><?php esc_html_e( "ElementsKit Megamenu", 'elementskit-lite' ); ?></legend>
         <div class="menu-settings-input checkbox-input">
@@ -9,6 +9,6 @@
     </fieldset>
     `;
 
-    var elementskit_megamenu_nonce = `<?php echo wp_create_nonce('wp_rest'); ?>`;
+    var thwidgetpack_megamenu_nonce = `<?php echo wp_create_nonce('wp_rest'); ?>`;
 
 </script>

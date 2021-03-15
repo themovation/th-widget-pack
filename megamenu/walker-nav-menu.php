@@ -5,8 +5,8 @@ class Menu_Walker extends \Walker_Nav_Menu
 {
     public $menu_Settings;
 
-    private static $key = 'elementskit_options';
-    public static $menuitem_settings_key = 'elementskit_menuitem_settings';
+    private static $key = 'thwidgetpack_options';
+    public static $menuitem_settings_key = 'thwidgetpack_menuitem_settings';
     public static $megamenu_settings_key = 'megamenu_settings';
 
     public function get_option($key, $default = ''){
@@ -310,7 +310,7 @@ class Menu_Walker extends \Walker_Nav_Menu
 
                 if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
                     $builder_post_title = 'dynamic-content-megamenu-menuitem' . $item->ID;
-                    $builder_post = get_page_by_title($builder_post_title, OBJECT, 'elementskit_content');
+                    $builder_post = get_page_by_title($builder_post_title, OBJECT, 'thwidgetpack_content');
                     $output .= '<ul class="elementskit-megamenu-panel">';
                     if($builder_post != null){
                         $elementor = \Elementor\Plugin::instance();
