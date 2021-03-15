@@ -1,10 +1,10 @@
 <script>
     var thwidgetpack_options_megamenu_markup = `
-    <fieldset class="menu-settings-group elementskit-options-megamenu" id="elementskit-options-megamenu">
-        <legend class="menu-settings-group-name attr-text-bold"><?php esc_html_e( "ElementsKit Megamenu", 'elementskit-lite' ); ?></legend>
+    <fieldset class="menu-settings-group thwidgetpack-options-megamenu" id="thwidgetpack-options-megamenu">
+        <legend class="menu-settings-group-name attr-text-bold"><?php esc_html_e( "Widget Pack Megamenu", 'th-widget-pack' ); ?></legend>
         <div class="menu-settings-input checkbox-input">
-        <input name="is_enabled" type="checkbox" <?php checked((isset($data['is_enabled']) ? $data['is_enabled'] : ''), '1'); ?> id="elementskit-menu-metabox-input-is-enabled" class="elementskit-menu-is-enabled" value="1">
-            <label for="elementskit-menu-metabox-input-is-enabled"><?php esc_html_e( "Enable this menu for Megamenu content", 'elementskit-lite' ); ?></label>
+        <input name="is_enabled" type="checkbox" <?php checked((isset($data['is_enabled']) ? $data['is_enabled'] : ''), '1'); ?> id="thwidgetpack-menu-metabox-input-is-enabled" class="thwidgetpack-menu-is-enabled" value="1">
+            <label for="thwidgetpack-menu-metabox-input-is-enabled"><?php esc_html_e( "Enable this menu for Megamenu content", 'th-widget-pack' ); ?></label>
         </div>
     </fieldset>
     `;

@@ -63,12 +63,12 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'label' => esc_html__( 'Horizontal menu position', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'elementskit-menu-po-left',
+                'default' => 'thwidgetpack-menu-po-left',
                 'options' => [
-                    'elementskit-menu-po-left'  => esc_html__( 'Left', 'th-widget-pack' ),
-                    'elementskit-menu-po-center' => esc_html__( 'Center', 'th-widget-pack' ),
-                    'elementskit-menu-po-right' => esc_html__( 'Right', 'th-widget-pack' ),
-                    'elementskit-menu-po-justified'  => esc_html__( 'Justified', 'th-widget-pack' ),
+                    'thwidgetpack-menu-po-left'  => esc_html__( 'Left', 'th-widget-pack' ),
+                    'thwidgetpack-menu-po-center' => esc_html__( 'Center', 'th-widget-pack' ),
+                    'thwidgetpack-menu-po-right' => esc_html__( 'Right', 'th-widget-pack' ),
+                    'thwidgetpack-menu-po-justified'  => esc_html__( 'Justified', 'th-widget-pack' ),
                 ],
             ]
 
@@ -216,7 +216,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => '%',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-container' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-container' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'separator' => 'after',
             ]
@@ -237,7 +237,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'label' => esc_html__( 'Menu Panel Background', 'th-widget-pack' ),
                 'types' => [ 'classic', 'gradient' ],
                 'devices' => [ 'desktop' ],
-                'selector' => '{{WRAPPER}} .elementskit-menu-container',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-container',
             ]
         );
 
@@ -248,7 +248,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type'      => Controls_Manager::COLOR,
                 'devices'   => [ 'tablet', 'mobile' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-container'   => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-container'   => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -268,7 +268,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'devices' => ['tablet'],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-nav-identity-panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-nav-identity-panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -296,7 +296,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-container' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-container' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -323,7 +323,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -335,7 +335,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav li a .ekit-menu-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav li a .ekit-menu-icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -358,7 +358,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_content_typography',
                 'label' => esc_html__( 'Typography', 'th-widget-pack' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav > li > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a',
             ]
         );
 
@@ -391,7 +391,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_item_background',
                 'label' => esc_html__( 'Item background', 'th-widget-pack' ),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav > li > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a',
             ]
         );
 
@@ -403,7 +403,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'desktop_default' => '#000000',
                 'tablet_default' => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -424,7 +424,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_item_background_hover',
                 'label' => esc_html__( 'Item background', 'th-widget-pack' ),
                 'types' => ['classic', 'gradient'],
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav > li > a:hover, {{WRAPPER}} .elementskit-navbar-nav > li > a:focus, {{WRAPPER}} .elementskit-navbar-nav > li > a:active, {{WRAPPER}} .elementskit-navbar-nav > li:hover > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:hover, {{WRAPPER}} .thwidgetpack-navbar-nav > li > a:focus, {{WRAPPER}} .thwidgetpack-navbar-nav > li > a:active, {{WRAPPER}} .thwidgetpack-navbar-nav > li:hover > a',
             ]
         );
 
@@ -435,14 +435,14 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#707070',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:hover' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:focus' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:active' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li:hover > a' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li:hover > a .elementskit-submenu-indicator' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:hover .elementskit-submenu-indicator' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:focus .elementskit-submenu-indicator' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a:active .elementskit-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:focus' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li:hover > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li:hover > a .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:hover .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:focus .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a:active .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -463,7 +463,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name'		=> 'thwidgetpack_nav_menu_active_bg_color',
                 'label' 	=> esc_html__( 'Item background', 'th-widget-pack' ),
                 'types'		=> ['classic', 'gradient'],
-                'selector'	=> '{{WRAPPER}} .elementskit-navbar-nav > li.current-menu-item > a,{{WRAPPER}} .elementskit-navbar-nav > li.current-menu-ancestor > a'
+                'selector'	=> '{{WRAPPER}} .thwidgetpack-navbar-nav > li.current-menu-item > a,{{WRAPPER}} .thwidgetpack-navbar-nav > li.current-menu-ancestor > a'
             ]
         );
 
@@ -474,9 +474,9 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#707070',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav > li.current-menu-item > a' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav > li.current-menu-ancestor > a .elementskit-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li.current-menu-item > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li.current-menu-ancestor > a .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -507,7 +507,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -543,7 +543,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' =>  '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav > li > a .elementskit-submenu-indicator' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav > li > a .thwidgetpack-submenu-indicator' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'thwidgetpack_style_tab_submenu_item_arrow!' => 'thwidgetpack_none'
@@ -557,7 +557,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav-default .elementskit-dropdown-has>a .elementskit-submenu-indicator' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-dropdown-has>a .thwidgetpack-submenu-indicator' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'thwidgetpack_style_tab_submenu_item_arrow!' => 'thwidgetpack_none'
@@ -571,7 +571,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_item_typography',
                 'label' => esc_html__( 'Typography', 'th-widget-pack' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a',
             ]
         );
 
@@ -597,7 +597,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -619,7 +619,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a' => 'color: {{VALUE}}',
                 ],
 
             ]
@@ -631,7 +631,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_item_background',
                 'label' => esc_html__( 'Item background', 'th-widget-pack' ),
                 'types' => [ 'classic', 'gradient' ],
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a',
             ]
         );
 
@@ -651,10 +651,10 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#707070',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:hover' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:focus' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:active' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li:hover > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:focus' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li:hover > a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -666,10 +666,10 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'label' => esc_html__( 'Item background (hover)', 'th-widget-pack' ),
                 'types' => [ 'classic', 'gradient' ],
                 'selector' => '
-					{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:hover,
-					{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:focus,
-					{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a:active,
-					{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li:hover > a',
+					{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:hover,
+					{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:focus,
+					{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a:active,
+					{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li:hover > a',
             ]
         );
 
@@ -689,7 +689,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '#707070',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li.current-menu-item > a' => 'color: {{VALUE}} !important'
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li.current-menu-item > a' => 'color: {{VALUE}} !important'
                 ],
             ]
         );
@@ -700,7 +700,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name'		=> 'thwidgetpack_nav_sub_menu_active_bg_color',
                 'label' 	=> esc_html__( 'Item background (Active)', 'th-widget-pack' ),
                 'types'		=> ['classic', 'gradient'],
-                'selector'	=> '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li.current-menu-item > a',
+                'selector'	=> '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li.current-menu-item > a',
             ]
         );
 
@@ -722,7 +722,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'name' => 'thwidgetpack_menu_item_border',
                 'label' => esc_html__( 'Border', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li > a',
             ]
         );
 
@@ -740,7 +740,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'name' => 'thwidgetpack_menu_item_border_last_child',
                 'label' => esc_html__( 'Border last Child', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li:last-child > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li:last-child > a',
             ]
         );
 
@@ -758,7 +758,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'name' => 'thwidgetpack_menu_item_border_first_child',
                 'label' => esc_html__( 'Border First Child', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel > li:first-child > a',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel > li:first-child > a',
             ]
         );
 
@@ -785,7 +785,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'isLinked'  => false,
                 ],
 				'selectors'     => [
-					'{{WRAPPER}} .elementskit-submenu-panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .thwidgetpack-submenu-panel' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -795,7 +795,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'name' => 'thwidgetpack_panel_submenu_border',
                 'label' => esc_html__( 'Panel Menu Border', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel',
             ]
         );
 
@@ -805,7 +805,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_submenu_container_background',
                 'label' => esc_html__( 'Container background', 'th-widget-pack' ),
                 'types' => [ 'classic','gradient' ],
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel',
             ]
         );
 
@@ -830,7 +830,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'size_units' => [ 'px' ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -844,7 +844,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'desktop_default' => '220px',
                 'tablet_default' => '200px',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel' => 'min-width: {{VALUE}};',
+                    '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel' => 'min-width: {{VALUE}};',
                 ]
             ]
         );
@@ -855,7 +855,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
             [
                 'name' => 'thwidgetpack_panel_box_shadow',
                 'label' => esc_html__( 'Box Shadow', 'th-widget-pack' ),
-                'selector' => '{{WRAPPER}} .elementskit-navbar-nav .elementskit-submenu-panel',
+                'selector' => '{{WRAPPER}} .thwidgetpack-navbar-nav .thwidgetpack-submenu-panel',
             ]
         );
 
@@ -896,7 +896,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'default' => 'right',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger' => 'float: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger' => 'float: {{VALUE}}',
                 ],
             ]
         );
@@ -916,7 +916,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -940,7 +940,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 45,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -968,7 +968,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 3,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -987,7 +987,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger > .ekit-menu-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger > .ekit-menu-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'thwidgetpack_hamburger_icon[value]!'    => '',
@@ -1012,7 +1012,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_toggle_background',
                 'label' => esc_html__( 'Background', 'th-widget-pack' ),
                 'types' => [ 'classic' ],
-                'selector' => '{{WRAPPER}} .elementskit-menu-hamburger',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-hamburger',
             ]
         );
 
@@ -1022,7 +1022,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_toggle_border',
                 'label' => esc_html__( 'Border', 'th-widget-pack' ),
                 'separator' => 'before',
-                'selector' => '{{WRAPPER}} .elementskit-menu-hamburger',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-hamburger',
             ]
         );
 
@@ -1033,8 +1033,8 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => 'rgba(0, 0, 0, 0.5)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger .elementskit-menu-hamburger-icon' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-menu-hamburger > .ekit-menu-icon' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger .thwidgetpack-menu-hamburger-icon' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger > .ekit-menu-icon' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1054,7 +1054,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_toggle_background_hover',
                 'label' => esc_html__( 'Background', 'th-widget-pack' ),
                 'types' => [ 'classic' ],
-                'selector' => '{{WRAPPER}} .elementskit-menu-hamburger:hover',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-hamburger:hover',
             ]
         );
 
@@ -1064,7 +1064,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_toggle_border_hover',
                 'label' => esc_html__( 'Border', 'th-widget-pack' ),
                 'separator' => 'before',
-                'selector' => '{{WRAPPER}} .elementskit-menu-hamburger:hover',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-hamburger:hover',
             ]
         );
 
@@ -1079,8 +1079,8 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'default' => 'rgba(0, 0, 0, 0.5)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-hamburger:hover .elementskit-menu-hamburger-icon' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .elementskit-menu-hamburger:hover > .ekit-menu-icon' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger:hover .thwidgetpack-menu-hamburger-icon' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-hamburger:hover > .ekit-menu-icon' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1105,7 +1105,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_close_typography',
                 'label' => esc_html__( 'Typography', 'th-widget-pack' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .elementskit-menu-close',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-close',
             ]
         );
 
@@ -1124,7 +1124,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-close' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1144,7 +1144,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1168,7 +1168,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 45,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-close' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1196,7 +1196,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 3,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-menu-close' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1218,7 +1218,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_close_background',
                 'label' => esc_html__( 'Background', 'th-widget-pack' ),
                 'types' => [ 'classic' ],
-                'selector' => '{{WRAPPER}} .elementskit-menu-close',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-close',
             ]
         );
 
@@ -1228,7 +1228,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_close_border',
                 'label' => esc_html__( 'Border', 'th-widget-pack' ),
                 'separator' => 'before',
-                'selector' => '{{WRAPPER}} .elementskit-menu-close',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-close',
             ]
         );
 
@@ -1243,7 +1243,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'default' => 'rgba(51, 51, 51, 1)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-close' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1263,7 +1263,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_close_background_hover',
                 'label' => esc_html__( 'Background', 'th-widget-pack' ),
                 'types' => [ 'classic' ],
-                'selector' => '{{WRAPPER}} .elementskit-menu-close:hover',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-close:hover',
             ]
         );
 
@@ -1273,7 +1273,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'name' => 'thwidgetpack_menu_close_border_hover',
                 'label' => esc_html__( 'Border', 'th-widget-pack' ),
                 'separator' => 'before',
-                'selector' => '{{WRAPPER}} .elementskit-menu-close:hover',
+                'selector' => '{{WRAPPER}} .thwidgetpack-menu-close:hover',
             ]
         );
 
@@ -1288,7 +1288,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 ],
                 'default' => 'rgba(0, 0, 0, 0.5)',
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-menu-close:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thwidgetpack-menu-close:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1329,7 +1329,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 120,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-nav-logo > img' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-nav-logo > img' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1356,7 +1356,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'size' => 50,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-nav-logo > img' => 'max-height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-nav-logo > img' => 'max-height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1376,7 +1376,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'isLinked' => 'false',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-nav-logo' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-nav-logo' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1396,7 +1396,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                     'isLinked' => 'true',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementskit-nav-logo' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .thwidgetpack-nav-logo' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1448,23 +1448,23 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
 
             $metadata = '';//\ElementsKit_Lite\Utils::img_meta($settings['thwidgetpack_nav_menu_logo']['id']);
             $markup = '
-				<div class="elementskit-nav-identity-panel">
-					<div class="elementskit-site-title">
-						<a class="elementskit-nav-logo" href="'.$link.'" target="'.(!empty($target) ? $target : '_self').'" rel="'.$nofollow.'">
+				<div class="thwidgetpack-nav-identity-panel">
+					<div class="thwidgetpack-site-title">
+						<a class="thwidgetpack-nav-logo" href="'.$link.'" target="'.(!empty($target) ? $target : '_self').'" rel="'.$nofollow.'">
 							<img src="'.$settings['thwidgetpack_nav_menu_logo']['url'].'" alt="'.(isset($metadata['alt']) ? $metadata['alt'] : '').'">
 						</a>
 					</div>
-					<button class="elementskit-menu-close elementskit-menu-toggler" type="button">X</button>
+					<button class="thwidgetpack-menu-close thwidgetpack-menu-toggler" type="button">X</button>
 				</div>
 			';
             $args = [
                 'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $markup,
                 'container'       => 'div',
                 'container_id'    => 'ekit-megamenu-' . $settings['thwidgetpack_nav_menu'],
-                'container_class' => 'elementskit-menu-container elementskit-menu-offcanvas-elements elementskit-navbar-nav-default ' . $settings['thwidgetpack_style_tab_submenu_item_arrow'] . ' ekit-nav-menu-one-page-' . $settings['thwidgetpack_one_page_enable'],
+                'container_class' => 'thwidgetpack-menu-container thwidgetpack-menu-offcanvas-elements thwidgetpack-navbar-nav ' . $settings['thwidgetpack_style_tab_submenu_item_arrow'] . ' ekit-nav-menu-one-page-' . $settings['thwidgetpack_one_page_enable'],
                 'menu_id'         => 'main-menu',
                 'menu'         	  => $settings['thwidgetpack_nav_menu'],
-                'menu_class'      => 'elementskit-navbar-nav ' . $settings['thwidgetpack_main_menu_position'] .' submenu-click-on-'. $settings['submenu_click_area'],
+                'menu_class'      => 'thwidgetpack-navbar-nav ' . $settings['thwidgetpack_main_menu_position'] .' submenu-click-on-'. $settings['submenu_click_area'],
                 'depth'           => 4,
                 'echo'            => true,
                 'fallback_cb'     => 'wp_page_menu',

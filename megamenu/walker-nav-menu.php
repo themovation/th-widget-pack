@@ -40,19 +40,13 @@ class Menu_Walker extends \Walker_Nav_Menu
     public function is_megamenu($menu_slug){
         $menu_slug = ( ( (gettype($menu_slug) == 'object') && (isset($menu_slug->slug)) ) ? $menu_slug->slug : $menu_slug );
 
-        $cache_key = 'elementskit_megamenu_data_' . $menu_slug;
+        $cache_key = 'thwidgetpack_megamenu_data_' . $menu_slug;
         $cached = wp_cache_get( $cache_key );
 		if ( false !== $cached ) {
 			return $cached;
         }
 
         $return = 0;
-
-        
-        // $modules_all = \ElementsKit_Lite\Config\Module_List::instance()->get_list();
-        // $modules_active = \ElementsKit_Lite\Libs\Framework\Classes\Utils::instance()->get_option('module_list', $modules_all);
-        // $modules_active = (!isset($modules_active[0]) ? array_keys($modules_active) : $modules_active);
-
 
         $settings = $this->get_option(self::$megamenu_settings_key, []);
         $term = get_term_by('slug', $menu_slug, 'nav_menu');
@@ -88,7 +82,7 @@ class Menu_Walker extends \Walker_Nav_Menu
      */
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"elementskit-dropdown elementskit-submenu-panel\">\n";
+        $output .= "\n$indent<ul class=\"thwidgetpack-dropdown thwidgetpack-submenu-panel\">\n";
     }
     /**
      * Ends the list of after the elements are added.
@@ -142,15 +136,15 @@ class Menu_Walker extends \Walker_Nav_Menu
         $is_megamenu_item = $this->is_megamenu_item($item_meta, $args->menu);
 
         if (in_array('menu-item-has-children', $classes) || $is_megamenu_item == true) {
-            $class_names .= ' elementskit-dropdown-has '.$item_meta['vertical_megamenu_position_type'].' elementskit-dropdown-menu-'.$item_meta['megamenu_width_type'].'';
+            $class_names .= ' thwidgetpack-dropdown-has '.$item_meta['vertical_megamenu_position_type'].' thwidgetpack-dropdown-menu-'.$item_meta['megamenu_width_type'].'';
         }
 
         if ($is_megamenu_item == true) {
-            $class_names .= ' elementskit-megamenu-has';
+            $class_names .= ' thwidgetpack-megamenu-has';
         }
 
         if ($item_meta['mobile_submenu_content_type'] == 'builder_content') {
-            $class_names .= ' elementskit-mobile-builder-content';
+            $class_names .= ' thwidgetpack-mobile-builder-content';
         }
 
         if (in_array('current-menu-item', $classes)) {
@@ -212,7 +206,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             $atts['class']       .= ' ekit-menu-dropdown-toggle';
         }
         if (in_array('menu-item-has-children', $classes) || $is_megamenu_item == true) {
-            $submenu_indicator    .= '<i class="icon icon-down-arrow1 elementskit-submenu-indicator"></i>';
+            $submenu_indicator    .= '<i class="icon icon-down-arrow1 thwidgetpack-submenu-indicator"></i>';
         }
         if ($depth > 0) {
             $manual_class = array_values($classes)[0] .' '. 'dropdown-item';
@@ -311,12 +305,12 @@ class Menu_Walker extends \Walker_Nav_Menu
                 if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
                     $builder_post_title = 'dynamic-content-megamenu-menuitem' . $item->ID;
                     $builder_post = get_page_by_title($builder_post_title, OBJECT, 'thwidgetpack_content');
-                    $output .= '<ul class="elementskit-megamenu-panel">';
+                    $output .= '<ul class="thwidgetpack-megamenu-panel">';
                     if($builder_post != null){
                         $elementor = \Elementor\Plugin::instance();
                         $output .= $elementor->frontend->get_builder_content_for_display( $builder_post->ID );
                     }else{
-                        $output .= esc_html__('No content found', 'elementskit-lite');
+                        $output .= esc_html__('No content found', 'th-widget-pack');
                     }
 
                     $output .= '</ul>';

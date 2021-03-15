@@ -279,29 +279,29 @@ jQuery(window).on('load',function ($) {
 });
 
 var Nav_Menu = function (t) {
-    if (t.find(".elementskit-megamenu-has").length > 0) {
+    if (t.find(".thwidgetpack-megamenu-has").length > 0) {
         let n = t.find(".ekit-wid-con").data("responsive-breakpoint"),
-            i = t.find(".elementskit-megamenu-has"),
-            s = t.find(".elementskit-menu-container").outerHeight();
+            i = t.find(".thwidgetpack-megamenu-has"),
+            s = t.find(".thwidgetpack-menu-container").outerHeight();
         e(window)
             .on("resize", function () {
-                t.find(".elementskit-megamenu-panel").css({ top: s });
+                t.find(".thwidgetpack-megamenu-panel").css({ top: s });
             })
             .trigger("resize"),
             i.on("mouseenter", function () {
                 let t = e(this).data("vertical-menu"),
-                    i = e(this).children(".elementskit-megamenu-panel");
-                if (e(this).hasClass("elementskit-dropdown-menu-full_width") && e(this).hasClass("top_position")) {
+                    i = e(this).children(".thwidgetpack-megamenu-panel");
+                if (e(this).hasClass("thwidgetpack-dropdown-menu-full_width") && e(this).hasClass("top_position")) {
                     let t = Math.floor(e(this).position().left - e(this).offset().left),
                         n = e(this);
-                    n.find(".elementskit-megamenu-panel").css("max-width", e(window).width()),
+                    n.find(".thwidgetpack-megamenu-panel").css("max-width", e(window).width()),
                         e(window)
                             .on("resize", function () {
-                                n.find(".elementskit-megamenu-panel").css({ left: t + "px" });
+                                n.find(".thwidgetpack-megamenu-panel").css({ left: t + "px" });
                             })
                             .trigger("resize");
                 }
-                !e(this).hasClass("elementskit-dropdown-menu-full_width") &&
+                !e(this).hasClass("thwidgetpack-dropdown-menu-full_width") &&
                     e(this).hasClass("top_position") &&
                     e(this).on({
                         mouseenter: function () {

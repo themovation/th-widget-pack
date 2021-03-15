@@ -30,7 +30,7 @@
                             <button disabled type="button" id="thwidgetpack-menu-builder-trigger"
                                 class="thwidgetpack-menu-elementor-button button" data-attr-toggle="modal"
                                 data-target="#thwidgetpack-menu-builder-modal">
-                                <img src="https://dev.local/wp-content/plugins/th-widget-pack/megamenu/assets/images/elementor-icon.png"
+                                <img src="<?php echo THEMO_URL . 'megamenu/assets/images/elementor-icon.png'; ?>"
                                     alt="Widget Pack megamenu" />
                                 <?php esc_html_e('Edit megamenu content', 'th-widget-pack'); ?>
                             </button>
