@@ -34,12 +34,12 @@
                                   t(this).parents("li").next().find("a").addClass("bottom"));
                         }),
                         (e = window.location.hash) && t(`${e}-tab`).trigger("click"),
-                        t("#v-elementskit-tabContent").length > 0)
+                        t("#v-thwidgetpack-tabContent").length > 0)
                     ) {
-                        var i = t("#v-elementskit-tabContent").offset().top;
+                        var i = t("#v-thwidgetpack-tabContent").offset().top;
                         t(window).scroll(function () {
                             var e = t(".ekit-admin-section-header");
-                            t(window).scrollTop() >= i ? e.addClass("fixed").css({ width: jQuery("#v-elementskit-tabContent").width() }) : e.removeClass("fixed").css({ width: "auto" });
+                            t(window).scrollTop() >= i ? e.addClass("fixed").css({ width: jQuery("#v-thwidgetpack-tabContent").width() }) : e.removeClass("fixed").css({ width: "auto" });
                         });
                     }
                     function n(e) {
@@ -69,34 +69,7 @@
                             if (a) a.parentNode.removeChild(a);
                             o(r[0], !1);
                         }
-                    }
-                    t("#ekit-admin-settings-form").on("submit", function (e) {
-                        var i = t(this),
-                            n = i.find(".ekit-admin-settings-form-submit"),
-                            o = i.serialize();
-                        i.addClass("is-loading"),
-                            n.attr("disabled", !0),
-                            n.find(".ekit-admin-save-icon").hide(),
-                            t.post(ajaxurl + "?action=ekit_admin_action", o, function (e) {
-                                var o, r, s, a;
-                                i.removeClass("is-loading"),
-                                    n.removeAttr("disabled"),
-                                    n.find(".ekit-admin-save-icon").fadeIn(),
-                                    (o = t("#ekit-admin-switch__module__list____header-footer").prop("checked")),
-                                    (r = t("#elementskit-template-admin-menu").html()),
-                                    (s = t("#toplevel_page_elementskit .wp-submenu")),
-                                    (a = s.find('a[href="edit.php?post_type=elementskit_template"]')),
-                                    1 == o ? (a.length > 0 || "y" == s.attr("item-added") ? a.parent().show() : (s.find("li.wp-first-item").after(r), s.attr("item-added", "y"))) : a.parent().hide(),
-                                    (function () {
-                                        var e = t("#ekit-admin-switch__module__list____widget-builder").prop("checked"),
-                                            i = t("#elementskit-template-widget-menu").html(),
-                                            n = t("#toplevel_page_elementskit .wp-submenu"),
-                                            o = n.find('a[href="edit.php?post_type=elementskit_widget"]');
-                                        1 == e ? (o.length > 0 || "y" == n.attr("item-added") ? o.parent().show() : (n.find("li.wp-first-item").next().after(i), n.attr("item-added", "y"))) : o.parent().hide();
-                                    })();
-                            }),
-                            e.preventDefault();
-                    }),  
+                    }  
                         document.querySelectorAll(".ekit-admin-control-input").forEach((t) => {
                             r(t);
                         }),

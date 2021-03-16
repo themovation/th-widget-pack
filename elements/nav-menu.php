@@ -1436,6 +1436,31 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         if($settings['thwidgetpack_nav_menu'] != '' && wp_get_nav_menu_items($settings['thwidgetpack_nav_menu']) !== false && count(wp_get_nav_menu_items($settings['thwidgetpack_nav_menu'])) > 0){
+            
+            /**
+             * Hamburger Toggler Button
+             */
+            ?>
+            <button class="thwidgetpack-menu-hamburger thwidgetpack-menu-toggler">
+                <?php
+                /**
+                 * Show Default Icon
+                 */
+                if ( $settings['thwidgetpack_hamburger_icon']['value'] === '' ):
+                ?>
+                    <span class="thwidgetpack-menu-hamburger-icon"></span><span class="thwidgetpack-menu-hamburger-icon"></span><span class="thwidgetpack-menu-hamburger-icon"></span>
+                <?php
+                endif;
+                
+                /**
+                 * Show Icon or, SVG
+                 */
+                Icons_Manager::render_icon( $settings['thwidgetpack_hamburger_icon'], [ 'aria-hidden' => 'true', 'class' => 'ekit-menu-icon' ] );
+                ?>
+            </button>
+            <?php
+            
+            
             $link = $target = $nofollow = '';
 
             if (isset($settings['thwidgetpack_nav_menu_logo_link_to']) && $settings['thwidgetpack_nav_menu_logo_link_to'] == 'home') {
@@ -1446,7 +1471,7 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 $nofollow = ($settings['thwidgetpack_nav_menu_logo_link']['nofollow'] != "on" ? "" : "nofollow");
             }
 
-            $metadata = '';//\ElementsKit_Lite\Utils::img_meta($settings['thwidgetpack_nav_menu_logo']['id']);
+            $metadata = '';//\thwidgetpack_Lite\Utils::img_meta($settings['thwidgetpack_nav_menu_logo']['id']);
             $markup = '
 				<div class="thwidgetpack-nav-identity-panel">
 					<div class="thwidgetpack-site-title">

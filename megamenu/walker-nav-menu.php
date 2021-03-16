@@ -206,7 +206,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             $atts['class']       .= ' ekit-menu-dropdown-toggle';
         }
         if (in_array('menu-item-has-children', $classes) || $is_megamenu_item == true) {
-            $submenu_indicator    .= '<i class="icon icon-down-arrow1 thwidgetpack-submenu-indicator"></i>';
+            $submenu_indicator    .= '<i class="icon-arrows-down thwidgetpack-submenu-indicator"></i>';
         }
         if ($depth > 0) {
             $manual_class = array_values($classes)[0] .' '. 'dropdown-item';
