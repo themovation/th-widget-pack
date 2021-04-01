@@ -5,10 +5,6 @@
             <ul class="tb-nav tb-nav-tabs ekit_menu_control_nav" role="tablist">
                     <li role="presentation" id="attr_content_nav" class="attr-active"><a class="attr-nav-link" href="#attr_content_tab" aria-controls="attr_content_tab"
                             role="tab" data-attr-toggle="tab"><?php esc_html_e('Content', 'th-widget-pack'); ?></a></li>
-                    <li role="presentation" id="attr_icon_nav"><a class="attr-nav-link widgetpack-labal" href="#attr_icon_tab" aria-controls="attr_icon_tab" role="tab"
-                            data-attr-toggle="tab"><?php esc_html_e('Icon', 'th-widget-pack'); ?></a></li>
-                    <li role="presentation" id="attr_badge_nav"><a class="attr-nav-link widgetpack-labal" href="#attr_badge_tab" aria-controls="attr_badge_tab"
-                            role="tab" data-attr-toggle="tab"><?php esc_html_e('Badge', 'th-widget-pack'); ?></a></li>
                     <li role="presentation" id="attr_badge_nav"><a class="attr-nav-link" href="#attr_vertical_menu_setting_tab" aria-controls="attr_vertical_menu_setting_tab"
                             role="tab" data-attr-toggle="tab"><?php esc_html_e('Settings', 'th-widget-pack'); ?></a></li>
                 </ul>
@@ -23,20 +19,20 @@
                         </div>
                         <div id="thwidgetpack-menu-builder-warper">
                             <small
-                                class="thwidgetpack-menu-mega-submenu enabled_item"><?php esc_html_e('Megamenu enabled', 'th-widget-pack'); ?></small>
+                                class="thwidgetpack-menu-mega-submenu enabled_item"><?php esc_html_e('Activated', 'th-widget-pack'); ?></small>
                             <small
-                                class="thwidgetpack-menu-mega-submenu disabled_item"><?php esc_html_e('Megamenu disabled', 'th-widget-pack'); ?></small>
+                                class="thwidgetpack-menu-mega-submenu disabled_item"><?php esc_html_e('Deactivated', 'th-widget-pack'); ?></small>
 
                             <button disabled type="button" id="thwidgetpack-menu-builder-trigger"
                                 class="thwidgetpack-menu-elementor-button button" data-attr-toggle="modal"
                                 data-target="#thwidgetpack-menu-builder-modal">
                                 <img src="<?php echo THEMO_URL . 'megamenu/assets/images/elementor-icon.png'; ?>"
                                     alt="Widget Pack megamenu" />
-                                <?php esc_html_e('Edit megamenu content', 'th-widget-pack'); ?>
+                                <?php esc_html_e('Edit Mega Menu', 'th-widget-pack'); ?>
                             </button>
 
                             <div id="mobile_submenu_content_type" class="widgetpack-labal widgetpack-labal-container">
-                                <strong><?php esc_html_e('Use mobile submenu as:', 'th-widget-pack'); ?></strong>
+                                <strong><?php esc_html_e('Mobile Submenu:', 'th-widget-pack'); ?></strong>
                                 <span><input type="radio" name="content_type" checked value="builder_content"> <?php esc_html_e('builder content', 'th-widget-pack'); ?></span>
                                 <span><input type="radio" name="content_type" value="submenu_list"> <?php esc_html_e('wp submenu list', 'th-widget-pack'); ?></span>
                             </div>
@@ -109,14 +105,14 @@
                         <table class="option-table">
                             <tbody class="xs_menu_settings_panel">
                                 <tr id="xs_megamenu_width_type">
-                                    <td><strong><?php esc_html_e('Mega Menu Width as:', 'th-widget-pack'); ?></strong></td>
+                                    <td><strong><?php esc_html_e('Width:', 'th-widget-pack'); ?></strong></td>
                                     <td class="alignright ekit_width_lists">
                                         <input type="radio" name="width_type" id="width_type_default" value="default_width" checked>
-                                        <label for="width_type_default"><?php esc_html_e('Default Width', 'th-widget-pack'); ?></label>
+                                        <label for="width_type_default"><?php esc_html_e('Default', 'th-widget-pack'); ?></label>
                                         <input type="radio" id="width_type_full" name="width_type" value="full_width">
-                                        <label for="width_type_full"><?php esc_html_e('Full Width', 'th-widget-pack'); ?></label>
+                                        <label for="width_type_full"><?php esc_html_e('Full', 'th-widget-pack'); ?></label>
                                         <input type="radio" id="width_type_custom" name="width_type" value="custom_width">
-                                        <label for="width_type_custom"><?php esc_html_e('Custom Width', 'th-widget-pack'); ?></label>
+                                        <label for="width_type_custom"><?php esc_html_e('Custom', 'th-widget-pack'); ?></label>
                                     </td>
                                 </tr>
                                 <tr class="menu-width-container">
@@ -126,7 +122,7 @@
                                     </td>
                                 </tr>
                                 <tr id="vertical_megamenu_position_type">
-                                    <td><strong><?php esc_html_e('Mega Menu Position as:', 'th-widget-pack'); ?></strong></td>
+                                    <td><strong><?php esc_html_e('Position:', 'th-widget-pack'); ?></strong></td>
                                     <td class="alignright">
                                         <input type="radio" id="position_type_top" name="position_type" value="top_position">
                                         <label for="position_type_top"><?php esc_html_e('Default', 'th-widget-pack'); ?></label>

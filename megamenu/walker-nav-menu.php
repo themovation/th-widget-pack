@@ -254,7 +254,6 @@ class Menu_Walker extends \Walker_Nav_Menu
             if($item_meta['menu_badge_text'] != ''){
                 $badge_style = 'background:' . $item_meta['menu_badge_background'] . '; color:' . $item_meta['menu_badge_color'];
                 $badge_carret_style = 'border-top-color:' . $item_meta['menu_badge_background'];
-                $item_output .= '<span style="'.$badge_style.'" class="ekit-menu-badge">'.$item_meta['menu_badge_text'].'<i style="'.$badge_carret_style.'" class="ekit-menu-badge-arrow"></i></span>';
             }
 
             // add menu icon & style
