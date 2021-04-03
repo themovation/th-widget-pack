@@ -93,7 +93,6 @@ class Widgets_Loader {
 			'retina',
 			'copyright',
 			'copyright-shortcode',
-			'navigation-menu',
 			'menu-walker',
 			'site-title',
 			'page-title',
@@ -182,7 +181,7 @@ class Widgets_Loader {
 		// Register Widgets.
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Retina() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Copyright() );
-		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Navigation_Menu() );
+		//Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Navigation_Menu() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Page_Title() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Site_Title() );
 		Plugin::instance()->widgets_manager->register_widget_type( new Widgets\Site_Tagline() );
