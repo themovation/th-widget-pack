@@ -12,11 +12,11 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Navigation Menu', 'th-widget-pack' );
+        return __( 'Nav Menu', 'th-widget-pack' );
     }
 
     public function get_icon() {
-        return 'thhf-icon-navigation-menu';
+        return 'eicon-nav-menu';
     }
 
     public function get_categories() {
@@ -55,7 +55,6 @@ class Themo_Widget_Nav_Menu extends Widget_Base {
                 'label'     =>esc_html__( 'Select menu', 'th-widget-pack' ),
                 'type'      => Controls_Manager::SELECT,
                 'options'   => $this->get_menus(),
-                'default'   => array_keys( $this->get_menus() )[0]
             ]
         );
 
