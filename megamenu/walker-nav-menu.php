@@ -200,7 +200,7 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         // New
         if ($depth === 0) {
-            $atts['class'] = 'ekit-menu-nav-link';
+            $atts['class'] = 'ekit-menu-nav-link hfe-menu-item';
         }
         if ($depth === 0 && in_array('menu-item-has-children', $classes)) {
             $atts['class']       .= ' ekit-menu-dropdown-toggle';
@@ -266,8 +266,14 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         /** This filter is documented in wp-includes/post-template.php */
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        if ( $args->has_children ) {
+			$item_output .= "<span class='hfe-menu-toggle sub-arrow hfe-menu-child-";
+			$item_output .= $depth;
+			$item_output .= "'><i class='fa'></i></span>";
+		}
         $item_output .= $submenu_indicator . '</a>';
         $item_output .= $args->after;
+        $item_output .= $args->has_children ? '</div>' : '';
         /**
          * Filter a menu item's starting output.
          *

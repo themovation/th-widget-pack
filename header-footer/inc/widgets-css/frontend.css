@@ -9,7 +9,7 @@ ul.hfe-nav-menu,
 }
 
 .hfe-nav-menu li.menu-item {
-    position: relative;
+    position: static;
 }
 
 .hfe-flyout-container .hfe-nav-menu li.menu-item {

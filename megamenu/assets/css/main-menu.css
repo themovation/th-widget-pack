@@ -230,6 +230,7 @@
         left: 0;
         top: 100%;
         display: block;
+        z-index: 999;
     }
 }
 @media (min-width: 1025px) {
