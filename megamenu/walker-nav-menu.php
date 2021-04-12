@@ -116,7 +116,7 @@ class Menu_Walker extends \Walker_Nav_Menu
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
         $classes[] = 'menu-item-' . $item->ID;
-
+        $submenu = $args->has_children ? ' hfe-has-submenu' : '';
 
         /**
          * Filter the CSS class(es) applied to a menu item's list item element.

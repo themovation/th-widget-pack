@@ -215,7 +215,7 @@ div.hfe-nav-menu,
 
 .hfe-nav-menu a.hfe-menu-item,
 .hfe-nav-menu a.hfe-sub-menu-item {
-    line-height: 1;
+    line-height: 1.6;
     text-decoration: none;
     -js-display: flex;
     display: -webkit-box;

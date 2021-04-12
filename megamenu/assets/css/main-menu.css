@@ -333,6 +333,7 @@
         transform: translateY(-10px);
         pointer-events: none;
         max-height: none;
+        z-index: 999;
     }
     .thwidgetpack-dropdown-has:hover > .thwidgetpack-dropdown {
         opacity: 1;
