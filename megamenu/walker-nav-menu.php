@@ -82,7 +82,7 @@ class Menu_Walker extends \Walker_Nav_Menu
      */
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"thwidgetpack-dropdown thwidgetpack-submenu-panel\">\n";
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
     }
     /**
      * Ends the list of after the elements are added.
@@ -116,7 +116,7 @@ class Menu_Walker extends \Walker_Nav_Menu
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
         $classes[] = 'menu-item-' . $item->ID;
-        $submenu = $args->has_children ? ' hfe-has-submenu' : '';
+        //$submenu = $args->has_children ? ' hfe-has-submenu' : '';
 
         /**
          * Filter the CSS class(es) applied to a menu item's list item element.
@@ -131,12 +131,12 @@ class Menu_Walker extends \Walker_Nav_Menu
          */
         $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
         // New
-        $class_names .= ' nav-item';
+        $class_names .= ' nav-item hfe-creative-menu';
         $item_meta = $this->get_item_meta($item->ID);
         $is_megamenu_item = $this->is_megamenu_item($item_meta, $args->menu);
 
         if (in_array('menu-item-has-children', $classes) || $is_megamenu_item == true) {
-            $class_names .= ' thwidgetpack-dropdown-has '.$item_meta['vertical_megamenu_position_type'].' thwidgetpack-dropdown-menu-'.$item_meta['megamenu_width_type'].'';
+            $class_names .= ' hfe-has-submenu thwidgetpack-dropdown-has '.$item_meta['vertical_megamenu_position_type'].' thwidgetpack-dropdown-menu-'.$item_meta['megamenu_width_type'].'';
         }
 
         if ($is_megamenu_item == true) {
@@ -243,25 +243,34 @@ class Menu_Walker extends \Walker_Nav_Menu
                 $attributes .= ' ' . $attr . '="' . $value . '"';
             }
         }
-        $item_output = $args->before;
-        // New
 
-        //
-        $item_output .= '<a'. $attributes .'>';
+        $item_output  = $args->has_children ? '<div class="hfe-has-submenu-container">' : '';
+        $item_output .= $args->before;
+        
+        //$item_output .= '<a'. $attributes .'>';
 
-        if($this->is_megamenu($args->menu) == 1){
-            // add badge text
-            if($item_meta['menu_badge_text'] != ''){
-                $badge_style = 'background:' . $item_meta['menu_badge_background'] . '; color:' . $item_meta['menu_badge_color'];
-                $badge_carret_style = 'border-top-color:' . $item_meta['menu_badge_background'];
-            }
+        $item_output .= '<a' . $attributes;
+		if ( 0 === $depth ) {
+			$item_output .= ' class = "hfe-menu-item"';
+		} else {
+			$item_output .= in_array( 'current-menu-item', $item->classes ) ? ' class = "hfe-sub-menu-item hfe-sub-menu-item-active"' : ' class = "hfe-sub-menu-item"';
+		}
 
-            // add menu icon & style
-            if($item_meta['menu_icon'] != ''){
-                $icon_style = 'color:'.$item_meta['menu_icon_color'];
-                $item_output .= '<i class="ekit-menu-icon '.$item_meta['menu_icon'].'" style="'.$icon_style.'" ></i>';
-            }
-        }
+		$item_output .= '>';
+
+        // if($this->is_megamenu($args->menu) == 1){
+        //     // add badge text
+        //     if($item_meta['menu_badge_text'] != ''){
+        //         $badge_style = 'background:' . $item_meta['menu_badge_background'] . '; color:' . $item_meta['menu_badge_color'];
+        //         $badge_carret_style = 'border-top-color:' . $item_meta['menu_badge_background'];
+        //     }
+
+        //     // add menu icon & style
+        //     if($item_meta['menu_icon'] != ''){
+        //         $icon_style = 'color:'.$item_meta['menu_icon_color'];
+        //         $item_output .= '<i class="ekit-menu-icon '.$item_meta['menu_icon'].'" style="'.$icon_style.'" ></i>';
+        //     }
+        // }
 
 
         /** This filter is documented in wp-includes/post-template.php */
