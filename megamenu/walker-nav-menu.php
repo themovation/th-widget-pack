@@ -113,6 +113,7 @@ class Menu_Walker extends \Walker_Nav_Menu
      * @param int    $id     Current item ID.
      */
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $args   = (object) $args;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
         $classes[] = 'menu-item-' . $item->ID;
@@ -196,8 +197,6 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         $submenu_indicator = '';
 
-
-
         // New
         if ($depth === 0) {
             $atts['class'] = 'ekit-menu-nav-link hfe-menu-item';
@@ -244,7 +243,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             }
         }
 
-        $item_output  = $args->has_children ? '<div class="hfe-has-submenu-container">' : '';
+        $item_output  = $args->walker->has_children ? '<div class="hfe-has-submenu-container">' : '';
         $item_output .= $args->before;
         
         //$item_output .= '<a'. $attributes .'>';
@@ -275,14 +274,15 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         /** This filter is documented in wp-includes/post-template.php */
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-        if ( $args->has_children ) {
+        if ( $args->walker->has_children ) {
 			$item_output .= "<span class='hfe-menu-toggle sub-arrow hfe-menu-child-";
 			$item_output .= $depth;
 			$item_output .= "'><i class='fa'></i></span>";
 		}
-        $item_output .= $submenu_indicator . '</a>';
+        $item_output .= '</a>';
+        //$item_output .= $submenu_indicator . '</a>';
         $item_output .= $args->after;
-        $item_output .= $args->has_children ? '</div>' : '';
+        $item_output .= $args->walker->has_children ? '</div>' : '';
         /**
          * Filter a menu item's starting output.
          *
