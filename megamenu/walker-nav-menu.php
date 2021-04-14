@@ -208,7 +208,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             $submenu_indicator    .= '<i class="icon-arrows-down thwidgetpack-submenu-indicator"></i>';
         }
         if ($depth > 0) {
-            $manual_class = array_values($classes)[0] .' '. 'dropdown-item';
+            $manual_class = array_values($classes)[0] .' '. 'hfe-sub-menu-item';
             $atts ['class']= $manual_class;
         }
         if (in_array('current-menu-item', $item->classes)) {
@@ -313,7 +313,7 @@ class Menu_Walker extends \Walker_Nav_Menu
      */
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
         if ($depth === 0) {
-            //if($this->is_megamenu($args->menu) == 1){
+            if($this->is_megamenu($args->menu) == 1){
                 $item_meta = $this->get_item_meta($item->ID);
 
                 if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
@@ -329,7 +329,7 @@ class Menu_Walker extends \Walker_Nav_Menu
 
                     $output .= '</ul>';
                 }
-            //}
+            }
             $output .= "</li>\n";
         }
     }
