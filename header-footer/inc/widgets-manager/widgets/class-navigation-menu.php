@@ -1878,30 +1878,6 @@ class Navigation_Menu extends Widget_Base {
 			'walker'      => new \ThWidgetPack\Menu_Walker,
 		];
 
-		// $args = [
-		// 	'echo'        => false,
-		// 	'menu'        => $settings['menu'],
-		// 	'menu_class'  => 'hfe-nav-menu',
-		// 	'menu_id'     => 'menu-' . $this->get_nav_menu_index() . '-' . $this->get_id(),
-		// 	'fallback_cb' => '__return_empty_string',
-		// 	'container'   => '',
-		// 	'walker'      => new Menu_Walker,
-		// ];
-
-		// $args = [
-		// 	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>' . $markup,
-		// 	'container'       => 'div',
-		// 	'container_id'    => 'ekit-megamenu-' . $settings['menu'],
-		// 	'container_class' => 'thwidgetpack-menu-container thwidgetpack-menu-offcanvas-elements thwidgetpack-navbar-nav ' . $settings['thwidgetpack_style_tab_submenu_item_arrow'] . ' ekit-nav-menu-one-page-' . $settings['thwidgetpack_one_page_enable'],
-		// 	'menu_id'         => 'main-menu',
-		// 	'menu'         	  => $settings['menu'],
-		// 	'menu_class'      => 'thwidgetpack-navbar-nav hfe-nav-menu' . $settings['thwidgetpack_main_menu_position'] .' submenu-click-on-'. $settings['submenu_click_area'],
-		// 	'depth'           => 4,
-		// 	'echo'            => true,
-		// 	'fallback_cb'     => 'wp_page_menu',
-		// 	'walker'          => (class_exists('\ThWidgetPack\Menu_Walker') ? new \ThWidgetPack\Menu_Walker() : '' )
-		// ];
-
 		if ( 'yes' === $settings['schema_support'] ) {
 			$this->add_render_attribute( 'hfe-nav-menu', 'itemscope', 'itemscope' );
 			$this->add_render_attribute( 'hfe-nav-menu', 'itemtype', 'http://schema.org/SiteNavigationElement' );

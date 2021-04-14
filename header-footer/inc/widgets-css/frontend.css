@@ -9,8 +9,13 @@ ul.hfe-nav-menu,
 }
 
 .hfe-nav-menu li.menu-item {
+    position: relative;
+}
+
+.hfe-nav-menu li.menu-item.thwidgetpack-megamenu-has {
     position: static;
 }
+
 
 .hfe-flyout-container .hfe-nav-menu li.menu-item {
     position: relative;

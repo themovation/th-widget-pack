@@ -257,21 +257,6 @@ class Menu_Walker extends \Walker_Nav_Menu
 
 		$item_output .= '>';
 
-        // if($this->is_megamenu($args->menu) == 1){
-        //     // add badge text
-        //     if($item_meta['menu_badge_text'] != ''){
-        //         $badge_style = 'background:' . $item_meta['menu_badge_background'] . '; color:' . $item_meta['menu_badge_color'];
-        //         $badge_carret_style = 'border-top-color:' . $item_meta['menu_badge_background'];
-        //     }
-
-        //     // add menu icon & style
-        //     if($item_meta['menu_icon'] != ''){
-        //         $icon_style = 'color:'.$item_meta['menu_icon_color'];
-        //         $item_output .= '<i class="ekit-menu-icon '.$item_meta['menu_icon'].'" style="'.$icon_style.'" ></i>';
-        //     }
-        // }
-
-
         /** This filter is documented in wp-includes/post-template.php */
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
         if ( $args->walker->has_children ) {
