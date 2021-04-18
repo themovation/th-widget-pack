@@ -82,7 +82,7 @@ class Menu_Walker extends \Walker_Nav_Menu
      */
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $output .= "\n$indent<ul class=\"sub-menu thwidgetpack-dropdown thwidgetpack-submenu-panel\">\n";
     }
     /**
      * Ends the list of after the elements are added.
@@ -151,7 +151,6 @@ class Menu_Walker extends \Walker_Nav_Menu
         if (in_array('current-menu-item', $classes)) {
             $class_names .= ' active';
         }
-
 
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
@@ -262,7 +261,7 @@ class Menu_Walker extends \Walker_Nav_Menu
         if ( $args->walker->has_children ) {
 			$item_output .= "<span class='hfe-menu-toggle sub-arrow hfe-menu-child-";
 			$item_output .= $depth;
-			$item_output .= "'><i class='fa'></i></span>";
+			$item_output .= "'><i class='fa thwidgetpack-submenu-indicator'></i></span>";
 		}
         $item_output .= '</a>';
         //$item_output .= $submenu_indicator . '</a>';

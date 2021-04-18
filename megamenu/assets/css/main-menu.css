@@ -56,6 +56,10 @@
 .thwidgetpack-navbar-nav .thwidgetpack-navbar-nav > li.thwidgetpack-megamenu-has {
     position: static;
 }
+
+.thwidgetpack-navbar-nav .thwidgetpack-megamenu-has .sub-menu {
+    display: none;
+}
 .thwidgetpack-navbar-nav .thwidgetpack-navbar-nav > li > a {
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
@@ -316,9 +320,9 @@
         border: 0;
         margin-left: 0;
     }
-    .thwidgetpack-navbar-nav .thwidgetpack-megamenu-panel {
+    /* .thwidgetpack-navbar-nav .thwidgetpack-megamenu-panel {
         display: none;
-    }
+    } */
     .thwidgetpack-navbar-nav .thwidgetpack-navbar-nav > .thwidgetpack-dropdown-has > .thwidgetpack-dropdown li a {
         padding-left: 15px;
     }
