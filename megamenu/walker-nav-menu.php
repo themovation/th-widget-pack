@@ -242,7 +242,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             }
         }
 
-        $item_output  = $args->walker->has_children ? '<div class="hfe-has-submenu-container">' : '';
+        $item_output  = $args->walker->has_children || $is_megamenu_item ? '<div class="hfe-has-submenu-container">' : '';
         $item_output .= $args->before;
         
         //$item_output .= '<a'. $attributes .'>';
@@ -258,7 +258,7 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         /** This filter is documented in wp-includes/post-template.php */
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-        if ( $args->walker->has_children ) {
+        if ( $args->walker->has_children || $is_megamenu_item ) {
 			$item_output .= "<span class='hfe-menu-toggle sub-arrow hfe-menu-child-";
 			$item_output .= $depth;
 			$item_output .= "'><i class='fa thwidgetpack-submenu-indicator'></i></span>";
@@ -266,7 +266,7 @@ class Menu_Walker extends \Walker_Nav_Menu
         $item_output .= '</a>';
         //$item_output .= $submenu_indicator . '</a>';
         $item_output .= $args->after;
-        $item_output .= $args->walker->has_children ? '</div>' : '';
+        $item_output .= $args->walker->has_children || $is_megamenu_item ? '</div>' : '';
         /**
          * Filter a menu item's starting output.
          *
@@ -303,7 +303,7 @@ class Menu_Walker extends \Walker_Nav_Menu
                 if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
                     $builder_post_title = 'dynamic-content-megamenu-menuitem' . $item->ID;
                     $builder_post = get_page_by_title($builder_post_title, OBJECT, 'thwidgetpack_content');
-                    $output .= '<ul class="thwidgetpack-megamenu-panel">';
+                    $output .= '<ul class="sub-menu thwidgetpack-megamenu-panel">';
                     if($builder_post != null){
                         $elementor = \Elementor\Plugin::instance();
                         $output .= $elementor->frontend->get_builder_content_for_display( $builder_post->ID );
