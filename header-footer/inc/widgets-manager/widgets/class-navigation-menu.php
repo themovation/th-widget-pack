@@ -231,7 +231,7 @@ class Navigation_Menu extends Widget_Base {
 			]
 		);
 
-		/*$this->add_control(
+		$this->add_control(
 			'schema_support',
 			[
 				'label'        => __( 'Enable Schema Support', 'header-footer-elementor' ),
@@ -242,7 +242,7 @@ class Navigation_Menu extends Widget_Base {
 				'default'      => 'no',
 				'render_type'  => 'template',
 			]
-		);*/
+		);
 
 		$this->end_controls_section();
 

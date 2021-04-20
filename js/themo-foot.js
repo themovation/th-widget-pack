@@ -278,6 +278,63 @@ jQuery(window).on('load',function ($) {
     themo_active_lightbox();
 });
 
+var Nav_Menu = function (t) {
+    if (t.find(".thwidgetpack-megamenu-has").length > 0) {
+        let n = t.find(".ekit-wid-con").data("responsive-breakpoint"),
+            i = t.find(".thwidgetpack-megamenu-has"),
+            s = t.find(".thwidgetpack-menu-container").outerHeight();
+        e(window)
+            .on("resize", function () {
+                t.find(".thwidgetpack-megamenu-panel").css({ top: s });
+            })
+            .trigger("resize"),
+            i.on("mouseenter", function () {
+                let t = e(this).data("vertical-menu"),
+                    i = e(this).children(".thwidgetpack-megamenu-panel");
+                if (e(this).hasClass("thwidgetpack-dropdown-menu-full_width") && e(this).hasClass("top_position")) {
+                    let t = Math.floor(e(this).position().left - e(this).offset().left),
+                        n = e(this);
+                    n.find(".thwidgetpack-megamenu-panel").css("max-width", e(window).width()),
+                        e(window)
+                            .on("resize", function () {
+                                n.find(".thwidgetpack-megamenu-panel").css({ left: t + "px" });
+                            })
+                            .trigger("resize");
+                }
+                !e(this).hasClass("thwidgetpack-dropdown-menu-full_width") &&
+                    e(this).hasClass("top_position") &&
+                    e(this).on({
+                        mouseenter: function () {
+                            0 === e(".default_menu_position").length && e(this).parents(".elementor-section-wrap").addClass("default_menu_position");
+                        },
+                        mouseleave: function () {
+                            0 !== e(".default_menu_position").length && e(this).parents(".elementor-section-wrap").removeClass("default_menu_position");
+                        },
+                    }),
+                    t && t !== undefined
+                        ? "string" == typeof t
+                            ? /^[0-9]/.test(t)
+                                ? e(window)
+                                      .on("resize", function () {
+                                          i.css({ width: t }), e(document).width() > Number(n) || i.removeAttr("style");
+                                      })
+                                      .trigger("resize")
+                                : e(window)
+                                      .on("resize", function () {
+                                          i.css({ width: t + "px" }), e(document).width() > Number(n) || i.removeAttr("style");
+                                      })
+                                      .trigger("resize")
+                            : i.css({ width: t + "px" })
+                        : e(window)
+                              .on("resize", function () {
+                                  i.css({ width: t + "px" }), e(document).width() > Number(n) || i.removeAttr("style");
+                              })
+                              .trigger("resize");
+            }),
+            i.trigger("mouseenter");
+    }
+};
+
 
 jQuery(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction( 'frontend/element_ready/image-carousel.default', function( $scope ) {
@@ -308,6 +365,8 @@ jQuery(window).on('elementor/frontend/init', function () {
 
         //console.log('HELLO');
     } );
+
+    elementorFrontend.hooks.addAction( 'frontend/element_ready/themo-nav-menu.default', Nav_Menu);
 })
 
 //-----------------------------------------------------
