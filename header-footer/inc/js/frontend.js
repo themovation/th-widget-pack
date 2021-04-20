@@ -410,42 +410,42 @@
 
 						event.preventDefault();
 
-		  				$this.next().css( 'position', 'relative' );	
+		  				$this.nextAll(':lt(2)').css( 'position', 'relative' );	
 					}else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 767px )" ).matches && ($( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile'))) {
 						
 						event.preventDefault();
 
-		  				$this.next().css( 'position', 'relative' );	
+		  				$this.nextAll(':lt(2)').css( 'position', 'relative' );	
 					}else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 1024px )" ).matches && ( $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile'))) {
 						
 						event.preventDefault();	
 
-		  				$this.next().css( 'position', 'relative' );	
+		  				$this.nextAll(':lt(2)').css( 'position', 'relative' );	
 					}	
 	  			
 					$this.removeClass( 'sub-menu-active' );
-					$this.next().removeClass( 'sub-menu-open' );
-					$this.next().css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
-					$this.next().css( { 'transition': 'none'} );										
+					$this.nextAll(':lt(2)').removeClass( 'sub-menu-open' );
+					$this.nextAll(':lt(2)').css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
+					$this.nextAll(':lt(2)').css( { 'transition': 'none'} );										
 		  		}else{
 
 		  			$this.find( 'a' ).attr( 'aria-expanded', 'false' );
 		  			
 		  			$this.removeClass( 'sub-menu-active' );
-					$this.next().removeClass( 'sub-menu-open' );
-					$this.next().css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
-					$this.next().css( { 'transition': 'none'} );	
+					$this.nextAll(':lt(2)').removeClass( 'sub-menu-open' );
+					$this.nextAll(':lt(2)').css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
+					$this.nextAll(':lt(2)').css( { 'transition': 'none'} );	
 						  			  			
 					if ( 'horizontal' !== layout ){
 
-						$this.next().css( 'position', 'relative' );
+						$this.nextAll(':lt(2)').css( 'position', 'relative' );
 					} else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 767px )" ).matches && ($( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile'))) {
 						
-						$this.next().css( 'position', 'relative' );	
+						$this.nextAll(':lt(2)').css( 'position', 'relative' );	
 						
 					} else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 1024px )" ).matches && ( $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile'))) {
 						
-						$this.next().css( 'position', 'absolute' );				
+						$this.nextAll(':lt(2)').css( 'position', 'absolute' );				
 					}	  								
 		  		}		  											
 			}else {
@@ -454,27 +454,27 @@
 					if ( 'horizontal' !== layout ) {
 						
 						event.preventDefault();
-			  			$this.next().css( 'position', 'relative');			
+			  			$this.nextAll(':lt(2)').css( 'position', 'relative');			
 					} else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 767px )" ).matches && ($( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile'))) {
 						
 						event.preventDefault();
-	  					$this.next().css( 'position', 'relative');		  					
+	  					$this.nextAll(':lt(2)').css( 'position', 'relative');		  					
 					} else if ( 'horizontal' === layout && window.matchMedia( "( max-width: 1024px )" ).matches ) {
 						event.preventDefault();
 
 	  					if ( $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') ) {
 
-	  						$this.next().css( 'position', 'relative');	
+	  						$this.nextAll(':lt(2)').css( 'position', 'relative');	
 	  					} else if ( $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile') || $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-none') ) {
 	  						
-	  						$this.next().css( 'position', 'absolute');	
+	  						$this.nextAll(':lt(2)').css( 'position', 'absolute');	
 	  					}
 	  				}	
 	  					
 				$this.addClass( 'sub-menu-active' );
-				$this.next().addClass( 'sub-menu-open' );	
-				$this.next().css( { 'visibility': 'visible', 'opacity': '1', 'height': 'auto' } );
-				$this.next().css( { 'transition': '0.3s ease'} );								
+				$this.nextAll(':lt(2)').addClass( 'sub-menu-open' );	
+				$this.nextAll(':lt(2)').css( { 'visibility': 'visible', 'opacity': '1', 'height': 'auto' } );
+				$this.nextAll(':lt(2)').css( { 'transition': '0.3s ease'} );								
 			}
 		});
 

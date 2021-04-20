@@ -146,6 +146,8 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         if ($item_meta['mobile_submenu_content_type'] == 'builder_content') {
             $class_names .= ' thwidgetpack-mobile-builder-content';
+        } else {
+            $class_names .= ' thwidgetpack-mobile-mega-list';
         }
 
         if (in_array('current-menu-item', $classes)) {
@@ -300,7 +302,7 @@ class Menu_Walker extends \Walker_Nav_Menu
             if($this->is_megamenu($args->menu) == 1){
                 $item_meta = $this->get_item_meta($item->ID);
 
-                if($item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ){
+                if( $item_meta['menu_enable'] == 1 && class_exists( 'Elementor\Plugin' ) ) {
                     $builder_post_title = 'dynamic-content-megamenu-menuitem' . $item->ID;
                     $builder_post = get_page_by_title($builder_post_title, OBJECT, 'thwidgetpack_content');
                     $output .= '<ul class="sub-menu thwidgetpack-megamenu-panel">';
