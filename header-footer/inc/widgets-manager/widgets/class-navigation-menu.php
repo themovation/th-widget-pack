@@ -1875,7 +1875,7 @@ class Navigation_Menu extends Widget_Base {
 			'menu_id'     => 'menu-' . $this->get_nav_menu_index() . '-' . $this->get_id(),
 			'fallback_cb' => '__return_empty_string',
 			'container'   => '',
-			'walker'      => new Menu_Walker,
+			'walker'      => new \ThWidgetPack\Menu_Walker(),
 		];
 
 		/*if ( 'yes' === $settings['schema_support'] ) {
