@@ -94,7 +94,6 @@ class Widgets_Loader {
 			'copyright',
 			'copyright-shortcode',
 			'navigation-menu',
-			'menu-walker',
 			'site-title',
 			'page-title',
 			'site-tagline',

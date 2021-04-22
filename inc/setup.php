@@ -24,7 +24,6 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         require_once THEMO_PATH . 'elements/service-block.php';
         require_once THEMO_PATH . 'elements/formidable-form.php';
         require_once THEMO_PATH . 'elements/info-card.php';
-        require_once THEMO_PATH . 'elements/nav-menu.php';
 
         if('bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/team_2.php';
