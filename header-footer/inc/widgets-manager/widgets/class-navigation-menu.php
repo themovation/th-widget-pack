@@ -1871,7 +1871,7 @@ class Navigation_Menu extends Widget_Base {
 		$args = [
 			'echo'        => false,
 			'menu'        => $settings['menu'],
-			'menu_class'  => 'hfe-nav-menu',
+			'menu_class'  => 'hfe-nav-menu thwidgetpack-navbar-nav',
 			'menu_id'     => 'menu-' . $this->get_nav_menu_index() . '-' . $this->get_id(),
 			'fallback_cb' => '__return_empty_string',
 			'container'   => '',
