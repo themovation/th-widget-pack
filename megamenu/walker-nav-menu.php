@@ -142,12 +142,12 @@ class Menu_Walker extends \Walker_Nav_Menu
 
         if ($is_megamenu_item == true) {
             $class_names .= ' thwidgetpack-megamenu-has';
-        }
 
-        if ($item_meta['mobile_submenu_content_type'] == 'builder_content') {
-            $class_names .= ' thwidgetpack-mobile-builder-content';
-        } else {
-            $class_names .= ' thwidgetpack-mobile-mega-list';
+            if ($item_meta['mobile_submenu_content_type'] == 'builder_content') {
+                $class_names .= ' thwidgetpack-mobile-builder-content';
+            } else {
+                $class_names .= ' thwidgetpack-mobile-mega-list';
+            }
         }
 
         if (in_array('current-menu-item', $classes)) {
