@@ -261,7 +261,7 @@ class THHF_Admin {
 	 */
 	public function register_admin_menu() {
 
-        if('stratus' == THEMO_CURRENT_THEME){
+        if('stratus' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME){
             add_submenu_page(
                 'stratus_dashboard',
                 __( 'Header & Footer', 'header-footer-elementor' ),

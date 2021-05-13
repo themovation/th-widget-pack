@@ -180,7 +180,7 @@ class Widgets_Loader {
 		// Its is now safe to include Widgets files.
 		$this->include_widgets_files();
 		// Register Widgets.
-        if('stratus' == THEMO_CURRENT_THEME) {
+        if('stratus' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME) {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Retina());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Copyright());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Navigation_Menu());
