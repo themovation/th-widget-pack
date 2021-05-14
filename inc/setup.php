@@ -225,6 +225,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
             array_push($elementor_cpt_support,"product");
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
+        // Enable Elementor Support for HFE
+        if (!in_array("elementor-thhf", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"elementor-thhf");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
 
     }
 }
