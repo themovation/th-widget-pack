@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Page Builder Widget Pack
- * Version: 2.1
+ * Version: 2.1.2
  * Plugin URI: themovation.com
  * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation
@@ -12,7 +12,7 @@
  */
 
 
-define( 'THEMO_VERSION', '2.1' );
+define( 'THEMO_VERSION', '2.1.2' );
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
@@ -52,3 +52,25 @@ if ( ! function_exists( 'th_translation_ready' ) ) :
 endif;
 
 add_action( 'plugins_loaded', 'th_translation_ready' );
+
+/**
+ * Load the header footer class loader.
+ */
+require_once THEMO_PATH . 'header-footer/inc/class-header-footer-elementor.php';
+
+/**
+ * Load the Plugin Class.
+ */
+function thmv_hfe_init() {
+	THHF_Header_Footer_Elementor::instance();
+}
+
+add_action( 'plugins_loaded', 'thmv_hfe_init' );
+
+// Enable white label for HFE and deactivate analytics tracking.
+function thmv_set_white_label_opt(){
+    $thmv_white_label_opt = array("option" => true);
+    return $thmv_white_label_opt;
+}
+add_filter( 'bsf_white_label_options', 'thmv_set_white_label_opt' );
+
