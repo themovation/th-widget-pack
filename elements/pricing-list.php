@@ -39,11 +39,28 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 		$this->start_controls_section(
 			'section_pricing',
 			[
-				'label' => __( 'Pricing List', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 			]
 		);
 
         $repeater = new Repeater();
+
+        $repeater->add_control(
+            'thmv_icon', [
+                'label' => __( 'Icon', 'th-widget-pack' ),
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-wifi',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => [
+                    'style' => [ 'style_3'],
+                ],
+
+            ]
+        );
 
         $repeater->add_control(
             'price_title', [
@@ -276,6 +293,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'section_layout',
             [
                 'label' => __( 'Layout', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
@@ -287,7 +305,8 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'default' => 'style_1',
                 'options' => [
                     'style_1' => __( 'Style 1', 'th-widget-pack' ),
-                    'style_2' => __( 'Style 2', 'th-widget-pack' )
+                    'style_2' => __( 'Style 2', 'th-widget-pack' ),
+                    'style_3' => __( 'Style 3', 'th-widget-pack' ),
                 ],
             ]
         );
@@ -633,11 +652,140 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             $th_list_style_2 = true;
         }
 
+        switch( $settings['style'] ) {
+            case "style_1":
+                ?>
+                <div <?php echo $this->get_render_attribute_string( 'th-price-list-class'); ?>>
+
+                    <?php $th_counter=0; foreach( $settings['pricing'] as $column ) { ?>
+
+                        <?php ++$th_counter; ?>
+
+
+                        <?php
+
+                        if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) {
+
+                            // Graphic Button 1
+                            $button_1_image = false;
+                            if ( isset( $column['button_1_image']['id'] ) && $column['button_1_image']['id'] > "" ) {
+                                $button_1_image = wp_get_attachment_image( $column['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
+                            }elseif ( ! empty( $column['button_1_image']['url'] ) ) {
+                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $column['button_1_image']['url'] ) );
+                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_1_image'] ) ) );
+                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_1_image'] ) ) );
+                                $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
+                            }
+                            // Graphic Button URL Styling 1
+                            if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
+                                // image button
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
+                            }else{ // Bootstrap Button URL Styling
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_1_style'] ) );
+                            }
+
+                            // Button URL 1
+                            if (empty($column['price_link']['url'])) {
+                                $column['price_link']['url'] = '#';
+                            };
+
+                            if (!empty($column['price_link']['url'])) {
+                                $this->add_render_attribute('btn-1-link-' . $th_counter, 'href', esc_url($column['price_link']['url']));
+
+                                if (!empty($column['price_link']['is_external'])) {
+                                    $this->add_render_attribute('btn-1-link-' . $th_counter, 'target', '_blank');
+                                }
+                            }
+                        }else{
+                            if ( empty( $column['price_link']['url'] ) ) { $column['price_link']['url'] = '#'; };
+
+                            if ( ! empty( $column['price_link']['url'] ) ) {
+                                $this->add_render_attribute( 'price_link-'.$th_counter, 'href', esc_url( $column['price_link']['url'] ) );
+
+                                if ( ! empty( $column['price_link']['is_external'] ) ) {
+                                    $this->add_render_attribute( 'price_link-'.$th_counter, 'target', '_blank' );
+                                }
+                            }
+                        }
+                        ?>
 
 
 
-        if($th_list_style_2){
-            $th_counter=0; foreach( $settings['pricing'] as $column ) {
+                        <div class="th-plist-item">
+                            <?php if (($column['price_link']['url'] !== '#' && $column['price_link']['url'] > "") && (isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] != 'yes')){ ?>
+                            <a <?php echo $this->get_render_attribute_string( 'price_link-'.$th_counter ); ?>>
+                                <?php } ?>
+
+                                <?php if ( isset( $column['price_title'] ) && ! empty( $column['price_title'] ) ) : ?>
+                                    <span class="th-plist-title"><?php echo esc_html( $column['price_title'] ); ?></span>
+                                <?php endif; ?>
+
+                                <?php if ( (isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ))
+                                    || (isset( $column['price_description'] ) && ! empty( $column['price_description'] )) ) : ?>
+                                    <div class="th-plist-content">
+                                        <?php if ( isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ) ) : ?>
+                                            <span class="th-plist-subtitle"><?php echo esc_html( $column['price_sub_title'] ); ?></span>
+                                        <?php endif; ?>
+
+                                        <?php if ( isset( $column['price_description'] ) && ! empty( $column['price_description'] ) ) : ?>
+                                            <p class="th-plist-description"><?php echo esc_html( $column['price_description'] ); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
+                                    <div class="th-plist-price">
+                                        <div class="th-btn-wrap">
+                                            <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
+                                                <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
+                                                    <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                        <?php echo wp_kses_post( $button_1_image ); ?>
+                                                    </a>
+                                                <?php else : ?>
+                                                    <?php echo wp_kses_post( $button_1_image ); ?>
+                                                <?php endif; ?>
+                                            <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                                <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                                        <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
+                                                    <?php endif; ?>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php }else{ ?>
+                                    <?php if ( ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) || ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) ) : ?>
+                                        <div class="th-plist-price">
+                                            <?php if ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) : ?>
+                                                <span class="th-plist-price-number"><?php echo esc_html( $column['price_price'] ); ?></span>
+                                            <?php endif; ?>
+                                            <?php if ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) : ?>
+                                                <span class="th-plist-price-text"><?php echo esc_html( $column['price_text'] ); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php }; ?>
+
+                                <?php if (($column['price_link']['url'] !== '#' && $column['price_link']['url'] > "") && (isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] != 'yes')){ ?>
+                            </a>
+                        <?php } ?>
+                        </div>
+
+
+
+                    <?php } ?>
+
+                </div>
+
+            <?php
+                break;
+            case "style_2":
+                $th_counter=0; foreach( $settings['pricing'] as $column ) {
 
                 ++$th_counter;
                 //https://getbootstrap.com/docs/3.3/examples/grid/
@@ -703,196 +851,174 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                     <?php if ($column['price_col_button_1_show'] !== 'yes'  && $column['price_link']['url'] !== '#' && $column['price_link']['url'] > ""){ ?>
                     <a <?php echo $this->get_render_attribute_string( 'price_link-'.$th_counter ); echo $this->get_render_attribute_string( 'price_link-'.$th_counter ); ?>>
                         <?php } ?>
-                    <div class="col-sm-4 ">
-                        <?php if ( isset( $column['price_title'] ) && ! empty( $column['price_title'] ) ) : ?>
-                            <div class="th-plist-title"><?php echo esc_html( $column['price_title'] ); ?></div>
-                        <?php endif; ?>
-
-                        <?php if ( (isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ))) : ?>
-                            <div class="th-plist-content">
-                                <?php if ( isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ) ) : ?>
-                                    <span class="th-plist-subtitle"><?php echo esc_html( $column['price_sub_title'] ); ?></span>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="col-sm-4">
-                        <?php if ( isset( $column['price_description'] ) && ! empty( $column['price_description'] ) ) : ?>
-                            <p class="th-plist-description"><?php echo esc_html( $column['price_description'] ); ?></p>
-                        <?php endif; ?>
-                    </div>
-                    <div class="col-sm-4">
-                        <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
-                        <div class="th-btn-wrap">
-                            <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
-                                <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
-                                    <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                        <?php echo wp_kses_post( $button_1_image ); ?>
-                                    </a>
-                                <?php else : ?>
-                                    <?php echo wp_kses_post( $button_1_image ); ?>
-                                <?php endif; ?>
-                            <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-                                <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-                                        <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
-                                    <?php endif; ?>
-                                </a>
+                        <div class="col-sm-4 ">
+                            <?php if ( isset( $column['price_title'] ) && ! empty( $column['price_title'] ) ) : ?>
+                                <div class="th-plist-title"><?php echo esc_html( $column['price_title'] ); ?></div>
                             <?php endif; ?>
-                        </div>
-                        <?php }else{ ?>
-                            <?php if ( ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) || ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) ) : ?>
-                                <div class="th-plist-price">
-                                    <?php if ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) : ?>
-                                        <span class="th-plist-price-number"><?php echo esc_html( $column['price_price'] ); ?></span>
-                                    <?php endif; ?>
-                                    <?php if ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) : ?>
-                                        <span class="th-plist-price-text"><?php echo esc_html( $column['price_text'] ); ?></span>
+
+                            <?php if ( (isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ))) : ?>
+                                <div class="th-plist-content">
+                                    <?php if ( isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ) ) : ?>
+                                        <span class="th-plist-subtitle"><?php echo esc_html( $column['price_sub_title'] ); ?></span>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
-                        <?php }; ?>
-                    </div>
-                    <?php if ($column['price_col_button_1_show'] !== 'yes'  && $column['price_link']['url'] !== '#' && $column['price_link']['url'] > ""){ ?>
+                        </div>
+                        <div class="col-sm-4">
+                            <?php if ( isset( $column['price_description'] ) && ! empty( $column['price_description'] ) ) : ?>
+                                <p class="th-plist-description"><?php echo esc_html( $column['price_description'] ); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-sm-4">
+                            <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
+                                <div class="th-btn-wrap">
+                                    <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
+                                        <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
+                                            <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                                <?php echo wp_kses_post( $button_1_image ); ?>
+                                            </a>
+                                        <?php else : ?>
+                                            <?php echo wp_kses_post( $button_1_image ); ?>
+                                        <?php endif; ?>
+                                    <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                        <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
+                                            <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                                <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
+                                            <?php endif; ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php }else{ ?>
+                                <?php if ( ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) || ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) ) : ?>
+                                    <div class="th-plist-price">
+                                        <?php if ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) : ?>
+                                            <span class="th-plist-price-number"><?php echo esc_html( $column['price_price'] ); ?></span>
+                                        <?php endif; ?>
+                                        <?php if ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) : ?>
+                                            <span class="th-plist-price-text"><?php echo esc_html( $column['price_text'] ); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php }; ?>
+                        </div>
+                        <?php if ($column['price_col_button_1_show'] !== 'yes'  && $column['price_link']['url'] !== '#' && $column['price_link']['url'] > ""){ ?>
                     </a>
-                    <?php } ?>
+                <?php } ?>
                 </div>
-
-
-
                 <?php
             }
+                break;
+            case "style_3":
+                ?>
+                <!--- Pricing-style-1 start--->
+                <h1>Pricing-style-3</h1>
+                <div class="thmv-prc-styl-1">
+                    <div class="thmv-prc-row">
+                        <div class="thmv-column-1">
+                            <div class="thme-info-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="32" viewBox="0 0 38 32" fill="none">
+                                    <path d="M15.3333 31.6667V20.6667H22.6666V31.6667H31.8333V17H37.3333L19 0.5L0.666626 17H6.16663V31.6667H15.3333Z" fill="#4E524C"/>
+                                </svg>
+                            </div>
+                            <div class="thme-info">
+                                <h3>Tiny house hosted by Duston</h3>
+                                <ul class="meta_info">
+                                    <li>2 guests</li>
+                                    <li>1 bedroom</li>
+                                    <li>1 bed</li>
+                                    <li>1 bath</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="thmv-column-2">
+                            <div class="thme-info-pricing">
+                                <h3>19$</h3>
+                                <p>Price</p>
+                            </div>
+                        </div>
+                        <div class="thmv-column-3">
+                            <div class="thme-info-button">
+                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thmv-prc-row">
+                        <div class="thmv-column-1">
+                            <div class="thme-info-icon">
+                                <svg width="38" height="26" viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M27.25 12.9998C29.78 12.9998 31.815 10.9465 31.815 8.4165C31.815 5.8865 29.78 3.83317 27.25 3.83317C24.72 3.83317 22.6666 5.8865 22.6666 8.4165C22.6666 10.9465 24.72 12.9998 27.25 12.9998ZM13.5 11.1665C16.5433 11.1665 18.9816 8.70984 18.9816 5.6665C18.9816 2.62317 16.5433 0.166504 13.5 0.166504C10.4566 0.166504 7.99996 2.62317 7.99996 5.6665C7.99996 8.70984 10.4566 11.1665 13.5 11.1665ZM27.25 16.6665C23.895 16.6665 17.1666 18.3532 17.1666 21.7082V25.8332H37.3333V21.7082C37.3333 18.3532 30.605 16.6665 27.25 16.6665ZM13.5 14.8332C9.22829 14.8332 0.666626 16.9782 0.666626 21.2498V25.8332H13.5V21.7082C13.5 20.1498 14.105 17.4182 17.845 15.3465C16.25 15.0165 14.71 14.8332 13.5 14.8332Z" fill="#4E524C"/>
+                                </svg>
+
+
+                            </div>
+                            <div class="thme-info">
+                                <h3>Tiny house hosted by Duston</h3>
+                                <ul class="meta_info">
+                                    <li>2 guests</li>
+                                    <li>1 bedroom</li>
+                                    <li>1 bed</li>
+                                    <li>1 bath</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="thmv-column-2">
+                            <div class="thme-info-pricing">
+                                <h3>25$</h3>
+                                <p>Price</p>
+                            </div>
+                        </div>
+                        <div class="thmv-column-3">
+                            <div class="thme-info-button">
+                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thmv-prc-row">
+                        <div class="thmv-column-1">
+                            <div class="thme-info-icon">
+                                <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 24.1668L17 18.7768C16.285 18.7035 15.7533 18.6668 15.1667 18.6668C10.2717 18.6668 0.5 21.1235 0.5 26.0002V29.6668H17L11.5 24.1668ZM15.1667 15.0002C19.2183 15.0002 22.5 11.7185 22.5 7.66683C22.5 3.61516 19.2183 0.333496 15.1667 0.333496C11.115 0.333496 7.83333 3.61516 7.83333 7.66683C7.83333 11.7185 11.115 15.0002 15.1667 15.0002Z" fill="#4E524C"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.3617 30.5837L17 24.167L19.5667 21.582L23.3617 25.3953L32.7667 15.917L35.3333 18.502L23.3617 30.5837Z" fill="#4E524C"/>
+                                </svg>
+
+                            </div>
+                            <div class="thme-info">
+                                <h3>Tiny house hosted by Duston</h3>
+                                <ul class="meta_info">
+                                    <li>2 guests</li>
+                                    <li>1 bedroom</li>
+                                    <li>1 bed</li>
+                                    <li>1 bath</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="thmv-column-2">
+                            <div class="thme-info-pricing">
+                                <h3>55$</h3>
+                                <p>Price</p>
+                            </div>
+                        </div>
+                        <div class="thmv-column-3">
+                            <div class="thme-info-button">
+                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--- Priceing-style-1 end--->
+            <?php
+                break;
+        }
+
+
+        if($th_list_style_2){
+
         ?>
 
         <?php
         }else{ ?>
 
-        <div <?php echo $this->get_render_attribute_string( 'th-price-list-class'); ?>>
 
-            <?php $th_counter=0; foreach( $settings['pricing'] as $column ) { ?>
-
-                <?php ++$th_counter; ?>
-
-
-                <?php
-
-                if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) {
-
-                    // Graphic Button 1
-                    $button_1_image = false;
-                    if ( isset( $column['button_1_image']['id'] ) && $column['button_1_image']['id'] > "" ) {
-                        $button_1_image = wp_get_attachment_image( $column['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
-                    }elseif ( ! empty( $column['button_1_image']['url'] ) ) {
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $column['button_1_image']['url'] ) );
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_1_image'] ) ) );
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_1_image'] ) ) );
-                        $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
-                    }
-                    // Graphic Button URL Styling 1
-                    if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
-                        // image button
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
-                    }else{ // Bootstrap Button URL Styling
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_1_style'] ) );
-                    }
-
-                    // Button URL 1
-                    if (empty($column['price_link']['url'])) {
-                        $column['price_link']['url'] = '#';
-                    };
-
-                    if (!empty($column['price_link']['url'])) {
-                        $this->add_render_attribute('btn-1-link-' . $th_counter, 'href', esc_url($column['price_link']['url']));
-
-                        if (!empty($column['price_link']['is_external'])) {
-                            $this->add_render_attribute('btn-1-link-' . $th_counter, 'target', '_blank');
-                        }
-                    }
-                }else{
-                    if ( empty( $column['price_link']['url'] ) ) { $column['price_link']['url'] = '#'; };
-
-                    if ( ! empty( $column['price_link']['url'] ) ) {
-                        $this->add_render_attribute( 'price_link-'.$th_counter, 'href', esc_url( $column['price_link']['url'] ) );
-
-                        if ( ! empty( $column['price_link']['is_external'] ) ) {
-                            $this->add_render_attribute( 'price_link-'.$th_counter, 'target', '_blank' );
-                        }
-                    }
-                }
-                ?>
-
-
-
-                <div class="th-plist-item">
-                    <?php if (($column['price_link']['url'] !== '#' && $column['price_link']['url'] > "") && (isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] != 'yes')){ ?>
-                    <a <?php echo $this->get_render_attribute_string( 'price_link-'.$th_counter ); ?>>
-                        <?php } ?>
-
-                    <?php if ( isset( $column['price_title'] ) && ! empty( $column['price_title'] ) ) : ?>
-                        <span class="th-plist-title"><?php echo esc_html( $column['price_title'] ); ?></span>
-                    <?php endif; ?>
-
-                    <?php if ( (isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ))
-                            || (isset( $column['price_description'] ) && ! empty( $column['price_description'] )) ) : ?>
-                        <div class="th-plist-content">
-                            <?php if ( isset( $column['price_sub_title'] ) && ! empty( $column['price_sub_title'] ) ) : ?>
-                                <span class="th-plist-subtitle"><?php echo esc_html( $column['price_sub_title'] ); ?></span>
-                            <?php endif; ?>
-
-                            <?php if ( isset( $column['price_description'] ) && ! empty( $column['price_description'] ) ) : ?>
-                                <p class="th-plist-description"><?php echo esc_html( $column['price_description'] ); ?></p>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
-                    <div class="th-plist-price">
-                        <div class="th-btn-wrap">
-                            <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
-                                <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
-                                    <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                        <?php echo wp_kses_post( $button_1_image ); ?>
-                                    </a>
-                                <?php else : ?>
-                                    <?php echo wp_kses_post( $button_1_image ); ?>
-                                <?php endif; ?>
-                            <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-                                <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
-                                        <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
-                                    <?php endif; ?>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <?php }else{ ?>
-                        <?php if ( ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) || ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) ) : ?>
-                            <div class="th-plist-price">
-                                <?php if ( isset( $column['price_price'] ) && ! empty( $column['price_price'] ) ) : ?>
-                                    <span class="th-plist-price-number"><?php echo esc_html( $column['price_price'] ); ?></span>
-                                <?php endif; ?>
-                                <?php if ( isset( $column['price_text'] ) && ! empty( $column['price_text'] ) ) : ?>
-                                    <span class="th-plist-price-text"><?php echo esc_html( $column['price_text'] ); ?></span>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    <?php }; ?>
-
-                        <?php if (($column['price_link']['url'] !== '#' && $column['price_link']['url'] > "") && (isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] != 'yes')){ ?>
-                    </a>
-                <?php } ?>
-                </div>
-
-
-
-            <?php } ?>
-
-        </div>
 
         <?php } ?>
 
