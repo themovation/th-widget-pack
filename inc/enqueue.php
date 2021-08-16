@@ -44,6 +44,9 @@ if('uplands' == THEMO_CURRENT_THEME){
 
     function th_enqueue_after_frontend() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
+        
+        $timeChanged = time();//THEMO_VERSION;
+        wp_enqueue_style( 'thmv-accomodation', THEMO_URL . 'css/accomodation.css', array(), $timeChanged );
     }
 
 // EDITOR // Before the editor scripts enqueuing.
@@ -52,7 +55,10 @@ if('uplands' == THEMO_CURRENT_THEME){
     function th_enqueue_before_editor() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         // JS for the Editor
-        wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION, true);
+        wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), time(), true);
+        wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), time() );
+        wp_enqueue_script( 'thmv-drag-sort', THEMO_URL . 'js/drag-sort.js', array(), time() );
+
     }
 }
 
