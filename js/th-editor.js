@@ -84,10 +84,7 @@ jQuery(function ($) {
                                 var value = valueArr.join();
                                 var orderingField = $parentElement.find(ordering_element).find('input');
                                 orderingField.val(value);
-                                orderingField.change();
-//                               $e.run( 'finder/open' );
-//                               $e.run( 'finder/close' );
-
+                                orderingField.trigger('input');
                             }
                         });
 
