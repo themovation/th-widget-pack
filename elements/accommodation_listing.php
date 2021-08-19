@@ -149,13 +149,14 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'columns',
                 [
                     'label' => __('Columns', 'th-widget-pack'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => '3',
+                    'default' => '',
                     'options' => [
+                        '' => __('Default', 'th-widget-pack'),
                         '1' => __('1', 'th-widget-pack'),
                         '2' => __('2', 'th-widget-pack'),
                         '3' => __('3', 'th-widget-pack'),
@@ -164,7 +165,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-
         $this->add_control(
                 'thmv_section_hide_data_heading',
                 [
@@ -469,7 +469,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'return_value' => 'yes',
-                    'default'=> 'yes',
+                    'default' => 'yes',
                     'condition' => [
                         'thmv_style' => ['style_6'],
                     ],
@@ -765,32 +765,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         'style_4' => __('Style 4', 'th-widget-pack'),
                         'style_5' => __('Style 5', 'th-widget-pack'),
                         'style_6' => __('Style 6', 'th-widget-pack'),
-                    ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'thmv_wrapper_text_align',
-                [
-                    'label' => __('Content Align', 'th-widget-pack'),
-                    'type' => Controls_Manager::CHOOSE,
-                    'label_block' => false,
-                    'options' => [
-                        'left' => [
-                            'title' => __('Left', 'th-widget-pack'),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __('Center', 'th-widget-pack'),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __('Right', 'th-widget-pack'),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-wrapper-content' => 'text-align: {{VALUE}}',
                     ],
                 ]
         );
@@ -1689,6 +1663,24 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $imageArr;
     }
 
+    private function setupColumns($settings, $columnField, $attribute) {
+        $this->add_render_attribute('thmv_column', 'class', 'thmv-column elementor-column');
+        $cols = [$columnField, $columnField . '_tablet', $columnField . '_mobile'];
+        foreach ($cols as $col) {
+            if (isset($settings[$col])) {
+                if (empty($settings[$col])) {
+                    $colPercentage = 'default';
+                } else {
+                    $colPercentage = floor(100 / $settings[$col]);
+                }
+
+                $device = str_replace([$columnField, '_'], "", $col);
+                $device .= strpos($col, '_') ? '-' : '';
+                $this->add_render_attribute($attribute, 'class', 'thmv-column-' . $device . $colPercentage);
+            }
+        }
+    }
+
     protected function render() {
         $settings = $this->get_settings_for_display();
         if (isset($_GET['debug'])) {
@@ -1751,10 +1743,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
         /*         * global vars * */
         $buttonstyle = $settings['button_style'];
-        $columnClass = floor(100 / $settings['columns']);
         $listingStyleDefault = $settings['thmv_style'];
 
-        $this->add_render_attribute('thmv_column', 'class', 'thmv-column elementor-column elementor-col-' . $columnClass);
+        $this->setupColumns($settings, 'columns', 'thmv_column');
 
         if (empty($buttonstyle)) {
             $this->add_render_attribute('thmv_link', 'class', 'thmv-learn-btn', true);
@@ -1802,12 +1793,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     <div class="thmv-column">
                         <div class="thme-grid-style-1">
                             <div class="thme-grid-img">
-                                <?php if (isset($image) && !empty($image['url'])): ?>
+                    <?php if (isset($image) && !empty($image['url'])): ?>
                                     <img class="img-fluid" src="<?= $image['url'] ?>" alt="">
-                                    <?php endif; ?>  
+                                <?php endif; ?>  
 
                                     <div class="thmv-price">
-                                        <?php if (!empty($price)): ?>
+                    <?php if (!empty($price)): ?>
                                             <h4><?= $price ?></h4>
                                         <?php endif; ?>
                                         <?php if (!empty($price_after)): ?>
@@ -1816,20 +1807,20 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                     </div>
                             </div>
                             <div class="thme-grid-rating">
-                                <?php if ($showStars && $starsRating['size'] > 0): ?>
+                    <?php if ($showStars && $starsRating['size'] > 0): ?>
 
                                     <ul class="thme-star-rating">
-                                        <?php
-                                        $size = floor($starsRating['size']);
-                                        for ($i = 0; $i < $size; $i++):
-                                            ?>
+                        <?php
+                        $size = floor($starsRating['size']);
+                        for ($i = 0; $i < $size; $i++):
+                            ?>
                                             <li><?= $this->getStar(); ?></li>
                                         <?php endfor; ?>
                                         <li><?= $starsRating['size'] ?></li>
 
 
                                     </ul>
-                                <?php endif; ?>
+                    <?php endif; ?>
 
                                 <ul class="thme-location">
                                     <li><?= $this->getLocationIcon() ?></li>
@@ -1837,7 +1828,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 </ul>
                             </div>
                             <div class="thme-info">
-                                <?php if (!empty($title)): ?>
+                    <?php if (!empty($title)): ?>
                                     <h3><?= esc_html($title) ?></h3>
                                 <?php endif; ?>
                                 <?php if (!empty($description)): ?>
@@ -1846,9 +1837,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                                 <?php if (!empty($link_url)) : ?>
                                     <a <?php echo $this->get_render_attribute_string('thmv_link'); ?> href="<?= $link_url ?>">
-                                        <?= isset($link_text) ? $link_text : '' ?>
+                                    <?= isset($link_text) ? $link_text : '' ?>
                                     </a>
-                                <?php endif; ?>
+                                    <?php endif; ?>
 
                             </div>
                         </div>
@@ -1898,17 +1889,17 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                 <?php ob_start(); ?>
                 <div class="thmv-price">
-                    <?php if (!empty($price_before)): ?>
+                <?php if (!empty($price_before)): ?>
                         <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
                     <?php endif; ?>
                     <?php if (!empty($price)): ?>
                         <div class="price"><?= $price ?></div>
                     <?php endif; ?>
-                    <?php if (!empty($price_after) && in_array($listingStyle, [1,6])): ?>
+                    <?php if (!empty($price_after) && in_array($listingStyle, [1, 6])): ?>
                         <div class="price-after"><?= $price_after ?></div>
                     <?php endif; ?>
                 </div>
-                <?php $priceBlock = ob_get_clean(); ?>
+                    <?php $priceBlock = ob_get_clean(); ?>
 
 
                 <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
@@ -1916,7 +1907,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                         <div class="thme-grid-style-<?= $listingStyle ?> elementor-element">
                             <div class="thme-grid-img">
-                                <?php if (!$carousel_switcher && isset($image) && !empty($image['url'])): ?>
+                <?php if (!$carousel_switcher && isset($image) && !empty($image['url'])): ?>
                                     <?php echo Group_Control_Image_Size::get_attachment_image_html($list, 'thmv_image'); ?>
                                 <?php endif; ?>
 
@@ -1935,45 +1926,45 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 <?php endif; ?>     
                             </div>
 
-                            <?php if (in_array($listingStyle, array(2))): ?>
+                <?php if (in_array($listingStyle, array(2))): ?>
                                 <div class="thme-grid-sleep">
                                     <h4>Sleeps 2, Queen Bed</h4>
-                                    <?php if (count($icons)): ?>
+                    <?php if (count($icons)): ?>
                                         <ul class="thme-grid-facility">
-                                            <?php
-                                            foreach ($icons as $icon):
-                                                echo '<li>' . $this->renderIcon($icon) . '</li>';
-                                                ?>   
+                                        <?php
+                                        foreach ($icons as $icon):
+                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
+                                            ?>   
                                             <?php endforeach; ?>
                                         </ul>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
                                 </div>
-                            <?php endif;
-                            ?>
+                                <?php endif;
+                                ?>
                             <div class="thme-info">
 
-                                <?php if ($showStars || $showLocation): ?>
+                <?php if ($showStars || $showLocation): ?>
                                     <div class="thme-grid-rating">
-                                        <?php if ($showStars && $starsRating['size'] > 0): ?>
+                                    <?php if ($showStars && $starsRating['size'] > 0): ?>
                                             <ul class="thme-star-rating">
-                                                <?php
-                                                $size = floor($starsRating['size']);
-                                                for ($i = 0; $i < $size; $i++):
-                                                    ?>
+                                            <?php
+                                            $size = floor($starsRating['size']);
+                                            for ($i = 0; $i < $size; $i++):
+                                                ?>
                                                     <li><?= $this->getStar(); ?></li>
                                                 <?php endfor; ?>
                                                 <li><?= $starsRating['size'] ?></li>
                                             </ul>
-                                        <?php endif; ?>
+                    <?php endif; ?>
 
                                         <?php if ($showLocation): ?>
                                             <ul class="thme-location">
                                                 <li class="location-icon"><?= $this->getLocationIcon($locationIcon, 'thmv_location_icon') ?></li>
                                                 <li class="location"><?= $locationText ?></li>
                                             </ul>
-                                        <?php endif; ?>
+                    <?php endif; ?>
                                     </div>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php if (in_array($listingStyle, [3])): ?>
                                     <div class="thmv-top-box"><span>Top</span></div>
                                 <?php endif; ?>
@@ -1983,61 +1974,61 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 <?php if (in_array($listingStyle, array(6)) && $titleSeparator): ?>    
                                     <hr class="thmv-separator">
                                 <?php endif; ?>    
-                                <?php if (in_array($listingStyle, array(3, 4))): ?>    
-                                    <h4>Sleeps 2, Queen Bed</h4>  
-                                <?php endif; ?>
-                                <?php if (!empty($description)): ?>
-                                    <p><?= esc_html($description) ?></p>
-                                <?php endif; ?>
-
-                                <?php
-                                $iconListClass = 'thme-list';
-                                if ($listingStyle == 6) {
-                                    $iconListClass = 'thme-grid-facility';
-                                }
-
-                                if (count($icons) && in_array($listingStyle, array(1, 6))):
-                                    ?>
-                                    <ul class="<?= $iconListClass ?>">
-                                        <?php
-                                        foreach ($icons as $icon):
-                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
-                                            ?>   
-                                        <?php endforeach; ?>
-                                    </ul>
-                                    <?php
-                                endif;
-                                ?>
-                                <?php if (in_array($listingStyle, [5])): ?>    
-                                    <?php echo $priceBlock; ?>
-                                <?php endif; ?>   
-
-                                <div class="<?=($listingStyle==6 ? 'thme-grid-booking' : '')?>">
-                                    <?php if (!empty($link_url)) : ?>
-                                        <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
-                                            <?= isset($link_text) ? $link_text : '' ?>
-                                            <?php
-                                            if (in_array($listingStyle, array(2, 3))):
-                                                echo $this->getSvgIcon('plus');
-                                                ?>
-
-                                            <?php endif; ?>
-                                        </a>
+                                    <?php if (in_array($listingStyle, array(3, 4))): ?>    
+                                        <h4>Sleeps 2, Queen Bed</h4>  
                                     <?php endif; ?>
-                                    <?php if (in_array($listingStyle, [6])): ?>    
-                                        <?php echo $priceBlock; ?>
-                                    <?php endif; ?> 
-                                </div>
+                                    <?php if (!empty($description)): ?>
+                                        <p><?= esc_html($description) ?></p>
+                                    <?php endif; ?>
 
-                                <?php if (count($icons) && in_array($listingStyle, array(3))): ?>
-                                    <ul class="thme-grid-facility">
+                                    <?php
+                                    $iconListClass = 'thme-list';
+                                    if ($listingStyle == 6) {
+                                        $iconListClass = 'thme-grid-facility';
+                                    }
+
+                                    if (count($icons) && in_array($listingStyle, array(1, 6))):
+                                        ?>
+                                        <ul class="<?= $iconListClass ?>">
                                         <?php
                                         foreach ($icons as $icon):
                                             echo '<li>' . $this->renderIcon($icon) . '</li>';
                                             ?>   
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                            <?php
+                                        endif;
+                                        ?>
+                                    <?php if (in_array($listingStyle, [5])): ?>    
+                                        <?php echo $priceBlock; ?>
+                                    <?php endif; ?>   
+
+                                    <div class="<?= ($listingStyle == 6 ? 'thme-grid-booking' : '') ?>">
+                <?php if (!empty($link_url)) : ?>
+                                            <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
+                                            <?= isset($link_text) ? $link_text : '' ?>
+                                                <?php
+                                                if (in_array($listingStyle, array(2, 3))):
+                                                    echo $this->getSvgIcon('plus');
+                                                    ?>
+
+                                                <?php endif; ?>
+                                            </a>
+                                            <?php endif; ?>
+                                        <?php if (in_array($listingStyle, [6])): ?>    
+                                            <?php echo $priceBlock; ?>
+                                        <?php endif; ?> 
+                                    </div>
+
+                <?php if (count($icons) && in_array($listingStyle, array(3))): ?>
+                                        <ul class="thme-grid-facility">
+                                        <?php
+                                        foreach ($icons as $icon):
+                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
+                                            ?>   
+                                            <?php endforeach; ?>
+                                        </ul>
+                                        <?php endif; ?>
                             </div>
                         </div>
                     </div>

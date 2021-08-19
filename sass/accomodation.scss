@@ -1,8 +1,59 @@
+$percentage: (20,25,33,50,100);
+$sm: 576px;
+$xs-max: $sm - 1;
+$md: 768px;
+$sm-max: $md - 1;
+$lg: 992px;
+$md-max: $lg - 1;
+$percentageUnit : '%';
+
+@mixin defineWidth($percentage, $breakpoint){
+    @media(min-width: $breakpoint){
+        .thmv-column-default {
+            width: #{$percentage}#{$percentageUnit};
+            max-width: #{$percentage}#{$percentageUnit};
+        }
+    }
+
+}
 .elementor-widget-themo-accommodation-listing{
     font-size: 16px;
     margin: 0;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+
+    .thmv-column{
+        width: 100%;
+    }
+    .elementor-column {
+        width: 100%;
+    }
+    //default percentages (for desktop really but are used downwards)
+    @each $per in $percentage {
+        @media(min-width: $sm){
+            .thmv-column-#{$per} {
+                width: #{$per}#{$percentageUnit};
+                max-width: #{$per}#{$percentageUnit};
+            }
+        }
+    }
+    @media(max-width: $md){
+        @each $per in $percentage {
+            .thmv-column-tablet-#{$per} {
+                width: #{$per}#{$percentageUnit};
+                max-width: #{$per}#{$percentageUnit};
+            }
+        }
+    }
+
+    @media(max-width: $sm-max){
+        @each $per in $percentage {
+            .thmv-column-mobile-#{$per} {
+                width: #{$per}#{$percentageUnit};
+                max-width: #{$per}#{$percentageUnit};
+            }
+        }
+    }
 
     *{
         box-sizing: border-box;
@@ -382,6 +433,15 @@
         margin-left: 30px;
     }
     /** scss styling **/
+    .thmv-lst-styl-1{
+        @include defineWidth(50, $md);
+    }
+    .thmv-lst-styl-2{
+        @include defineWidth(50, $md);
+    }
+    .thmv-lst-styl-4{
+        @include defineWidth(33, $md);
+    }
     .thmv-lst-styl-5 .thme-grid-style-5{
         > div{
             flex: 0 0 auto;
@@ -390,7 +450,7 @@
         } 
         .thme-info{
             padding-left: 35px;
-            
+
         }
 
         .thme-star-rating+.thme-location{
