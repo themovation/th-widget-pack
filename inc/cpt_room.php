@@ -161,11 +161,31 @@ function th_register_room_meta_boxes()
                 'desc' => __('Displayed below the title. e.g.: $99', 'bellevue'),
             ),
             array(
+                'id'    => "th_room_price_before",
+                'label'  =>  'Price before',
+                'type'  => 'text',
+                'desc' => __('Displayed before the price. e.g.: Starting from', 'bellevue'),
+            ),
+            array(
                 'id'    => "th_room_price_per",
                 'label'  =>  'Price per',
                 'type'  => 'text',
                 'desc' => __('Displayed after the price. e.g.: /night', 'bellevue'),
             ),
+            array(
+                'id'    => "th_room_location",
+                'label'  =>  'Location',
+                'type'  => 'text',
+                'desc' => __('e.g.: 2 km away from the center', 'bellevue'),
+            ),
+            array(
+                'id'          => 'th_room_rating',
+                'label'       => __( 'Rating', 'bellevue' ),
+                'desc'        => __( 'e.g: 4.5', 'bellevue' ),
+                'type'        => 'numeric-slider',
+                'min_max_step'=> '0,5,0.5',
+            ),
+
             array(
                 'id' => 'th_room_button_text',
                 'label' => 'Button Text',
