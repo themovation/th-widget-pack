@@ -185,7 +185,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-top-box ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -200,7 +200,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-title ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -216,7 +216,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-preface ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -232,7 +232,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info p' => 'display:none;',
+                        '{{WRAPPER}} .thmv-info .thmv-description' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -248,7 +248,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-icons ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -264,7 +264,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-star-rating ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -280,7 +280,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-location ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -296,7 +296,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-price ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -312,7 +312,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .element ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-learn-btn ' => 'display:none;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -805,7 +805,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_carousel_switcher' => 'yes',
@@ -825,7 +825,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_carousel_switcher' => 'yes',
@@ -871,7 +871,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .element' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-top-box span' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_2', 'style_3', 'style_4']
@@ -884,7 +884,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_highlight_typography',
-                    'selector' => '{{WRAPPER}} .element',
+                    'selector' => '{{WRAPPER}} .thmv-top-box span',
                     'condition' => [
                         'thmv_style' => ['style_2', 'style_3', 'style_4']
                     ],
@@ -897,7 +897,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .element' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-top-box span' => 'background: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_2', 'style_3', 'style_4']
@@ -926,7 +926,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info h3' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .thmv-title' => 'color: {{VALUE}};',
                     ],
                 ]
         );
@@ -936,10 +936,40 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_title_typography',
-                    'selector' => '{{WRAPPER}} .thme-info h3',
+                    'selector' => '{{WRAPPER}} .thmv-info .thmv-title',
+                ]
+        );
+        /* STYLE - Title Separator */
+        $this->add_control(
+                'thmv_section_title_separator_heading',
+                [
+                    'label' => __('Title Separator', 'elementor'),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'thmv_style' => ['style_6']
+                    ],
                 ]
         );
 
+        $this->add_control(
+                'thmv_title_separator_color',
+                [
+                    'label' => __('Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-separator' => 'border-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_6']
+                    ],
+                ]
+        );
         /* STYLE - Preface */
         $this->add_control(
                 'thmv_section_preface_heading',
@@ -964,7 +994,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .element' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-preface' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_2', 'style_3', 'style_4']
@@ -977,7 +1007,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_preface_typography',
-                    'selector' => '{{WRAPPER}} .element',
+                    'selector' => '{{WRAPPER}} .thmv-preface',
                     'condition' => [
                         'thmv_style' => ['style_2', 'style_3', 'style_4']
                     ],
@@ -1005,7 +1035,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info p' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .thmv-description' => 'color: {{VALUE}};',
                     ],
                 ]
         );
@@ -1015,7 +1045,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_description_typography',
-                    'selector' => '{{WRAPPER}} .thme-info p',
+                    'selector' => '{{WRAPPER}} .thmv-info .thmv-description',
                 ]
         );
 
@@ -1043,7 +1073,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info .elementor-icon' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_6']
@@ -1063,7 +1093,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_6']
@@ -1091,7 +1121,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-info .thme-list span' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .thmv-list span' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
@@ -1104,7 +1134,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Typography', 'elementor'),
                     'name' => 'thmv_icon_label_typography',
-                    'selector' => '{{WRAPPER}} .thme-info .thme-list span',
+                    'selector' => '{{WRAPPER}} .thmv-info .thmv-list span',
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
                     ],
@@ -1136,7 +1166,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-star-rating svg path' => 'fill: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-star-rating svg path' => 'fill: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_rating_switcher' => 'yes',
@@ -1157,7 +1187,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thme-star-rating svg' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-star-rating svg' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_rating_switcher' => 'yes',
@@ -1191,7 +1221,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-location .location-icon i' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-location .location-icon i' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_location_switcher' => 'yes',
@@ -1212,7 +1242,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thme-location .location-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-location .location-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_location_switcher' => 'yes',
@@ -1232,7 +1262,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thme-location .location' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-location .location' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_location_switcher' => 'yes',
@@ -1246,7 +1276,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Location Typography', 'elementor'),
                     'name' => 'thmv_location_typography',
-                    'selector' => '{{WRAPPER}} .thme-location .location',
+                    'selector' => '{{WRAPPER}} .thmv-location .location',
                     'condition' => [
                         'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
@@ -1415,7 +1445,33 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'label' => __('Typography', 'elementor'),
+                    'name' => 'thmv_link_typography',
+                    'selector' => '{{WRAPPER}} .thmv-learn-btn',
+                    'condition' => [
+                        'thmv_hide_link' => '',
+                        'thmv_style' => ['style_2', 'style_3']
+                    ],
+                ]
+        );
+        $this->add_responsive_control(
+                'thmv_link_padding',
+                [
+                    'label' => __('Padding', 'elementor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-learn-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'thmv_hide_link' => '',
+                        'thmv_style' => ['style_1', 'style_4', 'style_5', 'style_6']
+                    ],
+                ]
+        );
         $this->add_control(
                 'button_style',
                 [
@@ -1442,46 +1498,22 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
+        $this->add_responsive_control(
+                'thmv_button_stretch',
+                [
+                    'label' => __('Stretch Button', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                    'condition' => [
+                        'thmv_hide_link' => '',
+                        'thmv_style' => ['style_1', 'style_4', 'style_5']
+                    ],
+                ]
+        );
+
         $this->end_controls_section();
-    }
-
-    private function getStar() {
-        ob_start();
-        ?>
-        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.52677 1.14039C6.81457 0.195585 8.15218 0.195588 8.43998 1.1404L9.2671 3.85572C9.39532 4.27666 9.78366 4.56432 10.2237 4.56432H13.0309C13.9839 4.56432 14.3967 5.77095 13.6434 6.35474L11.2637 8.19898C10.9356 8.45324 10.7987 8.88374 10.9196 9.2808L11.8021 12.1776C12.0862 13.1104 11.0036 13.8568 10.2329 13.2595L8.09594 11.6034C7.73536 11.3239 7.23139 11.3239 6.87081 11.6034L4.73386 13.2595C3.96311 13.8568 2.88055 13.1104 3.16469 12.1776L4.04711 9.2808C4.16806 8.88374 4.03115 8.45324 3.70306 8.19898L1.32334 6.35474C0.570037 5.77095 0.982864 4.56432 1.9359 4.56432H4.74305C5.18309 4.56432 5.57143 4.27666 5.69965 3.85572L6.52677 1.14039Z" fill="#FFC804"/>
-        </svg>
-        <?php
-        return ob_get_clean();
-    }
-
-    private function getLocationIcon($icon = false, $name = false) {
-        ob_start();
-        if (!$icon) {
-            ?>
-            <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 0.5C3.0975 0.5 0.75 2.8475 0.75 5.75C0.75 9.6875 6 15.5 6 15.5C6 15.5 11.25 9.6875 11.25 5.75C11.25 2.8475 8.9025 0.5 6 0.5ZM6 7.625C4.965 7.625 4.125 6.785 4.125 5.75C4.125 4.715 4.965 3.875 6 3.875C7.035 3.875 7.875 4.715 7.875 5.75C7.875 6.785 7.035 7.625 6 7.625Z" fill="#8C8D8C"/></svg>
-
-            <?php
-        } else {
-            Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']);
-        }
-
-        return ob_get_clean();
-    }
-
-    private function getSvgIcon($icon) {
-        if (empty($icon))
-            return '';
-
-        switch ($icon) {
-            case 'plus':
-                return '<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.356 4.618H0.918V3.61H4.356V0.0639992H6.354V3.61H9.792V4.618H6.354V8.146H4.356V4.618Z" fill="#1C1715"/></svg>';
-
-                break;
-        }
-
-        return '';
     }
 
     private function setupIcon(&$iconList, $list, &$j, $i) {
@@ -1592,28 +1624,23 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         <?php
     }
 
-    private function getDescription() {
-        $th_tour_intro = get_post_meta(get_the_ID(), 'th_room_intro', true);
-        if ($th_tour_intro === false || empty($th_tour_intro)) {
-            $automatic_post_excerpts = 'on';
-            if (function_exists('get_theme_mod')) {
-                $automatic_post_excerpts = get_theme_mod('themo_automatic_post_excerpts', 'on');
-            }
-            if ($automatic_post_excerpts === 'off') {
-                $th_tour_intro = apply_filters('the_content', get_the_content());
-                $th_tour_intro = str_replace(']]>', ']]&gt;', $th_tour_intro);
-            } else {
-                $th_tour_intro = apply_filters('the_excerpt', get_the_excerpt());
-                $th_tour_intro = str_replace(']]>', ']]&gt;', $th_tour_intro);
-            }
+    private function getDescription($list) {
+        $automatic_post_excerpts = 'on';
+        if (function_exists('get_theme_mod')) {
+            $automatic_post_excerpts = get_theme_mod('themo_automatic_post_excerpts', 'on');
+        }
+        if ($automatic_post_excerpts === 'off') {
+            $th_tour_intro = apply_filters('the_content', get_the_content(null, false, $list));
+        } else {
+            $th_tour_intro = apply_filters('the_excerpt', get_the_excerpt($list));
         }
 
         return strip_tags($th_tour_intro); //maybe keep bold, italics
     }
 
-    private function getImageFromPost() {
+    private function getImageFromPost($list) {
         // Get Project Format Options
-        $project_thumb_alt_img = get_post_meta(get_the_ID(), 'th_room_thumb', false);
+        $project_thumb_alt_img = get_post_meta(get_the_ID($list->ID), 'th_room_thumb', false);
         $alt = '';
         $th_image_url = '';
         if (isset($project_thumb_alt_img[0]) && $project_thumb_alt_img[0] > "") {
@@ -1649,7 +1676,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             }
             $alt_text = get_post_meta($project_thumb_alt_img[0], '_wp_attachment_image_alt', true);
         } else {
-            $featured_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'th_img_xl');
+            $featured_url = wp_get_attachment_image_src(get_post_thumbnail_id($list->ID), 'th_img_xl');
             if (is_array($featured_url)) {
                 $th_image_url = $featured_url[0];
             }
@@ -1681,13 +1708,23 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         }
     }
 
+    private function setupResponsiveControl($settings, $field, $attribute, $class) {
+        $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
+        foreach ($responsiveFields as $f) {
+            if (!empty($settings[$f])) {
+                $device = str_replace([$field, '_'], "", $f);
+                if (!empty($device)) {
+                    $device = '-' . $device;
+                } else {
+                    $device = '-' . 'desktop';
+                }
+                $this->add_render_attribute($attribute, 'class', $class . $device);
+            }
+        }
+    }
+
     protected function render() {
         $settings = $this->get_settings_for_display();
-        if (isset($_GET['debug'])) {
-            echo "<pre>";
-            print_r($settings);
-            exit;
-        }
 
         $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
         if ($dataSource) {
@@ -1732,13 +1769,20 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $args['posts_per_page'] = -1;
 
             // The Query
-            $query = new \WP_Query($args);
+            $posts = get_posts($args);
 
-            $carousel_switcher = false;
-        } else {
-            if (!isset($settings['listings']) or!count($settings['listings'])) {
+            if (!$posts || !count($posts)) {
+                echo '<div class="alert">';
+                _e('Sorry, no results were found.', 'th-widget-pack');
+                echo '</div>';
                 return;
             }
+        } else {
+            if (!isset($settings['listings']) || !count($settings['listings'])) {
+                return;
+            }
+
+            $posts = $settings['listings'];
         }
 
         /*         * global vars * */
@@ -1753,7 +1797,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $this->add_render_attribute('thmv_link', 'class', 'btn btn-1 th-btn btn-' . $buttonstyle, true);
         }
 
-
+        $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
 
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
         $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-lst-styl-' . $listingStyle, true);
@@ -1761,105 +1805,70 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
-        if ($dataSource) {
-            if ($query->have_posts()) {
-                ?>
-                <?php
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    // get post format
-                    $format = get_post_format();
-                    if (false === $format) {
-                        $format = '';
-                    }
+        foreach ($posts as $list) {
 
-                    // default settings
+            if ($dataSource) {
+                // get post format
+                $format = get_post_format($list);
+                if (false === $format) {
+                    $format = '';
+                }
 
-                    $image = $this->getImageFromPost();
-                    $title = get_the_title();
-                    $description = $this->getDescription();
+                // default settings
 
-                    $price = get_post_meta(get_the_ID(), 'th_room_price', true);
-                    $price_after = get_post_meta(get_the_ID(), 'th_room_price_per', true);
-                    $link_text = get_post_meta(get_the_ID(), 'th_room_button_text', true);
-                    if (empty($link_text)) {
-                        $link_text = __('Learn More', 'th-widget-pack');
-                    }
-                    $link_url = get_the_permalink();
+                $image = $this->getImageFromPost($list);
+                $renderedImage = '';
+                if (isset($image['url'])) {
+                    $renderedImage = '<img src="' . $image['url'] . '" alt="' . $image['alt'] . '">';
+                }
 
-                    $showStars = $settings['thmv_rating_switcher'] == 'yes' ? true : false;
-                    $starsRating = $settings['thmv_rating'];
-                    ?>
-                    <div class="thmv-column">
-                        <div class="thme-grid-style-1">
-                            <div class="thme-grid-img">
-                    <?php if (isset($image) && !empty($image['url'])): ?>
-                                    <img class="img-fluid" src="<?= $image['url'] ?>" alt="">
-                                <?php endif; ?>  
+                $carousel_switcher = false;
+                $carouselImages = [];
 
-                                    <div class="thmv-price">
-                    <?php if (!empty($price)): ?>
-                                            <h4><?= $price ?></h4>
-                                        <?php endif; ?>
-                                        <?php if (!empty($price_after)): ?>
-                                            <span><?= $price_after ?></span>
-                                        <?php endif; ?>
-                                    </div>
-                            </div>
-                            <div class="thme-grid-rating">
-                    <?php if ($showStars && $starsRating['size'] > 0): ?>
+                $preface = get_post_meta($list->ID, 'th_room_intro', true);
+                $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
 
-                                    <ul class="thme-star-rating">
-                        <?php
-                        $size = floor($starsRating['size']);
-                        for ($i = 0; $i < $size; $i++):
-                            ?>
-                                            <li><?= $this->getStar(); ?></li>
-                                        <?php endfor; ?>
-                                        <li><?= $starsRating['size'] ?></li>
+                $titleOverride = get_post_meta($list->ID, 'th_room_title', true);
+                $title = !empty($titleOverride) ? $titleOverride : get_the_title($list);
+
+//                $titleSeparator = $list['thmv_title_separator'];
+
+                $description = $this->getDescription($list);
+                $link_url = get_the_permalink($list);
+                $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
+
+                $price = get_post_meta($list->ID, 'th_room_price', true);
+                $price_before = get_post_meta($list->ID, 'th_room_price_before', true);
+
+                $price_after = get_post_meta($list->ID, 'th_room_price_per', true);
+                $link_text = get_post_meta($list->ID, 'th_room_button_text', true);
+                if (empty($link_text)) {
+                    $link_text = __('Learn More', 'th-widget-pack');
+                }
+
+                $showStars = false;
+                $starsRating = get_post_meta($list->ID, 'th_room_rating', true);
+                if (!empty($starsRating) && $starsRating > 0) {
+                    $showStars = true;
+                }
+                $showLocation = false;
+                $locationText = get_post_meta($list->ID, 'th_room_location', true);
+                $locationIcon = ['value' => 'fas fa-map-marker-alt', 'library' => 'fa-solid'];
+                if (!empty($locationText)) {
+                    $showLocation = true;
+                }
 
 
-                                    </ul>
-                    <?php endif; ?>
-
-                                <ul class="thme-location">
-                                    <li><?= $this->getLocationIcon() ?></li>
-                                    <li>10 km from Tiny House</li>
-                                </ul>
-                            </div>
-                            <div class="thme-info">
-                    <?php if (!empty($title)): ?>
-                                    <h3><?= esc_html($title) ?></h3>
-                                <?php endif; ?>
-                                <?php if (!empty($description)): ?>
-                                    <p><?= esc_html($description) ?></p>
-                                <?php endif; ?>
-
-                                <?php if (!empty($link_url)) : ?>
-                                    <a <?php echo $this->get_render_attribute_string('thmv_link'); ?> href="<?= $link_url ?>">
-                                    <?= isset($link_text) ? $link_text : '' ?>
-                                    </a>
-                                    <?php endif; ?>
-
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-                <?php
+//                $icons = $this->getIcons($list);
             } else {
-                echo '<div class="alert">';
-                _e('Sorry, no results were found.', 'th-widget-pack');
-                echo '</div>';
-            }
-        } else {
-
-            foreach ($settings['listings'] as $list) {
-
-
-
                 $image = $list['thmv_image'];
+                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($list, 'thmv_image');
+
                 $carousel_switcher = $list['thmv_carousel_switcher'] == 'yes' ? true : false;
                 $carouselImages = $list['thmv_carousel'];
+
+                $preface = $list['thmv_preface'];
+                $highlight = $list['thmv_highlight'];
 
                 $title = $list['thmv_title'];
                 $titleSeparator = $list['thmv_title_separator'];
@@ -1875,7 +1884,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $showLocation = $list['thmv_location_switcher'] == 'yes';
                 $locationIcon = $list['thmv_location_icon'];
                 $icons = $this->getIcons($list);
-                /** button link attributes * */
+
                 if (!empty($link_url)) {
                     $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
                     if (!empty($list['thmv_link']['is_external'])) {
@@ -1885,164 +1894,180 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         $this->add_render_attribute('thmv_link', 'rel', 'nofollow', true);
                     }
                 }
-                ?>
+            }
+            ?>
 
-                <?php ob_start(); ?>
-                <div class="thmv-price">
+
+            <?php ob_start(); ?>
+            <div class="thmv-price">
                 <?php if (!empty($price_before)): ?>
-                        <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
-                    <?php endif; ?>
-                    <?php if (!empty($price)): ?>
-                        <div class="price"><?= $price ?></div>
-                    <?php endif; ?>
-                    <?php if (!empty($price_after) && in_array($listingStyle, [1, 6])): ?>
-                        <div class="price-after"><?= $price_after ?></div>
-                    <?php endif; ?>
-                </div>
-                    <?php $priceBlock = ob_get_clean(); ?>
+                    <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
+                <?php endif; ?>
+                <?php if (!empty($price)): ?>
+                    <div class="price"><?= $price ?></div>
+                <?php endif; ?>
+                <?php if (!empty($price_after) && in_array($listingStyle, [1, 6])): ?>
+                    <div class="price-after"><?= $price_after ?></div>
+                <?php endif; ?>
+            </div>
+            <?php $priceBlock = ob_get_clean(); ?>
+
+            <?php
+            ob_start();
+
+            if (count($icons)) {
 
 
-                <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
-                    <div class="elementor-widget-wrap">
-
-                        <div class="thme-grid-style-<?= $listingStyle ?> elementor-element">
-                            <div class="thme-grid-img">
-                <?php if (!$carousel_switcher && isset($image) && !empty($image['url'])): ?>
-                                    <?php echo Group_Control_Image_Size::get_attachment_image_html($list, 'thmv_image'); ?>
-                                <?php endif; ?>
-
-                                <?php
-                                if ($carousel_switcher && is_array($carouselImages)):
-                                    $this->renderSlider($list, $carouselImages);
-                                endif;
-                                ?>  
-
-                                <?php if (in_array($listingStyle, [2])): ?>
-                                    <div class="thmv-top-box"><span>Top</span></div>
-                                <?php endif; ?>
-
-                                <?php if (in_array($listingStyle, [1, 2, 3, 4])): ?>    
-                                    <?php echo $priceBlock; ?>
-                                <?php endif; ?>     
-                            </div>
-
-                <?php if (in_array($listingStyle, array(2))): ?>
-                                <div class="thme-grid-sleep">
-                                    <h4>Sleeps 2, Queen Bed</h4>
-                    <?php if (count($icons)): ?>
-                                        <ul class="thme-grid-facility">
-                                        <?php
-                                        foreach ($icons as $icon):
-                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
-                                            ?>   
-                                            <?php endforeach; ?>
-                                        </ul>
-                                        <?php endif; ?>
-                                </div>
-                                <?php endif;
-                                ?>
-                            <div class="thme-info">
-
-                <?php if ($showStars || $showLocation): ?>
-                                    <div class="thme-grid-rating">
-                                    <?php if ($showStars && $starsRating['size'] > 0): ?>
-                                            <ul class="thme-star-rating">
-                                            <?php
-                                            $size = floor($starsRating['size']);
-                                            for ($i = 0; $i < $size; $i++):
-                                                ?>
-                                                    <li><?= $this->getStar(); ?></li>
-                                                <?php endfor; ?>
-                                                <li><?= $starsRating['size'] ?></li>
-                                            </ul>
-                    <?php endif; ?>
-
-                                        <?php if ($showLocation): ?>
-                                            <ul class="thme-location">
-                                                <li class="location-icon"><?= $this->getLocationIcon($locationIcon, 'thmv_location_icon') ?></li>
-                                                <li class="location"><?= $locationText ?></li>
-                                            </ul>
-                    <?php endif; ?>
-                                    </div>
-                                    <?php endif; ?>
-                                <?php if (in_array($listingStyle, [3])): ?>
-                                    <div class="thmv-top-box"><span>Top</span></div>
-                                <?php endif; ?>
-                                <?php if (!empty($title)): ?>
-                                    <h3><?= esc_html($title) ?></h3>
-                                <?php endif; ?>
-                                <?php if (in_array($listingStyle, array(6)) && $titleSeparator): ?>    
-                                    <hr class="thmv-separator">
-                                <?php endif; ?>    
-                                    <?php if (in_array($listingStyle, array(3, 4))): ?>    
-                                        <h4>Sleeps 2, Queen Bed</h4>  
-                                    <?php endif; ?>
-                                    <?php if (!empty($description)): ?>
-                                        <p><?= esc_html($description) ?></p>
-                                    <?php endif; ?>
-
-                                    <?php
-                                    $iconListClass = 'thme-list';
-                                    if ($listingStyle == 6) {
-                                        $iconListClass = 'thme-grid-facility';
-                                    }
-
-                                    if (count($icons) && in_array($listingStyle, array(1, 6))):
-                                        ?>
-                                        <ul class="<?= $iconListClass ?>">
-                                        <?php
-                                        foreach ($icons as $icon):
-                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
-                                            ?>   
-                                            <?php endforeach; ?>
-                                        </ul>
-                                            <?php
-                                        endif;
-                                        ?>
-                                    <?php if (in_array($listingStyle, [5])): ?>    
-                                        <?php echo $priceBlock; ?>
-                                    <?php endif; ?>   
-
-                                    <div class="<?= ($listingStyle == 6 ? 'thme-grid-booking' : '') ?>">
-                <?php if (!empty($link_url)) : ?>
-                                            <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
-                                            <?= isset($link_text) ? $link_text : '' ?>
-                                                <?php
-                                                if (in_array($listingStyle, array(2, 3))):
-                                                    echo $this->getSvgIcon('plus');
-                                                    ?>
-
-                                                <?php endif; ?>
-                                            </a>
-                                            <?php endif; ?>
-                                        <?php if (in_array($listingStyle, [6])): ?>    
-                                            <?php echo $priceBlock; ?>
-                                        <?php endif; ?> 
-                                    </div>
-
-                <?php if (count($icons) && in_array($listingStyle, array(3))): ?>
-                                        <ul class="thme-grid-facility">
-                                        <?php
-                                        foreach ($icons as $icon):
-                                            echo '<li>' . $this->renderIcon($icon) . '</li>';
-                                            ?>   
-                                            <?php endforeach; ?>
-                                        </ul>
-                                        <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                $this->add_render_attribute('thmv_iconList', 'class', 'thmv-icons', true);
+                if (in_array($listingStyle, array(2, 3, 6))) {
+                    $this->add_render_attribute('thmv_iconList', 'class', 'thmv-grid-facility');
+                } else {
+                     $this->add_render_attribute('thmv_iconList', 'class', 'thmv-list');
+                }
+                ?>
+                <ul <?php echo $this->get_render_attribute_string('thmv_iconList'); ?>>
+                    <?php
+                    foreach ($icons as $icon):
+                        echo '<li>' . $this->renderIcon($icon) . '</li>';
+                        ?>   
+                    <?php endforeach; ?>
+                </ul>
 
                 <?php
             }
+            $iconsList = ob_get_clean();
+            ?>
+
+
+            <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
+                <div class="elementor-widget-wrap">
+
+                    <div class="thmv-grid-style-<?= $listingStyle ?> elementor-element">
+                        <div class="thmv-grid-img">
+                            <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
+                                <?php echo $renderedImage; ?>
+                            <?php endif; ?>
+
+                            <?php
+                            if ($carousel_switcher && is_array($carouselImages)):
+                                $this->renderSlider($list, $carouselImages);
+                            endif;
+                            ?>  
+
+                            <?php if (in_array($listingStyle, [2]) && !empty($highlight)): ?>
+                                <div class="thmv-top-box"><span><?= $highlight ?></span></div>
+                            <?php endif; ?>
+
+                            <?php if (in_array($listingStyle, [1, 2, 3, 4])): ?>    
+                                <?php echo $priceBlock; ?>
+                            <?php endif; ?>     
+                        </div>
+
+                        <?php if (in_array($listingStyle, array(2))): ?>
+                            <div class="thmv-grid-sleep">
+                                <?php if (!empty($preface)): ?>
+                                    <h4 class="thmv-preface"><?= $preface ?></h4>
+                                <?php endif; ?>
+                                <?= $iconsList ?>
+                            </div>
+                        <?php endif;
+                        ?>
+                        <div class="thmv-info">
+
+                            <?php if ($showStars || $showLocation): ?>
+                                <div class="thmv-grid-rating">
+                                    <?php if ($showStars && $starsRating['size'] > 0): ?>
+                                        <ul class="thmv-star-rating">
+                                            <?php
+                                            $size = floor($starsRating['size']);
+                                            $halfStar = strpos($starsRating['size'], '.') ? true : false;
+
+                                            for ($i = 0; $i < $size; $i++):
+                                                ?>
+                                                <li><i aria-hidden="true" class="fas fa-star"></i></li>
+                                                <?php
+                                                if ($i == ($size - 1) && $halfStar) {
+                                                    ?>
+                                                    <i aria-hidden="true" class="fas fa-star-half"></i>
+                                                    <?php
+                                                }
+                                            endfor;
+                                            ?>
+                                            <?php ?>      
+                                            <li><?= $starsRating['size'] ?></li>
+                                        </ul>
+                                    <?php endif; ?>
+
+                                    <?php if ($showLocation): ?>
+                                        <ul class="thmv-location">
+                                            <li class="location-icon"><?php Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); ?></li>
+                                            <li class="location"><?= $locationText ?></li>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (in_array($listingStyle, [3])): ?>
+                                <div class="thmv-top-box"><span>Top</span></div>
+                            <?php endif; ?>
+                            <?php if (!empty($title)): ?>
+                                <h3 class="thmv-title"><?= esc_html($title) ?></h3>
+                            <?php endif; ?>
+                            <?php if (in_array($listingStyle, array(6)) && $titleSeparator): ?>    
+                                <hr class="thmv-separator">
+                            <?php endif; ?>    
+                            <?php if (in_array($listingStyle, array(3, 4))): ?>    
+                                <?php if (!empty($preface)): ?>
+                                    <h4 class="thmv-preface"><?= $preface ?></h4>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if (!empty($description)): ?>
+                                <p class="thmv-description"><?= esc_html($description) ?></p>
+                            <?php endif; ?>
+
+                            <?php
+                            if (in_array($listingStyle, array(1, 6))):
+                                ?>
+                                <?= $iconsList ?>
+                                <?php
+                            endif;
+                            ?>
+                            <?php if (in_array($listingStyle, [5])): ?>    
+                                <?php echo $priceBlock; ?>
+                            <?php endif; ?>   
+
+                            <div class="<?= ($listingStyle == 6 ? 'thmv-grid-booking' : '') ?>">
+            <?php if (!empty($link_url)) : ?>
+                                    <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
+                                    <?= isset($link_text) ? $link_text : '' ?>
+                                        <?php
+                                        if (in_array($listingStyle, array(2, 3))):
+                                            echo '<i class="fas fa-plus"></i>';
+                                            ?>
+
+                                        <?php endif; ?>
+                                    </a>
+                                    <?php endif; ?>
+                                <?php if (in_array($listingStyle, [6])): ?>    
+                                    <?php echo $priceBlock; ?>
+                                <?php endif; ?> 
+                            </div>
+
+            <?php if (in_array($listingStyle, array(3))): ?>
+                                <?= $iconsList ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <?php
         }
 
         echo '</div>';
 
-        if ($dataSource && $query) {
+        if ($dataSource) {
             wp_reset_postdata();
         }
         ?>
