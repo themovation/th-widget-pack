@@ -7,8 +7,10 @@ jQuery(function ($) {
     var icon_element = icon_element_generic + '0';
     var icon_holder = '.icon-holder-parent';
     var ordering_element = '.elementor-control-thmv_icon_ordering';
+    var thmv_repeater_editable = '#elementor-controls .elementor-control-listings .elementor-control-content >.elementor-repeater-fields-wrapper >.elementor-repeater-fields .elementor-repeater-row-controls.editable';
+    var thmv_style_element = 'select[data-setting="thmv_style"]';
+    var styleToHideIconsFor = ['style_4','style_5'];
     if (typeof $e != "undefined") {
-        console.log($e.commands.getAll());
         elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
             if ('themo-accommodation-listing' !== model.elType) {
                 clearInterval(interval);
@@ -18,13 +20,25 @@ jQuery(function ($) {
         });
         elementor.hooks.addAction('panel/open_editor/widget/themo-accommodation-listing', function (panel, model, view) {
             interval = setInterval(function () {
-                var element = '#elementor-controls .elementor-control-thmv_section_listing';
-                var $collapsed = $(element).next('.elementor-control-listings');
-                if ($collapsed.length) {
-                    $collapsed.find('> .elementor-control-content >.elementor-repeater-fields-wrapper >.elementor-repeater-fields').on('click', function () {
-                        setupAccordion($(this));
 
+                if ($(thmv_repeater_editable).length) {
+
+                    var listing_style = view.container.settings.attributes.thmv_style;
+
+                    $(thmv_repeater_editable).find(thmv_style_element).each(function () {
+                        if ($(this).val() !== listing_style) {
+                            $(this).val(listing_style).trigger('change');
+                        }
                     });
+                    if(styleToHideIconsFor.indexOf(listing_style)>-1){
+                        $(thmv_repeater_editable).find('.elementor-control-type-tab.elementor-control-icons').hide();
+                    }
+                    else {
+                        $(thmv_repeater_editable).find('.elementor-control-type-tab.elementor-control-icons').show();
+                        setupAccordion();
+                    }
+                    
+
                 }
 
             }, 200);
@@ -39,7 +53,8 @@ jQuery(function ($) {
                 innerholder.append($label);
 
             }
-            function setupAccordion($parentElement) {
+            function setupAccordion() {
+                var $parentElement = $(thmv_repeater_editable);
                 if ($parentElement.find(icon_holder).length !== 0) {
                     if ($parentElement.find(icon_holder).find(icon_element).eq(0).hasClass('elementor-tab-close')) {
                         $parentElement.find(icon_holder).hide();
@@ -68,7 +83,7 @@ jQuery(function ($) {
                             $parent.find('div[class*="elementor-control-thmv_icon_icon"]').each(function (index) {
                                 var $thisIcon = $allIcons.eq(index);
                                 var $thisLabel = $allIcons.eq(index);
-                               addIconHolder($parent, $iconHolder, $thisIcon, $thisLabel, index);
+                                addIconHolder($parent, $iconHolder, $thisIcon, $thisLabel, index);
                             });
                         }
 
