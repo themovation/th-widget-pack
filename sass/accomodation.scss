@@ -540,11 +540,12 @@ $color-lgray : #8C8D8C;
                     @include flex-nowrap;
                     @include align-items-center;
                     @include justify-content-center;
-                    > div {
-                        width: 50%;
+                    .thmv-grid-img {
+                        width: 58%;
                     }
                     .thmv-info{
                         padding-left: 30px;
+                        width: 42%;
                     }
 
                 }

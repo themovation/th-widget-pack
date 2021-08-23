@@ -405,6 +405,21 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
+        $listing->add_control(
+                'thmv_align_image_right',
+                [
+                    'label' => __('Show images on the right side', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'default' => '',
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                    'condition' => [
+                        'thmv_style' => 'style_5',
+                    ],
+                ]
+        );
+
         $listing->end_controls_tab();
         /** tab image end * */
         /** tab data * */
@@ -1121,7 +1136,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-info .thmv-list span' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .thmv-list .thmv-icon-label' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
@@ -1134,7 +1149,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Typography', 'elementor'),
                     'name' => 'thmv_icon_label_typography',
-                    'selector' => '{{WRAPPER}} .thmv-info .thmv-list span',
+                    'selector' => '{{WRAPPER}} .thmv-info .thmv-list .thmv-icon-label',
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
                     ],
@@ -1565,7 +1580,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         ?>
 
         <?php if (isset($icon['thmv_icon_label'])): ?>
-            <span><?php echo esc_html($icon['thmv_icon_label']); ?></span>
+            <span class="thmv-icon-label"><?php echo esc_html($icon['thmv_icon_label']); ?></span>
         <?php endif; ?>
         <?php
         return ob_get_clean();
@@ -1800,7 +1815,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
 
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
-        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-lst-styl-' . $listingStyle, true);
+        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
 
         echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
@@ -1824,6 +1839,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                 $carousel_switcher = false;
                 $carouselImages = [];
+                $showImgesRightSide = false;
 
                 $preface = get_post_meta($list->ID, 'th_room_intro', true);
                 $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
@@ -1885,6 +1901,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $locationIcon = $list['thmv_location_icon'];
                 $icons = $this->getIcons($list);
 
+                $showImgesRightSide = isset($list['thmv_align_image_right']) && $list['thmv_align_image_right'] == 'yes';
+
                 if (!empty($link_url)) {
                     $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
                     if (!empty($list['thmv_link']['is_external'])) {
@@ -1922,7 +1940,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 if (in_array($listingStyle, array(2, 3, 6))) {
                     $this->add_render_attribute('thmv_iconList', 'class', 'thmv-grid-facility');
                 } else {
-                     $this->add_render_attribute('thmv_iconList', 'class', 'thmv-list');
+                    $this->add_render_attribute('thmv_iconList', 'class', 'thmv-list');
                 }
                 ?>
                 <ul <?php echo $this->get_render_attribute_string('thmv_iconList'); ?>>
@@ -1942,7 +1960,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
                 <div class="elementor-widget-wrap">
 
-                    <div class="thmv-grid-style-<?= $listingStyle ?> elementor-element">
+                    <div class="thmv-grid <?= $showImgesRightSide ? 'image-column-right ' : '' ?> elementor-element">
                         <div class="thmv-grid-img">
                             <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
                                 <?php echo $renderedImage; ?>
@@ -1954,7 +1972,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             endif;
                             ?>  
 
-                            <?php if (in_array($listingStyle, [2]) && !empty($highlight)): ?>
+                            <?php if (in_array($listingStyle, [2, 4]) && !empty($highlight)): ?>
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
 
@@ -1966,7 +1984,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         <?php if (in_array($listingStyle, array(2))): ?>
                             <div class="thmv-grid-sleep">
                                 <?php if (!empty($preface)): ?>
-                                    <h4 class="thmv-preface"><?= $preface ?></h4>
+                                    <div class="thmv-preface"><?= $preface ?></div>
                                 <?php endif; ?>
                                 <?= $iconsList ?>
                             </div>
@@ -1994,7 +2012,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                             endfor;
                                             ?>
                                             <?php ?>      
-                                            <li><?= $starsRating['size'] ?></li>
+                                            <li><?= number_format((float) $starsRating['size'], 1, '.', ''); ?></li>
                                         </ul>
                                     <?php endif; ?>
 
@@ -2007,7 +2025,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 </div>
                             <?php endif; ?>
                             <?php if (in_array($listingStyle, [3])): ?>
-                                <div class="thmv-top-box"><span>Top</span></div>
+                                <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
                             <?php if (!empty($title)): ?>
                                 <h3 class="thmv-title"><?= esc_html($title) ?></h3>
@@ -2017,7 +2035,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>    
                             <?php if (in_array($listingStyle, array(3, 4))): ?>    
                                 <?php if (!empty($preface)): ?>
-                                    <h4 class="thmv-preface"><?= $preface ?></h4>
+                                    <div class="thmv-preface"><?= $preface ?></div>
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?php if (!empty($description)): ?>
@@ -2036,9 +2054,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>   
 
                             <div class="<?= ($listingStyle == 6 ? 'thmv-grid-booking' : '') ?>">
-            <?php if (!empty($link_url)) : ?>
+                                <?php if (!empty($link_url)) : ?>
                                     <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
-                                    <?= isset($link_text) ? $link_text : '' ?>
+                                        <?= isset($link_text) ? $link_text : '' ?>
                                         <?php
                                         if (in_array($listingStyle, array(2, 3))):
                                             echo '<i class="fas fa-plus"></i>';
@@ -2046,13 +2064,13 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                                         <?php endif; ?>
                                     </a>
-                                    <?php endif; ?>
+                                <?php endif; ?>
                                 <?php if (in_array($listingStyle, [6])): ?>    
                                     <?php echo $priceBlock; ?>
                                 <?php endif; ?> 
                             </div>
 
-            <?php if (in_array($listingStyle, array(3))): ?>
+                            <?php if (in_array($listingStyle, array(3))): ?>
                                 <?= $iconsList ?>
                             <?php endif; ?>
                         </div>
