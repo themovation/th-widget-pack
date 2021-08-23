@@ -41,7 +41,7 @@ jQuery(function ($) {
 
                 }
 
-            }, 200);
+            }, 100);
 
             function addIconHolder($parent, $iconHolder, $icon, $label, index) {
                 var holder = $('<div class="icon-holder"/>');
