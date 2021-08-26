@@ -189,6 +189,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_2', 'style_3', 'style_4'],
                     ],
                 ]
         );
@@ -220,6 +221,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_2', 'style_3', 'style_4'],
                     ],
                 ]
         );
@@ -252,6 +254,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_6'],
                     ],
                 ]
         );
@@ -268,6 +271,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_1', 'style_5'],
                     ],
                 ]
         );
@@ -284,6 +288,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_1', 'style_5'],
                     ],
                 ]
         );
@@ -296,7 +301,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-price ' => 'display:none;',
+                            '{{WRAPPER}} .thmv-price' => 'display:none !important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
