@@ -250,7 +250,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-icons ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-icons ' => 'display:none !important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -538,7 +538,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'condition' => [
-                        'thmv_rating_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5'],
                     ],
                     'dynamic' => [
@@ -1093,7 +1092,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon.thmv-icon' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_6']
@@ -1113,7 +1112,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-info .elementor-icon.thmv-icon' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_6']
@@ -1169,7 +1168,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::HEADING,
                     'separator' => 'before',
                     'condition' => [
-                        'thmv_rating_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1178,7 +1176,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $this->add_control(
                 'thmv_rating_color',
                 [
-                    'label' => __('Color', 'th-widget-pack'),
+                    'label' => __('Icon Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'scheme' => [
                         'type' => Scheme_Color::get_type(),
@@ -1187,9 +1185,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-star-rating svg path' => 'fill: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-star-rating li' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
-                        'thmv_rating_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1198,7 +1196,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $this->add_responsive_control(
                 'thmv_rating_size',
                 [
-                    'label' => __('Size', 'elementor'),
+                    'label' => __('Icon Size', 'elementor'),
                     'type' => Controls_Manager::SLIDER,
                     'range' => [
                         'px' => [
@@ -1208,13 +1206,45 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .thmv-star-rating svg' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-star-rating li' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
-                        'thmv_rating_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
         );
+
+        $this->add_control(
+            'thmv_rating_text_color',
+            [
+                'label' => __('Text Color', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} ul.thmv-star-rating li:last-child' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'thmv_style' => ['style_1', 'style_5']
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Text Typography', 'elementor'),
+                'name' => 'thmv_rating_typography',
+                'selector' => '{{WRAPPER}} ul.thmv-star-rating li:last-child',
+                'condition' => [
+                    'thmv_style' => ['style_1', 'style_5']
+                ],
+            ]
+        );
+
 
         /* STYLE - Location */
         $this->add_control(
@@ -1224,7 +1254,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::HEADING,
                     'separator' => 'before',
                     'condition' => [
-                        'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1244,7 +1273,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         '{{WRAPPER}} .thmv-location .location-icon i' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
-                        'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1265,7 +1293,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         '{{WRAPPER}} .thmv-location .location-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
-                        'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1285,7 +1312,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         '{{WRAPPER}} .thmv-location .location' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
-                        'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1298,7 +1324,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'name' => 'thmv_location_typography',
                     'selector' => '{{WRAPPER}} .thmv-location .location',
                     'condition' => [
-                        'thmv_location_switcher' => 'yes',
                         'thmv_style' => ['style_1', 'style_5']
                     ],
                 ]
@@ -1323,7 +1348,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         'type' => Scheme_Color::get_type(),
                         'value' => Scheme_Color::COLOR_1,
                     ],
-                    'default' => '#ffffff',
+                    //'default' => '#ffffff',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-price .price' => 'color: {{VALUE}};',
                     ],
@@ -1402,6 +1427,37 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
+
+        // backdrop-filter: blur(25px);
+
+        $this->add_control(
+            'thmv_price_background_blur',
+            [
+                'label' => __('Background Blur', 'th-widget-pack'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 25,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-price' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                ],
+                'condition' => [
+                    'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+
 
         /* $this->add_control(
           'thmv_price_text_background',
@@ -2036,7 +2092,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                                 <?php
                                                 if ($i == ($size - 1) && $halfStar) {
                                                     ?>
-                                                    <i aria-hidden="true" class="fas fa-star-half"></i>
+                                                    <li><i aria-hidden="true" class="fas fa-star-half"></i></li>
                                                     <?php
                                                 }
                                             endfor;
