@@ -1552,6 +1552,27 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         }
     }
 
+    private function getIconsFromThePost($icons) {
+        $iconList = [];
+        $i = 0;
+        if (!empty($icons)) {
+            foreach ($icons as $icon) {
+                if(empty($icon['value']) &&  empty($icon['label'])) continue;
+                if (!empty($icon['value'])) {
+                    $iconList[$i]['thmv_icon'] = $icon;
+                }
+                if (!empty($icon['label'])) {
+                    $iconList[$i]['thmv_icon_label'] = $icon['label'];
+                }
+                $i++;
+            }
+
+        }
+
+
+        return $iconList;
+    }
+
     private function getIcons($list) {
         $iconList = [];
         $ordering = $list['thmv_icon_ordering'];
@@ -1569,7 +1590,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $iconList;
     }
 
-    private function renderIcon($icon) {
+    private function renderIcon($icon, $listingStyle) {
         ob_start();
 
         if (isset($icon['thmv_icon'])) {
@@ -1584,7 +1605,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         }
         ?>
 
-        <?php if (isset($icon['thmv_icon_label'])): ?>
+        <?php if (isset($icon['thmv_icon_label']) && in_array($listingStyle, array(1, 6))): ?>
             <span class="thmv-icon-label"><?php echo esc_html($icon['thmv_icon_label']); ?></span>
         <?php endif; ?>
         <?php
@@ -1867,6 +1888,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     $link_text = __('Learn More', 'th-widget-pack');
                 }
 
+                $iconsTemp = get_post_meta($list->ID, 'th_room_icons', true);
+                
+                $icons = $this->getIconsFromThePost($iconsTemp);
+
                 $showStars = false;
                 $starsRating = get_post_meta($list->ID, 'th_room_rating', true);
                 if (!empty($starsRating) && $starsRating > 0) {
@@ -1951,7 +1976,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 <ul <?php echo $this->get_render_attribute_string('thmv_iconList'); ?>>
                     <?php
                     foreach ($icons as $icon):
-                        echo '<li>' . $this->renderIcon($icon) . '</li>';
+                        echo '<li>' . $this->renderIcon($icon, $listingStyle) . '</li>';
                         ?>   
                     <?php endforeach; ?>
                 </ul>
@@ -2029,7 +2054,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
-                            <?php if (in_array($listingStyle, [3])): ?>
+                            <?php if (in_array($listingStyle, [3]) && !empty($highlight)): ?>
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
                             <?php if (!empty($title)): ?>

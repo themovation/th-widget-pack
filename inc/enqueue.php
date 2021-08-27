@@ -122,3 +122,86 @@ if ( ! function_exists ( 'thmv_tuck_pro_widgets' ) ) {
 if ( !defined( 'ELEMENTOR_PRO_VERSION' )) {
     add_action( 'elementor/editor/footer', 'thmv_tuck_pro_widgets' );
 }
+
+
+if (is_admin()) {
+   
+    add_filter('ot_option_types_array', 'add_th_icons');
+
+    function add_th_icons($types) {
+        $types['th_room_icons'] = esc_html__('Icon List', 'bellevue');
+    }
+
+    function ot_type_th_room_icons($args = array()) {
+        $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
+        if (!file_exists($elementorFile))
+            return;
+
+        $fontawesome_path = ABSPATH . 'wp-content/plugins/elementor/assets/lib/font-awesome';
+        $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), time());
+
+        $arrayKeys = ['brands' => 'fab', 'solid' => 'fas', 'regular' => 'far'];
+        $masterArray = [];
+        $urls = [];
+
+        foreach ($arrayKeys as $key => $fa) {
+            wp_enqueue_style('font-awesome-' . $key, $plugin_url . '/css/' . $key . '.min.css', array(), time());
+            $urls[$key] = $plugin_url . '/js/' . $key . '.js';
+        }
+
+
+        wp_enqueue_style('th-icons', THEMO_URL . 'css/th-icons.css', array(), time());
+
+        wp_enqueue_script('thmv-drag-sort', THEMO_URL . 'js/drag-sort.js', array(), time());
+        wp_enqueue_script('th-icons', THEMO_URL . 'js/th-icons.js', array(), time());
+
+        wp_localize_script('th-icons', 'th_object',
+                array(
+                    'ajaxurl' => admin_url('admin-ajax.php'),
+                    'urls' => $urls,
+                    'keys' => $arrayKeys,
+                )
+        );
+
+        $args['field_class'] = (isset($args['field_class']) ? $args['field_class'] : '');
+        // Turns arguments array into variables.
+        extract($args);
+
+        // Verify a description.
+        $has_desc = !empty($field_desc) ? true : false;
+
+        echo '<div class="format-setting ' . ( $has_desc ? 'has-desc' : 'no-desc' ) . '">';
+
+        echo $has_desc ? '<div class="description">' . wp_kses_post(htmlspecialchars_decode($field_desc)) . '</div>' : '';
+
+        echo '<div class="format-setting-inner">';
+
+        echo '<div class="option-tree-th-icons-wrap">';
+
+        $showCount = 12;
+        for ($index = 0; $index < $showCount; $index++) {
+            $value = isset($field_value[$index]) ? $field_value[$index]['value'] : '';
+            $label = isset($field_value[$index]) ? $field_value[$index]['label'] : '';
+            $library = isset($field_value[$index]) ? $field_value[$index]['library'] : '';
+            echo '<div class="icon-fields-wrapper" ' . (!empty($value) || $index == 0 ? '' : 'style="display:none"') . '>';
+
+            echo '<div class="icon-holder add-th-icon">'
+            . '<i class="' . (!empty($value) ? $value : 'icon ot-icon-plus-circle') . '" aria-hidden="true" ></i>'
+            . '</div>';
+            echo '<input type="text" placeholder="Label" name="' . esc_attr($field_name) . '[' . $index . '][label]" id="' . esc_attr($field_id) . '_' . $index . '_label" value="' . esc_attr($label) . '" class="' . esc_attr($field_class) . '"  />';
+            echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][value]" id="' . esc_attr($field_id) . '_' . $index . '_value" value="' . esc_attr($value) . '" class="th_icon_value ' . esc_attr($field_class) . '" />';
+            echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][library]" id="' . esc_attr($field_id) . '_' . $index . '_library" value="' . esc_attr($value) . '" class="th_icon_library ' . esc_attr($field_class) . '" />';
+            echo '<a style="' . (!empty($value) ? '' : 'display:none') . '" href="#" class="remove-button button option-tree-ui-button button-secondary light"><span class="icon ot-icon-minus-circle"></span></a>';
+            echo '</div>';
+        }
+        echo '<div><a class="add-another-icon button-primary" href="#"><span class="icon ot-icon-plus-circle"></span></a></div>';
+
+        echo '</div>';
+
+        echo '</div>';
+
+        echo '</div>';
+    }
+
+}
