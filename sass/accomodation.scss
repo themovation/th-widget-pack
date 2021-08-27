@@ -281,6 +281,9 @@ $color-lgray : #8C8D8C;
                         padding-right: 0;
                     }
                 }
+                .thmv-icon{
+                    font-size: 23px;
+                }
             }
         }
 
@@ -345,7 +348,7 @@ $color-lgray : #8C8D8C;
                 padding-bottom: 15px;
                 font-size: 22px;
                 border-bottom: 1px solid #e7e7e7;
-               
+
             }
             .thmv-info{
                 @media(max-width: $sm-max){
