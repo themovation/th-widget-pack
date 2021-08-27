@@ -84,6 +84,12 @@ function th_register_mphb_room_type_meta_boxes()
                 'class'       => 'ot-upload-attachment-id',
                 'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the room grid and the Featured Image for the lightbox.',
             ),
+            array(
+                'id'          => 'th_room_icons',
+                'label'       => __( 'Icons', 'bellevue'),
+                'desc'        => 'Add icons for the listings',
+                'type'        => 'th_room_icons',
+           ),
             // END PAGE LAYOUT META BOX
         )
     );

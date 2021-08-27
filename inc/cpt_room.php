@@ -199,7 +199,6 @@ function th_register_room_meta_boxes()
                 'class'       => 'ot-upload-attachment-id',
                 'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the room grid and the Featured Image for the lightbox.',
             ),
-            //Array ( [value] => fas fa-star-half [library] => fa-solid )
             array(
                 'id'          => 'th_room_icons',
                 'label'       => __( 'Icons', 'bellevue'),
