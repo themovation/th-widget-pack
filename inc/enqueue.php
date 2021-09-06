@@ -184,20 +184,21 @@ if (is_admin()) {
             $value = isset($field_value[$index]) ? $field_value[$index]['value'] : '';
             $label = isset($field_value[$index]) ? $field_value[$index]['label'] : '';
             $library = isset($field_value[$index]) ? $field_value[$index]['library'] : '';
-            echo '<div class="icon-fields-wrapper" ' . (!empty($value) || $index == 0 ? '' : 'style="display:none"') . '>';
-
+            $hasSomeValue = !empty($value) || !empty($label) ||$index == 0;
+            echo '<div data-index="'.$index.'" class="icon-fields-wrapper '.($hasSomeValue ? 'icon-active' : '').'" ' . ($hasSomeValue || $index == 0 ? '' : 'style="display:none"') . '>';
+            echo '<div class="icon-title"><div class="title">Icon</div><div class="order-buttons"><span data-action="up" class="order-up icon ot-icon-chevron-up" aria-hidden="true"></span><span data-action="down" class="order-down icon ot-icon-chevron-down" aria-hidden="true"></span></div></div>';
             echo '<div class="icon-holder add-th-icon">'
             . '<i class="' . (!empty($value) ? $value : 'icon ot-icon-plus-circle') . '" aria-hidden="true" ></i>'
             . '</div>';
             echo '<input type="text" placeholder="Label" name="' . esc_attr($field_name) . '[' . $index . '][label]" id="' . esc_attr($field_id) . '_' . $index . '_label" value="' . esc_attr($label) . '" class="' . esc_attr($field_class) . '"  />';
             echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][value]" id="' . esc_attr($field_id) . '_' . $index . '_value" value="' . esc_attr($value) . '" class="th_icon_value ' . esc_attr($field_class) . '" />';
-            echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][library]" id="' . esc_attr($field_id) . '_' . $index . '_library" value="' . esc_attr($value) . '" class="th_icon_library ' . esc_attr($field_class) . '" />';
-            echo '<a style="' . (!empty($value) ? '' : 'display:none') . '" href="#" class="remove-button button option-tree-ui-button button-secondary light"><span class="icon ot-icon-minus-circle"></span></a>';
+            echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][library]" id="' . esc_attr($field_id) . '_' . $index . '_library" value="' . esc_attr($library) . '" class="th_icon_library ' . esc_attr($field_class) . '" />';
+            echo '<a style="' . (!empty($hasSomeValue) ? '' : 'display:none') . '" href="#" class="remove-button button option-tree-ui-button button-secondary light"><span class="icon ot-icon-minus-circle"></span></a>';
             echo '</div>';
         }
-        echo '<div><a class="add-another-icon button-primary" href="#"><span class="icon ot-icon-plus-circle"></span></a></div>';
 
         echo '</div>';
+        echo '<div><a class="add-another-icon button-primary" href="#"><span class="icon ot-icon-plus-circle"></span></a></div>';
 
         echo '</div>';
 

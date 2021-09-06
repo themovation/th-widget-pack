@@ -1,8 +1,45 @@
 var th_object;
 var wrapper = '.icon-fields-wrapper';
+var parent_wrapper = '.option-tree-th-icons-wrap';
+var activeClass = 'icon-active';
+var orderingField = '#th_room_icons_ordering';
 jQuery(document).ready(function ($) {
-    $('body').prepend('<div class="thmv-iconpicker-outer"><div class="thmv-iconpicker-middle"><div class="thmv-iconpicker"><div class="thmv-closebtn"></div><input type="text" class="srchicons" placeholder="eg:google" /> <div class="iconsholder"></div><div class="thmv-iconpicker-close dashicons dashicons-no-alt"></div></div></div></div>'); // Appending Iconpicker box below input box
 
+    $('body').prepend('<div class="thmv-iconpicker-outer"><div class="thmv-iconpicker-middle"><div class="thmv-iconpicker"><div class="thmv-closebtn"></div><input type="text" class="srchicons" placeholder="eg:google" /> <div class="iconsholder"></div><div class="thmv-iconpicker-close dashicons dashicons-no-alt"></div></div></div></div>'); // Appending Iconpicker box below input box
+    setupOrdering();
+
+    checkOrderDown();
+
+    function checkOrderDown() {
+        $(wrapper + '.' + activeClass).find('.order-down').show();
+        $(wrapper + '.' + activeClass).last().find('.order-down').hide();
+   
+    }
+    function setupOrdering() {
+        var ordering = $(orderingField).val();
+        if (ordering === '') {
+            var orderingTemp = Array($(wrapper).length).fill().map((_, i) => i);
+            ordering = orderingTemp.join(',');
+            $(orderingField).val(ordering);
+
+        }
+        var orderArr = ordering.split(',');
+
+        for (var i = 0; i < orderArr.length; i++) {
+            var index = orderArr[i];
+            $(parent_wrapper).append($(wrapper+'[data-index="'+index+'"]'));
+
+        }
+
+    }
+    function saveOrdering(){
+         var valueArr = [];
+            $(wrapper).each(function () {
+                valueArr.push($(this).data('index'));
+            });
+            var value = valueArr.join();
+            $(orderingField).val(value);
+    }
     var allIcons = {};
     if (th_object.urls.brands) {
         $.getJSON(th_object.urls.brands, function (json) {
@@ -37,23 +74,55 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         var $thisWrapper = $(this).closest(wrapper);
         $thisWrapper.find('input').val('');
-        $thisWrapper.find('i').attr('class','icon ot-icon-plus-circle');
+        $thisWrapper.find('i').attr('class', 'icon ot-icon-plus-circle');
         $('.add-another-icon').before($thisWrapper);
         $(this).hide();
         $thisWrapper.hide();
+        $thisWrapper.removeClass(activeClass);
+        checkOrderDown();
+        saveOrdering();
+
     });
     $('.add-another-icon').on('click', function (e) {
         e.preventDefault();
 
-        $(wrapper + ':hidden').eq(0).show();
+        $selectedBlock = $(wrapper + ':hidden').eq(0);
+        $selectedBlock.show();
         if (!$(wrapper + ':hidden').length) {
             $(this).hide();
         }
+        $selectedBlock.find('.remove-button').show();
+        $selectedBlock.addClass(activeClass);
+        checkOrderDown();
+        saveOrdering();       
     });
     function appendIcon(library, prefix, icon) {
         $(".thmv-iconpicker .iconsholder").append('<p class="geticonval"><i data-library="' + library + '" data-value="' + prefix + ' fa-' + icon + '" class="' + prefix + ' fa-' + icon + '"></i>' + icon + '</p>');
 
     }
+    $('.order-buttons > span').on('click', function (e) {
+        e.preventDefault();
+        var $thisTab = $(this).closest(wrapper);
+        var $holder = $thisTab.closest(parent_wrapper);
+        var thisIndex = $thisTab.index();
+        var action = $(this).data('action');
+        if (thisIndex > 0 && action === 'up') {
+            var $previousDiv = $holder.find(wrapper).eq(thisIndex - 1);
+            if ($previousDiv.length) {
+                $previousDiv.before($thisTab);
+            }
+
+        } else if (action === 'down') {
+            var $nextDiv = $holder.find(wrapper).eq(thisIndex + 1);
+            if ($nextDiv.length) {
+                $nextDiv.after($thisTab);
+            }
+
+
+        }
+        checkOrderDown();
+         saveOrdering();  
+    });
     $('.add-th-icon').on('click', function (e) {
         e.preventDefault();
         $('.add-th-icon').removeClass('active');
@@ -74,7 +143,6 @@ jQuery(document).ready(function ($) {
         $libraryInput.val(getIcon.data('library'));
         $placeholder.attr('class', getIcon.data('value'));
         $('.thmv-iconpicker-outer').css('display', 'none');
-        $selectedBlock.closest(wrapper).find('.remove-button').show();
     });
     function iconpickerbox() {
 
