@@ -109,37 +109,3 @@ $percentageUnit : '%';
         clear: both;
     }
 }
-.elementor-widget-themo-accommodation-listing{
-
-
-    .elementor-row{
-        @each $per in $percentage {
-            @media(min-width: $sm){
-                .thmv-column-#{$per} {
-                    width: #{$per}#{$percentageUnit};
-                    max-width: #{$per}#{$percentageUnit};
-                }
-
-            }
-        }
-        @media(max-width: $md){
-            @each $per in $percentage {
-                .thmv-column-tablet-#{$per} {
-                    width: #{$per}#{$percentageUnit};
-                    max-width: #{$per}#{$percentageUnit};
-                }
-
-            }
-        }
-
-        @media(max-width: $sm-max){
-            @each $per in $percentage {
-                .thmv-column-mobile-#{$per} {
-                    width: #{$per}#{$percentageUnit};
-                    max-width: #{$per}#{$percentageUnit};
-                }
-
-            }
-        }
-    }
-}

@@ -46,7 +46,10 @@ if('uplands' == THEMO_CURRENT_THEME){
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         
         $timeChanged = time();//THEMO_VERSION;
+        wp_enqueue_style( 'thmv-global', THEMO_URL . 'css/global.css', array(), $timeChanged );
         wp_enqueue_style( 'thmv-accomodation', THEMO_URL . 'css/accomodation.css', array(), $timeChanged );
+        wp_enqueue_style( 'thmv-tabs', THEMO_URL . 'css/tabs.css', array(), $timeChanged );
+
     }
 
 // EDITOR // Before the editor scripts enqueuing.
