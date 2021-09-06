@@ -60,8 +60,6 @@ if('uplands' == THEMO_CURRENT_THEME){
         // JS for the Editor
         wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), time(), true);
         wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), time() );
-        wp_enqueue_script( 'thmv-drag-sort', THEMO_URL . 'js/drag-sort.js', array(), time() );
-
     }
 }
 
@@ -156,7 +154,6 @@ if (is_admin()) {
 
         wp_enqueue_style('th-icons', THEMO_URL . 'css/th-icons.css', array(), time());
 
-        wp_enqueue_script('thmv-drag-sort', THEMO_URL . 'js/drag-sort.js', array(), time());
         wp_enqueue_script('th-icons', THEMO_URL . 'js/th-icons.js', array(), time());
 
         wp_localize_script('th-icons', 'th_object',
