@@ -179,6 +179,12 @@ function th_register_room_meta_boxes()
                 'desc' => __('e.g.: 2 km away from the center', 'bellevue'),
             ),
             array(
+                'id'    => "th_room_location_link",
+                'label'  =>  'Location Link',
+                'type'  => 'text',
+                'desc' => __('e.g.: A google maps link', 'bellevue'),
+            ),
+            array(
                 'id'          => 'th_room_rating',
                 'label'       => __( 'Rating', 'bellevue' ),
                 'desc'        => __( 'e.g: 4.5', 'bellevue' ),
