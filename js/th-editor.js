@@ -158,12 +158,18 @@ jQuery(function ($) {
                         $(thmv_repeater_editable).find('.elementor-control-type-tab.elementor-control-icons').show();
                         $(thmv_repeater_editable).setupTHMVAccordion({
                             accordionTitlePrefix: 'Icon',
-                            contentElements : ['thmv_icon_icon','thmv_icon_label'],
+                            contentElements: ['thmv_icon_icon', 'thmv_icon_label'],
                             orderingField: 'thmv_icon_ordering'
                         });
-                    }
-                    
 
+                        /** check if the child fields are hidden, if so, hide the accordion too **/
+                        if ($(thmv_repeater_editable).find('.elementor-control-thmv_icon_icon0').hasClass('elementor-tab-close')) {
+                            $(thmv_repeater_editable).find('.accordion-holder').hide();
+                        } else {
+                            $(thmv_repeater_editable).find('.accordion-holder').show();
+                        }
+                    }
+                   
                 }
 
             }, 100);
