@@ -206,6 +206,12 @@ function th_register_room_meta_boxes()
                 'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the room grid and the Featured Image for the lightbox.',
             ),
             array(
+                'id'          => 'th_gallery',
+                'label'       => __( 'Gallery', 'bellevue'),
+                'desc'        => __( 'This will replace the featured image', 'bellevue'),
+                'type'        => 'gallery',
+            ),
+            array(
                 'id'          => 'th_room_icons_ordering',
                 'label'       => __( 'Icons Ordering', 'bellevue'),
                 'type'        => 'text',
