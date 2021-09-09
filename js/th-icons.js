@@ -13,7 +13,7 @@ jQuery(document).ready(function ($) {
     function checkOrderDown() {
         $(wrapper + '.' + activeClass).find('.order-down').show();
         $(wrapper + '.' + activeClass).last().find('.order-down').hide();
-   
+
     }
     function setupOrdering() {
         var ordering = $(orderingField).val();
@@ -27,25 +27,25 @@ jQuery(document).ready(function ($) {
 
         for (var i = 0; i < orderArr.length; i++) {
             var index = orderArr[i];
-            $(parent_wrapper).append($(wrapper+'[data-index="'+index+'"]'));
+            $(parent_wrapper).append($(wrapper + '[data-index="' + index + '"]'));
 
         }
 
     }
-    function saveOrdering(){
-         var valueArr = [];
-            $(wrapper).each(function () {
-                valueArr.push($(this).data('index'));
-            });
-            var value = valueArr.join();
-            $(orderingField).val(value);
+    function saveOrdering() {
+        var valueArr = [];
+        $(wrapper).each(function () {
+            valueArr.push($(this).data('index'));
+        });
+        var value = valueArr.join();
+        $(orderingField).val(value);
     }
     var allIcons = {};
     if (th_object.urls.brands) {
         $.getJSON(th_object.urls.brands, function (json) {
             allIcons.brands = json.icons;
             for (var i = 0; i < allIcons.brands.length; i++) {
-                appendIcon('fa-brands', th_object.keys.brands, allIcons.brands[i]);
+                appendIcon('fa-brands', th_object.keys.brands+ ' fa-' , allIcons.brands[i]);
 
             }
         });
@@ -55,7 +55,7 @@ jQuery(document).ready(function ($) {
         $.getJSON(th_object.urls.regular, function (json) {
             allIcons.regular = json.icons;
             for (var i = 0; i < allIcons.regular.length; i++) {
-                appendIcon('fa-regular', th_object.keys.regular, allIcons.regular[i]);
+                appendIcon('fa-regular', th_object.keys.regular+ ' fa-' , allIcons.regular[i]);
 
             }
         });
@@ -64,11 +64,23 @@ jQuery(document).ready(function ($) {
         $.getJSON(th_object.urls.solid, function (json) {
             allIcons.solid = json.icons;
             for (var i = 0; i < allIcons.solid.length; i++) {
-                appendIcon('fa-solid', th_object.keys.solid, allIcons.solid[i]);
+                appendIcon('fa-solid', th_object.keys.solid+ ' fa-' , allIcons.solid[i]);
 
             }
         });
     }
+    if (th_object.trip_icons) {
+
+        for (var i = 0; i < th_object.trip_icons.length; i++) {
+            appendIcon('th-trip', 'travelpack-', th_object.trip_icons[i]);
+        }
+    }
+    if (th_object.linea_icons) {
+        for (var i = 0; i < th_object.linea_icons.length; i++) {
+            appendIcon('th-trip', 'icon-', th_object.linea_icons[i]);
+        }
+    }
+    
     iconpickerbox();
     $(wrapper).find('.remove-button').on('click', function (e) {
         e.preventDefault();
@@ -94,10 +106,10 @@ jQuery(document).ready(function ($) {
         $selectedBlock.find('.remove-button').show();
         $selectedBlock.addClass(activeClass);
         checkOrderDown();
-        saveOrdering();       
+        saveOrdering();
     });
     function appendIcon(library, prefix, icon) {
-        $(".thmv-iconpicker .iconsholder").append('<p class="geticonval"><i data-library="' + library + '" data-value="' + prefix + ' fa-' + icon + '" class="' + prefix + ' fa-' + icon + '"></i>' + icon + '</p>');
+        $(".thmv-iconpicker .iconsholder").append('<p class="geticonval"><i data-library="' + library + '" data-value="' + prefix + icon + '" class="' + prefix + icon + '"></i>' + icon + '</p>');
 
     }
     $('.order-buttons > span').on('click', function (e) {
@@ -121,7 +133,7 @@ jQuery(document).ready(function ($) {
 
         }
         checkOrderDown();
-         saveOrdering();  
+        saveOrdering();
     });
     $('.add-th-icon').on('click', function (e) {
         e.preventDefault();

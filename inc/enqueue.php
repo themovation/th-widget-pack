@@ -140,10 +140,13 @@ if (is_admin()) {
 
         $fontawesome_path = ABSPATH . 'wp-content/plugins/elementor/assets/lib/font-awesome';
         $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
-        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), time());
+        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
+        
+        wp_enqueue_style('th-trip', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
+        $trip_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-trip') === 0;}, ARRAY_FILTER_USE_KEY));
+        $linea_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-linea') === 0;}, ARRAY_FILTER_USE_KEY));
 
         $arrayKeys = ['brands' => 'fab', 'solid' => 'fas', 'regular' => 'far'];
-        $masterArray = [];
         $urls = [];
 
         foreach ($arrayKeys as $key => $fa) {
@@ -161,6 +164,8 @@ if (is_admin()) {
                     'ajaxurl' => admin_url('admin-ajax.php'),
                     'urls' => $urls,
                     'keys' => $arrayKeys,
+                    'trip_icons' => $trip_icons,
+                    'linea_icons' => $linea_icons,
                 )
         );
 
