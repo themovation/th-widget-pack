@@ -29,11 +29,11 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
 
-    private function get_list() {
+    private function get_list($postType) {
         $portfolio = array();
 
         $loop = new \WP_Query(array(
-            'post_type' => array('themo_room'),
+            'post_type' => $postType,
             'posts_per_page' => -1,
             'post_status' => array('publish'),
         ));
@@ -51,12 +51,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $portfolio;
     }
 
-    private function get_group_list() {
+    private function get_group_list($taxonomy) {
         $portfolio_group = array();
 
         $portfolio_group['none'] = __('None', 'th-widget-pack');
-
-        $taxonomy = 'themo_room_type';
 
         $tax_terms = get_terms($taxonomy);
 
@@ -112,13 +110,27 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::SELECT2,
                     'label_block' => true,
                     'multiple' => true,
-                    'options' => $this->get_list(),
+                    'options' => $this->get_list('themo_room'),
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_data_source' => 'themo_room_type',
                     ],
                 ]
         );
-
+        $this->add_control(
+                'individual_mphb_room_type',
+                [
+                    'label' => __('Select Individually', 'th-widget-pack'),
+                    'type' => Controls_Manager::SELECT2,
+                    'label_block' => true,
+                    'multiple' => true,
+                    'options' => $this->get_list('mphb_room_type'),
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                        'thmv_data_source' => 'mphb_room_type',
+                    ],
+                ]
+        );
         $this->add_control(
                 'group',
                 [
@@ -126,13 +138,27 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::SELECT2,
                     'label_block' => true,
                     'multiple' => true,
-                    'options' => $this->get_group_list(),
+                    'options' => $this->get_group_list('themo_room_type'),
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                        'thmv_data_source' => 'themo_room_type',
                     ],
                 ]
         );
-
+        $this->add_control(
+                'group_mphb_room_type',
+                [
+                    'label' => __('Select by Group', 'th-widget-pack'),
+                    'type' => Controls_Manager::SELECT2,
+                    'label_block' => true,
+                    'multiple' => true,
+                    'options' => $this->get_group_list('mphb_room_type'),
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                        'thmv_data_source' => 'mphb_room_type',
+                    ],
+                ]
+        );
         $this->add_control(
                 'order',
                 [
@@ -301,7 +327,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                            '{{WRAPPER}} .thmv-price' => 'display:none !important;',
+                        '{{WRAPPER}} .thmv-price' => 'display:none !important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -420,7 +446,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_off' => __('No', 'th-widget-pack'),
                     'return_value' => 'yes',
                     'condition' => [
-                        'thmv_style' => 'style_5',
+                        'thmv_style' => ['style_3', 'style_5', 'style_6'],
                     ],
                 ]
         );
@@ -926,30 +952,30 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         );
 
         $this->add_control(
-            'thmv_highlight_background_blur',
-            [
-                'label' => __('Background Blur', 'th-widget-pack'),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 25,
-                ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
+                'thmv_highlight_background_blur',
+                [
+                    'label' => __('Background Blur', 'th-widget-pack'),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 25,
                     ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .thmv-top-box span' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
-                ],
-                'condition' => [
-                    'thmv_style' => ['style_2', 'style_3', 'style_4']
-                ],
-                'dynamic' => [
-                    'active' => true,
-                ],
-            ]
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-top-box span' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_2', 'style_3', 'style_4']
+                    ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
+                ]
         );
 
         /* STYLE - Title */
@@ -1169,7 +1195,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-info .thmv-list .thmv-icon-label' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-icon-label' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
@@ -1182,7 +1208,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Typography', 'elementor'),
                     'name' => 'thmv_icon_label_typography',
-                    'selector' => '{{WRAPPER}} .thmv-info .thmv-list .thmv-icon-label',
+                    'selector' => '{{WRAPPER}} .thmv-icon-label',
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
                     ],
@@ -1244,36 +1270,35 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         );
 
         $this->add_control(
-            'thmv_rating_text_color',
-            [
-                'label' => __('Text Color', 'th-widget-pack'),
-                'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} ul.thmv-star-rating li:last-child' => 'color: {{VALUE}};',
-                ],
-                'condition' => [
-                    'thmv_style' => ['style_1', 'style_5']
-                ],
-            ]
+                'thmv_rating_text_color',
+                [
+                    'label' => __('Text Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} ul.thmv-star-rating li:last-child' => 'color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_1', 'style_5']
+                    ],
+                ]
         );
 
         $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'label' => __('Text Typography', 'elementor'),
-                'name' => 'thmv_rating_typography',
-                'selector' => '{{WRAPPER}} ul.thmv-star-rating li:last-child',
-                'condition' => [
-                    'thmv_style' => ['style_1', 'style_5']
-                ],
-            ]
+                Group_Control_Typography::get_type(),
+                [
+                    'label' => __('Text Typography', 'elementor'),
+                    'name' => 'thmv_rating_typography',
+                    'selector' => '{{WRAPPER}} ul.thmv-star-rating li:last-child',
+                    'condition' => [
+                        'thmv_style' => ['style_1', 'style_5']
+                    ],
+                ]
         );
-
 
         /* STYLE - Location */
         $this->add_control(
@@ -1460,33 +1485,31 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         // backdrop-filter: blur(25px);
 
         $this->add_control(
-            'thmv_price_background_blur',
-            [
-                'label' => __('Background Blur', 'th-widget-pack'),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 25,
-                ],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 1,
+                'thmv_price_background_blur',
+                [
+                    'label' => __('Background Blur', 'th-widget-pack'),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 25,
                     ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .thmv-price' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
-                ],
-                'condition' => [
-                    'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
-                ],
-                'dynamic' => [
-                    'active' => true,
-                ],
-            ]
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-price' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
+                    ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
+                ]
         );
-
-
 
         /* $this->add_control(
           'thmv_price_text_background',
@@ -1526,6 +1549,55 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
           ]
           ); */
 
+        /* STYLE - Price Divider */
+        $this->add_control(
+                'thmv_section_price_divider_heading',
+                [
+                    'label' => __('Price Divider', 'elementor'),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'condition' => [
+                        'thmv_style' => ['style_5']
+                    ],
+                ]
+        );
+
+        $this->add_control(
+                'thmv_price_divider_color',
+                [
+                    'label' => __('Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_5']
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-style-5 .thmv-price:before' => 'border-color: {{VALUE}};',
+                    ],
+                ]
+        );
+        $this->add_control(
+                'thmv_price_divider_size',
+                [
+                    'label' => __('Width', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 50,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-style-5 .thmv-price:before' => 'border-left-width: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_5']
+                    ],
+                ]
+        );
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -1642,7 +1714,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $i = 0;
         if (!empty($icons)) {
             foreach ($icons as $icon) {
-                if(empty($icon['value']) &&  empty($icon['label'])) continue;
+                if (empty($icon['value']) && empty($icon['label']))
+                    continue;
                 if (!empty($icon['value'])) {
                     $iconList[$i]['thmv_icon'] = $icon;
                 }
@@ -1651,7 +1724,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 }
                 $i++;
             }
-
         }
 
 
@@ -1855,12 +1927,13 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
         if ($dataSource) {
             $args = array();
-            if ($settings['individual']) {
-                if (in_array('none', $settings['individual'])) {
-                    $settings['individual'] = array_diff($settings['individual'], array('none'));
+            $individual = $dataSource === 'mphb_room_type' ? $settings['individual_mphb_room_type'] : $settings['individual'];
+            if ($individual) {
+                if (in_array('none', $individual)) {
+                    $individual = array_diff($individual, array('none'));
                 }
-                if ($settings['individual']) {
-                    $post_ids = $settings['individual'];
+                if ($individual) {
+                    $post_ids = $individual;
                     $args['post__in'] = $post_ids;
                 }
             }
@@ -1870,12 +1943,14 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $postType = $dataSource;
             }
             $args['post_type'] = $postType;
-            if ($settings['group']) {
-                if (in_array('none', $settings['group'])) {
-                    $settings['group'] = array_diff($settings['group'], array('none'));
+
+            $group = $dataSource === 'mphb_room_type' ? $settings['group_mphb_room_type'] : $settings['group'];
+            if ($group) {
+                if (in_array('none', $group)) {
+                    $group = array_diff($group, array('none'));
                 }
-                if ($settings['group']) {
-                    $project_type_id = $settings['group'];
+                if ($group) {
+                    $project_type_id = $group;
                     $args['tax_query'] = array(
                         array(
                             'taxonomy' => $dataSource,
@@ -1974,7 +2049,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 }
 
                 $iconsTemp = get_post_meta($list->ID, 'th_room_icons', true);
-                
+
                 $icons = $this->getIconsFromThePost($iconsTemp);
 
                 $showStars = false;
@@ -1987,6 +2062,11 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $locationIcon = ['value' => 'fas fa-map-marker-alt', 'library' => 'fa-solid'];
                 if (!empty($locationText)) {
                     $showLocation = true;
+                }
+                $locationLink = get_post_meta($list->ID, 'th_room_location_link', true);
+                if (!empty($locationLink)) {
+                    $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink));
+                    $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
                 }
 
 
@@ -2014,6 +2094,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $locationText = $list['thmv_location_text'];
                 $showLocation = $list['thmv_location_switcher'] == 'yes';
                 $locationIcon = $list['thmv_location_icon'];
+                $locationLink = $list['thmv_location_link']['url'];
                 $icons = $this->getIcons($list);
 
                 $showImgesRightSide = isset($list['thmv_align_image_right']) && $list['thmv_align_image_right'] == 'yes';
@@ -2027,22 +2108,36 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         $this->add_render_attribute('thmv_link', 'rel', 'nofollow', true);
                     }
                 }
+                if (!empty($locationLink)) {
+                    $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink), true);
+                    if (!empty($list['thmv_location_link']['is_external'])) {
+                        $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
+                    }
+                    if (!empty($list['thmv_location_link']['nofollow'])) {
+                        $this->add_render_attribute('thmv_location_link', 'rel', 'nofollow', true);
+                    }
+                }
             }
             ?>
 
 
-            <?php ob_start(); ?>
-            <div class="thmv-price">
-                <?php if (!empty($price_before)): ?>
-                    <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
-                <?php endif; ?>
-                <?php if (!empty($price)): ?>
-                    <div class="price"><?= $price ?></div>
-                <?php endif; ?>
-                <?php if (!empty($price_after) && in_array($listingStyle, [1, 6])): ?>
-                    <div class="price-after"><?= $price_after ?></div>
-                <?php endif; ?>
-            </div>
+            <?php
+            ob_start();
+            if (!empty($price_before) || !empty($price) || !empty($price_after)):
+                ?>
+
+                <div class="thmv-price">
+                    <?php if (!empty($price_before)): ?>
+                        <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($price)): ?>
+                        <div class="price"><?= $price ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($price_after)): ?>
+                        <div class="price-after"><?= $price_after ?></div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
             <?php $priceBlock = ob_get_clean(); ?>
 
             <?php
@@ -2107,7 +2202,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ?>
                         <div class="thmv-info">
 
-                            <?php if ($showStars || $showLocation): ?>
+                            <?php if (($showStars || $showLocation) && in_array($listingStyle, array(1, 5))): ?>
                                 <div class="thmv-grid-rating">
                                     <?php if ($showStars && $starsRating['size'] > 0): ?>
                                         <ul class="thmv-star-rating">
@@ -2131,10 +2226,17 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                         </ul>
                                     <?php endif; ?>
 
-                                    <?php if ($showLocation): ?>
+                                    <?php
+                                    if ($showLocation):
+                                        $linkPrefix = $linkPostfix = '';
+                                        if ($locationLink) {
+                                            $linkPrefix = '<a ' . $this->get_render_attribute_string('thmv_location_link') . '>';
+                                            $linkPostfix = '</a>';
+                                        }
+                                        ?>
                                         <ul class="thmv-location">
-                                            <li class="location-icon"><?php Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); ?></li>
-                                            <li class="location"><?= $locationText ?></li>
+                                            <li class="location-icon"><?= $linkPrefix ?><?php Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); ?><?= $linkPostfix ?></li>
+                                            <li class="location"><?= $linkPrefix ?><?= $locationText ?><?= $linkPostfix ?></li>
                                         </ul>
                                     <?php endif; ?>
                                 </div>
@@ -2170,7 +2272,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                             <div class="<?= ($listingStyle == 6 ? 'thmv-grid-booking' : '') ?>">
                                 <?php if (!empty($link_url)) : ?>
-                                    <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
+                                <div>
+                                <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
                                         <?= isset($link_text) ? $link_text : '' ?>
                                         <?php
                                         if (in_array($listingStyle, array(2, 3))):
@@ -2179,6 +2282,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                                         <?php endif; ?>
                                     </a>
+                                </div>
                                 <?php endif; ?>
                                 <?php if (in_array($listingStyle, [6])): ?>    
                                     <?php echo $priceBlock; ?>

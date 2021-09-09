@@ -135,6 +135,7 @@ $color-lgray : #8C8D8C;
                 right: 20px;
                 background: #FFF;
                 display: inline-block;
+                z-index: 2;
                 span{
                     font-style: normal;
                     font-weight: bold;
@@ -181,18 +182,24 @@ $color-lgray : #8C8D8C;
         .thmv-grid-rating
         {
             @include d-flex;
-            @include flex-column;
+            @include justify-content-between;
+
             > ul{
                 padding-bottom: 10px;
                 &.thmv-location{
                     padding-bottom: 15px;
                 }
+                padding-right: 15px;
             }
             .thmv-location{
                 li {
                     display: inline-block;
                     font-size: 18px;
                     color: $color-lgray;
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
                     svg{
                         height: 23px;
                         width: 28px;
@@ -207,6 +214,15 @@ $color-lgray : #8C8D8C;
             color: $color-gray;
             margin: 15px 0;
             font-size: 14px;
+        }
+        .thmv-grid{
+            &.image-column-right{
+                @include flex-row-reverse;
+                .thmv-info{
+                    padding-right: 45px;
+                    padding-left: 0;
+                }
+            }
         }
         .thmv-grid-sleep{
             border-bottom: 1px solid rgba(135, 135, 135, 0.2);
@@ -410,9 +426,8 @@ $color-lgray : #8C8D8C;
                 margin: 30px 0;
                 &:before{
                     content: '';
-                    width: 8px;
-                    margin-right: 10px;
-                    background: $color-gray;
+                    border-left: 10px solid $color-gray;
+                    border-right: 8px solid transparent;
                 }
             }
             .thmv-title{
@@ -453,13 +468,6 @@ $color-lgray : #8C8D8C;
                     .thmv-info{
                         padding-left: 45px;
                         margin-top: 0;
-                    }
-                    &.image-column-right{
-                        @include flex-row-reverse;
-                        .thmv-info{
-                            padding-right: 45px;
-                            padding-left: 0;
-                        }
                     }
                 }
             }
