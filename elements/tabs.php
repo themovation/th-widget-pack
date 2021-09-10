@@ -411,6 +411,7 @@ class Themo_Widget_Tabs extends Widget_Base {
      * @access protected
      */
     protected function render() {
+        
         $tabs = $this->get_settings_for_display('tabs');
         $allSettings = $this->get_settings_for_display();
 
@@ -423,6 +424,8 @@ class Themo_Widget_Tabs extends Widget_Base {
         $columns_attribute = 'thmv_column';
         $this->setupColumns($allSettings, 'columns', $columns_attribute);
         $this->add_render_attribute($columns_attribute, 'class', 'thmv-content-block');
+        
+        $tabs_content_bg_color = !empty($allSettings['background_color']);
         ?>
         <div <?php echo $this->get_render_attribute_string('thmv-tabs'); ?>>
             <div class="thmv-tabs-wrapper" role="tablist" >
@@ -443,7 +446,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                     <div <?php echo $this->get_render_attribute_string($tab_title_setting_key); ?>><?php echo $tab_title; ?></div>
                 <?php endforeach; ?>
             </div>
-            <div class="thmv-tabs-content-wrapper" role="tablist" aria-orientation="vertical">
+            <div class="thmv-tabs-content-wrapper <?=$tabs_content_bg_color ? 'has-bg' : ''?>" role="tablist" aria-orientation="vertical">
                 <?php
                 foreach ($tabs as $index => $item) :
                     $tab_count = $index + 1;
