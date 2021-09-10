@@ -1,0 +1,40 @@
+@import "variables";
+$padding-left: 61px;
+.thmv-prc-styl-3{
+    .thmv-prc-row{
+        @include d-flex;
+        width: 100%;
+        .thmv-column-1 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .thmv-column-2 {
+            width: calc(50px + $padding-left);
+            @include d-flex;
+            flex: 0 0 auto;
+            p {
+                display: none;
+            }
+        }
+        .thmv-column-3 {
+            width: 196px;
+            margin-bottom: 0;
+            @include d-flex;
+            flex: 0 0 auto;
+        }
+        .thme-info-button {
+            width: 100%;
+            margin: 0 auto;
+
+        }
+        .thmv-learn-btn {
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    }
+
+}

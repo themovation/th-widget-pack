@@ -912,7 +912,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 ?>
                 <!--- Pricing-style-1 start--->
                 <h1>Pricing-style-3</h1>
-                <div class="thmv-prc-styl-1">
+                <div class="thmv-prc-styl-3">
                     <div class="thmv-prc-row">
                         <div class="thmv-column-1">
                             <div class="thme-info-icon">
@@ -933,68 +933,6 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         <div class="thmv-column-2">
                             <div class="thme-info-pricing">
                                 <h3>19$</h3>
-                                <p>Price</p>
-                            </div>
-                        </div>
-                        <div class="thmv-column-3">
-                            <div class="thme-info-button">
-                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="thmv-prc-row">
-                        <div class="thmv-column-1">
-                            <div class="thme-info-icon">
-                                <svg width="38" height="26" viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M27.25 12.9998C29.78 12.9998 31.815 10.9465 31.815 8.4165C31.815 5.8865 29.78 3.83317 27.25 3.83317C24.72 3.83317 22.6666 5.8865 22.6666 8.4165C22.6666 10.9465 24.72 12.9998 27.25 12.9998ZM13.5 11.1665C16.5433 11.1665 18.9816 8.70984 18.9816 5.6665C18.9816 2.62317 16.5433 0.166504 13.5 0.166504C10.4566 0.166504 7.99996 2.62317 7.99996 5.6665C7.99996 8.70984 10.4566 11.1665 13.5 11.1665ZM27.25 16.6665C23.895 16.6665 17.1666 18.3532 17.1666 21.7082V25.8332H37.3333V21.7082C37.3333 18.3532 30.605 16.6665 27.25 16.6665ZM13.5 14.8332C9.22829 14.8332 0.666626 16.9782 0.666626 21.2498V25.8332H13.5V21.7082C13.5 20.1498 14.105 17.4182 17.845 15.3465C16.25 15.0165 14.71 14.8332 13.5 14.8332Z" fill="#4E524C"/>
-                                </svg>
-
-
-                            </div>
-                            <div class="thme-info">
-                                <h3>Tiny house hosted by Duston</h3>
-                                <ul class="meta_info">
-                                    <li>2 guests</li>
-                                    <li>1 bedroom</li>
-                                    <li>1 bed</li>
-                                    <li>1 bath</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="thmv-column-2">
-                            <div class="thme-info-pricing">
-                                <h3>25$</h3>
-                                <p>Price</p>
-                            </div>
-                        </div>
-                        <div class="thmv-column-3">
-                            <div class="thme-info-button">
-                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="thmv-prc-row">
-                        <div class="thmv-column-1">
-                            <div class="thme-info-icon">
-                                <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 24.1668L17 18.7768C16.285 18.7035 15.7533 18.6668 15.1667 18.6668C10.2717 18.6668 0.5 21.1235 0.5 26.0002V29.6668H17L11.5 24.1668ZM15.1667 15.0002C19.2183 15.0002 22.5 11.7185 22.5 7.66683C22.5 3.61516 19.2183 0.333496 15.1667 0.333496C11.115 0.333496 7.83333 3.61516 7.83333 7.66683C7.83333 11.7185 11.115 15.0002 15.1667 15.0002Z" fill="#4E524C"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.3617 30.5837L17 24.167L19.5667 21.582L23.3617 25.3953L32.7667 15.917L35.3333 18.502L23.3617 30.5837Z" fill="#4E524C"/>
-                                </svg>
-
-                            </div>
-                            <div class="thme-info">
-                                <h3>Tiny house hosted by Duston</h3>
-                                <ul class="meta_info">
-                                    <li>2 guests</li>
-                                    <li>1 bedroom</li>
-                                    <li>1 bed</li>
-                                    <li>1 bath</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="thmv-column-2">
-                            <div class="thme-info-pricing">
-                                <h3>55$</h3>
                                 <p>Price</p>
                             </div>
                         </div>
