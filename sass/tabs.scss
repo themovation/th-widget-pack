@@ -1,11 +1,4 @@
 @import "variables";
-$color-gray : #1C1715;
-$color-lgray : #8C8D8C;
-
-
-
-
-
 .thmv-tabs{
     font-size: 16px;
     margin: 0;
@@ -137,6 +130,7 @@ $color-lgray : #8C8D8C;
 
     &.style_2{
         $widthBar: 69px;
+        $padding: 30px;
         @media(min-width: $lg){
             width: calc(100% + 60px);
             margin: 0 -30px;
@@ -156,8 +150,8 @@ $color-lgray : #8C8D8C;
                 padding-left: 15px;
             }
             @media(max-width: $md-max){
-                width: calc(100% + 60px);
-                margin: 0 -30px;
+                width: calc(100% + #{$padding*2});
+                margin: 0 #{-$padding};
             }
             @media(min-width: $lg){
                 width: 30%;
@@ -168,6 +162,15 @@ $color-lgray : #8C8D8C;
 
         }
         .thmv-tabs-content-wrapper{
+            &.has-bg{
+                @media(max-width: $md-max){
+                    margin-left: #{-$padding};
+                    width: calc(100% + #{$padding*2});
+                    padding-left: $padding;
+                    padding-right: $padding;
+                }
+
+            }
             @media(min-width: $lg){
                 padding-left: 100px;
                 padding-right: 100px;
