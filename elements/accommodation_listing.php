@@ -202,7 +202,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'name' => 'thmv_data_source_image',
                     'default' => 'large',
                     'separator' => 'none',
-                     'condition' => [
+                    'condition' => [
                         'thmv_data_switcher' => 'yes',
                     ],
                 ]
@@ -231,7 +231,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
-                        'thmv_style' => ['style_2', 'style_3', 'style_4'],
                     ],
                 ]
         );
@@ -486,9 +485,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_block' => true,
                     'dynamic' => [
                         'active' => true,
-                    ],
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4'],
                     ],
                 ]
         );
@@ -839,75 +835,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
-
-        /* STYLE - Images - Carousel */
-
-        /* STYLE - Icons */
-        $this->add_control(
-                'thmv_section_carousel_heading',
-                [
-                    'label' => __('Carousel', 'elementor'),
-                    'type' => Controls_Manager::HEADING,
-                    'separator' => 'before',
-                    'condition' => [
-                        'thmv_carousel_switcher' => 'yes',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'thmv_carousel_icon_color',
-                [
-                    'label' => __('Color', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'thmv_carousel_switcher' => 'yes',
-                    ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'thmv_carousel_icon_size',
-                [
-                    'label' => __('Size', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'min' => 6,
-                            'max' => 300,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-info .elementor-icon' => 'font-size: {{SIZE}}{{UNIT}};',
-                    ],
-                    'condition' => [
-                        'thmv_carousel_switcher' => 'yes',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'thmv_carousel_background_color',
-                [
-                    'label' => __('Background', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .element' => 'background-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'thmv_carousel_switcher' => 'yes',
-                    ],
-                ]
-        );
-
+        
         /* STYLE - Highlight */
         $this->add_control(
                 'thmv_section_highlight_heading',
@@ -915,9 +843,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Highlight', 'elementor'),
                     'type' => Controls_Manager::HEADING,
                     'separator' => 'before',
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4']
-                    ],
                 ]
         );
 
@@ -934,9 +859,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'selectors' => [
                         '{{WRAPPER}} .thmv-top-box span' => 'color: {{VALUE}};',
                     ],
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4']
-                    ],
                 ]
         );
 
@@ -946,9 +868,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_highlight_typography',
                     'selector' => '{{WRAPPER}} .thmv-top-box span',
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4']
-                    ],
                 ],
         );
 
@@ -958,11 +877,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-top-box span' => 'background: {{VALUE}};',
-                        '{{WRAPPER}} .thmv-top-box' => 'background: none;',
-                    ],
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4']
+                        '{{WRAPPER}} .thmv-top-box' => 'background-color: {{VALUE}};',
                     ],
                 ]
         );
@@ -983,17 +898,32 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-top-box span' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
-                    ],
-                    'condition' => [
-                        'thmv_style' => ['style_2', 'style_3', 'style_4']
+                        '{{WRAPPER}} .thmv-top-box' => 'backdrop-filter: blur({{SIZE}}{{UNIT}});',
                     ],
                     'dynamic' => [
                         'active' => true,
                     ],
                 ]
         );
-
+        $this->add_control(
+                'thmv_highlight_align',
+                [
+                    'label' => __('Align', 'th-widget-pack'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'left' => [
+                            'title' => __('Left', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'right' => [
+                            'title' => __('Right', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
+                    'default' => '',
+                ]
+        );
         /* STYLE - Title */
         $this->add_control(
                 'thmv_section_title_heading',
@@ -1256,7 +1186,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-star-rating svg path' => 'fill: {{VALUE}};',
-                        '{{WRAPPER}} .thmv-star-rating li' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-star-rating li:not(:last-child)' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_5']
@@ -1277,7 +1207,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .thmv-star-rating svg' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
-                        '{{WRAPPER}} .thmv-star-rating li' => 'font-size: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .thmv-star-rating li:not(:last-child)' => 'font-size: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_5']
@@ -1526,6 +1456,28 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
+        $this->add_control(
+                'thmv_price_align',
+                [
+                    'label' => __('Align', 'th-widget-pack'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'left' => [
+                            'title' => __('Left', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'right' => [
+                            'title' => __('Right', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
+                    'condition' => [
+                        'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
+                    ],
+                    'default' => '',
+                ]
+        );
 
         /* $this->add_control(
           'thmv_price_text_background',
@@ -1614,6 +1566,54 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
+        /* STYLE - carousel */
+        
+       $this->add_control(
+                'thmv_section_carousel_heading',
+                [
+                    'label' => __('Carousel', 'elementor'),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+        );
+
+        $this->add_control(
+                'thmv_carousel_icon_color',
+                [
+                    'label' => __('Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .elementor-swiper-button' => 'color: {{VALUE}};',
+                    ],
+                    
+                ]
+        );
+
+        $this->add_responsive_control(
+                'thmv_carousel_icon_size',
+                [
+                    'label' => __('Size', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 300,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    
+                ]
+        );
+
+        
+        
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -1631,10 +1631,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .thmv-learn-btn' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .btn' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_hide_link' => '',
-                        'thmv_style' => ['style_2', 'style_3']
                     ],
                 ]
         );
@@ -1643,10 +1643,11 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_link_typography',
-                    'selector' => '{{WRAPPER}} .thmv-learn-btn',
+                    'selector' => [
+                        '{{WRAPPER}} .thmv-learn-btn',
+                    ],
                     'condition' => [
                         'thmv_hide_link' => '',
-                        'thmv_style' => ['style_2', 'style_3']
                     ],
                 ]
         );
@@ -1658,10 +1659,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'size_units' => ['px', 'em', '%'],
                     'selectors' => [
                         '{{WRAPPER}} .thmv-learn-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                     'condition' => [
                         'thmv_hide_link' => '',
-                        'thmv_style' => ['style_1', 'style_4', 'style_5', 'style_6']
                     ],
                 ]
         );
@@ -1686,7 +1687,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'condition' => [
                         'thmv_hide_link' => '',
-                        'thmv_style' => ['style_1', 'style_4', 'style_5', 'style_6']
                     ],
                 ]
         );
@@ -1765,18 +1765,18 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
     private function renderIcon($icon, $listingStyle) {
         ob_start();
-
+        $tooltip = isset($icon['thmv_icon_label']) ? $icon['thmv_icon_label'] : '';
         if (isset($icon['thmv_icon'])) {
             ?>
             <div class="elementor-icon thmv-icon">
-                <?php
-                Icons_Manager::render_icon($icon['thmv_icon'], ['aria-hidden' => 'true']);
-                ?>
+            <?php
+            Icons_Manager::render_icon($icon['thmv_icon'], ['aria-hidden' => 'true', 'title' => $tooltip]);
+            ?>
 
             </div>
-            <?php
-        }
-        ?>
+                <?php
+            }
+            ?>
 
         <?php if (isset($icon['thmv_icon_label']) && in_array($listingStyle, array(1, 6))): ?>
             <span class="thmv-icon-label"><?php echo esc_html($icon['thmv_icon_label']); ?></span>
@@ -1821,9 +1821,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <div <?php echo $this->get_render_attribute_string('carousel-wrapper'); ?>>
                 <div <?php echo $this->get_render_attribute_string('carousel'); ?>>
-                    <?php echo implode('', $slides); ?>
+        <?php echo implode('', $slides); ?>
                 </div>
-                <?php if (1 < count($slides)) : ?>
+                    <?php if (1 < count($slides)) : ?>
                     <div class="elementor-swiper-button elementor-swiper-button-prev">
                         <i class="eicon-chevron-left" aria-hidden="true"></i>
                         <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
@@ -1832,304 +1832,307 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                         <i class="eicon-chevron-right" aria-hidden="true"></i>
                         <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
                     </div>
-                <?php endif; ?>
+        <?php endif; ?>
             </div>
         </div>
-        <?php
-    }
+                <?php
+            }
 
-    private function getDescription($list) {
-        $automatic_post_excerpts = 'on';
-        if (function_exists('get_theme_mod')) {
-            $automatic_post_excerpts = get_theme_mod('themo_automatic_post_excerpts', 'on');
-        }
-        if ($automatic_post_excerpts === 'off') {
-            $th_tour_intro = apply_filters('the_content', get_the_content(null, false, $list));
-        } else {
-            $th_tour_intro = apply_filters('the_excerpt', get_the_excerpt($list));
-        }
-
-        return strip_tags($th_tour_intro); //maybe keep bold, italics
-    }
-
-    private function getImageFromPost($list) {
-        // Get Project Format Options
-        $imageArr = [];
-        $alt = '';
-        $th_imageId = get_post_meta(get_the_ID($list->ID), 'th_room_thumb', true);
-        if(empty($th_imageId)){
-            $th_imageId = get_post_thumbnail_id($list->ID);
-        }
-        
-        if (!empty($th_imageId)) {
-            $th_image_url = wp_get_attachment_image_src($th_imageId);
-        } 
-
-        if ($th_image_url) {
-            $imageArr = ['url' => $th_image_url, 'id'=>$th_imageId, 'alt' => $alt, 'source' => 'library'];
-        }
-
-        return $imageArr;
-    }
-
-    private function setupColumns($settings, $columnField, $attribute) {
-        $this->add_render_attribute('thmv_column', 'class', 'thmv-column elementor-column');
-        $cols = [$columnField, $columnField . '_tablet', $columnField . '_mobile'];
-        foreach ($cols as $col) {
-            if (isset($settings[$col])) {
-                if (empty($settings[$col])) {
-                    $colPercentage = 'default';
+            private function getDescription($list) {
+                $automatic_post_excerpts = 'on';
+                if (function_exists('get_theme_mod')) {
+                    $automatic_post_excerpts = get_theme_mod('themo_automatic_post_excerpts', 'on');
+                }
+                if ($automatic_post_excerpts === 'off') {
+                    $th_tour_intro = apply_filters('the_content', get_the_content(null, false, $list));
                 } else {
-                    $colPercentage = floor(100 / $settings[$col]);
+                    $th_tour_intro = apply_filters('the_excerpt', get_the_excerpt($list));
                 }
 
-                $device = str_replace([$columnField, '_'], "", $col);
-                $device .= strpos($col, '_') ? '-' : '';
-                $this->add_render_attribute($attribute, 'class', 'thmv-column-' . $device . $colPercentage);
-            }
-        }
-    }
-
-    private function setupResponsiveControl($settings, $field, $attribute, $class) {
-        $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
-        foreach ($responsiveFields as $f) {
-            if (!empty($settings[$f])) {
-                $device = str_replace([$field, '_'], "", $f);
-                if (!empty($device)) {
-                    $device = '-' . $device;
-                } else {
-                    $device = '-' . 'desktop';
-                }
-                $this->add_render_attribute($attribute, 'class', $class . $device);
-            }
-        }
-    }
-
-    private function getImageSizeInfo($settings, $imageKey) {
-
-        $imgSize = $settings[$imageKey . '_size'];
-        $dim = $settings[$imageKey . '_custom_dimension'];
-        $image = $settings[$imageKey];
-        $imageSizeInfo = array($this->getImageKey()=>$image, $this->getImageKey() . '_size' => $imgSize, $this->getImageKey() . '_custom_dimension' => $dim);
-
-        return $imageSizeInfo;
-    }
-
-    protected function render() {
-        $settings = $this->get_settings_for_display();
-
-        $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
-        if ($dataSource) {
-            $args = array();
-            $individual = $dataSource === 'mphb_room_type' ? $settings['individual_mphb_room_type'] : $settings['individual'];
-            if ($individual) {
-                if (in_array('none', $individual)) {
-                    $individual = array_diff($individual, array('none'));
-                }
-                if ($individual) {
-                    $post_ids = $individual;
-                    $args['post__in'] = $post_ids;
-                }
-            }
-            if ($dataSource === 'themo_room_type') {
-                $postType = 'themo_room';
-            } else {
-                $postType = $dataSource;
-            }
-            $args['post_type'] = $postType;
-
-            $group = $dataSource === 'mphb_room_type' ? $settings['group_mphb_room_type'] : $settings['group'];
-            if ($group) {
-                if (in_array('none', $group)) {
-                    $group = array_diff($group, array('none'));
-                }
-                if ($group) {
-                    $project_type_id = $group;
-                    $args['tax_query'] = array(
-                        array(
-                            'taxonomy' => $dataSource,
-                            'field' => 'term_id',
-                            'terms' => $project_type_id,
-                        ),
-                    );
-                }
-            }
-            if ($settings['order'] == 'date') {
-                $args['orderby'] = 'date';
-            } elseif ($settings['order'] == 'menu_order') {
-                $args['orderby'] = 'menu_order';
-                $args['order'] = 'ASC';
-            }
-            $args['post_status'] = 'publish';
-            $args['posts_per_page'] = -1;
-
-            // The Query
-            $posts = get_posts($args);
-
-            if (!$posts || !count($posts)) {
-                echo '<div class="alert">';
-                _e('Sorry, no results were found.', 'th-widget-pack');
-                echo '</div>';
-                return;
-            }
-        } else {
-            if (!isset($settings['listings']) || !count($settings['listings'])) {
-                return;
+                return strip_tags($th_tour_intro); //maybe keep bold, italics
             }
 
-            $posts = $settings['listings'];
-        }
-
-        /*         * global vars * */
-        $buttonstyle = $settings['button_style'];
-        $listingStyleDefault = $settings['thmv_style'];
-
-        $this->setupColumns($settings, 'columns', 'thmv_column');
-
-        if (empty($buttonstyle)) {
-            $this->add_render_attribute('thmv_link', 'class', 'thmv-learn-btn', true);
-        } else {
-            $this->add_render_attribute('thmv_link', 'class', 'btn btn-1 th-btn btn-' . $buttonstyle, true);
-        }
-
-        $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
-
-        $listingStyle = str_replace('style_', '', $listingStyleDefault);
-        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
-
-        echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
-        echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
-
-        foreach ($posts as $list) {
-
-            if ($dataSource) {
-                // get post format
-                $format = get_post_format($list);
-                if (false === $format) {
-                    $format = '';
+            private function getImageFromPost($list) {
+                // Get Project Format Options
+                $imageArr = [];
+                $alt = '';
+                $th_imageId = get_post_meta(get_the_ID($list->ID), 'th_room_thumb', true);
+                if (empty($th_imageId)) {
+                    $th_imageId = get_post_thumbnail_id($list->ID);
                 }
 
-                // default settings
-                $imageSizeInfo = $this->getImageSizeInfo($settings, 'thmv_data_source_image');
+                if (!empty($th_imageId)) {
+                    $th_image_url = wp_get_attachment_image_src($th_imageId);
+                }
 
-                $carousel_switcher = false;
-                $carouselImages = [];
-                $tempImages = get_post_meta($list->ID, 'th_gallery', true);
+                if ($th_image_url) {
+                    $imageArr = ['url' => $th_image_url, 'id' => $th_imageId, 'alt' => $alt, 'source' => 'library'];
+                }
 
-                if (!empty($tempImages)) {
-                    $carousel_switcher = true;
-                    $tempImagesArr = explode(",", $tempImages);
-                    foreach ($tempImagesArr as $imgId) {
-                        $url = wp_get_attachment_image_url($imgId);
-                        $imgArr = ['id' => $imgId, 'url' => $url];
-                        $carouselImages[] = $imgArr;
+                return $imageArr;
+            }
+
+            private function setupColumns($settings, $columnField, $attribute) {
+                $this->add_render_attribute('thmv_column', 'class', 'thmv-column elementor-column');
+                $cols = [$columnField, $columnField . '_tablet', $columnField . '_mobile'];
+                foreach ($cols as $col) {
+                    if (isset($settings[$col])) {
+                        if (empty($settings[$col])) {
+                            $colPercentage = 'default';
+                        } else {
+                            $colPercentage = floor(100 / $settings[$col]);
+                        }
+
+                        $device = str_replace([$columnField, '_'], "", $col);
+                        $device .= strpos($col, '_') ? '-' : '';
+                        $this->add_render_attribute($attribute, 'class', 'thmv-column-' . $device . $colPercentage);
                     }
                 }
-                $renderedImage = '';
-                if (!$carousel_switcher) {
-                    $image = $this->getImageFromPost($list);
-                    if (count($image)) {
-                        $tempKey = $this->getImageKey();
-                        $imageSizeInfo[$tempKey] = $image;
-                        $renderedImage = Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $this->getImageKey());
+            }
+
+            private function setupResponsiveControl($settings, $field, $attribute, $class) {
+                $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
+                foreach ($responsiveFields as $f) {
+                    if (!empty($settings[$f])) {
+                        $device = str_replace([$field, '_'], "", $f);
+                        if (!empty($device)) {
+                            $device = '-' . $device;
+                        } else {
+                            $device = '-' . 'desktop';
+                        }
+                        $this->add_render_attribute($attribute, 'class', $class . $device);
                     }
                 }
+            }
 
-                $showImgesRightSide = false;
+            private function getImageSizeInfo($settings, $imageKey) {
 
-                $preface = get_post_meta($list->ID, 'th_room_intro', true);
-                $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+                $imgSize = $settings[$imageKey . '_size'];
+                $dim = $settings[$imageKey . '_custom_dimension'];
+                $image = $settings[$imageKey];
+                $imageSizeInfo = array($this->getImageKey() => $image, $this->getImageKey() . '_size' => $imgSize, $this->getImageKey() . '_custom_dimension' => $dim);
 
-                $titleOverride = get_post_meta($list->ID, 'th_room_title', true);
-                $title = !empty($titleOverride) ? $titleOverride : get_the_title($list);
+                return $imageSizeInfo;
+            }
+
+            protected function render() {
+                $settings = $this->get_settings_for_display();
+
+                $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
+                if ($dataSource) {
+                    $args = array();
+                    $individual = $dataSource === 'mphb_room_type' ? $settings['individual_mphb_room_type'] : $settings['individual'];
+                    if ($individual) {
+                        if (in_array('none', $individual)) {
+                            $individual = array_diff($individual, array('none'));
+                        }
+                        if ($individual) {
+                            $post_ids = $individual;
+                            $args['post__in'] = $post_ids;
+                        }
+                    }
+                    if ($dataSource === 'themo_room_type') {
+                        $postType = 'themo_room';
+                    } else {
+                        $postType = $dataSource;
+                    }
+                    $args['post_type'] = $postType;
+
+                    $group = $dataSource === 'mphb_room_type' ? $settings['group_mphb_room_type'] : $settings['group'];
+                    if ($group) {
+                        if (in_array('none', $group)) {
+                            $group = array_diff($group, array('none'));
+                        }
+                        if ($group) {
+                            $project_type_id = $group;
+                            $args['tax_query'] = array(
+                                array(
+                                    'taxonomy' => $dataSource,
+                                    'field' => 'term_id',
+                                    'terms' => $project_type_id,
+                                ),
+                            );
+                        }
+                    }
+                    if ($settings['order'] == 'date') {
+                        $args['orderby'] = 'date';
+                    } elseif ($settings['order'] == 'menu_order') {
+                        $args['orderby'] = 'menu_order';
+                        $args['order'] = 'ASC';
+                    }
+                    $args['post_status'] = 'publish';
+                    $args['posts_per_page'] = -1;
+
+                    // The Query
+                    $posts = get_posts($args);
+
+                    if (!$posts || !count($posts)) {
+                        echo '<div class="alert">';
+                        _e('Sorry, no results were found.', 'th-widget-pack');
+                        echo '</div>';
+                        return;
+                    }
+                } else {
+                    if (!isset($settings['listings']) || !count($settings['listings'])) {
+                        return;
+                    }
+
+                    $posts = $settings['listings'];
+                }
+
+                /*                 * global vars * */
+                $buttonstyle = $settings['button_style'];
+                $listingStyleDefault = $settings['thmv_style'];
+
+                $highlightAlign = $settings['thmv_highlight_align'];
+                $priceAlign = $settings['thmv_price_align'];
+
+                $this->setupColumns($settings, 'columns', 'thmv_column');
+
+                if (empty($buttonstyle)) {
+                    $this->add_render_attribute('thmv_link', 'class', 'thmv-learn-btn', true);
+                } else {
+                    $this->add_render_attribute('thmv_link', 'class', 'btn btn-1 th-btn btn-' . $buttonstyle, true);
+                }
+
+                $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
+
+                $listingStyle = str_replace('style_', '', $listingStyleDefault);
+                $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
+
+                echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
+                echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
+
+                foreach ($posts as $list) {
+
+                    if ($dataSource) {
+                        // get post format
+                        $format = get_post_format($list);
+                        if (false === $format) {
+                            $format = '';
+                        }
+
+                        // default settings
+                        $imageSizeInfo = $this->getImageSizeInfo($settings, 'thmv_data_source_image');
+
+                        $carousel_switcher = false;
+                        $carouselImages = [];
+                        $tempImages = get_post_meta($list->ID, 'th_gallery', true);
+
+                        if (!empty($tempImages)) {
+                            $carousel_switcher = true;
+                            $tempImagesArr = explode(",", $tempImages);
+                            foreach ($tempImagesArr as $imgId) {
+                                $url = wp_get_attachment_image_url($imgId);
+                                $imgArr = ['id' => $imgId, 'url' => $url];
+                                $carouselImages[] = $imgArr;
+                            }
+                        }
+                        $renderedImage = '';
+                        if (!$carousel_switcher) {
+                            $image = $this->getImageFromPost($list);
+                            if (count($image)) {
+                                $tempKey = $this->getImageKey();
+                                $imageSizeInfo[$tempKey] = $image;
+                                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $this->getImageKey());
+                            }
+                        }
+
+                        $showImgesRightSide = false;
+
+                        $preface = get_post_meta($list->ID, 'th_room_intro', true);
+                        $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+
+                        $titleOverride = get_post_meta($list->ID, 'th_room_title', true);
+                        $title = !empty($titleOverride) ? $titleOverride : get_the_title($list);
 
 //                $titleSeparator = $list['thmv_title_separator'];
 
-                $description = $this->getDescription($list);
-                $link_url = get_the_permalink($list);
-                $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
+                        $description = $this->getDescription($list);
+                        $link_url = get_the_permalink($list);
+                        $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
 
-                $price = get_post_meta($list->ID, 'th_room_price', true);
-                $price_before = get_post_meta($list->ID, 'th_room_price_before', true);
+                        $price = get_post_meta($list->ID, 'th_room_price', true);
+                        $price_before = get_post_meta($list->ID, 'th_room_price_before', true);
 
-                $price_after = get_post_meta($list->ID, 'th_room_price_per', true);
-                $link_text = get_post_meta($list->ID, 'th_room_button_text', true);
-                if (empty($link_text)) {
-                    $link_text = __('Learn More', 'th-widget-pack');
-                }
+                        $price_after = get_post_meta($list->ID, 'th_room_price_per', true);
+                        $link_text = get_post_meta($list->ID, 'th_room_button_text', true);
+                        if (empty($link_text)) {
+                            $link_text = __('Learn More', 'th-widget-pack');
+                        }
 
-                $iconsTemp = get_post_meta($list->ID, 'th_room_icons', true);
+                        $iconsTemp = get_post_meta($list->ID, 'th_room_icons', true);
 
-                $icons = $this->getIconsFromThePost($iconsTemp);
+                        $icons = $this->getIconsFromThePost($iconsTemp);
 
-                $showStars = false;
-                $starsRating = get_post_meta($list->ID, 'th_room_rating', true);
-                if (!empty($starsRating) && $starsRating > 0) {
-                    $showStars = true;
-                }
-                $showLocation = false;
-                $locationText = get_post_meta($list->ID, 'th_room_location', true);
-                $locationIcon = ['value' => 'fas fa-map-marker-alt', 'library' => 'fa-solid'];
-                if (!empty($locationText)) {
-                    $showLocation = true;
-                }
-                $locationLink = get_post_meta($list->ID, 'th_room_location_link', true);
-                if (!empty($locationLink)) {
-                    $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink));
-                    $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
-                }
+                        $showStars = false;
+                        $starsRating = get_post_meta($list->ID, 'th_room_rating', true);
+                        if (!empty($starsRating) && $starsRating > 0) {
+                            $showStars = true;
+                        }
+                        $showLocation = false;
+                        $locationText = get_post_meta($list->ID, 'th_room_location', true);
+                        $locationIcon = ['value' => 'fas fa-map-marker-alt', 'library' => 'fa-solid'];
+                        if (!empty($locationText)) {
+                            $showLocation = true;
+                        }
+                        $locationLink = get_post_meta($list->ID, 'th_room_location_link', true);
+                        if (!empty($locationLink)) {
+                            $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink));
+                            $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
+                        }
 
 
 //                $icons = $this->getIcons($list);
-            } else {
+                    } else {
 
-                $imageSizeInfo = $this->getImageSizeInfo($list, $this->getImageKey());
-                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($list, $this->getImageKey());
+                        $imageSizeInfo = $this->getImageSizeInfo($list, $this->getImageKey());
+                        $renderedImage = Group_Control_Image_Size::get_attachment_image_html($list, $this->getImageKey());
 
-                $carousel_switcher = $list['thmv_carousel_switcher'] == 'yes' ? true : false;
-                $carouselImages = $list['thmv_carousel'];
+                        $carousel_switcher = $list['thmv_carousel_switcher'] == 'yes' ? true : false;
+                        $carouselImages = $list['thmv_carousel'];
 
-                $preface = $list['thmv_preface'];
-                $highlight = $list['thmv_highlight'];
+                        $preface = $list['thmv_preface'];
+                        $highlight = $list['thmv_highlight'];
 
-                $title = $list['thmv_title'];
-                $titleSeparator = $list['thmv_title_separator'];
-                $description = $list['thmv_description'];
-                $link_url = $list['thmv_link']['url'];
-                $price = $list['thmv_price'];
-                $price_before = $list['thmv_price_before'];
-                $price_after = $list['thmv_price_after'];
-                $link_text = $list['thmv_link_text'];
-                $showStars = $list['thmv_rating_switcher'] == 'yes' ? true : false;
-                $starsRating = $list['thmv_rating'];
-                $locationText = $list['thmv_location_text'];
-                $showLocation = $list['thmv_location_switcher'] == 'yes';
-                $locationIcon = $list['thmv_location_icon'];
-                $locationLink = $list['thmv_location_link']['url'];
-                $icons = $this->getIcons($list);
+                        $title = $list['thmv_title'];
+                        $titleSeparator = $list['thmv_title_separator'];
+                        $description = $list['thmv_description'];
+                        $link_url = $list['thmv_link']['url'];
+                        $price = $list['thmv_price'];
+                        $price_before = $list['thmv_price_before'];
+                        $price_after = $list['thmv_price_after'];
+                        $link_text = $list['thmv_link_text'];
+                        $showStars = $list['thmv_rating_switcher'] == 'yes' ? true : false;
+                        $starsRating = $list['thmv_rating'];
+                        $locationText = $list['thmv_location_text'];
+                        $showLocation = $list['thmv_location_switcher'] == 'yes';
+                        $locationIcon = $list['thmv_location_icon'];
+                        $locationLink = $list['thmv_location_link']['url'];
+                        $icons = $this->getIcons($list);
 
-                $showImgesRightSide = isset($list['thmv_align_image_right']) && $list['thmv_align_image_right'] == 'yes';
+                        $showImgesRightSide = isset($list['thmv_align_image_right']) && $list['thmv_align_image_right'] == 'yes';
 
-                if (!empty($link_url)) {
-                    $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
-                    if (!empty($list['thmv_link']['is_external'])) {
-                        $this->add_render_attribute('thmv_link', 'target', '_blank', true);
+                        if (!empty($link_url)) {
+                            $this->add_render_attribute('thmv_link', 'href', esc_url($link_url), true);
+                            if (!empty($list['thmv_link']['is_external'])) {
+                                $this->add_render_attribute('thmv_link', 'target', '_blank', true);
+                            }
+                            if (!empty($list['thmv_link']['nofollow'])) {
+                                $this->add_render_attribute('thmv_link', 'rel', 'nofollow', true);
+                            }
+                        }
+                        if (!empty($locationLink)) {
+                            $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink), true);
+                            if (!empty($list['thmv_location_link']['is_external'])) {
+                                $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
+                            }
+                            if (!empty($list['thmv_location_link']['nofollow'])) {
+                                $this->add_render_attribute('thmv_location_link', 'rel', 'nofollow', true);
+                            }
+                        }
                     }
-                    if (!empty($list['thmv_link']['nofollow'])) {
-                        $this->add_render_attribute('thmv_link', 'rel', 'nofollow', true);
-                    }
-                }
-                if (!empty($locationLink)) {
-                    $this->add_render_attribute('thmv_location_link', 'href', esc_url($locationLink), true);
-                    if (!empty($list['thmv_location_link']['is_external'])) {
-                        $this->add_render_attribute('thmv_location_link', 'target', '_blank', true);
-                    }
-                    if (!empty($list['thmv_location_link']['nofollow'])) {
-                        $this->add_render_attribute('thmv_location_link', 'rel', 'nofollow', true);
-                    }
-                }
-            }
-            ?>
+                    ?>
 
 
             <?php
@@ -2137,7 +2140,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             if (!empty($price_before) || !empty($price) || !empty($price_after)):
                 ?>
 
-                <div class="thmv-price">
+                <div class="thmv-price <?= $priceAlign ?>">
                 <?php if (!empty($price_before)): ?>
                         <div class="price-before"><?= $price_before ?><?= (!empty($price) ? '&nbsp;' : '') ?></div>
                     <?php endif; ?>
@@ -2149,7 +2152,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
-            <?php $priceBlock = ob_get_clean(); ?>
+                <?php $priceBlock = ob_get_clean(); ?>
 
             <?php
             ob_start();
@@ -2172,10 +2175,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     <?php endforeach; ?>
                 </ul>
 
-                <?php
-            }
-            $iconsList = ob_get_clean();
-            ?>
+                    <?php
+                }
+                $iconsList = ob_get_clean();
+                ?>
 
 
             <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
@@ -2184,7 +2187,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     <div class="thmv-grid <?= $showImgesRightSide ? 'image-column-right ' : '' ?> elementor-element">
                         <div class="thmv-grid-img">
             <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
-                                <?php echo $renderedImage; ?>
+                <?php echo $renderedImage; ?>
                             <?php endif; ?>
 
                             <?php
@@ -2193,8 +2196,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             endif;
                             ?>  
 
-                            <?php if (in_array($listingStyle, [2, 4]) && !empty($highlight)): ?>
-                                <div class="thmv-top-box"><span><?= $highlight ?></span></div>
+                            <?php if (!in_array($listingStyle, [3]) && !empty($highlight)): ?>
+                                <div class="thmv-top-box <?= $highlightAlign ?>"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
 
                             <?php if (in_array($listingStyle, [1, 2, 3, 4])): ?>    
@@ -2202,7 +2205,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>     
                         </div>
 
-            <?php if (in_array($listingStyle, array(2))): ?>
+                            <?php if (in_array($listingStyle, array(2))): ?>
                             <div class="thmv-grid-sleep">
                             <?php if (!empty($preface)): ?>
                                     <div class="thmv-preface"><?= $preface ?></div>
@@ -2213,7 +2216,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             ?>
                         <div class="thmv-info">
 
-            <?php if (($showStars || $showLocation) && in_array($listingStyle, array(1, 5))): ?>
+                        <?php if (($showStars || $showLocation) && in_array($listingStyle, array(1, 5))): ?>
                                 <div class="thmv-grid-rating">
                                 <?php if ($showStars && $starsRating['size'] > 0): ?>
                                         <ul class="thmv-star-rating">
@@ -2235,7 +2238,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                             <?php ?>      
                                             <li><?= number_format((float) $starsRating['size'], 1, '.', ''); ?></li>
                                         </ul>
-                <?php endif; ?>
+                                        <?php endif; ?>
 
                                     <?php
                                     if ($showLocation):
@@ -2252,7 +2255,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 <?php endif; ?>
                                 </div>
                                 <?php endif; ?>
-                            <?php if (in_array($listingStyle, [3]) && !empty($highlight)): ?>
+                                <?php if (in_array($listingStyle, [3]) && !empty($highlight)): ?>
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
                             <?php if (!empty($title)): ?>
@@ -2282,26 +2285,26 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>   
 
                             <div class="<?= ($listingStyle == 6 ? 'thmv-grid-booking' : '') ?>">
-            <?php if (!empty($link_url)) : ?>
+                            <?php if (!empty($link_url)) : ?>
                                     <div>
                                         <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
-                <?= isset($link_text) ? $link_text : '' ?>
-                                            <?php
-                                            if (in_array($listingStyle, array(2, 3))):
-                                                echo '<i class="fas fa-plus"></i>';
-                                                ?>
+                                    <?= isset($link_text) ? $link_text : '' ?>
+                <?php
+                if (in_array($listingStyle, array(2, 3))):
+                    echo '<i class="fas fa-plus"></i>';
+                    ?>
 
                                             <?php endif; ?>
                                         </a>
                                     </div>
-            <?php endif; ?>
-                                <?php if (in_array($listingStyle, [6])): ?>    
+                                        <?php endif; ?>
+            <?php if (in_array($listingStyle, [6])): ?>    
                                     <?php echo $priceBlock; ?>
                                 <?php endif; ?> 
                             </div>
 
-            <?php if (in_array($listingStyle, array(3))): ?>
-                                <?= $iconsList ?>
+                                <?php if (in_array($listingStyle, array(3))): ?>
+                <?= $iconsList ?>
                             <?php endif; ?>
                         </div>
                     </div>

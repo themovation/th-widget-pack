@@ -1,7 +1,7 @@
 @import "variables";
 $color-gray : #1C1715;
 $color-lgray : #8C8D8C;
-
+$topboxPadding : 20px;
 @mixin defineWidth($percentage, $breakpoint){
     @media(min-width: $breakpoint){
         .thmv-column-default {
@@ -29,26 +29,6 @@ $color-lgray : #8C8D8C;
     &:hover{
         background: #777575;
     }
-
-    @media(min-width: $lg){
-        &.streched-desktop{
-            display: block;
-            width: 100%;
-        }
-    }
-    @media(min-width: $md) and (max-width: $md-max){
-        &.streched-tablet{
-            display: block;
-            width: 100%;
-        }
-    }
-    @media(max-width: $sm-max){
-        &.streched-mobile{
-            display: block;
-            width: 100%;
-        }
-    }
-
 }
 @mixin linkbutton(){
     text-decoration: none;
@@ -132,10 +112,18 @@ $color-lgray : #8C8D8C;
             .thmv-top-box{
                 top: 20px;
                 position: absolute;
-                right: 20px;
+                right: $topboxPadding;
                 background: #FFF;
                 display: inline-block;
                 z-index: 2;
+                &.left{
+                    left:  $topboxPadding;
+                    right: unset;
+                }
+                &.right{
+                    right:  $topboxPadding;
+                    left: unset;
+                }
                 span{
                     font-style: normal;
                     font-weight: bold;
@@ -160,6 +148,14 @@ $color-lgray : #8C8D8C;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(25px);
             color: $color-gray;
+            &.left{
+                left:  0;
+                right: unset;
+            }
+            &.right{
+                right:  0;
+                left: unset;
+            }
             .price-before,.price {
                 margin: 0;
                 font-size: 20px;
@@ -301,20 +297,53 @@ $color-lgray : #8C8D8C;
                     font-size: 23px;
                 }
             }
+
+
         }
 
-
+        .thmv-learn-btn, .btn{
+            @media(min-width: $lg){
+                &.streched-desktop{
+                    display: block;
+                    width: 100%;
+                }
+            }
+            @media(min-width: $md) and (max-width: $md-max){
+                &.streched-tablet{
+                    display: block;
+                    width: 100%;
+                }
+            }
+            @media(max-width: $sm-max){
+                &.streched-mobile{
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
         &.thmv-style-1{
             @include defineWidth(50, $md);
             .thmv-grid-img+.thmv-info{
                 margin-top: 15px;
 
             }
+            .thmv-top-box{
+                right: unset;
+                left: $topboxPadding;
+            }
             .thmv-price{
                 right: 0;
                 background: #EAEAEA;
                 flex-direction: column;
                 left: unset;
+                &.left{
+                    left:  0;
+                    right: unset;
+                }
+                &.right{
+                    right:  0;
+                    left: unset;
+                }
                 .price-before,.price {
                     font-weight: 700;
                 }
@@ -393,9 +422,7 @@ $color-lgray : #8C8D8C;
         &.thmv-style-4{
             @include defineWidth(33, $md);
             .thmv-top-box{
-                margin-bottom: 15px;
-                right: unset;
-                left: 20px;
+
                 span{
                     color: $color-gray;
                     background: #fff;
@@ -427,7 +454,7 @@ $color-lgray : #8C8D8C;
                 &:before{
                     content: '';
                     border-left: 10px solid $color-gray;
-                    border-right: 8px solid transparent;
+                    margin-right: 8px;
                 }
             }
             .thmv-title{
