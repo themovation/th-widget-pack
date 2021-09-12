@@ -110,6 +110,21 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         );
 
         $repeater->add_control(
+                'price_icon',
+                [
+                    'label' => __('Icon', 'elementor'),
+                    'type' => Controls_Manager::ICONS,
+                    'fa4compatibility' => 'icon',
+                    'label_block' => true,
+                    'default' => [
+                        'value' => 'fas fa-home',
+                        'library' => 'fa-solid',
+                    ],
+                    
+                    
+                ]
+        );
+        $repeater->add_control(
             'price_col_button_1_show', [
             'label' => __( 'Use button', 'th-widget-pack' ),
             'type' => Controls_Manager::SWITCHER,
@@ -117,9 +132,19 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'label_off' => __( 'No', 'th-widget-pack' ),
             'return_value' => 'yes',
             'default' => '',
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'style',
+                        'operator' => '!=',
+                        'value' => 'style_3',
+                    ],
+                ],
+            ],
             ]
         );
-        
+       
+
         $repeater->add_control(
         'price_col_button_1_text', [
             'label' => __( 'Button Text', 'th-widget-pack' ),
@@ -910,40 +935,62 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 break;
             case "style_3":
                 ?>
-                <!--- Pricing-style-1 start--->
-                <h1>Pricing-style-3</h1>
+                <!--- Pricing-style-3 start--->
+
                 <div class="thmv-prc-styl-3">
+                    <?php
+                    
+                    foreach ($settings['pricing'] as $column):
+                        $price = isset($column['price_price']) && !empty($column['price_price']) ? $column['price_price'] : '';
+                         $priceText = isset($column['price_text']) && !empty($column['price_text']) ? $column['price_text'] : '';
+                         $icon = isset($column['price_icon']) ? $column['price_icon'] : false;
+                        ?>
                     <div class="thmv-prc-row">
                         <div class="thmv-column-1">
-                            <div class="thme-info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="32" viewBox="0 0 38 32" fill="none">
-                                    <path d="M15.3333 31.6667V20.6667H22.6666V31.6667H31.8333V17H37.3333L19 0.5L0.666626 17H6.16663V31.6667H15.3333Z" fill="#4E524C"/>
-                                </svg>
-                            </div>
-                            <div class="thme-info">
-                                <h3>Tiny house hosted by Duston</h3>
+                         
+                            <?php if ($icon) {
+                                
+                                ?>
+                                <div class="elementor-icon thmv-info-icon">
+                                    <?php
+                                     Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']);
+                                    ?>
+
+                                </div>
+                                <?php
+                            }
+                            ?>
+                            
+                            <div class="thmv-info">
+                                <h3 class="th-plist-title"><?= esc_html($column['price_title']) ?></h3>
                                 <ul class="meta_info">
-                                    <li>2 guests</li>
-                                    <li>1 bedroom</li>
-                                    <li>1 bed</li>
-                                    <li>1 bath</li>
+                                    <li class="th-plist-subtitle">2 guests</li>
+                                    <li class="th-plist-subtitle">1 bedroom</li>
+                                    <li class="th-plist-subtitle">1 bed</li>
+                                    <li class="th-plist-subtitle">1 bath</li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="thmv-column-2">
-                            <div class="thme-info-pricing">
-                                <h3>19$</h3>
-                                <p>Price</p>
+                        <?php if ($price || $priceText) : ?>
+
+                            <div class="thmv-column-2">
+                                <div class="thmv-info-pricing">
+                                    <div class="thmv-price th-plist-price-number"><?= esc_html($price) ?></div>
+                                    <div class="thmv-price-title th-plist-price-text"><?= esc_html($priceText) ?></div>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
+
                         <div class="thmv-column-3">
-                            <div class="thme-info-button">
-                                <a class="thmv-learn-btn thmv-w-100" href="#">check availability</a>
+                            <div class="thmv-info-button th-price-list">
+                                <a class="thmv-learn-btn th-btn" href="#">check availability</a>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <!--- Priceing-style-1 end--->
+               
+                <!--- Priceing-style-3 end--->
             <?php
                 break;
         }
