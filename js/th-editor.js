@@ -43,11 +43,13 @@
                 var $testElement = $parent.find('div[class*="'+elementorControlClassPrefix+firstElement+'"]');
                 var lengthArr = $testElement.length;
                 if (ordering === '') {
-                    ordering = Array(lengthArr).fill().map((_, i) => i);
+                    var orderArr = Array(lengthArr).fill().map((_, i) => i);
                 }
-                var orderArr = ordering.split(',');
+                else {
+                  var orderArr = ordering.split(',');  
+                }
                 
-                
+
                 var contentElementsArray = [];
                 for(var j=0; j<settings.contentElements.length; j++){
                     contentElementsArray[j] = $parent.find('div[class*="'+elementorControlClassPrefix+settings.contentElements[j]+'"]');
