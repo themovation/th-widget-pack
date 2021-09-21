@@ -453,7 +453,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .thmv-author' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thmv-author a' => 'color: {{VALUE}};',
 				],
                 'condition' => [
                     'thmv_hide_author' => '',
