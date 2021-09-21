@@ -142,7 +142,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-grid-img ' => 'display:none;',
                 ],
 
             ]
@@ -156,7 +156,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-info h3 ' => 'display:none;',
                 ],
 
             ]
@@ -170,7 +170,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-info p ' => 'display:none;',
                 ],
 
             ]
@@ -184,7 +184,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-author ' => 'display:none;',
                 ],
 
             ]
@@ -198,7 +198,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-date' => 'display:none;',
                 ],
 
             ]
@@ -244,7 +244,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-learn-btn ' => 'display:none;',
                 ],
 
             ]
@@ -453,7 +453,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .post-meta' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thmv-author' => 'color: {{VALUE}};',
 				],
                 'condition' => [
                     'thmv_hide_author' => '',
@@ -467,7 +467,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'author_typography',
 				'label' => __( 'Author Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .post-meta',
+				'selector' => '{{WRAPPER}} .thmv-author',
                 'condition' => [
                     'thmv_hide_author' => '',
                 ],
@@ -485,7 +485,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 ],
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .elementors' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-date' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'thmv_hide_date' => '',
@@ -499,7 +499,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'name' => 'date_typography',
                 'label' => __( 'Date Typography', 'th-widget-pack' ),
                 'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-                'selector' => '{{WRAPPER}} .post-elementors',
+                'selector' => '{{WRAPPER}} .thmv-date',
                 'condition' => [
                     'thmv_hide_date' => '',
                 ],
@@ -599,7 +599,8 @@ class Themo_Widget_Blog extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .entry-content p a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thmv-learn-btn' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .thmv-learn-btn svg path' => 'fill: {{VALUE}};',
 				],
                 'condition' => [
                     'thmv_hide_read_more' => '',
@@ -613,7 +614,7 @@ class Themo_Widget_Blog extends Widget_Base {
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .entry-content p a',
+				'selector' => '{{WRAPPER}} .thmv-learn-btn',
                 'condition' => [
                     'thmv_hide_read_more' => '',
                 ],
@@ -682,7 +683,47 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->end_controls_section();
 
 	}
+        
+    private function getImageFromPost($ID, $imgSize) {
+        // Get Project Format Options
+        $imageArr = [];
+        $alt = '';
+        $th_imageId = get_post_thumbnail_id($ID);
+        $imageKey = 'post_image';
+        $imgSize = empty($imgSize) ? 'large': $imgSize;//$settings[$imageKey . '_size'];
+        if (!empty($th_imageId)) {
+            $th_image_url = wp_get_attachment_image_src($th_imageId,$imgSize);
 
+            if ($th_image_url) {
+                $imageArr = ['url' => $th_image_url[0], 'id' => $th_imageId, 'alt' => $alt, 'source' => 'library'];
+                if(count($imageArr)){
+                    
+                    $dim = '';//$settings[$imageKey . '_custom_dimension'];
+                    $image = $imageArr;
+                    $imageSizeInfo = array($imageKey => $image, $imageKey . '_size' => $imgSize, $imageKey . '_custom_dimension' => $dim);
+                    return  Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $imageKey);
+
+                }
+            }
+        }
+        return false;
+    }
+    
+    private function getDescription() {
+
+        $excerpt = get_the_excerpt();
+        $dots = '&hellip;';
+        $tempExcerpt = str_replace('...', $dots, strip_tags($excerpt));
+    
+        //if ... exist then remove them and extra read more
+        $dotsPos = strpos($tempExcerpt, '&hellip;');
+        
+        if($dotsPos!==false){
+            $tempExcerpt = substr($tempExcerpt, 0, $dotsPos).$dots;
+            $excerpt = $tempExcerpt;
+        }
+        return $excerpt; //maybe keep bold, italics
+    }
 	protected function render() {
 	    $settings = $this->get_settings_for_display();
 
@@ -745,122 +786,85 @@ class Themo_Widget_Blog extends Widget_Base {
             <?php
             switch( $settings['thmv_style'] ) {
                 case "style_1":
+                case "style_2":    
+                    $columns  = isset($settings['post_columns'])  &&  !empty($settings['post_columns']) ? 'thmv-col-'.(INT)$settings['post_columns']: '';
+                    $readmoreText = isset($settings['thmv_link_text'])  &&  !empty($settings['thmv_link_text']) ? $settings['thmv_link_text']: '';
+                    $hideImage = isset($settings['thmv_hide_image'])  &&  !empty($settings['thmv_hide_image']) ? $settings['thmv_hide_image']: '';
+                    $hideDate =  isset($settings['thmv_hide_date'])  &&  !empty($settings['thmv_hide_date']) ? $settings['thmv_hide_date']: '';
+                    $hideAuthor =  isset($settings['thmv_hide_author'])  &&  !empty($settings['thmv_hide_author']) ? $settings['thmv_hide_author']: '';
+                    $imageSize = isset($settings['post_image_size'])  &&  !empty($settings['post_image_size']) ? $settings['post_image_size']: '';
+                    $style = (INT)str_replace('style_', '', $settings['thmv_style']);
+                    $dateFormat = $style===2 ? 'd/m/Y' : get_option( 'date_format' );
                     ?>
-                    <h1>Post-style-1</h1>
-                    <div class="thmv-post-styl-1">
-                        <div class="thmv-column-3">
-                            <div class="thme-grid-style-4">
-                                <div class="thme-grid-img">
-                                    <img class="img-fluid" src="Americas-Big-Little-Food-Town.png" alt="">
+                    <h1>Post-style-<?=$style?></h1>
+                    <div class="thmv-blog-post thmv-post-styl-<?=$style?> <?=$columns?>">
+                        <?php while ( $widget_wp_query->have_posts() ) { 
+                            $widget_wp_query->the_post(); 
+                            $postID = get_the_ID();
+                            $title = get_the_title();
+                            $image = $hideImage ? false : $this->getImageFromPost($postID, $imageSize);
+                            $desc = $this->getDescription();
+                            //$author_id = get_the_author_meta( 'ID' );
+                            $date = get_the_date($dateFormat);
+                            $link = get_permalink();
+                            $authorLink = get_the_author_link();
+                            ?>
+                        <div class="thmv-column">
+                           <?php if($image):?>
+                            <div class="thmv-grid-img">
+                                <a href="<?=$link?>"><?=$image?></a>
+                            </div>
+                            <?php endif; ?>
+                            <div class="thmv-info">
+                                <div class="thmv-subheading">
+                                     <?php if(!$hideAuthor && $style===1):?>
+                                    <span class="thmv-author"><?=$authorLink?><?=(!$hideDate ? ' - ': '') ?></span>
+                                     <?php endif; ?>
+                                    <?php if(!$hideDate):?>
+                                    <span class="thmv-date"><?=$date?></span>
+                                    <?php endif; ?>
                                 </div>
-                                <div class="thme-info">
-                                    <span class="thmv-subheading">Ryan - March 30,2017</span>
-                                    <hr class="thmv-separator">
-                                    <h3>America’s Big Little Food Town</h3>
-                                    <p>The decade that brought us Star Trek and Doctor Who also resurrected Cicero—or at least what used to be Cicero—in an attempt to make the...</p>
-                                    <a class="thmv-learn-btn thmv-w-100" href="#">Read More
-                                        <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.4596 5.45962C18.7135 5.20578 18.7135 4.79422 18.4596 4.54038L14.323 0.403807C14.0692 0.149967 13.6576 0.149966 13.4038 0.403807C13.15 0.657648 13.15 1.06921 13.4038 1.32305L17.0808 5L13.4038 8.67696C13.15 8.9308 13.15 9.34235 13.4038 9.59619C13.6576 9.85004 14.0692 9.85004 14.323 9.5962L18.4596 5.45962ZM-5.68248e-08 5.65L18 5.65L18 4.35L5.68248e-08 4.35L-5.68248e-08 5.65Z" fill="#191B18"/>
-                                        </svg>
-                                    </a>
-                                </div>
+                                <?php if($style===1):?>
+                                <hr class="thmv-separator">
+                                <?php endif; ?>
+                                <h3 class="post-title"><a href="<?=$link?>"><?= $title?></a></h3>
+                                <div class="entry-content"><p><?=$desc?></p></div>
+                                <a class="thmv-learn-btn thmv-w-100" href="<?=$link?>"><?=esc_html__($readmoreText)?>
+                                     <?php if($style===1):?>
+                                    <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.4596 5.45962C18.7135 5.20578 18.7135 4.79422 18.4596 4.54038L14.323 0.403807C14.0692 0.149967 13.6576 0.149966 13.4038 0.403807C13.15 0.657648 13.15 1.06921 13.4038 1.32305L17.0808 5L13.4038 8.67696C13.15 8.9308 13.15 9.34235 13.4038 9.59619C13.6576 9.85004 14.0692 9.85004 14.323 9.5962L18.4596 5.45962ZM-5.68248e-08 5.65L18 5.65L18 4.35L5.68248e-08 4.35L-5.68248e-08 5.65Z" fill="#191B18"/>
+                                    </svg>
+                                     <?php endif; ?>
+                                    <?php if($style===2):?>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M-0.000156792 8.92L-0.000156705 6.92L11.9998 6.92L6.49984 1.42L7.91984 -3.46194e-07L15.8398 7.92L7.91984 15.84L6.49984 14.42L11.9998 8.92L-0.000156792 8.92Z" fill="#171818"></path>
+                                    </svg>
+                                    <?php endif; ?>
+                                </a>
                             </div>
                         </div>
-                        <div class="thmv-column-3">
-                            <div class="thme-grid-style-4">
-                                <div class="thme-grid-img">
-                                    <img class="img-fluid" src="Americas-Big-Little-Food-Town-1.png" alt="">
-                                </div>
-                                <div class="thme-info">
-                                    <span class="thmv-subheading">Ryan - March 30,2017</span>
-                                    <hr class="thmv-separator">
-                                    <h3>America’s Big Little Food Town</h3>
-                                    <p>The decade that brought us Star Trek and Doctor Who also resurrected Cicero—or at least what used to be Cicero—in an attempt to make the...</p>
-                                    <a class="thmv-learn-btn thmv-w-100" href="#">Read More
-                                        <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.4596 5.45962C18.7135 5.20578 18.7135 4.79422 18.4596 4.54038L14.323 0.403807C14.0692 0.149967 13.6576 0.149966 13.4038 0.403807C13.15 0.657648 13.15 1.06921 13.4038 1.32305L17.0808 5L13.4038 8.67696C13.15 8.9308 13.15 9.34235 13.4038 9.59619C13.6576 9.85004 14.0692 9.85004 14.323 9.5962L18.4596 5.45962ZM-5.68248e-08 5.65L18 5.65L18 4.35L5.68248e-08 4.35L-5.68248e-08 5.65Z" fill="#191B18"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thmv-column-3">
-                            <div class="thme-grid-style-4">
-                                <div class="thme-grid-img">
-                                    <img class="img-fluid" src="Americas-Big-Little-Food-Town-2.png" alt="">
-                                </div>
-                                <div class="thme-info">
-                                    <span class="thmv-subheading">Ryan - March 30,2017</span>
-                                    <hr class="thmv-separator">
-                                    <h3>America’s Big Little Food Town</h3>
-                                    <p>The decade that brought us Star Trek and Doctor Who also resurrected Cicero—or at least what used to be Cicero—in an attempt to make the...</p>
-                                    <a class="thmv-learn-btn thmv-w-100" href="#">Read More
-                                        <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M18.4596 5.45962C18.7135 5.20578 18.7135 4.79422 18.4596 4.54038L14.323 0.403807C14.0692 0.149967 13.6576 0.149966 13.4038 0.403807C13.15 0.657648 13.15 1.06921 13.4038 1.32305L17.0808 5L13.4038 8.67696C13.15 8.9308 13.15 9.34235 13.4038 9.59619C13.6576 9.85004 14.0692 9.85004 14.323 9.5962L18.4596 5.45962ZM-5.68248e-08 5.65L18 5.65L18 4.35L5.68248e-08 4.35L-5.68248e-08 5.65Z" fill="#191B18"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                        }
+                            // Reset postdata
+                            wp_reset_postdata();
+                        ?>
                     </div>
+                    <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
+                            <div class="row">
+                                <nav class="post-nav">
+                                    <ul class="pager">
+                                        <?php
+                                        if( $use_bittersweet_pagination ) {
+                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
+                                        } else { ?>
+                                            <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'th-widget-pack' ), $widget_wp_query->max_num_pages); ?></li>
+                                            <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'th-widget-pack' ) ); ?></li>
+                                        <?php }?>
+                                    </ul>
+                                </nav>
+                            </div>
+                        <?php } ?>
                     <!--- Post-style-1 start end--->
-                <?php
-                    break;
-
-                case "style_2":
-                    ?>
-                    <h1>Post-style-2</h1>
-                    <div class="thmv-post-styl-2">
-                        <div class="thmv-prc-row">
-                            <div class="thmv-column">
-                                <div class="thme-grid-style-5">
-                                    <div class="thme-grid-img">
-                                        <img class="img-fluid" src="Creation-timelines.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="thmv-column">
-                                <div class="thme-grid-style-5 right-col">
-                                    <div class="thme-info">
-                                        <span class="thmv-subheading">01/01/2021</span>
-                                        <h3>Creation timelines for the standard lorem</h3>
-                                        <p>The decade that brought us Star Trek and Doctor Who also resurrected Cicero—or at least what used to be Cicero—in an attempt to make the days before computerized design</p>
-                                        <a class="thmv-learn-btn thmv-w-100" href="#">Read More
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M-0.000156792 8.92L-0.000156705 6.92L11.9998 6.92L6.49984 1.42L7.91984 -3.46194e-07L15.8398 7.92L7.91984 15.84L6.49984 14.42L11.9998 8.92L-0.000156792 8.92Z" fill="#171818"/>
-                                            </svg>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thmv-prc-row">
-                            <div class="thmv-column">
-                                <div class="thme-grid-style-5">
-                                    <div class="thme-grid-img">
-                                        <img class="img-fluid" src="Creation-timelines-1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="thmv-column">
-                                <div class="thme-grid-style-5 right-col">
-                                    <div class="thme-info">
-                                        <span class="thmv-subheading">01/01/2021</span>
-                                        <h3>Creation timelines for the standard lorem</h3>
-                                        <p>The decade that brought us Star Trek and Doctor Who also resurrected Cicero—or at least what used to be Cicero—in an attempt to make the days before computerized design</p>
-                                        <a class="thmv-learn-btn thmv-w-100" href="#">Read More
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M-0.000156792 8.92L-0.000156705 6.92L11.9998 6.92L6.49984 1.42L7.91984 -3.46194e-07L15.8398 7.92L7.91984 15.84L6.49984 14.42L11.9998 8.92L-0.000156792 8.92Z" fill="#171818"/>
-                                            </svg>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--- Post-style--2 end--->
                 <?php
                     break;
 
