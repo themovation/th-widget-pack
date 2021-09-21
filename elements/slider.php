@@ -855,7 +855,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 				'dynamic' => [
