@@ -4,7 +4,11 @@ namespace Elementor;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Themo_Widget_Blog extends Widget_Base {
-
+        var $elementorPostImageKey = 'post_image_elementor';
+        
+        public function getElementorPostImageKey(){
+            return $this->elementorPostImageKey;
+        }
 	public function get_name() {
 		return 'themo-blog';
 	}
@@ -142,7 +146,8 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-grid-img ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-grid-img' => 'display:none;',
+                    '{{WRAPPER}} .mas-blog-post img' => 'display:none;',
                 ],
 
             ]
@@ -156,7 +161,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-info h3 ' => 'display:none;',
+                    '{{WRAPPER}} h3' => 'display:none;',
                 ],
 
             ]
@@ -170,7 +175,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-info p ' => 'display:none;',
+                    '{{WRAPPER}} .entry-content' => 'display:none;',
                 ],
 
             ]
@@ -212,7 +217,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .post-meta' => 'display:none;',
                 ],
                 'condition' => [
                     'thmv_style' => [ 'style_3']
@@ -228,7 +233,7 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .element ' => 'display:none;',
+                    '{{WRAPPER}} .show-comments' => 'display:none;',
                 ],
                 'condition' => [
                     'thmv_style' => [ 'style_3']
@@ -244,7 +249,8 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-learn-btn ' => 'display:none;',
+                    '{{WRAPPER}} .thmv-learn-btn' => 'display:none;',
+                    '{{WRAPPER}} .entry-content a' => 'display:none;',
                 ],
 
             ]
@@ -315,6 +321,18 @@ class Themo_Widget_Blog extends Widget_Base {
             ]
         );
 
+        
+        $this->add_group_control(
+                Group_Control_Image_Size::get_type(),
+                [
+                    'name' => $this->getElementorPostImageKey(),
+                    'default' => 'large',
+                    'separator' => 'none',
+                    'condition' => [
+                    'thmv_style' => ['style_1', 'style_2']
+                ],
+                ]
+        );
         $this->add_control(
             'post_image_size',
             [
@@ -327,6 +345,9 @@ class Themo_Widget_Blog extends Widget_Base {
                     'th_img_sm_portrait' => __( 'Portrait', 'th-widget-pack' ),
                     'th_img_sm_square' => __( 'Square', 'th-widget-pack' ),
                     'th_img_lg' => __( 'Large', 'th-widget-pack' ),
+                ],
+                'condition' => [
+                    'thmv_style' => ['style_3']
                 ],
             ]
         );
@@ -505,7 +526,25 @@ class Themo_Widget_Blog extends Widget_Base {
                 ],
             ]
         );
-
+        $this->add_control(
+                'divider_color',
+                [
+                    'label' => __('Divider Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_3,
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-separator' => 'border-color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'thmv_hide_author' => '',
+                        'thmv_style' => ['style_1']
+                    ],
+                ]
+        );
         $this->add_control(
             'category_color',
             [
@@ -684,29 +723,18 @@ class Themo_Widget_Blog extends Widget_Base {
 
 	}
         
-    private function getImageFromPost($ID, $imgSize) {
-        // Get Project Format Options
-        $imageArr = [];
-        $alt = '';
+    private function getImageFromPost($ID, $settings) {
+        
+        $imageKey = $this->getElementorPostImageKey();
+        $settings[$imageKey] = '';
         $th_imageId = get_post_thumbnail_id($ID);
-        $imageKey = 'post_image';
-        $imgSize = empty($imgSize) ? 'large': $imgSize;//$settings[$imageKey . '_size'];
-        if (!empty($th_imageId)) {
-            $th_image_url = wp_get_attachment_image_src($th_imageId,$imgSize);
-
-            if ($th_image_url) {
-                $imageArr = ['url' => $th_image_url[0], 'id' => $th_imageId, 'alt' => $alt, 'source' => 'library'];
-                if(count($imageArr)){
-                    
-                    $dim = '';//$settings[$imageKey . '_custom_dimension'];
-                    $image = $imageArr;
-                    $imageSizeInfo = array($imageKey => $image, $imageKey . '_size' => $imgSize, $imageKey . '_custom_dimension' => $dim);
-                    return  Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $imageKey);
-
-                }
-            }
+        if ($th_imageId) {
+           $settings[$imageKey] = ['id'=>$th_imageId];
+           return Group_Control_Image_Size::get_attachment_image_html($settings, $imageKey);
         }
+        
         return false;
+        
     }
     
     private function getDescription() {
@@ -802,7 +830,7 @@ class Themo_Widget_Blog extends Widget_Base {
                             $widget_wp_query->the_post(); 
                             $postID = get_the_ID();
                             $title = get_the_title();
-                            $image = $hideImage ? false : $this->getImageFromPost($postID, $imageSize);
+                            $image = $hideImage ? false : $this->getImageFromPost($postID, $settings);
                             $desc = $this->getDescription();
                             //$author_id = get_the_author_meta( 'ID' );
                             $date = get_the_date($dateFormat);
@@ -817,7 +845,7 @@ class Themo_Widget_Blog extends Widget_Base {
                             <?php endif; ?>
                             <div class="thmv-info">
                                 <div class="thmv-subheading">
-                                     <?php if(!$hideAuthor && $style===1):?>
+                                     <?php if(!$hideAuthor):?>
                                     <span class="thmv-author"><?=$authorLink?><?=(!$hideDate ? ' - ': '') ?></span>
                                      <?php endif; ?>
                                     <?php if(!$hideDate):?>

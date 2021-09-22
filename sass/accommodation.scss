@@ -178,14 +178,12 @@ $topboxPadding : 20px;
         .thmv-grid-rating
         {
             @include d-flex;
-            @include justify-content-between;
-
             > ul{
                 padding-bottom: 10px;
                 &.thmv-location{
                     padding-bottom: 15px;
                 }
-                padding-right: 15px;
+                padding-right: 30px;
             }
             .thmv-location{
                 li {
@@ -351,7 +349,7 @@ $topboxPadding : 20px;
             .thmv-learn-btn {
                 @include button;
             }
-
+            
         }
         &.thmv-style-2{
             @include defineWidth(50, $md);
@@ -364,6 +362,9 @@ $topboxPadding : 20px;
             }
             .thmv-learn-btn {
                 @include linkbutton;
+            }
+            .thmv-grid-rating{
+                @include justify-content-between;
             }
         }
         &.thmv-style-3{
@@ -461,6 +462,9 @@ $topboxPadding : 20px;
                 font-weight: 500;
                 font-size: 24px;
                 text-transform: inherit;
+            }
+            .thmv-grid-rating{
+                @include flex-column;
             }
             .thmv-grid-rating>ul.thmv-location{
                 padding-bottom: 30px;

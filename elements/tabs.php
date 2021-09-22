@@ -56,7 +56,18 @@ class Themo_Widget_Tabs extends Widget_Base {
         );
 
         $repeater = new Repeater();
-
+        $repeater->add_control(
+            'tab_title', [
+            'label' => __('Title', 'th-widget-pack'),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => 'Lorem Ipsum',
+            'default' => 'Lorem Ipsum',
+            'label_block' => true,
+            'dynamic' => [
+                'active' => true,
+            ]
+                ]
+        );
         $repeater->add_control(
                 'thmv_tab_ordering',
                 [
@@ -74,8 +85,8 @@ class Themo_Widget_Tabs extends Widget_Base {
                     'thmv_tab_item_title' . $i, [
                 'label' => __('Title', 'th-widget-pack'),
                 'type' => Controls_Manager::TEXT,
-                'placeholder' => 'Lore Ipsum',
-                'default' => ($i == 0 ? 'Lore Ipsum' : ''),
+                'placeholder' => 'Lorem Ipsum',
+                'default' => ($i == 0 ? 'Lorem Ipsum' : ''),
                 'label_block' => true,
                 'dynamic' => [
                     'active' => true,
@@ -114,6 +125,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                     'label' => __('Tabs Items', 'elementor'),
                     'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
+                    'title_field' => '{{{ tab_title }}}',
                 ]
         );
         $this->add_control(

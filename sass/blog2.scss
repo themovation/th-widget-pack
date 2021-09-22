@@ -103,10 +103,17 @@ $colpadding: 10px;
             }
             h3{
                 margin-top: 20px;
-                
+
             }
 
         }
 
+    }
+}
+
+.elementor-widget-themo-blog .th-masonry-blog{
+    .thmv-author+.themo-mas-date-meta:before{
+        content: " | \00a0";
+        color: #dbdbdb; 
     }
 }

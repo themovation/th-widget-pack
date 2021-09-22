@@ -157,7 +157,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'type' => Controls_Manager::SELECT2,
                     'label_block' => true,
                     'multiple' => true,
-                    'options' => $this->get_group_list('mphb_room_type'),
+                    'options' => $this->get_group_list('mphb_room_type_category'),
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
                         'thmv_data_source' => 'mphb_room_type',
@@ -204,6 +204,22 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'separator' => 'none',
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
+                    ],
+                ]
+        );
+        
+        $this->add_control(
+                'thmv_align_image_right',
+                [
+                    'label' => __('Show images on the right side', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'default' => '',
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                        'thmv_style' => ['style_3', 'style_5', 'style_6'],
                     ],
                 ]
         );
@@ -1954,6 +1970,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $args['post_type'] = $postType;
 
             $group = $dataSource === 'mphb_room_type' ? $settings['group_mphb_room_type'] : $settings['group'];
+            $taxonomy = $dataSource === 'mphb_room_type' ? 'mphb_room_type_category' : 'themo_room_type';
+            
             if ($group) {
                 if (in_array('none', $group)) {
                     $group = array_diff($group, array('none'));
@@ -1962,7 +1980,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     $project_type_id = $group;
                     $args['tax_query'] = array(
                         array(
-                            'taxonomy' => $dataSource,
+                            'taxonomy' => $taxonomy,
                             'field' => 'term_id',
                             'terms' => $project_type_id,
                         ),
@@ -2004,14 +2022,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
         $this->setupColumns($settings, 'columns', 'thmv_column');
 
-        if (empty($buttonstyle)) {
-            $this->add_render_attribute('thmv_link', 'class', 'thmv-btn thmv-learn-btn', true);
-        } else {
-            $this->add_render_attribute('thmv_link', 'class', 'thmv-btn btn btn-1 th-btn btn-' . $buttonstyle, true);
-        }
-
-        $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
-
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
         $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
 
@@ -2019,7 +2029,16 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
+            
+            $this->remove_render_attribute('thmv_link'); //reset
+            if (empty($buttonstyle)) {
+                $this->add_render_attribute('thmv_link', 'class', 'thmv-btn thmv-learn-btn', true);
+            } else {
+                $this->add_render_attribute('thmv_link', 'class', 'thmv-btn btn btn-1 th-btn btn-' . $buttonstyle, true);
+            }
 
+            $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
+            
             if ($dataSource) {
                 // get post format
                 $format = get_post_format($list);
@@ -2053,7 +2072,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     }
                 }
 
-                $showImgesRightSide = false;
+                $showImgesRightSide = $settings['thmv_align_image_right'];
 
                 $preface = get_post_meta($list->ID, 'th_room_intro', true);
                 $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
@@ -2081,9 +2100,11 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $icons = $this->getIconsFromThePost($iconsTemp);
 
                 $showStars = false;
-                $starsRating = get_post_meta($list->ID, 'th_room_rating', true);
-                if (!empty($starsRating) && $starsRating > 0) {
+                $tempStarsRating = get_post_meta($list->ID, 'th_room_rating', true);
+                $starsRating = false;
+                if (!empty($tempStarsRating) && $tempStarsRating > 0) {
                     $showStars = true;
+                    $starsRating['size'] = $tempStarsRating;
                 }
                 $showLocation = false;
                 $locationText = get_post_meta($list->ID, 'th_room_location', true);
