@@ -347,6 +347,63 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+
+
+        $this->add_control(
+            'spacing',
+            [
+                'label' => __( 'Spacing', 'plugin-domain' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-plist-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .th-price-list.th-show-divider .th-plist-item' => 'padding-bottom: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'style' => 'style_1',
+                    //'price_divider' => ''
+                ],
+            ]
+        );
+
+        /*$this->add_control(
+            'divider_spacing',
+            [
+                'label' => __( 'Spacing', 'plugin-domain' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 15,
+                ],
+                'selectors' => [
+
+                ],
+                'condition' => [
+                    'style' => 'style_1',
+                    'price_divider' => 'yes'
+                ],
+            ]
+        );*/
+
         $this->end_controls_section();
 
 		$this->start_controls_section(
@@ -639,12 +696,44 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'section_divider_heading',
+            [
+                'label' => __( 'Divider', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'style' => 'style_1',
+                    'price_divider' => 'yes'
+                ],
+            ]
+        );
 
+        $this->add_control(
+            'divider_style',
+            [
+                'label' => __( 'Style', 'plugin-domain' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'solid',
+                'options' => [
+                    'solid'  => __( 'Solid', 'plugin-domain' ),
+                    'dashed' => __( 'Dashed', 'plugin-domain' ),
+                    'dotted' => __( 'Dotted', 'plugin-domain' ),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list.th-show-divider .th-plist-item' => 'border-bottom-style: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => 'style_1',
+                    'price_divider' => 'yes'
+                ],
+            ]
+        );
 
         $this->add_control(
             'divider_color',
             [
-                'label' => __( 'Divider Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -654,12 +743,16 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-show-divider .th-plist-item' => 'border-color: {{VALUE}};',
                 ],
-                'separator' => 'before',
                 'condition' => [
                     'style' => 'style_1',
+                    'price_divider' => 'yes'
                 ],
             ]
         );
+
+
+
+
 
         $this->end_controls_section();
 
