@@ -218,6 +218,17 @@ $topboxPadding : 20px;
                 }
             }
         }
+        &.image-alignment-alternate{
+            .thmv-column:nth-child(odd){
+                .image-column-alternate{
+                    @include flex-row-reverse;
+                    .thmv-info{
+                        padding-right: 45px;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
         .thmv-grid-sleep{
             border-bottom: 1px solid rgba(135, 135, 135, 0.2);
             margin-bottom: 15px;

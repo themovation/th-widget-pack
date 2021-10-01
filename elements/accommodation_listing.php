@@ -209,14 +209,26 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         );
         
         $this->add_control(
-                'thmv_align_image_right',
+                'thmv_align_image',
                 [
-                    'label' => __('Show images on the right side', 'th-widget-pack'),
-                    'type' => Controls_Manager::SWITCHER,
+                    'label' => __('Image alignment', 'th-widget-pack'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'label_block' => false,
+                    'options' => [
+                        'left' => [
+                            'title' => __('Left', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-left',
+                        ],
+                        'alternate' => [
+                            'title' => __('Alternate', 'th-widget-pack'),
+                            'icon' => 'fa fa-times',
+                        ],
+                        'right' => [
+                            'title' => __('Right', 'th-widget-pack'),
+                            'icon' => 'fa fa-align-right',
+                        ],
+                    ],
                     'default' => '',
-                    'label_on' => __('Yes', 'th-widget-pack'),
-                    'label_off' => __('No', 'th-widget-pack'),
-                    'return_value' => 'yes',
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
                         'thmv_style' => ['style_3', 'style_5', 'style_6'],
@@ -2025,6 +2037,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
         $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
 
+        if($dataSource && !empty($settings['thmv_align_image'])){
+           $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
+        }
+        
         echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
@@ -2072,7 +2088,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     }
                 }
 
-                $showImgesRightSide = $settings['thmv_align_image_right'];
+                $showImgesRightSide = $settings['thmv_align_image'];
 
                 $preface = get_post_meta($list->ID, 'th_room_intro', true);
                 $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
@@ -2219,8 +2235,16 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
                 <div class="elementor-widget-wrap">
-
-                    <div class="thmv-grid <?= $showImgesRightSide ? 'image-column-right ' : '' ?> elementor-element">
+                    <?php 
+                    if($dataSource){
+                        $imageAlignment = $showImgesRightSide ? 'image-column-'.$showImgesRightSide : '';
+                    }
+                    else{
+                        $imageAlignment =  $showImgesRightSide ? 'image-column-right ' : '';
+                    }
+                    
+                    ?>
+                    <div class="thmv-grid <?= $imageAlignment ?> elementor-element">
                         <div class="thmv-grid-img">
                             <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
                                 <?php echo $renderedImage; ?>
@@ -2278,16 +2302,24 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
                                     <?php
                                     if ($showLocation):
-                                        $linkPrefix = $linkPostfix = '';
+                                       
+                                        $linkPrefix = $linkPostfix = $locationIconHTML = '';
+                                         if($locationIcon){
+                                            ob_start();
+                                            Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); 
+                                            $locationIconHTML = ob_get_clean();
+                                        }
                                         if ($locationLink) {
                                             $linkPrefix = '<a ' . $this->get_render_attribute_string('thmv_location_link') . '>';
                                             $linkPostfix = '</a>';
                                         }
+                                        if ($locationText || $locationIconHTML):
                                         ?>
                                         <ul class="thmv-location">
-                                            <li class="location-icon"><?= $linkPrefix ?><?php Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); ?><?= $linkPostfix ?></li>
-                                            <li class="location"><?= $linkPrefix ?><?= $locationText ?><?= $linkPostfix ?></li>
+                                            <?php if( !empty($locationIconHTML)) : ?><li class="location-icon"><?= $linkPrefix ?><?php echo $locationIconHTML;?><?= $linkPostfix ?></li> <?php endif;?>
+                                            <?php if( $locationText) : ?><li class="location"><?= $linkPrefix ?><?= $locationText ?><?= $linkPostfix ?></li><?php endif;?>
                                         </ul>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>

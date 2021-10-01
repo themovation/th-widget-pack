@@ -165,7 +165,30 @@ class Themo_Widget_Tabs extends Widget_Base {
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
-
+        $this->add_responsive_control(
+                'thmv_tab_padding',
+                [
+                    'label' => __('Tab Padding', 'elementor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .thmv-tab-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    
+                ]
+        );
+        $this->add_responsive_control(
+                'thmv_tab_item_margin',
+                [
+                    'label' => __('Tab Items Margin', 'elementor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', 'em', '%'],
+                    'selectors' => [
+                        '{{WRAPPER}} .margin-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    
+                ]
+        );
         $this->add_control(
                 'active_item_border',
                 [
@@ -499,6 +522,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                             $content = $tabContent['content'] ? $tabContent['content'] : false;
                             ?>
                             <div <?php echo $this->get_render_attribute_string($columns_attribute); ?> <?php echo empty($content) ? 'data-no-text="1"' : '' ?>>
+                                <div class="margin-wrap">
                                 <?php if (!empty($title) || !empty($price)) : ?>
                                     <div class="thmv-title-price-block">
                                         <?php if (!empty($title)): ?>
@@ -517,6 +541,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                                 <?php if (!empty($price)): ?>
                                     <div class="thmv-tab-price price-phone"><?php echo esc_html($price) ?></div>
                                 <?php endif; ?>
+                            </div>
                             </div>
                             <?php
                         }
