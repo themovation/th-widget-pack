@@ -132,7 +132,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'label_off' => __( 'No', 'th-widget-pack' ),
             'return_value' => 'yes',
             'default' => '',
-            'conditions' => [
+            /*'conditions' => [
                 'terms' => [
                     [
                         'name' => 'style',
@@ -140,7 +140,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'value' => 'style_3',
                     ],
                 ],
-            ],
+            ],*/
             ]
         );
        
