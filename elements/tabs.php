@@ -51,7 +51,7 @@ class Themo_Widget_Tabs extends Widget_Base {
         $this->start_controls_section(
                 'section_tabs',
                 [
-                    'label' => __('Tabs', 'elementor'),
+                    'label' => __('Content', 'elementor'),
                 ]
         );
 
@@ -122,131 +122,83 @@ class Themo_Widget_Tabs extends Widget_Base {
         $this->add_control(
                 'tabs',
                 [
-                    'label' => __('Tabs Items', 'elementor'),
+                    'label' => __('Tabs', 'elementor'),
                     'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'title_field' => '{{{ tab_title }}}',
                 ]
         );
-        $this->add_control(
-                'thmv_style',
-                [
-                    'label' => __('Choose style', 'th-widget-pack'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => 'style_1',
-                    'options' => [
-                        'style_1' => __('Style 1', 'th-widget-pack'),
-                        'style_2' => __('Style 2', 'th-widget-pack'),
-                    ],
-                ]
-        );
 
-        $this->add_responsive_control(
-                'columns',
-                [
-                    'label' => __('Columns', 'th-widget-pack'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => '',
-                    'options' => [
-                        '' => __('Default', 'th-widget-pack'),
-                        '1' => __('1', 'th-widget-pack'),
-                        '2' => __('2', 'th-widget-pack'),
-                        '3' => __('3', 'th-widget-pack'),
-                    ],
-                ]
-        );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
+            'section_style',
+            [
+                'label' => __('Style', 'elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'thmv_style',
+            [
+                'label' => __('Style', 'th-widget-pack'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'style_1',
+                'options' => [
+                    'style_1' => __('Style 1', 'th-widget-pack'),
+                    'style_2' => __('Style 2', 'th-widget-pack'),
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'columns',
+            [
+                'label' => __('Columns', 'th-widget-pack'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '',
+                'options' => [
+                    '' => __('Default', 'th-widget-pack'),
+                    '1' => __('1', 'th-widget-pack'),
+                    '2' => __('2', 'th-widget-pack'),
+                    '3' => __('3', 'th-widget-pack'),
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
+
+        $this->start_controls_section(
                 'section_tabs_style',
                 [
-                    'label' => __('Tabs', 'elementor'),
+                    'label' => __('Navigation', 'elementor'),
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
-        $this->add_responsive_control(
-                'thmv_tab_padding',
-                [
-                    'label' => __('Tab Padding', 'elementor'),
-                    'type' => Controls_Manager::DIMENSIONS,
-                    'size_units' => ['px', 'em', '%'],
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    ],
-                    
-                ]
-        );
-        $this->add_responsive_control(
-                'thmv_tab_item_margin',
-                [
-                    'label' => __('Tab Items Margin', 'elementor'),
-                    'type' => Controls_Manager::DIMENSIONS,
-                    'size_units' => ['px', 'em', '%'],
-                    'selectors' => [
-                        '{{WRAPPER}} .margin-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    ],
-                    
-                ]
-        );
-        $this->add_control(
-                'active_item_border',
-                [
-                    'label' => __('Active Tab Border Width', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'default' => [
-                        'unit' => 'px',
-                    ],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 50,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-title:after' => 'height: {{SIZE}}{{UNIT}}',
-                    ],
-                    'condition' => [
-                        'thmv_style' => 'style_2',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'active_item_border_color',
-                [
-                    'label' => __('Active Tab Border Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-title:after' => 'background-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'thmv_style' => 'style_2',
-                    ],
-                ]
-        );
-        
-        $this->add_control(
-                'tabs_background_color',
-                [
-                    'label' => __('Tab Area Background Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tabs-wrapper' => 'background-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'thmv_style' => 'style_2',
-                    ],
-                ]
-        );
-        
 
         $this->add_control(
-                'heading_title',
-                [
-                    'label' => __('Title', 'elementor'),
-                    'type' => Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
+            'tabs_background_color',
+            [
+                'label' => __('Background', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tabs-wrapper' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_control(
+            'navigation_text_heading',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+            ]
         );
 
         $this->add_control(
@@ -264,116 +216,324 @@ class Themo_Widget_Tabs extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
-                'tab_active_color',
-                [
-                    'label' => __('Active Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tabs .thmv-tab-title.active' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} .thmv-tabs .thmv-tab-title:hover' => 'color: {{VALUE}}',
-                    ],
-                    'global' => [
-                        'default' => Global_Colors::COLOR_ACCENT,
-                    ],
-                ]
-        );
-        $this->add_control(
-                'tab_active_background_color',
-                [
-                    'label' => __('Active Background Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tabs.style_1 .thmv-tab-title.active' => 'background-color: {{VALUE}}',
-                        '{{WRAPPER}} .thmv-tabs.style_1 .thmv-tab-title:hover' => 'background-color: {{VALUE}}',
-                    ],
-                    'global' => [
-                        'default' => Global_Colors::COLOR_ACCENT,
-                    ],
-                    'condition' => [
-                        'thmv_style' => 'style_1',
-                    ],
-                ]
-        );
+
+
         $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'name' => 'tab_typography',
-                    'selector' => '{{WRAPPER}} .thmv-tab-title',
-                    'global' => [
-                        'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
-                    ],
-                ]
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'tab_typography',
+                'selector' => '{{WRAPPER}} .thmv-tab-title',
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+                ],
+            ]
         );
 
         $this->add_control(
-                'heading_content',
-                [
-                    'label' => __('Content', 'elementor'),
-                    'type' => Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
+            'tab_active_color',
+            [
+                'label' => __('Active', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tabs .thmv-tab-title.active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .thmv-tabs .thmv-tab-title:hover' => 'color: {{VALUE}}',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_ACCENT,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tab_active_background_color',
+            [
+                'label' => __('Background', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tabs.style_1 .thmv-tab-title.active' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .thmv-tabs.style_1 .thmv-tab-title:hover' => 'background-color: {{VALUE}}',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_ACCENT,
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_1',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thmv_tab_padding',
+            [
+                'label' => __('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_1',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'border_heading',
+            [
+                'label' => __('Borders', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'active_item_border_color',
+            [
+                'label' => __('Color', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-title:after' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'active_item_border',
+            [
+                'label' => __('Width', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'unit' => 'px',
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-title:after' => 'height: {{SIZE}}{{UNIT}}',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'navigation_padding_title',
+            [
+                'label' => __('Spacing', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_negative-margin',
+            [
+                'label' => __('Top Margin', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'unit' => 'px',
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => -300,
+                        'max' => 0,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} ' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+
+        $this->add_responsive_control(
+            'thmv_tab_padding_style_2',
+            [
+                'label' => __('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tabs.style_2 .thmv-tab-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_2',
+                ],
+            ]
+        );
+
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_tab_content_style',
+            [
+                'label' => __('Content', 'elementor'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        /*$this->add_control(
+            'heading_content',
+            [
+                'label' => __('Content', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );*/
+        $this->add_control(
+            'background_color',
+            [
+                'label' => __('Background', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-desktop-title.elementor-active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-tabs-content-wrapper' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'heading_section',
+            [
+                'label' => __('Heading', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'heading_color',
+            [
+                'label' => __('Heading', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-heading' => 'color: {{VALUE}};',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'heading_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .thmv-tab-heading',
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_section',
+            [
+                'label' => __('Price', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
         );
         $this->add_control(
-                'background_color',
-                [
-                    'label' => __('Background Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-desktop-title.elementor-active' => 'background-color: {{VALUE}};',
-                        '{{WRAPPER}} .thmv-tabs-content-wrapper' => 'background-color: {{VALUE}};',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'heading_color',
-                [
-                    'label' => __('Heading Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-heading' => 'color: {{VALUE}};',
-                    ],
-                    'global' => [
-                        'default' => Global_Colors::COLOR_TEXT,
-                    ],
-                ]
-        );
-        $this->add_control(
-                'price_color',
-                [
-                    'label' => __('Price Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-price' => 'color: {{VALUE}};',
-                    ],
-                    'global' => [
-                        'default' => Global_Colors::COLOR_TEXT,
-                    ],
-                ]
-        );
-        $this->add_control(
-                'content_color',
-                [
-                    'label' => __('Color', 'elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-tab-text p' => 'color: {{VALUE}};',
-                    ],
-                    'global' => [
-                        'default' => Global_Colors::COLOR_TEXT,
-                    ],
-                ]
+            'price_color',
+            [
+                'label' => __('Price', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-price' => 'color: {{VALUE}};',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
+            ]
         );
 
         $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'price_typography',
+                'label' => __( 'Typography', 'th-widget-pack' ),
+                'selector' => '{{WRAPPER}} .thmv-tab-price',
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'content_section',
+            [
+                'label' => __('Content', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'content_color',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-text p' => 'color: {{VALUE}};',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_TEXT,
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
                     'name' => 'content_typography',
-                    'selector' => '{{WRAPPER}} .thmv-tab-content',
-                    'global' => [
-                        'default' => Global_Typography::TYPOGRAPHY_TEXT,
-                    ],
-                ]
+                'selector' => '{{WRAPPER}} .thmv-tab-text p',
+                'global' => [
+                    'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'content_padding_title',
+            [
+                'label' => __('Spacing', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thmv_tab_item_margin',
+            [
+                'label' => __('Margin', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .margin-wrap' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+
+            ]
         );
 
         $this->end_controls_section();
