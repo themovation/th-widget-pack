@@ -2,7 +2,7 @@
 @each $per in $percentage {
     @media(min-width: $sm){
         .thmv-column-#{$per} {
-             @if $per == 33 {
+            @if $per == 33 {
                 $per: 33.33;
             }
             width: #{$per}#{$percentageUnit}!important;
@@ -14,7 +14,7 @@
 @each $per in $percentage {
     @media(max-width: $sm-max){
         .thmv-column-mobile-#{$per} {
-             @if $per == 33 {
+            @if $per == 33 {
                 $per: 33.33;
             }
             width: #{$per}#{$percentageUnit}!important;
@@ -35,6 +35,25 @@
 
     }
 }
-
+.th-btn{
+    @media(min-width: $lg){
+        &.streched-desktop{
+            display: block;
+            width: 100%;
+        }
+    }
+    @media(min-width: $md) and (max-width: $md-max){
+        &.streched-tablet{
+            display: block;
+            width: 100%;
+        }
+    }
+    @media(max-width: $sm-max){
+        &.streched-mobile{
+            display: block;
+            width: 100%;
+        }
+    }
+}
 
 

@@ -20,7 +20,21 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
-
+        
+        private function setupResponsiveControl($settings, $field, $attribute, $class) {
+            $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
+            foreach ($responsiveFields as $f) {
+                if (!empty($settings[$f])) {
+                    $device = str_replace([$field, '_'], "", $f);
+                    if (!empty($device)) {
+                        $device = '-' . $device;
+                    } else {
+                        $device = '-' . 'desktop';
+                    }
+                    $this->add_render_attribute($attribute, 'class', $class . $device);
+                }
+            }
+        }
     public function get_help_url() {
         return 'https://help.themovation.com/' . $this->get_name();
     }
@@ -98,11 +112,13 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'dynamic' => [
                 'active' => true,
             ],
+            'description'=>'For style 3, enter every item in a new line.'
+    
             ]
         );    
 
         $repeater->add_control(
-            'price_div', [
+            'price1_div', [
             'label' => __( 'Divider', 'th-widget-pack' ),
             'type' => Controls_Manager::DIVIDER,
             'style' => 'thick'
@@ -125,6 +141,13 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 ]
         );
         $repeater->add_control(
+            'button_div', [
+            'label' => __( 'Divider', 'th-widget-pack' ),
+            'type' => Controls_Manager::DIVIDER,
+            'style' => 'thick'
+            ]
+        );
+        $repeater->add_control(
             'price_col_button_1_show', [
             'label' => __( 'Use button', 'th-widget-pack' ),
             'type' => Controls_Manager::SWITCHER,
@@ -132,6 +155,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'label_off' => __( 'No', 'th-widget-pack' ),
             'return_value' => 'yes',
             'default' => '',
+            'description'=>'Use button or text? Applies to style 1 and 2'
             /*'conditions' => [
                 'terms' => [
                     [
@@ -154,78 +178,57 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'dynamic' => [
                 'active' => true,
             ],
-            'conditions' => [
-                'terms' => [
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'operator' => '==',
-                        'value' => 'yes',
-                    ],
-                ],
-            ],
+//            'conditions' => [
+//                'terms' => [
+//                    [
+//                        'name' => 'price_col_button_1_show',
+//                        'operator' => '==',
+//                        'value' => 'yes',
+//                    ],
+//                ],
+//            ],
             ]
         );    
-
         $repeater->add_control(
-            'price_col_button_1_style', [
-            'label' => __( 'Button Style', 'th-widget-pack' ),
-            'type' => Controls_Manager::SELECT,
-            'default' => 'ghost-primary',
-            'options' => [
-                'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+            'price_link', [
+            'label' => __( 'Link', 'th-widget-pack' ),
+            'type' => Controls_Manager::URL,
+            'placeholder' => 'http://your-link.com',
+            'default' => [
+                'url' => '',
             ],
-            'conditions' => [
-                'terms' => [
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'operator' => '==',
-                        'value' => 'yes',
-                    ],
-                ],
-            ],
-            ]
-        );    
-
-
-        $repeater->add_control(
-            'button_1_image', [
-            'label' => __( 'Button Graphic', 'th-widget-pack' ),
-            'type' => Controls_Manager::MEDIA,
             'dynamic' => [
                 'active' => true,
             ],
-            'conditions' => [
-                'terms' => [
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'operator' => '==',
-                        'value' => 'yes',
-                    ],
-                ],
-            ],
+            ]
+        );   
+        $repeater->add_control(
+            'price_div', [
+            'label' => __( 'Divider', 'th-widget-pack' ),
+            'type' => Controls_Manager::DIVIDER,
+            'style' => 'thick'
             ]
         );
-        $repeater->add_control(
-        'button_text', [
-            'label' => __( 'Button Text', 'th-widget-pack' ),
-            'type' => Controls_Manager::TEXT,
-            'placeholder' => __( 'Check Availability', 'th-widget-pack' ),
-            'default' => __( 'Check Availability', 'th-widget-pack' ),
-            'dynamic' => [
-                'active' => true,
-            ],
-            
-            ]
-        );    
+
+//        $repeater->add_control(
+//            'button_1_image', [
+//            'label' => __( 'Button Graphic', 'th-widget-pack' ),
+//            'type' => Controls_Manager::MEDIA,
+//            'dynamic' => [
+//                'active' => true,
+//            ],
+//            'conditions' => [
+//                'terms' => [
+//                    [
+//                        'name' => 'price_col_button_1_show',
+//                        'operator' => '==',
+//                        'value' => 'yes',
+//                    ],
+//                ],
+//            ],
+//            ]
+//        );
+        
         $repeater->add_control(
             'price_price', [
             'label' => __( 'Price number', 'th-widget-pack' ),
@@ -236,15 +239,15 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'dynamic' => [
                 'active' => true,
             ],
-            'conditions' => [
-                'terms' => [
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'operator' => '==',
-                        'value' => '',
-                    ],
-                ],
-            ],
+//            'conditions' => [
+//                'terms' => [
+//                    [
+//                        'name' => 'price_col_button_1_show',
+//                        'operator' => '==',
+//                        'value' => '',
+//                    ],
+//                ],
+//            ],
             ]
         );
         
@@ -259,33 +262,20 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'dynamic' => [
                 'active' => true,
             ],
-            'conditions' => [
-                'terms' => [
-                    [
-                        'name' => 'price_col_button_1_show',
-                        'operator' => '==',
-                        'value' => '',
-                    ],
-                ],
-            ],
+//            'conditions' => [
+//                'terms' => [
+//                    [
+//                        'name' => 'price_col_button_1_show',
+//                        'operator' => '==',
+//                        'value' => '',
+//                    ],
+//                ],
+//            ],
             ]
         );
         
         
-        $repeater->add_control(
-            'price_link', [
-            'label' => __( 'Link', 'th-widget-pack' ),
-            'type' => Controls_Manager::URL,
-            'placeholder' => 'http://your-link.com',
-            'default' => [
-                'url' => '',
-            ],
-            'dynamic' => [
-                'active' => true,
-            ],
-            ]
-        );    
-
+        
         $this->add_control(
             'pricing',
             [
@@ -551,152 +541,6 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         );
 
         $this->add_control(
-            'section_price_text_heading',
-            [
-                'label' => __( 'Price Text', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
-            'price_text_color',
-            [
-                'label' => __( 'Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'default' => '#2C2C2C',
-                'selectors' => [
-                    '{{WRAPPER}} .th-plist-price-text' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_price_text_typography',
-                'selector' => '{{WRAPPER}} .th-plist-price-text',
-            ]
-        );
-
-        $this->add_control(
-            'section_button_text_heading',
-            [
-                'label' => __( 'Button Text', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
-
-            ]
-        );
-
-        $this->add_control(
-            'button_text_color',
-            [
-                'label' => __( 'Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .th-price-list .th-btn' => 'color: {{VALUE}};',
-                ],
-                'dynamic' => [
-                    'active' => true,
-                ],
-
-            ]
-        );
-        $this->add_control(
-                'button_text_background_color',
-                [
-                    'label' => __('Background', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .th-price-list .th-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'style' => 'style_3',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'button_text_color_hover',
-                [
-                    'label' => __('Color - Hover', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .th-price-list .th-btn:hover' => 'color: {{VALUE}};',
-                    ],
-                    'separator' => 'before',
-                    'condition' => [
-                        'style' => 'style_3',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'button_text_background_color_hover',
-                [
-                    'label' => __('Background - Hover', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .th-price-list .th-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'style' => 'style_3',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'button_style',
-                [
-                    'label' => __('Button Style', 'th-widget-pack'),
-                    'type' => Controls_Manager::SELECT,
-                    'default' => '',
-                    'options' => [
-                        '' => __('Default', 'th-widget-pack'),
-                        'standard-primary' => __('Standard Primary', 'th-widget-pack'),
-                        'standard-accent' => __('Standard Accent', 'th-widget-pack'),
-                        'standard-light' => __('Standard Light', 'th-widget-pack'),
-                        'standard-dark' => __('Standard Dark', 'th-widget-pack'),
-                        'ghost-primary' => __('Ghost Primary', 'th-widget-pack'),
-                        'ghost-accent' => __('Ghost Accent', 'th-widget-pack'),
-                        'ghost-light' => __('Ghost Light', 'th-widget-pack'),
-                        'ghost-dark' => __('Ghost Dark', 'th-widget-pack'),
-                        'cta-primary' => __('CTA Primary', 'th-widget-pack'),
-                        'cta-accent' => __('CTA Accent', 'th-widget-pack'),
-                    ],
-                    'separator' => 'before',
-                    'condition' => [
-                        'style' => 'style_3',
-                    ],
-                ]
-        );
-        
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_button_text_typography',
-                'selector' => '{{WRAPPER}} .th-price-list .th-btn',
-
-            ]
-        );
-
-        $this->add_responsive_control(
-            'tour_section_padding',
-            [
-                'label' => __( 'Padding', 'elementor' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-price-list .th-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
             'section_divider_heading',
             [
                 'label' => __( 'Divider', 'elementor' ),
@@ -750,12 +594,161 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'section_price_text_heading',
+            [
+                'label' => __( 'Price Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
+        $this->add_control(
+            'price_text_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#2C2C2C',
+                'selectors' => [
+                    '{{WRAPPER}} .th-plist-price-text' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_price_text_typography',
+                'selector' => '{{WRAPPER}} .th-plist-price-text',
+            ]
+        );
 
 
 
         $this->end_controls_section();
+        $this->start_controls_section(
+                'button_style_section',
+                [
+                        'label' => __( 'Button', 'th-widget-pack' ),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                ]
+	);
+        
+        
 
+        $this->add_control(
+            'section_button_text_heading',
+            [
+                'label' => __( 'Button Text', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_button_text_typography',
+                'selector' => '{{WRAPPER}} .th-price-list .th-btn',
+
+            ]
+        );
+        $this->add_control(
+            'button_text_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn' => 'color: {{VALUE}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+
+            ]
+        );
+        $this->add_control(
+                'button_text_background_color',
+                [
+                    'label' => __('Background', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-price-list .th-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                    ],
+                ]
+        );
+        $this->add_control(
+                'button_text_color_hover',
+                [
+                    'label' => __('Color - Hover', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-price-list .th-btn:hover' => 'color: {{VALUE}};',
+                    ],
+                    'separator' => 'before',
+                ]
+        );
+        $this->add_control(
+                'button_text_background_color_hover',
+                [
+                    'label' => __('Background - Hover', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-price-list .th-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                    ],
+                ]
+        );
+        $this->add_control(
+                'price_col_button_1_style',
+                [
+                    'label' => __('Button Style', 'th-widget-pack'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => '',
+                    'options' => [
+                        '' => __('Default', 'th-widget-pack'),
+                        'standard-primary' => __('Standard Primary', 'th-widget-pack'),
+                        'standard-accent' => __('Standard Accent', 'th-widget-pack'),
+                        'standard-light' => __('Standard Light', 'th-widget-pack'),
+                        'standard-dark' => __('Standard Dark', 'th-widget-pack'),
+                        'ghost-primary' => __('Ghost Primary', 'th-widget-pack'),
+                        'ghost-accent' => __('Ghost Accent', 'th-widget-pack'),
+                        'ghost-light' => __('Ghost Light', 'th-widget-pack'),
+                        'ghost-dark' => __('Ghost Dark', 'th-widget-pack'),
+                        'cta-primary' => __('CTA Primary', 'th-widget-pack'),
+                        'cta-accent' => __('CTA Accent', 'th-widget-pack'),
+                    ],
+                    'separator' => 'before',
+                ]
+        );
+
+        $this->add_responsive_control(
+            'tour_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+                'thmv_button_stretch',
+                [
+                    'label' => __('Stretch Button', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                ]
+        );
+        $this->end_controls_section();
         $this->start_controls_section(
             'section_style_background',
             [
@@ -845,7 +838,8 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             //$themo_list_row_class .= ' th-package-style-2';
             $th_list_style_2 = true;
         }
-
+       $buttonstyle = $settings['price_col_button_1_style'];
+       
         switch( $settings['style'] ) {
             case "style_1":
                 ?>
@@ -859,29 +853,14 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         <?php
 
                         if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) {
-
-                            // Graphic Button 1
-                            $button_1_image = false;
-                            if ( isset( $column['button_1_image']['id'] ) && $column['button_1_image']['id'] > "" ) {
-                                $button_1_image = wp_get_attachment_image( $column['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
-                            }elseif ( ! empty( $column['button_1_image']['url'] ) ) {
-                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $column['button_1_image']['url'] ) );
-                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_1_image'] ) ) );
-                                $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_1_image'] ) ) );
-                                $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
-                            }
-                            // Graphic Button URL Styling 1
-                            if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
-                                // image button
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
-                            }else{ // Bootstrap Button URL Styling
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                                $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_1_style'] ) );
-                            }
+                            
+                            
+                             // Bootstrap Button URL Styling
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
+                            $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $buttonstyle ) );
+                            $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'btn-1-link-'.$th_counter, 'streched');
 
                             // Button URL 1
                             if (empty($column['price_link']['url'])) {
@@ -935,15 +914,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                                 <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
                                     <div class="th-plist-price">
                                         <div class="th-btn-wrap">
-                                            <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
-                                                <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
-                                                    <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                                        <?php echo wp_kses_post( $button_1_image ); ?>
-                                                    </a>
-                                                <?php else : ?>
-                                                    <?php echo wp_kses_post( $button_1_image ); ?>
-                                                <?php endif; ?>
-                                            <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                            <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
                                                 <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
                                                     <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
                                                         <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
@@ -987,28 +958,14 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 
                 if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) {
 
-                    // Graphic Button 1
-                    $button_1_image = false;
-                    if ( isset( $column['button_1_image']['id'] ) && $column['button_1_image']['id'] > "" ) {
-                        $button_1_image = wp_get_attachment_image( $column['button_1_image']['id'], "th_img_xs", false, array( 'class' => '' ) );
-                    }elseif ( ! empty( $column['button_1_image']['url'] ) ) {
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'src', esc_url( $column['button_1_image']['url'] ) );
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'alt', esc_attr( Control_Media::get_image_alt( $column['button_1_image'] ) ) );
-                        $this->add_render_attribute( 'button_1_image-'.$th_counter, 'title', esc_attr( Control_Media::get_image_title( $column['button_1_image'] ) ) );
-                        $button_1_image = '<img ' . $this->get_render_attribute_string( 'button_1_image'.$th_counter ) . '>';
-                    }
-                    // Graphic Button URL Styling 1
-                    if ( isset($button_1_image) && ! empty( $button_1_image ) ) {
-                        // image button
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-image' );
-                    }else{ // Bootstrap Button URL Styling
+                    
+                    // Bootstrap Button URL Styling
                         $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-1' );
                         $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn' );
                         $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'th-btn' );
-                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $column['price_col_button_1_style'] ) );
-                    }
+                        $this->add_render_attribute( 'btn-1-link-'.$th_counter, 'class', 'btn-' . esc_attr( $buttonstyle ) );
+                        $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'btn-1-link-'.$th_counter, 'streched');
+
 
                     // Button URL 1
                     if (empty($column['price_link']['url'])) {
@@ -1066,15 +1023,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         <div class="col-sm-4">
                             <?php if ( isset( $column['price_col_button_1_show'] ) && $column['price_col_button_1_show'] == 'yes' ) { ?>
                                 <div class="th-btn-wrap">
-                                    <?php if ( isset($button_1_image) && ! empty( $button_1_image ) ) : ?>
-                                        <?php if ( ! empty( $column['price_link']['url'] ) ) : ?>
-                                            <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
-                                                <?php echo wp_kses_post( $button_1_image ); ?>
-                                            </a>
-                                        <?php else : ?>
-                                            <?php echo wp_kses_post( $button_1_image ); ?>
-                                        <?php endif; ?>
-                                    <?php elseif ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
+                                    <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
                                         <a <?php echo $this->get_render_attribute_string( 'btn-1-link-'.$th_counter ); ?>>
                                             <?php if ( ! empty( $column['price_col_button_1_text'] ) ) : ?>
                                                 <?php echo esc_html( $column['price_col_button_1_text'] ); ?>
@@ -1103,29 +1052,31 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             }
                 break;
             case "style_3":
+
                     ?>
                 <!--- Pricing-style-3 start--->
 
                 <div class="thmv-prc-styl-3">
                     <?php
-                    $buttonstyle = $settings['button_style'];
 
                     foreach ($settings['pricing'] as $column):
+                        $this->remove_render_attribute('thmv_link'); //reset
+                        $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
+                        if (empty($buttonstyle)) {
+                                $this->add_render_attribute('thmv_link', 'class', 'thmv-learn-btn th-btn');
+                            } else {
+                                $this->add_render_attribute('thmv_link', 'class', 'th-btn btn btn-1 btn-' . $buttonstyle);
+                        }
                         $price = isset($column['price_price']) && !empty($column['price_price']) ? $column['price_price'] : '';
                          $priceText = isset($column['price_text']) && !empty($column['price_text']) ? $column['price_text'] : '';
                          $icon = isset($column['price_icon']) ? $column['price_icon'] : false;
                         
                          
                         $buttonURL = $column['price_link']['url'];
-                        $buttonText = $column['button_text']; 
+                        $buttonText = $column['price_col_button_1_text']; 
                         
-                        $this->remove_render_attribute('thmv_link');//reset
                         
-                        if (empty($buttonstyle)) {
-                                $this->add_render_attribute('thmv_link', 'class', 'thmv-learn-btn th-btn', true);
-                            } else {
-                                $this->add_render_attribute('thmv_link', 'class', 'th-btn btn btn-1 btn-' . $buttonstyle, true);
-                        }
+                        
                         
                         
                         if (!empty($buttonURL)) {
@@ -1138,7 +1089,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                             }
                         }
                         
-                        
+                     $descriptionArr = explode("\n", $column['price_description']);  
                 ?>
                     <div class="thmv-prc-row th-price-list">
                         <div class="thmv-column-1">
@@ -1158,12 +1109,15 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                             
                             <div class="thmv-info">
                                 <h3 class="th-plist-title"><?= esc_html($column['price_title']) ?></h3>
-                                <ul class="meta_info">
-                                    <li class="th-plist-subtitle">2 guests</li>
-                                    <li class="th-plist-subtitle">1 bedroom</li>
-                                    <li class="th-plist-subtitle">1 bed</li>
-                                    <li class="th-plist-subtitle">1 bath</li>
-                                </ul>
+                                <?php if (count($descriptionArr)): ?>
+                                    <ul class="meta_info">
+
+                                        <?php foreach ($descriptionArr as $desc): ?>
+                                            <li class="th-plist-subtitle"><?= esc_html($desc) ?></li>
+
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php if ($price || $priceText) : ?>

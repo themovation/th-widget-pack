@@ -310,26 +310,6 @@ $topboxPadding : 20px;
 
         }
 
-        .thmv-btn{
-            @media(min-width: $lg){
-                &.streched-desktop{
-                    display: block;
-                    width: 100%;
-                }
-            }
-            @media(min-width: $md) and (max-width: $md-max){
-                &.streched-tablet{
-                    display: block;
-                    width: 100%;
-                }
-            }
-            @media(max-width: $sm-max){
-                &.streched-mobile{
-                    display: block;
-                    width: 100%;
-                }
-            }
-        }
         &.thmv-style-1{
             @include defineWidth(50, $md);
             .thmv-grid-img+.thmv-info{
