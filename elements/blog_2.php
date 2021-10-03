@@ -1049,6 +1049,14 @@ class Themo_Widget_Blog extends Widget_Base {
                 return;
             }
         } else {
+            
+            if($settings['thmv_style']==='style_3'){
+                 echo '<div class="alert">';
+                _e('Sorry, this style only works with the data source.', 'th-widget-pack');
+                echo '</div>';
+                return;
+            }
+            
             if (!isset($settings['listings']) || !count($settings['listings'])) {
                 return;
             }
