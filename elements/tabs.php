@@ -355,7 +355,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .thmv-tabs-wrapper ' => 'margin-top: {{SIZE}}{{UNIT}}',
                 ],
                 'condition' => [
                     'thmv_style' => 'style_2',

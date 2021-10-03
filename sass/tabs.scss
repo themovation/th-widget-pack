@@ -1,4 +1,5 @@
 @import "variables";
+$contentpadding: 80px;
 .thmv-tabs{
     font-size: 16px;
     margin: 0;
@@ -161,21 +162,20 @@
                 margin: 0 #{-$padding};
             }
             @media(min-width: $lg){
-                width: 30%;
                 @include d-flex;
                 @include flex-column;
                 padding-top: 0;
                 background-color: #fbe946;
                 content: "";
-                width: 55%;
+                width: 100%;
                 height: 100%;
-                margin-left: -30%;
-                margin-top: -10%;
-                padding-top: 10%;
-                padding-bottom: 10%;
+                margin-left: -75%;
+                padding-bottom: $contentpadding;
+                padding-top: $contentpadding;
                 @include align-items-end;
-
-
+                .thmv-tab-title{
+                    width: 25%;
+                }
             }
 
         }
@@ -188,14 +188,17 @@
                     padding-right: $padding;
                 }
 
+                @media(min-width: $lg){
+                    padding-bottom: $contentpadding;
+                    padding-top: $contentpadding;
+                }
+
             }
             @media(min-width: $lg){
                 padding-left: 100px;
                 padding-right: 100px;
                 width: 75%;
-                padding-top: 10%;
                 @include align-items-end;
-
             }
         }
         .thmv-tab-title{
