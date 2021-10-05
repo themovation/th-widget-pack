@@ -76,9 +76,12 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
         
         //load font awesome
-        $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
-        $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
-        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
+        if(!wp_style_is( 'font-awesome', 'enqueued' )){
+            $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
+            $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+            wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION); 
+        }
+        
     
     }
 }
@@ -167,9 +170,10 @@ if (is_admin()) {
         if (!file_exists($elementorFile))
             return;
 
-        $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
-        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
-        
+        if(!wp_style_is( 'font-awesome', 'enqueued' )){
+            $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+            wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION);
+         }
         wp_enqueue_style('th-trip', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         $trip_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-trip') === 0;}, ARRAY_FILTER_USE_KEY));
         $linea_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-linea') === 0;}, ARRAY_FILTER_USE_KEY));
