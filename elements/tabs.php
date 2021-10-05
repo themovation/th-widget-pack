@@ -126,6 +126,9 @@ class Themo_Widget_Tabs extends Widget_Base {
                     'type' => Controls_Manager::REPEATER,
                     'fields' => $repeater->get_controls(),
                     'title_field' => '{{{ tab_title }}}',
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
         );
 
