@@ -1082,7 +1082,6 @@ class Themo_Widget_Blog extends Widget_Base {
                     $dateFormat = $style===2 ? 'd/m/Y' : get_option( 'date_format' );
                     $imageAlignment = 'image-alignment-' . $settings['thmv_align_image'];
                     ?>
-                    <h1>Post-style-<?=$style?></h1>
                     <div class="thmv-blog-post thmv-post-styl-<?=$style?> <?=$columns?> <?=$imageAlignment?>">
                         <?php foreach($posts as $post) { 
                             if($dataSource){

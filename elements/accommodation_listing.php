@@ -2045,8 +2045,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         if ($dataSource && !empty($settings['thmv_align_image'])) {
             $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
         }
-
-        echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
