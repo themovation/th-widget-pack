@@ -662,8 +662,6 @@ class Themo_Widget_Tabs extends Widget_Base {
                         'tabindex' => 1 === $tab_count ? '0' : '-1',
                     ]);
 
-                    $this->add_inline_editing_attributes($tab_content_setting_key, 'advanced');
-
                     $allFields = $this->setupTabs($item, $item['thmv_tab_ordering']);
                     ?>
 
