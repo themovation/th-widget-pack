@@ -79,7 +79,7 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         if(!wp_style_is( 'font-awesome', 'enqueued' )){
             $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
             $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
-            wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION); 
+            wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION); 
         }
         
     
