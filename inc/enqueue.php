@@ -53,23 +53,6 @@ if('uplands' == THEMO_CURRENT_THEME){
         
         $timeChanged = filemtime(THEMO_PATH.'css/global.css');//THEMO_VERSION;
         wp_enqueue_style( 'thmv-global', THEMO_URL . 'css/global.css', array(), $timeChanged );
-
-        
-        $isEditMode = isset($_GET['elementor-preview']);
-
-        if ( $isEditMode){
-            //only for the elementor preview area
-            $manager = \Elementor\Plugin::$instance->widgets_manager;
-            foreach(WIDGET_ASSETS_TO_LOAD as $widgetType){
-                $widget = $manager->get_widget_types($widgetType);
-                if(method_exists($widget, 'loadTHMVAssets')){
-                    $widget->loadTHMVAssets(true);
-                }
-            }
-            
-        }
-
-
     }
     
 add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
@@ -109,6 +92,14 @@ function th_enqueue_preview() {
     $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
     $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
     wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
+    
+    $manager = \Elementor\Plugin::$instance->widgets_manager;
+    foreach(WIDGET_ASSETS_TO_LOAD as $widgetType){
+        $widget = $manager->get_widget_types($widgetType);
+        if($widget && method_exists($widget, 'loadTHMVAssets')){
+            $widget->loadTHMVAssets(true);
+        }
+    }
 
 }
 
