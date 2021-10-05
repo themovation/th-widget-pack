@@ -104,6 +104,11 @@ function th_enqueue_preview() {
     wp_enqueue_style( 'themo-preview-style', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-preview-script', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
+    
+    //load font awesome
+    $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
+    $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+    wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
 
 }
 
