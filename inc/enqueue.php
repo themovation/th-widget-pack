@@ -78,7 +78,7 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         //load font awesome
         if(!wp_style_is( 'font-awesome', 'enqueued' )){
             $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
-            $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+            $plugin_url = plugins_url('/', $elementorFile) . 'assets/lib/font-awesome';
             wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION); 
         }
         
@@ -171,7 +171,7 @@ if (is_admin()) {
             return;
 
         if(!wp_style_is( 'font-awesome', 'enqueued' )){
-            $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+            $plugin_url = plugins_url('/', $elementorFile) . 'assets/lib/font-awesome';
             wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION);
          }
         wp_enqueue_style('th-trip', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
