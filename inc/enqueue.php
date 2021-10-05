@@ -74,6 +74,12 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
         $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
         wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
+        
+        //load font awesome
+        $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
+        $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
+        wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
+    
     }
 }
 
@@ -88,10 +94,6 @@ function th_enqueue_preview() {
     wp_enqueue_script( 'themo-preview-script', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
     
-    //load font awesome
-    $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
-    $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
-    wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
     
     $manager = \Elementor\Plugin::$instance->widgets_manager;
     foreach(WIDGET_ASSETS_TO_LOAD as $widgetType){
