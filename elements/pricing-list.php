@@ -5,6 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Themo_Widget_Pricing_List extends Widget_Base {
 
+    
+        public function loadTHMVAssets($editMode=false){
+            $modified = filemtime(THEMO_PATH.'css/pricing-list.css');
+            wp_enqueue_style( $this->get_name(), THEMO_URL . 'css/pricing-list.css', array(), $modified );
+        }
+        
 	public function get_name() {
 		return 'themo-pricing-list';
 	}

@@ -13,20 +13,15 @@ class Themo_Widget_Tabs extends Widget_Base {
 
     var $totalTabChoices = 30;
 
-    public function __construct($data = [], $args = null) {
-        parent::__construct($data, $args);
-        $modified = filemtime(THEMO_PATH.'js/thmv-tabs.js');
-        wp_register_script('thmv-tabs', THEMO_URL . 'js/thmv-tabs.js', ['elementor-frontend'], $modified, true);
+    public function loadTHMVAssets($editMode=false){
+        if(!$editMode){
+            $modified = filemtime(THEMO_PATH.'js/thmv-tabs.js');
+            wp_enqueue_script($this->get_name(), THEMO_URL . 'js/thmv-tabs.js', ['elementor-frontend'], $modified, true);
+        }
+        
+        $modified2 = filemtime(THEMO_PATH.'css/tabs.css');
+        wp_enqueue_style( 'thmv-tabs', THEMO_URL . 'css/tabs.css', array(), $modified2 );
     }
-
-    public function get_script_depends() {
-        return ['thmv-tabs'];
-    }
-
-    private function getParentClassName() {
-        return 'elementor-widget-' . $this->get_name();
-    }
-
     public function get_name() {
         return 'themo-tabs';
     }

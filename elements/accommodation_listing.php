@@ -10,6 +10,11 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
     var $totalIcons = 12;
     var $imageKey = 'thmv_image';
 
+    public function loadTHMVAssets($editMode = false) {
+        $modified = filemtime(THEMO_PATH . 'css/accommodation.css');
+        wp_enqueue_style($this->get_name(), THEMO_URL . 'css/accommodation.css', array(), $modified);
+    }
+
     public function get_name() {
         return 'themo-accommodation-listing';
     }
@@ -207,7 +212,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-        
+
         $this->add_control(
                 'thmv_align_image',
                 [
@@ -1679,7 +1684,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-        
+
         $this->add_control(
                 'thmv_link_color_hover',
                 [
@@ -1983,7 +1988,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             $group = $dataSource === 'mphb_room_type' ? $settings['group_mphb_room_type'] : $settings['group'];
             $taxonomy = $dataSource === 'mphb_room_type' ? 'mphb_room_type_category' : 'themo_room_type';
-            
+
             if ($group) {
                 if (in_array('none', $group)) {
                     $group = array_diff($group, array('none'));
@@ -2037,15 +2042,15 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
         $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
 
-        if($dataSource && !empty($settings['thmv_align_image'])){
-           $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
+        if ($dataSource && !empty($settings['thmv_align_image'])) {
+            $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
         }
-        
+
         echo '<h1>Listing style ' . $listingStyle . ($dataSource ? ' Data source' : '') . '</h1>';
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
-            
+
             $this->remove_render_attribute('thmv_link'); //reset
             if (empty($buttonstyle)) {
                 $this->add_render_attribute('thmv_link', 'class', 'thmv-btn thmv-learn-btn', true);
@@ -2054,7 +2059,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             }
 
             $this->setupResponsiveControl($settings, 'thmv_button_stretch', 'thmv_link', 'streched');
-            
+
             if ($dataSource) {
                 // get post format
                 $format = get_post_format($list);
@@ -2235,18 +2240,16 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <div <?php echo $this->get_render_attribute_string('thmv_column'); ?>>
                 <div class="elementor-widget-wrap">
-                    <?php 
-                    if($dataSource){
-                        $imageAlignment = $showImgesRightSide ? 'image-column-'.$showImgesRightSide : '';
+                    <?php
+                    if ($dataSource) {
+                        $imageAlignment = $showImgesRightSide ? 'image-column-' . $showImgesRightSide : '';
+                    } else {
+                        $imageAlignment = $showImgesRightSide ? 'image-column-right ' : '';
                     }
-                    else{
-                        $imageAlignment =  $showImgesRightSide ? 'image-column-right ' : '';
-                    }
-                    
                     ?>
                     <div class="thmv-grid <?= $imageAlignment ?> elementor-element">
                         <div class="thmv-grid-img">
-                            <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
+            <?php if (!$carousel_switcher && !empty($renderedImage)): ?>
                                 <?php echo $renderedImage; ?>
                             <?php endif; ?>
 
@@ -2265,27 +2268,27 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>     
                         </div>
 
-                        <?php if (in_array($listingStyle, array(2))): ?>
+            <?php if (in_array($listingStyle, array(2))): ?>
                             <div class="thmv-grid-sleep">
-                                <?php if (!empty($preface)): ?>
+                            <?php if (!empty($preface)): ?>
                                     <div class="thmv-preface"><?= $preface ?></div>
                                 <?php endif; ?>
                                 <?= $iconsList ?>
                             </div>
-                        <?php endif;
-                        ?>
+                            <?php endif;
+                            ?>
                         <div class="thmv-info">
 
-                            <?php if (($showStars || $showLocation) && in_array($listingStyle, array(1, 5))): ?>
+            <?php if (($showStars || $showLocation) && in_array($listingStyle, array(1, 5))): ?>
                                 <div class="thmv-grid-rating">
-                                    <?php if ($showStars && isset($starsRating['size']) && $starsRating['size'] > 0): ?>
+                                <?php if ($showStars && isset($starsRating['size']) && $starsRating['size'] > 0): ?>
                                         <ul class="thmv-star-rating">
-                                            <?php
-                                            $size = floor($starsRating['size']);
-                                            $halfStar = strpos($starsRating['size'], '.') ? true : false;
+                                        <?php
+                                        $size = floor($starsRating['size']);
+                                        $halfStar = strpos($starsRating['size'], '.') ? true : false;
 
-                                            for ($i = 0; $i < $size; $i++):
-                                                ?>
+                                        for ($i = 0; $i < $size; $i++):
+                                            ?>
                                                 <li><i aria-hidden="true" class="fas fa-star"></i></li>
                                                 <?php
                                                 if ($i == ($size - 1) && $halfStar) {
@@ -2298,15 +2301,15 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                             <?php ?>      
                                             <li><?= number_format((float) $starsRating['size'], 1, '.', ''); ?></li>
                                         </ul>
-                                    <?php endif; ?>
+                <?php endif; ?>
 
                                     <?php
                                     if ($showLocation):
-                                       
+
                                         $linkPrefix = $linkPostfix = $locationIconHTML = '';
-                                         if($locationIcon){
+                                        if ($locationIcon) {
                                             ob_start();
-                                            Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']); 
+                                            Icons_Manager::render_icon($locationIcon, ['aria-hidden' => 'true']);
                                             $locationIconHTML = ob_get_clean();
                                         }
                                         if ($locationLink) {
@@ -2314,15 +2317,15 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                             $linkPostfix = '</a>';
                                         }
                                         if ($locationText || $locationIconHTML):
-                                        ?>
-                                        <ul class="thmv-location">
-                                            <?php if( !empty($locationIconHTML)) : ?><li class="location-icon"><?= $linkPrefix ?><?php echo $locationIconHTML;?><?= $linkPostfix ?></li> <?php endif;?>
-                                            <?php if( $locationText) : ?><li class="location"><?= $linkPrefix ?><?= $locationText ?><?= $linkPostfix ?></li><?php endif;?>
-                                        </ul>
-                                    <?php endif; ?>
+                                            ?>
+                                            <ul class="thmv-location">
+                                            <?php if (!empty($locationIconHTML)) : ?><li class="location-icon"><?= $linkPrefix ?><?php echo $locationIconHTML; ?><?= $linkPostfix ?></li> <?php endif; ?>
+                                                <?php if ($locationText) : ?><li class="location"><?= $linkPrefix ?><?= $locationText ?><?= $linkPostfix ?></li><?php endif; ?>
+                                            </ul>
+                                            <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
+                                <?php endif; ?>
                             <?php if (in_array($listingStyle, [3]) && !empty($highlight)): ?>
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
@@ -2353,10 +2356,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                             <?php endif; ?>   
 
                             <div class="<?= ($listingStyle == 6 ? 'thmv-grid-booking' : '') ?>">
-                                <?php if (!empty($link_url)) : ?>
+            <?php if (!empty($link_url)) : ?>
                                     <div>
                                         <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
-                                            <?= isset($link_text) ? $link_text : '' ?>
+                <?= isset($link_text) ? $link_text : '' ?>
                                             <?php
                                             if (in_array($listingStyle, array(2, 3))):
                                                 echo '<i class="fas fa-plus"></i>';
@@ -2365,13 +2368,13 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                             <?php endif; ?>
                                         </a>
                                     </div>
-                                <?php endif; ?>
+            <?php endif; ?>
                                 <?php if (in_array($listingStyle, [6])): ?>    
                                     <?php echo $priceBlock; ?>
                                 <?php endif; ?> 
                             </div>
 
-                            <?php if (in_array($listingStyle, array(3))): ?>
+            <?php if (in_array($listingStyle, array(3))): ?>
                                 <?= $iconsList ?>
                             <?php endif; ?>
                         </div>

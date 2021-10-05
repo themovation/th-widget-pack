@@ -6,6 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Themo_Widget_Blog extends Widget_Base {
         var $elementorPostImageKey = 'post_image_elementor';
         
+        public function loadTHMVAssets($editMode=false){
+            $modified = filemtime(THEMO_PATH.'css/blog2.css');
+            wp_enqueue_style( $this->get_name(), THEMO_URL . 'css/blog2.css', array(), $modified );
+        }
         public function getImageKey(){
             return $this->elementorPostImageKey;
         }

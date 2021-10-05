@@ -39,29 +39,58 @@ if('uplands' == THEMO_CURRENT_THEME){
     }
 
 }else{
+    
+    if(!defined('WIDGET_ASSETS_TO_LOAD')){
+        define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
+    }
+    
     // FRONTEND // After Elementor registers all styles.
     add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
 
     function th_enqueue_after_frontend() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         
-        $timeChanged = time();//THEMO_VERSION;
+        
+        $timeChanged = filemtime(THEMO_PATH.'css/global.css');//THEMO_VERSION;
         wp_enqueue_style( 'thmv-global', THEMO_URL . 'css/global.css', array(), $timeChanged );
-        wp_enqueue_style( 'thmv-accommodation', THEMO_URL . 'css/accommodation.css', array(), $timeChanged );
-        wp_enqueue_style( 'thmv-tabs', THEMO_URL . 'css/tabs.css', array(), $timeChanged );
-        wp_enqueue_style( 'thmv-pricing-list', THEMO_URL . 'css/pricing-list.css', array(), $timeChanged );
-        wp_enqueue_style( 'thmv-blog2', THEMO_URL . 'css/blog2.css', array(), $timeChanged );
+
+        
+        $isEditMode = isset($_GET['elementor-preview']);
+
+        if ( $isEditMode){
+            //only for the elementor preview area
+            $manager = \Elementor\Plugin::$instance->widgets_manager;
+            foreach(WIDGET_ASSETS_TO_LOAD as $widgetType){
+                $widget = $manager->get_widget_types($widgetType);
+                if(method_exists($widget, 'loadTHMVAssets')){
+                    $widget->loadTHMVAssets(true);
+                }
+            }
+            
+        }
+
 
     }
+    
+add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
+        $widgetName = $widget->get_name();
+        if(in_array($widgetName, WIDGET_ASSETS_TO_LOAD) && method_exists($widget, 'loadTHMVAssets')){
+            $widget->loadTHMVAssets();
+        }
+} );
 
+
+    
 // EDITOR // Before the editor scripts enqueuing.
     add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
 
     function th_enqueue_before_editor() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         // JS for the Editor
-        wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), time(), true);
-        wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), time() );
+        $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
+        wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
+        $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
+        wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
     }
 }
 
@@ -140,7 +169,6 @@ if (is_admin()) {
         if (!file_exists($elementorFile))
             return;
 
-        $fontawesome_path = ABSPATH . 'wp-content/plugins/elementor/assets/lib/font-awesome';
         $plugin_url = plugins_url('/', $elementorFile) . '/assets/lib/font-awesome';
         wp_enqueue_style('font-awesome', $plugin_url . '/css/fontawesome.min.css', array(), THEMO_VERSION);
         
@@ -157,9 +185,11 @@ if (is_admin()) {
         }
 
 
-        wp_enqueue_style('th-icons', THEMO_URL . 'css/th-icons.css', array(), time());
+        $timeChanged = filemtime(THEMO_PATH.'css/th-icons.css');
+        wp_enqueue_style('th-icons', THEMO_URL . 'css/th-icons.css', array(), $timeChanged);
 
-        wp_enqueue_script('th-icons', THEMO_URL . 'js/th-icons.js', array(), time());
+        $timeChanged2 = filemtime(THEMO_PATH.'js/th-icons.js');
+        wp_enqueue_script('th-icons', THEMO_URL . 'js/th-icons.js', array(), $timeChanged2);
 
         wp_localize_script('th-icons', 'th_object',
                 array(
