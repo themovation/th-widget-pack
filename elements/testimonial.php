@@ -191,6 +191,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-testimonial-wrapper' => 'text-align: {{VALUE}}',
+                ],
 			]
 		);
 
