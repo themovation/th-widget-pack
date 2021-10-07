@@ -1362,14 +1362,49 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        /* STYLE - Price */
+        /* STYLE - Before Price */
         $this->add_control(
-                'thmv_section_price_heading',
+                'thmv_section_before_price_heading',
                 [
-                    'label' => __('Price', 'elementor'),
+                    'label' => __('Before Price', 'elementor'),
                     'type' => Controls_Manager::HEADING,
                     'separator' => 'before',
                 ]
+        );
+
+        $this->add_control(
+            'thmv_before_price_text_color',
+            [
+                'label' => __('Before Color', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'default' => '#1C1715',
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-price .price-before' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Before Typography', 'elementor'),
+                'name' => 'thmv_before_price_text_typography',
+                'selector' => '{{WRAPPER}} .thmv-price .price-before',
+            ]
+        );
+
+        /* STYLE - Price */
+        $this->add_control(
+            'thmv_section_price_heading',
+            [
+                'label' => __('Price', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
         );
 
         $this->add_control(
@@ -1397,31 +1432,16 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
+
+        /* STYLE - After Price */
         $this->add_control(
-                'thmv_before_price_text_color',
-                [
-                    'label' => __('Before Color', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
-                    'default' => '#1C1715',
-                    'selectors' => [
-                        '{{WRAPPER}} .thmv-price .price-before' => 'color: {{VALUE}};',
-                    ],
-                ]
+            'thmv_section_after_price_heading',
+            [
+                'label' => __('After Price', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
         );
-
-        $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'label' => __('Before Typography', 'elementor'),
-                    'name' => 'thmv_before_price_text_typography',
-                    'selector' => '{{WRAPPER}} .thmv-price .price-before',
-                ]
-        );
-
         $this->add_control(
                 'thmv_after_price_text_color',
                 [
@@ -1453,7 +1473,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-price' => 'background: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-price' => 'background: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
