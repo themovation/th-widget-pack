@@ -338,7 +338,7 @@ class Themo_Widget_Tabs extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'nav_negative-margin',
             [
                 'label' => __('Top Margin', 'elementor'),
