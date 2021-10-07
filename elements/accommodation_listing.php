@@ -910,7 +910,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-top-box' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-top-box span' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-top-box' => 'background: none;',
                     ],
                 ]
         );
