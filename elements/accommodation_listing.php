@@ -1174,7 +1174,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-icon-label' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .thmv-icons.thmv-list .thmv-icon-label' => 'color: {{VALUE}};',
                     ],
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
@@ -1187,7 +1187,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Typography', 'elementor'),
                     'name' => 'thmv_icon_label_typography',
-                    'selector' => '{{WRAPPER}} .thmv-icon-label',
+                    'selector' => '{{WRAPPER}} .thmv-icons.thmv-list .thmv-icon-label',
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
                     ],
