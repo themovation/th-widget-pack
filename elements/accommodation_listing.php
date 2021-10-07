@@ -1467,6 +1467,18 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
+        /* STYLE - Price Background */
+        $this->add_control(
+            'thmv_section_price_background_heading',
+            [
+                'label' => __('Price Background', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                        'thmv_style' => ['style_1', 'style_2', 'style_3', 'style_4']
+                    ],
+            ]
+        );
         $this->add_control(
                 'thmv_price_background_color',
                 [
