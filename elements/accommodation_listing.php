@@ -890,7 +890,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-top-box span' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-top-box span' => 'color: {{VALUE}};',
                     ],
                 ]
         );
