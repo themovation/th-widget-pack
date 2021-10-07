@@ -855,7 +855,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 				'dynamic' => [
@@ -1366,7 +1366,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			jQuery( function ( $ ) {
 
 				themo_start_flex_slider(
-					'#main-flex-slider',
+					'.flexslider',
                     <?php echo esc_attr( $settings['autoplay'] ) ? 'true' : 'false'; ?>,
 					'<?php echo esc_attr( $settings['th_animation'] ); ?>',
 					'<?php echo esc_attr( $settings['easing'] ); ?>',
