@@ -252,7 +252,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_highlight',
                 [
                     'label' => __('Highlight', 'th-widget-pack'),
@@ -267,7 +267,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_title',
                 [
                     'label' => __('Title', 'th-widget-pack'),
@@ -283,7 +283,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_preface',
                 [
                     'label' => __('Preface', 'th-widget-pack'),
@@ -300,7 +300,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_description',
                 [
                     'label' => __('Description', 'th-widget-pack'),
@@ -316,7 +316,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_icons',
                 [
                     'label' => __('Icons', 'th-widget-pack'),
@@ -333,7 +333,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_rating',
                 [
                     'label' => __('Rating', 'th-widget-pack'),
@@ -350,7 +350,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_location',
                 [
                     'label' => __('Location', 'th-widget-pack'),
@@ -367,7 +367,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_price',
                 [
                     'label' => __('Price', 'th-widget-pack'),
@@ -383,7 +383,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
                 'thmv_hide_link',
                 [
                     'label' => __('Link', 'th-widget-pack'),
