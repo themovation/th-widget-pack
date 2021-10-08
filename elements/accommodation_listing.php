@@ -1694,7 +1694,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_link_typography',
-                    'selector' => '{{WRAPPER}} .thmv-btn',
+                    'selector' => '{{WRAPPER}} .elementor-row .thmv-btn',
                 ]
         );
         $this->add_control(
@@ -1703,7 +1703,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-btn' => 'color: {{VALUE}};',
                     ],
                 ]
         );
@@ -1713,7 +1713,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                     ],
                 ]
         );
@@ -1724,7 +1724,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Color - Hover', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn:hover' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-btn:hover' => 'color: {{VALUE}};',
                     ],
                     'separator' => 'before',
                 ]
@@ -1735,7 +1735,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Background - Hover', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-row .thmv-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                     ],
                 ]
         );
