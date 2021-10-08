@@ -1781,9 +1781,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'return_value' => 'yes',
-                    'condition' => [
+                    /*'condition' => [
                         'thmv_style' => ['style_1', 'style_4', 'style_5']
-                    ],
+                    ],*/
                 ]
         );
 
