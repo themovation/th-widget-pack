@@ -2392,7 +2392,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                         <a <?php echo $this->get_render_attribute_string('thmv_link'); ?>>
                 <?= isset($link_text) ? $link_text : '' ?>
                                             <?php
-                                            if (in_array($listingStyle, array(2, 3))):
+                                            if (in_array($listingStyle, array(2, 3)) && empty($buttonstyle)):
                                                 echo '<i class="fas fa-plus"></i>';
                                                 ?>
 
