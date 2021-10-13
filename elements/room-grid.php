@@ -182,7 +182,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->add_control(
             'card_price_color',
             [
-                'label' => __( 'Price', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -194,6 +194,15 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 ],
 
             ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_price_typography',
+                'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p',
+            ],
         );
 
         $this->add_group_control(
@@ -237,12 +246,20 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );*/
 
-
+        /* STYLE - Title */
+        $this->add_control(
+            'thmv_section_title_heading',
+            [
+                'label' => __('Title', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
         $this->add_control(
             'card_title_color',
             [
-                'label' => __( 'Title', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -256,10 +273,29 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_title_typography',
+                'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-title',
+            ],
+        );
+
+        /* STYLE - Text */
+        $this->add_control(
+            'thmv_section_text_heading',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'card_text_color',
             [
-                'label' => __( 'Text', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -273,10 +309,29 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_text_typography',
+                'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-sub',
+            ],
+        );
+
+        /* STYLE - Background */
+        $this->add_control(
+            'thmv_section_background',
+            [
+                'label' => __('Background', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_control(
             'card_background_color',
             [
-                'label' => __( 'Background', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -287,6 +342,19 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                     '{{WRAPPER}} .th-port-card-default' => 'background-color: {{VALUE}};',
                 ],
 
+            ]
+        );
+
+
+        $this->add_responsive_control(
+            'thmv_background_padding',
+            [
+                'label' => __('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
