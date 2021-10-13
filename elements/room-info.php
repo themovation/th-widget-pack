@@ -305,6 +305,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .th-tour-nav-item svg' => 'height:auto; width: {{SIZE}}px;',
                 ],
             ]
         );
