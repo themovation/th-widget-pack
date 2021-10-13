@@ -715,7 +715,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 [
                     'label' => __('Button Style', 'th-widget-pack'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => '',
+                    'default' => 'standard-primary',
                     'options' => [
                         '' => __('Default', 'th-widget-pack'),
                         'standard-primary' => __('Standard Primary', 'th-widget-pack'),

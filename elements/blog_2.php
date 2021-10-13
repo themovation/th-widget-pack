@@ -471,7 +471,7 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Style', 'th-widget-pack' ),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'style_1',
+                'default' => 'style_3',
                 'options' => [
                     'style_1' => __( 'Style 1', 'th-widget-pack' ),
                     'style_2' => __( 'Style 2', 'th-widget-pack' ),
