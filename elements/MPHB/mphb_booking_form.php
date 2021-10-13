@@ -263,6 +263,32 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'button_text_colour',
+            [
+                'label' => __( 'Button Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_text_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
         $this->end_controls_section();
     }
 

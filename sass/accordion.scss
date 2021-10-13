@@ -1,0 +1,59 @@
+@import "variables";
+.elementor-control-thmv_icon_ordering,.elementor-control-listings .elementor-control-thmv_style{
+    display: none!important;
+}
+.accordion-holder-parent{
+    padding: 10px 20px 20px;
+    .accordion-holder{
+        margin-bottom: 10px;
+        &:first-child{
+            .order-up{
+                display: none;
+            }
+        }
+        &:last-child{
+            .order-down{
+                display: none;
+            }
+        }
+        h3{
+            @include d-flex;
+            @include justify-content-between;
+            @include align-items-center;
+            cursor: pointer;
+            position: relative;
+            margin: 2px 0 0 0;
+            padding: 3px 10px;
+            font-size: 100%; 
+            border: 1px solid #c5c5c5;
+            background: #f6f6f6;
+            font-weight: normal;
+            color: #454545;
+            .title{
+                display: block;
+                flex: 1;
+            }
+            .order-arrows{
+                text-align: right;
+                padding-left: 10px;
+                font-size: 15px;
+                > span{
+                    padding: 6px;
+                    +span{
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+        .accordion-content{
+            border: 1px solid #c5c5c5;
+            padding-top: 20px;
+            display: none;
+        }
+        &:first-child{
+            .accordion-content{
+                display: block;
+            }
+        }
+    }
+}

@@ -462,6 +462,80 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'thmv_section_button',
+            [
+                'label' => __('Button', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_link_typography',
+                'selector' => '{{WRAPPER}} .thmv-btn',
+            ]
+        );
+        $this->add_control(
+            'thmv_link_color',
+            [
+                'label' => __('Color', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'thmv_link_background_color',
+            [
+                'label' => __('Background', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_style',
+            [
+                'label' => __('Button Style', 'th-widget-pack'),
+                'type' => Controls_Manager::SELECT,
+                'default' => '',
+                'options' => [
+                    '' => __('Default', 'th-widget-pack'),
+                    'standard-primary' => __('Standard Primary', 'th-widget-pack'),
+                    'standard-accent' => __('Standard Accent', 'th-widget-pack'),
+                    'standard-light' => __('Standard Light', 'th-widget-pack'),
+                    'standard-dark' => __('Standard Dark', 'th-widget-pack'),
+                    'ghost-primary' => __('Ghost Primary', 'th-widget-pack'),
+                    'ghost-accent' => __('Ghost Accent', 'th-widget-pack'),
+                    'ghost-light' => __('Ghost Light', 'th-widget-pack'),
+                    'ghost-dark' => __('Ghost Dark', 'th-widget-pack'),
+                    'cta-primary' => __('CTA Primary', 'th-widget-pack'),
+                    'cta-accent' => __('CTA Accent', 'th-widget-pack'),
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thmv_link_padding',
+            [
+                'label' => __('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
 
@@ -559,6 +633,15 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
+
+        $buttonstyle = $settings['button_style'];
+
+        $this->remove_render_attribute('thmv_link'); //reset
+        if (empty($buttonstyle)) {
+            $this->add_render_attribute('thmv_link', 'class', 'th-port-btn', true);
+        } else {
+            $this->add_render_attribute('thmv_link', 'class', 'thmv-btn btn btn-1 th-btn btn-' . $buttonstyle, true);
+        }
 
         global $th_folio_count;
         $folio_id = 'th-portfolio-' . ++$th_folio_count;
@@ -909,7 +992,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                         }?>
 
                                         <?php if( ! $th_tour_button_text === false || ! empty( $th_tour_button_text ) ) { ?>
-                                            <span class="th-port-btn"><?php echo esc_html( $th_tour_button_text ); ?></span>
+                                            <span <?php echo $this->get_render_attribute_string('thmv_link'); ?>><?php echo esc_html( $th_tour_button_text ); ?></span>
                                         <?php } ?>
                                     </div>
                                     <?php echo '<a href="' . esc_url( $link_url ) . '" class="th-port-link" ' . esc_html( $link_target_markup ) . '></a>'; ?>

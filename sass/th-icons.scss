@@ -1,0 +1,185 @@
+@import "variables";
+.icon-hidden-wrap{
+    display: none!important;
+}
+.option-tree-th-icons-wrap{
+    .icon-fields-wrapper{
+        &:first-child{
+            .order-up{
+                display: none;
+            }
+        }
+        &:last-child{
+            .order-down{
+                display: none;
+            }
+        }
+    }
+
+
+}
+.icon-fields-wrapper{
+    margin-bottom: 20px;
+    .icon-title{
+        @include d-flex;
+        @include justify-content-between;
+        @include align-items-center;
+        cursor: pointer;
+        position: relative;
+        margin: 2px 0 0 0;
+        padding: 3px 10px;
+        font-size: 100%; 
+        border: 1px solid #c5c5c5;
+        background: #f6f6f6;
+        font-weight: normal;
+        color: #454545;
+        .title{
+            display: block;
+            flex: 1;
+        }
+        .order-buttons{
+            text-align: right;
+            padding-left: 10px;
+            font-size: 15px;
+            > span{
+                padding: 6px;
+                +span{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    .remove-button{
+        float: none;
+        margin-top: 0;
+    }
+    .add-another-icon{
+        text-decoration: none;
+    }
+    .icon-title{
+        font-weight: 500;
+        font-size: 17px;
+        padding: 10px;
+        border-bottom: 1px solid #c5c5c5;
+        margin-bottom: 10px;
+        background-color: #f6f6f6;
+        color: #454545;
+    }
+    .icon-holder{
+        cursor: pointer;
+        width: 100px;
+        height: 65px;
+        line-height: 83px;
+        text-align: center;
+        margin-bottom: 14px;
+        background-image: -webkit-linear-gradient(
+            45deg
+            ,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd),-webkit-linear-gradient(
+            45deg
+            ,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd);
+        background-image: -o-linear-gradient(45deg,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd),-o-linear-gradient(45deg,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd);
+        background-image: linear-gradient(
+            45deg
+            ,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd),linear-gradient(
+            45deg
+            ,#ddd 25%,transparent 0,transparent 75%,#ddd 0,#ddd);
+        -webkit-background-size: 16px 16px;
+        background-size: 16px 16px;
+        background-position: 0 0,8px 8px;
+        background-color: #f6f6f6;
+        i{
+            font-size: 40px;
+        }
+        .icon.ot-icon-plus-circle{
+            font-size: 25px;
+            color: gray;
+        }
+    }
+}
+
+
+.thmv-iconpicker-outer {
+    background: rgba(0, 0, 0, .78);
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999999;
+}
+.thmv-iconpicker-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.thmv-iconpicker-close {
+    position: absolute;
+    top: 7px;
+    right: 32px;
+    font-size: 33px;
+    cursor: pointer;
+}
+
+.thmv-iconpicker {
+    border: 1px solid #ccc;
+    background: #efefef;
+    max-width: 96%;
+    width: 631px;
+    margin: 0 auto;
+    position: relative;
+}
+.thmv-iconpicker:active, .thmv-iconpicker:focus, .thmv-iconpicker:hover {
+    display: block!important;
+}
+.thmv-iconpicker .geticonval .fa {
+    font-size: 28px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+.thmv-iconpicker .geticonval {
+    background: #fcfcfc;
+    border: 1px solid #ccc;
+    padding: 7px;
+    border-radius: 3px;
+    margin: 5px;
+    width: 75px;
+    height: 79px;
+    overflow: hidden;
+    float: left;
+    text-align: center;
+    word-break: break-word;
+}
+.thmv-iconpicker .geticonval i {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.thmv-iconpicker .geticonval:hover {
+    background: #efefef;
+    cursor: pointer;
+}
+.thmv-iconpicker .geticonval:active {
+    background: #ccc;
+}
+.srchicons {
+    margin: 5px 5px 60px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
+    width: 225px;
+    position: absolute;
+    display: block;
+}
+.iconsholder {
+    height: 300px;
+    overflow: auto;
+    margin-top: 50px;
+}
+.selectedicon {
+    background: #f55e4f!important;
+    border-color: #f55e4f!important;
+    color: #fff;
+}
