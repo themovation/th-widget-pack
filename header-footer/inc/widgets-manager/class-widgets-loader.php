@@ -101,6 +101,7 @@ class Widgets_Loader {
 			'site-logo',
 			'cart',
 			'search-button',
+                        'post-title',
 		];
 
 		return $widget_list;
@@ -189,6 +190,7 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Tagline());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Logo());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Search_Button());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Title());
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
             }
