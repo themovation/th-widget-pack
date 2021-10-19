@@ -19,9 +19,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * HFE Page Title widget
+ * HFE Post Title widget
  *
- * HFE widget for Page Title.
+ * HFE widget for Post Title.
  *
  * @since 1.3.0
  */
@@ -85,7 +85,7 @@ class Post_Title extends Widget_Base {
     }
 
     /**
-     * Register Page Title controls.
+     * Register Post Title controls.
      *
      * @since 1.3.0
      * @access protected
@@ -96,7 +96,7 @@ class Post_Title extends Widget_Base {
     }
 
     /**
-     * Register Page Title General Controls.
+     * Register Post Title General Controls.
      *
      * @since 1.3.0
      * @access protected
@@ -209,7 +209,7 @@ class Post_Title extends Widget_Base {
     }
 
     /**
-     * Register Page Title Style Controls.
+     * Register Post Title Style Controls.
      *
      * @since 1.3.0
      * @access protected
@@ -287,7 +287,7 @@ class Post_Title extends Widget_Base {
     }
 
     /**
-     * Render page title widget output on the frontend.
+     * Render post title widget output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
      *
@@ -301,7 +301,7 @@ class Post_Title extends Widget_Base {
         $this->add_inline_editing_attributes('post_title', 'basic');
 
         if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
-            $title = 'Post Title</p>';
+            $title = 'Post Title';
         } else {
             if (is_archive() || is_home()) {
                 $title = wp_kses_post(get_the_archive_title());
@@ -352,7 +352,7 @@ class Post_Title extends Widget_Base {
     }
 
     /**
-     * Render page title output in the editor.
+     * Render post title output in the editor.
      *
      * Written as a Backbone JavaScript template and used to generate the live preview.
      *

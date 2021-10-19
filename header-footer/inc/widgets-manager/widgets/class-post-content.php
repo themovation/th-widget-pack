@@ -19,9 +19,9 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * HFE Page Title widget
+ * HFE Post Content widget
  *
- * HFE widget for Page Title.
+ * HFE widget for Post Content.
  *
  * @since 1.3.0
  */
@@ -85,7 +85,7 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Register Page Title controls.
+     * Register Post Content controls.
      *
      * @since 1.3.0
      * @access protected
@@ -96,7 +96,7 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Register Page Title General Controls.
+     * Register Post Content General Controls.
      *
      * @since 1.3.0
      * @access protected
@@ -105,7 +105,7 @@ class Post_Content extends Widget_Base {
         $this->start_controls_section(
                 'section_general_fields',
                 [
-                    'label' => __('Title', 'header-footer-elementor'),
+                    'label' => __('Content', 'header-footer-elementor'),
                 ]
         );
 
@@ -143,7 +143,7 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Register Page Title Style Controls.
+     * Register Post Content Style Controls.
      *
      * @since 1.3.0
      * @access protected
@@ -185,7 +185,7 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Render page title widget output on the frontend.
+     * Render post content widget output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
      *

@@ -103,6 +103,7 @@ class Widgets_Loader {
 			'search-button',
                         'post-title',
                         'post-content',
+                        'post-comments',
 		];
 
 		return $widget_list;
@@ -193,6 +194,7 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Search_Button());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Title());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Content());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
             }
