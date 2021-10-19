@@ -154,7 +154,7 @@ class Post_Title extends Widget_Base {
                         'h5' => __('H5', 'header-footer-elementor'),
                         'h6' => __('H6', 'header-footer-elementor'),
                     ],
-                    'default' => 'h2',
+                    'default' => 'h1',
                 ]
         );
 
@@ -284,75 +284,6 @@ class Post_Title extends Widget_Base {
         );
 
         $this->end_controls_section();
-
-        $this->start_controls_section(
-                'section_icon',
-                [
-                    'label' => __('Icon', 'header-footer-elementor'),
-                    'tab' => Controls_Manager::TAB_STYLE,
-                    'condition' => [
-                        'new_post_title_select_icon[value]!' => '',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'post_title_icon_color',
-                [
-                    'label' => __('Icon Color', 'header-footer-elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
-                    'condition' => [
-                        'new_post_title_select_icon[value]!' => '',
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-title-icon i' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} .hfe-post-title-icon svg' => 'fill: {{VALUE}};',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'post_title_icons_hover_color',
-                [
-                    'label' => __('Icon Hover Color', 'header-footer-elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'condition' => [
-                        'new_post_title_select_icon[value]!' => '',
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-title-icon:hover i' => 'color: {{VALUE}};',
-                        '{{WRAPPER}} .hfe-post-title-icon:hover svg' => 'fill: {{VALUE}};',
-                    ],
-                ]
-        );
-        $this->add_responsive_control(
-                'icon_size',
-                [
-                    'label' => __('Icon Size', 'header-footer-elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'min' => 15,
-                        ],
-                    ],
-                    'default' => [
-                        'size' => 15,
-                        'unit' => 'px',
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-title-icon' => 'font-size: {{SIZE}}{{UNIT}}',
-                        '{{WRAPPER}} .hfe-post-title-icon svg' => 'width: {{SIZE}}px;',
-                    ],
-                    'separator' => 'before',
-                ]
-        );
-
-        $this->end_controls_section();
     }
 
     /**
@@ -368,6 +299,16 @@ class Post_Title extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $this->add_inline_editing_attributes('post_title', 'basic');
+
+        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+            $title = 'Post Title</p>';
+        } else {
+            if (is_archive() || is_home()) {
+                $title = wp_kses_post(get_the_archive_title());
+            } else {
+                $title = wp_kses_post(get_the_title());
+            }
+        }
 
         if (!empty($settings['post_heading_link']['url'])) {
             $this->add_render_attribute('url', 'href', $settings['post_heading_link']['url']);
@@ -398,11 +339,7 @@ class Post_Title extends Widget_Base {
                     <?php } ?>
 
                     <?php
-                    if (is_archive() || is_home()) {
-                        echo wp_kses_post(get_the_archive_title());
-                    } else {
-                        echo wp_kses_post(get_the_title());
-                    }
+                    echo $title;
                     ?>  
 
                     <?php if (( '' != $head_link_url && 'custom' === $head_custom_link ) || 'default' === $head_custom_link) { ?>
@@ -413,8 +350,6 @@ class Post_Title extends Widget_Base {
         </div>
         <?php
     }
-
-   
 
     /**
      * Render page title output in the editor.
