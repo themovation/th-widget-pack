@@ -7,8 +7,8 @@
 
 namespace THHF\WidgetsManager\Widgets;
 
+use Elementor\Plugin;
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Text_Shadow;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
@@ -193,7 +193,7 @@ class Post_Content extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+        if (Plugin::$instance->editor->is_edit_mode() || is_preview()) {
             $content = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
         } else {
             ob_start();

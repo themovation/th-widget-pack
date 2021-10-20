@@ -14,6 +14,7 @@ namespace THHF\WidgetsManager;
 use Elementor\Plugin;
 
 defined( 'ABSPATH' ) or exit;
+DEFINE('THHF_DUMMY_IMAGE', site_url().'/wp-content/uploads/2019/08/Agency-1.jpg');
 
 /**
  * Set up Widgets Loader class
@@ -104,6 +105,7 @@ class Widgets_Loader {
                         'post-title',
                         'post-content',
                         'post-comments',
+                        'post-image',
 		];
 
 		return $widget_list;
@@ -195,6 +197,7 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Title());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Content());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
             }

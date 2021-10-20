@@ -7,11 +7,8 @@
 
 namespace THHF\WidgetsManager\Widgets;
 
-use Elementor\Controls_Manager;
+use Elementor\Plugin;
 use Elementor\Widget_Base;
-use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -93,7 +90,7 @@ class Post_Comments extends Widget_Base {
         $this->add_control(
                 'note',
                 [
-                    'label' => __('<b>Note</b>', 'header-footer-elementor'),
+                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
                     'raw' => __('This uses the comment template from the active theme.','header-footer-elementor'),
                 ]
@@ -124,7 +121,7 @@ class Post_Comments extends Widget_Base {
 
 
 
-        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+        if (Plugin::$instance->editor->is_edit_mode()) {
             $comments = 'Comments not shown in the preview mode.';
         } else {
             $comments = comments_template();

@@ -7,6 +7,7 @@
 
 namespace THHF\WidgetsManager\Widgets;
 
+use Elementor\Plugin;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Widget_Base;
@@ -300,7 +301,7 @@ class Post_Title extends Widget_Base {
 
         $this->add_inline_editing_attributes('post_title', 'basic');
 
-        if (\Elementor\Plugin::$instance->editor->is_edit_mode()) {
+        if (Plugin::$instance->editor->is_edit_mode() || is_preview()) {
             $title = 'Post Title';
         } else {
             if (is_archive() || is_home()) {
