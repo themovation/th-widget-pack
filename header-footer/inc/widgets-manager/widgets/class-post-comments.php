@@ -74,6 +74,24 @@ class Post_Comments extends Widget_Base {
     }
 
     /**
+     * Retrieve the list of categories the widget belongs to.
+     *
+     * Used to determine where to display the widget in the editor.
+     *
+     * Note that currently Elementor supports only one category.
+     * When multiple categories passed, Elementor uses the first one.
+     *
+     * @since 1.3.0
+     *
+     * @access public
+     *
+     * @return array Widget categories.
+     */
+    public function get_categories() {
+        return ['themo-elements'];
+    }
+
+    /**
      * Register Post Comments General Controls.
      *
      * @since 1.3.0
@@ -92,7 +110,7 @@ class Post_Comments extends Widget_Base {
                 [
                     'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('This uses the comment template from the active theme.','header-footer-elementor'),
+                    'raw' => __('This uses the comment template from the active theme.', 'header-footer-elementor'),
                 ]
         );
 
@@ -121,7 +139,7 @@ class Post_Comments extends Widget_Base {
 
 
 
-        if (Plugin::$instance->editor->is_edit_mode()) {
+        if ('elementor-thhf' == get_post_type()) {
             $comments = 'Comments not shown in the preview mode.';
         } else {
             $comments = comments_template();
@@ -129,7 +147,7 @@ class Post_Comments extends Widget_Base {
         ?>		
         <div class="hfe-post-comments hfe-post-comments-wrapper">
 
-            <?php echo $comments; ?>
+        <?php echo $comments; ?>
 
         </div>
         <?php

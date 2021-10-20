@@ -15,6 +15,7 @@ use Elementor\Plugin;
 
 defined( 'ABSPATH' ) or exit;
 DEFINE('THHF_DUMMY_IMAGE', site_url().'/wp-content/uploads/2019/08/Agency-1.jpg');
+DEFINE('THHF_DUMMY_CONTENT', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
 
 /**
  * Set up Widgets Loader class
@@ -106,6 +107,7 @@ class Widgets_Loader {
                         'post-content',
                         'post-comments',
                         'post-image',
+                        'post-media',
 		];
 
 		return $widget_list;
@@ -198,6 +200,7 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Content());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Media());
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
             }

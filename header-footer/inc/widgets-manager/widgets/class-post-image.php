@@ -83,7 +83,7 @@ class Post_Image extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return ['basic'];
+        return ['themo-elements'];
     }
 
     /**
@@ -123,7 +123,7 @@ class Post_Image extends Widget_Base {
 
         $imageKey = 'image';
         $th_imageId = get_post_thumbnail_id();
-        if(!$th_imageId && (Plugin::$instance->editor->is_edit_mode() || is_preview())){
+        if(!$th_imageId && ('elementor-thhf' == get_post_type())){
            $th_imageId = $this->getImageIdByUrl(THHF_DUMMY_IMAGE);
         }
         if ($th_imageId) {

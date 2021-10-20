@@ -19,13 +19,13 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * HFE Post Content widget
+ * HFE Post Media widget
  *
- * HFE widget for Post Content.
+ * HFE widget for Post Media.
  *
  * @since 1.3.0
  */
-class Post_Content extends Widget_Base {
+class Post_Media extends Widget_Base {
 
     /**
      * Retrieve the widget name.
@@ -37,7 +37,7 @@ class Post_Content extends Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'thhf-post-content';
+        return 'thhf-post-media';
     }
 
     /**
@@ -50,7 +50,7 @@ class Post_Content extends Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __('Post Content', 'header-footer-elementor');
+        return __('Post Media', 'header-footer-elementor');
     }
 
     /**
@@ -85,30 +85,43 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Register Post Content controls.
+     * Register Post Media controls.
      *
      * @since 1.3.0
      * @access protected
      */
     protected function _register_controls() {
-        $this->register_content_post_content_controls();
-        $this->register_post_content_style_controls();
+        $this->register_content_post_media_controls();
+        $this->register_post_media_style_controls();
     }
 
     /**
-     * Register Post Content General Controls.
+     * Register Post Media General Controls.
      *
      * @since 1.3.0
      * @access protected
      */
-    protected function register_content_post_content_controls() {
+    protected function register_content_post_media_controls() {
         $this->start_controls_section(
                 'section_general_fields',
                 [
-                    'label' => __('Content', 'header-footer-elementor'),
+                    'label' => __('Media', 'header-footer-elementor'),
                 ]
         );
-
+        $this->add_control(
+                'media_type',
+                [
+                    'label' => __('Meida Type', 'header-footer-elementor'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'none',
+                    'options' => [
+                        '' => __('None', 'header-footer-elementor'),
+                        'gallery' => __('Gallery', 'header-footer-elementor'),
+                        'video' => __('Video', 'header-footer-elementor'),
+                        'audio' => __('Audio', 'header-footer-elementor'),
+                    ],
+                ]
+        );
         $this->add_responsive_control(
                 'align',
                 [
@@ -134,7 +147,7 @@ class Post_Content extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-content-wrapper p' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper' => 'text-align: {{VALUE}};',
                     ],
                 ]
         );
@@ -143,49 +156,19 @@ class Post_Content extends Widget_Base {
     }
 
     /**
-     * Register Post Content Style Controls.
+     * Register Post Media Style Controls.
      *
      * @since 1.3.0
      * @access protected
      */
-    protected function register_post_content_style_controls() {
-        $this->start_controls_section(
-                'section_content_typography',
-                [
-                    'label' => __('Title', 'header-footer-elementor'),
-                    'tab' => Controls_Manager::TAB_STYLE,
-                ]
-        );
-
-        $this->add_group_control(
-                Group_Control_Typography::get_type(),
-                [
-                    'name' => 'content_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .hfe-post-content p',
-                ]
-        );
-
-        $this->add_control(
-                'content_color',
-                [
-                    'label' => __('Color', 'header-footer-elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-content p' => 'color: {{VALUE}};',
-                    ],
-                ]
-        );
-
-        $this->end_controls_section();
+    protected function register_post_media_style_controls() {
+        
     }
 
+   
+
     /**
-     * Render post content widget output on the frontend.
+     * Render post media widget output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
      *
@@ -193,16 +176,33 @@ class Post_Content extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        if ('elementor-thhf' == get_post_type()) {
-            $content = THHF_DUMMY_CONTENT;
-        } else {
-            ob_start();
-            the_content();
-            $content = ob_get_clean();
-        }
+        $settings = $this->get_settings_for_display();
+        $type = $settings['media_type'];
+        $format = !empty($type) ? $type : 'standard';
+//        $duumyContentArr = [
+//            'standard' => THHF_DUMMY_CONTENT,
+//            'audio' => '<p>No audio sample</p>',
+//            'video' => '<div>' . wp_video_shortcode(['src' => 'https://www.youtube.com/watch?v=mWeWEhKe4Wc']) . '</div>',
+//            'gallery' => '<p></p>',
+//        ];
         ?>		
-        <div class="hfe-post-content hfe-post-content-wrapper">
-            <?php echo $content; ?>
+        <div class="hfe-post-media hfe-post-media-wrapper">
+            <?php
+            if ('elementor-thhf' == get_post_type()) {
+                ?>
+                <div><?php echo THHF_DUMMY_CONTENT ?></div>
+            <?php } else {
+                ?>
+                <div <?php
+                $th_post_classes = "mas-blog-post ";
+                post_class(esc_attr($th_post_classes));
+                ?>>
+                        <?php get_template_part('templates/content', $format); ?>
+                </div>
+                <?php
+            }
+            ?>
+
         </div>
         <?php
     }
