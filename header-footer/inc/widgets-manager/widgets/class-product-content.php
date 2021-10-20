@@ -7,20 +7,22 @@
 
 namespace THHF\WidgetsManager\Widgets;
 
+use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
+
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
 }
 
 /**
- * HFE Post Comments widget
+ * HFE Product Content widget
  *
- * HFE widget for Post Comments.
+ * HFE widget for Product Content.
  *
  * @since 1.3.0
  */
-class Post_Comments extends Widget_Base {
+class Product_Content extends Widget_Base {
 
     /**
      * Retrieve the widget name.
@@ -32,7 +34,7 @@ class Post_Comments extends Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'thhf-post-comments';
+        return 'thhf-product-content';
     }
 
     /**
@@ -45,7 +47,7 @@ class Post_Comments extends Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __('Post Comments', 'header-footer-elementor');
+        return __('Product Content', 'header-footer-elementor');
     }
 
     /**
@@ -58,18 +60,7 @@ class Post_Comments extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'thhf-icon-post-comments';
-    }
-
-    /**
-     * Register Post Comments controls.
-     *
-     * @since 1.3.0
-     * @access protected
-     */
-    protected function _register_controls() {
-        $this->register_content_post_comments_controls();
-        $this->register_post_comments_style_controls();
+        return 'thhf-eicon-post-excerpt';
     }
 
     /**
@@ -91,25 +82,42 @@ class Post_Comments extends Widget_Base {
     }
 
     /**
-     * Register Post Comments General Controls.
+     * Register Product Content controls.
      *
      * @since 1.3.0
      * @access protected
      */
-    protected function register_content_post_comments_controls() {
+    protected function _register_controls() {
+        $this->register_content_product_content_controls();
+        $this->register_product_content_style_controls();
+    }
+
+    /**
+     * Register Product Content General Controls.
+     *
+     * @since 1.3.0
+     * @access protected
+     */
+    protected function register_content_product_content_controls() {
         $this->start_controls_section(
                 'section_general_fields',
                 [
-                    'label' => __('Comments', 'header-footer-elementor'),
+                    'label' => __('Content', 'header-footer-elementor'),
                 ]
         );
 
         $this->add_control(
-                'note',
+                'hide_title',
                 [
-                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
-                    'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('This uses the comment template from the active theme.', 'header-footer-elementor'),
+                    'label' => __('Hide Title', 'header-footer-elementor'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'header-footer-elementor'),
+                    'label_off' => __('No', 'header-footer-elementor'),
+                    'return_value' => 'yes',
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-content-wrapper .product_title' => 'display: none!important;',
+                    ],
                 ]
         );
 
@@ -117,17 +125,17 @@ class Post_Comments extends Widget_Base {
     }
 
     /**
-     * Register Post Comments Style Controls.
+     * Register Product Content Style Controls.
      *
      * @since 1.3.0
      * @access protected
      */
-    protected function register_post_comments_style_controls() {
+    protected function register_product_content_style_controls() {
         
     }
 
     /**
-     * Render post comments widget output on the frontend.
+     * Render post content widget output on the frontend.
      *
      * Written in PHP and used to generate the final HTML.
      *
@@ -135,35 +143,19 @@ class Post_Comments extends Widget_Base {
      * @access protected
      */
     protected function render() {
-
-
-
         if ('elementor-thhf' == get_post_type()) {
-            $comments = 'Comments not shown in the preview mode.';
-        } else {
-            $comments = comments_template();
+            $content = THHF_DUMMY_CONTENT;
+        } else if (get_post_type() == 'product') {
+            $productId = get_the_ID();
+
+            $shortCode = '[product_page id="' . $productId . '"]';
+            $content = do_shortcode($shortCode);
         }
         ?>		
-        <div class="hfe-post-comments hfe-post-comments-wrapper">
-
-        <?php echo $comments; ?>
-
+        <div class="hfe-product-content hfe-product-content-wrapper">
+            <?php echo $content; ?>
         </div>
         <?php
-    }
-
-    /**
-     * Render post comments output in the editor.
-     *
-     * Written as a Backbone JavaScript template and used to generate the live preview.
-     *
-     * Remove this after Elementor v3.3.0
-     *
-     * @since 1.3.0
-     * @access protected
-     */
-    protected function _content_template() {
-//		$this->content_template();
     }
 
 }

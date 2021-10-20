@@ -108,6 +108,9 @@ class Widgets_Loader {
                         'post-comments',
                         'post-image',
                         'post-media',
+                        'post-info',
+                        'product-content',
+                        'product-cart',
 		];
 
 		return $widget_list;
@@ -201,8 +204,12 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Media());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Info());
+
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Content());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Cart());
             }
         }
 

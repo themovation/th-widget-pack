@@ -7,12 +7,8 @@
 
 namespace THHF\WidgetsManager\Widgets;
 
-use Elementor\Plugin;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -108,20 +104,7 @@ class Post_Media extends Widget_Base {
                     'label' => __('Media', 'header-footer-elementor'),
                 ]
         );
-        $this->add_control(
-                'media_type',
-                [
-                    'label' => __('Meida Type', 'header-footer-elementor'),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'none',
-                    'options' => [
-                        '' => __('None', 'header-footer-elementor'),
-                        'gallery' => __('Gallery', 'header-footer-elementor'),
-                        'video' => __('Video', 'header-footer-elementor'),
-                        'audio' => __('Audio', 'header-footer-elementor'),
-                    ],
-                ]
-        );
+        
         $this->add_responsive_control(
                 'align',
                 [
@@ -176,8 +159,7 @@ class Post_Media extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        $settings = $this->get_settings_for_display();
-        $type = $settings['media_type'];
+        $type = get_post_format();
         $format = !empty($type) ? $type : 'standard';
 //        $duumyContentArr = [
 //            'standard' => THHF_DUMMY_CONTENT,
@@ -194,7 +176,7 @@ class Post_Media extends Widget_Base {
             <?php } else {
                 ?>
                 <div <?php
-                $th_post_classes = "mas-blog-post ";
+                $th_post_classes = "";//mas-blog-post
                 post_class(esc_attr($th_post_classes));
                 ?>>
                         <?php get_template_part('templates/content', $format); ?>
