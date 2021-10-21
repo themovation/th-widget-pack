@@ -24,9 +24,7 @@ if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
 }
 
-
 class Post_Image extends Widget_Base {
-
 
     /**
      * Get widget name.
@@ -122,9 +120,11 @@ class Post_Image extends Widget_Base {
     private function setupImageFromPost(&$settings) {
 
         $imageKey = 'image';
-        $th_imageId = get_post_thumbnail_id();
-        if(!$th_imageId && ('elementor-thhf' == get_post_type())){
-           $th_imageId = $this->getImageIdByUrl(THHF_DUMMY_IMAGE);
+
+        if ('elementor-thhf' == get_post_type()) {
+            $th_imageId = $this->getImageIdByUrl(THHF_DUMMY_IMAGE);
+        } else {
+            $th_imageId = get_post_thumbnail_id();
         }
         if ($th_imageId) {
             $settings[$imageKey]['id'] = $th_imageId;
@@ -161,12 +161,6 @@ class Post_Image extends Widget_Base {
                 [
                     'label' => esc_html__('Custom Image', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
-                    'dynamic' => [
-                        'active' => true,
-                    ],
-//                    'default' => [
-//                        'url' => Utils::get_placeholder_image_src(),
-//                    ],
                 ]
         );
 
@@ -199,7 +193,7 @@ class Post_Image extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}}' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper' => 'text-align: {{VALUE}};',
                     ],
                 ]
         );
@@ -228,7 +222,6 @@ class Post_Image extends Widget_Base {
                     'condition' => [
                         'caption_source' => 'custom',
                     ],
-                    
                 ]
         );
 
@@ -251,9 +244,6 @@ class Post_Image extends Widget_Base {
                 [
                     'label' => esc_html__('Link', 'elementor'),
                     'type' => Controls_Manager::URL,
-                    'dynamic' => [
-                        'active' => true,
-                    ],
                     'placeholder' => esc_html__('https://your-link.com', 'elementor'),
                     'condition' => [
                         'link_to' => 'custom',
@@ -267,11 +257,10 @@ class Post_Image extends Widget_Base {
                 [
                     'label' => esc_html__('Lightbox', 'elementor'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => 'default',
+                    'default' => '',
                     'options' => [
-                        'default' => esc_html__('Default', 'elementor'),
                         'yes' => esc_html__('Yes', 'elementor'),
-                        'no' => esc_html__('No', 'elementor'),
+                        '' => esc_html__('No', 'elementor'),
                     ],
                     'condition' => [
                         'link_to' => 'file',
@@ -298,239 +287,11 @@ class Post_Image extends Widget_Base {
                 ]
         );
 
-        $this->add_responsive_control(
-                'width',
-                [
-                    'label' => esc_html__('Width', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'default' => [
-                        'unit' => '%',
-                    ],
-                    'tablet_default' => [
-                        'unit' => '%',
-                    ],
-                    'mobile_default' => [
-                        'unit' => '%',
-                    ],
-                    'size_units' => ['%', 'px', 'vw'],
-                    'range' => [
-                        '%' => [
-                            'min' => 1,
-                            'max' => 100,
-                        ],
-                        'px' => [
-                            'min' => 1,
-                            'max' => 1000,
-                        ],
-                        'vw' => [
-                            'min' => 1,
-                            'max' => 100,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'space',
-                [
-                    'label' => esc_html__('Max Width', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'default' => [
-                        'unit' => '%',
-                    ],
-                    'tablet_default' => [
-                        'unit' => '%',
-                    ],
-                    'mobile_default' => [
-                        'unit' => '%',
-                    ],
-                    'size_units' => ['%', 'px', 'vw'],
-                    'range' => [
-                        '%' => [
-                            'min' => 1,
-                            'max' => 100,
-                        ],
-                        'px' => [
-                            'min' => 1,
-                            'max' => 1000,
-                        ],
-                        'vw' => [
-                            'min' => 1,
-                            'max' => 100,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'max-width: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'height',
-                [
-                    'label' => esc_html__('Height', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'default' => [
-                        'unit' => 'px',
-                    ],
-                    'tablet_default' => [
-                        'unit' => 'px',
-                    ],
-                    'mobile_default' => [
-                        'unit' => 'px',
-                    ],
-                    'size_units' => ['px', 'vh'],
-                    'range' => [
-                        'px' => [
-                            'min' => 1,
-                            'max' => 500,
-                        ],
-                        'vh' => [
-                            'min' => 1,
-                            'max' => 100,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'height: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-        );
-
-        $this->add_responsive_control(
-                'object-fit',
-                [
-                    'label' => esc_html__('Object Fit', 'elementor'),
-                    'type' => Controls_Manager::SELECT,
-                    'condition' => [
-                        'height[size]!' => '',
-                    ],
-                    'options' => [
-                        '' => esc_html__('Default', 'elementor'),
-                        'fill' => esc_html__('Fill', 'elementor'),
-                        'cover' => esc_html__('Cover', 'elementor'),
-                        'contain' => esc_html__('Contain', 'elementor'),
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'object-fit: {{VALUE}};',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'separator_panel_style',
-                [
-                    'type' => Controls_Manager::DIVIDER,
-                    'style' => 'thick',
-                ]
-        );
-
-        $this->start_controls_tabs('image_effects');
-
-        $this->start_controls_tab('normal',
-                [
-                    'label' => esc_html__('Normal', 'elementor'),
-                ]
-        );
-
-        $this->add_control(
-                'opacity',
-                [
-                    'label' => esc_html__('Opacity', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 1,
-                            'min' => 0.10,
-                            'step' => 0.01,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'opacity: {{SIZE}};',
-                    ],
-                ]
-        );
-
-        $this->add_group_control(
-                Group_Control_Css_Filter::get_type(),
-                [
-                    'name' => 'css_filters',
-                    'selector' => '{{WRAPPER}} img',
-                ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab('hover',
-                [
-                    'label' => esc_html__('Hover', 'elementor'),
-                ]
-        );
-
-        $this->add_control(
-                'opacity_hover',
-                [
-                    'label' => esc_html__('Opacity', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 1,
-                            'min' => 0.10,
-                            'step' => 0.01,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}}:hover img' => 'opacity: {{SIZE}};',
-                    ],
-                ]
-        );
-
-        $this->add_group_control(
-                Group_Control_Css_Filter::get_type(),
-                [
-                    'name' => 'css_filters_hover',
-                    'selector' => '{{WRAPPER}}:hover img',
-                ]
-        );
-
-        $this->add_control(
-                'background_hover_transition',
-                [
-                    'label' => esc_html__('Transition Duration', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 3,
-                            'step' => 0.1,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} img' => 'transition-duration: {{SIZE}}s',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'hover_animation',
-                [
-                    'label' => esc_html__('Hover Animation', 'elementor'),
-                    'type' => Controls_Manager::HOVER_ANIMATION,
-                ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
         $this->add_group_control(
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'image_border',
-                    'selector' => '{{WRAPPER}} img',
-                    'separator' => 'before',
+                    'selector' => '{{WRAPPER}} .hfe-post-image-wrapper img',
                 ]
         );
 
@@ -541,7 +302,7 @@ class Post_Image extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => ['px', '%'],
                     'selectors' => [
-                        '{{WRAPPER}} img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
         );
@@ -553,7 +314,7 @@ class Post_Image extends Widget_Base {
                     'exclude' => [
                         'box_shadow_position',
                     ],
-                    'selector' => '{{WRAPPER}} img',
+                    'selector' => '{{WRAPPER}} .hfe-post-image-wrapper img',
                 ]
         );
 
@@ -595,7 +356,7 @@ class Post_Image extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .widget-image-caption' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption' => 'text-align: {{VALUE}};',
                     ],
                 ]
         );
@@ -607,7 +368,7 @@ class Post_Image extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .widget-image-caption' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption' => 'color: {{VALUE}};',
                     ],
                     'global' => [
                         'default' => Global_Colors::COLOR_TEXT,
@@ -621,7 +382,7 @@ class Post_Image extends Widget_Base {
                     'label' => esc_html__('Background Color', 'elementor'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .widget-image-caption' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption' => 'background-color: {{VALUE}};',
                     ],
                 ]
         );
@@ -630,7 +391,7 @@ class Post_Image extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'caption_typography',
-                    'selector' => '{{WRAPPER}} .widget-image-caption',
+                    'selector' => '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption',
                     'global' => [
                         'default' => Global_Typography::TYPOGRAPHY_TEXT,
                     ],
@@ -641,7 +402,7 @@ class Post_Image extends Widget_Base {
                 Group_Control_Text_Shadow::get_type(),
                 [
                     'name' => 'caption_text_shadow',
-                    'selector' => '{{WRAPPER}} .widget-image-caption',
+                    'selector' => '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption',
                 ]
         );
 
@@ -657,49 +418,12 @@ class Post_Image extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .widget-image-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-post-image-wrapper .widget-image-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
                     ],
                 ]
         );
 
         $this->end_controls_section();
-    }
-
-    /**
-     * Check if the current widget has caption
-     *
-     * @access private
-     * @since 2.3.0
-     *
-     * @param array $settings
-     *
-     * @return boolean
-     */
-    private function has_caption($settings) {
-        return (!empty($settings['caption_source']) && 'none' !== $settings['caption_source'] );
-    }
-
-    /**
-     * Get the caption for current widget.
-     *
-     * @access private
-     * @since 2.3.0
-     * @param $settings
-     *
-     * @return string
-     */
-    private function get_caption($settings) {
-        $caption = '';
-        if (!empty($settings['caption_source'])) {
-            switch ($settings['caption_source']) {
-                case 'attachment':
-                    $caption = wp_get_attachment_caption($settings['image']['id']);
-                    break;
-                case 'custom':
-                    $caption = !Utils::is_empty($settings['caption']) ? $settings['caption'] : '';
-            }
-        }
-        return $caption;
     }
 
     /**
@@ -713,6 +437,7 @@ class Post_Image extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
+        //setup the image
         if (empty($settings['image']['url'])) {
             //if preview mode and no image  
             $this->setupImageFromPost($settings);
@@ -721,55 +446,53 @@ class Post_Image extends Widget_Base {
             }
         }
 
-        $this->add_render_attribute('wrapper', 'class', 'hfe-post-image-wrapper');
+        //get the link
+        $link = [];
 
-        if (!Plugin::$instance->experiments->is_feature_active('e_dom_optimization')) {
-            $this->add_render_attribute('wrapper', 'class', 'elementor-image');
-        }
+//        echo "<pre>";
+//        print_r($settings);exit;
+        if ($settings['link_to'] === 'custom' && isset($settings['link']['url'])) {
+            $link = $settings['link'];
+        } else if ($settings['link_to'] === 'file') {
 
-
-        $has_caption = $this->has_caption($settings);
-
-        $link = $this->get_link_url($settings);
-
-        if ($link) {
-            $this->add_link_attributes('link', $link);
-
-            if (Plugin::$instance->editor->is_edit_mode()) {
-                $this->add_render_attribute('link', [
-                    'class' => 'elementor-clickable',
-                ]);
-            }
-
-            if ('custom' !== $settings['link_to']) {
-                $this->add_lightbox_data_attributes('link', $settings['image']['id'], $settings['open_lightbox']);
+            $link = [
+                'url' => $settings['image']['url'],
+            ];
+            if (isset($settings['open_lightbox']) && !empty($settings['open_lightbox'])) {
+                $link['data-elementor-open-lightbox'] = 'yes';
             }
         }
+
+        $this->add_link_attributes('link', $link);
+
+        $caption = $captionHtml = '';
+        if ($settings['caption_source'] == 'attachment') {
+            $caption = wp_get_attachment_caption($settings['image']['id']);
+        } else if ($settings['caption_source'] == 'custom') {
+            $caption = isset($settings['caption']) ? $settings['caption'] : '';
+        }
+        if (!empty($caption)):
+            $captionHtml = '<figcaption class="widget-image-caption wp-caption-text">' . $caption . '</figcaption>';
+        endif;
         ?>
-        <?php if (!Plugin::$instance->experiments->is_feature_active('e_dom_optimization')) { ?>
-            <div <?php $this->print_render_attribute_string('wrapper'); ?>>
-            <?php } ?>
-            <?php if ($has_caption) : ?>
-                <figure class="wp-caption">
-                <?php endif; ?>
-                <?php if ($link) : ?>
-                    <a <?php $this->print_render_attribute_string('link'); ?>>
-                    <?php endif; ?>
+        <div class="hfe-post-image hfe-post-image-wrapper">
+            <figure class="wp-caption">
+                <?php if (count($link)): ?>
+                    <a <?php $this->print_render_attribute_string('link') ?>>
+                    <?php endif;
+                    ?>
+
                     <?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
-                    <?php if ($link) : ?>
-                    </a>
-                <?php endif; ?>
-                <?php if ($has_caption) : ?>
-                    <figcaption class="widget-image-caption wp-caption-text"><?php
-            echo wp_kses_post($this->get_caption($settings));
-                    ?></figcaption>
-                    <?php endif; ?>
-                <?php if ($has_caption) : ?>
-                </figure>
-            <?php endif; ?>
-            <?php if (!Plugin::$instance->experiments->is_feature_active('e_dom_optimization')) { ?>
-            </div>
-        <?php } ?>
+                    <?php
+                    if (count($link)):
+                        echo '</a>';
+                    endif;
+                    ?>
+                    <?php
+                    echo $captionHtml;
+                    ?>
+            </figure>
+        </div>
         <?php
     }
 
@@ -783,34 +506,6 @@ class Post_Image extends Widget_Base {
      */
     protected function content_template() {
         
-    }
-
-    /**
-     * Retrieve image widget link URL.
-     *
-     * @since 1.0.0
-     * @access private
-     *
-     * @param array $settings
-     *
-     * @return array|string|false An array/string containing the link URL, or false if no link.
-     */
-    private function get_link_url($settings) {
-        if ('none' === $settings['link_to']) {
-            return false;
-        }
-
-        if ('custom' === $settings['link_to']) {
-            if (empty($settings['link']['url'])) {
-                return false;
-            }
-
-            return $settings['link'];
-        }
-
-        return [
-            'url' => $settings['image']['url'],
-        ];
     }
 
 }
