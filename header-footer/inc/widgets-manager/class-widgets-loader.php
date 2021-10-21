@@ -105,6 +105,7 @@ class Widgets_Loader {
 			'search-button',
                         'post-title',
                         'post-content',
+                        'post-navigation',
                         'post-comments',
                         'post-image',
                         'post-media',
@@ -206,6 +207,7 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Media());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Info());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Navigation());
 
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
