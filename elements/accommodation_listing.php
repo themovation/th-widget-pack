@@ -1188,7 +1188,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Typography', 'elementor'),
                     'name' => 'thmv_icon_label_typography',
-                    'selector' => '{{WRAPPER}} .thmv-icons.thmv-list .thmv-icon-label',
+                    'selector' => '{{WRAPPER}} .thmv-icons.thmv-list .thmv-icon-label, {{WRAPPER}} .thmv-icons .thmv-icon-label',
                     'condition' => [
                         'thmv_style' => ['style_1', 'style_6']
                     ],
