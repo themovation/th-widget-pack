@@ -2047,3 +2047,42 @@ a.hfe-menu-item.elementor-button {
 
 .elementor-widget-thhf-cart:not(.hfe-menu-cart--show-subtotal-yes) .hfe-menu-cart__toggle .elementor-button-text
     {display:none}
+    
+    .th-d-flex{
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+    }
+
+    @media(max-width: 767px){
+        .th-flex-phone-column {
+            -webkit-box-orient: vertical!important;
+            -webkit-box-direction: normal!important;
+            -ms-flex-direction: column!important;
+            flex-direction: column!important;
+        }
+        .th-align-items-phone-center {
+            -webkit-box-align: center!important;
+            -ms-flex-align: center!important;
+            align-items: center!important;
+        }
+    }
+
+    .th-text-right{
+        text-align: right;
+    }
+    @media(min-width: 768px){
+        .th-text-tablet-right{
+            text-align: right;
+        }
+        .th-justify-content-tablet-between{
+            -webkit-box-pack: justify!important;
+            -ms-flex-pack: justify!important;
+            justify-content: space-between!important;
+        }
+    }
+    @media(min-width: 1025px){
+        .th-text-desktop-right{
+            text-align: right;
+        }
+    }
