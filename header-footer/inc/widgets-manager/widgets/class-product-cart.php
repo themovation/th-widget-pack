@@ -8,7 +8,9 @@
 namespace THHF\WidgetsManager\Widgets;
 
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
+use Elementor\Core\Schemes;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -91,6 +93,10 @@ class Product_Cart extends Widget_Base {
         $this->register_product_cart_style_controls();
     }
 
+    public function loadTHMVAssets() {
+        
+    }
+
     /**
      * Register Product Cart General Controls.
      *
@@ -104,18 +110,14 @@ class Product_Cart extends Widget_Base {
                     'label' => __('Content', 'header-footer-elementor'),
                 ]
         );
-
         $this->add_control(
-                'show_price',
+                'section_box',
                 [
-                    'label' => __('Show Price', 'header-footer-elementor'),
-                    'type' => Controls_Manager::SWITCHER,
-                    'label_on' => __('Yes', 'header-footer-elementor'),
-                    'label_off' => __('No', 'header-footer-elementor'),
-                    'return_value' => 'yes',
-                    'default' => '',
+                    'label' => __('Add to Cart', 'header-footer-elementor'),
+                    'type' => Controls_Manager::HEADING,
                 ]
         );
+
         $this->add_control(
                 'class',
                 [
@@ -224,6 +226,81 @@ class Product_Cart extends Widget_Base {
                     ],
                 ]
         );
+        $this->add_control(
+                'section_price',
+                [
+                    'label' => __('Price', 'header-footer-elementor'),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+        );
+        $this->add_control(
+                'show_price',
+                [
+                    'label' => __('Show Price', 'header-footer-elementor'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'header-footer-elementor'),
+                    'label_off' => __('No', 'header-footer-elementor'),
+                    'return_value' => 'yes',
+                    'default' => '',
+                ]
+        );
+         $this->add_control(
+                'price_color',
+                [
+                    'label' => __('Color', 'header-footer-elementor'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount' => 'color: {{VALUE}}',
+                    ],
+                ]
+        );
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'price_typography',
+                    'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount',
+                    'condition' => [
+                        'show_price!' => '',
+                    ],
+                ]
+        );
+       
+
+        $this->add_responsive_control(
+                'price_align',
+                [
+                    'label' => __('Position', 'header-footer-elementor'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'default' => 'inline',
+                    'options' => [
+                        'block' => __('Top', 'header-footer-elementor'),
+                        'inline' => __('Left', 'header-footer-elementor'),
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount' => 'display: {{VALUE}};',
+                    ],
+                    'condition' => [
+                        'show_price!' => '',
+                    ],
+                ]
+        );
+        $this->add_responsive_control(
+                'price_margin',
+                [
+                    'label' => __('Margin', 'plugin-domain'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px', '%', 'em'],
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'show_price!' => '',
+                    ],
+                ]
+        );
         $this->end_controls_section();
     }
 
@@ -288,6 +365,7 @@ class Product_Cart extends Widget_Base {
 
             $string = implode(" ", $code);
             $shortCode = '[add_to_cart  ' . $string . ']';
+
             $content = do_shortcode($shortCode);
         }
         ?>		

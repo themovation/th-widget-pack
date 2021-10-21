@@ -8,11 +8,7 @@
 namespace THHF\WidgetsManager\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Group_Control_Text_Shadow;
 use Elementor\Widget_Base;
-use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.

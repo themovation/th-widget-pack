@@ -111,6 +111,7 @@ class Widgets_Loader {
                         'post-info',
                         'product-content',
                         'product-cart',
+                        'product-images',
 		];
 
 		return $widget_list;
@@ -210,6 +211,7 @@ class Widgets_Loader {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Content());
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Cart());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Images());
             }
         }
 
