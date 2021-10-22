@@ -351,7 +351,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             [
                 'name' => 'border',
                 'label' => __( 'Border', 'plugin-domain' ),
-                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text],
+                {{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]:focus',
             ]
         );
 
@@ -392,7 +393,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit],
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-confirm-reservation' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -406,7 +408,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_text_typography',
-                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit],
+                 {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-confirm-reservation',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
