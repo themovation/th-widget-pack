@@ -302,6 +302,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text],
                     {{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style select' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style .mphb-reserve-room-section p' => 'color: {{VALUE}};',
 
                 ],
                 'scheme' => [
