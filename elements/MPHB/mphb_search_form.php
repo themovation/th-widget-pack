@@ -207,9 +207,8 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_search-wrapper label, 
-                    {{WRAPPER}} .mphb_sc_search-wrapper .mphb-check-in-date-wrapper br,
-                    {{WRAPPER}} .mphb_sc_search-wrapper .mphb-check-out-date-wrapper br' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper p:not(.mphb_sc_search-children):not(.mphb_sc_search-adults) label, 
+                    {{WRAPPER}} .mphb_sc_search-wrapper .frm_form_field:not(.mphb_sc_search-children):not(.mphb_sc_search-adults) br' => 'display:none;',
                 ],
             ]
         );
@@ -229,9 +228,9 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
-                'condition' => [
+                /*'condition' => [
                     'hide_form_lables' => '',
-                ],
+                ],*/
             ]
         );
 
@@ -242,9 +241,9 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'name' => 'title_color_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper label',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-                'condition' => [
+                /*'condition' => [
                     'hide_form_lables' => '',
-                ],
+                ],*/
             ]
         );
 
@@ -297,7 +296,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         );
 
         $this->add_control(
-            'section_heading_form',
+            'section_heading_form_fields',
             [
                 'label' => __( 'Form Fields', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
@@ -425,6 +424,28 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'name' => 'button_text_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+            ]
+        );
+
+
+        $this->add_control(
+            'section_heading_form',
+            [
+                'label' => __( 'Form', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'form_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-form-stacked' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
