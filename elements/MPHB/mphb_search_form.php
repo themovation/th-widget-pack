@@ -408,7 +408,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
@@ -422,7 +422,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_text_typography',
-                'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit]',
+                'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
