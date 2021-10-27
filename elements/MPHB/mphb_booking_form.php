@@ -436,7 +436,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }
         }
 
-        //echo $settings['type_id'];
         if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id']) && is_numeric($settings['type_id']) ) {
 
             /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
@@ -455,7 +454,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
 
             if (strpos($th_shortcode, $thmv_shortcode_neddle) !== false) {
                 // Add in special classes
-
                 if ( function_exists( 'get_theme_mod' ) ) {
                     $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
                     if ($themo_mphb_styling == true) {
@@ -566,6 +564,9 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }else{
                 echo "<div class='thmv_mphb_booking_form_help'><p>".$thmv_shortcode_error_msg."</p></div>";
             }
+        }else{
+            $thmv_shortcode_error_msg = esc_html__('Accommodation Type ID not found. Has one been entered?', 'bellevue');
+            echo "<div class='thmv_mphb_booking_form_help'><p>".$thmv_shortcode_error_msg."</p></div>";
         }
     }
 
