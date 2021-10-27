@@ -110,6 +110,15 @@ class Post_Title extends Widget_Base {
         );
 
         $this->add_control(
+                'fallback_title',
+                [
+                    'label' => __('Fallback Title', 'header-footer-elementor'),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => __('Post Title', 'header-footer-elementor'),
+                    'description' => __('When post title is missing, this will be used.', 'header-footer-elementor'),
+                ]
+        );
+        $this->add_control(
                 'post_custom_link',
                 [
                     'label' => __('Link', 'header-footer-elementor'),
@@ -299,15 +308,20 @@ class Post_Title extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         $this->add_inline_editing_attributes('post_title', 'basic');
-
+        $fallback_title = !empty($settings['fallback_title']) ? $settings['fallback_title']: __('Post Title', 'header-footer-elementor');
         if ('elementor-thhf' == get_post_type()) {
-            $title = 'Post Title';
+            $title = $fallback_title;
         } else {
             if (is_archive() || is_home()) {
                 $title = wp_kses_post(get_the_archive_title());
             } else {
                 $title = wp_kses_post(get_the_title());
             }
+            
+        }
+        
+        if(empty($title)){
+                $title = $fallback_title;
         }
 
         if (!empty($settings['post_heading_link']['url'])) {
