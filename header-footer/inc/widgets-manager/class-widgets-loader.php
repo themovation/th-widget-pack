@@ -12,7 +12,7 @@
 namespace THHF\WidgetsManager;
 
 use Elementor\Plugin;
-
+use Elementor\Controls_Manager;
 defined( 'ABSPATH' ) or exit;
 DEFINE('THHF_DUMMY_IMAGE', site_url().'/wp-content/uploads/2019/08/Agency-1.jpg');
 DEFINE('THHF_DUMMY_CONTENT', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
@@ -64,9 +64,64 @@ class Widgets_Loader {
 			add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'init_cart' ], 10, 0 );
 			//add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'wc_refresh_mini_cart_count' ] );
 		}
-	}
+                
+                /** dynamic post/image background image **/
+                $this->addPostImageToSectionWidget();
+                $this->renderDynamicImage();
+    }
 
-	/**
+    private function renderDynamicImage() {
+        add_action('elementor/frontend/section/before_render', function (\Elementor\Element_Base $element) {
+
+            //check if the custom image is set, if yes, then override the existing image
+            if ($element->get_settings('th_dynamic_image')) {
+                //check if the featured image exists for this product/post
+                $imageURL = '';
+                if ('elementor-thhf' == get_post_type()) {
+                    $imageURL = THHF_DUMMY_IMAGE;
+                } else {
+                    $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail');
+                    if(count($image)){
+                        $imageURL = $image[0];
+                    }
+                }
+
+                if (!empty($imageURL)) {
+                    echo '<style>body .elementor-element.elementor-element-'.$element->get_id().':not(.elementor-motion-effects-element-type-background){'
+                    . 'background-image: url("'.$imageURL.'")!important;'
+                    . '}</style>';
+                }
+            }
+        }, 10, 2);
+    }
+
+    private function addPostImageToSectionWidget() {
+        add_action('elementor/element/section/section_background/after_section_start', function ($element, $args) {
+            $element->add_control(
+                    'th_dynamic_image',
+                    [
+                        'label' => __('Use dynamic Image', 'header-footer-elementor'),
+                        'type' => Controls_Manager::SWITCHER,
+                        'description' => 'Shows the featured image from the post/product. The settings will be used from the "Image" field below and the image will be used as the fallback.',
+                        'label_on' => __('Yes', 'header-footer-elementor'),
+                        'label_off' => __('No', 'header-footer-elementor'),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'background_background',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ],
+                            ],
+                        ],
+                    ]
+            );
+        }, 10, 2);
+    }
+
+    /**
 	 * Returns Script array.
 	 *
 	 * @return array()
