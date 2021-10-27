@@ -554,7 +554,7 @@ class Post_Info extends Widget_Base {
                     <?php if (isset($item['icon'])): ?>
                         <div class="elementor-icon thmv-icon">
                             <?php
-                            if ($link) : echo '<a href="' . $link . '">';
+                            if ($link) : echo '<a class="th-d-flex" href="' . $link . '">';
                             endif;
                             ?>
                             <?php
