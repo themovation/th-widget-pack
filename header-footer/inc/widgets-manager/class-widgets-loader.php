@@ -222,12 +222,29 @@ class Widgets_Loader {
 	 * @param object $this_cat class.
 	 */
 	public function register_widget_category( $this_cat ) {
-		$category = __( 'Themovation Elements', 'th-widget-pack' );
+            
+                $template = wp_get_theme()->get_template();
+                $arr = ['bellevue', 'stratus'];
+
+                if(in_array($template, $arr)){
+                    $tempName = ucfirst($template);
+                }
+                else {
+                   $tempName = 'Themovation'; 
+                }
+            
 
 		$this_cat->add_category(
-			'themo-elements',
+			'themo-single',
 			[
-				'title' => $category,
+				'title' => $tempName." ".__( 'Single', 'th-widget-pack' ),
+				'icon'  => 'eicon-font',
+			]
+		);
+                $this_cat->add_category(
+			'themo-woocommerce',
+			[
+				'title' => $tempName." ".__( 'Woocommerce', 'th-widget-pack' ),
 				'icon'  => 'eicon-font',
 			]
 		);

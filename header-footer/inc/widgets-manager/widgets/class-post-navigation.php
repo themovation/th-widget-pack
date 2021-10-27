@@ -77,7 +77,7 @@ class Post_Navigation extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return ['themo-elements'];
+        return ['themo-single'];
     }
 
     /**
