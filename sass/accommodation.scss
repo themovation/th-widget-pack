@@ -1,0 +1,591 @@
+@import "variables";
+$color-gray : #1C1715;
+$color-lgray : #8C8D8C;
+$topboxPadding : 20px;
+@mixin defineWidth($percentage, $breakpoint){
+    @media(min-width: $breakpoint){
+        .thmv-column-default {
+            width: #{$percentage}#{$percentageUnit};
+            max-width: #{$percentage}#{$percentageUnit};
+        }
+    }
+
+}
+@mixin button(){
+
+    background: #4C4C4C;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 25px;
+    line-height: 1.2;
+    @include transition(0.3s);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    max-width: 100%;
+    &:hover{
+        background: #777575;
+    }
+}
+@mixin linkbutton(){
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    color: $color-gray;
+    &:hover{
+        i{
+            @include rotate(360deg);
+        }   
+    }
+
+    i{
+        @include rotate(0deg);
+        @include transition(0.5s);
+        font-size: 87%;
+    }
+}
+.elementor-widget-themo-accommodation-listing{
+    font-size: 16px;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    .elementor-column {
+        width: 100%;
+    }
+
+    *{
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    h1{
+        text-align:center;
+        font-weight: 900;
+        margin-bottom: 50px;
+        font-size: 2em;
+    }
+    hr {
+        margin:60px 0 35px;
+        display: inline-block;
+        width: 100%;
+        border-top: 0;
+        background: rgba(78, 82, 76, 0.1);
+    }
+
+    .elementor-row{
+
+        @include d-flex;
+        margin: 0 auto;
+
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .thmv-column{
+            flex: 0 0 auto;
+            padding: 0 10px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        .thmv-grid-img{
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            line-height: 0;
+            width: 100%;
+            overflow: hidden;
+            img{
+                width: 100%;
+                max-width: 100%;
+            }
+            .elementor-widget-image-carousel{
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .thmv-top-box{
+                top: 20px;
+                position: absolute;
+                right: $topboxPadding;
+                background: #FFF;
+                display: inline-block;
+                z-index: 2;
+                &.left{
+                    left:  $topboxPadding;
+                    right: unset;
+                }
+                &.right{
+                    right:  $topboxPadding;
+                    left: unset;
+                }
+                span{
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 130%;
+                    color: $color-gray;
+                    display: block;
+                    padding: 9px 22px;
+                }
+            }
+        }
+        .thmv-price {
+            position: absolute;
+            bottom: 0;
+            padding: 13px 20px 13px;
+            text-align: center;
+            @include d-flex;
+            justify-content: center;
+            line-height: normal;
+            z-index: 2;
+            left: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            color: $color-gray;
+            &.left{
+                left:  0;
+                right: unset;
+            }
+            &.right{
+                right:  0;
+                left: unset;
+            }
+            .price-before,.price {
+                margin: 0;
+                font-size: 20px;
+                font-weight: 500;
+                @media(min-width: $md){
+                    font-size: 22px;
+                }
+            }
+
+        }
+
+        .thmv-star-rating li {
+            display: inline-block;
+        }
+        .thmv-star-rating li:last-child {
+            color: $color-lgray;
+            font-size: 18px;
+            padding-left: 10px;
+        }
+        .thmv-grid-rating
+        {
+            @include d-flex;
+            > ul{
+                padding-bottom: 10px;
+                &.thmv-location{
+                    padding-bottom: 15px;
+                }
+                padding-right: 30px;
+            }
+            .thmv-location{
+                li {
+                    display: inline-block;
+                    font-size: 18px;
+                    color: $color-lgray;
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                    svg{
+                        height: 23px;
+                        width: 28px;
+                    }
+                }
+
+            }
+        }
+        .thmv-preface{
+            font-style: normal;
+            font-weight: 300;
+            color: $color-gray;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .thmv-grid{
+            &.image-column-right{
+                @include flex-row-reverse;
+                .thmv-info{
+                    padding-right: 45px;
+                    padding-left: 0;
+                }
+            }
+        }
+        &.image-alignment-alternate{
+            .thmv-column:nth-child(odd){
+                .image-column-alternate{
+                    @include flex-row-reverse;
+                    .thmv-info{
+                        padding-right: 45px;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+        .thmv-grid-sleep{
+            border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+            margin-bottom: 15px;
+            @media(min-width: $md){
+                @include d-flex;
+                @include align-items-center;
+                @include justify-content-between;
+            }
+            .thmv-icon{
+                font-size: 15px;
+            }
+        }
+        .thmv-title{
+            font-weight: 400;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 22px;
+        }
+        .thmv-info{
+            p{
+                margin: 1em 0;
+                font-size: 14px;
+                line-height: 200%;
+                color: $color-lgray;
+            }
+        }
+        .thmv-icons{
+
+            &.thmv-list{
+                margin-bottom: 20px;
+                @include d-flex;
+
+                li{
+                    @include d-flex;
+                    @include flex-nowrap;
+                    @include align-items-center;
+                    width: 50%;
+                    padding: 18px 20px 18px 0;
+                    position: relative;
+
+                    .thmv-icon{
+                        font-size: 23px;
+                        padding-right: 20px;
+                        color: rgb(64, 64, 64);
+                    }
+                    .thmv-icon-label{
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        line-height: 130%;
+                        color: #191B18;
+                    }
+                    &:after{
+                        content: '';
+                        height: 1px;
+                        width: calc(100% - 20px);
+                        background: rgba(78, 82, 76, 0.1);
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        display: block;
+                    }
+                }
+            }
+            &.thmv-grid-facility{
+                @include d-flex;
+                margin: 15px 0;
+                li{
+                    padding-right: 30px;
+                    &:last-child{
+                        padding-right: 0;
+                    }
+                }
+                .thmv-icon{
+                    font-size: 23px;
+                }
+            }
+
+
+        }
+
+        &.thmv-style-1{
+            @include defineWidth(50, $md);
+            .thmv-grid-img+.thmv-info{
+                margin-top: 15px;
+
+            }
+            .thmv-top-box{
+                right: unset;
+                left: $topboxPadding;
+            }
+            .thmv-price{
+                right: 0;
+                background: #EAEAEA;
+                flex-direction: column;
+                left: unset;
+                &.left{
+                    left:  0;
+                    right: unset;
+                }
+                &.right{
+                    right:  0;
+                    left: unset;
+                }
+                .price-before,.price {
+                    font-weight: 700;
+                }
+            }
+            .thmv-learn-btn {
+                @include button;
+            }
+            
+        }
+        &.thmv-style-2{
+            @include defineWidth(50, $md);
+            .thmv-title{
+                font-size: 24px;
+                line-height: 130%;
+                @media(min-width: $md){
+                    font-size: 28px;
+                }
+            }
+            .thmv-learn-btn {
+                @include linkbutton;
+            }
+            .thmv-grid-rating{
+                @include justify-content-between;
+            }
+        }
+        &.thmv-style-3{
+            .thmv-grid{
+                @media(min-width: $md){
+                    @include d-flex;
+                    @include flex-nowrap;
+                    @include align-items-center;
+                    @include justify-content-center;
+                    > div {
+                        width: 50%;
+                    }
+                    .thmv-info{
+                        padding-left: 30px;
+                    }
+                    .thmv-top-box{
+                        @include d-flex;
+                        margin-bottom: 40px;
+                    }
+                    .thmv-icons{
+                        margin-top: 40px;
+                    }
+                }
+            }
+
+            .thmv-title{
+                padding-bottom: 15px;
+                font-size: 22px;
+                border-bottom: 1px solid #e7e7e7;
+
+            }
+            .thmv-info{
+                @media(max-width: $sm-max){
+                    margin-top: 20px;
+                }
+            }
+            .thmv-price{
+                bottom: 20px;
+            }
+            .thmv-icons{
+                margin-top: 25px;
+            }
+            .thmv-top-box{
+                margin-bottom: 15px;
+                span{
+                    color: #FFF;
+                    background: #000;
+                    padding: 9px 22px;
+
+                }
+            }
+            .thmv-learn-btn {
+                @include linkbutton;
+            }
+        }
+        &.thmv-style-4{
+            @include defineWidth(33, $md);
+            .thmv-top-box{
+
+                span{
+                    color: $color-gray;
+                    background: #fff;
+
+                }
+            }
+            .thmv-title{
+                font-size: 24px;
+            }
+            .thmv-info{
+                margin-top: 20px;
+            }
+            .thmv-learn-btn {
+                @include button;
+                text-transform: inherit;
+            }
+        }
+
+        &.thmv-style-5{
+
+            .thmv-price{
+                padding: 0;
+                background: transparent;
+                position: static;
+                text-align: left;
+                backdrop-filter: none;
+                @include justify-content-start;
+                margin: 30px 0;
+                &:before{
+                    content: '';
+                    border-left: 10px solid $color-gray;
+                    margin-right: 8px;
+                }
+            }
+            .thmv-title{
+                font-weight: 500;
+                font-size: 24px;
+                text-transform: inherit;
+            }
+            .thmv-grid-rating{
+                @include flex-column;
+            }
+            .thmv-grid-rating>ul.thmv-location{
+                padding-bottom: 30px;
+            }
+            .thmv-info{
+                margin-top: 20px;
+                @media(min-width: $md) and (max-width: $md-max){
+                    text-align: center;
+                    .thmv-price{
+                        @include justify-content-center;
+
+                    }
+                }
+            }
+
+            .location-icon{
+                margin-right: 10px;
+            }
+            .thmv-learn-btn {
+                @include button;
+                text-transform: inherit;
+            }
+            .thmv-grid{
+                @media(min-width: $lg){
+                    @include d-flex;
+                    @include flex-nowrap;
+                    @include align-items-center;
+                    @include justify-content-center;
+                    > div {
+                        width: 50%;
+                    }
+                    .thmv-info{
+                        padding-left: 45px;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        &.thmv-style-6{
+            .thmv-info{
+                margin-top: 20px;
+            }
+            .thmv-separator{
+                width: 100%;
+                margin: 25px 0px 5px;
+                border-top: 2px dashed #000000;
+            }
+            .thmv-grid-booking{
+                @media(min-width: $sm){
+                    @include d-flex;
+                    @include justify-content-start;
+                    .thmv-price{
+                        margin-left: 15px;
+                    }
+                }
+            }
+            .thmv-title{
+                text-transform: inherit;
+                font-size: 18px;
+                font-weight: 700;
+                @media(min-width: $md){
+                    font-size: 34px;
+                }
+
+            }
+            .thmv-icons{
+                @include justify-content-start;
+                @media(max-width: $xs-max){
+                    @include justify-content-between;
+                }
+                .thmv-icon{
+                    text-align: center;
+                    margin-bottom: 5px;
+                    display: block;
+                    i, svg{
+                        margin: auto;
+                    }
+                }
+            }
+            .thmv-grid-booking{
+                @media(max-width: $xs-max){
+                    text-align: center;
+                }
+            }
+
+            .thmv-price{
+                padding: 0;
+                background: transparent;
+                position: static;
+                text-align: left;
+                backdrop-filter: none;
+                @include justify-content-start;
+                @media(max-width: $xs-max){
+                    @include justify-content-center;
+                }
+
+                margin: 15px 0;
+                > div {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+            .thmv-learn-btn {
+                @include button;
+                text-transform: inherit;
+            }
+
+            .thmv-icons{
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+            .thmv-grid{
+                @media(min-width: $lg){
+                    @include d-flex;
+                    @include flex-nowrap;
+                    @include align-items-center;
+                    @include justify-content-center;
+                    .thmv-grid-img {
+                        width: 58%;
+                    }
+                    .thmv-info{
+                        padding-left: 30px;
+                        width: 42%;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+}
+

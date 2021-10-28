@@ -19,6 +19,7 @@ use Elementor\Themo_Widget_Expand_list as ExpandList;
 use Elementor\Themo_Widget_Itinerary as Itinerary;
 use Elementor\Themo_Widget_GoogleMaps as Map;
 use Elementor\Themo_Widget_Package as Package;
+use Elementor\Themo_Widget_Accommodation_Listing as Accommodation_Listing;
 use Elementor\Themo_Widget_Pricing as Pricing;
 use Elementor\Themo_Widget_Pricing_List as PricingList;
 use Elementor\Themo_Widget_MPHB_Availability_Calendar as MPHB_Availability_Calendar;
@@ -108,6 +109,7 @@ class Themo_Elementor_Translate {
 			case 'bellevue':
                 require_once THEMO_PATH . '/elements/team_2.php';
 			    require_once THEMO_PATH . '/elements/package_2.php';
+			    require_once THEMO_PATH . '/elements/accommodation_listing.php';
 			    require_once THEMO_PATH . '/elements/itinerary.php';
 				require_once THEMO_PATH . '/elements/room-info.php';
                 if (class_exists('HotelBookingPlugin')) {
@@ -182,6 +184,8 @@ class Themo_Elementor_Translate {
 		$infocard->add_wpml_support();
 		$package = new Package();
 		$package->add_wpml_support();
+        $accommodation_listing = new Accommodation_Listing();
+        $accommodation_listing->add_wpml_support();
 		$pricing = new Pricing();
 		$pricing->add_wpml_support();
 		$service = new Service();

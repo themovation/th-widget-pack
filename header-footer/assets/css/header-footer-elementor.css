@@ -33,6 +33,7 @@
 #thhf-masthead-sticky {
     width: 100%;
     left: 0;
+    display:none;
     /* transition:all 0.7s ease 0s;
 	-webkit-transition:all 0.7s ease 0s; */
 }

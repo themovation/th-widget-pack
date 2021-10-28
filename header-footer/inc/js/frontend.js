@@ -32,6 +32,7 @@
 			if ( regularHeader.height() < scrollHeight ) {
 				stickyHeader.css({
 					"position": "fixed",
+					"display": "inherit",
 					"top": 0 + $wpAdminBarHeight,
 				});
 
@@ -40,6 +41,7 @@
 
 				stickyHeader.css({
 					"position": "relative",
+					"display": "inherit",
 					"top": 0,
 				});
 				if ( stickyHeader.hasClass("sticky-stacked") ) {
@@ -51,10 +53,12 @@
 		} else {
 			stickyHeader.css({
 				"position": "fixed",
+				"display": "inherit",
 				"top": 0 + $mobileAdminBar,
 			});
 			$wpAdminBar.css({
 				"position": "fixed",
+				"display": "inherit",
 				"top": 0,
 			});
 		}

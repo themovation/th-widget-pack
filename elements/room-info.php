@@ -287,6 +287,8 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item svg path' => 'fill: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
 			]
@@ -305,6 +307,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .th-tour-nav-item svg' => 'height:auto; width: {{SIZE}}px;',
                 ],
             ]
         );

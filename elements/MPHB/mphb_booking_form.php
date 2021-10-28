@@ -81,26 +81,7 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'button_1_style',
-            [
-                'label' => __( 'Button Style', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'standard-primary',
-                'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
-                ],
-            ]
-        );
+
 
         $this->add_control(
             'slide_text_align',
@@ -155,20 +136,8 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
         );*/
 
 
-        $this->add_control(
-            'hide_required_notices',
-            [
-                'label' => __( 'Hide Required Tips', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => '',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-required-fields-tip' => 'display:none;',
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label abbr' => 'display:none;',
-                ],
-            ]
-        );
+
+
 
         $this->add_control(
             'content_max_width',
@@ -207,6 +176,81 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             ]
         );
 
+
+        $this->add_control(
+            'section_heading_form_labels',
+            [
+                'label' => __( 'Form Labels', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'hide_form_lables',
+            [
+                'label' => __( 'Hide Field Labels', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label, 
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-check-in-date-wrapper br,
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-check-out-date-wrapper br' => 'display:none;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __( 'Label Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-errors-wrapper p, {{WRAPPER}} .thmv_mphb_booking_form_help p' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'condition' => [
+                    'hide_form_lables' => '',
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_color_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper label',
+                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'condition' => [
+                    'hide_form_lables' => '',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hide_required_notices',
+            [
+                'label' => __( 'Hide Required Tips', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-required-fields-tip' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label abbr' => 'display:none;',
+                ],
+            ]
+        );
+
         $this->add_control(
             'tip_color',
             [
@@ -220,6 +264,9 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
+                'condition' => [
+                    'hide_required_notices' => '',
+                ],
 
             ]
         );
@@ -230,38 +277,144 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
                 'name' => 'tip_color_typography',
                 'selector' => '{{WRAPPER}} .mphb-required-fields-tip small',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'condition' => [
+                    'hide_required_notices' => '',
+                ],
 
             ]
         );
 
         $this->add_control(
-            'title_color',
+            'section_heading_form',
             [
-                'label' => __( 'Label Text Color', 'th-widget-pack' ),
+                'label' => __( 'Form Fields', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'form_field_text',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper label' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-errors-wrapper p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text],
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style select' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style .mphb-reserve-room-section p' => 'color: {{VALUE}};',
+
                 ],
                 'scheme' => [
                     'type' => Scheme_Color::get_type(),
                     'value' => Scheme_Color::COLOR_1,
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'form_field_placeholder_text',
+            [
+                'label' => __( 'Placeholder', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]::placeholder' => 'color: {{VALUE}}; opacity: 1;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]:-ms-input-placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]::-ms-input-placeholder' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'form_field_bg_colour',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]' => 'background-color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'border',
+                'label' => __( 'Border', 'plugin-domain' ),
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text],
+                {{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]:focus',
+            ]
+        );
+
+        $this->add_control(
+            'section_heading_form_button',
+            [
+                'label' => __( 'Form Button', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
         );
 
+        $this->add_control(
+            'button_1_style',
+            [
+                'label' => __( 'Button Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_text_colour',
+            [
+                'label' => __( 'Button Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit],
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-confirm-reservation' => 'color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'name' => 'title_color_typography',
-                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper label',
+                'name' => 'button_text_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-reserve-btn-wrapper.frm_submit input[type=submit],
+                 {{WRAPPER}} .mphb_sc_booking_form-wrapper .mphb-confirm-reservation',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_1,
             ]
         );
+
+
 
         $this->end_controls_section();
     }
@@ -283,7 +436,6 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             }
         }
 
-        //echo $settings['type_id'];
         if ( isset( $settings['type_id'] ) && ! empty( $settings['type_id']) && is_numeric($settings['type_id']) ) {
 
             /*if ( isset( $settings['months_to_show'] ) && ! empty( $settings['months_to_show'] ) && is_numeric($settings['months_to_show'])) {
@@ -296,115 +448,125 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
             $th_shortcode = sanitize_text_field( $th_shortcode );
             $th_shortcode = do_shortcode( shortcode_unautop( $th_shortcode ) );
 
-            // Add in special classes
+            // Check to see if the shortcode returned a form. If not, there are no valid seasons or rates for this accommodation Type.
+            $thmv_shortcode_neddle = '<form';
+            $thmv_shortcode_error_msg = esc_html__('No valid season or rate found for this Accommodation. Has one been added yet?', 'bellevue');
 
-            if ( function_exists( 'get_theme_mod' ) ) {
-                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
-                if ($themo_mphb_styling == true) {
+            if (strpos($th_shortcode, $thmv_shortcode_neddle) !== false) {
+                // Add in special classes
+                if ( function_exists( 'get_theme_mod' ) ) {
+                    $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+                    if ($themo_mphb_styling == true) {
 
-                    // Check Availabilty button
-                    $th_shortcode = str_replace(
-                        'mphb-reserve-btn-wrapper',
-                        'mphb-reserve-btn-wrapper frm_submit',
-                        $th_shortcode
-                    );
-                    // Confirm Reservation button
-                    $th_shortcode = str_replace(
-                        'mphb-reserve-room-section',
-                        'mphb-reserve-room-section frm_submit',
-                        $th_shortcode
-                    );
-                    // Date picker / checkin / checkout form
-                    $th_shortcode = str_replace(
-                        'mphb_sc_booking_form-wrapper',
-                        'mphb_sc_booking_form-wrapper frm_forms with_frm_style',
-                        $th_shortcode
-                    );
-                    // Check-in field
-                    $th_shortcode = str_replace(
-                        'mphb-check-in-date-wrapper',
-                        'mphb-check-in-date-wrapper frm_form_field',
-                        $th_shortcode
-                    );
-                    // Check-out field
-                    $th_shortcode = str_replace(
-                        'mphb-check-out-date-wrapper',
-                        'mphb-check-out-date-wrapper frm_form_field',
-                        $th_shortcode
-                    );
+                        // Check Availabilty button
+                        $th_shortcode = str_replace(
+                            'mphb-reserve-btn-wrapper',
+                            'mphb-reserve-btn-wrapper frm_submit',
+                            $th_shortcode
+                        );
+                        // Confirm Reservation button
+                        $th_shortcode = str_replace(
+                            'mphb-reserve-room-section',
+                            'mphb-reserve-room-section frm_submit',
+                            $th_shortcode
+                        );
+                        // Date picker / checkin / checkout form
+                        $th_shortcode = str_replace(
+                            'mphb_sc_booking_form-wrapper',
+                            'mphb_sc_booking_form-wrapper frm_forms with_frm_style',
+                            $th_shortcode
+                        );
+                        // Check-in field
+                        $th_shortcode = str_replace(
+                            'mphb-check-in-date-wrapper',
+                            'mphb-check-in-date-wrapper frm_form_field',
+                            $th_shortcode
+                        );
+                        // Check-out field
+                        $th_shortcode = str_replace(
+                            'mphb-check-out-date-wrapper',
+                            'mphb-check-out-date-wrapper frm_form_field',
+                            $th_shortcode
+                        );
 
-                    // Dropdowns Adults
-                    $th_shortcode = str_replace(
-                        'mphb-adults-wrapper',
-                        'mphb-adults-wrapper frm_form_field',
-                        $th_shortcode
-                    );
-                    // Dropdowns Children
-                    $th_shortcode = str_replace(
-                        'mphb-children-wrapper',
-                        'mphb-children-wrapper frm_form_field',
-                        $th_shortcode
-                    );
-                    // Dropdowns Children
-                    /*$th_shortcode = str_replace(
-                        'mphb-check-children-date-wrapper',
-                        'mphb-check-children-date-wrapper frm_form_field',
-                        $th_shortcode
-                    );*/
+                        // Dropdowns Adults
+                        $th_shortcode = str_replace(
+                            'mphb-adults-wrapper',
+                            'mphb-adults-wrapper frm_form_field',
+                            $th_shortcode
+                        );
+                        // Dropdowns Children
+                        $th_shortcode = str_replace(
+                            'mphb-children-wrapper',
+                            'mphb-children-wrapper frm_form_field',
+                            $th_shortcode
+                        );
+                        // Dropdowns Children
+                        /*$th_shortcode = str_replace(
+                            'mphb-check-children-date-wrapper',
+                            'mphb-check-children-date-wrapper frm_form_field',
+                            $th_shortcode
+                        );*/
+                    }
                 }
+
+
+
+                $th_form_border_class = false;
+                $th_formidable_class = 'th-form-default';
+                if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
+                    switch ( $settings['inline_form'] ) {
+                        case 'stacked':
+                            $th_formidable_class = 'th-form-stacked';
+                            if ( isset( $settings['slide_shortcode_border'] ) && $settings['slide_shortcode_border'] != 'none' ) {
+                                $th_form_border_class = $settings['slide_shortcode_border'];
+                            }
+                            break;
+                        case 'inline':
+                            $th_formidable_class = 'th-conversion';
+                            break;
+                    }
+                endif;
+
+                /* Form Styling */
+                $th_cal_align_class = false;
+                if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
+                    switch ( $settings['slide_text_align'] ) {
+                        case 'left':
+                            $th_cal_align_class = ' th-left';
+                            break;
+                        case 'center':
+                            $th_cal_align_class = ' th-centered';
+                            break;
+                        case 'right':
+                            $th_cal_align_class = ' th-right';
+                            break;
+                    }
+                }
+
+                $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
+                $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
+                $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
+                $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
+                $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
+                $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
+
+                $themo_form_styling = false;
+                if ( function_exists( 'get_theme_mod' ) ) {
+                    $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
+                    if ($themo_mphb_styling == true) {
+                        $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
+                    }
+                } ?>
+                <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
+                <?php
+
+            }else{
+                echo "<div class='thmv_mphb_booking_form_help'><p>".$thmv_shortcode_error_msg."</p></div>";
             }
-
-
-
-            $th_form_border_class = false;
-            $th_formidable_class = 'th-form-default';
-            if ( isset( $settings['inline_form'] ) && $settings['inline_form'] > "" ) :
-                switch ( $settings['inline_form'] ) {
-                    case 'stacked':
-                        $th_formidable_class = 'th-form-stacked';
-                        if ( isset( $settings['slide_shortcode_border'] ) && $settings['slide_shortcode_border'] != 'none' ) {
-                            $th_form_border_class = $settings['slide_shortcode_border'];
-                        }
-                        break;
-                    case 'inline':
-                        $th_formidable_class = 'th-conversion';
-                        break;
-                }
-            endif;
-
-            /* Form Styling */
-            $th_cal_align_class = false;
-            if ( isset( $settings['slide_text_align'] ) && $settings['slide_text_align'] > "" ) {
-                switch ( $settings['slide_text_align'] ) {
-                    case 'left':
-                        $th_cal_align_class = ' th-left';
-                        break;
-                    case 'center':
-                        $th_cal_align_class = ' th-centered';
-                        break;
-                    case 'right':
-                        $th_cal_align_class = ' th-right';
-                        break;
-                }
-            }
-
-            $this->add_render_attribute( 'th-form-class', 'class', 'th-fo-form');
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_cal_align_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_formidable_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', esc_attr( $th_form_border_class ) );
-            $this->add_render_attribute( 'th-form-class', 'class', 'th-btn-form' );
-            $this->add_render_attribute( 'th-form-class', 'class', 'btn-' . esc_attr( $settings['button_1_style'] . '-form' ) );
-
-            $themo_form_styling = false;
-            if ( function_exists( 'get_theme_mod' ) ) {
-                $themo_mphb_styling = get_theme_mod('themo_mphb_use_theme_styling', true);
-                if ($themo_mphb_styling == true) {
-                    $themo_form_styling = $this->get_render_attribute_string( 'th-form-class');
-                }
-            }
-            ?>
-            <div <?php echo $themo_form_styling; ?>><?php echo $th_shortcode; ?></div>
-            <?php
+        }else{
+            $thmv_shortcode_error_msg = esc_html__('Accommodation Type ID not found. Has one been entered?', 'bellevue');
+            echo "<div class='thmv_mphb_booking_form_help'><p>".$thmv_shortcode_error_msg."</p></div>";
         }
     }
 

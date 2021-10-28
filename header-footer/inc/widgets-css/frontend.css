@@ -1980,6 +1980,8 @@ a.hfe-menu-item.elementor-button {
         padding-bottom: 10px;
     }
     .hfe-nav-menu__breakpoint-mobile .hfe-dropdown.menu-is-active {z-index:9999}
+
+    .hfe-nav-menu__breakpoint-mobile .hfe-nav-menu__toggle:not(.hfe-active-menu) + nav ul.hfe-nav-menu {display:none}
 }
 
 @media (max-width:1024px) {
@@ -1988,11 +1990,14 @@ a.hfe-menu-item.elementor-button {
         padding-bottom: 10px;
     }
     .hfe-nav-menu__breakpoint-tablet .hfe-dropdown.menu-is-active {z-index:9999}
+
+    .hfe-nav-menu__breakpoint-tablet .hfe-nav-menu__toggle:not(.hfe-active-menu) + nav ul.hfe-nav-menu {display:none}
 }
 
 .hfe-nav-menu__breakpoint-mobile .hfe-menu-toggle:hover,
 .hfe-nav-menu__breakpoint-tablet .hfe-menu-toggle:hover,
 .hfe-dropdown-expandible .hfe-menu-toggle:hover {border-color:transparent}
+
 
 /* Desktop menu styling */
 

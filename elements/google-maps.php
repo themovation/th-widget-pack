@@ -498,6 +498,24 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             ]
         );
 
+        // Add colour bg here
+
+        $this->add_control(
+            'bg_colour',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .map-info' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
