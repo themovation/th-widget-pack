@@ -901,7 +901,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Typography', 'elementor'),
                     'name' => 'thmv_highlight_typography',
                     'selector' => '{{WRAPPER}} .thmv-top-box span',
-                ],
+                ]
         );
 
         $this->add_control(
