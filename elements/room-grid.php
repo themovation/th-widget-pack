@@ -202,8 +202,9 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_price_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p',
-            ],
+            ]
         );
+
 
         $this->add_group_control(
             Group_Control_Background::get_type(),
@@ -213,7 +214,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'types' => ['gradient'],
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after',
                 'description' => 'Control the image overlay gradient.',
-
             ]
         );
 
@@ -279,7 +279,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_title_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-title',
-            ],
+            ]
         );
 
         /* STYLE - Text */
@@ -315,7 +315,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_text_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-sub',
-            ],
+            ]
         );
 
         /* STYLE - Background */
@@ -354,7 +354,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
                     '{{WRAPPER}} .th-port-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+                ]
             ]
         );
 
