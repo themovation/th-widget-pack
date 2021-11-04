@@ -9,6 +9,10 @@ namespace THHF\WidgetsManager\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
+use Elementor\Core\Schemes;
+use Elementor\Group_Control_Typography;
+use Elementor\Schemes\Typography;
+use Elementor\Scheme_Color;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -101,7 +105,7 @@ class Post_Navigation extends Widget_Base {
         $this->start_controls_section(
                 'section_general_fields',
                 [
-                    'label' => __('Content', 'header-footer-elementor'),
+                    'label' => __('Navigation', 'header-footer-elementor'),
                 ]
         );
 
@@ -138,6 +142,17 @@ class Post_Navigation extends Widget_Base {
                     ],
                 ]
         );
+        $this->add_control(
+                'stack_phone',
+                [
+                    'label' => __('Stack on phone?', 'header-footer-elementor'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'header-footer-elementor'),
+                    'label_off' => __('No', 'header-footer-elementor'),
+                    'return_value' => 'yes',
+                    'default' => 'yes',
+                ]
+        );
         $this->end_controls_section();
     }
 
@@ -148,7 +163,33 @@ class Post_Navigation extends Widget_Base {
      * @access protected
      */
     protected function register_post_navigation_style_controls() {
+        $this->start_controls_section(
+                'section_style_navigation',
+                [
+                    'label' => __('Navigation', 'header-footer-elementor'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+        );
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'navigation_typography',
+                    'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-post-navigation-wrapper .hfe-post-navigation-inner a',
+                ]
+        );
+        $this->add_control(
+                'navigation_color',
+                [
+                    'label' => __('Color', 'header-footer-elementor'),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-post-navigation-wrapper .hfe-post-navigation-inner a' => 'color: {{VALUE}};',
+                    ],
+                ]
+        );
         
+        $this->end_controls_section();
     }
 
     /**
@@ -161,17 +202,18 @@ class Post_Navigation extends Widget_Base {
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $prev = isset($settings['label_previous']) ? $settings['label_previous']: '%title';
-        $next = isset($settings['label_next']) ? $settings['label_next']: '%title';
-        $prevText = '&laquo; '.$prev;
-        $nextText = $next.' &raquo;';
+        $prev = isset($settings['label_previous']) ? $settings['label_previous'] : '%title';
+        $next = isset($settings['label_next']) ? $settings['label_next'] : '%title';
+        $prevText = '&laquo; ' . $prev;
+        $nextText = $next . ' &raquo;';
+        $classMobile = !empty($settings['stack_phone']) ? 'th-flex-phone-column' : 'th-justify-content-phone-between';
         ?>		
         <div class="hfe-post-navigation hfe-post-navigation-wrapper">
-            <div class="th-d-flex th-align-items-phone-center th-flex-phone-column th-justify-content-tablet-between">
-                <div class="hfe-post-navigation-left">
+            <div class="th-d-flex th-align-items-phone-center <?php echo $classMobile?> th-justify-content-tablet-between">
+                <div class="hfe-post-navigation-left hfe-post-navigation-inner">
                     <?php previous_post_link('%link', $prevText); ?>
                 </div>
-                <div class="hfe-post-navigation-right">
+                <div class="hfe-post-navigation-right hfe-post-navigation-inner">
                     <?php next_post_link('%link', $nextText); ?>
                 </div>
             </div>

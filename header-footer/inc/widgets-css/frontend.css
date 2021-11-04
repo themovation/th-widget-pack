@@ -2101,6 +2101,11 @@ a.hfe-menu-item.elementor-button {
             justify-content: flex-start!important;
         }
 
+        .th-justify-content-phone-between{
+            -webkit-box-pack: justify!important;
+            -ms-flex-pack: justify!important;
+            justify-content: space-between!important;
+        }
         .th-justify-content-phone-center{
             -webkit-box-pack: center!important;
             -ms-flex-pack: center!important;

@@ -96,7 +96,7 @@ class Widgets_Loader {
     }
 
     private function addPostImageToSectionWidget() {
-        add_action('elementor/element/section/section_background/after_section_start', function ($element, $args) {
+        add_action('elementor/element/section/section_background/before_section_end', function ($element, $args) {
             $element->add_control(
                     'th_dynamic_image',
                     [

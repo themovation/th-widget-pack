@@ -81,7 +81,7 @@ class Post_Title extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return ['themo-single','woocommerce-elements'];
+        return ['themo-single','themo-woocommerce'];
     }
 
     /**

@@ -129,7 +129,7 @@ class Post_Media extends Widget_Base {
         $this->add_control(
                 'image',
                 [
-                    'label' => esc_html__('Custom Image', 'elementor'),
+                    'label' => esc_html__('Fallback Image', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
 //                    'default' => [
 //                        'url' => Utils::get_placeholder_image_src(),
@@ -397,7 +397,7 @@ class Post_Media extends Widget_Base {
         );
 
         $this->end_controls_section();
-        
+
         $this->start_controls_section(
                 'section_gallery',
                 [
@@ -466,7 +466,7 @@ class Post_Media extends Widget_Base {
     }
 
     private function getTypeAudio() {
-        
+
         $audio_embed = sanitize_text_field(get_post_meta(get_the_ID(), '_format_audio_embed', true));
         $audio_shortcode = sanitize_text_field(get_post_meta(get_the_ID(), '_format_audio_shortcode', true));
 
@@ -487,12 +487,12 @@ class Post_Media extends Widget_Base {
 
     private function getTypeGallery() {
         $settings = $this->get_settings_for_display();
-        
-        $imageSize = isset($settings['gallery_image_size']) ? $settings['gallery_image_size']: 'th_img_xl';
+
+        $imageSize = isset($settings['gallery_image_size']) ? $settings['gallery_image_size'] : 'th_img_xl';
         $gallery_shortcode = sanitize_text_field(get_post_meta(get_the_ID(), '_format_gallery', true));
 
         if ($gallery_shortcode > "") {
-            $gallery_shortcode = str_replace("[gallery", "[slider_gallery image_size='".$imageSize."' ", $gallery_shortcode);
+            $gallery_shortcode = str_replace("[gallery", "[slider_gallery image_size='" . $imageSize . "' ", $gallery_shortcode);
             $embed_code = do_shortcode($gallery_shortcode);
         } else {
             $embed_code = "";
@@ -504,12 +504,7 @@ class Post_Media extends Widget_Base {
     }
 
     private function getTypeStandard() {
-        ?>
-        <div class="entry-content">
-            <?php the_content(); ?>
-        </div>
-
-        <?php
+       $this->getTypeImage();
     }
 
     private function getTypeLink() {
@@ -581,12 +576,9 @@ class Post_Media extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         //setup the image
+        $this->setupImageFromPost($settings);
         if (empty($settings['image']['url'])) {
-            //if preview mode and no image  
-            $this->setupImageFromPost($settings);
-            if (empty($settings['image']['url'])) {
-                return;
-            }
+            return;
         }
         //get the link
         $link = [];
@@ -616,27 +608,24 @@ class Post_Media extends Widget_Base {
         if (!empty($caption)):
             $captionHtml = '<figcaption class="widget-image-caption wp-caption-text">' . $caption . '</figcaption>';
         endif;
+        ?>
+        <figure class="wp-caption">
+            <?php if (count($link)): ?>
+                <a <?php $this->print_render_attribute_string('link') ?>>
+                <?php endif;
+                ?>
 
-        if (has_post_thumbnail()) {
-            ?>
-            <figure class="wp-caption">
-                <?php if (count($link)): ?>
-                    <a <?php $this->print_render_attribute_string('link') ?>>
-                    <?php endif;
-                    ?>
-
-                    <?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
-                    <?php
-                    if (count($link)):
-                        echo '</a>';
-                    endif;
-                    ?>
-                    <?php
-                    echo $captionHtml;
-                    ?>
-            </figure>
-            <?php
-        }
+                <?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
+                <?php
+                if (count($link)):
+                    echo '</a>';
+                endif;
+                ?>
+                <?php
+                echo $captionHtml;
+                ?>
+        </figure>
+        <?php
     }
 
     /**
@@ -651,7 +640,7 @@ class Post_Media extends Widget_Base {
         $type = get_post_format();
         $format = !empty($type) ? $type : 'standard';
         ?>		
-        <div class="hfe-post-media hfe-post-media-wrapper hfe-post-type-<?=$format?>">
+        <div class="hfe-post-media hfe-post-media-wrapper hfe-post-type-<?= $format ?>">
             <?php
             if ('elementor-thhf' == get_post_type()) {
                 ?>
@@ -664,8 +653,7 @@ class Post_Media extends Widget_Base {
                 $methodName = 'getType' . ucfirst($format);
                 if (method_exists($this, $methodName)) {
                     $this->$methodName();
-                }
-                else {
+                } else {
                     $this->getTypeStandard();
                 }
 

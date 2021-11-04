@@ -159,7 +159,7 @@ class Post_Image extends Widget_Base {
         $this->add_control(
                 'image',
                 [
-                    'label' => esc_html__('Custom Image', 'elementor'),
+                    'label' => esc_html__('Fallback Image', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
                 ]
         );
@@ -438,12 +438,9 @@ class Post_Image extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         //setup the image
+        $this->setupImageFromPost($settings);
         if (empty($settings['image']['url'])) {
-            //if preview mode and no image  
-            $this->setupImageFromPost($settings);
-            if (empty($settings['image']['url'])) {
                 return;
-            }
         }
 
         //get the link

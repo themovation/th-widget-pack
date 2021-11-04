@@ -558,14 +558,17 @@ class Post_Info extends Widget_Base {
                             endif;
                             ?>
                             <?php
-                            if ($avatar) {
+                            if(!empty($item['show_icon'])){
+               
+                                if ($avatar) {
 
-                                echo '<img src="' . $avatar . '" alt="' . __('author image', 'th-widget-pack') . '">';
-                            } else {
-                                if ($itemType === 'taxonomy' && !count($termsList)) {
-                                    
+                                    echo '<img src="' . $avatar . '" alt="' . __('author image', 'th-widget-pack') . '">';
                                 } else {
-                                    Icons_Manager::render_icon($item['icon'], ['aria-hidden' => 'true', 'title' => '']);
+                                    if ($itemType === 'taxonomy' && !count($termsList)) {
+
+                                    } else {
+                                        Icons_Manager::render_icon($item['icon'], ['aria-hidden' => 'true', 'title' => '']);
+                                    }
                                 }
                             }
                             ?>
