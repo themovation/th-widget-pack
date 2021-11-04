@@ -1,4 +1,6 @@
 <?php
+ use Elementor\Controls_Manager;   
+
 
 // Adding Custom Icons for Icon Control
 if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
@@ -478,6 +480,14 @@ add_action( 'elementor/element/wp-page/document_settings/before_section_start', 
 // Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( Elementor\Element_Section $section ) {
 
+    $section->add_control(
+        'th_raw',
+        [
+            'type'            => Controls_Manager::RAW_HTML,
+            'raw'             => '<b>Themovation</b>',
+            'separator'       => 'before',
+        ]
+    );
     $section->add_control(
         'th_section_parallax',
         [

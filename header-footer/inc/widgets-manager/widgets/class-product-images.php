@@ -145,7 +145,7 @@ class Product_Images extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'border-radius: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'margin-top: {{SIZE}}{{UNIT}};',
                     ],
                 ]
         );
@@ -167,6 +167,9 @@ class Product_Images extends Widget_Base {
                         'px' => [
                             'max' => 100,
                         ],
+                    ],
+                    'default' => [
+                        'size' => 20,
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs li' => 'margin: 0; padding: {{SIZE}}{{UNIT}}',
@@ -197,7 +200,7 @@ class Product_Images extends Widget_Base {
                     ],
                 ]
         );
-        
+
         $this->end_controls_section();
     }
 
@@ -210,19 +213,81 @@ class Product_Images extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        if ('elementor-thhf' == get_post_type()) {
-            $content = $this->get_title();
-        } else if (get_post_type() == 'product') {
-            ob_start();
-            wc_get_template('single-product/product-image.php');
-            $content = ob_get_clean();
-        }
-        ?>		
-        <div class="hfe-product-images hfe-product-images-wrapper">
-        <?php echo $content; ?>
-        </div>
-            <?php
-        }
 
-    }
-    
+        if ('elementor-thhf' == get_post_type()) {
+            //try to get a product with images from woocommerce
+            $args = array(
+                'posts_per_page' => 1,
+                'orderby' => 'date',
+                'order' => 'desc',
+                'post_type' => 'product',
+                'meta_query' => array(
+                    array(
+                        'key' => '_product_image_gallery',
+                        'value' => '',
+                        'compare' => '!=',
+                    ),
+                )
+            );
+
+            $imageProduct = get_posts($args);
+            if (count($imageProduct)) {
+                $imagePost = $imageProduct[0];
+                ob_start();
+                $product = new \WC_product($imagePost->ID);
+
+                $attachment_ids = $product->get_gallery_image_ids();
+
+                $columns = apply_filters('woocommerce_product_thumbnails_columns', 4);
+
+                echo '<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-' . $columns . ' images">';
+                $post_thumbnail_id = $product->get_image_id();
+                echo '<figure class="woocommerce-product-gallery__wrapper">';
+                if ($post_thumbnail_id) {
+                    echo '<div class="flex-active-slide">';
+                    $html = wc_get_gallery_image_html($post_thumbnail_id, true);
+                    echo '</div>';
+                } else {
+                    $html = '<div class="woocommerce-product-gallery__image--placeholder">';
+                    $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
+                    $html .= '</div>';
+                }
+
+                echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+                echo '</figure>';
+
+                if (count($attachment_ids)) {
+                echo '<ol class="flex-control-nav flex-control-thumbs">';
+                    }
+                    foreach ($attachment_ids as $attachment_id) {
+                    $image_url = wp_get_attachment_url($attachment_id);
+                    echo '<li><img src="' . $image_url . '"></li>';
+                    }
+                    if (count($attachment_ids)) {
+                    echo '</ol>';
+                }
+                echo '</div>';
+                //wc_get_template('single-product/product-image.php');
+                //echo '<style>.hfe-product-images-wrapper .woocommerce-product-gallery{opacity: 1!important;}</style>';
+                $content = ob_get_clean();
+                wp_enqueue_script('wc-single-product');
+                
+                } else {
+                $content = 'Please have at least one product with an image gallery setup in woocommerce.';
+                }
+
+                wp_reset_postdata();
+                } else if (get_post_type() == 'product') {
+                ob_start();
+                wc_get_template('single-product/product-image.php');
+                $content = ob_get_clean();
+                }
+                ?>		
+                <div class="hfe-product-images hfe-product-images-wrapper">
+                    <?php echo $content; ?>
+                </div>
+                <?php
+            }
+        }
+        

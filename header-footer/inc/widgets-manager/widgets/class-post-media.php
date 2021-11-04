@@ -126,14 +126,12 @@ class Post_Media extends Widget_Base {
                     'raw' => __('Fetches the featured image from the post. You can define a custom one as well.', 'header-footer-elementor'),
                 ]
         );
+
         $this->add_control(
                 'image',
                 [
                     'label' => esc_html__('Fallback Image', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
-//                    'default' => [
-//                        'url' => Utils::get_placeholder_image_src(),
-//                    ],
                 ]
         );
 
@@ -434,10 +432,26 @@ class Post_Media extends Widget_Base {
                 [
                     'label' => '<b>' . __('Note:', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Displays the content in the format defined in the post settings. <br><br>Optionally, you can format the image type from below.', 'header-footer-elementor'),
+                    'raw' => __('Displays the content in the format defined in the post settings. <br><br>Optionally, you can set select different types and style them.', 'header-footer-elementor'),
                 ]
         );
 
+        $this->add_control(
+                'test_type',
+                [
+                    'label' => __('Type to test', 'header-footer-elementor'),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'Image',
+                    'options' => [
+                        'image' => __('Image', 'header-footer-elementor'),
+                        'video' => __('Video', 'header-footer-elementor'),
+                        'audio' => __('Audio', 'header-footer-elementor'),
+                        'quote' => __('Quote', 'header-footer-elementor'),
+                        'gallery' => __('Gallery', 'header-footer-elementor'),
+                        'link' => __('Link', 'header-footer-elementor'),
+                    ],
+                ]
+        );
         $this->end_controls_section();
     }
 
@@ -491,20 +505,14 @@ class Post_Media extends Widget_Base {
         $imageSize = isset($settings['gallery_image_size']) ? $settings['gallery_image_size'] : 'th_img_xl';
         $gallery_shortcode = sanitize_text_field(get_post_meta(get_the_ID(), '_format_gallery', true));
 
-        if ($gallery_shortcode > "") {
+        if (!empty($gallery_shortcode)) {
             $gallery_shortcode = str_replace("[gallery", "[slider_gallery image_size='" . $imageSize . "' ", $gallery_shortcode);
-            $embed_code = do_shortcode($gallery_shortcode);
-        } else {
-            $embed_code = "";
-        }
-
-        if (!empty($embed_code)) {
-            echo $embed_code;
+            echo do_shortcode($gallery_shortcode);
         }
     }
 
     private function getTypeStandard() {
-       $this->getTypeImage();
+        $this->getTypeImage();
     }
 
     private function getTypeLink() {
@@ -637,6 +645,36 @@ class Post_Media extends Widget_Base {
      * @access protected
      */
     protected function render() {
+        $queryPosts = false;
+        if ('elementor-thhf' == get_post_type()) {
+            $testType = $this->get_settings_for_display('test_type');
+            if (!empty($testType)) {
+                $ttype = 'post-format-'.$testType;
+                $args = array(
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'post_type' => 'post',
+                    'order' => 'DESC',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'post_format',
+                            'field' => 'slug',
+                            'terms' => array($ttype),
+                        ),
+                    ),
+                );
+
+                $queryPosts = get_posts($args);
+                if (count($queryPosts)) {
+                    global $post;
+                    $post = $queryPosts[0];
+                    setup_postdata($post);
+                } else {
+                    echo 'Please, at least have one post of "' . $testType . '" format type to see some output here.';
+                }
+            }
+        }
+
         $type = get_post_format();
         $format = !empty($type) ? $type : 'standard';
         ?>		
@@ -667,6 +705,9 @@ class Post_Media extends Widget_Base {
 
         </div>
         <?php
+        if ($queryPosts) {
+            wp_reset_postdata();
+        }
     }
 
 }

@@ -245,7 +245,7 @@ class Product_Cart extends Widget_Base {
                     'default' => '',
                 ]
         );
-         $this->add_control(
+        $this->add_control(
                 'price_color',
                 [
                     'label' => __('Color', 'header-footer-elementor'),
@@ -266,7 +266,6 @@ class Product_Cart extends Widget_Base {
                     ],
                 ]
         );
-       
 
         $this->add_responsive_control(
                 'price_align',
@@ -325,10 +324,31 @@ class Product_Cart extends Widget_Base {
     protected function render() {
 
         $settings = $this->get_settings_for_display();
-
+        $queryProducts = false;
         if ('elementor-thhf' == get_post_type()) {
-            $content = 'Product Cart';
-        } else if (get_post_type() == 'product') {
+            //get a product and use it
+            $args = array(
+                'posts_per_page' => 1,
+                'orderby' => 'price',
+                'post_type' => 'product',
+                'meta_key' => '_price',
+                'order' => 'desc'
+            );
+
+            $queryProducts = get_posts($args);
+            if(count($queryProducts)){
+                 global $post;
+                 $post = $queryProducts[0];
+                 setup_postdata($post);
+            }
+            else {
+                echo 'Please, have at least one product with a price in woocommerce to see any output here.';
+            }
+           
+            
+        } 
+        
+        if (get_post_type() == 'product') {
             $productId = get_the_ID();
             $code[] = 'id="' . $productId . '"';
             $style = [];
@@ -367,6 +387,10 @@ class Product_Cart extends Widget_Base {
             $shortCode = '[add_to_cart  ' . $string . ']';
 
             $content = do_shortcode($shortCode);
+        }
+        
+        if($queryProducts){
+            wp_reset_postdata();
         }
         ?>		
         <div class="hfe-product-cart hfe-product-cart-wrapper">

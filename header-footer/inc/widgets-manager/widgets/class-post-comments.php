@@ -136,10 +136,25 @@ class Post_Comments extends Widget_Base {
      */
     protected function render() {
 
-
-
         if ('elementor-thhf' == get_post_type()) {
-            $comments = 'Comments not shown in the preview mode.';
+            //get a product and use it
+            $args = array(
+                'posts_per_page' => 1,
+                'orderby' => 'date',
+                'post_type' => 'post',
+            );
+
+            $queryPosts = get_posts($args);
+            if(count($queryPosts)){
+                 global $post;
+                 $post = $queryPosts[0];
+                 setup_postdata($post);
+                 $comments = comments_template();
+                 wp_reset_postdata();
+            }
+            else {
+                echo 'Please, create at least one post to see some content here.';
+            }
         } else {
             $comments = comments_template();
         }

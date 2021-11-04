@@ -143,19 +143,43 @@ class Product_Content extends Widget_Base {
      * @access protected
      */
     protected function render() {
+        $queryProducts = false;
         if ('elementor-thhf' == get_post_type()) {
-            $content = THHF_DUMMY_CONTENT;
-        } else if (get_post_type() == 'product') {
-            $productId = get_the_ID();
+            //get a product and use it
+            $args = array(
+                'posts_per_page' => 1,
+                'orderby' => 'date',
+                'post_type' => 'product',
+                'meta_key' => '_price',
+                'order' => 'DESC'
+            );
 
-            $shortCode = '[product_page id="' . $productId . '"]';
-            $content = do_shortcode($shortCode);
+            $queryProducts = get_posts($args);
+            if(count($queryProducts)){
+                 global $post;
+                 $post = $queryProducts[0];
+                 setup_postdata($post);
+            }
+            else {
+                echo 'Please, have at least one product with content in woocommerce to see any output here.';
+            }
         }
+//        else if (get_post_type() == 'product') {
+//            $productId = get_the_ID();
+//
+//            $shortCode = '[product_page id="' . $productId . '"]';
+//            $content = do_shortcode($shortCode);
+//        }
         ?>		
         <div class="hfe-product-content hfe-product-content-wrapper">
-            <?php echo $content; ?>
+            <?php  echo apply_filters( 'the_content', get_the_content() ); ?>
         </div>
         <?php
+      if($queryProducts){
+          wp_reset_postdata();
+      }
+       
+
     }
 
 }
