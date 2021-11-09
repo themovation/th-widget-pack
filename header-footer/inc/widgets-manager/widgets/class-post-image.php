@@ -121,11 +121,8 @@ class Post_Image extends Widget_Base {
 
         $imageKey = 'image';
 
-        if ('elementor-thhf' == get_post_type()) {
-            $th_imageId = $this->getImageIdByUrl(THHF_DUMMY_IMAGE);
-        } else {
-            $th_imageId = get_post_thumbnail_id();
-        }
+        $th_imageId = get_post_thumbnail_id();
+
         if ($th_imageId) {
             $settings[$imageKey]['id'] = $th_imageId;
             $settings[$imageKey]['url'] = Group_Control_Image_Size::get_attachment_image_src($th_imageId, $imageKey, $settings);
@@ -437,10 +434,41 @@ class Post_Image extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
+        if ('elementor-thhf' == get_post_type()) {
+
+            //check for the fallback image first
+            if (empty($settings['image']['url'])) {
+                $args = array(
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'order' => 'desc',
+                    'post_type' => 'post',
+                    'meta_query' => array(
+                        array(
+                            'key' => '_thumbnail_id',
+                            'value' => '',
+                            'compare' => '!=',
+                        ),
+                    )
+                );
+
+                $imageProduct = get_posts($args);
+                if (count($imageProduct)) {
+                    $imagePost = $imageProduct[0];
+                    $th_imageId = get_post_thumbnail_id($imagePost->ID);
+                    $settings['image']['id'] = $th_imageId;
+                    $settings['image']['url'] = Group_Control_Image_Size::get_attachment_image_src($th_imageId, 'image', $settings);
+                }
+                wp_reset_postdata();
+            }
+        }
+        else {
+              $this->setupImageFromPost($settings);
+        }
         //setup the image
-        $this->setupImageFromPost($settings);
+      
         if (empty($settings['image']['url'])) {
-                return;
+            return;
         }
 
         //get the link
@@ -474,10 +502,10 @@ class Post_Image extends Widget_Base {
         ?>
         <div class="hfe-post-image hfe-post-image-wrapper">
             <figure class="wp-caption">
-                <?php if (count($link)): ?>
+        <?php if (count($link)): ?>
                     <a <?php $this->print_render_attribute_string('link') ?>>
-                    <?php endif;
-                    ?>
+                <?php endif;
+                ?>
 
                     <?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
                     <?php

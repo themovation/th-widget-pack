@@ -88,19 +88,15 @@ class Product_Images extends Widget_Base {
      */
     protected function _register_controls() {
         $this->register_content_product_images_controls();
+        $this->register_product_images_style_controls();
+        
     }
-
-    /**
-     * Register Product Images General Controls.
-     *
-     * @since 1.3.0
-     * @access protected
-     */
-    protected function register_content_product_images_controls() {
+    protected function register_product_images_style_controls() {
         $this->start_controls_section(
-                'section_general_fields',
+                'section_style_fields',
                 [
-                    'label' => __('Content', 'header-footer-elementor'),
+                    'label' => __('Style', 'header-footer-elementor'),
+                    'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
         $this->add_control(
@@ -203,6 +199,30 @@ class Product_Images extends Widget_Base {
 
         $this->end_controls_section();
     }
+    /**
+     * Register Product Images General Controls.
+     *
+     * @since 1.3.0
+     * @access protected
+     */
+    protected function register_content_product_images_controls() {
+        $this->start_controls_section(
+                'section_content_fields',
+                [
+                    'label' => __('Content', 'header-footer-elementor'),
+                ]
+        );
+        $this->add_control(
+                'note',
+                [
+                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
+                    'type' => \Elementor\Controls_Manager::RAW_HTML,
+                    'raw' => __('Renders product gallery.', 'header-footer-elementor'),
+                ]
+        );
+        $this->end_controls_section();
+        
+    }
 
     /**
      * Render post content widget output on the frontend.
@@ -244,11 +264,11 @@ class Product_Images extends Widget_Base {
                 $post_thumbnail_id = $product->get_image_id();
                 echo '<figure class="woocommerce-product-gallery__wrapper">';
                 if ($post_thumbnail_id) {
-                    echo '<div class="flex-active-slide">';
-                    $html = wc_get_gallery_image_html($post_thumbnail_id, true);
-                    echo '</div>';
+                    $search = 'woocommerce-product-gallery__image';
+                    $html = str_replace($search, $search.' flex-active-slide', wc_get_gallery_image_html($post_thumbnail_id, true));
+                    
                 } else {
-                    $html = '<div class="woocommerce-product-gallery__image--placeholder">';
+                    $html = '<div class="woocommerce-product-gallery__image--placeholder flex-active-slide">';
                     $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
                     $html .= '</div>';
                 }
@@ -261,8 +281,8 @@ class Product_Images extends Widget_Base {
                 echo '<ol class="flex-control-nav flex-control-thumbs">';
                     }
                     foreach ($attachment_ids as $attachment_id) {
-                    $image_url = wp_get_attachment_url($attachment_id);
-                    echo '<li><img src="' . $image_url . '"></li>';
+                        $image = wp_get_attachment_image($attachment_id);
+                        echo '<li>'.$image.'</li>';
                     }
                     if (count($attachment_ids)) {
                     echo '</ol>';
@@ -279,6 +299,8 @@ class Product_Images extends Widget_Base {
 
                 wp_reset_postdata();
                 } else if (get_post_type() == 'product') {
+                 global $product;
+                $product = wc_get_product();    
                 ob_start();
                 wc_get_template('single-product/product-image.php');
                 $content = ob_get_clean();

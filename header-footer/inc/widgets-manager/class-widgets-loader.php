@@ -14,7 +14,6 @@ namespace THHF\WidgetsManager;
 use Elementor\Plugin;
 use Elementor\Controls_Manager;
 defined( 'ABSPATH' ) or exit;
-DEFINE('THHF_DUMMY_IMAGE', site_url().'/wp-content/uploads/2019/08/Agency-1.jpg');
 DEFINE('THHF_DUMMY_CONTENT', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
 
 /**
@@ -75,16 +74,16 @@ class Widgets_Loader {
 
             //check if the custom image is set, if yes, then override the existing image
             if ($element->get_settings('th_dynamic_image')) {
+
                 //check if the featured image exists for this product/post
                 $imageURL = '';
-                if ('elementor-thhf' == get_post_type()) {
-                    $imageURL = THHF_DUMMY_IMAGE;
-                } else {
+                if(has_post_thumbnail()){
                     $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail');
                     if(count($image)){
                         $imageURL = $image[0];
                     }
                 }
+                
 
                 if (!empty($imageURL)) {
                     echo '<style>body .elementor-element.elementor-element-'.$element->get_id().':not(.elementor-motion-effects-element-type-background){'
@@ -168,6 +167,7 @@ class Widgets_Loader {
                         'product-content',
                         'product-cart',
                         'product-images',
+                        'product-page',
 		];
 
 		return $widget_list;
@@ -286,6 +286,7 @@ class Widgets_Loader {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Content());
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Cart());
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Images());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Page());
             }
         }
 

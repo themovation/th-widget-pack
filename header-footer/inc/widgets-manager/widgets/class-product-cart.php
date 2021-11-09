@@ -118,88 +118,6 @@ class Product_Cart extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
-                'class',
-                [
-                    'label' => __('Class', 'header-footer-elementor'),
-                    'type' => Controls_Manager::TEXT,
-                ]
-        );
-
-        $this->add_control(
-                'quantity',
-                [
-                    'label' => __('Quantity', 'header-footer-elementor'),
-                    'type' => \Elementor\Controls_Manager::NUMBER,
-                    'min' => 1,
-                    'max' => 999,
-                    'step' => 1,
-                    'default' => 1,
-                ]
-        );
-        $this->add_control(
-                'border_type',
-                [
-                    'label' => _x('Border Type', 'Border Control', 'elementor'),
-                    'type' => Controls_Manager::SELECT,
-                    'options' => [
-                        '' => esc_html__('None', 'elementor'),
-                        'solid' => _x('Solid', 'Border Control', 'elementor'),
-                        'double' => _x('Double', 'Border Control', 'elementor'),
-                        'dotted' => _x('Dotted', 'Border Control', 'elementor'),
-                        'dashed' => _x('Dashed', 'Border Control', 'elementor'),
-                        'groove' => _x('Groove', 'Border Control', 'elementor'),
-                    ],
-                ]
-        );
-        $this->add_control(
-                'border_width',
-                [
-                    'label' => _x('Border Width', 'Border Control', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 50,
-                        ],
-                    ],
-                    'default' => [
-                        'size' => 0,
-                        'unit' => 'px',
-                    ],
-                    'condition' => [
-                        'border_type!' => '',
-                    ],
-                ]
-        );
-        $this->add_control(
-                'border_color',
-                [
-                    'label' => __('Border Color', 'header-footer-elementor'),
-                    'type' => Controls_Manager::COLOR,
-                    'default' => '#ccc',
-                    'condition' => [
-                        'border_type!' => '',
-                    ],
-                ]
-        );
-
-        $this->add_control(
-                'padding',
-                [
-                    'label' => __('Padding', 'header-footer-elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 100,
-                        ],
-                    ],
-                    'default' => [
-                        'size' => 10,
-                        'unit' => 'px',
-                    ],
-                ]
-        );
-
         $this->add_responsive_control(
                 'align',
                 [
@@ -267,33 +185,22 @@ class Product_Cart extends Widget_Base {
                 ]
         );
 
-        $this->add_responsive_control(
-                'price_align',
-                [
-                    'label' => __('Position', 'header-footer-elementor'),
-                    'type' => \Elementor\Controls_Manager::SELECT,
-                    'default' => 'inline',
-                    'options' => [
-                        'block' => __('Top', 'header-footer-elementor'),
-                        'inline' => __('Left', 'header-footer-elementor'),
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount' => 'display: {{VALUE}};',
-                    ],
-                    'condition' => [
-                        'show_price!' => '',
-                    ],
-                ]
-        );
-        $this->add_responsive_control(
+        $this->add_control(
                 'price_margin',
                 [
-                    'label' => __('Margin', 'plugin-domain'),
-                    'type' => Controls_Manager::DIMENSIONS,
-                    'size_units' => ['px', '%', 'em'],
+                    'label' => __('Margin', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'max' => 50,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 5,
+                        'unit' => 'px',
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-product-cart-wrapper p.price' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                     ],
                     'condition' => [
                         'show_price!' => '',
@@ -323,7 +230,8 @@ class Product_Cart extends Widget_Base {
      */
     protected function render() {
 
-        $settings = $this->get_settings_for_display();
+
+        $showPrice = $this->get_settings_for_display('show_price');
         $queryProducts = false;
         if ('elementor-thhf' == get_post_type()) {
             //get a product and use it
@@ -336,65 +244,39 @@ class Product_Cart extends Widget_Base {
             );
 
             $queryProducts = get_posts($args);
-            if(count($queryProducts)){
-                 global $post;
-                 $post = $queryProducts[0];
-                 setup_postdata($post);
-            }
-            else {
+            if (count($queryProducts)) {
+                global $post;
+                $post = $queryProducts[0];
+                setup_postdata($post);
+            } else {
                 echo 'Please, have at least one product with a price in woocommerce to see any output here.';
             }
-           
-            
-        } 
-        
+        }
+
         if (get_post_type() == 'product') {
-            $productId = get_the_ID();
-            $code[] = 'id="' . $productId . '"';
-            $style = [];
-            if (isset($settings['quantity'])) {
-                $code[] = 'quantity="' . $settings['quantity'] . '"';
-            }
-            $code[] = 'show_price="' . (empty($settings['show_price']) ? 'FALSE' : 'TRUE') . '"';
-
-            if (isset($settings['class'])) {
-                $code[] = 'class="' . $settings['class'] . '"';
-            }
-            if (isset($settings['border_type']) && !empty($settings['border_type'])) {
-                if (isset($settings['border_width']) && !empty($settings['border_width']['size'])) {
-                    $style[] = 'border:' . $settings['border_width']['size'] . $settings['border_width']['unit'] . ' ' . $settings['border_type'];
-//                    $sidesArr = ['left', 'right', 'top', 'bottom'];
-//                    foreach ($sidesArr as $side) {
-//                        if (isset($settings['border_width'][$side])) {
-//                            $style[] = 'padding-' . $side . ':' . $settings['border_width'][$side] . $settings['border_width']['unit'];
-//                        }
-//                    }
-                }
-            }
-            if (isset($settings['padding']) && !empty($settings['padding']['size'])) {
-                $style[] = 'padding:' . $settings['padding']['size'] . $settings['padding']['unit'];
-            }
-            if (isset($settings['border_color']) && !empty($settings['border_color'])) {
-                $style[] = 'border-color:' . $settings['border_color'];
-            }
-
-            if (count($style)) {
-                $code[] = 'style="' . implode(";", $style) . ';"';
-            }
-
-
-            $string = implode(" ", $code);
-            $shortCode = '[add_to_cart  ' . $string . ']';
-
-            $content = do_shortcode($shortCode);
+            global $product;
+            $product = wc_get_product();
+            
+            ob_start();
+            if ($showPrice):
+                woocommerce_template_single_price();
+            endif;
+            woocommerce_template_single_add_to_cart();
+            $content = ob_get_clean();
         }
         
-        if($queryProducts){
+        
+        
+        if ($queryProducts) {
             wp_reset_postdata();
         }
-        ?>		
-        <div class="hfe-product-cart hfe-product-cart-wrapper">
-            <?php echo $content; ?>
+        ?>
+        <style>.hfe-product-cart-wrapper .quantity{
+                margin: 0 4px 0 0;
+                display: inline-block;
+            }</style>
+        <div class="woocommerce hfe-product-cart hfe-product-cart-wrapper">
+                <?php echo $content; ?>
         </div>
         <?php
     }

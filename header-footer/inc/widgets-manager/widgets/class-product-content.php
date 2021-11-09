@@ -9,6 +9,9 @@ namespace THHF\WidgetsManager\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
+use Elementor\Group_Control_Typography;
+use Elementor\Scheme_Typography;
+use Elementor\Scheme_Color;
 
 
 if (!defined('ABSPATH')) {
@@ -99,29 +102,7 @@ class Product_Content extends Widget_Base {
      * @access protected
      */
     protected function register_content_product_content_controls() {
-        $this->start_controls_section(
-                'section_general_fields',
-                [
-                    'label' => __('Content', 'header-footer-elementor'),
-                ]
-        );
-
-        $this->add_control(
-                'hide_title',
-                [
-                    'label' => __('Hide Title', 'header-footer-elementor'),
-                    'type' => Controls_Manager::SWITCHER,
-                    'label_on' => __('Yes', 'header-footer-elementor'),
-                    'label_off' => __('No', 'header-footer-elementor'),
-                    'return_value' => 'yes',
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-product-content-wrapper .product_title' => 'display: none!important;',
-                    ],
-                ]
-        );
-
-        $this->end_controls_section();
+       
     }
 
     /**
@@ -131,7 +112,39 @@ class Product_Content extends Widget_Base {
      * @access protected
      */
     protected function register_product_content_style_controls() {
-        
+        $this->start_controls_section(
+                'section_content_typography',
+                [
+                    'label' => __('Title', 'header-footer-elementor'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+        );
+
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'content_typography',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-product-content-wrapper p',
+                ]
+        );
+
+        $this->add_control(
+                'content_color',
+                [
+                    'label' => __('Color', 'header-footer-elementor'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-content-wrapper p' => 'color: {{VALUE}};',
+                    ],
+                ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -164,12 +177,7 @@ class Product_Content extends Widget_Base {
                 echo 'Please, have at least one product with content in woocommerce to see any output here.';
             }
         }
-//        else if (get_post_type() == 'product') {
-//            $productId = get_the_ID();
-//
-//            $shortCode = '[product_page id="' . $productId . '"]';
-//            $content = do_shortcode($shortCode);
-//        }
+
         ?>		
         <div class="hfe-product-content hfe-product-content-wrapper">
             <?php  echo apply_filters( 'the_content', get_the_content() ); ?>
