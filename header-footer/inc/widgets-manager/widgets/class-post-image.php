@@ -151,16 +151,17 @@ class Post_Image extends Widget_Base {
         $this->add_control(
                 'note',
                 [
-                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
+                    //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Fetches the featured image from the post. You can define a custom one as well.', 'header-footer-elementor'),
+                    'raw' => __('Displays the Post Featured Image.', 'header-footer-elementor'),
                 ]
         );
         $this->add_control(
                 'image',
                 [
-                    'label' => esc_html__('Fallback Image', 'elementor'),
+                    'label' => esc_html__('Image fallback', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
+                    'description' => __('Replaces missing Post Featured Image.', 'header-footer-elementor'),
                 ]
         );
 

@@ -121,17 +121,18 @@ class Post_Media extends Widget_Base {
         $this->add_control(
                 'note',
                 [
-                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
+                    //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Fetches the featured image from the post. You can define a custom one as well.', 'header-footer-elementor'),
+                    'raw' => __('Displays the featured image from the current post.', 'header-footer-elementor'),
                 ]
         );
 
         $this->add_control(
                 'image',
                 [
-                    'label' => esc_html__('Fallback Image', 'elementor'),
+                    'label' => esc_html__('Image fallback', 'elementor'),
                     'type' => Controls_Manager::MEDIA,
+                    'description' => __('Replaces missing Post Featured Image.', 'header-footer-elementor'),
                 ]
         );
 
@@ -430,16 +431,16 @@ class Post_Media extends Widget_Base {
         $this->add_control(
                 'note',
                 [
-                    'label' => '<b>' . __('Note:', 'header-footer-elementor') . '</b>',
+                    //'label' => '<b>' . __('Note:', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Displays the content in the format defined in the post settings. <br><br>Optionally, you can set select different types and style them.', 'header-footer-elementor'),
+                    'raw' => __('Displays the Post Format Content (defined in the post settings).', 'header-footer-elementor'),
                 ]
         );
 
         $this->add_control(
                 'test_type',
                 [
-                    'label' => __('Type to test', 'header-footer-elementor'),
+                    'label' => __('Styling preview', 'header-footer-elementor'),
                     'type' => Controls_Manager::SELECT,
                     'default' => 'Image',
                     'options' => [

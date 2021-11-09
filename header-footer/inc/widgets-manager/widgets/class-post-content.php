@@ -91,7 +91,7 @@ class Post_Content extends Widget_Base {
      */
     protected function _register_controls() {
         $this->register_content_post_content_controls();
-        $this->register_post_content_style_controls();
+        //$this->register_post_content_style_controls();
     }
 
     /**

@@ -112,10 +112,10 @@ class Post_Title extends Widget_Base {
         $this->add_control(
                 'fallback_title',
                 [
-                    'label' => __('Fallback Title', 'header-footer-elementor'),
+                    'label' => __('Title fallback', 'header-footer-elementor'),
                     'type' => Controls_Manager::TEXT,
                     'default' => __('Post Title', 'header-footer-elementor'),
-                    'description' => __('When post title is missing, this will be used.', 'header-footer-elementor'),
+                    'description' => __('Replaces missing post title.', 'header-footer-elementor'),
                 ]
         );
         $this->add_control(
