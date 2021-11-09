@@ -69,7 +69,7 @@ class Post_Media extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'thhf-eicon-post-excerpt';
+        return 'eicon-wordpress';
     }
 
     /**
@@ -88,6 +88,10 @@ class Post_Media extends Widget_Base {
      */
     public function get_categories() {
         return ['themo-single'];
+    }
+
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
     }
 
     /**
@@ -433,7 +437,7 @@ class Post_Media extends Widget_Base {
                 [
                     //'label' => '<b>' . __('Note:', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Displays the Post Format Content (defined in the post settings).', 'header-footer-elementor'),
+                    'raw' => __('Displays the Post Format Media defined in the post settings.', 'header-footer-elementor'),
                 ]
         );
 
@@ -443,6 +447,7 @@ class Post_Media extends Widget_Base {
                     'label' => __('Styling preview', 'header-footer-elementor'),
                     'type' => Controls_Manager::SELECT,
                     'default' => 'Image',
+                    'description' => __('Styling preview requires at least one pubished blog post with a corresponding format type set to work.', 'header-footer-elementor'),
                     'options' => [
                         'image' => __('Image', 'header-footer-elementor'),
                         'video' => __('Video', 'header-footer-elementor'),

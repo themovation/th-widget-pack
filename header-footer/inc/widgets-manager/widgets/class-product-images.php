@@ -59,7 +59,7 @@ class Product_Images extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'thhf-eicon-post-images';
+        return 'eicon-wordpress';
     }
 
     /**
@@ -102,7 +102,7 @@ class Product_Images extends Widget_Base {
         $this->add_control(
                 'section_main_image',
                 [
-                    'label' => __('Main Image', 'header-footer-elementor'),
+                    'label' => __('Image', 'header-footer-elementor'),
                     'type' => Controls_Manager::HEADING,
                 ]
         );
@@ -129,22 +129,7 @@ class Product_Images extends Widget_Base {
                     ],
                 ]
         );
-        $this->add_responsive_control(
-                'spacing',
-                [
-                    'label' => __('Main image and Thumbnails distance', 'header-footer-elementor'),
-                    'separator' => 'before',
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'max' => 200,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'margin-top: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-        );
+
 
         $this->add_control(
                 'section_thumbnails',
@@ -155,9 +140,25 @@ class Product_Images extends Widget_Base {
                 ]
         );
         $this->add_responsive_control(
+            'spacing',
+            [
+                'label' => __('Top Margin', 'header-footer-elementor'),
+
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'max' => 200,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
                 'padding',
                 [
-                    'label' => __('Padding', 'header-footer-elementor'),
+                    'label' => __('Item Padding', 'header-footer-elementor'),
                     'type' => Controls_Manager::SLIDER,
                     'range' => [
                         'px' => [
@@ -215,9 +216,9 @@ class Product_Images extends Widget_Base {
         $this->add_control(
                 'note',
                 [
-                    'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
+                    //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Renders product gallery.', 'header-footer-elementor'),
+                    'raw' => __('Displays Product Gallery.', 'header-footer-elementor'),
                 ]
         );
         $this->end_controls_section();

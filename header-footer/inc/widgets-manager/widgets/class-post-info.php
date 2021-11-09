@@ -65,7 +65,7 @@ class Post_Info extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'thhf-eicon-post-excerpt';
+        return 'eicon-wordpress';
     }
 
     /**
