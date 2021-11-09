@@ -112,7 +112,7 @@ class Post_Navigation extends Widget_Base {
         $this->add_control(
                 'hide_title',
                 [
-                    'label' => __('Hide Post Titles', 'header-footer-elementor'),
+                    'label' => __('Custom Labels', 'header-footer-elementor'),
                     'type' => Controls_Manager::SWITCHER,
                     'label_on' => __('Yes', 'header-footer-elementor'),
                     'label_off' => __('No', 'header-footer-elementor'),
@@ -145,7 +145,7 @@ class Post_Navigation extends Widget_Base {
         $this->add_control(
                 'stack_phone',
                 [
-                    'label' => __('Stack on phone?', 'header-footer-elementor'),
+                    'label' => __('Stack on mobile', 'header-footer-elementor'),
                     'type' => Controls_Manager::SWITCHER,
                     'label_on' => __('Yes', 'header-footer-elementor'),
                     'label_off' => __('No', 'header-footer-elementor'),

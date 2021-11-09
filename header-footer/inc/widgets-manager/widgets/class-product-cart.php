@@ -48,7 +48,7 @@ class Product_Cart extends Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __('Product Cart', 'header-footer-elementor');
+        return __('Add to Cart', 'header-footer-elementor');
     }
 
     /**

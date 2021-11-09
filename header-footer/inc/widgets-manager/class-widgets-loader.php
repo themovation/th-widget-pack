@@ -99,9 +99,9 @@ class Widgets_Loader {
             $element->add_control(
                     'th_dynamic_image',
                     [
-                        'label' => __('Use dynamic Image', 'header-footer-elementor'),
+                        'label' => __('Use Featured Image', 'header-footer-elementor'),
                         'type' => Controls_Manager::SWITCHER,
-                        'description' => 'Shows the featured image from the post/product. The settings will be used from the "Image" field below and the image will be used as the fallback.',
+                        'description' => 'Replace Image above with the Featured Image if one exists for the current post or product.',
                         'label_on' => __('Yes', 'header-footer-elementor'),
                         'label_off' => __('No', 'header-footer-elementor'),
                         'return_value' => 'yes',
