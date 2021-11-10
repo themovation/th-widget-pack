@@ -58,7 +58,15 @@ class Retina extends Widget_Base {
 	public function get_title() {
 		return __( 'Retina Image', 'header-footer-elementor' );
 	}
-
+ 
+        /**
+        * get Plugin help URL
+        * @return string help url
+        */
+        public function get_custom_help_url() {
+            return 'https://help.themovation.com/' . $this->get_name();
+        }
+         
 	/**
 	 * Retrieve the widget icon.
 	 *

@@ -54,6 +54,15 @@ class Post_Navigation extends Widget_Base {
     }
 
     /**
+    * get Plugin help URL
+    * @return string help url
+    */
+    public function get_custom_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+        
+        
+    /**
      * Retrieve the widget icon.
      *
      * @since 1.3.0

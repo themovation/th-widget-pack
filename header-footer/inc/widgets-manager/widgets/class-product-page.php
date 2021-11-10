@@ -35,7 +35,15 @@ class Product_Page extends Widget_Base {
     public function get_name() {
         return 'thhf-product-page';
     }
-
+    
+    /**
+    * get Plugin help URL
+    * @return string help url
+    */
+    public function get_custom_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+         
     /**
      * Retrieve the widget title.
      *
