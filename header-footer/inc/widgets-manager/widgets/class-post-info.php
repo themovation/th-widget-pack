@@ -247,6 +247,22 @@ class Post_Info extends Widget_Base {
                     ],
                 ]
         );
+        $listing->add_control(
+                'text_before',
+                [
+                    'label' => __('Before', 'th-widget-pack'),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => '',
+                ]
+        );
+        $listing->add_control(
+                'text_after',
+                [
+                    'label' => __('After', 'th-widget-pack'),
+                    'type' => Controls_Manager::TEXT,
+                    'default' => '',
+                ]
+        );
         $this->add_control(
                 'info',
                 [
@@ -279,8 +295,8 @@ class Post_Info extends Widget_Base {
                         [
                             'type' => 'comments',
                             'icon' => [
-                                'value' => 'far fa-comment-dots',
-                                'library' => 'fa-regular',
+                                'value' => 'th-linea icon-basic-message-multiple',
+                                'library' => 'th-linea',
                             ]
                         ],
                     ],
@@ -409,6 +425,14 @@ class Post_Info extends Widget_Base {
                     'tab' => Controls_Manager::TAB_STYLE,
                 ]
         );
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'text_typography',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .info-value *',
+                ]
+        );
         $this->add_control(
                 'text_color',
                 [
@@ -423,24 +447,69 @@ class Post_Info extends Widget_Base {
                     ],
                 ]
         );
-        $this->add_responsive_control(
-                'text_size',
+        
+        $this->end_controls_section();
+        $this->start_controls_section(
+                'section_before_typography',
                 [
-                    'label' => __('Size', 'th-widget-pack'),
-                    'type' => Controls_Manager::SLIDER,
-                    'size_units' => ['px'],
+                    'label' => __('Before', 'header-footer-elementor'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+        );
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'before_typography',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-before',
+                ]
+        );
+        $this->add_control(
+                'before_text_color',
+                [
+                    'label' => __('Text Color', 'header-footer-elementor'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-info-wrapper .info-value' => 'font-size: {{SIZE}}{{UNIT}}',
-                    ],
-                    'default' => [
-                        'size' => 14,
-                    ],
-                    'range' => [
-                        'min' => 1,
-                        'max' => 100,
+                        '{{WRAPPER}} .hfe-post-info-wrapper .text-before' => 'color: {{VALUE}};',
                     ],
                 ]
         );
+        
+        $this->end_controls_section();
+        $this->start_controls_section(
+                'section_after_typography',
+                [
+                    'label' => __('After', 'header-footer-elementor'),
+                    'tab' => Controls_Manager::TAB_STYLE,
+                ]
+        );
+        $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'after_typography',
+                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-after',
+                ]
+        );
+        $this->add_control(
+                'after_text_color',
+                [
+                    'label' => __('Text Color', 'header-footer-elementor'),
+                    'type' => Controls_Manager::COLOR,
+                    'scheme' => [
+                        'type' => Scheme_Color::get_type(),
+                        'value' => Scheme_Color::COLOR_1,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-post-info-wrapper .text-after' => 'color: {{VALUE}};',
+                    ],
+                ]
+        );
+        
         $this->end_controls_section();
         $this->start_controls_section(
                 'section_icon_typography',
@@ -534,6 +603,8 @@ class Post_Info extends Widget_Base {
                 $link = $avatar = false;
                 $termsList = [];
                 $itemType = isset($item['type']) ? $item['type'] : false;
+                $itemBefore = !empty($item['text_before']) ? $item['text_before'] : false;
+                $itemAfter = !empty($item['text_after']) ? $item['text_after'] : false;
                 if ($item['show_link_author'] || $item['show_link_comments']) {
                     if ($itemType === 'author') {
                         $link = get_author_posts_url($author_id);
@@ -585,6 +656,11 @@ class Post_Info extends Widget_Base {
                             endif;
                             ?>
                         </div>
+                    <?php endif; ?>
+                    <?php if (isset($itemBefore)): ?>
+                    <div class="text-before">
+                        <?php echo str_replace(' ', '&nbsp;', $itemBefore)?>
+                    </div>
                     <?php endif; ?>
                     <?php if (isset($itemType)): ?>
                         <div class="info-value">
@@ -652,6 +728,11 @@ class Post_Info extends Widget_Base {
                                 ?>
                             </span>
                         </div>
+                    <?php endif; ?>
+                     <?php if (isset($itemAfter)): ?>
+                    <div class="text-after">
+                        <?php echo str_replace(' ', '&nbsp;', $itemAfter) ?>
+                    </div>
                     <?php endif; ?>
                 </div>
                 <?php
