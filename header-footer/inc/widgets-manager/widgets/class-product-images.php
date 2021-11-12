@@ -37,13 +37,13 @@ class Product_Images extends Widget_Base {
     }
 
     /**
-    * get Plugin help URL
-    * @return string help url
-    */
+     * get Plugin help URL
+     * @return string help url
+     */
     public function get_custom_help_url() {
         return 'https://help.themovation.com/' . $this->get_name();
     }
-        
+
     /**
      * Retrieve the widget title.
      *
@@ -97,8 +97,8 @@ class Product_Images extends Widget_Base {
     protected function _register_controls() {
         $this->register_content_product_images_controls();
         $this->register_product_images_style_controls();
-        
     }
+
     protected function register_product_images_style_controls() {
         $this->start_controls_section(
                 'section_style_fields',
@@ -138,7 +138,6 @@ class Product_Images extends Widget_Base {
                 ]
         );
 
-
         $this->add_control(
                 'section_thumbnails',
                 [
@@ -148,20 +147,19 @@ class Product_Images extends Widget_Base {
                 ]
         );
         $this->add_responsive_control(
-            'spacing',
-            [
-                'label' => __('Top Margin', 'header-footer-elementor'),
-
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'max' => 200,
+                'spacing',
+                [
+                    'label' => __('Top Margin', 'header-footer-elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'max' => 200,
+                        ],
                     ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'margin-top: {{SIZE}}{{UNIT}};',
-                ],
-            ]
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-product-images-wrapper .flex-control-thumbs' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
         );
         $this->add_responsive_control(
                 'padding',
@@ -208,6 +206,7 @@ class Product_Images extends Widget_Base {
 
         $this->end_controls_section();
     }
+
     /**
      * Register Product Images General Controls.
      *
@@ -230,7 +229,42 @@ class Product_Images extends Widget_Base {
                 ]
         );
         $this->end_controls_section();
-        
+    }
+
+    private function renderGallery($imagePost) {
+        $product = new \WC_product($imagePost->ID);
+
+        $attachment_ids = $product->get_gallery_image_ids();
+
+        $columns = apply_filters('woocommerce_product_thumbnails_columns', 4);
+
+        echo '<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-' . $columns . ' images">';
+        $post_thumbnail_id = $product->get_image_id();
+        echo '<figure class="woocommerce-product-gallery__wrapper">';
+        if ($post_thumbnail_id) {
+            $search = 'woocommerce-product-gallery__image';
+            $html = str_replace($search, $search . ' flex-active-slide', wc_get_gallery_image_html($post_thumbnail_id, true));
+        } else {
+            $html = '<div class="woocommerce-product-gallery__image--placeholder flex-active-slide">';
+            $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
+            $html .= '</div>';
+        }
+
+        echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+        echo '</figure>';
+
+        if (count($attachment_ids)) {
+            echo '<ol class="flex-control-nav flex-control-thumbs">';
+        }
+        foreach ($attachment_ids as $attachment_id) {
+            $image = wp_get_attachment_image($attachment_id);
+            echo '<li>' . $image . '</li>';
+        }
+        if (count($attachment_ids)) {
+            echo '</ol>';
+        }
+        echo '</div>';
     }
 
     /**
@@ -263,62 +297,49 @@ class Product_Images extends Widget_Base {
             if (count($imageProduct)) {
                 $imagePost = $imageProduct[0];
                 ob_start();
-                $product = new \WC_product($imagePost->ID);
-
-                $attachment_ids = $product->get_gallery_image_ids();
-
-                $columns = apply_filters('woocommerce_product_thumbnails_columns', 4);
-
-                echo '<div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-' . $columns . ' images">';
-                $post_thumbnail_id = $product->get_image_id();
-                echo '<figure class="woocommerce-product-gallery__wrapper">';
-                if ($post_thumbnail_id) {
-                    $search = 'woocommerce-product-gallery__image';
-                    $html = str_replace($search, $search.' flex-active-slide', wc_get_gallery_image_html($post_thumbnail_id, true));
-                    
-                } else {
-                    $html = '<div class="woocommerce-product-gallery__image--placeholder flex-active-slide">';
-                    $html .= sprintf('<img src="%s" alt="%s" class="wp-post-image" />', esc_url(wc_placeholder_img_src('woocommerce_single')), esc_html__('Awaiting product image', 'woocommerce'));
-                    $html .= '</div>';
-                }
-
-                echo apply_filters('woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
-
-                echo '</figure>';
-
-                if (count($attachment_ids)) {
-                echo '<ol class="flex-control-nav flex-control-thumbs">';
-                    }
-                    foreach ($attachment_ids as $attachment_id) {
-                        $image = wp_get_attachment_image($attachment_id);
-                        echo '<li>'.$image.'</li>';
-                    }
-                    if (count($attachment_ids)) {
-                    echo '</ol>';
-                }
-                echo '</div>';
-                //wc_get_template('single-product/product-image.php');
-                //echo '<style>.hfe-product-images-wrapper .woocommerce-product-gallery{opacity: 1!important;}</style>';
+                $this->renderGallery($imagePost);
                 $content = ob_get_clean();
                 wp_enqueue_script('wc-single-product');
-                
-                } else {
-                $content = 'Please have at least one product with an image gallery setup in woocommerce.';
-                }
-
                 wp_reset_postdata();
-                } else if (get_post_type() == 'product') {
-                 global $product;
-                $product = wc_get_product();    
-                ob_start();
-                wc_get_template('single-product/product-image.php');
-                $content = ob_get_clean();
+            } else {
+                //try to search another one with a featured image
+                $args = array(
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'order' => 'desc',
+                    'post_type' => 'product',
+                    'meta_query' => array(
+                        array(
+                            'key' => '_thumbnail_id',
+                            'value' => '',
+                            'compare' => '!=',
+                        ),
+                    )
+                );
+                $imageProduct = get_posts($args);
+                if (count($imageProduct)) {
+                    $imagePost = $imageProduct[0];
+                    ob_start();
+                    $this->renderGallery($imagePost);
+                    $content = ob_get_clean();
+                    wp_reset_postdata();
+                } else {
+                    $content = 'Please have at least one product with an image gallery setup in woocommerce.';
                 }
-                ?>		
-                <div class="hfe-product-images hfe-product-images-wrapper">
-                    <?php echo $content; ?>
-                </div>
-                <?php
             }
+        } else if (get_post_type() == 'product') {
+            global $product;
+            $product = wc_get_product();
+            ob_start();
+            wc_get_template('single-product/product-image.php');
+            $content = ob_get_clean();
         }
-        
+        ?>		
+        <div class="hfe-product-images hfe-product-images-wrapper">
+        <?php echo $content; ?>
+        </div>
+            <?php
+        }
+
+    }
+    
