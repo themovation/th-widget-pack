@@ -91,13 +91,12 @@ class Post_Media extends Widget_Base {
     }
 
     /**
-    * get Plugin help URL
-    * @return string help url
-    */
-     public function get_custom_help_url() {
+     * get Plugin help URL
+     * @return string help url
+     */
+    public function get_custom_help_url() {
         return 'https://help.themovation.com/' . $this->get_name();
     }
-    
 
     /**
      * Register Post Media controls.
@@ -107,8 +106,78 @@ class Post_Media extends Widget_Base {
      */
     protected function _register_controls() {
         $this->register_content_post_media_controls();
+        $this->register_content_post_media_standard_controls();
         $this->register_image_controls();
         $this->register_post_media_style_controls();
+    }
+
+    /**
+     * Register Post Content General Controls.
+     *
+     * @since 1.3.0
+     * @access protected
+     */
+    protected function register_content_post_media_standard_controls() {
+        $this->start_controls_section(
+                'section_standard',
+                [
+                    'label' => __('Standard', 'header-footer-elementor'),
+                ]
+        );
+        $this->add_control(
+                'standard_note',
+                [
+                    //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
+                    'type' => \Elementor\Controls_Manager::RAW_HTML,
+                    'raw' => __('Featured image in this format can be styled using the "Image" section below.', 'header-footer-elementor'),
+                ]
+        );
+        $this->add_responsive_control(
+                'standard_align',
+                [
+                    'label' => __('Alignment', 'header-footer-elementor'),
+                    'type' => Controls_Manager::CHOOSE,
+                    'options' => [
+                        'left' => [
+                            'title' => __('Left', 'header-footer-elementor'),
+                            'icon' => 'eicon-text-align-left',
+                        ],
+                        'center' => [
+                            'title' => __('Center', 'header-footer-elementor'),
+                            'icon' => 'eicon-text-align-center',
+                        ],
+                        'right' => [
+                            'title' => __('Right', 'header-footer-elementor'),
+                            'icon' => 'eicon-text-align-right',
+                        ],
+                        'justify' => [
+                            'title' => __('Justified', 'header-footer-elementor'),
+                            'icon' => 'eicon-text-align-justify',
+                        ],
+                    ],
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-standard' => 'text-align: {{VALUE}};',
+                    ],
+                ]
+        );
+        $this->add_responsive_control(
+                'standard_image_spacing',
+                [
+                    'label' => esc_html__('Spacing', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-standard .wp-caption+p' => 'margin-top: {{SIZE}}{{UNIT}};',
+                    ],
+                ]
+        );
+        $this->end_controls_section();
     }
 
     /**
@@ -155,7 +224,7 @@ class Post_Media extends Widget_Base {
         );
 
         $this->add_responsive_control(
-                'align',
+                'align_image',
                 [
                     'label' => esc_html__('Alignment', 'elementor'),
                     'type' => Controls_Manager::CHOOSE,
@@ -174,7 +243,7 @@ class Post_Media extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption' => 'text-align: {{VALUE}};',
                     ],
                 ]
         );
@@ -272,7 +341,7 @@ class Post_Media extends Widget_Base {
                 Group_Control_Border::get_type(),
                 [
                     'name' => 'image_border',
-                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image img',
+                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption img',
                 ]
         );
 
@@ -283,7 +352,7 @@ class Post_Media extends Widget_Base {
                     'type' => Controls_Manager::DIMENSIONS,
                     'size_units' => ['px', '%'],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     ],
                 ]
         );
@@ -295,7 +364,7 @@ class Post_Media extends Widget_Base {
                     'exclude' => [
                         'box_shadow_position',
                     ],
-                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image img',
+                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption img',
                 ]
         );
 
@@ -337,7 +406,7 @@ class Post_Media extends Widget_Base {
                     ],
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption' => 'text-align: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption' => 'text-align: {{VALUE}};',
                     ],
                 ]
         );
@@ -349,7 +418,7 @@ class Post_Media extends Widget_Base {
                     'type' => Controls_Manager::COLOR,
                     'default' => '',
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption' => 'color: {{VALUE}};',
                     ],
                     'global' => [
                         'default' => Global_Colors::COLOR_TEXT,
@@ -363,7 +432,7 @@ class Post_Media extends Widget_Base {
                     'label' => esc_html__('Background Color', 'elementor'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption' => 'background-color: {{VALUE}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption' => 'background-color: {{VALUE}};',
                     ],
                 ]
         );
@@ -372,7 +441,7 @@ class Post_Media extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'caption_typography',
-                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption',
+                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption',
                     'global' => [
                         'default' => Global_Typography::TYPOGRAPHY_TEXT,
                     ],
@@ -383,7 +452,7 @@ class Post_Media extends Widget_Base {
                 Group_Control_Text_Shadow::get_type(),
                 [
                     'name' => 'caption_text_shadow',
-                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption',
+                    'selector' => '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption',
                 ]
         );
 
@@ -399,7 +468,7 @@ class Post_Media extends Widget_Base {
                         ],
                     ],
                     'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-image .widget-image-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
+                        '{{WRAPPER}} .hfe-post-media-wrapper .wp-caption .widget-image-caption' => 'margin-top: {{SIZE}}{{UNIT}};',
                     ],
                 ]
         );
@@ -451,9 +520,10 @@ class Post_Media extends Widget_Base {
                 [
                     'label' => __('Styling preview', 'header-footer-elementor'),
                     'type' => Controls_Manager::SELECT,
-                    'default' => 'Image',
+                    'default' => 'standard',
                     'description' => __('Styling preview requires at least one pubished blog post with a corresponding format type set to work.', 'header-footer-elementor'),
                     'options' => [
+                        'standard' => __('Standard', 'header-footer-elementor'),
                         'image' => __('Image', 'header-footer-elementor'),
                         'video' => __('Video', 'header-footer-elementor'),
                         'audio' => __('Audio', 'header-footer-elementor'),
@@ -504,7 +574,7 @@ class Post_Media extends Widget_Base {
         ?>
 
         <div class="audio-embed">
-            <?php echo $embed_code; ?>
+        <?php echo $embed_code; ?>
         </div>
 
         <?php
@@ -524,6 +594,7 @@ class Post_Media extends Widget_Base {
 
     private function getTypeStandard() {
         $this->getTypeImage();
+        echo apply_filters('the_content', get_the_content());
     }
 
     private function getTypeLink() {
@@ -580,7 +651,7 @@ class Post_Media extends Widget_Base {
         if (isset($embed_code) && $embed_code > "") {
             ?>
             <div class="<?php echo wp_kses_post($video_container_class); ?>">
-                <?php echo $embed_code ?>
+            <?php echo $embed_code ?>
             </div>
             <?php
         }
@@ -629,7 +700,7 @@ class Post_Media extends Widget_Base {
         endif;
         ?>
         <figure class="wp-caption">
-            <?php if (count($link)): ?>
+                <?php if (count($link)): ?>
                 <a <?php $this->print_render_attribute_string('link') ?>>
                 <?php endif;
                 ?>
@@ -660,7 +731,7 @@ class Post_Media extends Widget_Base {
         if ('elementor-thhf' == get_post_type()) {
             $testType = $this->get_settings_for_display('test_type');
             if (!empty($testType)) {
-                $ttype = 'post-format-'.$testType;
+                $ttype = 'post-format-' . $testType;
                 $args = array(
                     'posts_per_page' => 1,
                     'orderby' => 'date',
@@ -670,10 +741,15 @@ class Post_Media extends Widget_Base {
                         array(
                             'taxonomy' => 'post_format',
                             'field' => 'slug',
-                            'terms' => array($ttype),
                         ),
                     ),
                 );
+                if ($testType === 'standard') {
+                    $args['tax_query'][0]['terms'] = array('post-format-quote', 'post-format-audio', 'post-format-gallery', 'post-format-image', 'post-format-link', 'post-format-video');
+                    $args['tax_query'][0]['operator'] = 'NOT IN';
+                } else {
+                    $args['tax_query'][0]['terms'] = array($ttype);
+                }
 
                 $queryPosts = get_posts($args);
                 if (count($queryPosts)) {
