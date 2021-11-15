@@ -264,8 +264,8 @@ class THHF_Admin {
         if('stratus' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME){
             add_submenu_page(
                 'stratus_dashboard',
-                __( 'Header & Footer', 'header-footer-elementor' ),
-                __( 'Header & Footer', 'header-footer-elementor' ),
+                __( 'Global Templates', 'header-footer-elementor' ),
+                __( 'Global Templates', 'header-footer-elementor' ),
                 'edit_pages',
                 'edit.php?post_type=elementor-thhf'
             );
