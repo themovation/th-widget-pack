@@ -594,7 +594,6 @@ class Post_Media extends Widget_Base {
 
     private function getTypeStandard() {
         $this->getTypeImage();
-        echo apply_filters('the_content', get_the_content());
     }
 
     private function getTypeLink() {
@@ -747,7 +746,25 @@ class Post_Media extends Widget_Base {
                 if ($testType === 'standard') {
                     $args['tax_query'][0]['terms'] = array('post-format-quote', 'post-format-audio', 'post-format-gallery', 'post-format-image', 'post-format-link', 'post-format-video');
                     $args['tax_query'][0]['operator'] = 'NOT IN';
-                } else {
+                    $args['meta_query'] =  array(
+                        array(
+                            'key' => '_thumbnail_id',
+                            'value' => '',
+                            'compare' => '!=',
+                        ),
+                    );
+                } 
+                 else if($testType === 'image'){
+                    $args['tax_query'][0]['terms'] = array($ttype);
+                    $args['meta_query'] =  array(
+                        array(
+                            'key' => '_thumbnail_id',
+                            'value' => '',
+                            'compare' => '!=',
+                        ),
+                    );
+                }
+                else {
                     $args['tax_query'][0]['terms'] = array($ttype);
                 }
 
@@ -758,6 +775,9 @@ class Post_Media extends Widget_Base {
                     setup_postdata($post);
                 } else {
                     echo 'Please, at least have one post of "' . $testType . '" format type to see some output here.';
+                    if($testType==='standard'){
+                        echo 'Make sure the post has a featured image.';
+                    }
                 }
             }
         }
