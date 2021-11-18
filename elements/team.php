@@ -14,7 +14,7 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-person';
+		return 'th-editor-icon-team-member';
 	}
 
 	public function get_categories() {

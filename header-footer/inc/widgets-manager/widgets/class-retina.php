@@ -77,7 +77,7 @@ class Retina extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-retina-image';
+		return 'th-editor-icon-retina-image';
 	}
 
 	/**

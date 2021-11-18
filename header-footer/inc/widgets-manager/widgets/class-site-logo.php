@@ -79,7 +79,7 @@ class Site_Logo extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-site-logo';
+		return 'th-editor-icon-site-logo';
 	}
 
 	/**

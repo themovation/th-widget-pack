@@ -70,7 +70,7 @@ class Copyright extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-copyright-widget';
+		return 'th-editor-icon-copyright';
 	}
 	/**
 	 * Retrieve the list of categories the widget belongs to.

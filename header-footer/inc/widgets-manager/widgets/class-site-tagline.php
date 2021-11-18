@@ -71,7 +71,7 @@ class Site_Tagline extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-site-tagline';
+		return 'th-editor-icon-site-tagline';
 	}
 
 	/**

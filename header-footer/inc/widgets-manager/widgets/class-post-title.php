@@ -71,7 +71,7 @@ class Post_Title extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-wordpress';
+        return 'th-editor-icon-page-title';
     }
 
     /**

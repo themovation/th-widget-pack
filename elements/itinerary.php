@@ -14,7 +14,7 @@ class Themo_Widget_Itinerary extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-toggle';
+		return 'th-editor-icon-expand-list';
 	}
 
 	public function get_categories() {

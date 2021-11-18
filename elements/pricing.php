@@ -14,7 +14,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-price-table';
+		return 'th-editor-icon-pricing';
 	}
 
 	public function get_categories() {

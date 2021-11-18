@@ -31,7 +31,7 @@ class Themo_Widget_Tabs extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-tabs';
+        return 'th-editor-icon-menu-tabs';
     }
 
     public function get_categories() {

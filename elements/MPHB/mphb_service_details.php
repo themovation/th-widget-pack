@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-menu-card';
+        return 'th-editor-icon-service-details';
     }
 
     public function get_categories() {

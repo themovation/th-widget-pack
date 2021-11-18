@@ -14,7 +14,7 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-slides';
+		return 'th-editor-icon-slider';
 	}
 
 	public function get_categories() {

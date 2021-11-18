@@ -73,7 +73,7 @@ class Search_Button extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-search';
+		return 'th-editor-icon-search';
 	}
 
 	/**

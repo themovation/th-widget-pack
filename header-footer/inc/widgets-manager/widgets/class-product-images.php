@@ -67,7 +67,7 @@ class Product_Images extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-wordpress';
+        return 'th-editor-icon-image-gallery';
     }
 
     /**

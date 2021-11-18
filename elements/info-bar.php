@@ -14,7 +14,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-vertical';
+		return 'th-editor-icon-feature-bar';
 	}
 
 	public function get_categories() {

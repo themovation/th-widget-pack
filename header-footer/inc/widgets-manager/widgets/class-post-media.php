@@ -69,7 +69,7 @@ class Post_Media extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-wordpress';
+        return 'th-editor-icon-post-media';
     }
 
     /**

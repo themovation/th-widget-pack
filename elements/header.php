@@ -14,7 +14,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-animation-text';
+		return 'th-editor-icon-page-title';
 	}
 
 	public function get_categories() {

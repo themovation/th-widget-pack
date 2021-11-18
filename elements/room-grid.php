@@ -14,7 +14,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-gallery-grid';
+        return 'th-editor-icon-blog';
     }
 
     public function get_categories() {
