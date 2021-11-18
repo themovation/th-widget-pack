@@ -71,7 +71,7 @@ class Post_Content extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'th-editor-icon-post-content';
+        return 'th-editor-icon-text-align-justify';
     }
 
     /**

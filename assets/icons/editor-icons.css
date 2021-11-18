@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:  url('editor/editor.eot?ch91n4');
-    src:  url('editor/editor.eot?ch91n4#iefix') format('embedded-opentype'),
-        url('editor/editor.ttf?ch91n4') format('truetype'),
-        url('editor/editor.woff?ch91n4') format('woff'),
-        url('editor/editor.svg?ch91n4#icomoon') format('svg');
+    src:  url('editor/editor.eot?z56sz6');
+    src:  url('editor/editor.eot?z56sz6#iefix') format('embedded-opentype'),
+        url('editor/editor.ttf?z56sz6') format('truetype'),
+        url('editor/editor.woff?z56sz6') format('woff'),
+        url('editor/editor.svg?z56sz6#editor') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -24,7 +24,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
+.th-editor-icon-text-align-justify:before {
+    content: "\e900";
+}
 .th-editor-icon-checkout-form:before {
     content: "\e911";
 }
@@ -158,13 +160,13 @@
     content: "\e92d";
 }
 .th-editor-icon-call-to-action:before {
-    content: "\e900";
-}
-.th-editor-icon-button:before {
     content: "\e901";
 }
-.th-editor-icon-header:before {
+.th-editor-icon-button:before {
     content: "\e902";
+}
+.th-editor-icon-header:before {
+    content: "\e92f";
 }
 
 
@@ -181,6 +183,6 @@
     position: absolute;
     bottom: -11px;
     z-index: 1;
-    width: 54px;
-    left: calc(50% - 27px);
+    width: 32px;
+    left: calc(50% - 16px);
 }

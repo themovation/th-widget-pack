@@ -12,28 +12,37 @@ and open the template in the editor.
 $colorGreen : #BAD344;
 $bgColor: #34383c;
 #elementor-controls{
-    .elementor-control-th_dynamic_image_note{
+    .elementor-control-th_dynamic_image, 
+    .elementor-control-th_thmv_section_title,
+    .elementor-control-th_section_parallax,
+    .elementor-control-th_dynamic_image{
         padding-bottom: 0; 
         .elementor-control-content{
-            color: $colorGreen;
             background-color: $bgColor;
-            padding: 20px 15px 0px;
+            padding: 20px 15px 0;
         }
     }
-    .elementor-control-th_dynamic_image {
+    .elementor-control-th_thmv_section_title{
+        .elementor-control-content{
+            color: $colorGreen;
+        }
+    }
+    .elementor-control-th_dynamic_image,.elementor-control-th_section_parallax{
         .elementor-control-title{
             font-weight: 600;
-        }
-        .elementor-control-content{
-            background-color: $bgColor;
-            padding: 20px 15px 20px;
         }
         .elementor-switch-input:checked{
             ~.elementor-switch-label{
                 background-color: $colorGreen;
             }
         }
-
-
+    }
+    //the last ones have the padding
+    .elementor-control-th_dynamic_image{
+        padding-bottom: 20px;
+        .elementor-control-content{
+            padding-bottom: 20px;
+        }
+        
     }
 }

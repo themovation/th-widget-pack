@@ -97,13 +97,6 @@ class Widgets_Loader {
     private function addPostImageToSectionWidget() {
         add_action('elementor/element/section/section_background/before_section_end', function ($element, $args) {
             $element->add_control(
-                'th_dynamic_image_note',
-                [
-                    'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Our special option', 'th-widget-pack'),
-                ]
-            );
-            $element->add_control(
                     'th_dynamic_image',
                     [
                         'label' => __('Use Featured Image', 'th-widget-pack'),

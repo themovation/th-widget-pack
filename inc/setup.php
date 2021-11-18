@@ -1,7 +1,11 @@
 <?php
- use Elementor\Controls_Manager;   
-
-
+use Elementor\Controls_Manager;   
+//use Elementor\Core\Settings\Manager as SettingsManager;
+//
+//function th_get_elementor_theme_mode(){
+//    $editor_preferences = SettingsManager::get_settings_managers( 'editorPreferences' );
+//    return $editor_preferences->get_model()->get_settings( 'ui_theme' );
+//}
 // Adding Custom Icons for Icon Control
 if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
     require_once THEMO_PATH . 'fields/icons.php' ;
@@ -479,9 +483,11 @@ add_action( 'elementor/element/wp-page/document_settings/before_section_start', 
 
 // Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( Elementor\Element_Section $section ) {
-
+    
+//    $ui_theme = 'el-ui-theme-'.th_get_elementor_theme_mode();
+    
     $section->add_control(
-        'th_raw',
+        'th_thmv_section_title',
         [
             'type'            => Controls_Manager::RAW_HTML,
             'raw'             => '<b>Themovation</b>',
@@ -492,6 +498,7 @@ function add_elementor_section_background_controls( Elementor\Element_Section $s
         'th_section_parallax',
         [
             'label' => __( 'Parallax', 'th-widget-pack' ),
+            'description' => 'Adds parallax effect to the section background image.',
             'type' => Elementor\Controls_Manager::SWITCHER,
             'label_off' => __( 'Off', 'th-widget-pack' ),
             'label_on' => __( 'On', 'th-widget-pack' ),
