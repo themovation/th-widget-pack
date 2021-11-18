@@ -19,6 +19,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Control_Media;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -124,7 +125,7 @@ class Post_Media extends Widget_Base {
                     'label' => __('Standard & Image', 'header-footer-elementor'),
                 ]
         );
-        
+
         $this->add_control(
                 'image_note',
                 [
@@ -133,7 +134,7 @@ class Post_Media extends Widget_Base {
                     'raw' => __('Displays the featured image from the current post.', 'header-footer-elementor'),
                 ]
         );
-       
+
         $this->add_control(
                 'image',
                 [
@@ -249,7 +250,7 @@ class Post_Media extends Widget_Base {
 
         $this->end_controls_section();
     }
-    
+
     /**
      * Register image type controls.
      *
@@ -259,7 +260,7 @@ class Post_Media extends Widget_Base {
      * @access private
      */
     private function register_image_styles() {
-               $this->start_controls_section(
+        $this->start_controls_section(
                 'section_style_image',
                 [
                     'label' => esc_html__('Image', 'elementor'),
@@ -411,12 +412,79 @@ class Post_Media extends Widget_Base {
                     'label' => esc_html__('Gallery', 'elementor'),
                 ]
         );
+        $this->add_control(
+                'autoplay',
+                [
+                    'label' => esc_html__('autoplay', 'elementor'),
+                    'type' => Controls_Manager::SELECT,
+                    'options' => [
+                        'yes' => esc_html__('Yes', 'elementor'),
+                        '' => esc_html__('No', 'elementor'),
+                    ],
+                    'default' => 'yes',
+                ]
+        );
+        $this->add_control(
+                'autoplay_speed',
+                [
+                    'label' => esc_html__('Autoplay Speed', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'int' => [
+                            'min' => 100,
+                            'step' => 100,
+                            'max' => 20000,
+                        ],
+                    ],
+                    'default' => [
+                        'unit' => 'int',
+                        'size' => 4000,
+                    ],
+                    'condition' => [
+                        'autoplay' => 'yes',
+                    ],
+                ]
+        );
+        $this->add_control(
+                'infinite',
+                [
+                    'label' => __('Infinite', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                    'default' => 'yes'
+                ]
+        );
         $this->add_group_control(
                 Group_Control_Image_Size::get_type(),
                 [
                     'name' => 'gallery_image', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `image_size` and `image_custom_dimension`.
                     'default' => 'large',
                     'separator' => 'none',
+                ]
+        );
+        $this->add_control(
+                'popup_switcher',
+                [
+                    'label' => __('Use popup', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'return_value' => 'yes',
+                    'default' => ''
+                ]
+        );
+        $this->add_group_control(
+                Group_Control_Image_Size::get_type(),
+                [
+                    'label' => esc_html__('Popup Image Size', 'elementor'),
+                    'name' => 'gallery_large_image', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `image_size` and `image_custom_dimension`.
+                    'default' => 'full',
+                    'separator' => 'none',
+                    'condition' => [
+                        'popup_switcher' => 'yes',
+                    ],
                 ]
         );
         $this->end_controls_section();
@@ -504,7 +572,7 @@ class Post_Media extends Widget_Base {
         ?>
 
         <div class="audio-embed">
-        <?php echo $embed_code; ?>
+            <?php echo $embed_code; ?>
         </div>
 
         <?php
@@ -515,11 +583,84 @@ class Post_Media extends Widget_Base {
 
         $imageSize = isset($settings['gallery_image_size']) ? $settings['gallery_image_size'] : 'th_img_xl';
         $gallery_shortcode = sanitize_text_field(get_post_meta(get_the_ID(), '_format_gallery', true));
-
-        if (!empty($gallery_shortcode)) {
-            $gallery_shortcode = str_replace("[gallery", "[slider_gallery image_size='" . $imageSize . "' ", $gallery_shortcode);
-            echo do_shortcode($gallery_shortcode);
+        //extract image ids from there
+        $pattern = "/gallery ids='(.*)'/";
+        $found = preg_match($pattern, $gallery_shortcode, $match);
+        if (!$found && !isset($match[1])) {
+            return;
         }
+        $images = explode(",", $match[1]);
+        if (!count($images)) {
+            return;
+        }
+
+        $speed = isset($settings['autoplay_speed']['size']) && !empty($settings['autoplay_speed']['size']) ? $settings['autoplay_speed']['size'] : '4000';
+        $infinite = isset($settings['infinite']) && !empty($settings['infinite']) ? 'yes' : 'no';
+        $showPopup = isset($settings['popup_switcher']) && !empty($settings['popup_switcher']) ? true : false;
+        $popupSize = isset($settings['gallery_large_image_size']) && !empty($settings['gallery_large_image_size']) ? $settings['gallery_large_image_size'] : 'large';
+        $autplay = isset($settings['autoplay']) && !empty($settings['autoplay']) ? '"autoplay":"yes","autoplay_speed":' . $speed . ',' : '';
+        $sliderSettings = '{"slides_to_show":"1","navigation":"both",' . $autplay . '"pause_on_hover":"yes","pause_on_interaction":"yes","infinite":"' . $infinite . '","effect":"slide","speed":500}';
+
+        $slides = [];
+        $id = th_randomString();
+        foreach ($images as $attachment_id) {
+
+            $image_url = wp_get_attachment_image_url($attachment_id, $imageSize);
+
+            $image_html = '<img class="swiper-slide-image" src="' . esc_attr($image_url) . '" alt="' . esc_attr(Control_Media::get_image_alt($attachment_id)) . '" />';
+
+            $slide_html = ''
+                    . '<div class="swiper-slide">';
+
+            if ($showPopup) {
+                $attachmentPost = get_post($attachment_id);
+                $popupTitle = $attachmentPost->post_title;
+                $large_image_url = wp_get_attachment_image_url($attachment_id, $popupSize);
+                $slide_html .= '<a data-elementor-open-lightbox="yes" data-elementor-lightbox-slideshow="' . $id . '" data-elementor-lightbox-title="' . $popupTitle . '" href="' . $large_image_url . '">';
+            }
+
+
+            $slide_html .= '<figure class="swiper-slide-inner">'
+                    . $image_html;
+            $slide_html .= '</figure>';
+
+            if ($showPopup) {
+                $slide_html .= '</a>';
+            }
+
+            $slide_html .= '</div>';
+
+            $slides[] = $slide_html;
+        }
+        $this->add_render_attribute([
+            'carousel' => [
+                'class' => 'elementor-image-carousel swiper-wrapper',
+            ],
+            'carousel-wrapper' => [
+                'class' => 'elementor-image-carousel-wrapper swiper-container',
+                'dir' => 'ltr',
+            ],
+        ]);
+        ?>
+        <div data-widget_type="image-carousel.default" data-settings='<?= $sliderSettings ?>' data-element_type="widget" class="elementor-element elementor-arrows-position-inside  elementor-widget elementor-widget-image-carousel">
+
+            <div <?php echo $this->get_render_attribute_string('carousel-wrapper'); ?> >
+                <div <?php echo $this->get_render_attribute_string('carousel'); ?> >
+                    <?php echo implode('', $slides); ?>
+                </div>
+                <?php if (1 < count($slides)) : ?>
+                    <div class="elementor-swiper-button elementor-swiper-button-prev">
+                        <i class="eicon-chevron-left" aria-hidden="true"></i>
+                        <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
+                    </div>
+                    <div class="elementor-swiper-button elementor-swiper-button-next">
+                        <i class="eicon-chevron-right" aria-hidden="true"></i>
+                        <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
     }
 
     private function getTypeStandard() {
@@ -580,7 +721,7 @@ class Post_Media extends Widget_Base {
         if (isset($embed_code) && $embed_code > "") {
             ?>
             <div class="<?php echo wp_kses_post($video_container_class); ?>">
-            <?php echo $embed_code ?>
+                <?php echo $embed_code ?>
             </div>
             <?php
         }
@@ -629,7 +770,7 @@ class Post_Media extends Widget_Base {
         endif;
         ?>
         <figure class="wp-caption">
-                <?php if (count($link)): ?>
+            <?php if (count($link)): ?>
                 <a <?php $this->print_render_attribute_string('link') ?>>
                 <?php endif;
                 ?>
@@ -676,25 +817,23 @@ class Post_Media extends Widget_Base {
                 if ($testType === 'standard') {
                     $args['tax_query'][0]['terms'] = array('post-format-quote', 'post-format-audio', 'post-format-gallery', 'post-format-image', 'post-format-link', 'post-format-video');
                     $args['tax_query'][0]['operator'] = 'NOT IN';
-                    $args['meta_query'] =  array(
+                    $args['meta_query'] = array(
                         array(
                             'key' => '_thumbnail_id',
                             'value' => '',
                             'compare' => '!=',
                         ),
                     );
-                } 
-                 else if($testType === 'image'){
+                } else if ($testType === 'image') {
                     $args['tax_query'][0]['terms'] = array($ttype);
-                    $args['meta_query'] =  array(
+                    $args['meta_query'] = array(
                         array(
                             'key' => '_thumbnail_id',
                             'value' => '',
                             'compare' => '!=',
                         ),
                     );
-                }
-                else {
+                } else {
                     $args['tax_query'][0]['terms'] = array($ttype);
                 }
 
@@ -705,7 +844,7 @@ class Post_Media extends Widget_Base {
                     setup_postdata($post);
                 } else {
                     echo 'Please, at least have one post of "' . $testType . '" format type to see some output here.';
-                    if($testType==='standard'){
+                    if ($testType === 'standard') {
                         echo 'Make sure the post has a featured image.';
                     }
                 }
