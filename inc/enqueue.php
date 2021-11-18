@@ -19,6 +19,9 @@ endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 
+if(!defined('WIDGET_ASSETS_TO_LOAD')){
+    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
+}
 
 if('uplands' == THEMO_CURRENT_THEME){
     // GOLF
@@ -39,11 +42,7 @@ if('uplands' == THEMO_CURRENT_THEME){
     }
 
 }else{
-    
-    if(!defined('WIDGET_ASSETS_TO_LOAD')){
-        define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
-    }
-    
+
     // FRONTEND // After Elementor registers all styles.
     add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
 
@@ -109,7 +108,7 @@ function th_enqueue_preview() {
 }
 
 // FRONTEND // After Elementor registers all scripts.
-add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
+//add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 
 function th_enqueue_after_frontend_scripts() {
     
