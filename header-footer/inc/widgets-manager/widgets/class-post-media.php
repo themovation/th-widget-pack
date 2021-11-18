@@ -519,7 +519,7 @@ class Post_Media extends Widget_Base {
                     'label' => __('Styling preview', 'header-footer-elementor'),
                     'type' => Controls_Manager::SELECT,
                     'default' => 'standard',
-                    'description' => __('Styling preview requires at least one pubished blog post with a corresponding format type set to work.', 'header-footer-elementor'),
+                    'description' => __('Styling preview requires at least one published blog post with a corresponding format type set to work.', 'header-footer-elementor'),
                     'options' => [
                         'standard' => __('Standard', 'header-footer-elementor'),
                         'image' => __('Image', 'header-footer-elementor'),
@@ -843,9 +843,10 @@ class Post_Media extends Widget_Base {
                     $post = $queryPosts[0];
                     setup_postdata($post);
                 } else {
-                    echo 'Please, at least have one post of "' . $testType . '" format type to see some output here.';
+                    //echo 'Please, at least have one post of "' . $testType . '" format type to see some output here.';
+                    echo 'Styling preview requires at least one published blog post using the <strong>' . $testType . '</strong> format type to work.';
                     if ($testType === 'standard') {
-                        echo 'Make sure the post has a featured image.';
+                        echo 'Make sure at least one blog post has a featured image set.';
                     }
                 }
             }
@@ -857,9 +858,6 @@ class Post_Media extends Widget_Base {
         <div class="hfe-post-media hfe-post-media-wrapper hfe-post-type-<?= $format ?>">
             <?php
             if ('elementor-thhf' == get_post_type()) {
-                ?>
-                <div><?php echo $this->get_title() ?></div>
-                <?php
             } else {
                 ?>
                 <?php
