@@ -70,6 +70,9 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
     function th_enqueue_before_editor() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         
+        $timeChangedEditor = filemtime(THEMO_PATH.'css/editor.css');
+        wp_enqueue_style( 'themo-editor', THEMO_URL . 'css/editor.css', array(), $timeChangedEditor);
+        
         $timeChangedFont = filemtime(THEMO_ASSETS_PATH.'icons/editor-icons.css');
         wp_enqueue_style( 'themo-editor-icons', THEMO_ASSETS_URL . 'icons/editor-icons.css', array(), $timeChangedFont);
         // JS for the Editor

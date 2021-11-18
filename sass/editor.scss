@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 18-Nov-2021, 16:32:54
+    Author     : Abrar
+*/
+
+
+$colorGreen : #BAD344;
+$bgColor: #34383c;
+#elementor-controls{
+    .elementor-control-th_dynamic_image_note{
+        padding-bottom: 0; 
+        .elementor-control-content{
+            color: $colorGreen;
+            background-color: $bgColor;
+            padding: 20px 15px 0px;
+        }
+    }
+    .elementor-control-th_dynamic_image {
+        .elementor-control-title{
+            font-weight: 600;
+        }
+        .elementor-control-content{
+            background-color: $bgColor;
+            padding: 20px 15px 20px;
+        }
+        .elementor-switch-input:checked{
+            ~.elementor-switch-label{
+                background-color: $colorGreen;
+            }
+        }
+
+
+    }
+}

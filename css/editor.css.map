@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAcI,4DAAwC,CACpC,cAAc,CAAE,CAAC,CACjB,uFAA0B,CACtB,KAAK,CANH,OAAO,CAOT,gBAAgB,CANlB,OAAO,CAOL,OAAO,CAAE,aAAa,CAI1B,gFAAwB,CACpB,WAAW,CAAE,GAAG,CAEpB,kFAA0B,CACtB,gBAAgB,CAflB,OAAO,CAgBL,OAAO,CAAE,cAAc,CAGvB,iHAAwB,CACpB,gBAAgB,CArBlB,OAAO",
+"sources": ["../sass/editor.scss"],
+"names": [],
+"file": "editor.css"
+}
