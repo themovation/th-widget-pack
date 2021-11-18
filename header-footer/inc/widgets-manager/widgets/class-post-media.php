@@ -107,7 +107,7 @@ class Post_Media extends Widget_Base {
     protected function _register_controls() {
         $this->register_content_post_media_controls();
         $this->register_content_post_media_standard_controls();
-        $this->register_image_controls();
+        $this->register_image_styles();
         $this->register_post_media_style_controls();
     }
 
@@ -121,90 +121,19 @@ class Post_Media extends Widget_Base {
         $this->start_controls_section(
                 'section_standard',
                 [
-                    'label' => __('Standard', 'header-footer-elementor'),
+                    'label' => __('Standard & Image', 'header-footer-elementor'),
                 ]
         );
+        
         $this->add_control(
-                'standard_note',
-                [
-                    //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
-                    'type' => \Elementor\Controls_Manager::RAW_HTML,
-                    'raw' => __('Featured image in this format can be styled using the "Image" section below.', 'header-footer-elementor'),
-                ]
-        );
-        $this->add_responsive_control(
-                'standard_align',
-                [
-                    'label' => __('Alignment', 'header-footer-elementor'),
-                    'type' => Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __('Left', 'header-footer-elementor'),
-                            'icon' => 'eicon-text-align-left',
-                        ],
-                        'center' => [
-                            'title' => __('Center', 'header-footer-elementor'),
-                            'icon' => 'eicon-text-align-center',
-                        ],
-                        'right' => [
-                            'title' => __('Right', 'header-footer-elementor'),
-                            'icon' => 'eicon-text-align-right',
-                        ],
-                        'justify' => [
-                            'title' => __('Justified', 'header-footer-elementor'),
-                            'icon' => 'eicon-text-align-justify',
-                        ],
-                    ],
-                    'default' => '',
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-standard' => 'text-align: {{VALUE}};',
-                    ],
-                ]
-        );
-        $this->add_responsive_control(
-                'standard_image_spacing',
-                [
-                    'label' => esc_html__('Spacing', 'elementor'),
-                    'type' => Controls_Manager::SLIDER,
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                            'max' => 100,
-                        ],
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} .hfe-post-media-wrapper.hfe-post-type-standard .wp-caption+p' => 'margin-top: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-        );
-        $this->end_controls_section();
-    }
-
-    /**
-     * Register image type controls.
-     *
-     * Adds different input fields to allow the user to change and customize the widget settings.
-     *
-     * @since 3.1.0
-     * @access private
-     */
-    private function register_image_controls() {
-        $this->start_controls_section(
-                'section_image',
-                [
-                    'label' => esc_html__('Image', 'elementor'),
-                ]
-        );
-
-        $this->add_control(
-                'note',
+                'image_note',
                 [
                     //'label' => '<b>' . __('Note', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
                     'raw' => __('Displays the featured image from the current post.', 'header-footer-elementor'),
                 ]
         );
-
+       
         $this->add_control(
                 'image',
                 [
@@ -318,18 +247,19 @@ class Post_Media extends Widget_Base {
                 ]
         );
 
-        $this->add_control(
-                'view',
-                [
-                    'label' => esc_html__('View', 'elementor'),
-                    'type' => Controls_Manager::HIDDEN,
-                    'default' => 'traditional',
-                ]
-        );
-
         $this->end_controls_section();
-
-        $this->start_controls_section(
+    }
+    
+    /**
+     * Register image type controls.
+     *
+     * Adds different input fields to allow the user to change and customize the widget settings.
+     *
+     * @since 3.1.0
+     * @access private
+     */
+    private function register_image_styles() {
+               $this->start_controls_section(
                 'section_style_image',
                 [
                     'label' => esc_html__('Image', 'elementor'),
@@ -507,7 +437,7 @@ class Post_Media extends Widget_Base {
         );
 
         $this->add_control(
-                'note',
+                'media_note',
                 [
                     //'label' => '<b>' . __('Note:', 'header-footer-elementor') . '</b>',
                     'type' => \Elementor\Controls_Manager::RAW_HTML,
