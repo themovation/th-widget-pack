@@ -182,10 +182,10 @@
     content: '';
     display: block;
     background-color: #BAD344;
-    height: 2px;
+    height: 1px;
     margin-top: 15px;
     position: absolute;
-    bottom: -11px;
+    bottom: -10px;
     z-index: 1;
     width: 32px;
     left: calc(50% - 16px);
