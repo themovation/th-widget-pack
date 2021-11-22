@@ -174,7 +174,7 @@ class Post_Image extends Widget_Base {
                 Group_Control_Image_Size::get_type(),
                 [
                     'name' => 'image', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `image_size` and `image_custom_dimension`.
-                    'default' => 'medium',
+                    'default' => 'large',
                     'separator' => 'none',
                 ]
         );

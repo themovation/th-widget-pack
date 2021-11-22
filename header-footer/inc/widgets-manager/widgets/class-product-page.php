@@ -138,6 +138,7 @@ class Product_Page extends Widget_Base {
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .hfe-product-page-wrapper #tab-reviews' => 'display: none!important;',
+                        '{{WRAPPER}} .hfe-product-page-wrapper ul.wc-tabs .reviews_tab' => 'display: none!important;',
                     ],
                 ]
         );
