@@ -14,7 +14,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'th-editor-icon-feature-bar';
+		return 'th-editor-icon-bricks';
 	}
 
 	public function get_categories() {
