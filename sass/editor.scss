@@ -9,46 +9,67 @@ and open the template in the editor.
 */
 
 
-$colorGreen : #BAD344;
-$bgColor: #34383c;
+$bellevueColor: #BAD344;
 $lightGray: #404349;
+$stratusColor: #71d7f7;
+$darkBgColor: #34383c;
 
-#elementor-controls .elementor-control-th_dynamic_image,.elementor-control-th_section_parallax{
-        .elementor-control-title{
-            font-weight: 600;
-        }
-}
-body.themo-dark-mode #elementor-controls{
-    .elementor-control-th_dynamic_image, 
-    .elementor-control-th_thmv_section_title,
-    .elementor-control-th_section_parallax,
-    .elementor-control-th_dynamic_image{
-        padding-bottom: 0; 
-        .elementor-control-content{
-            padding: 20px 15px 0;
-            background-color: $bgColor;
+#elementor-controls{
+
+    .themo-elementor-dark-mode &{
+        .elementor-control-th_dynamic_image, 
+        .elementor-control-th_thmv_section_title,
+        .elementor-control-th_section_parallax,
+        .elementor-control-th_dynamic_image{
+            padding-bottom: 0; 
+            .elementor-control-content{
+                padding: 20px 15px 0;
+                background-color: $darkBgColor;
+            }
         }
     }
+
     .elementor-control-th_thmv_section_title{
         .elementor-control-content{
-            color: $colorGreen;
+            .themo-active-theme-stratus &{
+                color: $stratusColor;
+            }
+            .themo-active-theme-bellevue &{
+                color: $bellevueColor;
+            }
         }
     }
     .elementor-control-th_dynamic_image,.elementor-control-th_section_parallax{
-        .elementor-switch-label{
-                background-color: $lightGray;
+        .elementor-control-title{
+            font-weight: 600;
+        }
+        .elementor-switch-input:not(:checked){
+            ~.elementor-switch-label{
+                .themo-elementor-dark-mode &{
+                    background-color: $lightGray;
+                }
+
+            }
         }
         .elementor-switch-input:checked{
             ~.elementor-switch-label{
-                background-color: $colorGreen;
+                .themo-active-theme-stratus &{
+                    background-color: $stratusColor;
+                }
+                .themo-active-theme-bellevue &{
+                    background-color: $bellevueColor;
+                }
             }
         }
     }
     //the last ones have the padding
     .elementor-control-th_dynamic_image{
-        padding-bottom: 20px;
+        padding-bottom: 20px!important;
+
         .elementor-control-content{
-            padding-bottom: 20px;
+            .themo-elementor-dark-mode &{
+                padding-bottom: 20px;
+            }
         }
 
     }

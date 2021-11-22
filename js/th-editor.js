@@ -128,10 +128,8 @@ jQuery(function ($) {
     var thmv_style_element = 'select[data-setting="thmv_style"]';
     var styleToHideIconsFor = ['style_4','style_5'];
     var interval_tabs = false;
-    var isDarkMode = $('#elementor-editor-dark-mode-css').length ? true : false;
-    if(isDarkMode){
-        $('body').addClass('themo-dark-mode');
-    }
+    $('body').addClass(themo_editor_object.elementor_theme_ui);
+    $('body').addClass(themo_editor_object.active_theme);
     if (typeof $e != "undefined") {
         elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
             if ('themo-accommodation-listing' !== model.elType) {

@@ -1,11 +1,11 @@
 <?php
 use Elementor\Controls_Manager;   
-//use Elementor\Core\Settings\Manager as SettingsManager;
-//
-//function th_get_elementor_theme_mode(){
-//    $editor_preferences = SettingsManager::get_settings_managers( 'editorPreferences' );
-//    return $editor_preferences->get_model()->get_settings( 'ui_theme' );
-//}
+use Elementor\Core\Settings\Manager as SettingsManager;
+
+function th_get_elementor_theme_mode(){
+    $editor_preferences = SettingsManager::get_settings_managers( 'editorPreferences' );
+    return $editor_preferences->get_model()->get_settings( 'ui_theme' );
+}
 // Adding Custom Icons for Icon Control
 if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
     require_once THEMO_PATH . 'fields/icons.php' ;
