@@ -74,21 +74,23 @@ class Widgets_Loader {
 
             //check if the custom image is set, if yes, then override the existing image
             if ($element->get_settings('th_dynamic_image')) {
-
                 //check if the featured image exists for this product/post
                 $imageURL = '';
-                if(has_post_thumbnail()){
-                    $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'single-post-thumbnail');
-                    if(count($image)){
+                if (has_post_thumbnail()) {
+                    $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                    if (count($image)) {
                         $imageURL = $image[0];
                     }
                 }
-                
 
                 if (!empty($imageURL)) {
-                    echo '<style>body .elementor-element.elementor-element-'.$element->get_id().':not(.elementor-motion-effects-element-type-background){'
-                    . 'background-image: url("'.$imageURL.'")!important;'
-                    . '}</style>';
+                    if ('yes' === $element->get_settings_for_display('th_section_parallax')) {
+                        $element->set_render_attribute('_wrapper', 'data-image-src', $imageURL);
+                    } else {
+                        echo '<style>body .elementor-element.elementor-element-' . $element->get_id() . ':not(.elementor-motion-effects-element-type-background){'
+                        . 'background-image: url("' . $imageURL . '")!important;'
+                        . '}</style>';
+                    }
                 }
             }
         }, 10, 2);
