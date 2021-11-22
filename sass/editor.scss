@@ -11,15 +11,22 @@ and open the template in the editor.
 
 $colorGreen : #BAD344;
 $bgColor: #34383c;
-#elementor-controls{
+$lightGray: #404349;
+
+#elementor-controls .elementor-control-th_dynamic_image,.elementor-control-th_section_parallax{
+        .elementor-control-title{
+            font-weight: 600;
+        }
+}
+body.themo-dark-mode #elementor-controls{
     .elementor-control-th_dynamic_image, 
     .elementor-control-th_thmv_section_title,
     .elementor-control-th_section_parallax,
     .elementor-control-th_dynamic_image{
         padding-bottom: 0; 
         .elementor-control-content{
-            background-color: $bgColor;
             padding: 20px 15px 0;
+            background-color: $bgColor;
         }
     }
     .elementor-control-th_thmv_section_title{
@@ -28,8 +35,8 @@ $bgColor: #34383c;
         }
     }
     .elementor-control-th_dynamic_image,.elementor-control-th_section_parallax{
-        .elementor-control-title{
-            font-weight: 600;
+        .elementor-switch-label{
+                background-color: $lightGray;
         }
         .elementor-switch-input:checked{
             ~.elementor-switch-label{
@@ -43,6 +50,6 @@ $bgColor: #34383c;
         .elementor-control-content{
             padding-bottom: 20px;
         }
-        
+
     }
 }
