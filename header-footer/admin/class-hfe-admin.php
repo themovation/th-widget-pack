@@ -34,10 +34,20 @@ class THHF_Admin {
 		}
 
 		add_action( 'elementor/init', __CLASS__ . '::load_admin', 0 );
-
+                add_action( 'pre_get_posts', __CLASS__ . '::thhf_order_category', 1 );
 		return self::$_instance;
 	}
+        /**
+         * order the items by the modified date
+         */
+        public static function thhf_order_category( $query ) {
+            
+            if ( is_admin()  && $query->is_main_query() && $query->query_vars['post_type']==='elementor-thhf') {
+                $query->set( 'order' , 'DESC' );
+                $query->set( 'orderby', 'modified');
+            }
 
+        }
 	/**
 	 * Load the icons style in editor.
 	 *
