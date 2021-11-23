@@ -78,10 +78,21 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         // JS for the Editor
         $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
         wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
+        
+        $elementor_is_single_template = false;
+        if(get_post_type() === 'elementor-thhf'){
+            $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
+            if('type_single' === $templateBlockType){
+                $elementor_is_single_template = true;
+            }
+        }
+        
         wp_localize_script('themo-editor-js', 'themo_editor_object', array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
             'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
+            'elementor_single_elementor_slug' => 'themo-single',
+            'elementor_is_single_template' => $templateBlockType,
         ));   
         $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
         wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
