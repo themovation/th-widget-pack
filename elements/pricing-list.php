@@ -20,7 +20,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-price-list';
+		return 'th-editor-icon-pricing';
 	}
 
 	public function get_categories() {

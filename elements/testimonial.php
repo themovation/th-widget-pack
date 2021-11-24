@@ -14,7 +14,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-testimonial';
+		return 'th-editor-icon-testimonial';
 	}
 
 	public function get_categories() {

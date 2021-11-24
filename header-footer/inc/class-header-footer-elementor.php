@@ -312,7 +312,14 @@ class THHF_Header_Footer_Elementor {
 		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_footer_id() );
 		echo '</div>';
 	}
-
+        /**
+	 * Prints the post content.
+	 */
+	public static function get_single_post_content() {
+		echo "<div class='single-post-width-fixer'>";
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_single_id() );
+		echo '</div>';
+	}
 	/**
 	 * Prints the Before Footer content.
 	 */
@@ -331,7 +338,7 @@ class THHF_Header_Footer_Elementor {
 	 * @return mixed.
 	 */
 	public static function get_settings( $setting = '', $default = '' ) {
-		if ( 'type_header' == $setting || 'type_header_sticky' == $setting || 'type_footer' == $setting || 'type_before_footer' == $setting ) {
+		if ( 'type_single' == $setting || 'type_header' == $setting || 'type_header_sticky' == $setting || 'type_footer' == $setting || 'type_before_footer' == $setting ) {
 			$templates = self::get_template_id( $setting );
 
 			$template = ! is_array( $templates ) ? $templates : $templates[0];

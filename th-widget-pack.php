@@ -17,6 +17,7 @@ define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
 define( 'THEMO_PATH', plugin_dir_path( THEMO__FILE__ ) );
+define( 'THEMO_ASSETS_PATH', THEMO_PATH . 'assets/' );
 define( 'THEMO_ASSETS_URL', THEMO_URL . 'assets/' );
 define( 'THEMO_COLOR_PRIMARY', '#3A3B74' );
 define( 'THEMO_COLOR_ACCENT', '#F6C15E' );

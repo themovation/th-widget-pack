@@ -58,7 +58,15 @@ class Retina extends Widget_Base {
 	public function get_title() {
 		return __( 'Retina Image', 'header-footer-elementor' );
 	}
-
+ 
+        /**
+        * get Plugin help URL
+        * @return string help url
+        */
+        public function get_custom_help_url() {
+            return 'https://help.themovation.com/' . $this->get_name();
+        }
+         
 	/**
 	 * Retrieve the widget icon.
 	 *
@@ -69,7 +77,7 @@ class Retina extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-retina-image';
+		return 'th-editor-icon-retina-image';
 	}
 
 	/**
@@ -87,7 +95,7 @@ class Retina extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'themo-elements' ];
+		return [ 'themo-site' ];
 	}
 
 	/**

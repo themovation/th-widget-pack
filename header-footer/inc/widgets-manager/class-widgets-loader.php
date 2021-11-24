@@ -12,8 +12,9 @@
 namespace THHF\WidgetsManager;
 
 use Elementor\Plugin;
-
+use Elementor\Controls_Manager;
 defined( 'ABSPATH' ) or exit;
+DEFINE('THHF_DUMMY_CONTENT', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
 
 /**
  * Set up Widgets Loader class
@@ -62,9 +63,66 @@ class Widgets_Loader {
 			add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'init_cart' ], 10, 0 );
 			//add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'wc_refresh_mini_cart_count' ] );
 		}
-	}
+                
+                /** dynamic post/image background image **/
+                $this->addPostImageToSectionWidget();
+                $this->renderDynamicImage();
+    }
 
-	/**
+    private function renderDynamicImage() {
+        add_action('elementor/frontend/section/before_render', function (\Elementor\Element_Base $element) {
+
+            //check if the custom image is set, if yes, then override the existing image
+            if ($element->get_settings('th_dynamic_image')) {
+                //check if the featured image exists for this product/post
+                $imageURL = '';
+                if (has_post_thumbnail()) {
+                    $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');
+                    if (count($image)) {
+                        $imageURL = $image[0];
+                    }
+                }
+
+                if (!empty($imageURL)) {
+                    if ('yes' === $element->get_settings_for_display('th_section_parallax')) {
+                        $element->set_render_attribute('_wrapper', 'data-image-src', $imageURL);
+                    } else {
+                        echo '<style>body .elementor-element.elementor-element-' . $element->get_id() . ':not(.elementor-motion-effects-element-type-background){'
+                        . 'background-image: url("' . $imageURL . '")!important;'
+                        . '}</style>';
+                    }
+                }
+            }
+        }, 10, 2);
+    }
+
+    private function addPostImageToSectionWidget() {
+        add_action('elementor/element/section/section_background/before_section_end', function ($element, $args) {
+            $element->add_control(
+                    'th_dynamic_image',
+                    [
+                        'label' => __('Use Featured Image', 'th-widget-pack'),
+                        'type' => Controls_Manager::SWITCHER,
+                        'description' => 'Replace Image above with the Featured Image if one exists for the current post or product.',
+                        'label_on' => __('Yes', 'header-footer-elementor'),
+                        'label_off' => __('No', 'header-footer-elementor'),
+                        'return_value' => 'yes',
+                        'default' => '',
+                        'conditions' => [
+                            'terms' => [
+                                [
+                                    'name' => 'background_background',
+                                    'operator' => '==',
+                                    'value' => 'classic',
+                                ],
+                            ],
+                        ],
+                    ]
+            );
+        }, 10, 2);
+    }
+
+    /**
 	 * Returns Script array.
 	 *
 	 * @return array()
@@ -101,6 +159,17 @@ class Widgets_Loader {
 			'site-logo',
 			'cart',
 			'search-button',
+                        'post-title',
+                        'post-content',
+                        'post-navigation',
+                        'post-comments',
+                        'post-image',
+                        'post-media',
+                        'post-info',
+                        'product-content',
+                        'product-cart',
+                        'product-images',
+                        'product-page',
 		];
 
 		return $widget_list;
@@ -155,12 +224,29 @@ class Widgets_Loader {
 	 * @param object $this_cat class.
 	 */
 	public function register_widget_category( $this_cat ) {
-		$category = __( 'Themovation Elements', 'th-widget-pack' );
+            
+                $template = wp_get_theme()->get_template();
+                $arr = ['bellevue', 'stratus'];
+
+                if(in_array($template, $arr)){
+                    $tempName = ucfirst($template);
+                }
+                else {
+                   $tempName = 'Themovation'; 
+                }
+            
 
 		$this_cat->add_category(
-			'themo-elements',
+			'themo-single',
 			[
-				'title' => $category,
+				'title' => $tempName." ".__( 'Single', 'th-widget-pack' ),
+				'icon'  => 'eicon-font',
+			]
+		);
+                $this_cat->add_category(
+			'themo-woocommerce',
+			[
+				'title' => $tempName." ".__( 'Woocommerce', 'th-widget-pack' ),
 				'icon'  => 'eicon-font',
 			]
 		);
@@ -189,8 +275,20 @@ class Widgets_Loader {
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Tagline());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Logo());
             Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Search_Button());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Title());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Content());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Media());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Info());
+            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Navigation());
+
             if (class_exists('woocommerce')) {
                 Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Content());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Cart());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Images());
+                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Page());
             }
         }
 

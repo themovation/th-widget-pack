@@ -14,7 +14,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-google-maps';
+		return 'th-editor-icon-google-maps';
 	}
 
 	public function get_categories() {

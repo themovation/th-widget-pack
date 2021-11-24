@@ -98,3 +98,13 @@ li#toplevel_page_Settings-page {
 .hfe-selected-template-type-none .enable-for-canvas {
     display: none;
 }
+
+/* Don't display Transparent Header Support for Blog / Porduct Singles */
+
+.hfe-selected-template-type-type_single .hfe-options-row.transparent-header,
+.hfe-selected-template-type-type_before_footer .hfe-options-row.transparent-header,
+.hfe-selected-template-type-type_footer .hfe-options-row.transparent-header,
+.hfe-selected-template-type-custom .hfe-options-row.transparent-header
+{
+    display: none;
+}

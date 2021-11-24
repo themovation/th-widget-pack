@@ -14,7 +14,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-horizontal';
+		return 'th-editor-icon-forms';
 	}
 
 	public function get_categories() {

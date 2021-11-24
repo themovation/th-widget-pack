@@ -14,7 +14,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-favorite';
+		return 'th-editor-icon-service-block';
 	}
 
 	public function get_categories() {

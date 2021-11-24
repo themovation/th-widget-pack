@@ -14,7 +14,7 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-button';
+		return 'th-editor-icon-button';
 	}
 
 	public function get_categories() {

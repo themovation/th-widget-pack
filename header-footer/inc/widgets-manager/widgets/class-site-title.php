@@ -52,7 +52,15 @@ class Site_Title extends Widget_Base {
 	public function get_title() {
 		return __( 'Site Title', 'header-footer-elementor' );
 	}
-
+ 
+        /**
+        * get Plugin help URL
+        * @return string help url
+        */
+        public function get_custom_help_url() {
+            return 'https://help.themovation.com/' . $this->get_name();
+        }
+         
 	/**
 	 * Retrieve the widget icon.
 	 *
@@ -63,7 +71,7 @@ class Site_Title extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-site-title';
+		return 'th-editor-icon-header';
 	}
 
 	/**
@@ -81,7 +89,7 @@ class Site_Title extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'themo-elements' ];
+		return [ 'themo-site' ];
 	}
 
 	/**

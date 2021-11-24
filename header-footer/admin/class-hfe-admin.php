@@ -34,10 +34,20 @@ class THHF_Admin {
 		}
 
 		add_action( 'elementor/init', __CLASS__ . '::load_admin', 0 );
-
+                add_action( 'pre_get_posts', __CLASS__ . '::thhf_order_category', 1 );
 		return self::$_instance;
 	}
+        /**
+         * order the items by the modified date
+         */
+        public static function thhf_order_category( $query ) {
+            
+            if ( is_admin()  && $query->is_main_query() && $query->query_vars['post_type']==='elementor-thhf') {
+                $query->set( 'order' , 'DESC' );
+                $query->set( 'orderby', 'modified');
+            }
 
+        }
 	/**
 	 * Load the icons style in editor.
 	 *
@@ -220,20 +230,20 @@ class THHF_Admin {
 	 */
 	public function header_footer_posttype() {
 		$labels = [
-			'name'               => __( 'Elementor - Header Footer & Blocks Template', 'header-footer-elementor' ),
-			'singular_name'      => __( 'Elementor Header Footer & Blocks', 'header-footer-elementor' ),
-			'menu_name'          => __( 'Elementor - Header Footer & Blocks Template', 'header-footer-elementor' ),
-			'name_admin_bar'     => __( 'Elementor Header Footer & Blocks', 'header-footer-elementor' ),
+			'name'               => __( 'Global Templates', 'header-footer-elementor' ),
+			'singular_name'      => __( 'Global Template', 'header-footer-elementor' ),
+			'menu_name'          => __( 'Global Templates', 'header-footer-elementor' ),
+			'name_admin_bar'     => __( 'Global Templates', 'header-footer-elementor' ),
 			'add_new'            => __( 'Add New', 'header-footer-elementor' ),
-			'add_new_item'       => __( 'Add New Header, Footer or Block', 'header-footer-elementor' ),
-			'new_item'           => __( 'New Header Footer & Blocks Template', 'header-footer-elementor' ),
-			'edit_item'          => __( 'Edit Header Footer & Blocks Template', 'header-footer-elementor' ),
-			'view_item'          => __( 'View Header Footer & Blocks Template', 'header-footer-elementor' ),
-			'all_items'          => __( 'All Elementor Header Footer & Blocks', 'header-footer-elementor' ),
-			'search_items'       => __( 'Search Header Footer & Blocks Templates', 'header-footer-elementor' ),
-			'parent_item_colon'  => __( 'Parent Header Footer & Blocks Templates:', 'header-footer-elementor' ),
-			'not_found'          => __( 'No Header Footer & Blocks Templates found.', 'header-footer-elementor' ),
-			'not_found_in_trash' => __( 'No Header Footer & Blocks Templates found in Trash.', 'header-footer-elementor' ),
+			'add_new_item'       => __( 'Add New Global Template', 'header-footer-elementor' ),
+			'new_item'           => __( 'New Global Template', 'header-footer-elementor' ),
+			'edit_item'          => __( 'Edit Global Template', 'header-footer-elementor' ),
+			'view_item'          => __( 'View Global Template', 'header-footer-elementor' ),
+			'all_items'          => __( 'All Global Templates', 'header-footer-elementor' ),
+			'search_items'       => __( 'Search Global Templates', 'header-footer-elementor' ),
+			'parent_item_colon'  => __( 'Parent Global Templates:', 'header-footer-elementor' ),
+			'not_found'          => __( 'No Global Template found.', 'header-footer-elementor' ),
+			'not_found_in_trash' => __( 'No Global Template found in Trash.', 'header-footer-elementor' ),
 		];
 
 		$args = [
@@ -264,8 +274,8 @@ class THHF_Admin {
         if('stratus' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME){
             add_submenu_page(
                 'stratus_dashboard',
-                __( 'Header & Footer', 'header-footer-elementor' ),
-                __( 'Header & Footer', 'header-footer-elementor' ),
+                __( 'Global Templates', 'header-footer-elementor' ),
+                __( 'Global Templates', 'header-footer-elementor' ),
                 'edit_pages',
                 'edit.php?post_type=elementor-thhf'
             );
@@ -325,6 +335,7 @@ class THHF_Admin {
 							<option value="type_header_sticky" <?php selected( $template_type, 'type_header_sticky' ); ?>><?php _e( 'Sticky Header', 'header-footer-elementor' ); ?></option>
 							<option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
+                                                        <option value="type_single" <?php selected( $template_type, 'type_single' ); ?>><?php _e( 'Single', 'header-footer-elementor' ); ?></option>
 							<option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
 						</select>
 					</td>

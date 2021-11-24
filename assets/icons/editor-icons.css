@@ -1,0 +1,192 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('editor/editor.eot?d732gq');
+  src:  url('editor/editor.eot?d732gq#iefix') format('embedded-opentype'),
+    url('editor/editor.ttf?d732gq') format('truetype'),
+    url('editor/editor.woff?d732gq') format('woff'),
+    url('editor/editor.svg?d732gq#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="th-editor-icon-"], [class*=" th-editor-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.th-editor-icon-bricks:before {
+  content: "\e930";
+}
+.th-editor-icon-text-align-justify:before {
+  content: "\e900";
+}
+.th-editor-icon-checkout-form:before {
+  content: "\e911";
+}
+.th-editor-icon-copyright:before {
+  content: "\e92e";
+}
+.th-editor-icon-site-logo:before {
+  content: "\e903";
+}
+.th-editor-icon-post-navigation:before {
+  content: "\e904";
+}
+.th-editor-icon-badge-2:before {
+  content: "\e905";
+}
+.th-editor-icon-rates:before {
+  content: "\e906";
+}
+.th-editor-icon-calendar-1:before {
+  content: "\e907";
+}
+.th-editor-icon-appointment-calendar:before {
+  content: "\e908";
+}
+.th-editor-icon-calender-2:before {
+  content: "\e909";
+}
+.th-editor-icon-cart:before {
+  content: "\e90a";
+}
+.th-editor-icon-testimonial:before {
+  content: "\e90b";
+}
+.th-editor-icon-forms:before {
+  content: "\e90c";
+}
+.th-editor-icon-service-block:before {
+  content: "\e90d";
+}
+.th-editor-icon-pricing-list:before {
+  content: "\e90e";
+}
+.th-editor-icon-comments:before {
+  content: "\e90f";
+}
+.th-editor-icon-info-card:before {
+  content: "\e910";
+}
+.th-editor-icon-retina-image:before {
+  content: "\e912";
+}
+.th-editor-icon-image-gallery:before {
+  content: "\e913";
+}
+.th-editor-icon-portfolio-grid:before {
+  content: "\e914";
+}
+.th-editor-icon-blog:before {
+  content: "\e915";
+}
+.th-editor-icon-grid:before {
+  content: "\e916";
+}
+.th-editor-icon-post-image:before {
+  content: "\e917";
+}
+.th-editor-icon-pricing:before {
+  content: "\e918";
+}
+.th-editor-icon-search-results:before {
+  content: "\e919";
+}
+.th-editor-icon-feature-bar:before {
+  content: "\e91a";
+}
+.th-editor-icon-expand-list:before {
+  content: "\e91b";
+}
+.th-editor-icon-listing:before {
+  content: "\e91c";
+}
+.th-editor-icon-menu-tabs:before {
+  content: "\e91d";
+}
+.th-editor-icon-details:before {
+  content: "\e91e";
+}
+.th-editor-icon-service-details:before {
+  content: "\e91f";
+}
+.th-editor-icon-post-content:before {
+  content: "\e920";
+}
+.th-editor-icon-package:before {
+  content: "\e921";
+}
+.th-editor-icon-google-maps:before {
+  content: "\e922";
+}
+.th-editor-icon-police-badge:before {
+  content: "\e923";
+}
+.th-editor-icon-site-tagline:before {
+  content: "\e924";
+}
+.th-editor-icon-protection-badge:before {
+  content: "\e925";
+}
+.th-editor-icon-search:before {
+  content: "\e926";
+}
+.th-editor-icon-product-cart:before {
+  content: "\e927";
+}
+.th-editor-icon-slider:before {
+  content: "\e928";
+}
+.th-editor-icon-page-title:before {
+  content: "\e929";
+}
+.th-editor-icon-team-member:before {
+  content: "\e92a";
+}
+.th-editor-icon-post-info:before {
+  content: "\e92b";
+}
+.th-editor-icon-navigation:before {
+  content: "\e92c";
+}
+.th-editor-icon-post-media:before {
+  content: "\e92d";
+}
+.th-editor-icon-call-to-action:before {
+  content: "\e901";
+}
+.th-editor-icon-button:before {
+  content: "\e902";
+}
+.th-editor-icon-header:before {
+  content: "\e92f";
+}
+
+
+[class^="th-editor-icon-"], [class*=" th-editor-icon-"]{
+    position: relative;
+    font-size: 96%;
+}
+[class^="th-editor-icon-"]:after, [class*=" th-editor-icon-"]:after{
+    content: '';
+    display: block;
+    background-color: #71d7f7;
+    height: 1px;
+    margin-top: 15px;
+    position: absolute;
+    bottom: -10px;
+    z-index: 1;
+    width: 32px;
+    left: calc(50% - 16px);
+}

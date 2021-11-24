@@ -6,6 +6,22 @@
  */
 
 /**
+ * Checks if Single Post Template is enabled from HFE.
+ *
+ * @return bool
+ */
+function thhf_single_enabled() {
+	$single_id = THHF_Header_Footer_Elementor::get_settings( 'type_single', '' );
+	$status    = false;
+
+	if ( '' !== $single_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'thhf_single_enabled', $status );
+}
+
+/**
  * Checks if Header is enabled from HFE.
  *
  * @since  1.0.2
@@ -103,7 +119,21 @@ function get_thhf_footer_id() {
 
 	return apply_filters( 'get_thhf_footer_id', $footer_id );
 }
+/**
+ * Get HFE Footer ID
+ *
+ * @since  1.0.2
+ * @return (String|boolean) header id if it is set else returns false.
+ */
+function get_thhf_single_id() {
+	$single_id = THHF_Header_Footer_Elementor::get_settings( 'type_single', '' );
 
+        if ( '' === $single_id ) {
+		$single_id = false;
+	}
+
+	return apply_filters( 'get_thhf_single_id', $single_id );
+}
 /**
  * Display header markup.
  *
@@ -164,7 +194,23 @@ function thhf_render_sticky_header() {
 
 }
 
+/**
+ * Display Single markup.
+ *
+ */
+function thhf_render_single_post() {
 
+	if ( false == apply_filters( 'enable_thhf_render_single', true ) ) {
+		return;
+	}
+
+	?>
+		<div class="single-post-container">
+			<?php THHF_Header_Footer_Elementor::get_single_post_content(); ?>
+		</div>
+	<?php
+
+}
 /**
  * Display footer markup.
  *
@@ -219,7 +265,22 @@ function thhf_is_before_footer_enabled() {
 
 	return apply_filters( 'hfe_before_footer_enabled', $status );
 }
+/**
+ * Checks if Single Post is enabled from HFE.
+ *
+ * @return bool
+ */
+function thhf_is_single_post_enabled() {
 
+	$single_id = THHF_Header_Footer_Elementor::get_settings( 'type_single', '' );
+	$status           = false;
+
+	if ( '' !== $single_id ) {
+		$status = true;
+	}
+
+	return apply_filters( 'hfe_before_single_post_enabled', $status );
+}
 /**
  * Display before footer markup.
  *
