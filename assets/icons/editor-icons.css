@@ -181,7 +181,7 @@
 [class^="th-editor-icon-"]:after, [class*=" th-editor-icon-"]:after{
     content: '';
     display: block;
-    background-color: #BAD344;
+    background-color: #71d7f7;
     height: 1px;
     margin-top: 15px;
     position: absolute;

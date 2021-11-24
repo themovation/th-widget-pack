@@ -14,6 +14,14 @@ $lightGray: #404349;
 $stratusColor: #71d7f7;
 $darkBgColor: #34383c;
 
+[class^="th-editor-icon-"]:after, [class*=" th-editor-icon-"]:after{
+    .themo-active-theme-stratus &{
+        background-color: $stratusColor;
+    }
+    .themo-active-theme-bellevue &{
+        background-color: $bellevueColor;
+    }
+}
 #elementor-controls{
 
     .themo-elementor-dark-mode &{
