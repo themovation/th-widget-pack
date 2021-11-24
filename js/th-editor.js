@@ -131,14 +131,16 @@ jQuery(function ($) {
     $('body').addClass(themo_editor_object.elementor_theme_ui);
     $('body').addClass(themo_editor_object.active_theme);
     
-    if(themo_editor_object.elementor_is_single_template && themo_editor_object.elementor_single_elementor_slug){
-        var single_template_class = '#elementor-panel-category-'+themo_editor_object.elementor_single_elementor_slug;
-        function moveTHMVSectionTOTop(){
         
-        if($(single_template_class+':not(.has-moved)').length){
-            $(single_template_class).addClass('has-moved').prependTo('#elementor-panel-categories');
+        
+    function moveTHMVSectionTOTop(){
+        for (var i=themo_editor_object.elementor_single_elementor_slug.length; i>= 0; i--){
+            var single_template_class = '#elementor-panel-category-'+themo_editor_object.elementor_single_elementor_slug[i];
+            if($(single_template_class+':not(.has-moved)').length){
+                $(single_template_class).addClass('has-moved').prependTo('#elementor-panel-categories');
+            }
         }
-    }
+        
     }
     
     

@@ -91,7 +91,7 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
             'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
-            'elementor_single_elementor_slug' => 'themo-single',
+            'elementor_single_elementor_slug' => ['themo-single','themo-woocommerce'],
             'elementor_is_single_template' => $templateBlockType,
         ));   
         $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
