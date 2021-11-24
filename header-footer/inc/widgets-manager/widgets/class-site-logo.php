@@ -47,6 +47,14 @@ class Site_Logo extends Widget_Base {
 	public function get_name() {
 		return 'thhf-site-logo';
 	}
+ 
+        /**
+        * get Plugin help URL
+        * @return string help url
+        */
+        public function get_custom_help_url() {
+            return 'https://help.themovation.com/' . $this->get_name();
+        }
 
 	/**
 	 * Retrieve the widget title.
@@ -71,7 +79,7 @@ class Site_Logo extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-site-logo';
+		return 'th-editor-icon-site-logo';
 	}
 
 	/**
@@ -89,7 +97,7 @@ class Site_Logo extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'themo-elements' ];
+		return [ 'themo-site' ];
 	}
 
 	/**

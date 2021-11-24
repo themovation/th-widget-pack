@@ -14,7 +14,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-gallery-grid';
+        return 'th-editor-icon-grid';
     }
 
     public function get_categories() {
@@ -250,7 +250,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_price_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p',
-            ],
+            ]
         );
 
         $this->add_group_control(
@@ -327,7 +327,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_title_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-title',
-            ],
+            ]
         );
 
         /* STYLE - Text */
@@ -363,7 +363,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_text_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-sub',
-            ],
+            ]
         );
 
         /* STYLE - Background */

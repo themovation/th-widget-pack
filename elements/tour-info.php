@@ -14,7 +14,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-vertical';
+		return 'th-editor-icon-details';
 	}
 
 	public function get_categories() {

@@ -28,7 +28,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-info-box';
+        return 'th-editor-icon-listing';
     }
 
     public function get_categories() {

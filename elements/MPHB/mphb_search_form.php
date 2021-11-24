@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-site-search';
+        return 'th-editor-icon-calendar-1';
     }
 
     public function get_categories() {

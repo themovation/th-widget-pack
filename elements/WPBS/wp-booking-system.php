@@ -14,7 +14,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-apps';
+		return 'th-editor-icon-calendar-1';
 	}
 
 	public function get_categories() {

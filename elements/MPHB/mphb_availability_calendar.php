@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-archive-posts';
+        return 'th-editor-icon-calender-2';
     }
 
     public function get_help_url() {

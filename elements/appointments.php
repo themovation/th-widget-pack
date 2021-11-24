@@ -14,7 +14,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-countdown';
+		return 'th-editor-icon-appointment-calendar';
 	}
 
 	public function get_categories() {

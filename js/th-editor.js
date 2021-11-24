@@ -128,8 +128,28 @@ jQuery(function ($) {
     var thmv_style_element = 'select[data-setting="thmv_style"]';
     var styleToHideIconsFor = ['style_4','style_5'];
     var interval_tabs = false;
+    $('body').addClass(themo_editor_object.elementor_theme_ui);
+    $('body').addClass(themo_editor_object.active_theme);
+    
+        
+        
+    function moveTHMVSectionTOTop(){
+        for (var i=themo_editor_object.elementor_single_elementor_slug.length; i>= 0; i--){
+            var single_template_class = '#elementor-panel-category-'+themo_editor_object.elementor_single_elementor_slug[i];
+            if($(single_template_class+':not(.has-moved)').length){
+                $(single_template_class).addClass('has-moved').prependTo('#elementor-panel-categories');
+            }
+        }
+        
+    }
+    
     
     if (typeof $e != "undefined") {
+        if(themo_editor_object.elementor_is_single_template!= "undefined"){
+            setInterval(moveTHMVSectionTOTop, 200);
+        }
+        
+        
         elementor.hooks.addAction('panel/open_editor/widget', function (panel, model, view) {
             if ('themo-accommodation-listing' !== model.elType) {
                 clearInterval(interval);

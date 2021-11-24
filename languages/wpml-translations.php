@@ -184,8 +184,6 @@ class Themo_Elementor_Translate {
 		$infocard->add_wpml_support();
 		$package = new Package();
 		$package->add_wpml_support();
-        $accommodation_listing = new Accommodation_Listing();
-        $accommodation_listing->add_wpml_support();
 		$pricing = new Pricing();
 		$pricing->add_wpml_support();
 		$service = new Service();
@@ -214,6 +212,8 @@ class Themo_Elementor_Translate {
 				$itinerary->add_wpml_support();
 				$roominfo = new RoomInfo();
 				$roominfo->add_wpml_support();
+                $accommodation_listing = new Accommodation_Listing();
+                $accommodation_listing->add_wpml_support();
 
                 if (class_exists('HotelBookingPlugin')) {
                     $mphb_availability_calendar = new MPHB_Availability_Calendar();

@@ -14,7 +14,7 @@ class Themo_Widget_Course_Guide extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-gallery-grid';
+        return 'th-editor-icon-grid';
     }
 
     public function get_categories() {

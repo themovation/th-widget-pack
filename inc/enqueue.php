@@ -19,6 +19,9 @@ endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 
+if(!defined('WIDGET_ASSETS_TO_LOAD')){
+    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
+}
 
 if('uplands' == THEMO_CURRENT_THEME){
     // GOLF
@@ -39,11 +42,7 @@ if('uplands' == THEMO_CURRENT_THEME){
     }
 
 }else{
-    
-    if(!defined('WIDGET_ASSETS_TO_LOAD')){
-        define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
-    }
-    
+
     // FRONTEND // After Elementor registers all styles.
     add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
 
@@ -69,9 +68,44 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
 
     function th_enqueue_before_editor() {
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
+        
+        $timeChangedEditor = filemtime(THEMO_PATH.'css/editor.css');
+        wp_enqueue_style( 'themo-editor', THEMO_URL . 'css/editor.css', array(), $timeChangedEditor);
+        
+        $timeChangedFont = filemtime(THEMO_ASSETS_PATH.'icons/editor-icons.css');
+        wp_enqueue_style( 'themo-editor-icons', THEMO_ASSETS_URL . 'icons/editor-icons.css', array(), $timeChangedFont);
         // JS for the Editor
         $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
         wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
+        
+        $elementor_is_single_template = false;
+        $elementsToTop = [];
+
+        if(get_post_type() === 'elementor-thhf'){
+            $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
+            if('type_single' === $templateBlockType){
+                $elementor_is_single_template = true;
+                $locationSelection = get_post_meta(get_the_ID(),'ehf_target_include_locations', true );
+                if(isset($locationSelection['rule']) && is_array($locationSelection['rule'])){
+                    foreach($locationSelection['rule'] as $location){
+                        if(strpos($location, 'product|')!==false){
+                            $elementsToTop[] = 'themo-woocommerce';
+                            break;
+                        }
+                    }
+                }
+                
+                $elementsToTop[] = 'themo-single';
+            }
+            
+        }
+        wp_localize_script('themo-editor-js', 'themo_editor_object', array( 
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
+            'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
+            'elementor_single_elementor_slug' => $elementsToTop,
+            'elementor_is_single_template' => $templateBlockType,
+        ));   
         $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
         wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
         
@@ -109,7 +143,7 @@ function th_enqueue_preview() {
 }
 
 // FRONTEND // After Elementor registers all scripts.
-add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
+//add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 
 function th_enqueue_after_frontend_scripts() {
     

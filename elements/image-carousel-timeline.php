@@ -43,7 +43,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-slider-push';
+        return 'th-editor-icon-slider';
     }
 
     /**

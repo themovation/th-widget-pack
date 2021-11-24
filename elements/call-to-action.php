@@ -14,7 +14,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-call-to-action';
+		return 'th-editor-icon-call-to-action';
 	}
 
 	public function get_categories() {

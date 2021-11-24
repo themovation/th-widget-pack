@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-post-list';
+        return 'th-editor-icon-search-results';
     }
 
     public function get_categories() {

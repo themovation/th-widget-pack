@@ -39,6 +39,15 @@ class Copyright extends Widget_Base {
 	public function get_name() {
 		return 'thhf-copyright';
 	}
+        
+        /**
+        * get Plugin help URL
+        * @return string help url
+        */
+        public function get_custom_help_url() {
+            return 'https://help.themovation.com/' . $this->get_name();
+        }
+        
 	/**
 	 * Retrieve the widget title.
 	 *
@@ -61,7 +70,7 @@ class Copyright extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'thhf-icon-copyright-widget';
+		return 'th-editor-icon-copyright';
 	}
 	/**
 	 * Retrieve the list of categories the widget belongs to.
@@ -78,7 +87,7 @@ class Copyright extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'themo-elements' ];
+		return [ 'themo-site' ];
 	}
 	/**
 	 * Register Copyright controls.
