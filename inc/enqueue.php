@@ -80,18 +80,31 @@ add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
         wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
         
         $elementor_is_single_template = false;
+        $elementsToTop = [];
+
         if(get_post_type() === 'elementor-thhf'){
             $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
             if('type_single' === $templateBlockType){
                 $elementor_is_single_template = true;
+                $locationSelection = get_post_meta(get_the_ID(),'ehf_target_include_locations', true );
+                if(isset($locationSelection['rule']) && is_array($locationSelection['rule'])){
+                    foreach($locationSelection['rule'] as $location){
+                        if(strpos($location, 'product|')!==false){
+                            $elementsToTop[] = 'themo-woocommerce';
+                            break;
+                        }
+                    }
+                }
+                
+                $elementsToTop[] = 'themo-single';
             }
+            
         }
-        
         wp_localize_script('themo-editor-js', 'themo_editor_object', array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
             'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
-            'elementor_single_elementor_slug' => ['themo-single','themo-woocommerce'],
+            'elementor_single_elementor_slug' => $elementsToTop,
             'elementor_is_single_template' => $templateBlockType,
         ));   
         $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');

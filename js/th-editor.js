@@ -145,7 +145,7 @@ jQuery(function ($) {
     
     
     if (typeof $e != "undefined") {
-        if(themo_editor_object.elementor_is_single_template){
+        if(themo_editor_object.elementor_is_single_template!= "undefined"){
             setInterval(moveTHMVSectionTOTop, 200);
         }
         
