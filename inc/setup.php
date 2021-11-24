@@ -492,6 +492,15 @@ function add_elementor_section_background_controls( Elementor\Element_Section $s
             'type'            => Controls_Manager::RAW_HTML,
             'raw'             => '<b>Themovation</b>',
             'separator'       => 'before',
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'background_background',
+                        'operator' => '==',
+                        'value' => 'classic',
+                    ],
+                ],
+            ],
         ]
     );
     $section->add_control(
@@ -503,6 +512,15 @@ function add_elementor_section_background_controls( Elementor\Element_Section $s
             'label_off' => __( 'Off', 'th-widget-pack' ),
             'label_on' => __( 'On', 'th-widget-pack' ),
             'default' => 'no',
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'background_background',
+                        'operator' => '==',
+                        'value' => 'classic',
+                    ],
+                ],
+            ],
         ]
     );
 }
