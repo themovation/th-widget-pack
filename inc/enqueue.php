@@ -2,19 +2,19 @@
 
 if ( ! function_exists ( 'themovation_so_wb_scripts' ) ) :
 // Enqueueing Frontend stylesheet and scripts.
-function themovation_so_wb_scripts() {
+    function themovation_so_wb_scripts() {
 
-    //wp_enqueue_script( 'themo-js-head', THEMO_URL . 'js/themo-head.js', array('jquery'), THEMO_VERSION, false);
-    wp_enqueue_script( 'themo-js-foot', THEMO_URL . 'js/themo-foot.js', array('jquery'), THEMO_VERSION, true);
-    wp_register_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
+        //wp_enqueue_script( 'themo-js-head', THEMO_URL . 'js/themo-head.js', array('jquery'), THEMO_VERSION, false);
+        wp_enqueue_script( 'themo-js-foot', THEMO_URL . 'js/themo-foot.js', array('jquery'), THEMO_VERSION, true);
+        wp_register_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
 
-    // Enqueue font awesome on all pages
-    wp_enqueue_style( 'font-awesome' );
+        // Enqueue font awesome on all pages
+        wp_enqueue_style( 'font-awesome' );
 
-	if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
-		wp_dequeue_script( 'booked-font-awesome' );
-	}
-}
+        if ( wp_script_is( 'booked-font-awesome', 'enqueued' ) && wp_style_is( 'font-awesome', 'enqueued' ) ) {
+            wp_dequeue_script( 'booked-font-awesome' );
+        }
+    }
 endif;
 add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
@@ -25,12 +25,12 @@ if(!defined('WIDGET_ASSETS_TO_LOAD')){
 
 if('uplands' == THEMO_CURRENT_THEME){
     // GOLF
-// FRONTEND // After Elementor registers all styles.
-    add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend_golf' );
+    // FRONTEND // After Elementor registers all styles.
+    //add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend_golf' );
 
-    function th_enqueue_after_frontend_golf() {
-        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/golf_icons.css', array(), THEMO_VERSION);
-    }
+    //function th_enqueue_after_frontend_golf() {
+
+    //}
 
     // EDITOR // Before the editor scripts enqueuing.
     add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor_golf' );
@@ -41,86 +41,87 @@ if('uplands' == THEMO_CURRENT_THEME){
         //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
     }
 
-}else{
+}
 
-    // FRONTEND // After Elementor registers all styles.
-    add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
+// FRONTEND // After Elementor registers all styles.
+add_action( 'elementor/frontend/after_register_styles', 'th_enqueue_after_frontend' );
 
-    function th_enqueue_after_frontend() {
+function th_enqueue_after_frontend() {
+
+    if('uplands' == THEMO_CURRENT_THEME) {
+        wp_enqueue_style('themo-icons', THEMO_ASSETS_URL . 'icons/golf_icons.css', array(), THEMO_VERSION);
+    }else{
         wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
-        
-        
-        $timeChanged = filemtime(THEMO_PATH.'css/global.css');//THEMO_VERSION;
-        wp_enqueue_style( 'thmv-global', THEMO_URL . 'css/global.css', array(), $timeChanged );
     }
-    
+
+    $timeChanged = filemtime(THEMO_PATH.'css/global.css');//THEMO_VERSION;
+    wp_enqueue_style( 'thmv-global', THEMO_URL . 'css/global.css', array(), $timeChanged );
+}
+
 add_action( 'elementor/frontend/widget/before_render', function ( $widget ) {
-        $widgetName = $widget->get_name();
-        if(in_array($widgetName, WIDGET_ASSETS_TO_LOAD) && method_exists($widget, 'loadTHMVAssets')){
-            $widget->loadTHMVAssets();
-        }
+    $widgetName = $widget->get_name();
+    if(in_array($widgetName, WIDGET_ASSETS_TO_LOAD) && method_exists($widget, 'loadTHMVAssets')){
+        $widget->loadTHMVAssets();
+    }
 } );
 
 
-    
+
 // EDITOR // Before the editor scripts enqueuing.
-    add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
+add_action( 'elementor/editor/before_enqueue_scripts', 'th_enqueue_before_editor' );
 
-    function th_enqueue_before_editor() {
-        wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
-        
-        $timeChangedEditor = filemtime(THEMO_PATH.'css/editor.css');
-        wp_enqueue_style( 'themo-editor', THEMO_URL . 'css/editor.css', array(), $timeChangedEditor);
-        
-        $timeChangedFont = filemtime(THEMO_ASSETS_PATH.'icons/editor-icons.css');
-        wp_enqueue_style( 'themo-editor-icons', THEMO_ASSETS_URL . 'icons/editor-icons.css', array(), $timeChangedFont);
-        // JS for the Editor
-        $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
-        wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
-        
-        $elementor_is_single_template = false;
-        $elementsToTop = [];
+function th_enqueue_before_editor() {
+    wp_enqueue_style( 'themo-icons', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
 
-        if(get_post_type() === 'elementor-thhf'){
-            $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
-            if('type_single' === $templateBlockType){
-                $elementor_is_single_template = true;
-                $locationSelection = get_post_meta(get_the_ID(),'ehf_target_include_locations', true );
-                if(isset($locationSelection['rule']) && is_array($locationSelection['rule'])){
-                    foreach($locationSelection['rule'] as $location){
-                        if(strpos($location, 'product|')!==false){
-                            $elementsToTop[] = 'themo-woocommerce';
-                            break;
-                        }
+    $timeChangedEditor = filemtime(THEMO_PATH.'css/editor.css');
+    wp_enqueue_style( 'themo-editor', THEMO_URL . 'css/editor.css', array(), $timeChangedEditor);
+
+    $timeChangedFont = filemtime(THEMO_ASSETS_PATH.'icons/editor-icons.css');
+    wp_enqueue_style( 'themo-editor-icons', THEMO_ASSETS_URL . 'icons/editor-icons.css', array(), $timeChangedFont);
+    // JS for the Editor
+    $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
+    wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
+
+    $elementor_is_single_template = false;
+    $elementsToTop = [];
+
+    if(get_post_type() === 'elementor-thhf'){
+        $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
+        if('type_single' === $templateBlockType){
+            $elementor_is_single_template = true;
+            $locationSelection = get_post_meta(get_the_ID(),'ehf_target_include_locations', true );
+            if(isset($locationSelection['rule']) && is_array($locationSelection['rule'])){
+                foreach($locationSelection['rule'] as $location){
+                    if(strpos($location, 'product|')!==false){
+                        $elementsToTop[] = 'themo-woocommerce';
+                        break;
                     }
                 }
-                
-                $elementsToTop[] = 'themo-single';
             }
-            
+
+            $elementsToTop[] = 'themo-single';
         }
-        wp_localize_script('themo-editor-js', 'themo_editor_object', array( 
-            'ajaxurl' => admin_url( 'admin-ajax.php' ),
-            'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
-            'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
-            'elementor_single_elementor_slug' => $elementsToTop,
-            'elementor_is_single_template' => $templateBlockType,
-        ));   
-        $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
-        wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 ); 
-        
-        //load font awesome
-        if(!wp_style_is( 'font-awesome', 'enqueued' )){
-            $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
-            $plugin_url = plugins_url('/', $elementorFile) . 'assets/lib/font-awesome';
-            wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION); 
-        }
-        
-    
+
     }
+    wp_localize_script('themo-editor-js', 'themo_editor_object', array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'active_theme' => 'themo-active-theme-'.THEMO_CURRENT_THEME,
+        'elementor_theme_ui' => 'themo-elementor-'.th_get_elementor_theme_mode().'-mode',
+        'elementor_single_elementor_slug' => $elementsToTop,
+        'elementor_is_single_template' => $templateBlockType,
+    ));
+    $timeChanged2 = filemtime(THEMO_PATH.'css/accordion.css');
+    wp_enqueue_style( 'thmv-accordion', THEMO_URL . 'css/accordion.css', array(), $timeChanged2 );
+
+    //load font awesome
+    if(!wp_style_is( 'font-awesome', 'enqueued' )){
+        $elementorFile = ABSPATH . 'wp-content/plugins/elementor/elementor.php';
+        $plugin_url = plugins_url('/', $elementorFile) . 'assets/lib/font-awesome';
+        wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION);
+    }
+
+
 }
-
-
 
 
 // PREVIEW // Before the preview styles enqueuing.
@@ -130,8 +131,8 @@ function th_enqueue_preview() {
     wp_enqueue_style( 'themo-preview-style', THEMO_URL  . 'css/th-preview.css', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-preview-script', THEMO_URL  . 'js/th-preview.js', array(), THEMO_VERSION);
     wp_enqueue_script( 'themo-google-map', THEMO_URL . 'js/themo-google-maps.js', array(), THEMO_VERSION, true);
-    
-    
+
+
     $manager = \Elementor\Plugin::$instance->widgets_manager;
     foreach(WIDGET_ASSETS_TO_LOAD as $widgetType){
         $widget = $manager->get_widget_types($widgetType);
@@ -146,7 +147,7 @@ function th_enqueue_preview() {
 //add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 
 function th_enqueue_after_frontend_scripts() {
-    
+
     if ( ENABLE_BLOCK_LIBRARY === true ) {
         // JS for the Editor
         //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
@@ -182,7 +183,7 @@ if ( ! function_exists ( 'thmv_tuck_pro_widgets' ) ) {
                 display: none;
             }
         </style>
-<?php
+        <?php
     }
 }
 
@@ -192,7 +193,7 @@ if ( !defined( 'ELEMENTOR_PRO_VERSION' )) {
 
 
 if (is_admin()) {
-   
+
     add_filter('ot_option_types_array', 'add_th_icons');
 
     function add_th_icons($types) {
@@ -207,7 +208,7 @@ if (is_admin()) {
         if(!wp_style_is( 'font-awesome', 'enqueued' )){
             $plugin_url = plugins_url('/', $elementorFile) . 'assets/lib/font-awesome';
             wp_enqueue_style('font-awesome', $plugin_url . '/css/all.min.css', array(), THEMO_VERSION);
-         }
+        }
         wp_enqueue_style('th-trip', THEMO_ASSETS_URL . 'icons/icons.css', array(), THEMO_VERSION);
         $trip_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-trip') === 0;}, ARRAY_FILTER_USE_KEY));
         $linea_icons = array_values(array_filter(themo_icons(), function ($key) {return strpos($key, 'th-linea') === 0;}, ARRAY_FILTER_USE_KEY));
@@ -228,13 +229,13 @@ if (is_admin()) {
         wp_enqueue_script('th-icons', THEMO_URL . 'js/th-icons.js', array(), $timeChanged2);
 
         wp_localize_script('th-icons', 'th_object',
-                array(
-                    'ajaxurl' => admin_url('admin-ajax.php'),
-                    'urls' => $urls,
-                    'keys' => $arrayKeys,
-                    'trip_icons' => $trip_icons,
-                    'linea_icons' => $linea_icons,
-                )
+            array(
+                'ajaxurl' => admin_url('admin-ajax.php'),
+                'urls' => $urls,
+                'keys' => $arrayKeys,
+                'trip_icons' => $trip_icons,
+                'linea_icons' => $linea_icons,
+            )
         );
 
         $args['field_class'] = (isset($args['field_class']) ? $args['field_class'] : '');
@@ -261,8 +262,8 @@ if (is_admin()) {
             echo '<div data-index="'.$index.'" class="icon-fields-wrapper '.($hasSomeValue ? 'icon-active' : '').'" ' . ($hasSomeValue || $index == 0 ? '' : 'style="display:none"') . '>';
             echo '<div class="icon-title"><div class="title">Icon</div><div class="order-buttons"><span data-action="up" class="order-up icon ot-icon-chevron-up" aria-hidden="true"></span><span data-action="down" class="order-down icon ot-icon-chevron-down" aria-hidden="true"></span></div></div>';
             echo '<div class="icon-holder add-th-icon">'
-            . '<i class="' . (!empty($value) ? $value : 'icon ot-icon-plus-circle') . '" aria-hidden="true" ></i>'
-            . '</div>';
+                . '<i class="' . (!empty($value) ? $value : 'icon ot-icon-plus-circle') . '" aria-hidden="true" ></i>'
+                . '</div>';
             echo '<input type="text" placeholder="Label" name="' . esc_attr($field_name) . '[' . $index . '][label]" id="' . esc_attr($field_id) . '_' . $index . '_label" value="' . esc_attr($label) . '" class="' . esc_attr($field_class) . '"  />';
             echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][value]" id="' . esc_attr($field_id) . '_' . $index . '_value" value="' . esc_attr($value) . '" class="th_icon_value ' . esc_attr($field_class) . '" />';
             echo '<input type="hidden" name="' . esc_attr($field_name) . '[' . $index . '][library]" id="' . esc_attr($field_id) . '_' . $index . '_library" value="' . esc_attr($library) . '" class="th_icon_library ' . esc_attr($field_class) . '" />';
