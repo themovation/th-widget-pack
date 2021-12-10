@@ -260,4 +260,7 @@ li.thmv-templateLibrary-category-filter-item.active {
 	font-size: 11px;
 }
 
+.thmv-templateLibrary-template-body {
+	min-height: 34px;
+}
 
