@@ -524,15 +524,13 @@ class Themo_Widget_Header extends Widget_Base {
 				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-                    '{{WRAPPER}}.elementor-view-default .elementor-icon svg, {{WRAPPER}}.elementor-view-default .elementor-icon svg path' => 'fill: {{VALUE}};',
-                    '{{WRAPPER}}.elementor-view-framed .elementor-icon svg, {{WRAPPER}}.elementor-view-framed .elementor-icon svg path' => 'fill: {{VALUE}};',
-
-
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon svg, {{WRAPPER}}.elementor-view-default .elementor-icon svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
+
 
 		$this->add_control(
 			'secondary_color',
@@ -546,10 +544,60 @@ class Themo_Widget_Header extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon svg, {{WRAPPER}}.elementor-view-stacked .elementor-icon svg path' => 'fill: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
+
+
+
+
+        $this->add_control(
+            'svg_title',
+            [
+                'label' => __( 'SVG Paths', 'th-widget-pack' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'icon_primary_path',
+            [
+                'label' => __( 'Primary Path', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon svg path, {{WRAPPER}}.elementor-view-default .elementor-icon svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_secondary_path',
+            [
+                'label' => __( 'Secondary Path', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'default' => '',
+                'condition' => [
+                    'view!' => 'default',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 
