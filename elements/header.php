@@ -634,24 +634,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'divider_color',
-            [
-                'label' => __( 'Divider Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'condition' => [
-                    'title_divider' => 'yes',
-                ],
-            ]
-        );
+
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
@@ -667,6 +650,86 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'name' => 'title_shadow',
                 'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
+            ]
+        );
+
+        $this->add_control(
+            'thmv_section_divider_heading',
+            [
+                'label' => __('Divider', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'title_divider' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'divider_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
+                ],
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_1,
+                ],
+                'condition' => [
+                    'title_divider' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thmv_divider_size',
+            [
+                'label' => __('Width', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 1140,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'title_divider' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'thmv_divider_height',
+            [
+                'label' => __('Height', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 20,
+                        'step' => 1,
+                    ],
+
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'title_divider' => 'yes'
+                ],
             ]
         );
 
