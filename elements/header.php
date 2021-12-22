@@ -665,6 +665,7 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
+
         $this->add_control(
             'divider_color',
             [
@@ -683,56 +684,68 @@ class Themo_Widget_Header extends Widget_Base {
                 ],
             ]
         );
-
-        $this->add_responsive_control(
-            'thmv_divider_size',
-            [
-                'label' => __('Width', 'elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px', '%' ],
-                'range' => [
-                    'px' => [
-                        'min' => 1,
-                        'max' => 1140,
-                        'step' => 5,
+        if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
+            $this->add_responsive_control(
+                'thmv_divider_size',
+                [
+                    'label' => __('Width', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1140,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100,
+                        ],
                     ],
-                    '%' => [
-                        'min' => 1,
-                        'max' => 100,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'width: {{SIZE}}{{UNIT}};',
                     ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'title_divider' => 'yes'
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thmv_divider_height',
-            [
-                'label' => __('Height', 'elementor'),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 1,
-                        'max' => 20,
-                        'step' => 1,
+                    'condition' => [
+                        'title_divider' => 'yes'
                     ],
+                ]
+            );
 
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-width: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'title_divider' => 'yes'
-                ],
-            ]
-        );
+            $this->add_responsive_control(
+                'thmv_divider_height',
+                [
+                    'label' => __('Height', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 20,
+                            'step' => 1,
+                        ],
 
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-width: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'title_divider' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'thmv_divider_radius',
+                [
+                    'label' => __('Corner Radius', 'elementor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px'],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+        }
 		$this->add_control(
 			'heading_description',
 			[
