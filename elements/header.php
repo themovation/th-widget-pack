@@ -745,6 +745,27 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
                 ]
             );
+            $this->add_responsive_control(
+                'thmv_divider_spacing',
+                [
+                    'label' => __('Spacing', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 30,
+                            'step' => 1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'margin-top: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'title_divider' => 'yes'
+                    ],
+                ]
+            );
         }
 		$this->add_control(
 			'heading_description',
