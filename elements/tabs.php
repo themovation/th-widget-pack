@@ -275,6 +275,21 @@ class Themo_Widget_Tabs extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'thmv_tab_radius',
+            [
+                'label' => __('Radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_1',
+                ],
+            ]
+        );
+
         $this->add_control(
             'border_heading',
             [
