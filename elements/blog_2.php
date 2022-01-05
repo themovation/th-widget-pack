@@ -1225,11 +1225,11 @@ class Themo_Widget_Blog extends Widget_Base {
                             <?php foreach($posts as $post) { 
                             setup_postdata( $GLOBALS['post'] =& $post );
                             ?>
-
                                 <?php $format = get_post_format() ? get_post_format() : 'standard';?>
-
                                 <div <?php $th_post_classes = "mas-blog-post " . esc_attr( $th_post_classes ); post_class( esc_attr( $th_post_classes ) ); ?>>
-                                    <?php get_template_part( 'templates/content', $format ); ?>
+                                    <?php get_template_part( 'templates/content', $format, array(
+                                        'thmv_blog_widget' => true
+                                        )); ?>
                                 </div>
 
                             <?php } ?>

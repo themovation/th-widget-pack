@@ -7,8 +7,12 @@ $padding-left: 60px;
         width: 100%;
         @include justify-content-between;
         @include align-items-center;
-        padding: 30px 0;
+        padding: 30px;
         border: transparent 1px solid;
+        @media(max-width: $sm-max){
+            padding: 20px;
+        }
+
         @media(min-width: $lg){
             &:nth-child(even) {
                 background: #EAEAEA;
@@ -25,7 +29,7 @@ $padding-left: 60px;
     }
     .thmv-column-1 {
         width: 100%;
-        margin-bottom: 20px;
+        /*margin-bottom: 20px;*/
         @include d-flex;
         @include flex-nowrap;
         @include align-items-center;
@@ -56,20 +60,20 @@ $padding-left: 60px;
     .thmv-column-3 {
         @include d-flex;
         flex: 0 0 auto;
+        @media(max-width: $sm-max){
+            width: 100%;
+            margin-top: 10px;
+        }
         @media(min-width: $md) {
             padding-left: $padding-left;
+            margin-top: 10px;
         }
         @media(min-width: $lg){
             width: 45%;
             text-align: center;
         }
     }
-    .thmv-price-title {
-        display: none;
-        @media(min-width: $md){
-            display: block;
-        }
-    }
+
     .thmv-price{
         @media(min-width: $md){
             font-weight: 900;
@@ -77,11 +81,14 @@ $padding-left: 60px;
         }
     }
     .thmv-price-title {
-        display: none;
+        /*display: none;*/
         @media(min-width: $md){
             display: block;
             font-weight: normal;
             font-size: 16px;
+        }
+        @media(max-width: $sm-max){
+            margin-left: 5px;
         }
     }
 
@@ -100,8 +107,10 @@ $padding-left: 60px;
     .thmv-info-icon{
         width: $padding-left;
         padding-right: 20px;
+        padding-top: 5px;
         font-size: 28px;
         color: rgb(78, 82, 76);
+        align-self: flex-start;
     }
     ul{
         padding: 0;
@@ -138,7 +147,10 @@ $padding-left: 60px;
 
         @media(max-width: $sm-max){
             margin-right: 10px;
-            height: 50px;
+            min-width: 72px;
+            line-height: 1.3;
+            @include flex-row;
+            padding:10px;
         }
         background: #EAEAEA;
         @include d-flex;
@@ -153,10 +165,13 @@ $padding-left: 60px;
 
     }
     .thmv-info-button {
+        @media(max-width: $sm-max) {
+            .th-btn {
+                width: 100%;
+            }
+        }
         width: 100%;
         margin: 0 auto;
-
-
     }
     .thmv-learn-btn {
         padding: 0 26px;

@@ -135,6 +135,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'price_icon',
                 [
                     'label' => __('Icon', 'elementor'),
+                    'description' => __('For style 3 only.', 'elementor'),
                     'type' => Controls_Manager::ICONS,
                     'fa4compatibility' => 'icon',
                     'label_block' => true,
@@ -142,8 +143,6 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                         'value' => 'fas fa-home',
                         'library' => 'fa-solid',
                     ],
-                    
-                    
                 ]
         );
         $repeater->add_control(
@@ -161,7 +160,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             'label_off' => __( 'No', 'th-widget-pack' ),
             'return_value' => 'yes',
             'default' => '',
-            'description'=>'Use button or text? Applies to style 1 and 2'
+            'description'=>'For style 1 and 2 only.'
             /*'conditions' => [
                 'terms' => [
                     [
@@ -373,6 +372,32 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'spacing_alt',
+            [
+                'label' => __( 'Spacing', 'plugin-domain' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 40,
+                        'step' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even)' => 'margin-top: {{SIZE}}{{UNIT}};margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
         /*$this->add_control(
             'divider_spacing',
             [
@@ -402,6 +427,85 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 
         $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_style_icon',
+            [
+                'label' => __( 'Icon', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        /*$this->add_control(
+            'section_price_icon_heading',
+            [
+                'label' => __( 'Icon', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );*/
+
+        $this->add_control(
+            'icon_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon ' => 'color: unset;',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon svg path' => 'fill: {{VALUE}};',
+                ],
+                'default' => '#1b1b1b',
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-price-list:nth-child(even) .thmv-info-icon i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-price-list:nth-child(even) .thmv-info-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-price-list:nth-child(even) .thmv-info-icon svg path' => 'fill: {{VALUE}};',
+                ],
+                'default' => '#1b1b1b',
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 12,
+                        'max' => 80,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon' => 'width:unset; min-width: 60px;',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .thmv-info-icon svg' => 'height:auto; width: {{SIZE}}px;',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
 		$this->start_controls_section(
 			'section_style_content',
 			[
@@ -415,25 +519,42 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             [
                 'label' => __( 'Title', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
-		$this->add_control(
-			'title_color',
-			[
-				'label' => __( 'Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '#2C2C2C',
-				'selectors' => [
-					'{{WRAPPER}} .th-plist-title' => 'color: {{VALUE}};',
-				],
-			]
-		);
+
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-plist-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'title_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-plist-title' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -444,12 +565,17 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        /* SUB TITLE STYLE 1 and 2 */
+
         $this->add_control(
             'section_sub_title_heading',
             [
                 'label' => __( 'Subtitle', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
             ]
         );
 
@@ -466,8 +592,31 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-plist-subtitle' => 'color: {{VALUE}};',
                 ],
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
             ]
         );
+
+        $this->add_control(
+            'sub_title_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#888888',
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-plist-subtitle' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2']
+                ],
+            ]
+        );
+
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -475,15 +624,88 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_sub_title_typography',
                 'selector' => '{{WRAPPER}} .th-plist-subtitle',
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
             ]
         );
 
+        /* SUB TITLE / DESCRIPTION STYLE 3 */
+        $this->add_control(
+            'section_sub_title_heading_S3',
+            [
+                'label' => __( 'Description', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sub_title_color_S3',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#888888',
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-plist-subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 ul li:not(:last-child):after' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sub_title_color_S3_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#888888',
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-price-list:nth-child(even) .th-plist-subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-prc-styl-3 .th-price-list:nth-child(even) ul li:not(:last-child):after' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_sub_title_typography_S3',
+                'selector' => '{{WRAPPER}} .thmv-prc-styl-3 .th-plist-subtitle',
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        /* DESCRIPTION */
         $this->add_control(
             'section_description_heading',
             [
                 'label' => __( 'Description', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
             ]
         );
 
@@ -500,6 +722,28 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-plist-description' => 'color: {{VALUE}};',
                 ],
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'description_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#888888',
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-plist-description' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2']
+                ],
             ]
         );
 
@@ -509,6 +753,9 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_description_typography',
                 'selector' => '{{WRAPPER}} .th-plist-description',
+                'condition' => [
+                    'style' => ['style_1','style_2']
+                ],
             ]
         );
 
@@ -533,6 +780,25 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                 'default' => '#2C2C2C',
                 'selectors' => [
                     '{{WRAPPER}} .th-plist-price-number' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#2C2C2C',
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-plist-price-number' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
                 ],
             ]
         );
@@ -625,6 +891,25 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'price_text_color_2',
+            [
+                'label' => __( 'Color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '#2C2C2C',
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-plist-price-text' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
@@ -635,40 +920,99 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         );
 
 
+        $this->add_control(
+            'section_price_text_bg_heading',
+            [
+                'label' => __( 'Price Background', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_background',
+            [
+                'label' => __( 'color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-info-pricing' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'price_background_2',
+            [
+                'label' => __( 'color 2', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .thmv-info-pricing' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'price_background_radius',
+            [
+                'label' => __('Corner Radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-info-pricing' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'style' => ['style_3']
+                ],
+            ]
+        );
+
 
         $this->end_controls_section();
+
+
+        /* Button */
         $this->start_controls_section(
                 'button_style_section',
                 [
                         'label' => __( 'Button', 'th-widget-pack' ),
                         'tab' => Controls_Manager::TAB_STYLE,
                 ]
-	);
-        
-        
 
-        $this->add_control(
+	    );
+
+        /*$this->add_control(
             'section_button_text_heading',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Text', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
 
             ]
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_button_text_typography',
-                'selector' => '{{WRAPPER}} .th-price-list .th-btn',
+        );*/
 
-            ]
-        );
         $this->add_control(
             'button_text_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Text', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .th-price-list .th-btn' => 'color: {{VALUE}};',
@@ -679,37 +1023,61 @@ class Themo_Widget_Pricing_List extends Widget_Base {
 
             ]
         );
+
         $this->add_control(
-                'button_text_background_color',
-                [
-                    'label' => __('Background', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .th-price-list .th-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
-                    ],
-                ]
+            'button_text_background_color',
+            [
+                'label' => __('Background', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                ],
+            ]
         );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_button_text_typography',
+                'selector' => '{{WRAPPER}} .th-price-list .th-btn',
+
+            ]
+        );
+
         $this->add_control(
-                'button_text_color_hover',
-                [
-                    'label' => __('Color - Hover', 'th-widget-pack'),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .th-price-list .th-btn:hover' => 'color: {{VALUE}};',
-                    ],
-                    'separator' => 'before',
-                ]
+            'section_button_background',
+            [
+                'label' => __( 'Hover', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
         );
+
+        $this->add_control(
+            'button_text_color_hover',
+            [
+                'label' => __('Text', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list .th-btn:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_control(
                 'button_text_background_color_hover',
                 [
-                    'label' => __('Background - Hover', 'th-widget-pack'),
+                    'label' => __('Background', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
                     'selectors' => [
                         '{{WRAPPER}} .th-price-list .th-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                     ],
                 ]
         );
+
+
         $this->add_control(
                 'price_col_button_1_style',
                 [
@@ -754,7 +1122,94 @@ class Themo_Widget_Pricing_List extends Widget_Base {
                     'return_value' => 'yes',
                 ]
         );
+
+
+        $this->add_control(
+            'section_button_2',
+            [
+                'label' => __( 'Button 2', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color_2',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-btn' => 'color: {{VALUE}};',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+
+            ]
+        );
+
+
+        $this->add_control(
+            'button_background_color_2',
+            [
+                'label' => __('Background', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-btn' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'section_button_background_2',
+            [
+                'label' => __( 'Button 2 Hover', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_text_color_hover_2',
+            [
+                'label' => __('Text', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-btn:hover' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_background_color_hover_2',
+            [
+                'label' => __('Background', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list:nth-child(even) .th-btn:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'style' => ['style_2','style_3']
+                ],
+            ]
+        );
         $this->end_controls_section();
+
         $this->start_controls_section(
             'section_style_background',
             [
@@ -814,6 +1269,18 @@ class Themo_Widget_Pricing_List extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'background_radius',
+            [
+                'label' => __('Radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'selectors' => [
+                    '{{WRAPPER}} .th-price-list' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
 
 		$this->end_controls_section();
 
@@ -837,7 +1304,7 @@ class Themo_Widget_Pricing_List extends Widget_Base {
         $th_list_style_2 = false;
         if ( isset( $settings['style'] ) &&  $settings['style'] == 'style_2' ){
             $this->add_render_attribute('th-price-list-class', 'class', 'th-plist-style-2');
-            $this->add_render_attribute('th-price-list-class', 'class', 'row');
+            //$this->add_render_attribute('th-price-list-class', 'class', 'row');
             $this->add_render_attribute('th-price-list-class', 'class', 'fsi-row-lg-level');
             $this->add_render_attribute('th-price-list-class', 'class', 'fsi-row-md-level');
             $this->add_render_attribute('th-price-list-class', 'class', 'fsi-row-sm-level');
