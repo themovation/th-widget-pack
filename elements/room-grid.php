@@ -169,6 +169,30 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
+            'image_style',
+            [
+                'label' => __( 'Image', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+                /*'condition' => [
+                    'style' => 'style_2',
+                ],*/
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Image_Size::get_type(),
+            [
+                'name' => 'featured_image_size',
+                'default' => 'th_img_md_square',
+                'exclude' => [ 'thumbnail','medium','medium_large','large','1536x1536','2048x2048','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_brands','th_img_sm_standard','custom'],
+                //$size = $settings[ 'grid_image' . '_size' ];
+                //$size = $settings['featured_image_size'];
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'card_price_style',
             [
                 'label' => __( 'Price & Image Overlay', 'th-widget-pack' ),
@@ -617,27 +641,11 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         );
 
 
-        $this->add_control(
-            'filter_bar_text_color',
-            [
-                'label' => __( 'Text Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
 
         $this->add_control(
             'filter_bar_link_color',
             [
-                'label' => __( 'Link Color', 'th-widget-pack' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
                 'scheme' => [
@@ -651,10 +659,19 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_filter_typography',
+                'selector' => '{{WRAPPER}} .th-portfolio-filters',
+            ]
+        );
+
         $this->add_control(
             'filter_bar_hover_color',
             [
-                'label' => __( 'Hover Color', 'th-widget-pack' ),
+                'label' => __( 'Hover', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
                 'scheme' => [
@@ -671,7 +688,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->add_control(
             'filter_bar_active_color',
             [
-                'label' => __( 'Active Color', 'th-widget-pack' ),
+                'label' => __( 'Active', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
                 'scheme' => [
@@ -681,6 +698,23 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_bar_text_color',
+            [
+                'label' => __( 'Sort Label', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'scheme' => [
+                    'type' => Scheme_Color::get_type(),
+                    'value' => Scheme_Color::COLOR_3,
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -700,7 +734,13 @@ class Themo_Widget_Room_Grid extends Widget_Base {
     }
 
     protected function render() {
+
+
+
+
         $settings = $this->get_settings_for_display();
+
+        $img_size = $settings[ 'featured_image_size' . '_size' ];
 
         $buttonstyle = $settings['button_style'];
 
@@ -872,7 +912,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
                             // Check if Image comes in Med size with Square crop / else get small
 
-                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_md_square");
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
 
                             if ($th_image) {
 
@@ -884,7 +924,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
                                     // Check if Image comes in Small size with Square crop / else get thumb
 
-                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_sm_square");
+                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
 
                                     $width = $th_image[1];
                                     $height = $th_image[2];
@@ -958,16 +998,17 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
 
                                         $th_id = get_post_thumbnail_id(get_the_ID());
-                                        $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
+                                        $th_image = wp_get_attachment_image_src($th_id, $img_size);
 
                                         if ($th_image){
 
                                             $width = $th_image[1];
                                             $height = $th_image[2];
 
+                                            echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), $img_size, $featured_img_attr ));
 
-                                            if ((605 == $width) && (605 == $height)){
-                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
+                                            /*if ((605 == $width) && (605 == $height)){
+                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), $img_size, $featured_img_attr ));
                                             }
                                             else{
                                                 $th_image = wp_get_attachment_image_src($th_id, "th_img_sm_square");
@@ -981,7 +1022,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                                     echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "thumbnail", $featured_img_attr ));
                                                 }
 
-                                            }
+                                            }*/
                                         }
                                     }else{
                                         echo '<img width="605" height="605" src="https://via.placeholder.com/605x605?'.
