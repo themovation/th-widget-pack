@@ -70,7 +70,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __( 'Layout', 'th-widget-pack' ),
+                'label' => __( 'Data source', 'th-widget-pack' ),
             ]
         );
 
@@ -122,18 +122,18 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'columns',
+
+
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'layout_style',
             [
-                'label' => __( 'Number of Columns to Show', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => '3',
-                'options' => [
-                    '2' => __( '2', 'th-widget-pack' ),
-                    '3' => __( '3', 'th-widget-pack' ),
-                    '4' => __( '4', 'th-widget-pack' ),
-                    '5' => __( '5', 'th-widget-pack' ),
-                ],
+                'label' => __( 'Layout Style', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+
             ]
         );
 
@@ -151,6 +151,23 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         );
 
         $this->add_control(
+            'columns',
+            [
+                'label' => __( 'Columns', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '3',
+                'options' => [
+                    '2' => __( '2', 'th-widget-pack' ),
+                    '3' => __( '3', 'th-widget-pack' ),
+                    '4' => __( '4', 'th-widget-pack' ),
+                    '5' => __( '5', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+
+
+        $this->add_control(
             'gutter',
             [
                 'label' => __( 'Gutter', 'th-widget-pack' ),
@@ -163,19 +180,41 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-
-
+        $this->add_responsive_control(
+            'item_spacing',
+            [
+                'label' => __('Spacing', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 30,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'size' => 5,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-gutter .th-portfolio-item' => 'border: {{SIZE}}{{UNIT}} solid transparent;',
+                ],
+                'condition' => [
+                    'gutter' => 'on'
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'image_style',
+            'card_price_style',
             [
-                'label' => __( 'Image', 'th-widget-pack' ),
+                'label' => __( 'Image & Overlay', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
-                /*'condition' => [
+                'condition' => [
                     'style' => 'style_2',
-                ],*/
+                ],
             ]
         );
 
@@ -190,16 +229,36 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'card_price_style',
+        $this->add_responsive_control(
+            'image_radius',
             [
-                'label' => __( 'Price & Image Overlay', 'th-widget-pack' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'style' => 'style_2',
+                'label' => __( 'Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'image_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-port-card-img',
+            ]
+        );
+
+
+        $this->add_control(
+            'thmv_section_img_text',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -229,24 +288,76 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'thmv_section_img_overlay',
+            [
+                'label' => __('Overlay', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
                 'name' => 'image_gradient',
-                'label' => __( 'Image Gradient', 'th-widget-pack' ),
+                'label' => esc_html__( 'Image Gradient', 'th-widget-pack' ),
                 'types' => ['gradient'],
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after',
                 'description' => 'Control the image overlay gradient.',
             ]
         );
+        $this->add_control(
+            'thmv_section_img_behavior',
+            [
+                'label' => __('Hover', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'img_hover',
+            [
+                'label' => __( 'Grow image', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-item' => 'overflow:visible;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-img' => 'transform:none;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card-img' => 'transform:scale(1.05,1.05);',
+                    '{{WRAPPER}} .th-port-card-img' => ' -webkit-transition:all 0.25s linear; -moz-transition:all 0.25s linear; transition:all 0.25s linear;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover',
+            [
+                'label' => __( 'Grow content', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card-img' => 'transform:none;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card' => 'transform:scale(1.05,1.05);',
+                    '{{WRAPPER}} .th-port-card' => ' -webkit-transition:all 0.25s linear; -moz-transition:all 0.25s linear; transition:all 0.25s linear;',
+                ],
+            ]
+        );
+
+
+        //th-portfolio-item
 
         $this->end_controls_section();
 
         $this->start_controls_section(
             'card_style_background',
             [
-                'label' => __( 'Title & Text', 'th-widget-pack' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'style' => 'style_2',
@@ -333,12 +444,41 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
+
+
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_text_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-sub',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'text_align',
+            [
+                'label' => __( 'Content Align', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-body' => 'text-align: {{VALUE}}',
+                ],
+                'separator' => 'before',
             ]
         );
 
@@ -369,7 +509,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-
         $this->add_responsive_control(
             'thmv_background_padding',
             [
@@ -379,6 +518,29 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-port-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_radius',
+            [
+                'label' => __( 'Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-port-card',
             ]
         );
 
@@ -914,7 +1076,9 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
                             $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
 
-                            if ($th_image) {
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
+
+                            /*if ($th_image) {
 
                                 $width = $th_image[1];
                                 $height = $th_image[2];
@@ -934,7 +1098,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                         $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "thumbnail");
                                     }
                                 }
-                            }
+                            }*/
                             $th_image_url = false;
                             if( isset( $th_image[0] ) ) {
                                 $th_image_url = $th_image[0];
