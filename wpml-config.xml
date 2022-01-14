@@ -1,0 +1,17 @@
+<wpml-config>
+    <elementor-widgets>
+        <widget name="themo-header">
+            <conditions>
+                <condition key="widgetType">themo-header</condition>
+            </conditions>
+            <fields>
+                <field type="Header: Title" editor_type="LINE">title_text</field>
+                <field type="Header: Description Text" editor_type="AREA">description_text</field>
+                <field type="Button 1: Text" editor_type="LINE">button_1_text</field>
+                <field type="Button 1: URL" editor_type="LINK" key_of="url">button_1_link</field>
+                <field type="Button 2: Text" editor_type="LINE">button_2_text</field>
+                <field type="Button 2: URL" editor_type="LINK" key_of="url">button_2_link</field>
+            </fields>
+        </widget>
+    </elementor-widgets>
+</wpml-config>

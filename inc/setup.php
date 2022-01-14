@@ -120,8 +120,6 @@ add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-
-
     if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option( "theme_is_registered_stratusx", false ) ) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
         include_once THEMO_PATH . 'library/library-source.class.php' ;
@@ -153,7 +151,8 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
-    if (class_exists('HotelBookingPlugin')) {
+    if ( is_plugin_active( 'motopress-hotel-booking/motopress-hotel-booking.php' ) ) {
+        //plugin is activated
         require_once THEMO_PATH . 'inc/MPHB/cpt_mphb_room_type.php';
     }
 }elseif('uplands' == THEMO_CURRENT_THEME){
