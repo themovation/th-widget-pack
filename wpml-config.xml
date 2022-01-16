@@ -1,9 +1,76 @@
 <wpml-config>
     <elementor-widgets>
+        <!-- Accommodation Listing -->
+        <widget name="themo-accommodation-listing">
+            <fields>
+                <field type="Listing: Pre Title" editor_type="LINE">pre_title</field>
+                <field type="Listing: Title" editor_type="LINE">title</field>
+                <field type="Listing: Content" editor_type="AREA">content</field>
+                <field type="Listing: Price" editor_type="LINE">thmv_price</field>
+                <field type="Listing: Price Text" editor_type="LINE">price_text</field>
+                <field type="Listing: Link UR" editor_type="LINK" key_of="url">url</field>
+            </fields>
+        </widget>
+
+        <!-- Booked Appointment Calendar -->
+        <widget name="themo-appointments">
+            <fields>
+                <field type="Appointments: Tooltip Title" editor_type="LINE">tooltip_title</field>
+                <field type="Appointments: Shortcode" editor_type="LINE">calendar_shortcode</field>
+            </fields>
+        </widget>
+
+        <!-- Button -->
+        <widget name="themo-button">
+            <fields>
+                <field type="Button: Text 1" editor_type="LINE">button_1_text</field>
+                <field type="Button: URL 1" editor_type="LINK" key_of="url">button_1_link</field>
+                <field type="Button: Text 2" editor_type="LINE">button_2_text</field>
+                <field type="Button: URL 2" editor_type="LINK" key_of="url">button_2_link</field>
+            </fields>
+        </widget>
+
+        <!-- Call to Action -->
+        <widget name="themo-call-to-action">
+            <fields>
+                <field type="Call to action: Text" editor_type="LINE">text</field>
+                <field type="Call to action: Button 1 Text" editor_type="LINE">button_1_text</field>
+                <field type="Call to action: Button 1 URL" editor_type="LINK" key_of="url">button_1_link</field>
+                <field type="Call to action: Button 2 Text" editor_type="LINE">button_2_text</field>
+                <field type="Call to action: Button 2 URL" editor_type="LINK" key_of="url">button_2_link</field>
+            </fields>
+        </widget>
+
+        <!-- Expand List -->
+        <widget name="themo-expand-list">
+            <fields-in-item items_of="tab_title">
+                <field type="Expand List: Tab Title" editor_type="LINE">tab_title</field>
+                <field type="Expand List: Tab Content" editor_type="AREA">tab_content</field>
+            </fields-in-item>
+        </widget>
+
+        <!--  Formidable -->
+        <widget name="themo-formidable-form">
+            <fields>
+                <field type="Formidable: Shortcode" editor_type="LINE">shortcode</field>
+            </fields>
+        </widget>
+
+        <!-- Google Maps -->
+        <widget name="themo-google-maps">
+            <fields>
+                <field type="Google Map: Title" editor_type="LINE">title</field>
+                <field type="Google Map: Business Address" editor_type="AREA">business_address</field>
+                <field type="Google Map: Hours" editor_type="AREA">hours</field>
+                <field type="Google Map: Text" editor_type="LINE">link_1_text</field>
+                <field type="Google Map: URL" editor_type="LINK" key_of="url">link_1_url</field>
+                <field type="Google Map: Text" editor_type="LINE">link_2_text</field>
+                <field type="Google Map: URL" editor_type="LINK" key_of="url">link_2_url</field>
+            </fields>
+        </widget>
+
+        <!-- Header -->
         <widget name="themo-header">
-            <conditions>
-                <condition key="widgetType">themo-header</condition>
-            </conditions>
             <fields>
                 <field type="Header: Title" editor_type="LINE">title_text</field>
                 <field type="Header: Description Text" editor_type="AREA">description_text</field>
@@ -13,5 +80,159 @@
                 <field type="Button 2: URL" editor_type="LINK" key_of="url">button_2_link</field>
             </fields>
         </widget>
+
+        <!-- Info Bar -->
+        <widget name="themo-feature-bar">
+            <fields>
+                <field type="Info Bar: Price" editor_type="LINE">price</field>
+                <field type="Info Bar: Price Text" editor_type="LINE">price_text</field>
+                <field type="Info Bar: Button Text" editor_type="LINE">button_1_text</field>
+                <field type="Info Bar: Button URL" editor_type="LINK" key_of="url">button_1_link</field>
+            </fields>
+            <fields-in-item items_of="items">
+                <field type="Info Bar: Icon Text" editor_type="LINE">text</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Itinerary List -->
+        <widget name="themo-itinerary">
+            <fields-in-item items_of="tabs">
+                <field type="Itinerary: Tab Title" editor_type="LINE">tab_title</field>
+                <field type="Itinerary: Tab Content" editor_type="AREA">tab_content</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Package & Package 2 -->
+        <widget name="themo-package">
+            <fields>
+                <field type="Package: Pre Title" editor_type="LINE">pre_title</field>
+                <field type="Package: Title" editor_type="LINE">title</field>
+                <field type="Package: Content" editor_type="AREA">content</field>
+                <field type="Package: Price" editor_type="LINE">price</field>
+                <field type="Package: Price Text" editor_type="LINE">price_text</field>
+                <field type="Package: URL" editor_type="LINK" key_of="url">url</field>
+            </fields>
+        </widget>
+
+        <!-- Price -->
+        <widget name="themo-pricing">
+            <fields-in-item items_of="pricing">
+                <field type="Pricing: Title" editor_type="LINE">price_col_title</field>
+                <field type="Pricing: Sub Title" editor_type="LINE">price_col_sub_title</field>
+                <field type="Pricing: Price" editor_type="LINE">price_col_price</field>
+                <field type="Pricing: Price text" editor_type="LINE">price_col_text</field>
+                <field type="Pricing: Description" editor_type="AREA">price_col_description</field>
+                <field type="Pricing: Button 1 Text" editor_type="LINE">price_col_button_1_text</field>
+                <field type="Pricing: Button 1 URL" editor_type="LINK" key_of="url">price_col_button_1_link</field>
+                <field type="Pricing: Button 2 Text" editor_type="LINE">price_col_button_2_text</field>
+                <field type="Pricing: Button 2 URL" editor_type="LINK" key_of="url">price_col_button_2_link</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Price List -->
+        <widget name="themo-pricing-list">
+            <fields-in-item items_of="pricing">
+                <field type="Pricing: Title" editor_type="LINE">price_title</field>
+                <field type="Pricing: Sub Title" editor_type="LINE">price_sub_title</field>
+                <field type="Pricing: Description" editor_type="AREA">price_description</field>
+                <field type="Pricing: Price" editor_type="LINE">price_price</field>
+                <field type="Pricing: Price text" editor_type="LINE">price_text</field>
+                <field type="Pricing: Button 1 Text" editor_type="LINE">price_col_button_1_text</field>
+                <field type="Pricing: Button 1 URL" editor_type="LINK" key_of="url">price_link</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Room Info -->
+        <widget name="themo-room-info">
+            <fields>
+                <field type="Room Info: Price" editor_type="LINE">price</field>
+                <field type="Room Info: Price Text" editor_type="LINE">price_text</field>
+                <field type="Room Info: Button Text" editor_type="LINE">button_1_text</field>
+                <field type="Room Infor: Button URL" editor_type="LINK" key_of="url">button_1_link</field>
+            </fields>
+            <fields-in-item items_of="items">
+                <field type="Room Info: Icon Text" editor_type="LINE">text</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Service Block -->
+        <widget name="themo-service-block">
+            <fields>
+                <field type="Service Block: Title" editor_type="LINE">title_text</field>
+                <field type="Service Block: Text" editor_type="AREA">description_text</field>
+                <field type="Service Block: URL" editor_type="LINK" key_of="url">link</field>
+            </fields>
+        </widget>
+
+        <!-- SLIDER -->
+        <widget name="themo-slider">
+            <fields-in-item items_of="slides">
+                <field type="Slider: Title" editor_type="LINE">slide_title</field>
+                <field type="Slider: Content" editor_type="AREA">slide_text</field>
+                <field type="Slider: Button 1 Text" editor_type="LINE">slide_button_text_1</field>
+                <field type="Slider: Button 1 URL" editor_type="LINK" key_of="url">slide_button_link_1</field>
+                <field type="Slider: Button 2 Text" editor_type="LINE">slide_button_text_2</field>
+                <field type="Slider: Button 2 URL" editor_type="LINK" key_of="url">slide_button_link_2</field>
+                <field type="Slider: Shortcode" editor_type="LINE">slide_shortcode</field>
+                <field type="Slider: Tooltip Text" editor_type="LINE">slide_tooltip_text</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- TEAMS -->
+        <widget name="themo-team">
+            <fields>
+                <field type="Team: Name" editor_type="LINE">name</field>
+                <field type="Team: Job" editor_type="LINE">job</field>
+                <field type="Team: Content" editor_type="AREA">content</field>
+                <field type="Team: URL" editor_type="LINK" key_of="url">url</field>
+            </fields>
+        </widget>
+
+        <!-- Testimonial -->
+        <widget name="themo-testimonial">
+            <fields>
+                <field type="Testimonial: Content" editor_type="AREA">testimonial_content</field>
+                <field type="Testimonial: Name" editor_type="LINE">testimonial_name</field>
+                <field type="Testimonial: Job" editor_type="LINE">testimonial_job</field>
+            </fields>
+        </widget>
+
+        <!-- Tour Info -->
+        <widget name="themo-tour-info">
+            <fields>
+                <field type="Tour Info: Price" editor_type="LINE">price</field>
+                <field type="Tour Info: Price Text" editor_type="LINE">price_text</field>
+                <field type="Tour Info: Button Text" editor_type="LINE">button_1_text</field>
+                <field type="Tour Infor: Button URL" editor_type="LINK" key_of="url">button_1_link</field>
+            </fields>
+            <fields-in-item items_of="items">
+                <field type="Room Info: Icon Text" editor_type="LINE">text</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- MPHB -->
+
+        
+
+        <!-- EXAMPLE SIMPLE -->
+        <widget name="themo">
+            <fields>
+                <field type="widgetDesc" editor_type="LINE">widgetID</field>
+                <field type="widgetDesc" editor_type="AREA">widgetID</field>
+                <field type="widgetDesc" editor_type="LINK" key_of="url">widgetID</field>
+            </fields>
+        </widget>
+
+        <!-- EXAMPLE REPEATER -->
+        <widget name="accordion">
+            <fields-in-item items_of="features_list">
+                <field type="Price table: text" editor_type="LINE">item_text</field>
+            </fields-in-item>
+            <fields-in-item items_of="tabs">
+                <field type="Accordion: Title" editor_type="LINE">tab_title</field>
+                <field type="Accordion: Content" editor_type="VISUAL">tab_content</field>
+            </fields-in-item>
+        </widget>
+
     </elementor-widgets>
 </wpml-config>
