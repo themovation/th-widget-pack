@@ -101,8 +101,12 @@ jQuery( function ( $ ) {
         // init
         var $port_grid = $container.isotope({
         // options
-            itemSelector: '.th-portfolio-item',
+           itemSelector: '.th-portfolio-item',
             layoutMode: 'fitRows'
+             /*itemSelector: '.th-portfolio-item',
+            masonry: {
+                //columnWidth: 100
+            }*/
         });
 
         // layout Isotope after each image loads
