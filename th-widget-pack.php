@@ -24,7 +24,7 @@ define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
 define( 'ENABLE_BLOCK_LIBRARY', true );
 
 /**
- * Define Elementor Partner ID
+ * Define Elementor Partner ID 
  */
 if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
     define( 'ELEMENTOR_PARTNER_ID', 2129 );
