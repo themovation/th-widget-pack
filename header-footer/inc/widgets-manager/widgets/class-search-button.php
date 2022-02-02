@@ -13,7 +13,7 @@ use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Border;
 use \Elementor\Icons_Manager;
 
@@ -214,7 +214,6 @@ class Search_Button extends Widget_Base {
 			[
 				'name'     => 'input_typography',
 				'selector' => '{{WRAPPER}} input[type="search"].thhf-search-form__input,{{WRAPPER}} .thhf-search-icon-toggle',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 			]
 		);
 
@@ -258,10 +257,7 @@ class Search_Button extends Widget_Base {
 			[
 				'label'     => __( 'Text Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'selectors' => [
 					'{{WRAPPER}} .thhf-search-form__input' => 'color: {{VALUE}}',
 				],
@@ -276,10 +272,7 @@ class Search_Button extends Widget_Base {
 			[
 				'label'     => __( 'Placeholder Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'selectors' => [
 					'{{WRAPPER}} .thhf-search-form__input::placeholder' => 'color: {{VALUE}}',
 				],
@@ -292,10 +285,6 @@ class Search_Button extends Widget_Base {
             [
                 'label'     => __( 'Text Color', 'header-footer-elementor' ),
                 'type'      => Controls_Manager::COLOR,
-                'scheme'    => [
-                    'type'  => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .thhf-search-icon-toggle .thhf-search-form__input' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .thhf-search-button-wrapper .thhf-search-form-wrapper.active input[type=search]' => 'color: {{VALUE}}',
@@ -356,10 +345,6 @@ class Search_Button extends Widget_Base {
 			[
 				'label'     => __( 'Border Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'condition' => [
 					'border_style!' => 'none',
 				],
@@ -455,10 +440,7 @@ class Search_Button extends Widget_Base {
 			[
 				'label'     => __( 'Placeholder Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'selectors' => [
 					'{{WRAPPER}} .thhf-search-form__input:focus::placeholder' => 'color: {{VALUE}}',
 				],
@@ -914,10 +896,7 @@ class Search_Button extends Widget_Base {
 			[
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default'   => '#7a7a7a',
 				'selectors' => [
 					'{{WRAPPER}} .hfe-search-form__container button#clear-with-button,

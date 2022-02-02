@@ -70,7 +70,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         $this->start_controls_section(
             'section_layout',
             [
-                'label' => __( 'Layout', 'th-widget-pack' ),
+                'label' => __( 'Data source', 'th-widget-pack' ),
             ]
         );
 
@@ -170,18 +170,18 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'columns',
+
+
+
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'layout_style',
             [
-                'label' => __( 'Number of Columns to Show', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => '3',
-                'options' => [
-                    '2' => __( '2', 'th-widget-pack' ),
-                    '3' => __( '3', 'th-widget-pack' ),
-                    '4' => __( '4', 'th-widget-pack' ),
-                    '5' => __( '5', 'th-widget-pack' ),
-                ],
+                'label' => __( 'Layout Style', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+
             ]
         );
 
@@ -199,6 +199,22 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         );
 
         $this->add_control(
+            'columns',
+            [
+                'label' => __( 'Columns', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => '3',
+                'options' => [
+                    '2' => __( '2', 'th-widget-pack' ),
+                    '3' => __( '3', 'th-widget-pack' ),
+                    '4' => __( '4', 'th-widget-pack' ),
+                    '5' => __( '5', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+
+        $this->add_control(
             'gutter',
             [
                 'label' => __( 'Gutter', 'th-widget-pack' ),
@@ -211,19 +227,85 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             ]
         );
 
-
-
+        $this->add_responsive_control(
+            'item_spacing',
+            [
+                'label' => __('Spacing', 'elementor'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 30,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'size' => 5,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-gutter .th-portfolio-item' => 'border: {{SIZE}}{{UNIT}} solid transparent;',
+                ],
+                'condition' => [
+                    'gutter' => 'on'
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
             'card_price_style',
             [
-                'label' => __( 'Price & Image Overlay', 'th-widget-pack' ),
+                'label' => __( 'Image & Overlay', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'style' => 'style_2',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Image_Size::get_type(),
+            [
+                'name' => 'featured_image_size',
+                'default' => 'th_img_md_square',
+                'exclude' => [ 'thumbnail','medium','medium_large','large','1536x1536','2048x2048','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_brands','th_img_sm_standard','custom'],
+                //$size = $settings[ 'grid_image' . '_size' ];
+                //$size = $settings['featured_image_size'];
+            ]
+        );
+
+        $this->add_responsive_control(
+            'image_radius',
+            [
+                'label' => __( 'Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'image_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-port-card-img',
+            ]
+        );
+
+
+        $this->add_control(
+            'thmv_section_img_text',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -232,10 +314,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#FFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p' => 'color: {{VALUE}};',
@@ -253,15 +331,64 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'thmv_section_img_overlay',
+            [
+                'label' => __('Overlay', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Background::get_type(),
             [
                 'name' => 'image_gradient',
-                'label' => __( 'Image Gradient', 'th-widget-pack' ),
+                'label' => esc_html__( 'Image Gradient', 'th-widget-pack' ),
                 'types' => ['gradient'],
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after',
                 'description' => 'Control the image overlay gradient.',
+            ]
+        );
+        $this->add_control(
+            'thmv_section_img_behavior',
+            [
+                'label' => __('Hover', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
+        $this->add_control(
+            'img_hover',
+            [
+                'label' => __( 'Grow image', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-item' => 'overflow:visible;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-img' => 'transform:none;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card-img' => 'transform:scale(1.05,1.05);',
+                    '{{WRAPPER}} .th-port-card-img' => ' -webkit-transition:all 0.25s linear; -moz-transition:all 0.25s linear; transition:all 0.25s linear;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'card_hover',
+            [
+                'label' => __( 'Grow content', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card-img' => 'transform:none;',
+                    '{{WRAPPER}} .th-portfolio-item:hover .th-port-card' => 'transform:scale(1.05,1.05);',
+                    '{{WRAPPER}} .th-port-card' => ' -webkit-transition:all 0.25s linear; -moz-transition:all 0.25s linear; transition:all 0.25s linear;',
+                ],
             ]
         );
 
@@ -270,7 +397,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         $this->start_controls_section(
             'card_style_background',
             [
-                'label' => __( 'Title & Text', 'th-widget-pack' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'style' => 'style_2',
@@ -278,21 +405,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
-            'card_price_background_color',
-            [
-                'label' => __( 'Price Background', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after' => 'background-color: {{VALUE}};',
-                ],
 
-            ]
-        );*/
 
         /* STYLE - Title */
         $this->add_control(
@@ -309,10 +422,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#2C2C33',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-title' => 'color: {{VALUE}};',
@@ -345,10 +454,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#888888',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-sub' => 'color: {{VALUE}};',
@@ -363,6 +468,33 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'label' => __('Typography', 'elementor'),
                 'name' => 'thmv_text_typography',
                 'selector' => '{{WRAPPER}} .th-port-style-2 .th-port-sub',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'text_align',
+            [
+                'label' => __( 'Content Align', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card-body' => 'text-align: {{VALUE}}',
+                ],
+                'separator' => 'before',
             ]
         );
 
@@ -381,10 +513,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#FFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-card-default' => 'background-color: {{VALUE}};',
@@ -402,7 +530,30 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
                     '{{WRAPPER}} .th-port-card-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_radius',
+            [
+                'label' => __( 'Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-port-card',
             ]
         );
 
@@ -442,10 +593,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => $default_rgba,
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -467,9 +614,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-port-center' => 'opacity: 1;',
-                    //'{{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE_FROM_ANOHTER_CONTROL}};',
                 ],
-                //'label_block' => true,
             ]
         );
 
@@ -478,10 +623,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -490,7 +631,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                     'show_overlay_mobile' => 'yes',
                 ],
                 'separator' => 'none',
-                //'label_block' => true,
             ]
         );
 
@@ -513,10 +653,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -668,33 +804,13 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         );
 
 
-        $this->add_control(
-            'filter_bar_text_color',
-            [
-                'label' => __( 'Text Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
 
         $this->add_control(
             'filter_bar_link_color',
             [
-                'label' => __( 'Link Color', 'th-widget-pack' ),
+                'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
@@ -702,16 +818,21 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __('Typography', 'elementor'),
+                'name' => 'thmv_filter_typography',
+                'selector' => '{{WRAPPER}} .th-portfolio-filters',
+            ]
+        );
+
         $this->add_control(
             'filter_bar_hover_color',
             [
-                'label' => __( 'Hover Color', 'th-widget-pack' ),
+                'label' => __( 'Hover', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
@@ -722,16 +843,25 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         $this->add_control(
             'filter_bar_active_color',
             [
-                'label' => __( 'Active Color', 'th-widget-pack' ),
+                'label' => __( 'Active', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_bar_text_color',
+            [
+                'label' => __( 'Sort Label', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'alpha' => false,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -752,6 +882,8 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();
+
+        $img_size = $settings[ 'featured_image_size' . '_size' ];
 
         $buttonstyle = $settings['button_style'];
 
@@ -853,11 +985,6 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                             echo '<a href="#" data-filter="#'.esc_attr($th_uid).' .p-' . esc_attr($tax_term->slug) . '">' . esc_html($tax_term->name) .'</a>';
                         }
                     }
-
-
-
-
-
                     ?>
                 </div>
 
@@ -953,9 +1080,11 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
 
                             // Check if Image comes in Med size with Square crop / else get small
 
-                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_md_square");
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
 
-                            if ($th_image) {
+                            $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
+
+                            /*if ($th_image) {
 
                                 $width = $th_image[1];
                                 $height = $th_image[2];
@@ -965,7 +1094,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
 
                                     // Check if Image comes in Small size with Square crop / else get thumb
 
-                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "th_img_sm_square");
+                                    $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], $img_size);
 
                                     $width = $th_image[1];
                                     $height = $th_image[2];
@@ -975,7 +1104,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                                         $th_image = wp_get_attachment_image_src($project_thumb_alt_img[0], "thumbnail");
                                     }
                                 }
-                            }
+                            }*/
                             $th_image_url = false;
                             if( isset( $th_image[0] ) ) {
                                 $th_image_url = $th_image[0];
@@ -1039,16 +1168,17 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                                         $featured_img_attr = array( 'class'	=> "img-responsive th-port-img" );
 
                                         $th_id = get_post_thumbnail_id(get_the_ID());
-                                        $th_image = wp_get_attachment_image_src($th_id, "th_img_md_square");
+                                        $th_image = wp_get_attachment_image_src($th_id, $img_size);
 
                                         if ($th_image){
 
                                             $width = $th_image[1];
                                             $height = $th_image[2];
 
+                                            echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), $img_size, $featured_img_attr ));
 
-                                            if ((605 == $width) && (605 == $height)){
-                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "th_img_md_square", $featured_img_attr ));
+                                            /*if ((605 == $width) && (605 == $height)){
+                                                echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), $img_size, $featured_img_attr ));
                                             }
                                             else{
                                                 $th_image = wp_get_attachment_image_src($th_id, "th_img_sm_square");
@@ -1062,7 +1192,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
                                                     echo wp_kses_post(get_the_post_thumbnail( get_the_ID(), "thumbnail", $featured_img_attr ));
                                                 }
 
-                                            }
+                                            }*/
                                         }
                                     }else{
                                         echo '<img width="605" height="605" src="https://via.placeholder.com/605x605?'.
@@ -1168,7 +1298,7 @@ class Themo_Widget_Accommodation_Grid extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Accommodation_Grid() );

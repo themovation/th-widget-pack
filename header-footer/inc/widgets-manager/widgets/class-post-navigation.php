@@ -12,7 +12,7 @@ use Elementor\Widget_Base;
 use Elementor\Core\Schemes;
 use Elementor\Group_Control_Typography;
 use Elementor\Schemes\Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 
 if (!defined('ABSPATH')) {
     exit;   // Exit if accessed directly.
@@ -183,7 +183,6 @@ class Post_Navigation extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'navigation_typography',
-                    'scheme' => Schemes\Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .hfe-post-navigation-wrapper .hfe-post-navigation-inner a',
                 ]
         );

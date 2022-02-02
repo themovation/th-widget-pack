@@ -518,10 +518,6 @@ class Themo_Widget_Header extends Widget_Base {
 			[
 				'label' => __( 'Primary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'default' => '',
 				'selectors' => [
                     '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
@@ -566,10 +562,6 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Primary Path', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
@@ -584,10 +576,6 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'label' => __( 'Secondary Path', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'default' => '',
                 'condition' => [
                     'view!' => 'default',
@@ -627,10 +615,6 @@ class Themo_Widget_Header extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -641,7 +625,7 @@ class Themo_Widget_Header extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 			]
 		);
 
@@ -675,16 +659,12 @@ class Themo_Widget_Header extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'condition' => [
                     'title_divider' => 'yes',
                 ],
             ]
         );
-        if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
+        //if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
             $this->add_responsive_control(
                 'thmv_divider_size',
                 [
@@ -766,7 +746,7 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
                 ]
             );
-        }
+        //}
 		$this->add_control(
 			'heading_description',
 			[
@@ -786,10 +766,6 @@ class Themo_Widget_Header extends Widget_Base {
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 			]
 		);
 
@@ -798,11 +774,11 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
-        if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
+        //if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
             $this->add_control(
                 'heading_span',
                 [
@@ -832,10 +808,6 @@ class Themo_Widget_Header extends Widget_Base {
                         '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span' => 'color: {{VALUE}};',
                         '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a span' => 'color: {{VALUE}};',
                     ],
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_3,
-                    ],
                 ]
             );
             $this->add_group_control(
@@ -845,7 +817,7 @@ class Themo_Widget_Header extends Widget_Base {
                     'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span, 
                     {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span,
                     {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span a',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    
                 ]
             );
 
@@ -930,7 +902,7 @@ class Themo_Widget_Header extends Widget_Base {
                     ],
                 ]
             );
-        }
+        //}
 
 		$this->end_controls_section();
 	}
@@ -1114,7 +1086,7 @@ class Themo_Widget_Header extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 
 		<#

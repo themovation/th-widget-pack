@@ -198,10 +198,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} h3' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -215,10 +212,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} h4' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -235,10 +229,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                     '{{WRAPPER}} th' => 'color: {{VALUE}};',
                     '{{WRAPPER}} td' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -253,10 +244,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-required-fields-tip' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -271,10 +259,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_checkout-wrapper label' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -433,7 +418,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 

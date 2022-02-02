@@ -83,10 +83,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-pricing-title' => 'color: {{VALUE}};',
@@ -117,10 +114,7 @@ class Themo_Widget_Pricing extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-pricing-sub-title' => 'color: {{VALUE}};',
@@ -151,10 +145,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-pricing-cost' => 'color: {{VALUE}};',
@@ -185,10 +176,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-pricing-cost span' => 'color: {{VALUE}};',
@@ -219,10 +207,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-pricing-features ul li' => 'color: {{VALUE}};',
@@ -253,10 +238,7 @@ class Themo_Widget_Pricing extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-pricing-table ul li ' => 'border-color: {{VALUE}};',
@@ -290,10 +272,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-title' => 'color: {{VALUE}};',
@@ -324,10 +303,7 @@ class Themo_Widget_Pricing extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-highlight .th-pricing-sub-title' => 'color: {{VALUE}};',
@@ -358,10 +334,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost' => 'color: {{VALUE}};',
@@ -392,10 +365,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-cost span' => 'color: {{VALUE}};',
@@ -426,10 +396,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-highlight .th-pricing-features ul li' => 'color: {{VALUE}};',
@@ -460,10 +427,7 @@ class Themo_Widget_Pricing extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-pricing-column.th-highlight ul li' => 'border-color: {{VALUE}};',
@@ -1022,7 +986,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 		<?php
 	}
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
     public function add_wpml_support() {
         add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );

@@ -12,7 +12,7 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly.
@@ -295,7 +295,6 @@ class Page_Title extends Widget_Base {
 				Group_Control_Typography::get_type(),
 				[
 					'name'     => 'title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
 					'selector' => '{{WRAPPER}} .elementor-heading-title, {{WRAPPER}} .hfe-page-title a',
 				]
 			);
@@ -305,10 +304,6 @@ class Page_Title extends Widget_Base {
 				[
 					'label'     => __( 'Color', 'header-footer-elementor' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => [
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
-					],
 					'selectors' => [
 						'{{WRAPPER}} .elementor-heading-title, {{WRAPPER}} .hfe-page-title a' => 'color: {{VALUE}};',
 						'{{WRAPPER}} .hfe-page-title-icon i'   => 'color: {{VALUE}};',
@@ -369,10 +364,6 @@ class Page_Title extends Widget_Base {
 			[
 				'label'     => __( 'Icon Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'condition' => [
 					'new_page_title_select_icon[value]!' => '',
 				],
@@ -542,17 +533,5 @@ class Page_Title extends Widget_Base {
 		<?php
 	}
 
-	/**
-	 * Render page title output in the editor.
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
-	 *
-	 * Remove this after Elementor v3.3.0
-	 *
-	 * @since 1.3.0
-	 * @access protected
-	 */
-	protected function _content_template() {
-		$this->content_template();
-	}
+
 }

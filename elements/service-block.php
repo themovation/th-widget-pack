@@ -322,10 +322,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
@@ -391,10 +388,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+				
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -407,7 +401,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
                 'label' => 'Typography',
 			]
 		);
@@ -460,10 +454,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -561,7 +552,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#
         var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' );

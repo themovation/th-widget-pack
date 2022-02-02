@@ -12,7 +12,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
 use \Elementor\Icons_Manager;
@@ -245,7 +245,6 @@ class Cart extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'toggle_button_typography',
-				'scheme'    => Schemes\Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .hfe-menu-cart__toggle .elementor-button',
 				'condition' => [
 					'hfe_cart_type' => 'custom',
@@ -643,19 +642,5 @@ class Cart extends Widget_Base {
 	 * @access protected
 	 */
 	protected function content_template() {
-	}
-
-	/**
-	 * Render cart output in the editor.
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
-	 *
-	 * Remove this after Elementor v3.3.0
-	 *
-	 * @since 1.4.0
-	 * @access protected
-	 */
-	protected function _content_template() {
-		$this->content_template();
 	}
 }

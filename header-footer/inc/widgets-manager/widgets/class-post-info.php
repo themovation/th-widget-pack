@@ -11,7 +11,7 @@ use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
@@ -429,7 +429,7 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'text_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .info-value *',
                 ]
         );
@@ -438,10 +438,7 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', 'header-footer-elementor'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .info-value *' => 'color: {{VALUE}};',
                     ],
@@ -460,7 +457,7 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'before_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-before',
                 ]
         );
@@ -469,10 +466,7 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', 'header-footer-elementor'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .text-before' => 'color: {{VALUE}};',
                     ],
@@ -491,7 +485,7 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'after_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-after',
                 ]
         );
@@ -500,10 +494,7 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', 'header-footer-elementor'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .text-after' => 'color: {{VALUE}};',
                     ],
@@ -523,10 +514,7 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Icon Color', 'header-footer-elementor'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .thmv-icon i' => 'color: {{VALUE}};',
                     ],

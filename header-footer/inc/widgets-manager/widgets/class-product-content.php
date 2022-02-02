@@ -11,7 +11,7 @@ use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 
 
 if (!defined('ABSPATH')) {
@@ -132,7 +132,7 @@ class Product_Content extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'content_typography',
-                    'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                    
                     'selector' => '{{WRAPPER}} .hfe-product-content-wrapper p',
                 ]
         );
@@ -142,10 +142,7 @@ class Product_Content extends Widget_Base {
                 [
                     'label' => __('Color', 'header-footer-elementor'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-product-content-wrapper p' => 'color: {{VALUE}};',
                     ],

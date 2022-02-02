@@ -86,10 +86,6 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li:before' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -99,7 +95,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'name' => 'icon_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li:before',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 'exclude' => [ 'font_family','font_weight','text_transform','font_style','text_decoration','letter_spacing'],
             ]
         );
@@ -114,10 +110,6 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'condition' => [
                     'show_titles' => 'yes',
                 ],
@@ -131,7 +123,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'name' => 'title_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 'condition' => [
                     'show_titles' => 'yes',
                 ],
@@ -147,10 +139,6 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'separator' => 'before'
             ]
         );
@@ -161,7 +149,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                 'name' => 'value_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -175,10 +163,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
                     '{{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value a,
                     {{WRAPPER}} .themo_mphb_room_details .mphb-loop-room-type-attributes li .mphb-attribute-value a:link' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -260,7 +245,7 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 

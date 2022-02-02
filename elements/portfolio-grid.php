@@ -187,10 +187,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             [
                 'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => $default_rgba,
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -221,10 +217,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
+
                 'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -257,10 +250,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -341,10 +330,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
@@ -358,10 +343,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label' => __( 'Link Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
@@ -375,10 +356,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label' => __( 'Hover Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
@@ -392,10 +369,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'label' => __( 'Active Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
@@ -756,7 +729,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Portfolio_Grid() );

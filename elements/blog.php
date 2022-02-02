@@ -147,10 +147,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .post-title a' => 'color: {{VALUE}};',
@@ -163,7 +159,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .post-title a',
 			]
 		);
@@ -183,10 +179,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Meta Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .post-meta' => 'color: {{VALUE}};',
@@ -199,7 +191,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'meta_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .post-meta',
 			]
 		);
@@ -219,10 +211,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Excerpt Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .entry-content p' => 'color: {{VALUE}};',
@@ -235,7 +223,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'excerpt_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .entry-content p',
 			]
 		);
@@ -255,10 +243,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Read More Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .entry-content p a' => 'color: {{VALUE}};',
@@ -271,7 +255,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .entry-content p a',
 			]
 		);
@@ -487,7 +471,7 @@ class Themo_Widget_Blog extends Widget_Base {
 
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Blog() );

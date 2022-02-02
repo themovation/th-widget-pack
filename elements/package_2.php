@@ -262,10 +262,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} h4' => 'color: {{VALUE}};',
@@ -296,10 +292,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} span' => 'color: {{VALUE}};',
@@ -405,10 +397,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-package-pre-title' => 'color: {{VALUE}};',
@@ -439,10 +427,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} h3' => 'color: {{VALUE}};',
@@ -473,10 +457,6 @@ class Themo_Widget_Package extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-package-content' => 'color: {{VALUE}};',
@@ -623,7 +603,7 @@ class Themo_Widget_Package extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
     /*
      * <article class="th-package">

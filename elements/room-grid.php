@@ -77,11 +77,58 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         $this->add_control(
             'filter',
             [
-                'label' => __( 'Show Filter Bar', 'th-widget-pack' ),
+                'label' => __( 'Show Filters', 'th-widget-pack' ),
+                'descrition' => __( 'Use Groups to filter your results.', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'no',
+                'default' => '',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
+                'return_value' => 'yes',
+            ]
+        );
+        $this->add_control(
+            'term_hierarchy',
+            [
+                'label' => __( 'Term Hierarchy', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'parent' => __( 'Parent', 'th-widget-pack' ),
+                    'child' => __( 'Child', 'th-widget-pack' ),
+                ],
+                'default' => 'parent',
+                'condition' => [
+                    'filter' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_sort_label',
+            [
+                'label' => __( "Show 'Sort:'", 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Show', 'th-widget-pack' ),
+                'label_off' => __( 'Hide', 'th-widget-pack' ),
+                'return_value' => 'yes',
+                'condition' => [
+                    'filter' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'filter_all',
+            [
+                'label' => __( "Show 'All'", 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'yes',
+                'label_on' => __( 'Show', 'th-widget-pack' ),
+                'label_off' => __( 'Hide', 'th-widget-pack' ),
+                'return_value' => 'yes',
+                'condition' => [
+                    'filter' => 'yes',
+                ],
             ]
         );
 
@@ -93,7 +140,8 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label_block' => true,
                 'multiple'    => true,
                 //'default' => 'none',
-                'options' => $this->get_tours_list()
+                'options' => $this->get_tours_list(),
+                'separator' => 'before'
             ]
         );
 
@@ -164,7 +212,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 ],
             ]
         );
-
 
 
         $this->add_control(
@@ -267,10 +314,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#FFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-card-caption p' => 'color: {{VALUE}};',
@@ -349,9 +392,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-
-        //th-portfolio-item
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -365,21 +405,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             ]
         );
 
-        /*$this->add_control(
-            'card_price_background_color',
-            [
-                'label' => __( 'Price Background', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .th-port-style-2 .th-port-card .th-port-card-img:after' => 'background-color: {{VALUE}};',
-                ],
 
-            ]
-        );*/
 
         /* STYLE - Title */
         $this->add_control(
@@ -396,10 +422,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#2C2C33',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-title' => 'color: {{VALUE}};',
@@ -432,10 +454,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#888888',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-style-2 .th-port-sub' => 'color: {{VALUE}};',
@@ -443,8 +461,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
             ]
         );
-
-
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
@@ -497,10 +513,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#FFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-port-card-default' => 'background-color: {{VALUE}};',
@@ -508,6 +520,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
 
             ]
         );
+
 
         $this->add_responsive_control(
             'thmv_background_padding',
@@ -580,10 +593,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => $default_rgba,
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -614,10 +623,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -648,10 +653,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -810,10 +811,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __( 'Link', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
@@ -836,10 +833,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __( 'Hover', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
@@ -853,10 +846,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __( 'Active', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
@@ -870,10 +859,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'label' => __( 'Sort Label', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
@@ -896,10 +881,6 @@ class Themo_Widget_Room_Grid extends Widget_Base {
     }
 
     protected function render() {
-
-
-
-
         $settings = $this->get_settings_for_display();
 
         $img_size = $settings[ 'featured_image_size' . '_size' ];
@@ -959,8 +940,15 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             <?php if ( $settings['filter'] == 'yes' ) : ?>
 
                 <div id="filters" class="th-portfolio-filters">
-                    <span><?php echo esc_html__( 'Sort:', 'th-widget-pack' ); ?></span>
-                    <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'th-widget-pack' ); ?></a>
+                    <?php
+                    if(isset($settings['filter_sort_label']) && $settings['filter_sort_label'] =='yes') { ?>
+                        <span><?php echo esc_html__( 'Sort:', 'th-widget-pack' ); ?></span>
+                    <?php } ?>
+
+                    <?php if(isset($settings['filter_all']) && $settings['filter_all']) { ?>
+                        <a href="#" data-filter="*" class="current"><?php echo esc_html__( 'All', 'th-widget-pack' ); ?></a>
+                    <?php } ?>
+
                     <?php
 
                     $taxonomy = 'themo_room_type';
@@ -972,12 +960,28 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                         'hide_empty' => false,
                         'orderby' => 'slug',
                         'order' => 'ASC',
+                        'parent' => 0,
                     );
 
                     $tax_terms = get_terms( $tax_args );
 
-                    foreach ( $tax_terms as $tax_term ) {
-                        echo '<a href="#" data-filter="#'.esc_attr($th_uid).' .p-' . esc_attr($tax_term->slug) . '">' . esc_html($tax_term->name) .'</a>';
+                    // Child terms only
+                    if(isset($settings['term_hierarchy']) && $settings['term_hierarchy'] == 'child' ){
+                        foreach ( $tax_terms as $pterm ) {
+                            //Get the Child terms
+                            $tax_args['parent']=$pterm->term_id;
+                            $tax_args['hide_empty']=true;
+
+                            $child_tax_terms = get_terms( $tax_args );
+                            foreach ( $child_tax_terms as $cterm ) {
+                                echo '<a href="#" data-filter="#'.esc_attr($th_uid).' .p-' . esc_attr($cterm->slug) . '">' . esc_html($cterm->name) .'</a>';
+                            }
+                        }
+
+                    }else{ // Parent terms
+                        foreach ( $tax_terms as $tax_term ) {
+                            echo '<a href="#" data-filter="#'.esc_attr($th_uid).' .p-' . esc_attr($tax_term->slug) . '">' . esc_html($tax_term->name) .'</a>';
+                        }
                     }
                     ?>
                 </div>
@@ -1226,10 +1230,10 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                                     } else {
                                         $th_tour_intro = apply_filters( 'the_excerpt', get_the_excerpt() );
                                         $th_tour_intro = str_replace( ']]>', ']]&gt;', $th_tour_intro );
-                                        $th_tour_intro = str_replace( '<p', '<p class="th-port-sub"', $th_tour_intro );
+                                        $th_tour_intro = str_replace( '<p', '<p class="th-port-sub th-auto-off"', $th_tour_intro );
                                     }
                                 }else{
-                                    $th_tour_intro = '<p class="th-port-sub">' . $th_tour_intro . '</p>';
+                                    $th_tour_intro = '<p class="th-port-sub th-else">' . $th_tour_intro . '</p>';
                                 }
 
                                 $th_tour_button_text = false;
@@ -1292,7 +1296,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Room_Grid() );
