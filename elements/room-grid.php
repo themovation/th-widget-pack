@@ -587,6 +587,17 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             //error_log("RGBA: ".$default_rgba,0);
         }
 
+        $this->add_group_control(
+            Group_Control_Image_Size::get_type(),
+            [
+                'name' => 'featured_image_size_grid',
+                'default' => 'th_img_md_square',
+                'exclude' => [ 'thumbnail','medium','medium_large','large','1536x1536','2048x2048','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_brands','th_img_sm_standard','custom'],
+                //$size = $settings[ 'grid_image' . '_size' ];
+                //$size = $settings['featured_image_size'];
+            ]
+        );
+
 
         $this->add_control(
             'hover_color',
@@ -883,7 +894,12 @@ class Themo_Widget_Room_Grid extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        $img_size = $settings[ 'featured_image_size' . '_size' ];
+        if ( isset( $settings['style'] ) &&  $settings['style'] == 'style_2' ){
+            $img_size = $settings[ 'featured_image_size' . '_size' ];
+        }else{
+            $img_size = $settings[ 'featured_image_size_grid' . '_size' ];
+        }
+
 
         $buttonstyle = $settings['button_style'];
 
