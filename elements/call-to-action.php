@@ -442,7 +442,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<div class="th-cta">
 			<# if ( settings.text ) { #>

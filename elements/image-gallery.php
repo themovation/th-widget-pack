@@ -261,7 +261,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			[
 				'name' => 'text_title_typography',
 				'selector' => '{{WRAPPER}} .image-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 
 			]
 		);
@@ -311,7 +311,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			[
 				'name' => 'caption_title_typography',
 				'selector' => '{{WRAPPER}} .caption',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 
 			]
 		);
@@ -372,7 +372,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }
 
 Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Image_Gallery() );

@@ -884,10 +884,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .elementor-row .thmv-top-box span' => 'color: {{VALUE}};',
@@ -973,10 +969,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-info .thmv-title' => 'color: {{VALUE}};',
@@ -1010,10 +1002,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-separator' => 'border-color: {{VALUE}};',
@@ -1041,10 +1029,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-preface' => 'color: {{VALUE}};',
@@ -1082,10 +1066,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-info .thmv-description' => 'color: {{VALUE}};',
@@ -1120,10 +1100,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Icon Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-icons .elementor-icon.thmv-icon' => 'color: {{VALUE}};',
@@ -1169,10 +1145,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Label Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-icons.thmv-list .thmv-icon-label' => 'color: {{VALUE}};',
@@ -1213,10 +1185,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Icon Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-star-rating svg path' => 'fill: {{VALUE}};',
@@ -1254,10 +1222,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Text Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} ul.thmv-star-rating li:last-child' => 'color: {{VALUE}};',
@@ -1298,10 +1262,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Icon Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-location .location-icon i' => 'color: {{VALUE}};',
@@ -1337,10 +1297,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Location Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-location .location' => 'color: {{VALUE}};',
@@ -1378,10 +1334,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             [
                 'label' => __('Before Color', 'th-widget-pack'),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
                 'default' => '#1C1715',
                 'selectors' => [
                     '{{WRAPPER}} .thmv-price .price-before' => 'color: {{VALUE}};',
@@ -1413,10 +1365,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     //'default' => '#ffffff',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-price .price' => 'color: {{VALUE}};',
@@ -1448,10 +1396,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('After Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '#1C1715',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-price .price-after' => 'color: {{VALUE}};',
@@ -1601,10 +1545,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'condition' => [
                         'thmv_style' => ['style_5']
                     ],
@@ -1648,10 +1588,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 [
                     'label' => __('Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_1,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .elementor-swiper-button' => 'color: {{VALUE}};',
@@ -2430,7 +2366,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {
+    protected function content_template() {
         
     }
 

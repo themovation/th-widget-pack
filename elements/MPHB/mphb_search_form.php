@@ -224,10 +224,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-errors-wrapper p' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 /*'condition' => [
                     'hide_form_lables' => '',
                 ],*/
@@ -240,7 +237,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'name' => 'title_color_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper label',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 /*'condition' => [
                     'hide_form_lables' => '',
                 ],*/
@@ -271,10 +268,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-required-fields-tip small' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'condition' => [
                     'hide_required_notices' => '',
                 ],
@@ -287,7 +281,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'name' => 'tip_color_typography',
                 'selector' => '{{WRAPPER}} .mphb-required-fields-tip small',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 'condition' => [
                     'hide_required_notices' => '',
                 ],
@@ -315,10 +309,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select' => 'color: {{VALUE}} !important;',
 
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -337,10 +328,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select::-ms-input-placeholder' => 'color: {{VALUE}};',
 
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -354,10 +342,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     '{{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text],
                     .mphb_sc_search-wrapper.frm_forms.with_frm_style select' => 'background-color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -410,10 +395,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -423,7 +405,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'name' => 'button_text_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -547,7 +529,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 

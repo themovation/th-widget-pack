@@ -85,6 +85,8 @@ function th_enqueue_before_editor() {
     $elementor_is_single_template = false;
     $elementsToTop = [];
 
+    $templateBlockType = false;
+
     if(get_post_type() === 'elementor-thhf'){
         $templateBlockType = get_post_meta(get_the_ID(),'ehf_template_type', true );
         if('type_single' === $templateBlockType){

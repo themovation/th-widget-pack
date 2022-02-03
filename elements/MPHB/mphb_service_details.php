@@ -68,10 +68,6 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_service_details span.mphb-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -81,7 +77,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'name' => 'price_typography',
                 'label' => __( 'Price', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_service_details span.mphb-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -94,10 +90,6 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_service_details' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -107,7 +99,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'name' => 'text_typography',
                 'label' => __( 'Text', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_service_details',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -137,7 +129,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 

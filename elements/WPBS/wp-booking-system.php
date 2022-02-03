@@ -52,10 +52,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
 			[
 				'label' => __( 'Tooltip Background', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-cal-tooltip' => 'background-color: {{VALUE}};',
@@ -131,10 +128,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
             [
                 'label' => __( 'Tooltip Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '#FFFFFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
@@ -147,10 +141,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
             [
                 'label' => __( 'Legend Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '#000',
                 'selectors' => [
                     '{{WRAPPER}} .wpbs-legend .wpbs-legend-item p' => 'color: {{VALUE}};',
@@ -179,7 +170,7 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );

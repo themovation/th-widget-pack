@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Page Builder Widget Pack
- * Version: 2.1.10
+ * Version: 2.1.11
  * Plugin URI: themovation.com
  * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation
@@ -12,7 +12,7 @@
  */
 
 
-define( 'THEMO_VERSION', '2.1.10' );
+define( 'THEMO_VERSION', '2.1.11' );
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
@@ -24,7 +24,7 @@ define( 'THEMO_COLOR_ACCENT', '#F6C15E' );
 define( 'ENABLE_BLOCK_LIBRARY', true );
 
 /**
- * Define Elementor Partner ID
+ * Define Elementor Partner ID 
  */
 if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
     define( 'ELEMENTOR_PARTNER_ID', 2129 );

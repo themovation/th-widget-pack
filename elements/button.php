@@ -320,7 +320,7 @@ class Themo_Widget_Button extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#  var button_1_link_url = '#';
             if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }

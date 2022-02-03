@@ -67,10 +67,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -80,7 +77,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'name' => 'text_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -93,10 +90,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before',
             ]
         );
@@ -107,7 +101,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'name' => 'price_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -120,10 +114,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price-period' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before',
             ]
         );
@@ -134,7 +125,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
                 'name' => 'price_period_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_room_rates .mphb-room-rates-list li .mphb-price-period',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -191,7 +182,7 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 

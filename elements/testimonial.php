@@ -232,10 +232,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-content' => 'color: {{VALUE}};',
@@ -266,10 +263,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+                
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-name' => 'color: {{VALUE}};',
@@ -300,10 +294,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-job' => 'color: {{VALUE}};',
@@ -334,10 +325,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-star-rating' => 'color: {{VALUE}};',
@@ -476,7 +464,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );

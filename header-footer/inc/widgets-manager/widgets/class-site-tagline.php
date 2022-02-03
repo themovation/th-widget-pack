@@ -12,7 +12,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Widget_Base;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;   // Exit if accessed directly.
@@ -223,7 +223,6 @@ class Site_Tagline extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'tagline_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .hfe-site-tagline',
 			]
 		);
@@ -232,10 +231,6 @@ class Site_Tagline extends Widget_Base {
 			[
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .hfe-site-tagline' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .thhf-icon i'       => 'color: {{VALUE}};',
@@ -249,10 +244,6 @@ class Site_Tagline extends Widget_Base {
 			[
 				'label'     => __( 'Icon Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'condition' => [
 					'icon[value]!' => '',
 				],
@@ -346,17 +337,4 @@ class Site_Tagline extends Widget_Base {
 		<?php
 	}
 
-	/**
-	 * Render Site Tagline output in the editor.
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
-	 *
-	 * Remove this after Elementor v3.3.0
-	 *
-	 * @since 1.3.0
-	 * @access protected
-	 */
-	protected function _content_template() {
-		$this->content_template();
-	}
 }

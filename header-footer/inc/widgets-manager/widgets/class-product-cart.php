@@ -186,7 +186,6 @@ class Product_Cart extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'price_typography',
-                    'scheme' => Schemes\Typography::TYPOGRAPHY_1,
                     'selector' => '{{WRAPPER}} .hfe-product-cart-wrapper .woocommerce-Price-amount',
                     'condition' => [
                         'show_price!' => '',

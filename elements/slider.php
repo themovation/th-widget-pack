@@ -755,7 +755,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'slide_title_typo',
 				'label' => __( 'Title Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 			]
 		);
@@ -788,7 +788,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'slide_content_typo',
 				'label' => __( 'Content Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p',
 			]
 		);
@@ -1385,7 +1385,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
