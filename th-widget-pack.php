@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Page Builder Widget Pack
- * Version: 2.1.11
+ * Version: 2.1.12
  * Plugin URI: themovation.com
  * Description: A widget pack for the Elementor Page Builder
  * Author: Themovation
@@ -12,7 +12,7 @@
  */
 
 
-define( 'THEMO_VERSION', '2.1.11' );
+define( 'THEMO_VERSION', '2.1.12' );
 define( 'THEMO__FILE__', __FILE__ );
 define( 'THEMO_PLUGIN_BASE', plugin_basename( THEMO__FILE__ ) );
 define( 'THEMO_URL', plugins_url( '/', THEMO__FILE__ ) );
