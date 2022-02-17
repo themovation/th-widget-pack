@@ -1,15 +1,58 @@
 <wpml-config>
+    <custom-types>
+        <custom-type translate="1">themo_room</custom-type>
+        <custom-type translate="1">elementor-thhf</custom-type>
+    </custom-types>
+    <taxonomies>
+        <taxonomy translate="1">themo_room_type</taxonomy>
+    </taxonomies>
+    <custom-fields>
+        <custom-field action="translate">th_room_rating</custom-field>
+        <custom-field action="translate">th_room_icons</custom-field>
+        <custom-field action="translate">th_room_highlight</custom-field>
+        <custom-field action="translate">th_room_title</custom-field>
+        <custom-field action="translate">th_room_intro</custom-field>
+        <custom-field action="translate">th_room_price</custom-field>
+        <custom-field action="translate">th_room_price_per</custom-field>
+        <custom-field action="translate">th_room_location</custom-field>
+        <custom-field action="translate">th_room_location_link</custom-field>
+        <custom-field action="translate">th_room_button_text</custom-field>
+    </custom-fields>
     <elementor-widgets>
+        <!-- Availability Calendar MPHB -->
+        <widget name="themo-mphb-availability-calendar">
+            <fields>
+                <field type="Calendar: Tooltip Title" editor_type="LINE">tooltip_title</field>
+                <field type="Calendar: Accommodation ID" editor_type="LINE">type_id</field>
+            </fields>
+        </widget>
+
         <!-- Accommodation Listing -->
         <widget name="themo-accommodation-listing">
-            <fields>
-                <field type="Listing: Pre Title" editor_type="LINE">pre_title</field>
-                <field type="Listing: Title" editor_type="LINE">title</field>
-                <field type="Listing: Content" editor_type="AREA">content</field>
+            <fields-in-item items_of="listings">
+                <field type="Listing: Title" editor_type="LINE">thmv_title</field>
+                <field type="Listing: Highlight" editor_type="LINE">thmv_highlight</field>
+                <field type="Listing: Preface" editor_type="LINE">thmv_preface</field>
+                <field type="Listing: Description" editor_type="AREA">thmv_description</field>
+                <field type="Listing: Location Text" editor_type="LINE">thmv_location_text</field>
+                <field type="Listing: Location Link" editor_type="LINK">thmv_location_link</field>
                 <field type="Listing: Price" editor_type="LINE">thmv_price</field>
-                <field type="Listing: Price Text" editor_type="LINE">price_text</field>
-                <field type="Listing: Link UR" editor_type="LINK" key_of="url">url</field>
-            </fields>
+                <field type="Listing: Price (before)" editor_type="LINE">thmv_price_before</field>
+                <field type="Listing: Price (after)" editor_type="LINE">thmv_price_after</field>
+
+                <field type="Listing: Icon Label" editor_type="LINE">thmv_icon_label0</field>
+                <field type="Listing: Icon Labe2" editor_type="LINE">thmv_icon_label1</field>
+                <field type="Listing: Icon Labe3" editor_type="LINE">thmv_icon_label2</field>
+                <field type="Listing: Icon Labe4" editor_type="LINE">thmv_icon_label3</field>
+                <field type="Listing: Icon Labe5" editor_type="LINE">thmv_icon_label4</field>
+                <field type="Listing: Icon Labe6" editor_type="LINE">thmv_icon_label5</field>
+                <field type="Listing: Icon Labe7" editor_type="LINE">thmv_icon_label6</field>
+                <field type="Listing: Icon Labe8" editor_type="LINE">thmv_icon_label7</field>
+                <field type="Listing: Icon Labe9" editor_type="LINE">thmv_icon_label8</field>
+                <field type="Listing: Icon Label0" editor_type="LINE">thmv_icon_label9</field>
+                <field type="Listing: Icon Label1" editor_type="LINE">thmv_icon_label10</field>
+                <field type="Listing: Icon Label2" editor_type="LINE">thmv_icon_label11</field>
+            </fields-in-item>
         </widget>
 
         <!-- Booked Appointment Calendar -->
@@ -38,6 +81,13 @@
                 <field type="Call to action: Button 1 URL" editor_type="LINK" key_of="url">button_1_link</field>
                 <field type="Call to action: Button 2 Text" editor_type="LINE">button_2_text</field>
                 <field type="Call to action: Button 2 URL" editor_type="LINK" key_of="url">button_2_link</field>
+            </fields>
+        </widget>
+
+        <!--  Copyright Text -->
+        <widget name="thhf-copyright">
+            <fields>
+                <field type="Copyright: Copyright Text" editor_type="AREA">shortcode</field>
             </fields>
         </widget>
 
@@ -94,6 +144,18 @@
             </fields-in-item>
         </widget>
 
+        <!-- Info Card -->
+        <widget name="themo-info-card">
+            <fields>
+                <field type="Info Card: Title" editor_type="LINE">title_text</field>
+                <field type="Info Card: Description" editor_type="AREA">description_text</field>
+                <field type="Info Card: Button 1 Text" editor_type="LINE">button_1_text</field>
+                <field type="Info Card: Button 1 URL" editor_type="LINK" key_of="url">button_1_link</field>
+                <field type="Info Card: Button 1 Text" editor_type="LINE">button_2_text</field>
+                <field type="Info Card: Button 1 URL" editor_type="LINK" key_of="url">button_2_link</field>
+            </fields>
+        </widget>
+
         <!-- Itinerary List -->
         <widget name="themo-itinerary">
             <fields-in-item items_of="tabs">
@@ -112,6 +174,24 @@
                 <field type="Package: Price Text" editor_type="LINE">price_text</field>
                 <field type="Package: URL" editor_type="LINK" key_of="url">url</field>
             </fields>
+        </widget>
+
+        <!-- Page Title -->
+        <widget name="thhf-page-title">
+            <fields>
+                <field type="Page Title: Before Text" editor_type="LINE">before</field>
+                <field type="Page Title: After Text" editor_type="LINE">after</field>
+
+            </fields>
+        </widget>
+
+
+        <!-- Post Info -->
+        <widget name="thhf-post-info">
+            <fields-in-item items_of="info">
+                <field type="Post Info: Text Before" editor_type="LINE">text_before</field>
+                <field type="Post Info: Text After" editor_type="LINE">text_after</field>
+            </fields-in-item>
         </widget>
 
         <!-- Price -->
@@ -155,12 +235,35 @@
             </fields-in-item>
         </widget>
 
+        <!-- Search -->
+        <widget name="thhf-search-button">
+            <fields>
+                <field type="Search: Placeholder" editor_type="LINE">placeholder</field>
+            </fields>
+        </widget>
+
         <!-- Service Block -->
         <widget name="themo-service-block">
             <fields>
                 <field type="Service Block: Title" editor_type="LINE">title_text</field>
                 <field type="Service Block: Text" editor_type="AREA">description_text</field>
                 <field type="Service Block: URL" editor_type="LINK" key_of="url">link</field>
+            </fields>
+        </widget>
+
+        <!-- Site Title -->
+        <widget name="thhf-site-title">
+            <fields>
+                <field type="Site Title: Before Text" editor_type="LINE">before</field>
+                <field type="Site Title: After Text" editor_type="LINE">after</field>
+            </fields>
+        </widget>
+
+        <!-- Site Tag line -->
+        <widget name="thhf-site-tagline">
+            <fields>
+                <field type="Site Tagline: Before Text" editor_type="LINE">before</field>
+                <field type="Site Tagline: After Text" editor_type="LINE">after</field>
             </fields>
         </widget>
 
@@ -175,6 +278,133 @@
                 <field type="Slider: Button 2 URL" editor_type="LINK" key_of="url">slide_button_link_2</field>
                 <field type="Slider: Shortcode" editor_type="LINE">slide_shortcode</field>
                 <field type="Slider: Tooltip Text" editor_type="LINE">slide_tooltip_text</field>
+            </fields-in-item>
+        </widget>
+
+        <!-- Tabs -->
+        <widget name="themo-tabs">
+            <fields-in-item items_of="tabs">
+                <field type="Tabs: Tab Title" editor_type="LINE">tab_title</field>
+
+                <field type="Tabs: Tab Item 1 Title" editor_type="LINE">thmv_tab_item_title0</field>
+                <field type="Tabs: Tab Item 1 Price" editor_type="LINE">thmv_tab_item_price0</field>
+                <field type="Tabs: Tab Item 1 Content" editor_type="AREA">thmv_tab_item_content0</field>
+
+                <field type="Tabs: Tab Item 2 Title" editor_type="LINE">thmv_tab_item_title1</field>
+                <field type="Tabs: Tab Item 2 Price" editor_type="LINE">thmv_tab_item_price1</field>
+                <field type="Tabs: Tab Item 2 Content" editor_type="AREA">thmv_tab_item_content1</field>
+
+                <field type="Tabs: Tab Item 3 Title" editor_type="LINE">thmv_tab_item_title2</field>
+                <field type="Tabs: Tab Item 3 Price" editor_type="LINE">thmv_tab_item_price2</field>
+                <field type="Tabs: Tab Item 3 Content" editor_type="AREA">thmv_tab_item_content2</field>
+
+                <field type="Tabs: Tab Item 4 Title" editor_type="LINE">thmv_tab_item_title3</field>
+                <field type="Tabs: Tab Item 4 Price" editor_type="LINE">thmv_tab_item_price3</field>
+                <field type="Tabs: Tab Item 4 Content" editor_type="AREA">thmv_tab_item_content3</field>
+
+                <field type="Tabs: Tab Item 5 Title" editor_type="LINE">thmv_tab_item_title4</field>
+                <field type="Tabs: Tab Item 5 Price" editor_type="LINE">thmv_tab_item_price4</field>
+                <field type="Tabs: Tab Item 5 Content" editor_type="AREA">thmv_tab_item_content4</field>
+
+                <field type="Tabs: Tab Item 6 Title" editor_type="LINE">thmv_tab_item_title5</field>
+                <field type="Tabs: Tab Item 6 Price" editor_type="LINE">thmv_tab_item_price5</field>
+                <field type="Tabs: Tab Item 6 Content" editor_type="AREA">thmv_tab_item_content5</field>
+
+                <field type="Tabs: Tab Item 7 Title" editor_type="LINE">thmv_tab_item_title6</field>
+                <field type="Tabs: Tab Item 7 Price" editor_type="LINE">thmv_tab_item_price6</field>
+                <field type="Tabs: Tab Item 7 Content" editor_type="AREA">thmv_tab_item_content6</field>
+
+                <field type="Tabs: Tab Item 8 Title" editor_type="LINE">thmv_tab_item_title7</field>
+                <field type="Tabs: Tab Item 8 Price" editor_type="LINE">thmv_tab_item_price7</field>
+                <field type="Tabs: Tab Item 8 Content" editor_type="AREA">thmv_tab_item_content7</field>
+
+                <field type="Tabs: Tab Item 9 Title" editor_type="LINE">thmv_tab_item_title8</field>
+                <field type="Tabs: Tab Item 9 Price" editor_type="LINE">thmv_tab_item_price8</field>
+                <field type="Tabs: Tab Item 9 Content" editor_type="AREA">thmv_tab_item_content8</field>
+
+                <field type="Tabs: Tab Item 10 Title" editor_type="LINE">thmv_tab_item_title9</field>
+                <field type="Tabs: Tab Item 10 Price" editor_type="LINE">thmv_tab_item_price9</field>
+                <field type="Tabs: Tab Item 10 Content" editor_type="AREA">thmv_tab_item_content9</field>
+
+                <field type="Tabs: Tab Item 11 Title" editor_type="LINE">thmv_tab_item_title10</field>
+                <field type="Tabs: Tab Item 11 Price" editor_type="LINE">thmv_tab_item_price10</field>
+                <field type="Tabs: Tab Item 11 Content" editor_type="AREA">thmv_tab_item_content10</field>
+
+                <field type="Tabs: Tab Item 12 Title" editor_type="LINE">thmv_tab_item_title11</field>
+                <field type="Tabs: Tab Item 12 Price" editor_type="LINE">thmv_tab_item_price11</field>
+                <field type="Tabs: Tab Item 12 Content" editor_type="AREA">thmv_tab_item_content11</field>
+
+                <field type="Tabs: Tab Item 13 Title" editor_type="LINE">thmv_tab_item_title12</field>
+                <field type="Tabs: Tab Item 13 Price" editor_type="LINE">thmv_tab_item_price12</field>
+                <field type="Tabs: Tab Item 13 Content" editor_type="AREA">thmv_tab_item_content12</field>
+
+                <field type="Tabs: Tab Item 14 Title" editor_type="LINE">thmv_tab_item_title13</field>
+                <field type="Tabs: Tab Item 14 Price" editor_type="LINE">thmv_tab_item_price13</field>
+                <field type="Tabs: Tab Item 14 Content" editor_type="AREA">thmv_tab_item_content13</field>
+
+                <field type="Tabs: Tab Item 15 Title" editor_type="LINE">thmv_tab_item_title14</field>
+                <field type="Tabs: Tab Item 15 Price" editor_type="LINE">thmv_tab_item_price14</field>
+                <field type="Tabs: Tab Item 15 Content" editor_type="AREA">thmv_tab_item_content14</field>
+
+                <field type="Tabs: Tab Item 16 Title" editor_type="LINE">thmv_tab_item_title15</field>
+                <field type="Tabs: Tab Item 16 Price" editor_type="LINE">thmv_tab_item_price15</field>
+                <field type="Tabs: Tab Item 16 Content" editor_type="AREA">thmv_tab_item_content15</field>
+
+                <field type="Tabs: Tab Item 17 Title" editor_type="LINE">thmv_tab_item_title16</field>
+                <field type="Tabs: Tab Item 17 Price" editor_type="LINE">thmv_tab_item_price16</field>
+                <field type="Tabs: Tab Item 17 Content" editor_type="AREA">thmv_tab_item_content16</field>
+
+                <field type="Tabs: Tab Item 18 Title" editor_type="LINE">thmv_tab_item_title17</field>
+                <field type="Tabs: Tab Item 18 Price" editor_type="LINE">thmv_tab_item_price17</field>
+                <field type="Tabs: Tab Item 18 Content" editor_type="AREA">thmv_tab_item_content17</field>
+
+                <field type="Tabs: Tab Item 19 Title" editor_type="LINE">thmv_tab_item_title18</field>
+                <field type="Tabs: Tab Item 19 Price" editor_type="LINE">thmv_tab_item_price18</field>
+                <field type="Tabs: Tab Item 19 Content" editor_type="AREA">thmv_tab_item_content18</field>
+
+                <field type="Tabs: Tab Item 20 Title" editor_type="LINE">thmv_tab_item_title19</field>
+                <field type="Tabs: Tab Item 20 Price" editor_type="LINE">thmv_tab_item_price19</field>
+                <field type="Tabs: Tab Item 20 Content" editor_type="AREA">thmv_tab_item_content19</field>
+
+                <field type="Tabs: Tab Item 21 Title" editor_type="LINE">thmv_tab_item_title20</field>
+                <field type="Tabs: Tab Item 21 Price" editor_type="LINE">thmv_tab_item_price20</field>
+                <field type="Tabs: Tab Item 21 Content" editor_type="AREA">thmv_tab_item_content20</field>
+
+                <field type="Tabs: Tab Item 22 Title" editor_type="LINE">thmv_tab_item_title21</field>
+                <field type="Tabs: Tab Item 22 Price" editor_type="LINE">thmv_tab_item_price21</field>
+                <field type="Tabs: Tab Item 22 Content" editor_type="AREA">thmv_tab_item_content21</field>
+
+                <field type="Tabs: Tab Item 23 Title" editor_type="LINE">thmv_tab_item_title22</field>
+                <field type="Tabs: Tab Item 23 Price" editor_type="LINE">thmv_tab_item_price22</field>
+                <field type="Tabs: Tab Item 23 Content" editor_type="AREA">thmv_tab_item_content22</field>
+
+                <field type="Tabs: Tab Item 24 Title" editor_type="LINE">thmv_tab_item_title23</field>
+                <field type="Tabs: Tab Item 24 Price" editor_type="LINE">thmv_tab_item_price23</field>
+                <field type="Tabs: Tab Item 24 Content" editor_type="AREA">thmv_tab_item_content23</field>
+
+                <field type="Tabs: Tab Item 25 Title" editor_type="LINE">thmv_tab_item_title24</field>
+                <field type="Tabs: Tab Item 25 Price" editor_type="LINE">thmv_tab_item_price24</field>
+                <field type="Tabs: Tab Item 25 Content" editor_type="AREA">thmv_tab_item_content24</field>
+
+                <field type="Tabs: Tab Item 26 Title" editor_type="LINE">thmv_tab_item_title25</field>
+                <field type="Tabs: Tab Item 26 Price" editor_type="LINE">thmv_tab_item_price25</field>
+                <field type="Tabs: Tab Item 26 Content" editor_type="AREA">thmv_tab_item_content25</field>
+
+                <field type="Tabs: Tab Item 27 Title" editor_type="LINE">thmv_tab_item_title26</field>
+                <field type="Tabs: Tab Item 27 Price" editor_type="LINE">thmv_tab_item_price26</field>
+                <field type="Tabs: Tab Item 27 Content" editor_type="AREA">thmv_tab_item_content26</field>
+
+                <field type="Tabs: Tab Item 28 Title" editor_type="LINE">thmv_tab_item_title27</field>
+                <field type="Tabs: Tab Item 28 Price" editor_type="LINE">thmv_tab_item_price27</field>
+                <field type="Tabs: Tab Item 28 Content" editor_type="AREA">thmv_tab_item_content27</field>
+
+                <field type="Tabs: Tab Item 29 Title" editor_type="LINE">thmv_tab_item_title28</field>
+                <field type="Tabs: Tab Item 29 Price" editor_type="LINE">thmv_tab_item_price28</field>
+                <field type="Tabs: Tab Item 29 Content" editor_type="AREA">thmv_tab_item_content28</field>
+
+                <field type="Tabs: Tab Item 30 Title" editor_type="LINE">thmv_tab_item_title29</field>
+                <field type="Tabs: Tab Item 30 Price" editor_type="LINE">thmv_tab_item_price29</field>
+                <field type="Tabs: Tab Item 30 Content" editor_type="AREA">thmv_tab_item_content29</field>
             </fields-in-item>
         </widget>
 
