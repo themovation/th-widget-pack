@@ -324,7 +324,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .elementor-row .thmv-icons.thmv-grid-facility ' => 'display:none !important;',
+                        '{{WRAPPER}} .elementor-row .thmv-icons.thmv-grid-facility, {{WRAPPER}} .elementor-row .thmv-icons.thmv-list ' => 'display:none !important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
