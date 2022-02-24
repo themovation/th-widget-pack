@@ -403,7 +403,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			return;
 		}
 
-        if ( $settings['rating']['size'] ) {
+        if (isset( $settings['rating']) && isset($settings['rating']['size']) ) {
 		    $th_rating = $settings['rating']['size'];
             $th_rating = $th_rating*10;
             $th_rating = sprintf("%02d", $th_rating);
