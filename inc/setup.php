@@ -151,7 +151,7 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
-    if ( is_plugin_active( 'motopress-hotel-booking/motopress-hotel-booking.php' ) ) {
+    if ( function_exists('is_plugin_active') && is_plugin_active( 'motopress-hotel-booking/motopress-hotel-booking.php' ) ) {
         //plugin is activated
         require_once THEMO_PATH . 'inc/MPHB/cpt_mphb_room_type.php';
     }
@@ -328,7 +328,8 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                     [
                         //'label' => __( 'Note', 'th-widget-pack' ),
                         'type' => \Elementor\Controls_Manager::RAW_HTML,
-                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%1$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
+                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%
+$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
                         'content_classes' => 'themo-elem-html-control',
                         'separator' => 'before'
                     ]
