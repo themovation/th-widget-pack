@@ -200,15 +200,20 @@ function thhf_render_sticky_header() {
  */
 function thhf_render_single_post() {
 
-	if ( false == apply_filters( 'enable_thhf_render_single', true ) ) {
-		return;
-	}
-
-	?>
-		<div class="single-post-container">
+    $post_type = get_post_type();
+    $preview = isset($_REQUEST['elementor-preview']) ? true : false;
+    if ($post_type !== 'elementor-thhf' && $preview) {
+        the_content();
+    } else {
+        if (false == apply_filters('enable_thhf_render_single', true)) {
+            return;
+        }
+        ?>
+        <div class="single-post-container">
 			<?php THHF_Header_Footer_Elementor::get_single_post_content(); ?>
-		</div>
-	<?php
+        </div>
+        <?php
+    }
 
 }
 /**

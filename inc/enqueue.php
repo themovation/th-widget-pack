@@ -78,6 +78,7 @@ function th_enqueue_before_editor() {
 
     $timeChangedFont = filemtime(THEMO_ASSETS_PATH.'icons/editor-icons.css');
     wp_enqueue_style( 'themo-editor-icons', THEMO_ASSETS_URL . 'icons/editor-icons.css', array(), $timeChangedFont);
+
     // JS for the Editor
     $timeChanged = filemtime(THEMO_PATH.'js/th-editor.js');
     wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), $timeChanged, true);
