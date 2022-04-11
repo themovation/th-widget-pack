@@ -24,7 +24,7 @@ class HFE_Hello_Elementor_Compat {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new HFE_Hello_Elementor_Compat();
 
-			require_once THEMO_PATH . 'themes/default/class-hfe-default-compat.php';
+            require_once THEMO_PATH . 'header-footer/themes/default/class-hfe-default-compat.php';
 		}
 
 		return self::$instance;
