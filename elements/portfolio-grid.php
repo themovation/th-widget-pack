@@ -117,7 +117,24 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'default' => 'menu_order',
                 'options' => [
                     'date' => __( 'Date Published', 'th-widget-pack' ),
+                    'title' => __( 'Title', 'th-widget-pack' ),
                     'menu_order' => __( 'Drag and Drop', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sortorder',
+            [
+                'label' => __( 'Order', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'DESC',
+                'options' => [
+                    'ASC' => __( 'Ascending', 'th-widget-pack' ),
+                    'DESC' => __( 'Descending', 'th-widget-pack' ),
+                ],
+                'condition' => [
+                    'order!' => 'menu_order',
                 ],
             ]
         );
@@ -444,7 +461,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                         'include' => $settings['group'],
                         'hide_empty' => false,
                         'orderby' => 'slug',
-                        'order' => 'ASC',
+                        'order' => $settings['sortorder'],
                     );
 
                     $tax_terms = get_terms( $tax_args );
@@ -489,7 +506,11 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 }
                 if ( $settings['order'] == 'date' ) {
                     $args['orderby'] = 'date';
-                } elseif ( $settings['order'] == 'menu_order' ) {
+                    $args['order'] = $settings['sortorder'];
+                }elseif($settings['order'] == 'title'){
+                    $args['orderby'] = 'title';
+                    $args['order'] = $settings['sortorder'];
+                }elseif ( $settings['order'] == 'menu_order' ) {
                     $args['orderby'] = 'menu_order';
                     $args['order'] = 'ASC';
                 }
