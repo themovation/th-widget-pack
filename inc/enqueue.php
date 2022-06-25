@@ -178,7 +178,6 @@ function th_enqueue_after_frontend_scripts() {
 
 add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
 function showLibrary() {
-    return true;
     if (is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option("theme_is_registered_stratusx", false)) {
         return true;
     } elseif (is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('bellevue' == THEMO_CURRENT_THEME && get_option("theme_is_registered_bellevuex", false))) {
