@@ -117,19 +117,25 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
+function is_themovation_template() {
+    $theme = wp_get_theme();
+    $themeToCheck = $theme->parent() ? $theme->parent() : $theme;
+    return strpos(strtolower($themeToCheck->get('AuthorURI')), 'themovation') !== false ? true : false;
+}
+
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option( "theme_is_registered_stratusx", false ) ) {
-        include_once THEMO_PATH . 'library/library-manager.class.php' ;
-        include_once THEMO_PATH . 'library/library-source.class.php' ;
-    }elseif( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('bellevue' == THEMO_CURRENT_THEME && get_option( "theme_is_registered_bellevuex", false ))){
-        include_once THEMO_PATH . 'library/library-manager.class.php' ;
-        include_once THEMO_PATH . 'library/library-source.class.php' ;
-    }elseif( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && (get_option( "theme_is_registered_entrepreneurx", false ))){
+    if (showLibrary()) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
         include_once THEMO_PATH . 'library/library-source.class.php' ;
     }
+    else if(is_themovation_template ()){
+        add_action( 'elementor/editor/footer', function(){
+            include_once THEMO_PATH . 'library/register.php';
+        } );
+    }
+    
 
     if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
         return;

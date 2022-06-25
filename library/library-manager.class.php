@@ -18,7 +18,10 @@ class Block_Library_Manager {
 	}
 
 	public static function print_template_views() {
-		include_once THEMO_PATH . 'library/templates.php';
+                $source = self::get_source();
+		$mulisite_list = $source->get_multisite_list();
+                $current = $source->get_current_multisite_path();
+		include_once __DIR__.'/templates.php';
 	}
 
 	public static function enqueue_preview_styles() {
@@ -82,8 +85,9 @@ class Block_Library_Manager {
 
 			return $result;
 		} );
+                
 	}
-
+        
 	public static function get_template_data( array $args ) {
 		$source = self::get_source();
 		$data = $source->get_data( $args );
@@ -92,9 +96,15 @@ class Block_Library_Manager {
 
 	public static function get_library_data( array $args ) {
 		$source = self::get_source();
-
+                
 		if ( ! empty( $args['sync'] ) ) {
-			Block_Library_Source::get_library_data( true );
+                        $source = self::get_source();
+                        $multisite_path = isset($args['multisite_path']) ? $args['multisite_path'] : false;
+                        if($multisite_path){
+                            $source->set_current_multisite_path($multisite_path);
+                        }
+                        
+			$source->get_library_data( true );
 		}
 
 		return [
