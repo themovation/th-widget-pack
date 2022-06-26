@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <script type="text/template" id="template-thmv-templateLibrary-header-actions">
         <div id="thmv-templateLibrary-multisite">
-        <?php if ( is_array($mulisite_list) && count($mulisite_list)) { ?>
-                <select id="thmv-multisite" data-selected="<?php echo $current?>">
-                    <?php foreach( $mulisite_list as $key=>$site){?>
-                            <option class="thmv-multisite-option" <?php echo ($current===$site['path'] ? 'selected' : ''); ?> value="<?php echo $site['path']?>" ><?php echo $site['title']?></li>
-                     <?php } ?>
+        <# if ( thmv.library.getMultiSiteList().length ) { #>
+                <select id="thmv-multisite">
+                    <# _.each( thmv.library.getMultiSiteList(), function( site ) {#>
+                            <option class="thmv-multisite-option" <# if(site.current){#> selected <# } #>  value="{{ site.path }}" >{{ site.title }}</li>
+                     <# } ); #>
                 </select>
-        <?php } ?>
+        <# } #>
         </div>
 	<div id="thmv-templateLibrary-header-sync" class="elementor-templates-modal__header__item">
 		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'th-widget-pack' ); ?>"></i>

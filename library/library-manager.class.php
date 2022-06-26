@@ -18,9 +18,6 @@ class Block_Library_Manager {
 	}
 
 	public static function print_template_views() {
-                $source = self::get_source();
-		$mulisite_list = $source->get_multisite_list();
-                $current = $source->get_current_multisite_path();
 		include_once __DIR__.'/templates.php';
 	}
 
@@ -97,7 +94,8 @@ class Block_Library_Manager {
 	public static function get_library_data( array $args ) {
 		$source = self::get_source();
                 
-		if ( ! empty( $args['sync'] ) ) {
+		if ( ! empty( $args['sync'] ) || $source->has_host_changed()) {
+                        $source->force_clear_cache();
                         $source = self::get_source();
                         $multisite_path = isset($args['multisite_path']) ? $args['multisite_path'] : false;
                         if($multisite_path){
@@ -106,11 +104,24 @@ class Block_Library_Manager {
                         
 			$source->get_library_data( true );
 		}
-
+                $multisite_list = $source->get_multisite_list();
+                if(count($multisite_list)){
+                    //get current
+                    $path = $source->get_current_multisite_path();
+                    if(!empty($path)){
+                        foreach($multisite_list as &$site){
+                            if($site['path']===$path){
+                                $site['current'] = true;
+                                break;
+                            }
+                        }
+                    }
+                }
 		return [
 			'templates' => $source->get_items(),
 			'category' => $source->get_categories(),
 			'type_category' => $source->get_type_category(),
+                        'multisite_list' => $multisite_list,
 		];
 	}
 }

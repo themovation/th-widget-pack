@@ -4,7 +4,6 @@
     thmv.translate = function (e, t) {
         return elementorCommon.translate(e, null, t, ThBlockEditor.i18n);
     }
-    var selectedMultiSite = '';
     var i = {
         LibraryViews: {},
         LibraryModels: {},
@@ -113,18 +112,12 @@
             sync: "#thmv-templateLibrary-header-sync i",
             dropdown: "#thmv-multisite"
         },
-        onRender : function (options) {
-            if(selectedMultiSite!==''){
-                this.$el.find(this.ui.dropdown).val(selectedMultiSite);
-            }
-        },
         events: {
             "click @ui.sync": "onSyncClick",
             "change @ui.dropdown": "onSyncClick"
         },
         onSyncClick: function () {
             var e = this;
-            selectedMultiSite = e.ui.dropdown.val();
             e.ui.sync.addClass("eicon-animation-spin"),
                 thmv.library.requestLibraryData({
                     onUpdate: function () {
@@ -325,6 +318,7 @@
             e.on("click.onAddTemplateButton", ".elementor-add-thmv-button", m.showModal.bind(m)), this.channels.tabs.on("change:device", r);
         }
         var l,
+        multisite_list,
             s,
             d,
             src,
@@ -395,6 +389,9 @@
         (this.getCategory = function () {
             return s;
         }),
+        (this.getMultiSiteList = function () {
+            return multisite_list;
+        }),
         (this.getTypeCategory = function () {
             var e = m.getFilter("type");
             return src[e];
@@ -427,7 +424,8 @@
             var t = {
                 data: {multisite_path: e.multisite_path},
                 success: function (t) {
-                    (d = new i.LibraryCollections.Template(t.templates)), 
+                    (d = new i.LibraryCollections.Template(t.templates)),
+                    t.multisite_list && (multisite_list = t.multisite_list), 
                     t.category && (s = t.category), 
                     t.type_category && (src = t.type_category), 
                     e.onUpdate && e.onUpdate();
