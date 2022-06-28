@@ -293,6 +293,12 @@ class Block_Library_Source extends Source_Base {
 	}
         
         public function get_library_url(){
+            $template_name = self::api_url_by_theme_name();
+            
+            if($template_name==='entrepreneur'){
+                return 'https://template.themovation.com/'.$template_name;
+            }
+            
             return 'https://library.themovation.com/'.self::api_url_by_theme_name();
         }
         /**
