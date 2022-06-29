@@ -83,7 +83,11 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
 
-        if('bellevue' == THEMO_CURRENT_THEME ){
+        if('entrepreneur' == THEMO_CURRENT_THEME ) {
+            require_once THEMO_PATH . 'elements/pricing-list.php';
+        }
+
+        if('bellevue' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/blog_2.php';
         }else{
             require_once THEMO_PATH . 'elements/blog.php';
