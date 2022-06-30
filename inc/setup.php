@@ -83,7 +83,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
 
-        if('entrepreneur' == THEMO_CURRENT_THEME ) {
+        if('entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ) {
             require_once THEMO_PATH . 'elements/pricing-list.php';
         }
 
