@@ -1295,8 +1295,8 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                                     }?>
                                     </span>
                                     <span class="th-port-card-body">
-                                      <h3 class="th-port-title"><?php echo esc_html( $th_tour_title ); ?></h3>
-                                      <?php echo wp_kses_post($th_tour_intro); ?>
+                                      <h3 class="th-port-title"><?php echo esc_html( $th_project_title ); ?></h3>
+                                      <?php echo wp_kses_post($th_project_intro); ?>
                                     </span>
                                     </a>
                                 </div>

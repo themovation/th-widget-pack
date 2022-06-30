@@ -20,7 +20,7 @@ add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 
 if(!defined('WIDGET_ASSETS_TO_LOAD')){
-    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
+    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing','themo-portfolio-grid']);
 }
 
 if('uplands' == THEMO_CURRENT_THEME){

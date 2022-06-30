@@ -60,9 +60,9 @@ class Block_Library_Source extends Source_Base {
 
 		return ( ! empty( $library_data['type_category'] ) ? $library_data['type_category'] : [] );
 	}
-        
+
         public function get_multisite_list($force_update=false) {
-                
+
 		$library_data = self::get_remote_multisite_list($force_update);
 
 		return ( ! empty( $library_data ) ? $library_data : [] );
@@ -136,7 +136,7 @@ class Block_Library_Source extends Source_Base {
                             //when multisite is changed, it also has $force_update = true
                             $url.='?multisite_path='.$multisite_path;
                         }
-                        
+
 			$timeout = ( $force_update ) ? 25 : 8;
 			$response = wp_remote_get( $url , [
 				'timeout' => $timeout,
@@ -183,7 +183,7 @@ class Block_Library_Source extends Source_Base {
         public function set_current_multisite_path($path){
             update_option( 'thmv_library_last_site_path', $path);
         }
-        
+
         public function force_clear_cache(){
             $library_cache_id = 'thmv_'.self::api_url_by_theme_name().'_cache_id';
             $current_library_path = 'thmv_library_last_site_path';
@@ -191,7 +191,7 @@ class Block_Library_Source extends Source_Base {
             delete_option($library_cache_id);
             delete_option($current_library_path);
             delete_option($library_multisite_list);
-            
+
         }
         /** Get currently stored lastly selected multisite path
          * 
@@ -299,7 +299,8 @@ class Block_Library_Source extends Source_Base {
                 return 'https://template.themovation.com/'.$template_name;
             }
             
-            return 'https://library.themovation.com/'.self::api_url_by_theme_name();
+            #return 'https://library.themovation.com/'.self::api_url_by_theme_name();
+            return 'https://template.themovation.com/'.self::api_url_by_theme_name();
         }
         /**
          * Reset stored data if library url changes
@@ -314,7 +315,7 @@ class Block_Library_Source extends Source_Base {
             if($existing_host===$host){
                 return false;
             }
-            
+
             return true;
         }
         /**
@@ -329,8 +330,8 @@ class Block_Library_Source extends Source_Base {
                         return $existing_list;
                     }
                 }
-                
-                
+
+
                 $body_args = [
 			'home_url' => trailingslashit( home_url() ),
 			'version' => THEMO_VERSION,
