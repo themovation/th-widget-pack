@@ -97,11 +97,11 @@ if ( ! function_exists( 'themo_project_type' ) ) {
         $rewrite = array(
             'slug'                       => 'project-type',
             'with_front'                 => true,
-            'hierarchical'               => false,
+            'hierarchical'               => true,
         );
         $args = array(
             'labels'                     => $labels,
-            'hierarchical'               => false,
+            'hierarchical'               => true,
             'public'                     => true,
             'show_ui'                    => true,
             'show_admin_column'          => true,
@@ -152,6 +152,18 @@ function th_register_project_meta_boxes()
                 'label' => 'Intro',
                 'type' => 'text',
                 'desc' => __('Displayed below the title. 8 - 10 words recommended', 'th-widget-pack'),
+            ),
+            array(
+                'id'    => "th_tour_price",
+                'label'  =>  'Price',
+                'type'  => 'text',
+                'desc' => __('Displayed below the title. e.g.: $99', 'th-widget-pack'),
+            ),
+            array(
+                'id'    => "th_tour_price_per",
+                'label'  =>  'Price per',
+                'type'  => 'text',
+                'desc' => __('Displayed after the price. e.g.: /day', 'th-widget-pack'),
             ),
             array(
                 'id' => 'th_project_button_text',
