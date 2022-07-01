@@ -583,7 +583,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         $this->start_controls_section(
             'section_style_background',
             [
-                'label' => __( 'Grid', 'th-widget-pack' ),
+                'label' => __( 'Content', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'style' => 'style_1',
@@ -619,7 +619,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             ]
         );
 
-
         $this->add_control(
             'hover_color',
             [
@@ -632,8 +631,6 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'separator' => 'before'
             ]
         );
-
-
 
 
         $this->add_control(
@@ -747,6 +744,27 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         );
 
         $this->add_control(
+            'thmv_section_text',
+            [
+                'label' => __('Text', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
+        );
+
+        $this->add_control(
+            'thmv_text_color',
+            [
+                'label' => __('Color', 'th-widget-pack'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-port-top-text, {{WRAPPER}} .th-port-title, {{WRAPPER}} .th-port-sub, {{WRAPPER}} .th-pricing-cost' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'thmv_section_button',
             [
                 'label' => __('Button', 'elementor'),
@@ -855,6 +873,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
+                    '{{WRAPPER}} .th-portfolio-filters a.current' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -876,7 +895,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
                 'alpha' => false,
                 'default' => '',
                 'selectors' => [
-                    '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
+                    '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; border-color: {{VALUE}}; opacity:1;',
                 ],
             ]
         );
