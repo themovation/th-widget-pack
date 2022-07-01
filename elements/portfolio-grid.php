@@ -385,7 +385,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             [
                 'label' => __( 'Grow image', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'no',
+                //'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
@@ -402,7 +402,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             [
                 'label' => __( 'Grow content', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'no',
+                //'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
