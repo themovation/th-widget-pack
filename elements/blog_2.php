@@ -959,6 +959,7 @@ class Themo_Widget_Blog extends Widget_Base {
             $args = array(
                 'post_type' => array('post'),
                 'post_status' => array('publish'),
+                'fields' => 'ids'
             );
 
             if ($settings['post_categories'] != 'all') {
@@ -999,6 +1000,14 @@ class Themo_Widget_Blog extends Widget_Base {
                 //$args['offset'] = $th_offset;
             }
 
+            $posts = new \WP_Query($args);
+            if(isset($posts->posts) && count ($posts->posts)){
+               $args['post__in'] = $posts->posts;
+            }
+            else {
+                return [];
+            }
+            wp_reset_postdata();
             
             return get_posts($args);
         }
