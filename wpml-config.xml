@@ -54,7 +54,15 @@
                 <field type="Listing: Icon Label2" editor_type="LINE">thmv_icon_label11</field>
             </fields-in-item>
         </widget>
-
+        <!-- Blog widget-->
+        <widget name="themo-blog">
+            <fields>
+                <field type="Blog: Read more" editor_type="LINE">thmv_link_text</field>
+            </fields>
+            <fields-in-item items_of="listings">
+                <field type="Blog - Listing: Read more" editor_type="LINE">thmv_link_text</field>
+            </fields-in-item>    
+        </widget>
         <!-- Booked Appointment Calendar -->
         <widget name="themo-appointments">
             <fields>
