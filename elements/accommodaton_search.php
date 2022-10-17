@@ -32,13 +32,15 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $this->update_control('thmv_data_source', ['default' => 'mphb_room_type']);
         $this->update_control('order', ['default' => 'date']);
         
-        $parent_name = parent::get_name();
-        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
+//        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
     }
 
     protected function render() {
+        $parent_name = parent::get_name();
         //set class of the parent widget so the CSS works
+        echo '<div class="elementor-widget-'.$parent_name.'">';
         parent::render();
+        echo '</div>';
     }
 
 }
