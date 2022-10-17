@@ -65,6 +65,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         if('bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/package_2.php';
             require_once THEMO_PATH . 'elements/accommodation_listing.php';
+            require_once THEMO_PATH . 'elements/accommodaton_search.php';
             require_once THEMO_PATH . 'elements/tabs.php';
         }else{
             require_once THEMO_PATH . 'elements/package.php';

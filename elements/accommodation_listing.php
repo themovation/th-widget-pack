@@ -1932,6 +1932,39 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $imageSizeInfo;
     }
 
+    /** in the case of moto search results widget **/
+    private function setupsearchArguements(&$args){
+        //if it's the search page, it will work fine
+        if (function_exists('MPHB') && $this->get_name()==='themo-accommodation-search-results') {
+            //main functions setupMatchedRoomTypes and then getAvailableRoomTypes
+            $defaultAtts = array(
+                'gallery' => 'false',
+                'featured_image' => 'false',
+                'title' => 'false',
+                'excerpt' => 'false',
+                'details' => 'false',
+                'price' => 'false',
+                'view_button' => 'false',
+                'default_sorting' => null, // "order" was by default
+                'orderby' => null, // "menu_order" by default
+                'order' => 'ASC',
+                'meta_key' => '',
+                'meta_type' => '',
+                'class' => ''
+            );
+
+            $shortcode = MPHB()->getShortcodes()->getSearchResults();
+
+            $themo_shortcode_render = $shortcode->render($defaultAtts, null, $shortcode->getName());
+            //we only need ids from the html since the shortcode class doesn't give us any method to retrive the results publicly
+            $count = preg_match_all('/div class="mphb-room-type post-(\d+)\s/', $themo_shortcode_render, $matches);
+            if($count && count($matches[1])){
+                $post_ids = $matches[1];
+                $args['post__in'] = $post_ids;
+
+            }
+        }
+    }
     protected function render() {
         $settings = $this->get_settings_for_display();
 
@@ -1981,7 +2014,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             }
             $args['post_status'] = 'publish';
             $args['posts_per_page'] = -1;
-
+ 
+            $this->setupsearchArguements($args);
             // The Query
             $posts = get_posts($args);
 
