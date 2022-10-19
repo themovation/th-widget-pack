@@ -1933,7 +1933,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
     }
 
     /** in the case of moto search results widget **/
-    private function setupsearchArguements(&$args){
+    private function setupSearchArguements(&$args){
         //if it's the search page, it will work fine
         if (function_exists('MPHB') && $this->get_name()==='themo-accommodation-search-results') {
             //main functions setupMatchedRoomTypes and then getAvailableRoomTypes
@@ -1961,10 +1961,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             if($count && count($matches[1])){
                 $post_ids = $matches[1];
                 $args['post__in'] = $post_ids;
-
+                $this->totalAccommodations = count($post_ids);
             }
+  
         }
     }
+    
     protected function render() {
         $settings = $this->get_settings_for_display();
 
@@ -2015,7 +2017,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $args['post_status'] = 'publish';
             $args['posts_per_page'] = -1;
  
-            $this->setupsearchArguements($args);
+            $this->setupSearchArguements($args);
             // The Query
             $posts = get_posts($args);
 
@@ -2374,7 +2376,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                     <?php echo $priceBlock; ?>
                                 <?php endif; ?> 
                             </div>
-
+                            <?php 
+                           $showBookButton = true;
+                           if($showBookButton && method_exists($this, 'after_learn_more')){
+                               $this->after_learn_more($list);
+                           }
+                            ?>    
             <?php if (in_array($listingStyle, array(3))): ?>
                                 <?= $iconsList ?>
                             <?php endif; ?>
