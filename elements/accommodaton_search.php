@@ -82,7 +82,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __('Yes', 'th-widget-pack'),
                         'label_off' => __('No', 'th-widget-pack'),
-                        'default' => 'false',
+                        'default' => 'yes',
                     ]
             );
         }, 10, 2);
@@ -181,7 +181,7 @@ add_action('elementor/editor/before_enqueue_styles', function () {
     . '.elementor-control-thmv_data_source,'
     . '.elementor-control-individual_mphb_room_type,'
     . '.elementor-control-group_mphb_room_type,'
-    . '.elementor-control-order,'
+    . '.elementor-control-order'
     . '{'
     . 'display: none!important;'
     . '}</style>';
