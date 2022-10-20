@@ -391,7 +391,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-btn ' => 'display:none!important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
