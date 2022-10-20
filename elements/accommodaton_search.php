@@ -52,7 +52,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $parent_name = parent::get_name();
         wp_enqueue_style($parent_name, THEMO_URL . 'css/accommodation.css', array(), $modified);
 
-        $styles = '.elementor-widget-' . $key . ' .mphb-reserve-room-section .mphb-confirm-reservation, '
+        $styles = ''
                 . '.elementor-widget-' . $key . ' .mphb-empty-cart-message'
                 . '{'
                 . 'display: none!important;'
@@ -306,7 +306,18 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             mphb_tmpl_the_room_type_price_for_dates($this->searchParams['from_date'], $this->searchParams['to_date']);
             echo '</p>';
             do_action('mphb_sc_search_results_render_book_button');
-            echo str_replace("mphb-book-button", $btn_classes . " mphb-book-button", ob_get_clean());
+            $button_render = ob_get_clean();
+            $cart_style = $this->get_settings_for_display('reservation_button_style');
+            if(!empty($cart_style)){
+                $cart_style =  'btn-' .$cart_style;
+            }
+            // Confirm Button Style
+            $button_render_final = str_replace(
+                    'mphb-confirm-reservation',
+                    'mphb-confirm-reservation btn th-btn ' . esc_attr($cart_style),
+                    $button_render
+            );
+            echo str_replace("mphb-book-button", $btn_classes . " mphb-book-button", $button_render_final);
         }
     }
 
