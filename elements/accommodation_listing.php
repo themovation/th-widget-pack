@@ -1907,7 +1907,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         }
     }
 
-    private function setupResponsiveControl($settings, $field, $attribute, $class) {
+    protected function setupResponsiveControl($settings, $field, $attribute, $class) {
         $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
         foreach ($responsiveFields as $f) {
             if (!empty($settings[$f])) {
