@@ -57,6 +57,11 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                 . '{'
                 . 'display: none!important;'
                 . '}'
+                . '.elementor-widget-' . $key . ' .mphb-rooms-reservation-message-wrapper{'
+                . 'display: -webkit-box;display: -ms-flexbox;display: flex;'
+                . '-webkit-box-align: baseline!important;-ms-flex-align: baseline!important;align-items: baseline!important;'
+                . '-webkit-box-orient: horizontal!important;-webkit-box-direction: reverse!important;-ms-flex-direction: row-reverse!important;flex-direction: row-reverse!important;'
+                . '}'
                 . '.elementor-widget-' . $key . ' .mphb-rooms-quantity{'
                 . 'padding: 0 12px !important;'
                 . 'color: #6c6c6c;'
@@ -84,7 +89,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'type' => Controls_Manager::SWITCHER,
                         'label_on' => __('Yes', 'th-widget-pack'),
                         'label_off' => __('No', 'th-widget-pack'),
-                        'default' => 'yes'
+                        'default' => ''
                     ]
             );
             $element->add_control(
@@ -97,6 +102,16 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'default' => 'yes',
                     ]
             );
+            $element->add_control(
+                    'thmv_hide_booking_price',
+                    [
+                        'label' => __('Booking Price', 'th-widget-pack'),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __('Yes', 'th-widget-pack'),
+                        'label_off' => __('No', 'th-widget-pack'),
+                        'default' => '',
+                    ]
+            );
         }, 10, 2);
         add_action('elementor/element/' . $this->get_name() . '/thmv_style_section_link/after_section_end', function ($element, $args) {
             $element->start_controls_section(
@@ -106,6 +121,56 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'tab' => Controls_Manager::TAB_STYLE,
                         'condition' => [
                             'thmv_hide_booking_button' => '',
+                        ],
+                    ]
+            );
+            $element->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'label' => __('Typography', 'elementor'),
+                        'name' => 'book_button_typography',
+                        'selector' => '{{WRAPPER}} .thmv-book-button',
+                    ]
+            );
+            $element->add_control(
+                    'book_button_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .thmv-book-button' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                    'book_button_background_color',
+                    [
+                        'label' => __('Background', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .thmv-book-button' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
+                        ],
+                    ]
+            );
+
+            $element->add_control(
+                    'book_button_color_hover',
+                    [
+                        'label' => __('Color - Hover', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .thmv-book-button:hover' => 'color: {{VALUE}};',
+                        ],
+                        'separator' => 'before',
+                    ]
+            );
+            $element->add_control(
+                    'book_button_background_color_hover',
+                    [
+                        'label' => __('Background - Hover', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .thmv-book-button:hover' => 'background-color: {{VALUE}};border-color: {{VALUE}};',
                         ],
                     ]
             );
@@ -195,6 +260,63 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                     ]
             );
             $element->end_controls_section();
+
+            $element->start_controls_section(
+                    'thmv_style_section_book_price',
+                    [
+                        'label' => __('Booking Price', 'th-widget-pack'),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                        'condition' => [
+                            'thmv_hide_booking_price' => '',
+                        ],
+                    ]
+            );
+            $element->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'label' => __('Typography', 'elementor'),
+                        'name' => 'booking_price_typography',
+                        'selector' => '{{WRAPPER}} .mphb-regular-price',
+                    ]
+            );
+            $element->add_control(
+                    'booking_price_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mphb-regular-price' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                    'booking_price_price_heading',
+                    [
+                        'label' => __('Price', 'elementor'),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                    ]
+            );
+            $element->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'label' => __('Typography', 'elementor'),
+                        'name' => 'booking_price_price_typography',
+                        'selector' => '{{WRAPPER}} .mphb-price',
+                    ]
+            );
+            $element->add_control(
+                    'booking_price_price_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .mphb-price' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+
+            $element->end_controls_section();
         }, 10, 2);
     }
 
@@ -204,6 +326,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $this->update_control('thmv_data_switcher', ['default' => 'yes']);
         $this->update_control('thmv_data_source', ['default' => 'mphb_room_type']);
         $this->update_control('order', ['default' => 'date']);
+        $this->update_control('thmv_data_source_image_size', ['default' => 'th_img_md_square']);
 
 //        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
     }
@@ -218,14 +341,18 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0; //posts variable from parent::render
         //set class of the parent widget so the CSS works
         echo '<div class="elementor-widget-' . $parent_name . ' mphb_sc_search_results-wrapper">';
-        if ($total > 0 && $show_message) {
+        if ($this->is_preview) {
+            $dateObj = \DateTime::createFromFormat('d/m/Y', date("d/m/Y"));
+            $this->searchParams['to_date_formatted'] = $this->searchParams['from_date_formatted'] = \MPHB\Utils\DateUtils::formatDateWPFront($dateObj);
+        }
+        if ($total > 0 && !(bool) $show_message) {
             ?>
             <p class="thmv-search-results-info alert" style="border-color: #e2e2e2;">
-                <?php
-                echo esc_html(sprintf(_n('%s accommodation found', '%s accommodations found', $total, 'motopress-hotel-booking'), $total));
+            <?php
+            echo esc_html(sprintf(_n('%s accommodation found', '%s accommodations found', $total, 'motopress-hotel-booking'), $total));
 
-                echo esc_html(sprintf(__(' from %s - till %s', 'motopress-hotel-booking'), $this->searchParams['from_date_formatted'], $this->searchParams['to_date_formatted']));
-                ?>
+            echo esc_html(sprintf(__(' from %s - till %s', 'motopress-hotel-booking'), $this->searchParams['from_date_formatted'], $this->searchParams['to_date_formatted']));
+            ?>
             </p>
 
             <?php
@@ -237,8 +364,8 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             MPHB()->getShortcodes()->getSearchResults()->renderReservationCart();
             $cart = ob_get_clean();
             $cart_style = $this->get_settings_for_display('reservation_button_style');
-            if(!empty($cart_style)){
-                $cart_style =  'btn-' .$cart_style;
+            if (!empty($cart_style)) {
+                $cart_style = 'btn-' . $cart_style;
             }
             // Confirm Button Style
             $cart_render = str_replace(
@@ -256,7 +383,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
     protected function after_learn_more($post) {
 
-        if ($this->get_settings_for_display('thmv_hide_booking_button')) {
+        if ($this->get_settings_for_display('thmv_hide_booking_button') && $this->get_settings_for_display('thmv_hide_booking_price')) {
             return false;
         }
 
@@ -266,50 +393,71 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             $btn_classes .= ' btn-' . $buttonstyle;
         }
 
-        $this->setupResponsiveControl($this->get_settings_for_display(), 'book_button_stretch', 'book_button', 'streched');
-        $class_arr = $this->get_render_attributes('book_button', 'class');
-        $btn_classes .= ' ' . implode(' ', $class_arr);
+        if (!$this->get_settings_for_display('thmv_hide_booking_button')) {
+            $this->setupResponsiveControl($this->get_settings_for_display(), 'book_button_stretch', 'book_button', 'streched');
+            $class_arr = $this->get_render_attributes('book_button', 'class');
+            $btn_classes .= ' ' . implode(' ', $class_arr);
+        }
+
         //if preview, show the static content, else apply motopress filter
         if ($this->is_preview) {
 
-            $currencyCode = get_option('mphb_currency_symbol', $this->defaultCurrency);
             $maxRoomsCount = 2;
             ?>
-            <p class="mphb-regular-price"><?php esc_html_e('Prices start at:', 'motopress-hotel-booking') ?> <span class="mphb-price">
-                    <span class="mphb-currency"><?= $currencyCode ?></span>77</span> 
-                <span class="mphb-price-period" title="<?php esc_html_e('Based on your search parameters', 'motopress-hotel-booking'); ?>">
-                    <?php esc_html_e('per night', 'motopress-hotel-booking') ?>
-                </span>
-            </p>
-            <div class="mphb-reserve-room-section">
-                <p class="mphb-rooms-quantity-wrapper mphb-rooms-quantity-multiple">
-                    <select class="mphb-rooms-quantity">
-                        <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
-                            <option value="<?php echo esc_attr($count); ?>"><?php
+            <?php
+            $currencyCode = get_option('mphb_currency_symbol', $this->defaultCurrency);
+
+            if (!$this->get_settings_for_display('thmv_hide_booking_price')):
+                ?>
+                <p class="mphb-regular-price"><?php esc_html_e('Prices start at:', 'motopress-hotel-booking') ?> <span class="mphb-price">
+                        <span class="mphb-currency"><?= $currencyCode ?></span>77</span> 
+                    <span class="mphb-price-period" title="<?php esc_html_e('Based on your search parameters', 'motopress-hotel-booking'); ?>">
+                <?php esc_html_e('per night', 'motopress-hotel-booking') ?>
+                    </span>
+                </p>
+                <?php
+            endif;
+            ?>
+            <?php
+            if (!$this->get_settings_for_display('thmv_hide_booking_button')):
+                ?>    
+                <div class="mphb-reserve-room-section">
+                    <p class="mphb-rooms-quantity-wrapper mphb-rooms-quantity-multiple">
+                        <select class="mphb-rooms-quantity">
+                <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
+                                <option value="<?php echo esc_attr($count); ?>"><?php
                                 echo $count;
                                 ?></option>
-                        <?php } ?>
-                    </select>
-                    <span class="mphb-available-rooms-count"><?php
-                        echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
-                        ?></span>
-                </p>
+                                <?php } ?>
+                        </select>
+                        <span class="mphb-available-rooms-count"><?php
+                echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
+                ?></span>
+                    </p>
 
-                <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'motopress-hotel-booking'); ?></button>
-            </div>
+                    <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'motopress-hotel-booking'); ?></button>
+                </div>
+                <?php
+            endif;
+            ?>    
             <?php
         } else {
             MPHB()->setCurrentRoomType($post);
             ob_start();
-            echo '<p class="mphb-regular-price">';
-            echo esc_html__('Prices start at:', 'th-widget-pack') . ' ';
-            mphb_tmpl_the_room_type_price_for_dates($this->searchParams['from_date'], $this->searchParams['to_date']);
-            echo '</p>';
-            do_action('mphb_sc_search_results_render_book_button');
+
+            if (!$this->get_settings_for_display('thmv_hide_booking_price')) {
+                echo '<p class="mphb-regular-price">';
+                echo esc_html__('Prices start at:', 'th-widget-pack') . ' ';
+                mphb_tmpl_the_room_type_price_for_dates($this->searchParams['from_date'], $this->searchParams['to_date']);
+                echo '</p>';
+            }
+            if (!$this->get_settings_for_display('thmv_hide_booking_button')) {
+                do_action('mphb_sc_search_results_render_book_button');
+            }
             $button_render = ob_get_clean();
             $cart_style = $this->get_settings_for_display('reservation_button_style');
-            if(!empty($cart_style)){
-                $cart_style =  'btn-' .$cart_style;
+            if (!empty($cart_style)) {
+                $cart_style = 'btn-' . $cart_style;
             }
             // Confirm Button Style
             $button_render_final = str_replace(

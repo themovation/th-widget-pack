@@ -1961,7 +1961,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             if($count && count($matches[1])){
                 $post_ids = $matches[1];
                 $args['post__in'] = $post_ids;
-                $this->totalAccommodations = count($post_ids);
             }
   
         }
@@ -2034,6 +2033,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             $posts = $settings['listings'];
         }
+
+        $this->totalAccommodations = count($posts);
 
         /*         * global vars * */
         $buttonstyle = $settings['button_style'];
