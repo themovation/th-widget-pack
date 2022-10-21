@@ -222,9 +222,9 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             ?>
             <p class="thmv-search-results-info alert" style="border-color: #e2e2e2;">
                 <?php
-                echo esc_html(sprintf(_n('%s accommodation found', '%s accommodations found', $total, 'th-widget-pack'), $total));
+                echo esc_html(sprintf(_n('%s accommodation found', '%s accommodations found', $total, 'motopress-hotel-booking'), $total));
 
-                echo esc_html(sprintf(__(' from %s - till %s', 'th-widget-pack'), $this->searchParams['from_date_formatted'], $this->searchParams['to_date_formatted']));
+                echo esc_html(sprintf(__(' from %s - till %s', 'motopress-hotel-booking'), $this->searchParams['from_date_formatted'], $this->searchParams['to_date_formatted']));
                 ?>
             </p>
 
@@ -275,10 +275,10 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             $currencyCode = get_option('mphb_currency_symbol', $this->defaultCurrency);
             $maxRoomsCount = 2;
             ?>
-            <p class="mphb-regular-price"><?php esc_html_e('Prices start at:', 'th-widget-pack') ?> <span class="mphb-price">
+            <p class="mphb-regular-price"><?php esc_html_e('Prices start at:', 'motopress-hotel-booking') ?> <span class="mphb-price">
                     <span class="mphb-currency"><?= $currencyCode ?></span>77</span> 
-                <span class="mphb-price-period" title="<?php esc_html_e('Based on your search parameters', 'th-widget-pack'); ?>">
-                    <?php esc_html_e('per night', 'th-widget-pack') ?>
+                <span class="mphb-price-period" title="<?php esc_html_e('Based on your search parameters', 'motopress-hotel-booking'); ?>">
+                    <?php esc_html_e('per night', 'motopress-hotel-booking') ?>
                 </span>
             </p>
             <div class="mphb-reserve-room-section">
@@ -291,11 +291,11 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         <?php } ?>
                     </select>
                     <span class="mphb-available-rooms-count"><?php
-                        echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'th-widget-pack'), $maxRoomsCount));
+                        echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
                         ?></span>
                 </p>
 
-                <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'th-widget-pack'); ?></button>
+                <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'motopress-hotel-booking'); ?></button>
             </div>
             <?php
         } else {
