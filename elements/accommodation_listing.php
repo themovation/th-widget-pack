@@ -2046,11 +2046,16 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $this->setupColumns($settings, 'columns', 'thmv_column');
 
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
-        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
+        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle);
 
         if ($dataSource && !empty($settings['thmv_align_image'])) {
             $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
         }
+        
+        if(method_exists($this, 'beforeContentRendered')){
+            $this->beforeContentRendered();
+        }
+        
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
@@ -2395,8 +2400,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <?php
         }
-
         echo '</div>';
+        //$content = ob_get_clean();
+        //$this->afterContentRendered();    
+       if(method_exists($this, 'afterContentRendered')){
+            $this->afterContentRendered();
+        }
 
         if ($dataSource) {
             wp_reset_postdata();

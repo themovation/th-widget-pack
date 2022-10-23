@@ -52,7 +52,18 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $parent_name = parent::get_name();
         wp_enqueue_style($parent_name, THEMO_URL . 'css/accommodation.css', array(), $modified);
 
-        $styles = ''
+        $styles = '.elementor-widget-' . $key . ' .elementor-swiper-button{'
+                . 'transform: none;-webkit-transform: none;-ms-transform: none;'
+                . '}'
+                . '.elementor-widget-' . $key . ' .elementor-row.swiper-wrapper{'
+                . '-ms-flex-wrap: nowrap !important;flex-wrap: nowrap !important;'
+                . '}'
+                . '.elementor-widget-' . $key . ' .elementor-row.swiper-wrapper .swiper-slide.thmv-column{'
+                . 'max-width:100%;'
+                . '}'
+                . '.elementor-widget-' . $key . ' .swiper-slide{'
+                . 'text-align:left;'
+                . '}'
                 . '.elementor-widget-' . $key . ' .mphb-empty-cart-message'
                 . '{'
                 . 'display: none!important;'
@@ -63,11 +74,6 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                 . 'height: auto;'
                 . '}'
                 . ''
-                . '.elementor-widget-' . $key . ' .mphb-rooms-reservation-message-wrapper{'
-                . 'display: -webkit-box;display: -ms-flexbox;display: flex;'
-                . '-webkit-box-align: baseline!important;-ms-flex-align: baseline!important;align-items: baseline!important;'
-                . '-webkit-box-orient: horizontal!important;-webkit-box-direction: reverse!important;-ms-flex-direction: row-reverse!important;flex-direction: row-reverse!important;'
-                . '}'
                 . '.elementor-widget-' . $key . ' .mphb-rooms-quantity{'
                 . 'padding: 0 12px !important;'
                 . 'color: #6c6c6c;'
@@ -116,6 +122,25 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'label_on' => __('Yes', 'th-widget-pack'),
                         'label_off' => __('No', 'th-widget-pack'),
                         'default' => '',
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_heading',
+                    [
+                        'label' => __('Slider', 'elementor'),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_active',
+                    [
+                        'label' => __('Active', 'th-widget-pack'),
+                        'type' => Controls_Manager::SWITCHER,
+                        'label_on' => __('Yes', 'th-widget-pack'),
+                        'label_off' => __('No', 'th-widget-pack'),
+                        'default' => '',
+                        'description' => __('Make sure to set the columns at the top, default option might not work as expected.', 'th-widget-pack')
                     ]
             );
         }, 10, 2);
@@ -241,29 +266,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         ],
                     ]
             );
-//            $element->add_group_control(
-//                    Group_Control_Border::get_type(),
-//                    [
-//                        'name' => 'availability_count_dropdown_border',
-//                        'label' => esc_html__('Border', 'elementor'),
-//                        'selector' => '{{WRAPPER}} .mphb-rooms-quantity',
-//                        'fields_options' => [
-//                            'border' => [
-//                                'default' => 'solid',
-//                            ],
-//                            'width' => [
-//                                'default' => [
-//                                    'top' => '1',
-//                                    'right' => '1',
-//                                    'bottom' => '1',
-//                                    'left' => '1',
-//                                    'isLinked' => true,
-//                                ],
-//                            ],
-//                            
-//                        ]
-//                    ]
-//            );
+
             $element->end_controls_section();
 
             $element->start_controls_section(
@@ -376,6 +379,9 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                     [
                         'label' => __('Confirm Reservation Button', 'th-widget-pack'),
                         'tab' => Controls_Manager::TAB_STYLE,
+                        'condition' => [
+                            'thmv_hide_booking_button' => '',
+                        ],
                     ]
             );
             $element->add_control(
@@ -412,26 +418,237 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                     ]
             );
             $element->end_controls_section();
+
+            $element->start_controls_section(
+                    'thmv_style_section_slider',
+                    [
+                        'label' => __('Slider', 'th-widget-pack'),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                        'condition' => [
+                            'thmv_slider_active!' => '',
+                        ],
+                    ]
+            );
+
+            $element->add_control(
+                    'thmv_slider_icon_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+
+            $element->add_responsive_control(
+                    'tthmv_slider_icon_size',
+                    [
+                        'label' => __('Size', 'elementor'),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+            $element->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'thmv_slider_navigation_border',
+                        'label' => esc_html__('Border', 'elementor'),
+                        'selector' => '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button',
+                        'fields_options' => [
+                            'border' => [
+                                'default' => 'solid',
+                            ],
+                            'width' => [
+                                'default' => [
+                                    'top' => '2',
+                                    'right' => '2',
+                                    'bottom' => '2',
+                                    'left' => '2',
+                                    'isLinked' => true,
+                                ],
+                            ],
+                        ]
+                    ]
+            );
+
+            $element->add_control(
+                    'thmv_slider_navigation_border_radius',
+                    [
+                        'label' => esc_html__('Border Radius', 'elementor'),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => ['%', 'px'],
+                        'default' => [
+                            'unit' => '%',
+                            'size' => '50',
+                        ],
+                        'range' => [
+                            '%' => [
+                                'max' => 50,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_navigation_margin_between',
+                    [
+                        'label' => __('Arrows Spacing', 'th-widget-pack'),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                            'size' => 15,
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                                'step' => 1,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button+.elementor-swiper-button' => 'margin-left: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_view_all_heading',
+                    [
+                        'label' => __('View All', 'th-widget-pack'),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                    ]
+            );
+            $element->add_group_control(
+                    Group_Control_Typography::get_type(),
+                    [
+                        'label' => __('Typography', 'elementor'),
+                        'name' => 'thmv_slider_view_all_typography',
+                        'selector' => '{{WRAPPER}} .accommodation-view-all',
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_view_all_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-view-all' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                    'thmv_slider_navigation_margin',
+                    [
+                        'label' => __('Margin Bottom', 'th-widget-pack'),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                            'size' => 15,
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                                'step' => 1,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+
+            $element->end_controls_section();
         }, 10, 2);
     }
 
     public function _register_controls() {
         parent::_register_controls();
 
-        $this->update_control('thmv_data_switcher', ['default' => 'yes']);
-        $this->update_control('thmv_data_source', ['default' => 'mphb_room_type']);
-        $this->update_control('order', ['default' => 'date']);
+        $this->update_control('thmv_data_switcher', ['default' => 'yes', 'type' => 'hidden']);
+        $this->update_control('thmv_data_source', ['default' => 'mphb_room_type', 'type' => 'hidden']);
+        $this->update_control('individual_mphb_room_type', ['type' => 'hidden']);
+        $this->update_control('group_mphb_room_type', ['type' => 'hidden']);
+        $this->update_control('order', ['default' => 'date', 'type' => 'hidden']);
         $this->update_control('thmv_data_source_image_size', ['default' => 'th_img_md_square']);
 
 //        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
     }
 
+    public function beforeContentRendered() {
+        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0;
+
+        if (!$is_carousel_active || !$total) {
+            return;
+        }
+
+        $columns_desktop = (INT) $this->get_settings_for_display('columns') ? $this->get_settings_for_display('columns') : 2;
+        $columns_tablet = (INT) $this->get_settings_for_display('columns_tablet') ? $this->get_settings_for_display('columns_tablet') : $columns_desktop;
+        $columns_mobile = (INT) $this->get_settings_for_display('columns_mobile') ? $this->get_settings_for_display('columns_mobile') : 1;
+
+        $sliderSettings = '{"slides_to_show":"' . $columns_desktop . '", "slides_to_show_mobile": "' . $columns_mobile . '", "slides_to_show_tablet": "' . $columns_tablet . '",  "slides_to_scroll":"1","navigation":"arrows","autoplay":"no","infinite":"no","speed":500}';
+        echo '<div '
+        . 'data-widget_type="image-carousel.default" '
+        . 'data-settings=\'' . $sliderSettings . '\' '
+        . 'data-element_type="widget" '
+        . 'class="elementor-element  elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel">'
+        . '<div '
+        . 'class="elementor-image-carousel-wrapper swiper-container" '
+        . 'dir="ltr">';
+        ?>
+        <div class="accommodation-top-navigation d-flex justify-content-end align-items-center" style="padding: 0 10px;">
+            <div class="accommodation-view-all"><?php _e('View All (' . $total . ')', 'th-widget-pack'); ?>&nbsp;</div>
+            <div class="thmv-accommodation-arrows-container d-flex justify-content-end align-items-center position-relative">
+                <div class="elementor-swiper-button elementor-swiper-button-prev position-static">
+                    <i class="eicon-chevron-left" aria-hidden="true"></i>
+                    <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
+                </div>
+                <div class="elementor-swiper-button elementor-swiper-button-next position-static">
+                    <i class="eicon-chevron-right" aria-hidden="true"></i>
+                    <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
+                </div>
+            </div>
+        </div>
+
+        <?php
+    }
+
+    public function afterContentRendered() {
+        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0;
+        if (!$is_carousel_active || !$total) {
+            return;
+        }
+
+        echo '</div></div>';
+    }
+
     protected function render() {
+
+        //check for carousel
+        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        if ($is_carousel_active) {
+            $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-image-carousel swiper-wrapper');
+            $this->add_render_attribute('thmv_column', 'class', 'swiper-slide');
+        }
+
+
         $parent_name = parent::get_name();
         ob_start();
         parent::render();
-
         $results = ob_get_clean();
+
         $show_message = $this->get_settings_for_display('thmv_hide_results_message');
         $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0; //posts variable from parent::render
         //set class of the parent widget so the CSS works
@@ -560,6 +777,11 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                     'mphb-confirm-reservation btn th-btn ' . esc_attr($cart_style),
                     $button_render
             );
+            $button_render_final = str_replace(
+                    'mphb-rooms-reservation-message-wrapper',
+                    'mphb-rooms-reservation-message-wrapper d-flex flex-row-reverse align-items-baseline flex-nowrap' . esc_attr($cart_style),
+                    $button_render_final
+            );
             echo str_replace("mphb-book-button", $btn_classes . " mphb-book-button", $button_render_final);
         }
     }
@@ -567,15 +789,3 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 }
 
 Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Accommodation_Search());
-add_action('elementor/editor/before_enqueue_styles', function () {
-    echo '<style>'
-    . '.elementor-control-thmv_data_switcher,'
-    . '.elementor-control-thmv_data_source,'
-    . '.elementor-control-individual_mphb_room_type,'
-    . '.elementor-control-group_mphb_room_type,'
-    . '.elementor-control-order'
-    . '{'
-    . 'display: none!important;'
-    . '}</style>';
-}
-);
