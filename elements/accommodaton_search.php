@@ -499,6 +499,9 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'selectors' => [
                             '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'border-radius: {{SIZE}}{{UNIT}};',
                         ],
+                        'condition' => [
+                            'thmv_slider_navigation_border_border!' => '',
+                        ],
                     ]
             );
             $element->add_control(
@@ -521,32 +524,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         ],
                     ]
             );
-            $element->add_control(
-                    'thmv_slider_view_all_heading',
-                    [
-                        'label' => __('View All', 'th-widget-pack'),
-                        'type' => Controls_Manager::HEADING,
-                        'separator' => 'before',
-                    ]
-            );
-            $element->add_group_control(
-                    Group_Control_Typography::get_type(),
-                    [
-                        'label' => __('Typography', 'elementor'),
-                        'name' => 'thmv_slider_view_all_typography',
-                        'selector' => '{{WRAPPER}} .accommodation-view-all',
-                    ]
-            );
-            $element->add_control(
-                    'thmv_slider_view_all_color',
-                    [
-                        'label' => __('Color', 'th-widget-pack'),
-                        'type' => Controls_Manager::COLOR,
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-view-all' => 'color: {{VALUE}};',
-                        ],
-                    ]
-            );
+
             $element->add_control(
                     'thmv_slider_navigation_margin',
                     [
@@ -565,6 +543,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'selectors' => [
                             '{{WRAPPER}} .accommodation-top-navigation' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                         ],
+                        'separator' => 'before',
                     ]
             );
 
@@ -608,7 +587,6 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         . 'dir="ltr">';
         ?>
         <div class="accommodation-top-navigation d-flex justify-content-end align-items-center" style="padding: 0 10px;">
-            <div class="accommodation-view-all"><?php _e('View All (' . $total . ')', 'th-widget-pack'); ?>&nbsp;</div>
             <div class="thmv-accommodation-arrows-container d-flex justify-content-end align-items-center position-relative">
                 <div class="elementor-swiper-button elementor-swiper-button-prev position-static">
                     <i class="eicon-chevron-left" aria-hidden="true"></i>
@@ -738,13 +716,13 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         <select class="mphb-rooms-quantity">
                             <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
                                 <option value="<?php echo esc_attr($count); ?>"><?php
-                                    echo $count;
-                                    ?></option>
-                            <?php } ?>
+                    echo $count;
+                                ?></option>
+                                <?php } ?>
                         </select>
                         <span class="mphb-available-rooms-count"><?php
-                            echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
-                            ?></span>
+                echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
+                                ?></span>
                     </p>
 
                     <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'motopress-hotel-booking'); ?></button>
