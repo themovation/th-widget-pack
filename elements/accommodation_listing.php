@@ -19,7 +19,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return 'themo-accommodation-listing';
     }
 
-    private function getImageKey() {
+    protected function getImageKey() {
         return $this->imageKey;
     }
 
@@ -1802,7 +1802,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return ob_get_clean();
     }
 
-    private function renderSlider($settings, $images) {
+    protected function renderSlider($settings, $images) {
         $slides = [];
 
         foreach ($images as $attachment) {
@@ -1869,7 +1869,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return strip_tags($th_tour_intro); //maybe keep bold, italics
     }
 
-    private function getImageFromPost($list) {
+    protected function getImageFromPost($list) {
         // Get Project Format Options
         $imageArr = [];
         $alt = '';
@@ -2059,6 +2059,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
+            //for the subclasses to have access to this as we are not setting the current post object
+            $this->currentItem = $list;
 
             $this->remove_render_attribute('thmv_link'); //reset
             if (empty($buttonstyle)) {

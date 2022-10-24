@@ -9,6 +9,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
     var $searchParams = [];
     var $is_preview = false;
+    var $use_post_carousel = false;
 
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
@@ -561,7 +562,37 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $this->update_control('order', ['default' => 'date', 'type' => 'hidden']);
         $this->update_control('thmv_data_source_image_size', ['default' => 'th_img_md_square']);
 
+        //we are not using the carousel
+        if (!$this->use_post_carousel) {
+            $this->remove_control('thmv_section_carousel_heading');
+            $this->remove_control('thmv_carousel_icon_color');
+            $this->remove_control('thmv_carousel_icon_size');
+        }
+
+
 //        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
+    }
+
+    /**
+     * 
+     * @param type $settings
+     * @param type $images
+     */
+    protected function renderSlider($settings, $images) {
+        if (!$this->use_post_carousel) {
+
+            //we are not rendering the slider for now, just getting the feaured image
+            $image = $this->getImageFromPost($this->currentItem);
+            if (count($image)) {
+                $tempKey = $this->getImageKey();
+                $imageSizeInfo[$tempKey] = $image;
+                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $this->getImageKey());
+            }
+            echo $renderedImage;
+        }
+        else {
+            parent::renderSlider($settings, $images);
+        }
     }
 
     public function beforeContentRendered() {
@@ -716,13 +747,13 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         <select class="mphb-rooms-quantity">
                             <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
                                 <option value="<?php echo esc_attr($count); ?>"><?php
-                    echo $count;
-                                ?></option>
-                                <?php } ?>
+                                    echo $count;
+                                    ?></option>
+                            <?php } ?>
                         </select>
                         <span class="mphb-available-rooms-count"><?php
-                echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
-                                ?></span>
+                            echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));
+                            ?></span>
                     </p>
 
                     <button class="<?php echo $btn_classes ?> button mphb-button mphb-book-button"><?php esc_html_e('Book', 'motopress-hotel-booking'); ?></button>
