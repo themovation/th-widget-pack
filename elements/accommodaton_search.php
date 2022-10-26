@@ -597,7 +597,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
     public function beforeContentRendered() {
         $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
-        $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0;
+        $total = $this->getTotal();
 
         if (!$is_carousel_active || !$total) {
             return;
@@ -635,7 +635,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
     public function afterContentRendered() {
         $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
-        $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0;
+        $total = $this->getTotal();
         if (!$is_carousel_active || !$total) {
             return;
         }
@@ -643,6 +643,17 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         echo '</div></div>';
     }
 
+    protected function setTotal($total){
+        $this->totalAccommodations = $total;
+        
+    }
+    protected function getTotal(){
+        if(isset($this->totalAccommodations)){
+            return $this->totalAccommodations;
+        }
+        
+        return 0;
+    }
     protected function render() {
 
         //check for carousel
@@ -658,8 +669,17 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         parent::render();
         $results = ob_get_clean();
 
+        $total = $this->getTotal(); //posts variable from parent::render
+        
+        if(!$total){
+             echo '<div class="alert">';
+                _e('Sorry, no results were found.', 'th-widget-pack');
+                echo '</div>';
+                return;
+        }
+        
         $show_message = $this->get_settings_for_display('thmv_hide_results_message');
-        $total = isset($this->totalAccommodations) ? $this->totalAccommodations : 0; //posts variable from parent::render
+
         //set class of the parent widget so the CSS works
         echo '<div class="elementor-widget-' . $parent_name . ' mphb_sc_search_results-wrapper">';
         if ($this->is_preview) {
@@ -702,6 +722,44 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         echo '</div>';
     }
 
+    /** in the case of moto search results widget **/
+    protected function setupSearchArguements(&$args){
+        if($this->is_preview){
+            return;
+        }
+        //make the search fail by adding a non-existent id
+        $args['post__in'] = ['AAAAA'];
+        //if it's the search page, it will work fine
+        if (function_exists('MPHB')) {
+            //main functions setupMatchedRoomTypes and then getAvailableRoomTypes
+            $defaultAtts = array(
+                'gallery' => 'false',
+                'featured_image' => 'false',
+                'title' => 'false',
+                'excerpt' => 'false',
+                'details' => 'false',
+                'price' => 'false',
+                'view_button' => 'false',
+                'default_sorting' => null, // "order" was by default
+                'orderby' => null, // "menu_order" by default
+                'order' => 'ASC',
+                'meta_key' => '',
+                'meta_type' => '',
+                'class' => ''
+            );
+
+            $shortcode = MPHB()->getShortcodes()->getSearchResults();
+
+            $themo_shortcode_render = $shortcode->render($defaultAtts, null, $shortcode->getName());
+            //we only need ids from the html since the shortcode class doesn't give us any method to retrive the results publicly
+            $count = preg_match_all('/div class="mphb-room-type post-(\d+)\s/', $themo_shortcode_render, $matches);
+            if($count && count($matches[1])){
+                $post_ids = $matches[1];
+                $args['post__in'] = $post_ids;
+            }
+  
+        }
+    }
     protected function after_learn_more($post) {
 
         if ($this->get_settings_for_display('thmv_hide_booking_button') && $this->get_settings_for_display('thmv_hide_booking_price')) {
