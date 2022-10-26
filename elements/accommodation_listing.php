@@ -2080,7 +2080,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $showImgesRightSide = $settings['thmv_align_image'];
 
                 $preface = get_post_meta($list->ID, 'th_room_intro', true);
-                $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+                
+                $highlight = '';
+                if(empty($settings['thmv_hide_highlight'])){
+                    $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+                }
+                
 
                 $titleOverride = get_post_meta($list->ID, 'th_room_title', true);
                 $title = !empty($titleOverride) ? $titleOverride : get_the_title($list);
