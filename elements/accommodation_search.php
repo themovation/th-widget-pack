@@ -775,7 +775,9 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         if (!$this->get_settings_for_display('thmv_hide_booking_button')) {
             $this->setupResponsiveControl($this->get_settings_for_display(), 'book_button_stretch', 'book_button', 'streched');
             $class_arr = $this->get_render_attributes('book_button', 'class');
-            $btn_classes .= ' ' . implode(' ', $class_arr);
+            if(!empty($class_arr)){
+                $btn_classes .= ' ' . implode(' ', $class_arr);
+            } 
         }
 
         //if preview, show the static content, else apply motopress filter
