@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <script type="text/template" id="template-thmv-templateLibrary-header-logo">
-	<h3><?php _e( 'Block Library', 'th-widget-pack' ); ?></h3>
+	<h3><?php _e( 'Block Library (Beta)', 'th-widget-pack' ); ?></h3>
 </script>
 
 <script type="text/template" id="template-thmv-templateLibrary-header-back">

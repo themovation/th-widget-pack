@@ -299,8 +299,8 @@ class Block_Library_Source extends Source_Base {
                 return 'https://template.themovation.com/'.$template_name;
             }
             
-            #return 'https://library.themovation.com/'.self::api_url_by_theme_name();
-            return 'https://template.themovation.com/'.self::api_url_by_theme_name();
+            return 'https://library.themovation.com/'.self::api_url_by_theme_name();
+            #return 'https://template.themovation.com/'.self::api_url_by_theme_name();
         }
         /**
          * Reset stored data if library url changes
