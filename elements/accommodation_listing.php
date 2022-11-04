@@ -19,7 +19,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return 'themo-accommodation-listing';
     }
 
-    private function getImageKey() {
+    protected function getImageKey() {
         return $this->imageKey;
     }
 
@@ -391,7 +391,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label_on' => __('Yes', 'th-widget-pack'),
                     'label_off' => __('No', 'th-widget-pack'),
                     'selectors' => [
-                        '{{WRAPPER}} .thmv-btn ' => 'display:none;',
+                        '{{WRAPPER}} .thmv-btn ' => 'display:none!important;',
                     ],
                     'condition' => [
                         'thmv_data_switcher' => 'yes',
@@ -1802,7 +1802,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return ob_get_clean();
     }
 
-    private function renderSlider($settings, $images) {
+    protected function renderSlider($settings, $images) {
         $slides = [];
 
         foreach ($images as $attachment) {
@@ -1869,7 +1869,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return strip_tags($th_tour_intro); //maybe keep bold, italics
     }
 
-    private function getImageFromPost($list) {
+    protected function getImageFromPost($list) {
         // Get Project Format Options
         $imageArr = [];
         $alt = '';
@@ -1907,7 +1907,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         }
     }
 
-    private function setupResponsiveControl($settings, $field, $attribute, $class) {
+    protected function setupResponsiveControl($settings, $field, $attribute, $class) {
         $responsiveFields = [$field, $field . '_tablet', $field . '_mobile'];
         foreach ($responsiveFields as $f) {
             if (!empty($settings[$f])) {
@@ -1932,6 +1932,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $imageSizeInfo;
     }
 
+    
     protected function render() {
         $settings = $this->get_settings_for_display();
 
@@ -1981,10 +1982,18 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             }
             $args['post_status'] = 'publish';
             $args['posts_per_page'] = -1;
-
+ 
+            if(method_exists($this, 'setupSearchArguements')){
+                $this->setupSearchArguements($args);
+            }
+            
             // The Query
             $posts = get_posts($args);
-
+            
+            if(method_exists($this, 'setTotal')){
+                $this->setTotal(count($posts));
+            }
+            
             if (!$posts || !count($posts)) {
                 echo '<div class="alert">';
                 _e('Sorry, no results were found.', 'th-widget-pack');
@@ -1999,6 +2008,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $posts = $settings['listings'];
         }
 
+
         /*         * global vars * */
         $buttonstyle = $settings['button_style'];
         $listingStyleDefault = $settings['thmv_style'];
@@ -2009,14 +2019,21 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         $this->setupColumns($settings, 'columns', 'thmv_column');
 
         $listingStyle = str_replace('style_', '', $listingStyleDefault);
-        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle, true);
+        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-row thmv-style-' . $listingStyle);
 
         if ($dataSource && !empty($settings['thmv_align_image'])) {
             $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
         }
+        
+        if(method_exists($this, 'beforeContentRendered')){
+            $this->beforeContentRendered();
+        }
+        
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
 
         foreach ($posts as $list) {
+            //for the subclasses to have access to this as we are not setting the current post object
+            $this->currentItem = $list;
 
             $this->remove_render_attribute('thmv_link'); //reset
             if (empty($buttonstyle)) {
@@ -2063,7 +2080,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $showImgesRightSide = $settings['thmv_align_image'];
 
                 $preface = get_post_meta($list->ID, 'th_room_intro', true);
-                $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+                
+                $highlight = '';
+                if(empty($settings['thmv_hide_highlight'])){
+                    $highlight = get_post_meta($list->ID, 'th_room_highlight', true);
+                }
+                
 
                 $titleOverride = get_post_meta($list->ID, 'th_room_title', true);
                 $title = !empty($titleOverride) ? $titleOverride : get_the_title($list);
@@ -2340,7 +2362,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                     <?php echo $priceBlock; ?>
                                 <?php endif; ?> 
                             </div>
-
+                            <?php 
+                           $showBookButton = true;
+                           if($showBookButton && method_exists($this, 'after_learn_more')){
+                               $this->after_learn_more($list);
+                           }
+                            ?>    
             <?php if (in_array($listingStyle, array(3))): ?>
                                 <?= $iconsList ?>
                             <?php endif; ?>
@@ -2353,8 +2380,12 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <?php
         }
-
         echo '</div>';
+        //$content = ob_get_clean();
+        //$this->afterContentRendered();    
+       if(method_exists($this, 'afterContentRendered')){
+            $this->afterContentRendered();
+        }
 
         if ($dataSource) {
             wp_reset_postdata();

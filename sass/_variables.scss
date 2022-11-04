@@ -49,6 +49,12 @@ $percentageUnit : '%';
     -ms-flex-align: center!important;
     align-items: center!important;
 }
+@mixin align-items-baseline() {
+    -webkit-box-align: baseline!important;
+    -ms-flex-align: baseline!important;
+    align-items: baseline!important;
+}
+
 @mixin justify-content-center() {
     -webkit-box-pack: center!important;
     -ms-flex-pack: center!important;

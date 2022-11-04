@@ -317,7 +317,8 @@ class THHF_Header_Footer_Elementor {
 	 */
 	public static function get_single_post_content() {
 		echo "<div class='single-post-width-fixer'>";
-		echo self::$elementor_instance->frontend->get_builder_content_for_display( get_thhf_single_id() );
+                $id = ! empty( get_thhf_single_id() ) ? apply_filters( 'hfe_render_single', intval( get_thhf_single_id() ) ) : '';
+		echo self::$elementor_instance->frontend->get_builder_content_for_display( $id );
 		echo '</div>';
 	}
 	/**

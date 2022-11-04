@@ -57,3 +57,30 @@
 }
 
 
+.d-flex{
+    @include d-flex;
+}
+.align-items-baseline{
+    @include align-items-baseline;
+}
+.align-items-center{
+    @include align-items-center;
+}
+.flex-row-reverse{
+    @include flex-row-reverse;
+}
+.flex-row{
+    @include flex-row;
+}
+.flex-nowrap{
+    @include flex-nowrap;
+}
+.justify-content-end{
+    @include justify-content-end;
+}
+.position-relative{
+    position: relative!important;
+}
+.position-static{
+    position: static!important;
+}

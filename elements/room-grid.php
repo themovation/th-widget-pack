@@ -165,6 +165,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'default' => 'menu_order',
                 'options' => [
                     'date' => __( 'Date Published', 'th-widget-pack' ),
+                    'title' => __( 'Title', 'th-widget-pack' ),
                     'menu_order' => __( 'Drag and Drop', 'th-widget-pack' ),
                 ],
             ]
@@ -194,6 +195,21 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 'options' => [
                     'style_1' => __( 'Style 1', 'th-widget-pack' ),
                     'style_2' => __( 'Style 2', 'th-widget-pack' )
+                ],
+            ]
+        );
+        $this->add_control(
+            'sortorder',
+            [
+                'label' => __( 'Order', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'DESC',
+                'options' => [
+                    'ASC' => __( 'Ascending', 'th-widget-pack' ),
+                    'DESC' => __( 'Descending', 'th-widget-pack' ),
+                ],
+                'condition' => [
+                    'order!' => 'menu_order',
                 ],
             ]
         );
@@ -364,7 +380,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Grow image', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'no',
+                //'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
@@ -381,7 +397,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
             [
                 'label' => __( 'Grow content', 'th-widget-pack' ),
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'no',
+                //'default' => 'no',
                 'label_on' => __( 'Yes', 'th-widget-pack' ),
                 'label_off' => __( 'No', 'th-widget-pack' ),
                 'selectors' => [
@@ -975,7 +991,7 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                         'include' => $settings['group'],
                         'hide_empty' => false,
                         'orderby' => 'slug',
-                        'order' => 'ASC',
+                        'order' => $settings['sortorder'],
                         'parent' => 0,
                     );
 
@@ -1035,7 +1051,11 @@ class Themo_Widget_Room_Grid extends Widget_Base {
                 }
                 if ( $settings['order'] == 'date' ) {
                     $args['orderby'] = 'date';
-                } elseif ( $settings['order'] == 'menu_order' ) {
+                    $args['order'] = $settings['sortorder'];
+                }elseif($settings['order'] == 'title'){
+                    $args['orderby'] = 'title';
+                    $args['order'] = $settings['sortorder'];
+                }elseif ( $settings['order'] == 'menu_order' ) {
                     $args['orderby'] = 'menu_order';
                     $args['order'] = 'ASC';
                 }

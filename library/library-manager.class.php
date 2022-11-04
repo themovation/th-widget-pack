@@ -18,7 +18,7 @@ class Block_Library_Manager {
 	}
 
 	public static function print_template_views() {
-		include_once THEMO_PATH . 'library/templates.php';
+		include_once __DIR__.'/templates.php';
 	}
 
 	public static function enqueue_preview_styles() {
@@ -82,8 +82,9 @@ class Block_Library_Manager {
 
 			return $result;
 		} );
+                
 	}
-
+        
 	public static function get_template_data( array $args ) {
 		$source = self::get_source();
 		$data = $source->get_data( $args );
@@ -92,15 +93,35 @@ class Block_Library_Manager {
 
 	public static function get_library_data( array $args ) {
 		$source = self::get_source();
-
-		if ( ! empty( $args['sync'] ) ) {
-			Block_Library_Source::get_library_data( true );
+                
+		if ( ! empty( $args['sync'] ) || $source->has_host_changed()) {
+                        $source->force_clear_cache();
+                        $source = self::get_source();
+                        $multisite_path = isset($args['multisite_path']) ? $args['multisite_path'] : false;
+                        if($multisite_path){
+                            $source->set_current_multisite_path($multisite_path);
+                        }
+                        
+			$source->get_library_data( true );
 		}
-
+                $multisite_list = $source->get_multisite_list();
+                if(count($multisite_list)){
+                    //get current
+                    $path = $source->get_current_multisite_path();
+                    if(!empty($path)){
+                        foreach($multisite_list as &$site){
+                            if($site['path']===$path){
+                                $site['current'] = true;
+                                break;
+                            }
+                        }
+                    }
+                }
 		return [
 			'templates' => $source->get_items(),
 			'category' => $source->get_categories(),
 			'type_category' => $source->get_type_category(),
+                        'multisite_list' => $multisite_list,
 		];
 	}
 }

@@ -61,6 +61,12 @@ class Block_Library_Source extends Source_Base {
 		return ( ! empty( $library_data['type_category'] ) ? $library_data['type_category'] : [] );
 	}
 
+        public function get_multisite_list($force_update=false) {
+
+		$library_data = self::get_remote_multisite_list($force_update);
+
+		return ( ! empty( $library_data ) ? $library_data : [] );
+	}
 	/**
 	 * Prepare template items to match model
 	 *
@@ -121,17 +127,23 @@ class Block_Library_Source extends Source_Base {
 
 		$library_cache_id = 'thmv_'.self::api_url_by_theme_name().'_cache_id';
 
-		$data = get_option( $library_cache_id );
+                $data = get_option( $library_cache_id );
+                $url = self::get_library_url().'/wp-json/thmv/v1/library-config';
+		if ( $force_update || false === $data) {
+                        self::get_multisite_list(true);//refresh the list
+                        $multisite_path = self::get_current_multisite_path();//we store the dropdown value earlier when initiating the call
+                        if($multisite_path){
+                            //when multisite is changed, it also has $force_update = true
+                            $url.='?multisite_path='.$multisite_path;
+                        }
 
-		if ( $force_update || false === $data ) {
 			$timeout = ( $force_update ) ? 25 : 8;
-
-			$response = wp_remote_get( 'https://library.themovation.com/'.self::api_url_by_theme_name().'/wp-json/thmv/v1/library-config', [
+			$response = wp_remote_get( $url , [
 				'timeout' => $timeout,
 			] );
 
 			if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
-				update_option( $library_cache_id, [] );
+                            update_option( $library_cache_id, [] );
 				return false;
 			}
 
@@ -141,10 +153,8 @@ class Block_Library_Source extends Source_Base {
 				update_option( $library_cache_id, [] );
 				return false;
 			}
-
 			update_option( $library_cache_id, $data, 'no' );
 		}
-
 		return $data;
 	}
 
@@ -168,7 +178,48 @@ class Block_Library_Source extends Source_Base {
 
 		return $data;
 	}
+        
+        
+        public function set_current_multisite_path($path){
+            update_option( 'thmv_library_last_site_path', $path);
+        }
 
+        public function force_clear_cache(){
+            $library_cache_id = 'thmv_'.self::api_url_by_theme_name().'_cache_id';
+            $current_library_path = 'thmv_library_last_site_path';
+            $library_multisite_list = 'library_multisite_list';
+            delete_option($library_cache_id);
+            delete_option($current_library_path);
+            delete_option($library_multisite_list);
+
+        }
+        /** Get currently stored lastly selected multisite path
+         * 
+         * @return boolean
+         */
+         public function get_current_multisite_path(){
+            $multisite_list = self::get_multisite_list();
+            if(is_array($multisite_list)){
+                //we must have the last site path then
+                $site_path = get_option( 'thmv_library_last_site_path');
+                if(!$site_path){
+                    //send the first one as the path
+                    $current = $multisite_list[0]['path'];
+                    update_option( 'thmv_library_last_site_path', $current);
+                    return $current;
+                }
+                else {
+                    //check it's in the current list
+                    foreach($multisite_list as $site){
+                        if($site['path']===$site_path){
+                           return $site_path;
+                        }
+                    }
+                }
+               return false;
+            }
+            
+        }
 	/**
 	 * Get remote template.
 	 *
@@ -195,8 +246,14 @@ class Block_Library_Source extends Source_Base {
 			'version' => THEMO_VERSION,
 		];
 
+                $multisite_path = self::get_current_multisite_path();//we store the dropdown value earlier when initiating the call
+                $url = self::get_library_url().'/wp-json/thmv/v1/library/' . $template_id;
+                if($multisite_path){
+                    //when multisite is changed, it also has $force_update = true
+                    $url.='?multisite_path='.$multisite_path;
+                }
 		$response = wp_remote_get(
-			'https://library.themovation.com/'.self::api_url_by_theme_name().'/wp-json/thmv/v1/library/' . $template_id,
+			$url,
 			[
 				'body' => $body,
 				'timeout' => 25
@@ -215,7 +272,7 @@ class Block_Library_Source extends Source_Base {
 	 */
 	public function get_data( array $args, $context = 'display' ) {
 		$data = self::request_template_data( $args['template_id'] );
-
+                
 		$data = json_decode( $data, true );
 
 		if ( empty( $data ) || empty( $data['content'] ) ) {
@@ -234,4 +291,72 @@ class Block_Library_Source extends Source_Base {
 
 		return $data;
 	}
+        
+        public function get_library_url(){
+            $template_name = self::api_url_by_theme_name();
+            
+            if($template_name==='entrepreneur'){
+                return 'https://template.themovation.com/'.$template_name;
+            }
+            
+            return 'https://library.themovation.com/'.self::api_url_by_theme_name();
+            #return 'https://template.themovation.com/'.self::api_url_by_theme_name();
+        }
+        /**
+         * Reset stored data if library url changes
+         * @return boolean
+         */
+        public function has_host_changed(){
+            $library_url = self::get_library_url();
+            $parse = parse_url($library_url);
+            $host = $parse['host'];
+            $existing_host = get_option( 'library_host', false);
+            update_option( 'library_host', $host );//update to new host
+            if($existing_host===$host){
+                return false;
+            }
+
+            return true;
+        }
+        /**
+	 * Get remote multisite list
+	 *
+	 * @return array|\WP_Error Remote Multisite list.
+	 */
+	public function get_remote_multisite_list($force_update) {
+                if(!$force_update){
+                    $existing_list = get_option('library_multisite_list', false);
+                    if(is_array($existing_list)){
+                        return $existing_list;
+                    }
+                }
+
+
+                $body_args = [
+			'home_url' => trailingslashit( home_url() ),
+			'version' => THEMO_VERSION,
+		];
+
+		$response = wp_remote_get(
+			self::get_library_url().'/wp-json/thmv/v1/library-multisite-list',
+			[
+				'body' => $body_args,
+				'timeout' => 25
+			]
+		);
+
+		$body = wp_remote_retrieve_body( $response );
+                $data = json_decode( $body, true );
+
+                //code means there's some error
+                //a correct response will have an empty array
+                if ( isset($data['code']) || empty( $data ) || ! is_array( $data )  ) {
+                        $data = false;
+                }
+                else{
+                    update_option('library_multisite_list', $data);
+                }
+                return $data;
+	}
+        
 }

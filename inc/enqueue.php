@@ -20,7 +20,7 @@ add_action( 'wp_enqueue_scripts', 'themovation_so_wb_scripts', 20 );
 
 
 if(!defined('WIDGET_ASSETS_TO_LOAD')){
-    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing']);
+    define('WIDGET_ASSETS_TO_LOAD', ['themo-tabs', 'themo-pricing-list','themo-blog','themo-accommodation-listing','themo-portfolio-grid','themo-accommodation-search-results']);
 }
 
 if('uplands' == THEMO_CURRENT_THEME){
@@ -151,11 +151,12 @@ function th_enqueue_preview() {
 
 function th_enqueue_after_frontend_scripts() {
 
-    if ( ENABLE_BLOCK_LIBRARY === true ) {
+    if(showLibrary()){
         // JS for the Editor
         //wp_enqueue_script( 'themo-editor-js', THEMO_URL  . 'js/th-editor.js', array(), THEMO_VERSION);
-        wp_enqueue_style( 'thmv-library-style', THEMO_URL . 'css/th-library.css', [ 'elementor-editor' ], THEMO_VERSION );
-        wp_enqueue_script( 'thmv-library-script', THEMO_URL . 'js/th-library.js', [ 'elementor-editor', 'jquery-hover-intent' ], THEMO_VERSION, true );
+        $th_library_version = filemtime(THEMO_PATH . '/library/js/th-library.js');
+        wp_enqueue_style( 'thmv-library-style', THEMO_URL . 'library/css/th-library.css', [ 'elementor-editor' ], THEMO_VERSION );
+        wp_enqueue_script( 'thmv-library-script', THEMO_URL . 'library/js/th-library.js', [ 'elementor-editor', 'jquery-hover-intent' ], $th_library_version, true );
 
         $localized_data = [
             'i18n' => [
@@ -168,12 +169,25 @@ function th_enqueue_after_frontend_scripts() {
 
         wp_localize_script( 'thmv-library-script', 'ThBlockEditor', $localized_data );
     }
-
+    else{
+        $th_library_version = filemtime(THEMO_PATH.'/library/js/th-library-empty.js');
+        wp_enqueue_script( 'thmv-empty-library-script', THEMO_URL . '/library/js/th-library-empty.js', [ 'elementor-editor', 'jquery-hover-intent' ], $th_library_version, true );
+    }
 }
 
 
 add_action( 'elementor/editor/after_enqueue_scripts', 'th_enqueue_after_frontend_scripts' );
+function showLibrary() {
+    if (is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option("theme_is_registered_stratusx", false)) {
+        return true;
+    } elseif (is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('bellevue' == THEMO_CURRENT_THEME && get_option("theme_is_registered_bellevuex", false))) {
+        return true;
+    } elseif (is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && (get_option("theme_is_registered_entrepreneurx", false))) {
+        return true;
+    }
 
+    return false;
+}
 
 /* If Elementor P is not active, tuck away widgets. */
 if ( ! function_exists ( 'thmv_tuck_pro_widgets' ) ) {

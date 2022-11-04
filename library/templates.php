@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <script type="text/template" id="template-thmv-templateLibrary-header-logo">
-	<h3><?php _e( 'Block Library', 'th-widget-pack' ); ?></h3>
+	<h3><?php _e( 'Block Library (Beta)', 'th-widget-pack' ); ?></h3>
 </script>
 
 <script type="text/template" id="template-thmv-templateLibrary-header-back">
@@ -24,6 +24,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 
 <script type="text/template" id="template-thmv-templateLibrary-header-actions">
+        <div id="thmv-templateLibrary-multisite">
+        <# if ( thmv.library.getMultiSiteList().length ) { #>
+                <select id="thmv-multisite">
+                    <# _.each( thmv.library.getMultiSiteList(), function( site ) {#>
+                            <option class="thmv-multisite-option" <# if(site.current){#> selected <# } #>  value="{{ site.path }}" >{{ site.title }}</li>
+                     <# } ); #>
+                </select>
+        <# } #>
+        </div>
 	<div id="thmv-templateLibrary-header-sync" class="elementor-templates-modal__header__item">
 		<i class="eicon-sync" aria-hidden="true" title="<?php esc_attr_e( 'Sync Library', 'th-widget-pack' ); ?>"></i>
 		<span class="elementor-screen-only"><?php esc_html_e( 'Sync Library', 'th-widget-pack' ); ?></span>

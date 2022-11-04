@@ -65,6 +65,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
         if('bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/package_2.php';
             require_once THEMO_PATH . 'elements/accommodation_listing.php';
+            require_once THEMO_PATH . 'elements/accommodation_search.php';
             require_once THEMO_PATH . 'elements/tabs.php';
         }else{
             require_once THEMO_PATH . 'elements/package.php';
@@ -83,7 +84,11 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
 
-        if('bellevue' == THEMO_CURRENT_THEME ){
+        if('entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ) {
+            require_once THEMO_PATH . 'elements/pricing-list.php';
+        }
+
+        if('bellevue' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/blog_2.php';
         }else{
             require_once THEMO_PATH . 'elements/blog.php';
@@ -117,16 +122,28 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
+//if (!function_exists('is_themovation_template')) {
+    function is_themovation_template()
+    {
+        $theme = wp_get_theme();
+        $themeToCheck = $theme->parent() ? $theme->parent() : $theme;
+        return strpos(strtolower($themeToCheck->get('AuthorURI')), 'themovation') !== false ? true : false;
+    }
+//}
+
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option( "theme_is_registered_stratusx", false ) ) {
-        include_once THEMO_PATH . 'library/library-manager.class.php' ;
-        include_once THEMO_PATH . 'library/library-source.class.php' ;
-    }elseif( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('bellevue' == THEMO_CURRENT_THEME && get_option( "theme_is_registered_bellevuex", false ))){
+    if (showLibrary()) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
         include_once THEMO_PATH . 'library/library-source.class.php' ;
     }
+    else if(is_themovation_template ()){
+        add_action( 'elementor/editor/footer', function(){
+            include_once THEMO_PATH . 'library/register.php';
+        } );
+    }
+    
 
     if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
         return;
@@ -328,8 +345,7 @@ if ( ! function_exists( 'th_add_custom_controls_elem_post_settings_top' ) ) {
                     [
                         //'label' => __( 'Note', 'th-widget-pack' ),
                         'type' => \Elementor\Controls_Manager::RAW_HTML,
-                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%
-$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
+                        'raw' => '<div class="elementor-control-title">'.esc_html__('Applies to Standard Header only.', 'th-widget-pack').'</div><div class="elementor-control-field-description">' . sprintf(__('<a href="%1$s" target="_blank">Learn more</p>', 'th-widget-pack'), 'https://themovation.helpscoutdocs.com/article/311-custom-header-footer#standard-header-footer') . '</div>',
                         'content_classes' => 'themo-elem-html-control',
                         'separator' => 'before'
                     ]
