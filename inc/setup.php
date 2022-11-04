@@ -122,11 +122,14 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 // Include Custom Widgets
 add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
 
-function is_themovation_template() {
-    $theme = wp_get_theme();
-    $themeToCheck = $theme->parent() ? $theme->parent() : $theme;
-    return strpos(strtolower($themeToCheck->get('AuthorURI')), 'themovation') !== false ? true : false;
-}
+//if (!function_exists('is_themovation_template')) {
+    function is_themovation_template()
+    {
+        $theme = wp_get_theme();
+        $themeToCheck = $theme->parent() ? $theme->parent() : $theme;
+        return strpos(strtolower($themeToCheck->get('AuthorURI')), 'themovation') !== false ? true : false;
+    }
+//}
 
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
