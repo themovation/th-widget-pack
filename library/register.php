@@ -24,7 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 </script>
 <script type="text/template" id="template-thmv-templateLibrary-empty">
-	
 	<div class="elementor-template-library-blank-title"><?php esc_html_e( 'You must be registered to use this feature', 'th-widget-pack' ); ?></div>
         <div class="elementor-template-library-blank-message">Visit the <a target="_blank" href="<?php echo admin_url('?page=stratus_dashboard')?>">dashboard</a> to register.</div>
 </script>
