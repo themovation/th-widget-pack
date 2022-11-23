@@ -10,6 +10,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
     var $searchParams = [];
     var $is_preview = false;
     var $use_post_carousel = false;
+    var $defaultCurrency = '$';
 
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
