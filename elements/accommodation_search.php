@@ -561,7 +561,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $this->update_control('group_mphb_room_type', ['type' => 'hidden']);
         $this->update_control('order', ['default' => 'date', 'type' => 'hidden']);
         $this->update_control('thmv_data_source_image_size', ['default' => 'th_img_md_square']);
-
+        $this->update_control('thmv_hide_link', ['default' => 'yes']);
         //we are not using the carousel
         if (!$this->use_post_carousel) {
             $this->remove_control('thmv_section_carousel_heading');
