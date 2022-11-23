@@ -292,7 +292,7 @@ class Block_Library_Source extends Source_Base {
 		return $data;
 	}
         
-        public function get_library_url(){
+        private static function get_library_url(){
             $template_name = self::api_url_by_theme_name();
             
             if($template_name==='entrepreneur'){
