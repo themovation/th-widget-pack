@@ -106,7 +106,7 @@ li.thmv-templateLibrary-category-filter-item {
     margin: 10px 0;
 	text-align: left;
 	padding-bottom: 5px;
-	border-bottom: 1px solid #505050;
+	border-bottom: 1px solid rgba(143, 143, 143, 0.4);
 	cursor: pointer;
 }
 li.thmv-templateLibrary-category-filter-item.active {
