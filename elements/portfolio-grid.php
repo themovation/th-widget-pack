@@ -612,7 +612,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'featured_image_size_grid',
-                'default' => 'th_img_md_square',
+                'default' => 'th_img_sm_square',
                 'exclude' => [ 'thumbnail','medium','medium_large','large','1536x1536','2048x2048','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_brands','th_img_sm_standard','custom'],
                 //$size = $settings[ 'grid_image' . '_size' ];
                 //$size = $settings['featured_image_size'];
