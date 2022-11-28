@@ -9,7 +9,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
     var $totalIcons = 12;
     var $imageKey = 'thmv_image';
-
+    var $use_post_carousel = true;
+    
     public function loadTHMVAssets($editMode = false) {
         $modified = filemtime(THEMO_PATH . 'css/accommodation.css');
         wp_enqueue_style($this->get_name(), THEMO_URL . 'css/accommodation.css', array(), $modified);
@@ -2058,7 +2059,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $carouselImages = [];
                 $tempImages = get_post_meta($list->ID, 'th_gallery', true);
 
-                if (!empty($tempImages)) {
+                if (!empty($tempImages) && $this->use_post_carousel) {
                     $carousel_switcher = true;
                     $tempImagesArr = explode(",", $tempImages);
                     foreach ($tempImagesArr as $imgId) {

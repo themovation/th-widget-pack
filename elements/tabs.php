@@ -309,7 +309,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                 'label' => __('Color', 'elementor'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-tab-title:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-tabs.style_2 .thmv-tab-title:after' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'thmv_style' => 'style_2',

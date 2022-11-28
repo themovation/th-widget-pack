@@ -61,7 +61,7 @@ class Block_Library_Source extends Source_Base {
 		return ( ! empty( $library_data['type_category'] ) ? $library_data['type_category'] : [] );
 	}
 
-        public function get_multisite_list($force_update=false) {
+        public static function get_multisite_list($force_update=false) {
 
 		$library_data = self::get_remote_multisite_list($force_update);
 
@@ -197,9 +197,9 @@ class Block_Library_Source extends Source_Base {
          * 
          * @return boolean
          */
-         public function get_current_multisite_path(){
+         public static function get_current_multisite_path(){
             $multisite_list = self::get_multisite_list();
-            if(is_array($multisite_list)){
+            if(count($multisite_list)){
                 //we must have the last site path then
                 $site_path = get_option( 'thmv_library_last_site_path');
                 if(!$site_path){
@@ -292,7 +292,7 @@ class Block_Library_Source extends Source_Base {
 		return $data;
 	}
         
-        public function get_library_url(){
+        private static function get_library_url(){
             $template_name = self::api_url_by_theme_name();
             
             if($template_name==='entrepreneur'){
@@ -323,7 +323,7 @@ class Block_Library_Source extends Source_Base {
 	 *
 	 * @return array|\WP_Error Remote Multisite list.
 	 */
-	public function get_remote_multisite_list($force_update) {
+	public static function get_remote_multisite_list($force_update) {
                 if(!$force_update){
                     $existing_list = get_option('library_multisite_list', false);
                     if(is_array($existing_list)){
