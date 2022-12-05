@@ -399,7 +399,21 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-
+        
+        $this->add_responsive_control(
+                'thmv_hide_link_title',
+                [
+                    'label' => __('Link title', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                    ],
+                    'default' => 'no'
+                ]
+        );
+        
         $this->end_controls_section();
 
         /** listing repeater * */
@@ -2320,7 +2334,15 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
                             <?php if (!empty($title)): ?>
-                                <h3 class="thmv-title"><?= esc_html($title) ?></h3>
+                                <h3  class="thmv-title">
+                                    <?php if($this->get_settings_for_display('thmv_hide_link_title')!=="yes"):?>
+                                    <a href="<?php echo $link_url?>">
+                                    <?php endif;?>
+                                        <?= esc_html($title) ?>
+                                    <?php if($this->get_settings_for_display('thmv_hide_link_title')!=="yes"):?>
+                                    </a>
+                                    <?php endif;?> 
+                                </h3>
                             <?php endif; ?>
                             <?php if (in_array($listingStyle, array(6)) && $titleSeparator): ?>    
                                 <hr class="thmv-separator">
