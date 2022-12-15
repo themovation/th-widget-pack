@@ -1204,14 +1204,6 @@ class Themo_Widget_Blog extends Widget_Base {
                                 </div>
 
                             <?php } ?>
-
-                            <?php
-                            // Reset postdata
-                             if ($dataSource) {
-                                wp_reset_postdata();
-                             }
-                            ?>
-
                         </div>
                         <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
                             <div class="row">
@@ -1219,7 +1211,7 @@ class Themo_Widget_Blog extends Widget_Base {
                                     <ul class="pager">
                                         <?php
                                         if( $use_bittersweet_pagination ) {
-                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
+//                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
                                         } else { ?>
                                             <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'th-widget-pack' ), $widget_wp_query->max_num_pages); ?></li>
                                             <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'th-widget-pack' ) ); ?></li>
