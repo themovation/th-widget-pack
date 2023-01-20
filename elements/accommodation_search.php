@@ -9,7 +9,6 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
     var $searchParams = [];
     var $is_preview = false;
-    var $use_post_carousel = false;
     var $defaultCurrency = '$';
 
     public function __construct($data = [], $args = null) {
@@ -33,40 +32,10 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         );
 
         $this->addElements();
-    }
 
-    public function get_name() {
-        return 'themo-accommodation-search-results';
-    }
-
-    public function get_title() {
-        return __('Accommodation Search Results', 'th-widget-pack');
-    }
-
-    public function get_icon() {
-        return 'th-editor-icon-search-results';
-    }
-
-    public function loadTHMVAssets($editMode = false) {
         $key = $this->get_name();
 
-        $modified = filemtime(THEMO_PATH . 'css/accommodation.css');
-        $parent_name = parent::get_name();
-        wp_enqueue_style($parent_name, THEMO_URL . 'css/accommodation.css', array(), $modified);
-
-        $styles = '.elementor-widget-' . $key . ' .elementor-swiper-button{'
-                . 'transform: none;-webkit-transform: none;-ms-transform: none;'
-                . '}'
-                . '.elementor-widget-' . $key . ' .elementor-row.swiper-wrapper{'
-                . '-ms-flex-wrap: nowrap !important;flex-wrap: nowrap !important;'
-                . '}'
-                . '.elementor-widget-' . $key . ' .elementor-row.swiper-wrapper .swiper-slide.thmv-column{'
-                . 'max-width:100%;'
-                . '}'
-                . '.elementor-widget-' . $key . ' .swiper-slide{'
-                . 'text-align:left;'
-                . '}'
-                . '.elementor-widget-' . $key . ' .mphb-empty-cart-message'
+        $styles = '.elementor-widget-' . $key . ' .mphb-empty-cart-message'
                 . '{'
                 . 'display: none!important;'
                 . '}'
@@ -91,6 +60,24 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         wp_register_style($key, false, array(), true, true);
         wp_add_inline_style($key, $styles);
         wp_enqueue_style($key);
+    }
+
+    public function get_name() {
+        return 'themo-accommodation-search-results';
+    }
+
+    public function get_title() {
+        return __('Accommodation Search Results', 'th-widget-pack');
+    }
+
+    public function get_icon() {
+        return 'th-editor-icon-search-results';
+    }
+
+   public function loadTHMVAssets($editMode = false) {
+        $modified = filemtime(THEMO_PATH . 'css/accommodation.css');
+        $parent_name = parent::get_name();
+        wp_enqueue_style($parent_name, THEMO_URL . 'css/accommodation.css', array(), $modified);
     }
 
     private function addElements() {
@@ -126,26 +113,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                         'default' => '',
                     ]
             );
-            $element->add_control(
-                    'thmv_slider_heading',
-                    [
-                        'label' => __('Slider', 'elementor'),
-                        'type' => Controls_Manager::HEADING,
-                        'separator' => 'before',
-                    ]
-            );
-            $element->add_control(
-                    'thmv_slider_active',
-                    [
-                        'label' => __('Active', 'th-widget-pack'),
-                        'type' => Controls_Manager::SWITCHER,
-                        'label_on' => __('Yes', 'th-widget-pack'),
-                        'label_off' => __('No', 'th-widget-pack'),
-                        'default' => '',
-                        'description' => __('Make sure to set the columns at the top, default option might not work as expected.', 'th-widget-pack')
-                    ]
-            );
-        }, 10, 2);
+        }, 9, 2);
         add_action('elementor/element/' . $this->get_name() . '/thmv_style_section_link/after_section_end', function ($element, $args) {
             $element->start_controls_section(
                     'thmv_style_section_book_price',
@@ -420,136 +388,6 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                     ]
             );
             $element->end_controls_section();
-
-            $element->start_controls_section(
-                    'thmv_style_section_slider',
-                    [
-                        'label' => __('Slider', 'th-widget-pack'),
-                        'tab' => Controls_Manager::TAB_STYLE,
-                        'condition' => [
-                            'thmv_slider_active!' => '',
-                        ],
-                    ]
-            );
-
-            $element->add_control(
-                    'thmv_slider_icon_color',
-                    [
-                        'label' => __('Color', 'th-widget-pack'),
-                        'type' => Controls_Manager::COLOR,
-                        'default' => '',
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'color: {{VALUE}};',
-                        ],
-                    ]
-            );
-
-            $element->add_responsive_control(
-                    'tthmv_slider_icon_size',
-                    [
-                        'label' => __('Size', 'elementor'),
-                        'type' => Controls_Manager::SLIDER,
-                        'range' => [
-                            'px' => [
-                                'min' => 0,
-                                'max' => 300,
-                            ],
-                        ],
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}};',
-                        ],
-                    ]
-            );
-            $element->add_group_control(
-                    Group_Control_Border::get_type(),
-                    [
-                        'name' => 'thmv_slider_navigation_border',
-                        'label' => esc_html__('Border', 'elementor'),
-                        'selector' => '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button',
-                        'fields_options' => [
-                            'border' => [
-                                'default' => 'solid',
-                            ],
-                            'width' => [
-                                'default' => [
-                                    'top' => '2',
-                                    'right' => '2',
-                                    'bottom' => '2',
-                                    'left' => '2',
-                                    'isLinked' => true,
-                                ],
-                            ],
-                        ]
-                    ]
-            );
-
-            $element->add_control(
-                    'thmv_slider_navigation_border_radius',
-                    [
-                        'label' => esc_html__('Border Radius', 'elementor'),
-                        'type' => Controls_Manager::SLIDER,
-                        'size_units' => ['%', 'px'],
-                        'default' => [
-                            'unit' => '%',
-                            'size' => '50',
-                        ],
-                        'range' => [
-                            '%' => [
-                                'max' => 50,
-                            ],
-                        ],
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'border-radius: {{SIZE}}{{UNIT}};',
-                        ],
-                        'condition' => [
-                            'thmv_slider_navigation_border_border!' => '',
-                        ],
-                    ]
-            );
-            $element->add_control(
-                    'thmv_slider_navigation_margin_between',
-                    [
-                        'label' => __('Arrows Spacing', 'th-widget-pack'),
-                        'type' => Controls_Manager::SLIDER,
-                        'default' => [
-                            'size' => 15,
-                        ],
-                        'range' => [
-                            'px' => [
-                                'min' => 0,
-                                'max' => 300,
-                                'step' => 1,
-                            ],
-                        ],
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button+.elementor-swiper-button' => 'margin-left: {{SIZE}}{{UNIT}};',
-                        ],
-                    ]
-            );
-
-            $element->add_control(
-                    'thmv_slider_navigation_margin',
-                    [
-                        'label' => __('Margin Bottom', 'th-widget-pack'),
-                        'type' => Controls_Manager::SLIDER,
-                        'default' => [
-                            'size' => 15,
-                        ],
-                        'range' => [
-                            'px' => [
-                                'min' => 0,
-                                'max' => 300,
-                                'step' => 1,
-                            ],
-                        ],
-                        'selectors' => [
-                            '{{WRAPPER}} .accommodation-top-navigation' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                        ],
-                        'separator' => 'before',
-                    ]
-            );
-
-            $element->end_controls_section();
         }, 10, 2);
     }
 
@@ -563,130 +401,31 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         $this->update_control('order', ['default' => 'date', 'type' => 'hidden']);
         $this->update_control('thmv_data_source_image_size', ['default' => 'th_img_md_square']);
         $this->update_control('thmv_hide_link', ['default' => 'yes']);
-        //we are not using the carousel
-        if (!$this->use_post_carousel) {
-            $this->remove_control('thmv_section_carousel_heading');
-            $this->remove_control('thmv_carousel_icon_color');
-            $this->remove_control('thmv_carousel_icon_size');
-        }
-
-
-//        $this->set_render_attribute('_wrapper', 'class', 'elementor-widget-'.$parent_name);
-    }
-
-    /**
-     * 
-     * @param type $settings
-     * @param type $images
-     */
-    protected function renderSlider($settings, $images) {
-        if (!$this->use_post_carousel) {
-
-            //we are not rendering the slider for now, just getting the feaured image
-            $image = $this->getImageFromPost($this->currentItem);
-            if (count($image)) {
-                $tempKey = $this->getImageKey();
-                $imageSizeInfo[$tempKey] = $image;
-                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $this->getImageKey());
-            }
-            echo $renderedImage;
-        }
-        else {
-            parent::renderSlider($settings, $images);
-        }
     }
 
     public function beforeContentRendered() {
-        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
-        $total = $this->getTotal();
+        echo '<div class="elementor-widget-themo-accommodation-listing mphb_sc_search_results-wrapper">';
+        $this->searchResultsTopHeader();
+        parent::beforeContentRendered();
 
-        if (!$is_carousel_active || !$total) {
-            return;
-        }
-
-        $columns_desktop = (INT) $this->get_settings_for_display('columns') ? $this->get_settings_for_display('columns') : 2;
-        $columns_tablet = (INT) $this->get_settings_for_display('columns_tablet') ? $this->get_settings_for_display('columns_tablet') : $columns_desktop;
-        $columns_mobile = (INT) $this->get_settings_for_display('columns_mobile') ? $this->get_settings_for_display('columns_mobile') : 1;
-
-        $sliderSettings = '{"slides_to_show":"' . $columns_desktop . '", "slides_to_show_mobile": "' . $columns_mobile . '", "slides_to_show_tablet": "' . $columns_tablet . '",  "slides_to_scroll":"1","navigation":"arrows","autoplay":"no","infinite":"no","speed":500}';
-        echo '<div '
-        . 'data-widget_type="image-carousel.default" '
-        . 'data-settings=\'' . $sliderSettings . '\' '
-        . 'data-element_type="widget" '
-        . 'class="elementor-element  elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel">'
-        . '<div '
-        . 'class="elementor-image-carousel-wrapper swiper-container" '
-        . 'dir="ltr">';
-        ?>
-        <div class="accommodation-top-navigation d-flex justify-content-end align-items-center" style="padding: 0 10px;">
-            <div class="thmv-accommodation-arrows-container d-flex justify-content-end align-items-center position-relative">
-                <div class="elementor-swiper-button elementor-swiper-button-prev position-static">
-                    <i class="eicon-chevron-left" aria-hidden="true"></i>
-                    <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
-                </div>
-                <div class="elementor-swiper-button elementor-swiper-button-next position-static">
-                    <i class="eicon-chevron-right" aria-hidden="true"></i>
-                    <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
-                </div>
-            </div>
-        </div>
-
-        <?php
     }
 
     public function afterContentRendered() {
-        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
-        $total = $this->getTotal();
-        if (!$is_carousel_active || !$total) {
-            return;
-        }
 
-        echo '</div></div>';
+        echo '</div>';
+        parent::afterContentRendered();
     }
 
-    protected function setTotal($total){
-        $this->totalAccommodations = $total;
-        
-    }
-    protected function getTotal(){
-        if(isset($this->totalAccommodations)){
-            return $this->totalAccommodations;
-        }
-        
-        return 0;
-    }
-    protected function render() {
+    private function searchResultsTopHeader() {
 
-        //check for carousel
-        $is_carousel_active = $this->get_settings_for_display('thmv_slider_active');
-        if ($is_carousel_active) {
-            $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-image-carousel swiper-wrapper');
-            $this->add_render_attribute('thmv_column', 'class', 'swiper-slide');
-        }
-
-
-        $parent_name = parent::get_name();
-        ob_start();
-        parent::render();
-        $results = ob_get_clean();
-
-        $total = $this->getTotal(); //posts variable from parent::render
-        
-        if(!$total){
-             echo '<div class="alert">';
-                _e('Sorry, no results were found.', 'th-widget-pack');
-                echo '</div>';
-                return;
-        }
-        
         $show_message = $this->get_settings_for_display('thmv_hide_results_message');
 
-        //set class of the parent widget so the CSS works
-        echo '<div class="elementor-widget-' . $parent_name . ' mphb_sc_search_results-wrapper">';
         if ($this->is_preview) {
             $dateObj = \DateTime::createFromFormat('d/m/Y', date("d/m/Y"));
             $this->searchParams['to_date_formatted'] = $this->searchParams['from_date_formatted'] = \MPHB\Utils\DateUtils::formatDateWPFront($dateObj);
         }
+
+        $total = $this->getTotal(); //posts variable from parent::render
         if ($total > 0 && !(bool) $show_message) {
             ?>
             <p class="thmv-search-results-info alert" style="border-color: #e2e2e2;">
@@ -717,15 +456,11 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             );
             echo $cart_render;
         }
-
-
-        echo $results;
-        echo '</div>';
     }
 
-    /** in the case of moto search results widget **/
-    protected function setupSearchArguements(&$args){
-        if($this->is_preview){
+    /** in the case of moto search results widget * */
+    protected function setupSearchArguements(&$args) {
+        if ($this->is_preview) {
             return;
         }
         //make the search fail by adding a non-existent id
@@ -754,13 +489,13 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
             $themo_shortcode_render = $shortcode->render($defaultAtts, null, $shortcode->getName());
             //we only need ids from the html since the shortcode class doesn't give us any method to retrive the results publicly
             $count = preg_match_all('/div class="mphb-room-type post-(\d+)\s/', $themo_shortcode_render, $matches);
-            if($count && count($matches[1])){
+            if ($count && count($matches[1])) {
                 $post_ids = $matches[1];
                 $args['post__in'] = $post_ids;
             }
-  
         }
     }
+
     protected function after_learn_more($post) {
 
         if ($this->get_settings_for_display('thmv_hide_booking_button') && $this->get_settings_for_display('thmv_hide_booking_price')) {
@@ -776,9 +511,9 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         if (!$this->get_settings_for_display('thmv_hide_booking_button')) {
             $this->setupResponsiveControl($this->get_settings_for_display(), 'book_button_stretch', 'book_button', 'streched');
             $class_arr = $this->get_render_attributes('book_button', 'class');
-            if(!empty($class_arr)){
+            if (!empty($class_arr)) {
                 $btn_classes .= ' ' . implode(' ', $class_arr);
-            } 
+            }
         }
 
         //if preview, show the static content, else apply motopress filter
@@ -794,7 +529,7 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                 <p class="mphb-regular-price"><?php esc_html_e('Prices start at:', 'motopress-hotel-booking') ?> <span class="mphb-price">
                         <span class="mphb-currency"><?= $currencyCode ?></span>77</span> 
                     <span class="mphb-price-period" title="<?php esc_html_e('Based on your search parameters', 'motopress-hotel-booking'); ?>">
-                        <?php esc_html_e('per night', 'motopress-hotel-booking') ?>
+                <?php esc_html_e('per night', 'motopress-hotel-booking') ?>
                     </span>
                 </p>
                 <?php
@@ -806,11 +541,11 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
                 <div class="mphb-reserve-room-section">
                     <p class="mphb-rooms-quantity-wrapper mphb-rooms-quantity-multiple">
                         <select class="mphb-rooms-quantity">
-                            <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
+                                <?php for ($count = 1; $count <= $maxRoomsCount; $count++) { ?>
                                 <option value="<?php echo esc_attr($count); ?>"><?php
                                     echo $count;
                                     ?></option>
-                            <?php } ?>
+                <?php } ?>
                         </select>
                         <span class="mphb-available-rooms-count"><?php
                             echo esc_html(sprintf(_n('of %d accommodation available.', 'of %d accommodations available.', $maxRoomsCount, 'motopress-hotel-booking'), $maxRoomsCount));

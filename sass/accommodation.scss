@@ -77,7 +77,20 @@ $topboxPadding : 20px;
         border-top: 0;
         background: rgba(78, 82, 76, 0.1);
     }
-
+    //outer swiper styles
+    .elementor-swiper-button{
+        transform: none;-webkit-transform: none;-ms-transform: none;
+    }
+    .elementor-row.swiper-wrapper{
+       @include flex-nowrap;
+    }
+    .elementor-row.swiper-wrapper .swiper-slidethmv-column{
+        max-width:100%;
+    }
+    .swiper-slide{
+        text-align:left;
+    }
+    //swiper end
     .elementor-row{
 
         @include d-flex;
@@ -247,6 +260,9 @@ $topboxPadding : 20px;
             text-transform: uppercase;
             font-size: 22px;
             display: block;
+            a{
+                color: inherit;
+            }
         }
         .thmv-info{
             p{

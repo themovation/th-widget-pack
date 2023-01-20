@@ -9,7 +9,40 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
     var $totalIcons = 12;
     var $imageKey = 'thmv_image';
-    var $use_post_carousel = true;
+
+    public function __construct($data = [], $args = null) {
+        parent::__construct($data, $args);
+        
+        add_action('elementor/element/' . $this->get_name() . '/thmv_section_data/before_section_end', function ($element, $args) {
+            
+            $element->add_control(
+                    'thmv_slider_heading',
+                    [
+                        'label' => __('Slider', 'elementor'),
+                        'type' => Controls_Manager::HEADING,
+                        'separator' => 'before',
+                        'condition' => [
+                            'thmv_data_switcher' => 'yes',
+                        ],
+                    ]
+            );
+            $element->add_control(
+                'thmv_slider_active',
+                [
+                    'label' => __('Active', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'default' => '',
+                    'description' => __('Make sure to set the columns at the top, default option might not work as expected.', 'th-widget-pack'),
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                    ],
+                ]
+            );
+        
+        }, 10, 2);
+    }
     
     public function loadTHMVAssets($editMode = false) {
         $modified = filemtime(THEMO_PATH . 'css/accommodation.css');
@@ -78,7 +111,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $portfolio_group;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
                 'thmv_section_data',
@@ -399,7 +432,21 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                 ]
         );
-
+        
+        $this->add_responsive_control(
+                'thmv_hide_link_title',
+                [
+                    'label' => __('Link title', 'th-widget-pack'),
+                    'type' => Controls_Manager::SWITCHER,
+                    'label_on' => __('Yes', 'th-widget-pack'),
+                    'label_off' => __('No', 'th-widget-pack'),
+                    'condition' => [
+                        'thmv_data_switcher' => 'yes',
+                    ],
+                    'default' => 'no'
+                ]
+        );
+        
         $this->end_controls_section();
 
         /** listing repeater * */
@@ -1581,6 +1628,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'label' => __('Carousel', 'elementor'),
                     'type' => Controls_Manager::HEADING,
                     'separator' => 'before',
+                    'condition' => [
+                            'thmv_slider_active' => '',
+                    ],
                 ]
         );
 
@@ -1592,6 +1642,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .elementor-swiper-button' => 'color: {{VALUE}};',
+                    ],
+                    'condition' => [
+                            'thmv_slider_active' => '',
                     ],
                 ]
         );
@@ -1609,6 +1662,9 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                            'thmv_slider_active' => '',
                     ],
                 ]
         );
@@ -1725,8 +1781,138 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         );
 
         $this->end_controls_section();
-    }
+        
+        $this->start_controls_section(
+                    'thmv_style_section_slider',
+                    [
+                        'label' => __('Slider', 'th-widget-pack'),
+                        'tab' => Controls_Manager::TAB_STYLE,
+                        'condition' => [
+                            'thmv_slider_active!' => '',
+                        ],
+                    ]
+            );
 
+            $this->add_control(
+                    'thmv_slider_icon_color',
+                    [
+                        'label' => __('Color', 'th-widget-pack'),
+                        'type' => Controls_Manager::COLOR,
+                        'default' => '',
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'color: {{VALUE}};',
+                        ],
+                    ]
+            );
+
+            $this->add_responsive_control(
+                    'tthmv_slider_icon_size',
+                    [
+                        'label' => __('Size', 'elementor'),
+                        'type' => Controls_Manager::SLIDER,
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+            $this->add_group_control(
+                    Group_Control_Border::get_type(),
+                    [
+                        'name' => 'thmv_slider_navigation_border',
+                        'label' => esc_html__('Border', 'elementor'),
+                        'selector' => '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button',
+                        'fields_options' => [
+                            'border' => [
+                                'default' => 'solid',
+                            ],
+                            'width' => [
+                                'default' => [
+                                    'top' => '2',
+                                    'right' => '2',
+                                    'bottom' => '2',
+                                    'left' => '2',
+                                    'isLinked' => true,
+                                ],
+                            ],
+                        ]
+                    ]
+            );
+
+            $this->add_control(
+                    'thmv_slider_navigation_border_radius',
+                    [
+                        'label' => esc_html__('Border Radius', 'elementor'),
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => ['%', 'px'],
+                        'default' => [
+                            'unit' => '%',
+                            'size' => '50',
+                        ],
+                        'range' => [
+                            '%' => [
+                                'max' => 50,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                        ],
+                        'condition' => [
+                            'thmv_slider_navigation_border_border!' => '',
+                        ],
+                    ]
+            );
+            $this->add_control(
+                    'thmv_slider_navigation_margin_between',
+                    [
+                        'label' => __('Arrows Spacing', 'th-widget-pack'),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                            'size' => 15,
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                                'step' => 1,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation .elementor-swiper-button+.elementor-swiper-button' => 'margin-left: {{SIZE}}{{UNIT}};',
+                        ],
+                    ]
+            );
+
+            $this->add_control(
+                    'thmv_slider_navigation_margin',
+                    [
+                        'label' => __('Margin Bottom', 'th-widget-pack'),
+                        'type' => Controls_Manager::SLIDER,
+                        'default' => [
+                            'size' => 15,
+                        ],
+                        'range' => [
+                            'px' => [
+                                'min' => 0,
+                                'max' => 300,
+                                'step' => 1,
+                            ],
+                        ],
+                        'selectors' => [
+                            '{{WRAPPER}} .accommodation-top-navigation' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                        ],
+                        'separator' => 'before',
+                    ]
+            );
+
+            $this->end_controls_section();
+    }
+  
     private function setupIcon(&$iconList, $list, &$j, $i) {
         $icon = 'thmv_icon_icon' . $i;
         $label = 'thmv_icon_label' . $i;
@@ -1802,58 +1988,144 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         <?php
         return ob_get_clean();
     }
-
-    protected function renderSlider($settings, $images) {
-        $slides = [];
-
-        foreach ($images as $attachment) {
-            $image_url = Group_Control_Image_Size::get_attachment_image_src($attachment['id'], $this->getImageKey(), $settings);
-            if (!$image_url && isset($attachment['url'])) {
-                $image_url = $attachment['url'];
-            }
-
-            $image_html = '<img class="swiper-slide-image" src="' . esc_attr($image_url) . '" alt="' . esc_attr(Control_Media::get_image_alt($attachment)) . '" />';
-
-            $link_tag = '';
-
-            $slide_html = '<div class="swiper-slide">' . $link_tag . '<figure class="swiper-slide-inner">' . $image_html;
-
-            $slide_html .= '</figure>';
-
-            $slide_html .= '</div>';
-
-            $slides[] = $slide_html;
+    
+    
+    protected function setupSearchArguements(&$args) {
+        
+    }
+    
+    protected function setTotal($total){
+        $this->totalAccommodations = $total;
+        
+    }
+    
+    protected function getTotal(){
+        if(isset($this->totalAccommodations)){
+            return $this->totalAccommodations;
         }
-        $this->add_render_attribute([
-            'carousel' => [
-                'class' => 'elementor-image-carousel swiper-wrapper',
-            ],
-            'carousel-wrapper' => [
-                'class' => 'elementor-image-carousel-wrapper swiper-container',
-                'dir' => 'ltr',
-            ],
-        ]);
-        $sliderSettings = '{"slides_to_show":"1","autoplay":"no","navigation":"both","infinite":"yes","effect":"slide","speed":500}';
-        ?>
-        <div data-widget_type="image-carousel.default" data-settings='<?= $sliderSettings ?>' data-element_type="widget" class="elementor-element elementor-arrows-position-inside  elementor-widget elementor-widget-image-carousel">
+        
+        return 0;
+    }
+    
+    public function beforeContentRendered() {
+        $is_outer_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        $total = $this->getTotal();
 
-            <div <?php echo $this->get_render_attribute_string('carousel-wrapper'); ?>>
-                <div <?php echo $this->get_render_attribute_string('carousel'); ?>>
-                    <?php echo implode('', $slides); ?>
+        if (!$is_outer_carousel_active || !$total) {
+            return;
+        }
+        
+        $this->add_render_attribute('thmv_wrapper', 'class', 'elementor-image-carousel swiper-wrapper');
+        $this->add_render_attribute('thmv_column', 'class', 'swiper-slide');
+        
+        $columns_desktop = (INT) $this->get_settings_for_display('columns') ? $this->get_settings_for_display('columns') : 2;
+        $columns_tablet = (INT) $this->get_settings_for_display('columns_tablet') ? $this->get_settings_for_display('columns_tablet') : $columns_desktop;
+        $columns_mobile = (INT) $this->get_settings_for_display('columns_mobile') ? $this->get_settings_for_display('columns_mobile') : 1;
+
+        $sliderSettings = '{"slides_to_show":"' . $columns_desktop . '", "slides_to_show_mobile": "' . $columns_mobile . '", "slides_to_show_tablet": "' . $columns_tablet . '",  "slides_to_scroll":"1","navigation":"arrows","autoplay":"no","infinite":"no","speed":500}';
+        echo '<div '
+        . 'data-widget_type="image-carousel.default" '
+        . 'data-settings=\'' . $sliderSettings . '\' '
+        . 'data-element_type="widget" '
+        . 'class="elementor-element  elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel">'
+        . '<div '
+        . 'class="elementor-image-carousel-wrapper swiper-container" '
+        . 'dir="ltr">';
+        ?>
+        <div class="accommodation-top-navigation d-flex justify-content-end align-items-center" style="padding: 0 10px;">
+            <div class="thmv-accommodation-arrows-container d-flex justify-content-end align-items-center position-relative">
+                <div class="elementor-swiper-button elementor-swiper-button-prev position-static">
+                    <i class="eicon-chevron-left" aria-hidden="true"></i>
+                    <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
                 </div>
-                <?php if (1 < count($slides)) : ?>
-                    <div class="elementor-swiper-button elementor-swiper-button-prev">
-                        <i class="eicon-chevron-left" aria-hidden="true"></i>
-                        <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
-                    </div>
-                    <div class="elementor-swiper-button elementor-swiper-button-next">
-                        <i class="eicon-chevron-right" aria-hidden="true"></i>
-                        <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
-                    </div>
-                <?php endif; ?>
+                <div class="elementor-swiper-button elementor-swiper-button-next position-static">
+                    <i class="eicon-chevron-right" aria-hidden="true"></i>
+                    <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
+                </div>
             </div>
         </div>
+
         <?php
+    }
+
+    public function afterContentRendered() {
+        $is_outer_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        $total = $this->getTotal();
+        if (!$is_outer_carousel_active || !$total) {
+            return;
+        }
+
+        echo '</div></div>';
+    }
+
+    /** render slider for a single post **/
+    protected function renderSlider($settings, $images) {
+        $is_top_level_carousel_active = $this->get_settings_for_display('thmv_slider_active');
+        //if top level slider is active, we don't render slider for individual posts, rather we use featured images
+        if($is_top_level_carousel_active){
+            //we are not rendering the slider for now, just getting the feaured image
+            $image = $this->getImageFromPost($this->currentItem);
+            if (count($image)) {
+                $tempKey = $this->getImageKey();
+                $imageSizeInfo[$tempKey] = $image;
+                $renderedImage = Group_Control_Image_Size::get_attachment_image_html($imageSizeInfo, $this->getImageKey());
+            }
+            echo $renderedImage;
+        }
+        else {
+            $slides = [];
+
+            foreach ($images as $attachment) {
+                $image_url = Group_Control_Image_Size::get_attachment_image_src($attachment['id'], $this->getImageKey(), $settings);
+                if (!$image_url && isset($attachment['url'])) {
+                    $image_url = $attachment['url'];
+                }
+
+                $image_html = '<img class="swiper-slide-image" src="' . esc_attr($image_url) . '" alt="' . esc_attr(Control_Media::get_image_alt($attachment)) . '" />';
+
+                $link_tag = '';
+
+                $slide_html = '<div class="swiper-slide">' . $link_tag . '<figure class="swiper-slide-inner">' . $image_html;
+
+                $slide_html .= '</figure>';
+
+                $slide_html .= '</div>';
+
+                $slides[] = $slide_html;
+            }
+            $this->add_render_attribute([
+                'carousel' => [
+                    'class' => 'elementor-image-carousel swiper-wrapper',
+                ],
+                'carousel-wrapper' => [
+                    'class' => 'elementor-image-carousel-wrapper swiper-container',
+                    'dir' => 'ltr',
+                ],
+            ]);
+            $sliderSettings = '{"slides_to_show":"1","autoplay":"no","navigation":"both","infinite":"yes","effect":"slide","speed":500}';
+            ?>
+            <div data-widget_type="image-carousel.default" data-settings='<?= $sliderSettings ?>' data-element_type="widget" class="elementor-element elementor-arrows-position-inside  elementor-widget elementor-widget-image-carousel">
+
+                <div <?php echo $this->get_render_attribute_string('carousel-wrapper'); ?>>
+                    <div <?php echo $this->get_render_attribute_string('carousel'); ?>>
+                        <?php echo implode('', $slides); ?>
+                    </div>
+                    <?php if (1 < count($slides)) : ?>
+                        <div class="elementor-swiper-button elementor-swiper-button-prev">
+                            <i class="eicon-chevron-left" aria-hidden="true"></i>
+                            <span class="elementor-screen-only"><?php _e('Previous', 'elementor'); ?></span>
+                        </div>
+                        <div class="elementor-swiper-button elementor-swiper-button-next">
+                            <i class="eicon-chevron-right" aria-hidden="true"></i>
+                            <span class="elementor-screen-only"><?php _e('Next', 'elementor'); ?></span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php
+        }
+        
+        
     }
 
     private function getDescription($list) {
@@ -1933,13 +2205,10 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
         return $imageSizeInfo;
     }
 
-    
-    protected function render() {
+    protected function getDataPosts(){
         $settings = $this->get_settings_for_display();
-
         $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
-        if ($dataSource) {
-            $args = array();
+        $args = array();
             $individual = $dataSource === 'mphb_room_type' ? $settings['individual_mphb_room_type'] : $settings['individual'];
             if ($individual) {
                 if (in_array('none', $individual)) {
@@ -1984,16 +2253,22 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $args['post_status'] = 'publish';
             $args['posts_per_page'] = -1;
  
-            if(method_exists($this, 'setupSearchArguements')){
-                $this->setupSearchArguements($args);
-            }
+            $this->setupSearchArguements($args);
             
             // The Query
             $posts = get_posts($args);
+            $this->setTotal(count($posts));
+
+            return $posts;
+    }
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+
+        $dataSource = !empty($settings['thmv_data_source']) ? $settings['thmv_data_source'] : false;
+        if ($dataSource) {
+           
+            $posts = $this->getDataPosts();
             
-            if(method_exists($this, 'setTotal')){
-                $this->setTotal(count($posts));
-            }
             
             if (!$posts || !count($posts)) {
                 echo '<div class="alert">';
@@ -2008,7 +2283,6 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             $posts = $settings['listings'];
         }
-
 
         /*         * global vars * */
         $buttonstyle = $settings['button_style'];
@@ -2026,11 +2300,13 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
             $this->add_render_attribute('thmv_wrapper', 'class', 'image-alignment-' . $settings['thmv_align_image']);
         }
         
-        if(method_exists($this, 'beforeContentRendered')){
-            $this->beforeContentRendered();
-        }
+        $this->beforeContentRendered();
+        
+        
         
         echo '<div ' . $this->get_render_attribute_string('thmv_wrapper') . '>';
+        
+        $is_outer_carousel_active = $this->get_settings_for_display('thmv_slider_active');
 
         foreach ($posts as $list) {
             //for the subclasses to have access to this as we are not setting the current post object
@@ -2059,7 +2335,8 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                 $carouselImages = [];
                 $tempImages = get_post_meta($list->ID, 'th_gallery', true);
 
-                if (!empty($tempImages) && $this->use_post_carousel) {
+                //no internal carousel if we have the outer one on
+                if (!empty($tempImages) && !$is_outer_carousel_active) {
                     $carousel_switcher = true;
                     $tempImagesArr = explode(",", $tempImages);
                     foreach ($tempImagesArr as $imgId) {
@@ -2320,9 +2597,17 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
                                 <div class="thmv-top-box"><span><?= $highlight ?></span></div>
                             <?php endif; ?>
                             <?php if (!empty($title)): ?>
-                                <h3 class="thmv-title"><?= esc_html($title) ?></h3>
+                                <h3  class="thmv-title">
+                                    <?php if($this->get_settings_for_display('thmv_hide_link_title')!=="yes"):?>
+                                    <a href="<?php echo $link_url?>">
+                                    <?php endif;?>
+                                        <?= esc_html($title) ?>
+                                    <?php if($this->get_settings_for_display('thmv_hide_link_title')!=="yes"):?>
+                                    </a>
+                                    <?php endif;?> 
+                                </h3>
                             <?php endif; ?>
-                            <?php if (in_array($listingStyle, array(6)) && $titleSeparator): ?>    
+                            <?php if (in_array($listingStyle, array(6)) && isset($titleSeparator)): ?>    
                                 <hr class="thmv-separator">
                             <?php endif; ?>    
                             <?php if (in_array($listingStyle, array(3, 4))): ?>    
@@ -2381,6 +2666,7 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
             <?php
         }
+
         echo '</div>';
         //$content = ob_get_clean();
         //$this->afterContentRendered();    

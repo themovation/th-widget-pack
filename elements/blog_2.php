@@ -1001,15 +1001,8 @@ class Themo_Widget_Blog extends Widget_Base {
             }
 
             $posts = new \WP_Query($args);
-            if(isset($posts->posts) && count ($posts->posts)){
-               $args['post__in'] = $posts->posts;
-            }
-            else {
-                return [];
-            }
-            wp_reset_postdata();
-            
-            return get_posts($args);
+          
+            return $posts;
         }
 	protected function render() {
         $settings = $this->get_settings_for_display();
@@ -1021,14 +1014,19 @@ class Themo_Widget_Blog extends Widget_Base {
         }
         
         if ($dataSource) {  
-            $posts = $this->getPosts($settings);
+            $widget_wp_query = $this->getPosts($settings);
 
-            if (!$posts || !count($posts)) {
+            if (!$widget_wp_query || !count($widget_wp_query->posts)) {
                 echo '<div class="alert">';
                 _e('Sorry, no results were found.', 'th-widget-pack');
                 echo '</div>';
                 return;
             }
+           global $wp_query;
+           $temp_query = $wp_query;
+           $wp_query   = $widget_wp_query; 
+           $posts = get_posts(['post__in'=>$wp_query->posts]);
+           
         } else {
             
             if($settings['thmv_style']==='style_3'){
@@ -1130,10 +1128,6 @@ class Themo_Widget_Blog extends Widget_Base {
                         </div>
                         <?php
                         }
-                        // Reset postdata
-                             if ($dataSource) {
-                                wp_reset_postdata();
-                             }
                         ?>
                     </div>
                     <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
@@ -1210,14 +1204,6 @@ class Themo_Widget_Blog extends Widget_Base {
                                 </div>
 
                             <?php } ?>
-
-                            <?php
-                            // Reset postdata
-                             if ($dataSource) {
-                                wp_reset_postdata();
-                             }
-                            ?>
-
                         </div>
                         <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
                             <div class="row">
@@ -1225,7 +1211,7 @@ class Themo_Widget_Blog extends Widget_Base {
                                     <ul class="pager">
                                         <?php
                                         if( $use_bittersweet_pagination ) {
-                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
+//                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
                                         } else { ?>
                                             <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'th-widget-pack' ), $widget_wp_query->max_num_pages); ?></li>
                                             <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'th-widget-pack' ) ); ?></li>
@@ -1240,7 +1226,14 @@ class Themo_Widget_Blog extends Widget_Base {
                     break;
             }
 		
+            // Reset postdata
+            if ($dataSource) {
+                // Reset main query object
+               $wp_query = NULL;
+               $wp_query = $temp_query;
+               wp_reset_postdata();
 
+            }
 
 	}
 
