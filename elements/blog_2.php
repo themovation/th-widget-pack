@@ -1025,7 +1025,11 @@ class Themo_Widget_Blog extends Widget_Base {
            global $wp_query;
            $temp_query = $wp_query;
            $wp_query   = $widget_wp_query; 
-           $posts = get_posts(['post__in'=>$wp_query->posts]);
+           $args = ['post__in'=> $wp_query->posts];
+           if(isset($settings['post_count'])){
+               $args['posts_per_page'] = $settings['post_count'];
+           }
+           $posts = get_posts($args);
            
         } else {
             
