@@ -662,4 +662,4 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Feature_bar() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Feature_bar() );

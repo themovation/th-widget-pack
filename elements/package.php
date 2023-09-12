@@ -621,4 +621,4 @@ class Themo_Widget_Package extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Package() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Package() );

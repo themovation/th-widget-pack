@@ -1368,4 +1368,4 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
     protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Portfolio_Grid() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Portfolio_Grid() );

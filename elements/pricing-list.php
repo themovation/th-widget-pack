@@ -1584,4 +1584,4 @@ class Themo_Widget_Pricing_List extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Pricing_List() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Pricing_List() );

@@ -196,4 +196,4 @@ class Themo_Widget_WP_Booking_System extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_WP_Booking_System() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_WP_Booking_System() );

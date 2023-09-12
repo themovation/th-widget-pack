@@ -495,4 +495,4 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Testimonial() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Testimonial() );

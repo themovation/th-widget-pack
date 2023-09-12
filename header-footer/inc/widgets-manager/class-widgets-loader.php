@@ -53,7 +53,7 @@ class Widgets_Loader {
 		add_action( 'elementor/elements/categories_registered', [ $this, 'register_widget_category' ] );
 
 		// Register widgets.
-		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
+		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
 
 		// Add svg support.
 		add_filter( 'upload_mimes', [ $this, 'hfe_svg_mime_types' ] );
@@ -267,28 +267,28 @@ class Widgets_Loader {
 		$this->include_widgets_files();
 		// Register Widgets.
         if('stratus' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME) {
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Retina());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Copyright());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Navigation_Menu());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Page_Title());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Title());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Tagline());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Site_Logo());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Search_Button());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Title());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Content());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Comments());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Image());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Media());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Info());
-            Plugin::instance()->widgets_manager->register_widget_type(new Widgets\Post_Navigation());
+            Plugin::instance()->widgets_manager->register(new Widgets\Retina());
+            Plugin::instance()->widgets_manager->register(new Widgets\Copyright());
+            Plugin::instance()->widgets_manager->register(new Widgets\Navigation_Menu());
+            Plugin::instance()->widgets_manager->register(new Widgets\Page_Title());
+            Plugin::instance()->widgets_manager->register(new Widgets\Site_Title());
+            Plugin::instance()->widgets_manager->register(new Widgets\Site_Tagline());
+            Plugin::instance()->widgets_manager->register(new Widgets\Site_Logo());
+            Plugin::instance()->widgets_manager->register(new Widgets\Search_Button());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Title());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Content());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Comments());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Image());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Media());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Info());
+            Plugin::instance()->widgets_manager->register(new Widgets\Post_Navigation());
 
             if (class_exists('woocommerce')) {
-                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Cart());
-                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Content());
-                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Cart());
-                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Images());
-                Plugin:: instance()->widgets_manager->register_widget_type(new Widgets\Product_Page());
+                Plugin:: instance()->widgets_manager->register(new Widgets\Cart());
+                Plugin:: instance()->widgets_manager->register(new Widgets\Product_Content());
+                Plugin:: instance()->widgets_manager->register(new Widgets\Product_Cart());
+                Plugin:: instance()->widgets_manager->register(new Widgets\Product_Images());
+                Plugin:: instance()->widgets_manager->register(new Widgets\Product_Page());
             }
         }
 

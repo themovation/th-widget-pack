@@ -705,4 +705,4 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_GoogleMaps() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_GoogleMaps() );

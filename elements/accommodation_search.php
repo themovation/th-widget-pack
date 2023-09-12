@@ -593,4 +593,4 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Accommodation_Search());
+Plugin::instance()->widgets_manager->register(new Themo_Widget_Accommodation_Search());

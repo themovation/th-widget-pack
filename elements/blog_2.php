@@ -1244,4 +1244,4 @@ class Themo_Widget_Blog extends Widget_Base {
 	protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Blog() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Blog() );

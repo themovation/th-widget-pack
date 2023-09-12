@@ -605,4 +605,4 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_TourInfo() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_TourInfo() );

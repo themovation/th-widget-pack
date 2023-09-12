@@ -243,4 +243,4 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Availability_Calendar() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Availability_Calendar() );

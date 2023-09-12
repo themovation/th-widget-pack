@@ -580,4 +580,4 @@ class Themo_Widget_MPHB_Booking_Form extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Booking_Form() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Booking_Form() );

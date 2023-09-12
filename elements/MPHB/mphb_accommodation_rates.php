@@ -186,4 +186,4 @@ class Themo_Widget_MPHB_Accommodation_Rates extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Accommodation_Rates() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Accommodation_Rates() );

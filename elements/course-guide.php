@@ -665,4 +665,4 @@ class Themo_Widget_Course_Guide extends Widget_Base {
     protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Course_Guide() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Course_Guide() );

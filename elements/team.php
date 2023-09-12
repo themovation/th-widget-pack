@@ -621,4 +621,4 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Team() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Team() );

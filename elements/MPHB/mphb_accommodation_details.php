@@ -249,4 +249,4 @@ class Themo_Widget_MPHB_Accommodation_Details extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Accommodation_Details() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Accommodation_Details() );
