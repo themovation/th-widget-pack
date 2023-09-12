@@ -61,7 +61,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		return $categories;
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
             $this->start_controls_section(
                 'thmv_section_data',
                 [

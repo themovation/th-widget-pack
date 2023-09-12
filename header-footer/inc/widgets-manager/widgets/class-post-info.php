@@ -100,7 +100,7 @@ class Post_Info extends Widget_Base {
      * @since 1.3.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->register_post_info_controls();
         $this->register_post_info_style_controls();
     }

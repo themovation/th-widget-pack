@@ -25,7 +25,7 @@ class Themo_Widget_Expand_list extends Widget_Base {
 		return 'https://help.themovation.com/' . $this->get_name();
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_toggles',
 			[

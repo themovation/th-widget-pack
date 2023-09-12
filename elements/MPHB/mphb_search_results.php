@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_counter_block',
