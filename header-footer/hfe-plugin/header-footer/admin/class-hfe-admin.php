@@ -306,9 +306,10 @@ class HFE_Admin {
 						<select name="ehf_template_type" id="ehf_template_type">
 							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'header-footer-elementor' ); ?></option>
 							<option value="type_header" <?php selected( $template_type, 'type_header' ); ?>><?php _e( 'Header', 'header-footer-elementor' ); ?></option>
-							<option value="<?php echo ALOHA_HFE_STICKY_HEADER ?>" <?php selected( $template_type, ALOHA_HFE_STICKY_HEADER ); ?> ><?php _e("Sticky Header", ALOHA_DOMAIN) ?></option><option value="<?php echo ALOHA_HFE_STICKY_HEADER ?>" <?php selected( $template_type, ALOHA_HFE_STICKY_HEADER ); ?> ><?php _e("Sticky Header", ALOHA_DOMAIN) ?></option><option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
+							<option value="<?php echo ALOHA_HFE_STICKY_HEADER ?>" <?php selected( $template_type, ALOHA_HFE_STICKY_HEADER ); ?> ><?php _e("Sticky Header", ALOHA_DOMAIN) ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
-							<option value="<?php echo ALOHA_HFE_SINGLE ?>" <?php selected( $template_type, ALOHA_HFE_SINGLE ); ?> ><?php _e("Single", ALOHA_DOMAIN) ?></option><option value="<?php echo ALOHA_HFE_SINGLE ?>" <?php selected( $template_type, ALOHA_HFE_SINGLE ); ?> ><?php _e("Single", ALOHA_DOMAIN) ?></option><option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
+							<option value="<?php echo ALOHA_HFE_SINGLE ?>" <?php selected( $template_type, ALOHA_HFE_SINGLE ); ?> ><?php _e("Single", ALOHA_DOMAIN) ?></option>
+                                                        <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
 						</select>
 					</td>
 				</tr>
