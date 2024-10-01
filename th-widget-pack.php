@@ -75,6 +75,13 @@ function is_elementor_active() {
 
     return false;
 }
+
+function aloha_hfe_get_elementor_instance() {
+    if (defined('ELEMENTOR_VERSION') && is_callable('Elementor\Plugin::instance')) {
+        return $elementor_instance = Elementor\Plugin::instance();
+    }
+    return false;
+}
 /**
  * Load the header footer class loader.
  */
