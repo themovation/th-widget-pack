@@ -145,9 +145,7 @@ class Search_Button extends Widget_Base {
 				'label'     => __( 'Placeholder', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::TEXT,
 				'default'   => __( 'Type & Hit Enter', 'header-footer-elementor' ) . '...',
-				'condition' => [
-					'layout!' => 'icon',
-				],
+				
 			]
 		);
 
@@ -265,9 +263,7 @@ class Search_Button extends Widget_Base {
 					'{{WRAPPER}} .hfe-search-form__input::placeholder' => 'color: {{VALUE}}',
 				],
 				'default'   => '#7A7A7A6B',
-				'condition' => [
-					'layout!' => 'icon',
-				],
+				
 			]
 		);
 
@@ -429,9 +425,7 @@ class Search_Button extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .hfe-search-form__input:focus::placeholder' => 'color: {{VALUE}}',
 				],
-				'condition' => [
-					'layout!' => 'icon',
-				],
+				
 			]
 		);
 
@@ -982,8 +976,11 @@ class Search_Button extends Widget_Base {
 		<form class="hfe-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
 			<?php if ( 'icon' === $settings['layout'] ) { ?>
 			<div class = "hfe-search-icon-toggle">
-				<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
 				<i class="fas fa-search" aria-hidden="true"></i>
+			</div>
+                        <div class="hfe-search-form-wrapper">
+                                <input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
+                                <div class="hfe-search-overlay-close"><?php esc_html_e( 'Close', 'header-footer-elementor' );?></div>
 			</div>
 			<?php } else { ?>
 			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
