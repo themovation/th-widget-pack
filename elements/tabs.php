@@ -739,4 +739,4 @@ class Themo_Widget_Tabs extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Tabs());
+Plugin::instance()->widgets_manager->register(new Themo_Widget_Tabs());

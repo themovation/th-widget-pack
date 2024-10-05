@@ -120,7 +120,7 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
 
 // Include Custom Widgets
-add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
+add_filter( 'elementor/widgets/register', 'themovation_elements' );
 
 //if (!function_exists('is_themovation_template')) {
     function is_themovation_template()

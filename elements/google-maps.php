@@ -25,7 +25,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		return 'https://help.themovation.com/' . $this->get_name();
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_map',
 			[
@@ -705,4 +705,4 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_GoogleMaps() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_GoogleMaps() );

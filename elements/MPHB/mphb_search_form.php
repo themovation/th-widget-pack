@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         // Check that the class exists before trying to use it
 
@@ -533,4 +533,4 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Search_Form() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Search_Form() );

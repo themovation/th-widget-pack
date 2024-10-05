@@ -94,7 +94,7 @@ class Product_Images extends Widget_Base {
      * @since 1.3.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->register_content_product_images_controls();
         $this->register_product_images_style_controls();
     }

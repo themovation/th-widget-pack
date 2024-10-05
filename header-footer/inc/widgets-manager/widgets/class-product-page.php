@@ -94,7 +94,7 @@ class Product_Page extends Widget_Base {
      * @since 1.3.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->register_content_product_content_controls();
         $this->register_product_content_style_controls();
     }

@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_tooltip',
             [
@@ -243,4 +243,4 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Availability_Calendar() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Availability_Calendar() );

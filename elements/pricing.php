@@ -35,7 +35,7 @@ class Themo_Widget_Pricing extends Widget_Base {
 		];
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_pricing',
 			[
@@ -1002,4 +1002,4 @@ class Themo_Widget_Pricing extends Widget_Base {
     }
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Pricing() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Pricing() );

@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_shortcode',
             [
@@ -133,4 +133,4 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Service_Details() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Service_Details() );

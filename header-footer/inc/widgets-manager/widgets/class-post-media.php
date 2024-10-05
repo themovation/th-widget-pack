@@ -105,7 +105,7 @@ class Post_Media extends Widget_Base {
      * @since 1.3.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->register_content_post_media_controls();
         $this->register_content_post_media_standard_controls();
         $this->register_image_styles();

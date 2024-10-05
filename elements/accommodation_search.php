@@ -391,8 +391,8 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
         }, 10, 2);
     }
 
-    public function _register_controls() {
-        parent::_register_controls();
+    public function register_controls() {
+        parent::register_controls();
 
         $this->update_control('thmv_data_switcher', ['default' => 'yes', 'type' => 'hidden']);
         $this->update_control('thmv_data_source', ['default' => 'mphb_room_type', 'type' => 'hidden']);
@@ -593,4 +593,4 @@ class Themo_Widget_Accommodation_Search extends Themo_Widget_Accommodation_Listi
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Accommodation_Search());
+Plugin::instance()->widgets_manager->register(new Themo_Widget_Accommodation_Search());

@@ -2734,4 +2734,4 @@ class Themo_Widget_Accommodation_Listing extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Accommodation_Listing());
+Plugin::instance()->widgets_manager->register(new Themo_Widget_Accommodation_Listing());

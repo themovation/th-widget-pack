@@ -86,7 +86,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_image_carousel',
             [
@@ -881,4 +881,4 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
 }
 
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Image_Carousel_Timeline() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Image_Carousel_Timeline() );
