@@ -385,7 +385,7 @@ class Header_Footer_Elementor {
 			$elementor->frontend->enqueue_styles();
 		}
 
-		if ( class_exists( '\ElementorPro\Plugin' ) ) {
+        if ( class_exists( '\ElementorPro\Plugin' ) && method_exists(\ElementorPro\Plugin::instance(), 'enqueue_styles')) {
 			$elementor_pro = \ElementorPro\Plugin::instance();
 			$elementor_pro->enqueue_styles();
 		}
