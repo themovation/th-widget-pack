@@ -235,6 +235,11 @@ class Widgets_Loader_ALOHA extends HFE\WidgetsManager\Widgets_Loader {
             'navigation-menu.default' => 'thhf-navigation-menu.default', //we instantiate a subclass ourselves
             'hfe-search-button.default' => 'thhf-search-button.default',
             '.elementor-widget-hfe-nav-menu' => '.elementor-widget-thhf-nav-menu',
+            '$scope.find( ".hfe-search-form__input" ).trigger( \'focus\' );' => '$scope.find( ".hfe-search-form-wrapper" ).addClass( "active" );',
+            '$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );' => '',
+            '$scope.find( ".hfe-search-form__input" ).blur' => '$scope.find( ".hfe-search-overlay-close" ).on( "click", function( ){' .
+            '$scope.find( ".hfe-search-form-wrapper" ).removeClass( "active" );' .
+            '});$scope.find( ".hfe-search-form__input" ).blur'
         ];
 
         $contentsRaw = file_get_contents(ALOHA_HFE_PATH . '/inc/js/frontend.js');

@@ -28,21 +28,65 @@ class Aloha_Search_Button extends Search_Button {
         return ['aloha-hfe-widgets-js'];
     }
 
-    public function render() {
+    protected function register_search_style_controls() {
+        parent::register_search_style_controls();
+        $this->update_control('placeholder', ['condition' => []]);
+        $this->update_control('input_placeholder_color', ['condition' => []]);
+        $this->update_control('input_placeholder_hover_color', ['condition' => []]);
+    }
+
+    protected function render() {
         $settings = $this->get_settings_for_display();
 
-        ob_start();
-        parent::render();
-        $result = ob_get_clean();
-        if ('icon' === $settings['layout']) {
-            $search = '<i class="fas fa-search" aria-hidden="true"></i>';
-            ob_start();
-            \Elementor\Icons_Manager::render_icon($settings['search_icon'], ['aria-hidden' => 'true']);
-            $replace = ob_get_clean();
-            $result = str_replace($search, $replace, $result);
-        }
+        $this->add_render_attribute(
+                'input',
+                [
+                    'placeholder' => $settings['placeholder'],
+                    'class' => 'hfe-search-form__input',
+                    'type' => 'search',
+                    'name' => 's',
+                    'title' => __('Search', 'header-footer-elementor'),
+                    'value' => get_search_query(),
+                ]
+        );
 
-        echo $result;
+        $this->add_render_attribute(
+                'container',
+                [
+                    'class' => ['hfe-search-form__container'],
+                    'role' => 'tablist',
+                ]
+        );
+        ?>
+        <form class="hfe-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
+            <?php if ('icon' === $settings['layout']) { ?>
+                <div class = "hfe-search-icon-toggle">
+                    <?php \Elementor\Icons_Manager::render_icon($settings['search_icon'], ['aria-hidden' => 'true']); ?>
+                </div>
+                <div class="hfe-search-form-wrapper">
+                    <input <?php echo $this->get_render_attribute_string('input'); ?>>
+                    <div class="hfe-search-overlay-close"><?php esc_html_e('Close', 'header-footer-elementor'); ?></div>
+                </div>
+            <?php } else { ?>
+                <div <?php echo wp_kses_post($this->get_render_attribute_string('container')); ?>>
+                    <?php if ('text' === $settings['layout']) { ?>
+                        <input <?php echo $this->get_render_attribute_string('input'); ?>>
+                        <button id="clear" type="reset">
+                            <i class="fas fa-times clearable__clear" aria-hidden="true"></i>
+                        </button>
+                    <?php } else { ?>
+                        <input <?php echo $this->get_render_attribute_string('input'); ?>>
+                        <button id="clear-with-button" type="reset">
+                            <i class="fas fa-times" aria-hidden="true"></i>
+                        </button>
+                        <button class="hfe-search-submit" type="submit">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </form>
+        <?php
     }
 
 }
