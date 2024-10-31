@@ -153,10 +153,28 @@
 .hfe-search-form__container input,
 .hfe-search-form__container input:focus {border:0 !important}
 
-.hfe-search-form-wrapper {background:#131313;}
+.hfe-search-form-wrapper {
+    background:#131313;
+    opacity: 0;
+    display: none;
+    transition: opacity .2s linear, left 0s linear .2s;
+    width: 100%;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
 .hfe-search-form-wrapper.active {
     opacity:0.99;
     transition: opacity .5s ease-in-out;
+    position: fixed;
+    display: block;
+    left: 0;
+    opacity: 1;
+    transition: opacity .2s linear;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
 }
 
 .hfe-search-button-wrapper .hfe-search-form-wrapper.active input[type=search] {

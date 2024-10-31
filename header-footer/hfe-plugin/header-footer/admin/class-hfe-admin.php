@@ -307,9 +307,9 @@ class HFE_Admin {
 							<option value="" <?php selected( $template_type, '' ); ?>><?php _e( 'Select Option', 'header-footer-elementor' ); ?></option>
 							<option value="type_header" <?php selected( $template_type, 'type_header' ); ?>><?php _e( 'Header', 'header-footer-elementor' ); ?></option>
 							<option value="<?php echo ALOHA_HFE_STICKY_HEADER ?>" <?php selected( $template_type, ALOHA_HFE_STICKY_HEADER ); ?> ><?php _e("Sticky Header", ALOHA_DOMAIN) ?></option>
+                                                        <option value="type_before_footer" <?php selected( $template_type, 'type_before_footer' ); ?>><?php _e( 'Before Footer', 'header-footer-elementor' ); ?></option>
 							<option value="type_footer" <?php selected( $template_type, 'type_footer' ); ?>><?php _e( 'Footer', 'header-footer-elementor' ); ?></option>
 							<option value="<?php echo ALOHA_HFE_SINGLE ?>" <?php selected( $template_type, ALOHA_HFE_SINGLE ); ?> ><?php _e("Single", ALOHA_DOMAIN) ?></option>
-                                                        <option value="custom" <?php selected( $template_type, 'custom' ); ?>><?php _e( 'Custom Block', 'header-footer-elementor' ); ?></option>
 						</select>
 					</td>
 				</tr>
@@ -327,15 +327,7 @@ class HFE_Admin {
 						</span>
 					</td>
 				</tr>
-				<?php 
-                                $show_transparent_header_row = $template_type === ALOHA_HFE_HEADER || $template_type === ALOHA_HFE_STICKY_HEADER;
-                                $transparent_header = isset( $values['transparent-header'] ) ? true : false;?>
-                                <?php $show_transparent_header_row = $template_type === ALOHA_HFE_HEADER || $template_type === ALOHA_HFE_STICKY_HEADER;$transparent_header = isset( $values['transparent-header'] ) ? true : false;?><tr class="hfe-options-row transparent-header" <?php echo $show_transparent_header_row ? "" : 'style="display:none;"' ?>><td class="hfe-options-row-heading">
-                                        <label for="transparent-header">
-                                            <?php echo __('Transparent Header Support', ALOHA_DOMAIN)?></label><i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php echo __('Make this header the top layer and overlap page content. A great effect with semi-transparent header backgrounds.', ALOHA_DOMAIN) ?>"></i></td><td class="hfe-options-row-content"><input type="checkbox" id="transparent-header" name="transparent-header" value="1" <?php checked($transparent_header, true) ?> />
-                                    </td>
-                                </tr>
-                                <tr class="hfe-options-row enable-for-canvas">
+				<?php $show_transparent_header_row = $template_type === ALOHA_HFE_HEADER || $template_type === ALOHA_HFE_STICKY_HEADER;$transparent_header = isset( $values['transparent-header'] ) ? true : false;?><tr class="hfe-options-row transparent-header" <?php echo $show_transparent_header_row ? "" : 'style="display:none;"' ?>><td class="hfe-options-row-heading"><label for="transparent-header"><?php echo __('Transparent Header Support', ALOHA_DOMAIN)?></label><i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php echo __('Make this header the top layer and overlap page content. A great effect with semi-transparent header backgrounds.', ALOHA_DOMAIN) ?>"></i></td><td class="hfe-options-row-content"><input type="checkbox" id="transparent-header" name="transparent-header" value="1" <?php checked($transparent_header, true) ?> /></td></tr><?php $show_transparent_header_row = $template_type === ALOHA_HFE_HEADER || $template_type === ALOHA_HFE_STICKY_HEADER;$transparent_header = isset( $values['transparent-header'] ) ? true : false;?><tr class="hfe-options-row transparent-header" <?php echo $show_transparent_header_row ? "" : 'style="display:none;"' ?>><td class="hfe-options-row-heading"><label for="transparent-header"><?php echo __('Transparent Header Support', ALOHA_DOMAIN)?></label><i class="hfe-options-row-heading-help dashicons dashicons-editor-help" title="<?php echo __('Make this header the top layer and overlap page content. A great effect with semi-transparent header backgrounds.', ALOHA_DOMAIN) ?>"></i></td><td class="hfe-options-row-content"><input type="checkbox" id="transparent-header" name="transparent-header" value="1" <?php checked($transparent_header, true) ?> /></td></tr><tr class="hfe-options-row enable-for-canvas">
 					<td class="hfe-options-row-heading">
 						<label for="display-on-canvas-template">
 							<?php _e( 'Enable Layout for Elementor Canvas Template?', 'header-footer-elementor' ); ?>

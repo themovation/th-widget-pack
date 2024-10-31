@@ -16,12 +16,20 @@
 			var $toggle_search = $scope.find( ".hfe-search-icon-toggle input" );
 
 		$scope.find( '.hfe-search-icon-toggle' ).on( 'click', function( ){
-			$scope.find( ".hfe-search-form__input" ).trigger( 'focus' );						
+			$scope.find( ".hfe-search-form-wrapper" ).addClass( "active" );
+			//$scope.find( ".hfe-search-form__input" ).focus();						
 		});	
+		$scope.find( '.hfe-search-overlay-close' ).on( 'click', function( ){
+			$scope.find( ".hfe-search-form-wrapper" ).removeClass( "active" );
+			//$scope.find( ".hfe-search-form__input" ).focus();						
+		});	
+
 		
-		$scope.find( ".hfe-search-form__input" ).on( 'focus', function(){
-			$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
-		});
+		
+		// $scope.find( ".hfe-search-form__input" ).focus( function(){
+		// 	$scope.find( ".hfe-search-form-wrapper" ).addClass( "active" );
+		// 	//$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
+		// });
 
 		$scope.find( ".hfe-search-form__input" ).blur( function() {
 			$scope.find( ".hfe-search-button-wrapper" ).removeClass( "hfe-input-focus" );
