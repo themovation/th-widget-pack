@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Page_Title extends Page_Title {
+class Aloha_Page_Title extends PageTitle\Page_Title {
 
     public function get_name() {
         return 'thhf-page-title';

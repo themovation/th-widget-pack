@@ -168,7 +168,9 @@ class Post_Content extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'content_typography',
-                    'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
+                    ],
                     'selector' => '{{WRAPPER}} .hfe-post-content p',
                 ]
         );
@@ -178,10 +180,10 @@ class Post_Content extends Widget_Base {
                 [
                     'label' => __('Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-content p' => 'color: {{VALUE}};',
                     ],

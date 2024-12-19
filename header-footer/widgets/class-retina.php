@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Retina extends Retina {
+class Aloha_Retina extends Retina\Retina {
 
     public function get_name() {
         return 'thhf-retina';

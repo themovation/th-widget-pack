@@ -85,7 +85,11 @@ function aloha_hfe_get_elementor_instance() {
 /**
  * Load the header footer class loader.
  */
-require_once THEMO_PATH . 'header-footer/aloha_hfe_overrides.php';
+add_action('plugins_loaded', 'aloha_init');
+function aloha_init(){
+  require_once THEMO_PATH . 'header-footer/aloha_hfe_overrides.php';
+  
+}
 //add_action('admin_menu', 'aloha_add_admin_menu');
 
 function aloha_add_admin_menu() {

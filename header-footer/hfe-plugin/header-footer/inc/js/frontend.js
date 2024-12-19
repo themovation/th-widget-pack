@@ -16,20 +16,12 @@
 			var $toggle_search = $scope.find( ".hfe-search-icon-toggle input" );
 
 		$scope.find( '.hfe-search-icon-toggle' ).on( 'click', function( ){
-			$scope.find( ".hfe-search-form-wrapper" ).addClass( "active" );
-			//$scope.find( ".hfe-search-form__input" ).focus();						
+			$scope.find( ".hfe-search-form__input" ).trigger( 'focus' );						
 		});	
-		$scope.find( '.hfe-search-overlay-close' ).on( 'click', function( ){
-			$scope.find( ".hfe-search-form-wrapper" ).removeClass( "active" );
-			//$scope.find( ".hfe-search-form__input" ).focus();						
-		});	
-
 		
-		
-		// $scope.find( ".hfe-search-form__input" ).focus( function(){
-		// 	$scope.find( ".hfe-search-form-wrapper" ).addClass( "active" );
-		// 	//$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
-		// });
+		$scope.find( ".hfe-search-form__input" ).on( 'focus', function(){
+			$scope.find( ".hfe-search-button-wrapper" ).addClass( "hfe-input-focus" );
+		});
 
 		$scope.find( ".hfe-search-form__input" ).blur( function() {
 			$scope.find( ".hfe-search-button-wrapper" ).removeClass( "hfe-input-focus" );
@@ -175,8 +167,16 @@
   		$scope.find( '.parent-has-child .hfe-has-submenu-container a').attr( 'aria-haspopup', 'true' );
   		$scope.find( '.parent-has-child .hfe-has-submenu-container a').attr( 'aria-expanded', 'false' );
 
-  		$scope.find( '.hfe-nav-menu__toggle').attr( 'aria-haspopup', 'true' );
-  		$scope.find( '.hfe-nav-menu__toggle').attr( 'aria-expanded', 'false' );
+		var hef_navmenu_toggle = $scope.find( '.hfe-nav-menu__toggle' );
+		hef_navmenu_toggle.attr( 'aria-haspopup', 'true' );
+		hef_navmenu_toggle.attr( 'aria-expanded', 'false' );
+
+		if ( window.matchMedia( "( max-width: 1024px )" ).matches && $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-tablet') ) {
+			hef_navmenu_toggle.find('i').attr('aria-hidden', 'false');
+		}
+		if ( window.matchMedia( "( max-width: 768px )" ).matches && $( '.elementor-element-' + id ).hasClass('hfe-nav-menu__breakpoint-mobile') ) {
+			hef_navmenu_toggle.find('i').attr('aria-hidden', 'false');
+		}
 
   		// End of accessibility functions
 
@@ -579,12 +579,20 @@
 
 		if ( $( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).hasClass( 'hfe-active-menu-full-width' ) ){
 
-			$( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).next().css( 'left', '0' );
+			var $toggle = $( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' );
+			var $nextElement= $toggle.next();
 
-			var width = $( '.elementor-element-' + id ).closest('.elementor-section').outerWidth();
-			var sec_pos = $( '.elementor-element-' + id ).closest('.elementor-section').offset().left - $( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).next().offset().left;
-			$( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).next().css( 'width', width + 'px' );
-			$( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).next().css( 'left', sec_pos + 'px' );
+			if( $nextElement.length ){
+				$nextElement.css( 'left', '0' );
+				
+				var $section = $( '.elementor-element-' + id ).closest('.elementor-section');
+				if ( $section.length ) {
+					var width = $section.outerWidth();
+					var sec_pos = $section.offset().left - $toggle.next().offset().left;
+					$nextElement.css( 'width', width + 'px' );
+					$nextElement.css( 'left', sec_pos + 'px' );
+				}
+			}
 		}
 
 		$( '.elementor-element-' + id + ' .hfe-nav-menu__toggle' ).off( 'click keyup' ).on( 'click keyup', function( event ) {
@@ -626,21 +634,9 @@
 
 					$this.addClass( 'hfe-active-menu-full-width' );
 
-					var aloha_menu_section = $( '.elementor-element-' + id ).closest('.elementor-section');
-					var aloha_menu_container = $( '.elementor-element-' + id ).closest('.e-con-inner').parent();
-
-					if (aloha_menu_section.length){
-						//console.log('SECTION' );
-						var width = aloha_menu_section.outerWidth();
-						var sec_pos = aloha_menu_section.offset().left - $selector.offset().left;
-					}else if(aloha_menu_container.length){
-						//console.log('CONTAINER' );
-						var width = aloha_menu_container.outerWidth();
-						var sec_pos = aloha_menu_container.offset().left - $selector.offset().left;
-					}else{
-						//console.log('No full width container found.' );
-						return false;
-					}
+					var closestElement = $( '.elementor-element-' + id ).closest('.elementor-section, .e-con-boxed');
+					var width = closestElement.outerWidth();
+					var sec_pos = closestElement.offset().left - $selector.offset().left;
 				
 					$selector.css( 'width', width + 'px' );
 					$selector.css( 'left', sec_pos + 'px' );

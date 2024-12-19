@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Site_Logo extends Site_Logo {
+class Aloha_Site_Logo extends SiteLogo\Site_Logo {
 
     public function get_name() {
         return 'thhf-site-logo';
