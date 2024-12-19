@@ -365,7 +365,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
         $this->add_render_attribute( 'wrapper', 'class', 'th-txt-'.esc_attr( $settings['text_size'] ) );
 
-		if ( $settings['testimonial_alignment'] ) {
+		if ( isset($settings['testimonial_alignment']) ) {
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . esc_attr( $settings['testimonial_alignment'] ) );
 		}
 
