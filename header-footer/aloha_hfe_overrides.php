@@ -420,7 +420,9 @@ function aloha_hfe_override_woocommerce_template_part($template, $slug, $name) {
     }
     return $template;
 }
-
+ 
+        
+       
 /**
  * Load the Plugin Class.
  */
@@ -440,7 +442,12 @@ function aloha_hfe_init() {
     update_option( 'hfe_plugin_is_activated', 'yes' );
     require_once ALOHA_HFE_OVERRIDES_PATH . '/aloha_hfe_widgets.php';
     Header_Footer_Elementor::instance();
-
+    
+    //remove UA admin page.
+    add_action('admin_menu', function(){
+            remove_menu_page('hfe');
+    }, 11 );
+    
     //add_action('wp', 'aloha_default_header_override');
     //add_action('wp', 'aloha_register_render_hooks');
     //do things after the files are overriden
