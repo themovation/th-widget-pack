@@ -183,7 +183,9 @@ class Post_Navigation extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'navigation_typography',
-                    'scheme' => Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                    ],
                     'selector' => '{{WRAPPER}} .hfe-post-navigation-wrapper .hfe-post-navigation-inner a',
                 ]
         );

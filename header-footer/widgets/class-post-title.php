@@ -243,7 +243,9 @@ class Post_Title extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'title_typography',
-                    'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                    ],
                     'selector' => '{{WRAPPER}} .elementor-heading-title, {{WRAPPER}} .hfe-post-title a',
                 ]
         );
@@ -253,10 +255,10 @@ class Post_Title extends Widget_Base {
                 [
                     'label' => __('Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .elementor-heading-title, {{WRAPPER}} .hfe-post-title a' => 'color: {{VALUE}};',
                         '{{WRAPPER}} .hfe-post-title-icon i' => 'color: {{VALUE}};',

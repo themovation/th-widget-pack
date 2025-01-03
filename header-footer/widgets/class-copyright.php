@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Copyright extends Copyright {
+class Aloha_Copyright extends Copyright\Copyright {
 
     public function get_name() {
         return 'thhf-copyright';

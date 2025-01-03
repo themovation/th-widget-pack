@@ -10,12 +10,14 @@ DEFINE('ALOHA_HFE_OVERRIDES_URL', ALOHA_URL . basename(__DIR__) . '/');
  * take all constants from the header-footer-elementor.php file
  */
 function aloha_hfe_defines() {
-    define('HFE_VER', '1.6.9');
+    
+    define( 'HFE_VER', '2.0.3' );
     define('HFE_FILE', ALOHA_HFE_PATH . '/header-footer-elementor.php');
     define('HFE_DIR', plugin_dir_path(HFE_FILE));
     define('HFE_URL', plugins_url('/', HFE_FILE));
     define('HFE_PATH', plugin_basename(HFE_FILE));
     define('HFE_DOMAIN', trailingslashit('https://ultimateelementor.com'));
+    define( 'UAE_LITE', true );
 }
 
 use HFE\Lib\Astra_Target_Rules_Fields;
@@ -418,7 +420,9 @@ function aloha_hfe_override_woocommerce_template_part($template, $slug, $name) {
     }
     return $template;
 }
-
+ 
+        
+       
 /**
  * Load the Plugin Class.
  */
@@ -435,13 +439,20 @@ function aloha_hfe_init() {
     require_once ALOHA_HFE_PATH . '/inc/hfe-functions.php';
 
     require_once ALOHA_HFE_PATH . '/inc/class-header-footer-elementor.php';
+    update_option( 'hfe_plugin_is_activated', 'yes' );
+    require_once ALOHA_HFE_OVERRIDES_PATH . '/aloha_hfe_widgets.php';
     Header_Footer_Elementor::instance();
-
+    
+    //remove UA admin page.
+    add_action('admin_menu', function(){
+            remove_menu_page('hfe');
+    }, 11 );
+    
     //add_action('wp', 'aloha_default_header_override');
     //add_action('wp', 'aloha_register_render_hooks');
     //do things after the files are overriden
     //load widgets and overrides
-    require_once ALOHA_HFE_OVERRIDES_PATH . '/aloha_hfe_widgets.php';
+    
 
     add_action('wc_get_template_part', 'aloha_hfe_override_woocommerce_template_part', 10, 3);
 
@@ -460,5 +471,52 @@ function aloha_hfe_init() {
         remove_action('admin_menu', [$hfeAdmin, 'register_admin_menu'], 50);
     }
 }
+/** Function for FA5, Social Icons, Icon List */
+function hfe_enqueue_font_awesome() {
+
+	if ( class_exists( 'Elementor\Plugin' ) ) {
+		
+		wp_enqueue_style(
+			'hfe-icons-list',
+			plugins_url( '/elementor/assets/css/widget-icon-list.min.css', 'elementor' ),
+			[],
+			'3.24.3'
+		);
+		wp_enqueue_style(
+			'hfe-social-icons',
+			plugins_url( '/elementor/assets/css/widget-social-icons.min.css', 'elementor' ),
+			[],
+			'3.24.0'
+		);
+		wp_enqueue_style(
+			'hfe-social-share-icons-brands',
+			plugins_url( '/elementor/assets/lib/font-awesome/css/brands.css', 'elementor' ),
+			[],
+			'5.15.3'
+		);
+
+		wp_enqueue_style(
+			'hfe-social-share-icons-fontawesome',
+			plugins_url( '/elementor/assets/lib/font-awesome/css/fontawesome.css', 'elementor' ),
+			[],
+			'5.15.3'
+		);
+		wp_enqueue_style(
+			'hfe-nav-menu-icons',
+			plugins_url( '/elementor/assets/lib/font-awesome/css/solid.css', 'elementor' ),
+			[],
+			'5.15.3'
+		);
+	}
+	if ( class_exists( '\ElementorPro\Plugin' ) ) {
+		wp_enqueue_style(
+			'hfe-widget-blockquote',
+			plugins_url( '/elementor-pro/assets/css/widget-blockquote.min.css', 'elementor' ),
+			[],
+			'3.25.0'
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'hfe_enqueue_font_awesome', 20 );
 
 aloha_hfe_init();

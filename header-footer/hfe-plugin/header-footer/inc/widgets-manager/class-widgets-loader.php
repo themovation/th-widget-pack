@@ -13,8 +13,9 @@ namespace HFE\WidgetsManager;
 
 use Elementor\Plugin;
 use Elementor\Utils;
+use Elementor\Core\Files\File_Types\Svg;
 
-defined( 'ABSPATH' ) or exit;
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Set up Widgets Loader class
@@ -28,6 +29,21 @@ class Widgets_Loader {
 	 * @var null
 	 */
 	private static $_instance = null;
+
+	/**
+	 * Instance of Widgets_Loader.
+	 *
+	 * @since  1.2.0
+	 * @var null
+	 */
+	private static $widgets_data = null;
+
+	/**
+	 * Member Variable
+	 *
+	 * @var Modules Manager
+	 */
+	public $modules_manager;
 
 	/**
 	 * Get instance of Widgets_Loader
@@ -47,22 +63,140 @@ class Widgets_Loader {
 	 * Setup actions and filters.
 	 *
 	 * @since  1.2.0
+	 * @access private
 	 */
 	private function __construct() {
+
+		spl_autoload_register( [ $this, 'autoload' ] );
+
+		$this->includes();
+
+		$this->setup_actions_filters();
+	}
+
+	/**
+	 * AutoLoad
+	 *
+	 * @since 0.0.1
+	 * @param string $class class.
+	 */
+	public function autoload( $class ) {
+
+		if ( 0 !== strpos( $class, __NAMESPACE__ ) ) {
+			return;
+		}
+
+		$class_to_load = str_replace( __NAMESPACE__ . '\\', '', $class );
+		if ( ! class_exists( $class_to_load ) && ! class_exists( $class ) ) {
+			$filename = strtolower(
+				preg_replace(
+					[ '/([a-z])([A-Z])/', '/_/', '/\\\/' ],
+					[ '$1-$2', '-', DIRECTORY_SEPARATOR ],
+					$class_to_load
+				)
+			);
+			
+			$filename = HFE_DIR . 'inc/widgets-manager/' . $filename . '.php'; // Adjusted path.
+                                      
+			if ( is_readable( $filename ) ) {
+				include $filename;
+			}
+		}
+	}
+
+	/**
+	 * Includes.
+	 *
+	 * @since 0.0.1
+	 */
+	private function includes() {
+		require HFE_DIR . 'inc/widgets-manager/modules-manager.php';
+	}
+
+	/**
+	 * Setup Actions Filters.
+	 *
+	 * @since 0.0.1
+	 */
+	private function setup_actions_filters() {
+
+		add_action( 'elementor/init', [ $this, 'elementor_init' ] );
+
 		// Register category.
 		add_action( 'elementor/elements/categories_registered', [ $this, 'register_widget_category' ] );
 
-		// Register widgets.
-		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
+		// Register widgets script.
+		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'register_widget_scripts' ] );
 
 		// Add svg support.
-		add_filter( 'upload_mimes', [ $this, 'hfe_svg_mime_types' ] );
+		add_filter( 'upload_mimes', [ $this, 'hfe_svg_mime_types' ] ); // PHPCS:Ignore WordPressVIPMinimum.Hooks.RestrictedHooks.upload_mimes
+
+		// Add filter to sanitize uploaded SVG files.
+		add_filter( 'wp_handle_upload_prefilter', [ $this, 'sanitize_uploaded_svg' ] );
 
 		// Refresh the cart fragments.
 		if ( class_exists( 'woocommerce' ) ) {
 
 			add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'wc_refresh_mini_cart_count' ] );
 		}
+
+	}
+
+	/**
+	 * Elementor Init.
+	 *
+	 * @since 0.0.1
+	 */
+	public function elementor_init() {
+
+		$this->modules_manager = new Modules_Manager();
+
+		$this->init_category();
+
+		do_action( 'header_footer_elementor/init' );    //phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+	}
+
+	/**
+	 * Sections init
+	 *
+	 * @since 0.0.1
+	 *
+	 * @access private
+	 */
+	private function init_category() {
+		$category = defined( 'UAEL_PLUGIN_SHORT_NAME' ) ? UAEL_PLUGIN_SHORT_NAME : __( 'UAE', 'header-footer-elementor' );
+
+		if ( version_compare( ELEMENTOR_VERSION, '2.0.0' ) < 0 ) {
+
+			\Elementor\Plugin::instance()->elements_manager->add_category(
+				'hfe-widgets',
+				[
+					'title' => $category,
+				],
+				1
+			);
+		}
+	}
+
+	/**
+	 * Register Category
+	 *
+	 * @since 1.2.0
+	 * @param object $this_cat class.
+	 * @return object $this_cat class.
+	 */
+	public function register_widget_category( $this_cat ) {
+		$category = defined( 'UAEL_PLUGIN_SHORT_NAME' ) ? UAEL_PLUGIN_SHORT_NAME : __( 'UAE', 'header-footer-elementor' );
+
+		$this_cat->add_category(
+			'hfe-widgets',
+			[
+				'title' => $category,
+				'icon'  => 'eicon-font',
+			]
+		);
+
+		return $this_cat;
 	}
 
 	/**
@@ -84,46 +218,16 @@ class Widgets_Loader {
 	}
 
 	/**
-	 * Returns Script array.
+	 * Include Widgets JS files
 	 *
-	 * @return array()
-	 * @since 1.3.0
-	 */
-	public static function get_widget_list() {
-		$widget_list = [
-			'retina',
-			'copyright',
-			'copyright-shortcode',
-			'navigation-menu',
-			'menu-walker',
-			'site-title',
-			'page-title',
-			'site-tagline',
-			'site-logo',
-			'cart',
-			'search-button',
-		];
-
-		return $widget_list;
-	}
-
-	/**
-	 * Include Widgets files
+	 * Load widgets JS files
 	 *
-	 * Load widgets files
-	 *
-	 * @since 1.2.0
+	 * @since x.x.x
 	 * @access public
+	 * @return void
 	 */
-	public function include_widgets_files() {
-		$js_files    = $this->get_widget_script();
-		$widget_list = $this->get_widget_list();
-
-		if ( ! empty( $widget_list ) ) {
-			foreach ( $widget_list as $handle => $data ) {
-				require_once HFE_DIR . '/inc/widgets-manager/widgets/class-' . $data . '.php';
-			}
-		}
+	public function include_js_files() {
+		$js_files = $this->get_widget_script();
 
 		if ( ! empty( $js_files ) ) {
 			foreach ( $js_files as $handle => $data ) {
@@ -151,7 +255,7 @@ class Widgets_Loader {
 	 * @param array $mimes which return mime type.
 	 *
 	 * @since  1.2.0
-	 * @return $mimes.
+	 * @return array $mimes.
 	 */
 	public function hfe_svg_mime_types( $mimes ) {
 		// New allowed mime types.
@@ -160,49 +264,39 @@ class Widgets_Loader {
 	}
 
 	/**
-	 * Register Category
+	 * Sanitize uploaded SVG files before they are saved.
 	 *
-	 * @since 1.2.0
-	 * @param object $this_cat class.
+	 * @param array $file Array of uploaded file information.
+	 * @return array Modified array of uploaded file information.
 	 */
-	public function register_widget_category( $this_cat ) {
-		$category = __( 'Elementor Header & Footer Builder', 'header-footer-elementor' );
+	public function sanitize_uploaded_svg( $file ) {
+		if ( 'image/svg+xml' === $file['type'] ) {
 
-		$this_cat->add_category(
-			'hfe-widgets',
-			[
-				'title' => $category,
-				'icon'  => 'eicon-font',
-			]
-		);
+			/**
+			 * SVG Handler instance.
+			 *
+			 * @var object $svg_handler;
+			 */
+			$svg_handler = Plugin::instance()->assets_manager->get_asset( 'svg-handler' );
 
-		return $this_cat;
-	}
+			if ( Svg::file_sanitizer_can_run() && ! $svg_handler->sanitize_svg( $file['tmp_name'] ) ) {
 
-	/**
-	 * Register Widgets
-	 *
-	 * Register new Elementor widgets.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 */
-	public function register_widgets() {
-		// Its is now safe to include Widgets files.
-		$this->include_widgets_files();
-		// Register Widgets.
-		Plugin::instance()->widgets_manager->register( new Widgets\Retina() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Copyright() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Navigation_Menu() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Page_Title() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Site_Title() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Site_Tagline() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Site_Logo() );
-		Plugin::instance()->widgets_manager->register( new Widgets\Search_Button() );
-		if ( class_exists( 'woocommerce' ) ) {
-			Plugin::instance()->widgets_manager->register( new Widgets\Cart() );
+				$file['error'] = esc_html__( 'Invalid SVG Format, file not uploaded for security reasons!', 'header-footer-elementor' );
+			}
 		}
 
+		return $file;
+	}  
+
+	/**
+	 * Register module required js on elementor's action.
+	 *
+	 * @since 0.0.1
+	 * @access public
+	 * @return void
+	 */
+	public function register_widget_scripts() {
+		$this->include_js_files();
 	}
 
 	/**
@@ -213,6 +307,7 @@ class Widgets_Loader {
 	 * @since 1.5.0
 	 * @param array $fragments Array of fragments.
 	 * @access public
+	 * @return array $fragments Array of fragments.
 	 */
 	public function wc_refresh_mini_cart_count( $fragments ) {
 
@@ -242,6 +337,7 @@ class Widgets_Loader {
 	 * @since 1.5.8
 	 * @param string $tag specifies the HTML Tag.
 	 * @access public
+	 * @return string $tag specifies the HTML Tag.
 	 */
 	public static function validate_html_tag( $tag ) {
 

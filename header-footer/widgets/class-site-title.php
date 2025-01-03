@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Site_Title extends Site_Title {
+class Aloha_Site_Title extends SiteTitle\Site_Title {
 
     public function get_name() {
         return 'thhf-site-title';

@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Site_Tagline extends Site_Tagline {
+class Aloha_Site_Tagline extends SiteTagline\Site_Tagline {
 
     public function get_name() {
         return 'thhf-site-tagline';

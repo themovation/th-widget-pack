@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Navigation_Menu extends Navigation_Menu {
+class Aloha_Navigation_Menu extends NavigationMenu\Navigation_Menu {
 
     public function get_name() {
         return 'thhf-navigation-menu';

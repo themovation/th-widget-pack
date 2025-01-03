@@ -428,7 +428,10 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'text_typography',
-                    'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
+                    ],
+                    
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .info-value *',
                 ]
         );
@@ -437,10 +440,10 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .info-value *' => 'color: {{VALUE}};',
                     ],
@@ -459,7 +462,9 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'before_typography',
-                    'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                    ],
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-before',
                 ]
         );
@@ -468,10 +473,10 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .text-before' => 'color: {{VALUE}};',
                     ],
@@ -490,7 +495,9 @@ class Post_Info extends Widget_Base {
                 Group_Control_Typography::get_type(),
                 [
                     'name' => 'after_typography',
-                    'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Typography::TYPOGRAPHY_PRIMARY,
+                    ],
                     'selector' => '{{WRAPPER}} .hfe-post-info-wrapper .text-after',
                 ]
         );
@@ -499,10 +506,10 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Text Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .text-after' => 'color: {{VALUE}};',
                     ],
@@ -522,10 +529,10 @@ class Post_Info extends Widget_Base {
                 [
                     'label' => __('Icon Color', ALOHA_DOMAIN),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => \Elementor\Core\Schemes\Color::get_type(),
-                        'value' => \Elementor\Core\Schemes\Color::COLOR_1,
+                    'global' => [
+			'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
                     ],
+                    
                     'selectors' => [
                         '{{WRAPPER}} .hfe-post-info-wrapper .thmv-icon i' => 'color: {{VALUE}};',
                     ],

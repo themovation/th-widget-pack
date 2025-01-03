@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Search_Button extends Search_Button {
+class Aloha_Search_Button extends SearchButton\Search_Button {
 
     public function get_name() {
         return 'thhf-search-button';
@@ -28,14 +28,14 @@ class Aloha_Search_Button extends Search_Button {
         return ['aloha-hfe-widgets-js'];
     }
 
-    protected function register_search_style_controls() {
+    protected function register_search_style_controls(): void {
         parent::register_search_style_controls();
         $this->update_control('placeholder', ['condition' => []]);
         $this->update_control('input_placeholder_color', ['condition' => []]);
         $this->update_control('input_placeholder_hover_color', ['condition' => []]);
     }
 
-    protected function render() {
+    protected function render(): void {
         $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute(

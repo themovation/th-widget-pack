@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Aloha_Cart extends Cart {
+class Aloha_Cart extends Cart\Cart {
 
     public function get_name() {
         return 'thhf-cart';
