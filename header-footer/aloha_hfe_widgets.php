@@ -26,7 +26,7 @@ class Modules_Manager_ALOHA {
 //            'post-info', we have post info too...
         ];
 
-        $this->register_modulesX();
+        add_action( 'elementor/widgets/register', [ $this, 'register_modulesX' ] );
     }
 
     /** widgets setup
