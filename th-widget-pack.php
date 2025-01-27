@@ -88,7 +88,12 @@ function aloha_hfe_get_elementor_instance() {
 add_action('plugins_loaded', 'aloha_init');
 function aloha_init() {
     //don't load custom HFE if it's installed independently
-    if (!is_plugin_active('header-footer-elementor/header-footer-elementor.php')) {
+    $action = isset($_REQUEST['action'])? $_REQUEST['action']: false;
+    $plugin = isset($_REQUEST['plugin'])? $_REQUEST['plugin']: false;
+    $hfe_plugin = 'header-footer-elementor/header-footer-elementor.php'; 
+    $hfe_activation_attempt = is_admin() && $action && $action==='activate' && $plugin && $plugin === $hfe_plugin;
+    
+    if (!is_plugin_active($hfe_plugin) && !$hfe_activation_attempt) {
         require_once THEMO_PATH . 'header-footer/aloha_hfe_overrides.php';
     }
 }
