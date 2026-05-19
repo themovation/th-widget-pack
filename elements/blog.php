@@ -14,13 +14,17 @@ class Themo_Widget_Blog extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-gallery-masonry';
+		return 'th-editor-icon-blog';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	private function get_blog_categories_list() {
 		$categories = array('all' => __('All Categories', 'th-widget-pack'));
 		$get_categories = get_categories( array(
@@ -37,7 +41,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		return $categories;
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_layout',
 			[
@@ -143,10 +147,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Title Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .post-title a' => 'color: {{VALUE}};',
@@ -159,7 +159,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .post-title a',
 			]
 		);
@@ -179,10 +179,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Meta Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .post-meta' => 'color: {{VALUE}};',
@@ -195,7 +191,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'meta_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .post-meta',
 			]
 		);
@@ -215,10 +211,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Excerpt Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .entry-content p' => 'color: {{VALUE}};',
@@ -231,7 +223,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'excerpt_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .entry-content p',
 			]
 		);
@@ -251,10 +243,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Read More Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .entry-content p a' => 'color: {{VALUE}};',
@@ -267,7 +255,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .entry-content p a',
 			]
 		);
@@ -277,8 +265,20 @@ class Themo_Widget_Blog extends Widget_Base {
         $this->start_controls_section(
             'section_style_border',
             [
-                'label' => __( 'Border', 'th-widget-pack' ),
+                'label' => __( 'Appearance', 'th-widget-pack' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'blog_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .mas-blog-post .post-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -292,16 +292,36 @@ class Themo_Widget_Blog extends Widget_Base {
                 'label_off' => __( 'Hide', 'th-widget-pack' ),
                 'selectors' => [
                     '{{WRAPPER}} .mas-blog-post .post-inner' => 'border-width:1px',
+
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+			'blog_content_border_radius',
+			[
+				'label' => __( 'Border Radius', 'elementor' ),
+				'type' => Controls_Manager::NUMBER,
+				'min' => 0,
+				'selectors' => [
+					'{{WRAPPER}} .mas-blog-post .post-inner' => 'border-radius:{{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post.format-video .post-inner, {{WRAPPER}} .mas-blog-post.format-image .post-inner,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .post-inner, {{WRAPPER}} .mas-blog-post.has-post-thumbnail .post-inner' => 'border-radius:0 0 {{VALUE}}px {{VALUE}}px;',
+                    '{{WRAPPER}} .mas-blog-post .th-pkg-img img, {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li a img,
+                    {{WRAPPER}} .mas-blog-post.format-gallery .flexslider.gallery ul li img, {{WRAPPER}} .mas-blog-post a img.wp-post-image' => 'border-radius: {{VALUE}}px {{VALUE}}px 0 0;',
+				],
+                'dynamic' => [
+                    'active' => true,
+                ],
+			]
+		);
 
         $this->end_controls_section();
 
 	}
 
 	protected function render() {
-	    $settings = $this->get_settings();
+	    $settings = $this->get_settings_for_display();
 
 		// WP_Query arguments
 		$args = array (
@@ -425,7 +445,12 @@ class Themo_Widget_Blog extends Widget_Base {
                             <ul class="pager">
                                 <?php
                                 if( $use_bittersweet_pagination ) {
-                                    th_bittersweet_pagination($widget_wp_query->max_num_pages);
+                                    // UPLANDS uses a different function name. Avoid critical error.
+                                    if (function_exists('themo_bittersweet_pagination')) {
+                                        themo_bittersweet_pagination($widget_wp_query->max_num_pages);
+                                    }elseif(function_exists('th_bittersweet_pagination')){
+                                        th_bittersweet_pagination($widget_wp_query->max_num_pages);
+                                    }
                                 } else { ?>
                                 <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'th-widget-pack' ), $widget_wp_query->max_num_pages); ?></li>
                                 <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'th-widget-pack' ) ); ?></li>
@@ -451,7 +476,7 @@ class Themo_Widget_Blog extends Widget_Base {
 
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Blog() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Blog() );

@@ -14,14 +14,18 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-person';
+		return 'th-editor-icon-team-member';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_about',
 			[
@@ -138,46 +142,95 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'new_icon', [
+			'fa4compatibility' => 'icon',
+			'label' => __( 'Icon', 'th-widget-pack' ),
+			'type' => Controls_Manager::ICONS,
+			'label_block' => true,
+			'default' => [
+				'value' => 'fab fa-facebook',
+				'library' => 'fa-brands',
+			],
+			]
+		);
+
+		$repeater->add_control(
+			'url', [
+			'label' => __( 'Link URL', 'th-widget-pack' ),
+			'type' => Controls_Manager::URL,
+			'placeholder' => 'http://your-link.com',
+			'default' => [
+				'url' => '',
+			],
+			'dynamic' => [
+				'active' => true,
+			],
+			'separator' => 'before',
+			'label_block' => true,
+			]
+		);	
+
 		$this->add_control(
 			'social',
 			[
-				'label' => __( 'Social Icons', 'th-widget-pack' ),
+				'label' => __( 'Social Icons', 'plugin-domain' ),
 				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
 				'default' => [
-					[
-						'url' => 'http://your-link.com'
-					]
-				],
-				'fields' => [
-					[
-						'name' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICON,
-                        'label_block' => true,
-                        'default' => 'fa fa-facebook',
-						'options' => themo_icons(),
-						'include' => themo_fa_icons()
+					[ 'new_icon' => [
+							'value' => 'fab fa-facebook',
+							'library' => 'fa-brands',
+							],
+					'url' => __( '#', 'plugin-domain' ),
 					],
-					[
-						'name' => 'url',
-						'label' => __( 'Link URL', 'th-widget-pack' ),
-						'type' => Controls_Manager::URL,
-						'placeholder' => 'http://your-link.com',
-						'default' => [
-							'url' => '',
+					[ 'new_icon' => [
+						'value' => 'fab fa-facebook',
+						'library' => 'fa-brands',
 						],
-						'dynamic' => [
-		                    'active' => true,
-		                ],
-						'separator' => 'before',
-						'label_block' => true,
+					'url' => __( '#', 'plugin-domain' ),
 					],
 				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ url.url }}}',
+				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ url.url }}}',
 			]
 		);
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+            'section_photo_content',
+            [
+                'label' => __( 'Photo', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'photo_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .th-team-member > a > img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'label'	=> __( 'CSS Filters', 'elementor' ),
+				'selector' => '{{WRAPPER}} .th-team-member > img, {{WRAPPER}} .th-team-member > a > img',
+			]
+		);
+        
+        $this->end_controls_section();
 
 		$this->start_controls_section(
 			'section_style_background',
@@ -196,15 +249,12 @@ class Themo_Widget_Team extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+		$this->add_control(
 			'name_color',
 			[
-				'label' => __( 'Color', 'th-widget-pack' ),
+				'label' => __( 'Name Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h4' => 'color: {{VALUE}};',
@@ -235,10 +285,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h5' => 'color: {{VALUE}};',
@@ -269,10 +316,7 @@ class Themo_Widget_Team extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member-text' => 'color: {{VALUE}};',
@@ -290,7 +334,7 @@ class Themo_Widget_Team extends Widget_Base {
         );
 
         $this->add_control(
-            'section_icon_heading',
+            'section_price_icon_heading',
             [
                 'label' => __( 'Icon', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
@@ -299,46 +343,118 @@ class Themo_Widget_Team extends Widget_Base {
         );
 
         $this->add_control(
-			'icon_color',
-			[
-				'label' => __( 'Color', 'th-widget-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} i' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-        $this->add_control(
-            'section_background_heading',
+            'icon_color',
             [
-                'label' => __( 'Background', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => __( 'Icon Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                
+                'alpha' => false,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'color: {{VALUE}};',
+                ],
             ]
         );
+
+        $this->add_control(
+            'icon_opacity',
+            [
+                'label' => __( 'Opacity (%)', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'max' => 1,
+                        'min' => 0.10,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_opacity_hover',
+            [
+                'label' => __( 'Hover Opacity (%)', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'max' => 1,
+                        'min' => 0.10,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social a i:hover' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 300,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-social i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
 
 		$this->add_control(
 			'background_color',
 			[
-				'label' => __( 'Color', 'th-widget-pack' ),
+				'label' => __( 'Background Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-team-member-content' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .th-team-member' => 'background:none;',
 				],
+                'separator' => 'before',
 			]
 		);
+
+		$this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'member_content_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-team-member-content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
 
 		$this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( ! empty( $settings['url']['url'] ) ) {
 			$this->add_render_attribute( 'link', 'href', esc_url( $settings['url']['url'] ) );
@@ -404,9 +520,14 @@ class Themo_Widget_Team extends Widget_Base {
 							$target = $social['url']['is_external'] ? ' target="_blank"' : '';
 							echo '<a href="' . esc_url( $social['url']['url'] ) . '"' . wp_kses_post( $target ) . '>';
 						}
-						if ( $social['icon'] ) : ?>
-							<i class="<?php echo esc_attr( $social['icon'] ); ?>"></i>
-						<?php endif;
+						// new icon render
+						$migrated = isset( $social['__fa4_migrated']['new_icon'] );
+						$is_new = empty( $social['icon'] );
+						if ( $is_new || $migrated ) {
+							\Elementor\Icons_Manager::render_icon( $social['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+						} else {
+							?><i class="<?php echo $social['icon']; ?>" aria-hidden="true"></i><?php
+						}
 						if ( ! empty( $social['url']['url'] ) ) {
 							echo '</a>';
 						}
@@ -418,7 +539,7 @@ class Themo_Widget_Team extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	/*
 	 * <div class="th-team-member">
@@ -500,4 +621,4 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Team() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Team() );

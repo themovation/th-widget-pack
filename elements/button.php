@@ -14,14 +14,18 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-button';
+		return 'th-editor-icon-button';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_button_1',
 			[
@@ -193,7 +197,7 @@ class Themo_Widget_Button extends Widget_Base {
                     ],
                 ],
                 'separator' => 'none',
-                'prefix_class' => 'th-btn-align-%s',
+                'prefix_class' => 'th-btn-align%s-',
             ]
         );
 
@@ -201,7 +205,7 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         // BUTTON 1
@@ -316,7 +320,7 @@ class Themo_Widget_Button extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#  var button_1_link_url = '#';
             if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
@@ -384,4 +388,4 @@ class Themo_Widget_Button extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Button() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Button() );

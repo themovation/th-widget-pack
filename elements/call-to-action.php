@@ -14,14 +14,18 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-call-to-action';
+		return 'th-editor-icon-call-to-action';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_text',
 			[
@@ -196,13 +200,13 @@ class Themo_Widget_CallToAction extends Widget_Base {
         $this->add_control(
             'section_content_title_heading',
             [
-                'label' => __( 'Title', 'elementor' ),
+                'label' => __( 'Text', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
             ]
         );
 
 		$this->add_control(
-			'title_color',
+			'text_color',
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
@@ -221,22 +225,31 @@ class Themo_Widget_CallToAction extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'section_content_content_heading',
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
             [
-                'label' => __( 'Content', 'elementor' ),
+                'name' => 'section_title_text_shadow',
+                'label' => esc_html__( 'Text Shadow', 'elementor' ),
+                'selector' => '{{WRAPPER}} .th-cta-text span',
+            ]
+        );
+
+        $this->add_control(
+            'section_button_1_heading',
+            [
+                'label' => __( 'Button 1', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
         );
 
         $this->add_control(
-            'content_color',
+            'button_1_text_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .th-cta p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .th-cta-btn .btn-1' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -245,8 +258,61 @@ class Themo_Widget_CallToAction extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_content_content_typography',
-                'selector' => '{{WRAPPER}} .th-cta p',
+                'name' => 'section_button_1_typography',
+                'selector' => '{{WRAPPER}} .th-cta-btn .btn-1',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_button_1_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-cta-btn .btn-1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'section_button_2_heading',
+            [
+                'label' => __( 'Button 2', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'button_2_text_color',
+            [
+                'label' => __( 'Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-cta-btn .btn-2' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_button_2_typography',
+                'selector' => '{{WRAPPER}} .th-cta-btn .btn-2',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_button_2_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-cta-btn .btn-2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -254,7 +320,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Graphic Button
         $button_1_image = false;
@@ -376,7 +442,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<div class="th-cta">
 			<# if ( settings.text ) { #>
@@ -464,4 +530,4 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_CallToAction() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_CallToAction() );
