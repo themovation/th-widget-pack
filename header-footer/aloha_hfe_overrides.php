@@ -57,37 +57,41 @@ function thhf_render_sticky_header() {
 }
 
 function thhf_header_enabled() {
-    return hfe_header_enabled() || thhf_sticky_header_enabled();
+    return ( function_exists( 'hfe_header_enabled' ) && hfe_header_enabled() ) || thhf_sticky_header_enabled();
 }
 
 function get_thhf_header_id() {
-    return get_hfe_header_id();
+    return function_exists( 'get_hfe_header_id' ) ? get_hfe_header_id() : false;
 }
 
 function thhf_render_header() {
-    if (thhf_header_enabled()) {
+    if ( function_exists( 'hfe_render_header' ) && thhf_header_enabled()) {
         hfe_render_header();
     }
 }
 
 function thhf_is_before_footer_enabled() {
-    return hfe_is_before_footer_enabled();
+    return function_exists( 'hfe_is_before_footer_enabled' ) && hfe_is_before_footer_enabled();
 }
 
 function thhf_render_before_footer() {
-    hfe_render_before_footer();
+    if ( function_exists( 'hfe_render_before_footer' ) ) {
+        hfe_render_before_footer();
+    }
 }
 
 function get_thhf_footer_id() {
-    return get_hfe_footer_id();
+    return function_exists( 'get_hfe_footer_id' ) ? get_hfe_footer_id() : false;
 }
 
 function thhf_render_footer() {
-    hfe_render_footer();
+    if ( function_exists( 'hfe_render_footer' ) ) {
+        hfe_render_footer();
+    }
 }
 
 function thhf_footer_enabled() {
-    return hfe_footer_enabled();
+    return function_exists( 'hfe_footer_enabled' ) && hfe_footer_enabled();
 }
 
 function thhf_is_single_post_enabled() {
@@ -295,6 +299,10 @@ function aloha_hfe_admin_scripts() {
  * @return (String|boolean) sticky header id if it is set else returns false.
  */
 function get_thhf_sticky_header_id() {
+    if ( ! class_exists( 'Header_Footer_Elementor' ) ) {
+        return false;
+    }
+
     $sticky_header_id = Header_Footer_Elementor::get_settings(ALOHA_HFE_STICKY_HEADER, '');
 
     if ('' === $sticky_header_id) {
@@ -311,6 +319,10 @@ function get_thhf_sticky_header_id() {
  * @return bool True if sticky header is enabled. False if header is not enabled
  */
 function thhf_sticky_header_enabled() {
+    if ( ! class_exists( 'Header_Footer_Elementor' ) ) {
+        return false;
+    }
+
     $header_id = Header_Footer_Elementor::get_settings(ALOHA_HFE_STICKY_HEADER, '');
     $status = false;
 
@@ -328,6 +340,10 @@ function thhf_sticky_header_enabled() {
  * @return (String|boolean) header id if it is set else returns false.
  */
 function get_thhf_single_id() {
+    if ( ! class_exists( 'Header_Footer_Elementor' ) ) {
+        return false;
+    }
+
     $single_id = Header_Footer_Elementor::get_settings(ALOHA_HFE_SINGLE, '');
 
     if ('' === $single_id) {
@@ -343,6 +359,10 @@ function get_thhf_single_id() {
  * @return bool
  */
 function thhf_single_enabled() {
+    if ( ! class_exists( 'Header_Footer_Elementor' ) ) {
+        return false;
+    }
+
     $single_id = Header_Footer_Elementor::get_settings(ALOHA_HFE_SINGLE, '');
     $status = false;
 
