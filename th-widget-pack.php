@@ -44,6 +44,31 @@ if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
     define( 'ELEMENTOR_PARTNER_ID', 2129 );
 }
 
+function thmv_normalize_elementor_active_kit() {
+    $active_kit_id = absint( get_option( 'elementor_active_kit' ) );
+    if ( $active_kit_id && get_post( $active_kit_id ) ) {
+        return;
+    }
+
+    $default_kit = get_posts(
+        array(
+            'post_type'              => 'elementor_library',
+            'post_status'            => 'publish',
+            'title'                  => 'Default Kit',
+            'posts_per_page'         => 1,
+            'no_found_rows'          => true,
+            'ignore_sticky_posts'    => true,
+            'update_post_meta_cache' => false,
+            'update_post_term_cache' => false,
+        )
+    );
+
+    if ( ! empty( $default_kit ) ) {
+        update_option( 'elementor_active_kit', $default_kit[0]->ID );
+    }
+}
+add_action( 'init', 'thmv_normalize_elementor_active_kit', 0 );
+
 $th_theme = wp_get_theme(); // get theme info and save theme name as constant.
 if($th_theme->get( 'Name' ) > ""){
     $th_theme_name_arr = explode("-", $th_theme->get( 'Name' ), 2); // clean up child theme name
@@ -110,4 +135,3 @@ function thmv_set_white_label_opt(){
     return $thmv_white_label_opt;
 }
 add_filter( 'bsf_white_label_options', 'thmv_set_white_label_opt' );
-
