@@ -43,7 +43,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-slider-push';
+        return 'th-editor-icon-slider';
     }
 
     /**
@@ -74,6 +74,10 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         return [ 'jquery-slick' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     /**
      * Register image carousel widget controls.
      *
@@ -82,7 +86,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_image_carousel',
             [
@@ -400,7 +404,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'arrows_size',
             [
                 'label' => __( 'Arrows Size', 'elementor' ),
@@ -528,7 +532,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_spacing_custom',
             [
                 'label' => __( 'Image Spacing', 'elementor' ),
@@ -590,7 +594,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'caption_align',
             [
                 'label' => __( 'Alignment', 'elementor' ),
@@ -637,7 +641,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             [
                 'name' => 'caption_typography',
                 'label' => __( 'Typography', 'elementor' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                
                 'selector' => '{{WRAPPER}} .elementor-image-carousel-caption',
             ]
         );
@@ -877,4 +881,4 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
 }
 
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Image_Carousel_Timeline() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Image_Carousel_Timeline() );

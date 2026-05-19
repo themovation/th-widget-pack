@@ -14,14 +14,18 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-gallery-grid';
+		return 'th-editor-icon-image-gallery';
 	}
 
     public function get_categories() {
         return [ 'themo-elements' ];
     }
 
-	protected function _register_controls() {
+    public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_gallery',
 			[
@@ -44,6 +48,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			Group_Control_Image_Size::get_type(),
 			[
                 'name' => 'thumbnail',
+                'default' => 'th_img_sm_square',
 				'exclude' => [ 'custom','themo-logo','th_img_xs','th_img_lg','th_img_xl','th_img_xxl','themo_team','themo_brands','full'],
 			]
 		);
@@ -56,7 +61,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 			[
 				'label' => __( 'Columns', 'th-widget-pack' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 4,
+				'default' => 3,
 				'options' => $gallery_columns,
 			]
 		);
@@ -115,76 +120,219 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		$this->start_controls_section(
 			'section_caption',
 			[
-				'label' => __( 'Caption', 'th-widget-pack' ),
+				'label' => __( 'Content', 'th-widget-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->add_control(
-			'gallery_display_caption',
-			[
-				'label' => __( 'Display', 'th-widget-pack' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'none',
-				'options' => [
-					'' => __( 'Show', 'th-widget-pack' ),
-					'none' => __( 'Hide', 'th-widget-pack' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .gallery-text' => 'display: {{VALUE}};',
-				],
-			]
-		);
+        $this->add_responsive_control(
+            'title_and_caption',
+            [
+                'label' => __( 'Titles & Captions', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'block' => __( 'Show', 'th-widget-pack' ),
+                    'none' => __( 'Hide', 'th-widget-pack' ),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-image-gallery .gallery .gallery-text' => 'display: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'align',
+            [
+                'label' => __( 'Alignment', 'th-widget-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Left', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-left',
+                    ],
+                    'center' => [
+                        'title' => __( 'Center', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-center',
+                    ],
+                    'right' => [
+                        'title' => __( 'Right', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-right',
+                    ],
+                    'justify' => [
+                        'title' => __( 'Justified', 'th-widget-pack' ),
+                        'icon' => 'fa fa-align-justify',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .image-title' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .caption' => 'text-align: {{VALUE}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'section_gallery_image',
+            [
+                'label' => __( 'Images', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'gallery_filter_switcher',
+            [
+                'label' => __( 'Hover Effect', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => 'no',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .gallery a.img-thumbnail:hover img' => 'filter: none',
+                    '{{WRAPPER}} .gallery a.img-thumbnail:hover' => 'opacity: 1',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Css_Filter::get_type(),
+            [
+                'name' => 'gallery_css_filters',
+                'label'	=> __( 'CSS Filters', 'elementor' ),
+                'selector' => '{{WRAPPER}} .gallery a.img-thumbnail img',
+                'condition' => [
+                    'gallery_filter_switcher' => 'yes',
+                ],
+            ]
+        );
+
+
+
+        /*$this->add_control(
+            'gallery_hover_opacity',
+            [
+                'label' => __( 'Hover Opacity (%)', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0.7,
+                ],
+                'range' => [
+                    'px' => [
+                        'max' => 1,
+                        'min' => 0.10,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+
+                ],
+            ]
+        );*/
+
 
 		$this->add_control(
-			'align',
-			[
-				'label' => __( 'Alignment', 'th-widget-pack' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-right',
-					],
-					'justify' => [
-						'title' => __( 'Justified', 'th-widget-pack' ),
-						'icon' => 'fa fa-align-justify',
-					],
-				],
-				'default' => 'center',
-				'selectors' => [
-					'{{WRAPPER}} .image-title' => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .caption' => 'text-align: {{VALUE}};',
-				],
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
-			]
-		);
+            'section_gallery_heading',
+            [
+                'label' => __( 'Title', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
 
 		$this->add_control(
 			'text_color',
 			[
-				'label' => __( 'Text Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .image-title' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .icaption' => 'color: {{VALUE}};',
 				],
-				'condition' => [
-					'gallery_display_caption' => '',
-				],
+
 			]
 		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'text_title_typography',
+				'selector' => '{{WRAPPER}} .image-title',
+				
+
+			]
+		);
+
+        $this->add_responsive_control(
+            'gallery_display_title',
+            [
+                'label' => __( 'Display', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'block' => __( 'Show', 'th-widget-pack' ),
+                    'none' => __( 'Hide', 'th-widget-pack' ),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .image-title' => 'display: {{VALUE}};',
+                ],
+
+            ]
+        );
+
+		$this->add_control(
+            'section_gallery_caption',
+            [
+                'label' => __( 'Caption', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+
+            ]
+        );
+
+		$this->add_control(
+			'caption_text_color',
+			[
+				'label' => __( 'Color', 'th-widget-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .caption' => 'color: {{VALUE}};',
+				],
+
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'caption_title_typography',
+				'selector' => '{{WRAPPER}} .caption',
+				
+
+			]
+		);
+
+        $this->add_responsive_control(
+            'gallery_display_caption',
+            [
+                'label' => __( 'Display', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'none',
+                'options' => [
+                    'block' => __( 'Show', 'th-widget-pack' ),
+                    'none' => __( 'Hide', 'th-widget-pack' ),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .gallery-text .caption' => 'display: {{VALUE}};',
+                ],
+
+            ]
+        );
+
 
 		$this->end_controls_section();
 	}
@@ -224,7 +372,7 @@ class Themo_Widget_Image_Gallery extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Image_Gallery() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Image_Gallery() );

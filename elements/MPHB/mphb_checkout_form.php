@@ -14,18 +14,22 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-form-horizontal';
+        return 'th-editor-icon-checkout-form';
     }
 
     public function get_categories() {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function is_reload_preview_required() {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_shortcode',
             [
@@ -194,10 +198,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} h3' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -211,10 +212,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} h4' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -231,10 +229,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                     '{{WRAPPER}} th' => 'color: {{VALUE}};',
                     '{{WRAPPER}} td' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -249,10 +244,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-required-fields-tip' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -267,10 +259,7 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_checkout-wrapper label' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
             ]
         );
 
@@ -429,8 +418,8 @@ class Themo_Widget_MPHB_Checkout_Form extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Checkout_Form() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Checkout_Form() );
