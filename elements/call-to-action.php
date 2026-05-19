@@ -14,7 +14,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-call-to-action';
+		return 'th-editor-icon-call-to-action';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_text',
 			[
@@ -206,7 +206,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
         );
 
 		$this->add_control(
-			'title_color',
+			'text_color',
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
@@ -442,7 +442,7 @@ class Themo_Widget_CallToAction extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<div class="th-cta">
 			<# if ( settings.text ) { #>
@@ -530,4 +530,4 @@ class Themo_Widget_CallToAction extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_CallToAction() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_CallToAction() );
