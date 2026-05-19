@@ -611,9 +611,9 @@ class Astra_Target_Rules_Fields {
 
 		wp_enqueue_script( 'astra-user-role' );
 
-		wp_register_style( 'astra-select2', AST_TARGET_RULE_URI . 'select2.css', '', AST_TARGET_RULE_VER );
+		wp_register_style( 'astra-select2', AST_TARGET_RULE_URI . 'select2.css', array(), AST_TARGET_RULE_VER );
 		wp_enqueue_style( 'astra-select2' );
-		wp_register_style( 'astra-target-rule', AST_TARGET_RULE_URI . 'target-rule.css', '', AST_TARGET_RULE_VER );
+		wp_register_style( 'astra-target-rule', AST_TARGET_RULE_URI . 'target-rule.css', array(), AST_TARGET_RULE_VER );
 		wp_enqueue_style( 'astra-target-rule' );
 
 		/**
