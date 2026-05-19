@@ -14,7 +14,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-testimonial';
+		return 'th-editor-icon-testimonial';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 		return 'https://help.themovation.com/' . $this->get_name();
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_testimonial',
 			[
@@ -191,6 +191,9 @@ class Themo_Widget_Testimonial extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-testimonial-wrapper' => 'text-align: {{VALUE}}',
+                ],
 			]
 		);
 
@@ -229,10 +232,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-content' => 'color: {{VALUE}};',
@@ -263,10 +263,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+                
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-name' => 'color: {{VALUE}};',
@@ -297,10 +294,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-testimonial-job' => 'color: {{VALUE}};',
@@ -331,10 +325,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-star-rating' => 'color: {{VALUE}};',
@@ -374,7 +365,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 
         $this->add_render_attribute( 'wrapper', 'class', 'th-txt-'.esc_attr( $settings['text_size'] ) );
 
-		if ( $settings['testimonial_alignment'] ) {
+		if ( isset($settings['testimonial_alignment']) ) {
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-testimonial-text-align-' . esc_attr( $settings['testimonial_alignment'] ) );
 		}
 
@@ -412,7 +403,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 			return;
 		}
 
-        if ( $settings['rating']['size'] ) {
+        if (isset( $settings['rating']) && isset($settings['rating']['size']) ) {
 		    $th_rating = $settings['rating']['size'];
             $th_rating = $th_rating*10;
             $th_rating = sprintf("%02d", $th_rating);
@@ -473,7 +464,7 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -504,4 +495,4 @@ class Themo_Widget_Testimonial extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Testimonial() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Testimonial() );

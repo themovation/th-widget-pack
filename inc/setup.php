@@ -1,5 +1,11 @@
 <?php
+use Elementor\Controls_Manager;   
+use Elementor\Core\Settings\Manager as SettingsManager;
 
+function th_get_elementor_theme_mode(){
+    $editor_preferences = SettingsManager::get_settings_managers( 'editorPreferences' );
+    return $editor_preferences->get_model()->get_settings( 'ui_theme' );
+}
 // Adding Custom Icons for Icon Control
 if('embark' == THEMO_CURRENT_THEME || 'bellevue' == THEMO_CURRENT_THEME ){
     require_once THEMO_PATH . 'fields/icons.php' ;
@@ -58,6 +64,9 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
         if('bellevue' == THEMO_CURRENT_THEME ){
             require_once THEMO_PATH . 'elements/package_2.php';
+            require_once THEMO_PATH . 'elements/accommodation_listing.php';
+            require_once THEMO_PATH . 'elements/accommodation_search.php';
+            require_once THEMO_PATH . 'elements/tabs.php';
         }else{
             require_once THEMO_PATH . 'elements/package.php';
         }
@@ -74,7 +83,18 @@ if ( ! function_exists( 'themovation_elements' ) ) {
             require_once THEMO_PATH . 'elements/pricing-list.php';
             require_once THEMO_PATH . 'elements/image-carousel-timeline.php';
         }
-        require_once THEMO_PATH . 'elements/blog.php';
+
+        if('entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ) {
+            require_once THEMO_PATH . 'elements/pricing-list.php';
+        }
+
+        if('bellevue' == THEMO_CURRENT_THEME || 'entrepreneur' == THEMO_CURRENT_THEME || 'stratus' == THEMO_CURRENT_THEME ){
+            require_once THEMO_PATH . 'elements/blog_2.php';
+        }else{
+            require_once THEMO_PATH . 'elements/blog.php';
+        }
+
+
         require_once THEMO_PATH . 'elements/image-gallery.php';
         require_once THEMO_PATH . 'elements/google-maps.php';
 
@@ -100,20 +120,30 @@ if ( ! function_exists( 'themovation_elements' ) ) {
 
 
 // Include Custom Widgets
-add_filter( 'elementor/widgets/widgets_registered', 'themovation_elements' );
+add_filter( 'elementor/widgets/register', 'themovation_elements' );
+
+//if (!function_exists('is_themovation_template')) {
+    function is_themovation_template()
+    {
+        $theme = wp_get_theme();
+        $themeToCheck = $theme->parent() ? $theme->parent() : $theme;
+        return strpos(strtolower($themeToCheck->get('AuthorURI')), 'themovation') !== false ? true : false;
+    }
+//}
 
 function th_check_some_other_plugin() {
     include_once(ABSPATH.'wp-admin/includes/plugin.php');
 
-
-
-    if ( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && get_option( "theme_is_registered_stratusx", false ) ) {
+    if (showLibrary()) {
         include_once THEMO_PATH . 'library/library-manager.class.php' ;
         include_once THEMO_PATH . 'library/library-source.class.php' ;
-    }/*elseif( is_user_logged_in() && ( ENABLE_BLOCK_LIBRARY === true ) && ('bellevue' == THEMO_CURRENT_THEME)){
-        include_once THEMO_PATH . 'library/library-manager.class.php' ;
-        include_once THEMO_PATH . 'library/library-source.class.php' ;
-    }*/
+    }
+    else if(is_themovation_template ()){
+        add_action( 'elementor/editor/footer', function(){
+            include_once THEMO_PATH . 'library/register.php';
+        } );
+    }
+    
 
     if (!function_exists('is_plugin_active') || !is_plugin_active( 'wpml-translation-management/plugin.php') || !is_plugin_active( 'wpml-string-translation/plugin.php')) {
         return;
@@ -138,7 +168,8 @@ if('embark' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_portfolio.php' ;
 }elseif('bellevue' == THEMO_CURRENT_THEME){
     require_once THEMO_PATH . 'inc/cpt_room.php' ;
-    if (class_exists('HotelBookingPlugin')) {
+    if ( function_exists('is_plugin_active') && is_plugin_active( 'motopress-hotel-booking/motopress-hotel-booking.php' ) ) {
+        //plugin is activated
         require_once THEMO_PATH . 'inc/MPHB/cpt_mphb_room_type.php';
     }
 }elseif('uplands' == THEMO_CURRENT_THEME){
@@ -223,6 +254,11 @@ if ( ! function_exists( 'themovation_so_widgets_bundle_setup_elementor_settings'
 
         if (!in_array("product", $elementor_cpt_support)) {
             array_push($elementor_cpt_support,"product");
+            update_option('elementor_cpt_support', $elementor_cpt_support);
+        }
+        // Enable Elementor Support for HFE
+        if (!in_array("elementor-thhf", $elementor_cpt_support)) {
+            array_push($elementor_cpt_support,"elementor-thhf");
             update_option('elementor_cpt_support', $elementor_cpt_support);
         }
 
@@ -463,15 +499,44 @@ add_action( 'elementor/element/wp-page/document_settings/before_section_start', 
 
 // Add Parallax Control (Switch) to Section Element in the Editor.
 function add_elementor_section_background_controls( Elementor\Element_Section $section ) {
-
+    
+//    $ui_theme = 'el-ui-theme-'.th_get_elementor_theme_mode();
+    
+    $section->add_control(
+        'th_thmv_section_title',
+        [
+            'type'            => Controls_Manager::RAW_HTML,
+            'raw'             => '<b>Themovation</b>',
+            'separator'       => 'before',
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'background_background',
+                        'operator' => '==',
+                        'value' => 'classic',
+                    ],
+                ],
+            ],
+        ]
+    );
     $section->add_control(
         'th_section_parallax',
         [
             'label' => __( 'Parallax', 'th-widget-pack' ),
+            'description' => 'Adds parallax effect to the section background image.',
             'type' => Elementor\Controls_Manager::SWITCHER,
             'label_off' => __( 'Off', 'th-widget-pack' ),
             'label_on' => __( 'On', 'th-widget-pack' ),
             'default' => 'no',
+            'conditions' => [
+                'terms' => [
+                    [
+                        'name' => 'background_background',
+                        'operator' => '==',
+                        'value' => 'classic',
+                    ],
+                ],
+            ],
         ]
     );
 }
