@@ -43,7 +43,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-slider-push';
+        return 'th-editor-icon-slider';
     }
 
     /**
@@ -74,6 +74,10 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         return [ 'jquery-slick' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     /**
      * Register image carousel widget controls.
      *
@@ -82,7 +86,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @since 1.0.0
      * @access protected
      */
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_image_carousel',
             [
@@ -96,6 +100,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 'label' => __( 'Add Images', 'elementor' ),
                 'type' => Controls_Manager::GALLERY,
                 'default' => [],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -191,6 +198,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                     'link_to' => 'custom',
                 ],
                 'show_label' => false,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -290,6 +300,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 'type' => Controls_Manager::NUMBER,
                 'default' => 5000,
                 'frontend_available' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -330,6 +343,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 'type' => Controls_Manager::NUMBER,
                 'default' => 500,
                 'frontend_available' => true,
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -388,7 +404,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'arrows_size',
             [
                 'label' => __( 'Arrows Size', 'elementor' ),
@@ -404,6 +420,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 ],
                 'condition' => [
                     'navigation' => [ 'arrows', 'both' ],
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );
@@ -467,6 +486,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 'condition' => [
                     'navigation' => [ 'dots', 'both' ],
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -510,7 +532,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'image_spacing_custom',
             [
                 'label' => __( 'Image Spacing', 'elementor' ),
@@ -531,6 +553,9 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
                 'condition' => [
                     'image_spacing' => 'custom',
                     'slides_to_show!' => '1',
+                ],
+                'dynamic' => [
+                    'active' => true,
                 ],
             ]
         );
@@ -569,7 +594,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'caption_align',
             [
                 'label' => __( 'Alignment', 'elementor' ),
@@ -616,7 +641,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
             [
                 'name' => 'caption_typography',
                 'label' => __( 'Typography', 'elementor' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                
                 'selector' => '{{WRAPPER}} .elementor-image-carousel-caption',
             ]
         );
@@ -634,7 +659,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
      * @access protected
      */
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( empty( $settings['carousel'] ) ) {
             return;
@@ -677,7 +702,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
 
             $slide_html = '<div class="slick-slide"><figure class="slick-slide-inner">' . $image_html;
 
-            $caption_type = $this->get_settings( 'caption_type' );
+            $caption_type = $this->get_settings_for_display( 'caption_type' );
 
             if ( 'caption' === $caption_type && ! empty( $image_caption )) {
                     $slide_html .= '<figcaption class="elementor-image-carousel-caption"><span class="th-timeline-caption">' . $image_caption . '</span></figcaption>';
@@ -821,7 +846,7 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
         $attachment_post = get_post( $attachment['id'] );
         return $attachment_post->post_excerpt;
 
-        /*$caption_type = $this->get_settings( 'caption_type' );
+        /*$caption_type = $this->get_settings_for_display( 'caption_type' );
 
         if ( empty( $caption_type ) ) {
             return '';
@@ -856,4 +881,4 @@ class Themo_Widget_Image_Carousel_Timeline extends Widget_Base {
 }
 
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Image_Carousel_Timeline() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Image_Carousel_Timeline() );

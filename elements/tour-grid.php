@@ -14,13 +14,17 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-gallery-grid';
+        return 'th-editor-icon-grid';
     }
 
     public function get_categories() {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     private function get_tours_list() {
         $portfolio = array();
 
@@ -62,7 +66,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         return $portfolio_group;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_layout',
             [
@@ -183,10 +187,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             [
                 'label' => __( 'Hover Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => $default_rgba,
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-item:hover .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -219,10 +219,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Mobile', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(mobile){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -254,10 +250,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
             [
                 'label' => __( 'Background Color for Tablet', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                /*'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],*/
                 'default' => $default_rgba,
                 'selectors' => [
                     '(tablet){{WRAPPER}} .th-portfolio-item .th-port-overlay' => 'background-color: {{VALUE}};',
@@ -341,10 +333,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters span' => 'color: {{VALUE}};',
@@ -358,10 +346,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'label' => __( 'Link Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a' => 'color: {{VALUE}};  opacity:0.8;',
@@ -375,10 +359,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'label' => __( 'Hover Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-portfolio-filters a:hover' => 'color: {{VALUE}}; opacity:1;',
@@ -392,10 +372,6 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
                 'label' => __( 'Active Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'alpha' => false,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}}  .th-portfolio-filters a.current' => 'color: {{VALUE}}; opacity:1; border-color: {{VALUE}};',
@@ -418,7 +394,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
     }
 
     protected function render() {
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         global $th_folio_count;
         $folio_id = 'th-portfolio-' . ++$th_folio_count;
@@ -761,7 +737,7 @@ class Themo_Widget_Tour_Grid extends Widget_Base {
         <?php
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Tour_Grid() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Tour_Grid() );

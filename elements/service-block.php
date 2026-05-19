@@ -14,14 +14,18 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-favorite';
+		return 'th-editor-icon-service-block';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
+	protected function register_controls() {
 
 		$this->start_controls_section(
 			'section_icon',
@@ -52,7 +56,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     'library' => 'fa-solid',
                 ],
             ]
-        );		
+        );
 
         $this->add_control(
             'view',
@@ -101,7 +105,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'position',
             [
                 'label' => __( 'Position', 'th-widget-pack' ),
@@ -121,7 +125,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
@@ -221,7 +225,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
                 'label' => __( 'Content Width', 'th-widget-pack' ),
@@ -246,7 +250,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'header_horizontal_position',
             [
                 'label' => __( 'Horizontal Position', 'th-widget-pack' ),
@@ -269,9 +273,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                     '{{WRAPPER}} .th-service-block-w' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
             ]
         );
@@ -316,12 +320,9 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => __( 'Primary Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
@@ -381,16 +382,13 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => __( 'Title Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
+				
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -402,11 +400,41 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
-				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
+				
+                'label' => 'Typography',
 			]
 		);
 
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name' => 'section_content_title_shadow',
+                'label' => 'Text Shadow',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_title_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+        
 		$this->add_control(
 			'heading_description',
 			[
@@ -419,22 +447,49 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
                 'dynamic' => [
                     'active' => true,
                 ],
 			]
 		);
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'label' => __( 'Typography', 'elementor' ),
+                'name' => 'section_description_typography',
+                'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description, {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_description_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'margin-top: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'margin-top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 	}
@@ -476,7 +531,7 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
                             $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
                             $is_new = empty( $settings['icon'] );
                             if ( $is_new || $migrated ) {
-                                \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+                                \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] );
                             } else {
                                 ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
                             }
@@ -497,10 +552,10 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
-        <# 
-        var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+        <#
+        var iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' );
         migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
         iconTag = link ? 'a' : 'span';
@@ -563,4 +618,4 @@ class Themo_Widget_ServiceBlock extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_ServiceBlock() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_ServiceBlock() );
