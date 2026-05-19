@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-archive-posts';
+        return 'th-editor-icon-calender-2';
     }
 
     public function get_help_url() {
@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_tooltip',
             [
@@ -56,10 +56,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             [
                 'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '#FFFFFF',
                 'selectors' => [
                     '{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
@@ -72,10 +69,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
             [
                 'label' => __( 'Background Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-cal-tooltip' => 'background-color: {{VALUE}};',
@@ -165,7 +159,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-tooltip', 'class', 'th-cal-tooltip' );
 
@@ -222,7 +216,7 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
     public function add_wpml_support() {
         add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -249,4 +243,4 @@ class Themo_Widget_MPHB_Availability_Calendar extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Availability_Calendar() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Availability_Calendar() );

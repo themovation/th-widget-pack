@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-menu-card';
+        return 'th-editor-icon-service-details';
     }
 
     public function get_categories() {
@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
         $this->start_controls_section(
             'section_shortcode',
             [
@@ -68,10 +68,6 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_service_details span.mphb-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -81,7 +77,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'name' => 'price_typography',
                 'label' => __( 'Price', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_service_details span.mphb-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -94,10 +90,6 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .themo_mphb_service_details' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -107,7 +99,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
                 'name' => 'text_typography',
                 'label' => __( 'Text', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .themo_mphb_service_details',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -121,7 +113,7 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( is_singular( 'mphb_room_service') && function_exists('mphb_tmpl_the_service_price')) { // check if function exists and if we are on a room service single.
             ?>
@@ -137,8 +129,8 @@ class Themo_Widget_MPHB_Service_Details extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Service_Details() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Service_Details() );

@@ -14,7 +14,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-flip-box';
+		return 'th-editor-icon-info-card';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_align',
@@ -86,9 +86,9 @@ class Themo_Widget_Info_Card extends Widget_Base {
                     '{{WRAPPER}} .th-info-card-wrap' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -162,8 +162,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-
-
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -172,7 +170,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'label' => __( 'Links', 'th-widget-pack' ),
             ]
         );
-
 
         $this->add_control(
             'button_1_text',
@@ -245,10 +242,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-info-card-wrap' => 'background-color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
             ]
         );
 
@@ -278,10 +271,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
-				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
 				],
 			]
 		);
@@ -321,10 +310,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 			]
 		);
 
@@ -354,10 +339,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-btn-wrap a.th-btn-1' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
                 ],
             ]
         );
@@ -389,10 +370,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-btn-wrap a.th-btn-2' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
             ]
         );
 
@@ -405,11 +382,73 @@ class Themo_Widget_Info_Card extends Widget_Base {
             ]
         );
 
-		$this->end_controls_section();
+        $this->add_control(
+            'section_appearance_heading',
+            [
+                'label' => __( 'Appearance', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-info-card-wrap' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-info-card-wrap',
+            ]
+        );
+        
+        $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
@@ -467,7 +506,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 
 		<#
@@ -557,4 +596,4 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Info_Card() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Info_Card() );

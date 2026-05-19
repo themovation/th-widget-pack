@@ -14,7 +14,7 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-animation-text';
+		return 'th-editor-icon-page-title';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_Header extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_align',
@@ -86,9 +86,9 @@ class Themo_Widget_Header extends Widget_Base {
                     '{{WRAPPER}} .th-header-wrap' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -131,15 +131,29 @@ class Themo_Widget_Header extends Widget_Base {
 			]
 		);
 
+        // $this->add_control(
+        //     'icon',
+        //     [
+        //         'label' => __( 'Choose Icon', 'th-widget-pack' ),
+        //         'type' => Controls_Manager::ICON,
+		// 		'options' => themo_icons(),
+		// 		'include' => themo_fa_icons()
+        //     ]
+        // );
         $this->add_control(
-            'icon',
+            'new_icon',
             [
                 'label' => __( 'Choose Icon', 'th-widget-pack' ),
-                'type' => Controls_Manager::ICON,
-				'options' => themo_icons(),
-				'include' => themo_fa_icons()
+                'fa4compatibility' => 'icon',
+                'type' => Controls_Manager::ICONS,
+                'label_block' => true,
+                /*'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],*/
             ]
-        );
+        );		
+
 
         $this->add_control(
             'view',
@@ -209,7 +223,7 @@ class Themo_Widget_Header extends Widget_Base {
                         'icon' => 'fa fa-align-right',
                     ],
                 ],
-                'prefix_class' => 'elementor-position-%s',
+                'prefix_class' => 'elementor-position%s-',
                 'toggle' => true,
             ]
         );
@@ -293,7 +307,7 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_responsive_control(
             'description_align',
             [
-                'label' => __( 'Description Alignment Override', 'th-widget-pack' ),
+                'label' => __( 'Description Alignment', 'th-widget-pack' ),
                 'type' => Controls_Manager::CHOOSE,
                 'options' => [
                     'left' => [
@@ -504,17 +518,15 @@ class Themo_Widget_Header extends Widget_Base {
 			[
 				'label' => __( 'Primary Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
-				],
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon svg, {{WRAPPER}}.elementor-view-default .elementor-icon svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
+
 
 		$this->add_control(
 			'secondary_color',
@@ -528,9 +540,52 @@ class Themo_Widget_Header extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-view-stacked .elementor-icon svg' => 'fill: {{VALUE}};',
 				],
 			]
 		);
+
+
+
+
+        $this->add_control(
+            'svg_title',
+            [
+                'label' => __( 'SVG Paths', 'th-widget-pack' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'icon_primary_path',
+            [
+                'label' => __( 'Primary Path', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon, {{WRAPPER}}.elementor-view-default .elementor-icon' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon svg path, {{WRAPPER}}.elementor-view-default .elementor-icon svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_secondary_path',
+            [
+                'label' => __( 'Secondary Path', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'condition' => [
+                    'view!' => 'default',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}}.elementor-view-framed .elementor-icon' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}}.elementor-view-stacked .elementor-icon svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 
@@ -554,44 +609,23 @@ class Themo_Widget_Header extends Widget_Base {
         $this->add_control(
             'title_color',
             [
-                'label' => __( 'Title Color', 'th-widget-pack' ),
+                'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
-        $this->add_control(
-            'divider_color',
-            [
-                'label' => __( 'Divider Color', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'condition' => [
-                    'title_divider' => 'yes',
-                ],
-            ]
-        );
+
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 			]
 		);
 
@@ -603,6 +637,116 @@ class Themo_Widget_Header extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'thmv_section_divider_heading',
+            [
+                'label' => __('Divider', 'elementor'),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'title_divider' => 'yes'
+                ],
+            ]
+        );
+
+
+        $this->add_control(
+            'divider_color',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'title_divider' => 'yes',
+                ],
+            ]
+        );
+        //if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
+            $this->add_responsive_control(
+                'thmv_divider_size',
+                [
+                    'label' => __('Width', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px', '%'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 1140,
+                            'step' => 5,
+                        ],
+                        '%' => [
+                            'min' => 1,
+                            'max' => 100,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'width: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'title_divider' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'thmv_divider_height',
+                [
+                    'label' => __('Height', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 20,
+                            'step' => 1,
+                        ],
+
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-width: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'title_divider' => 'yes'
+                    ],
+                ]
+            );
+
+            $this->add_responsive_control(
+                'thmv_divider_radius',
+                [
+                    'label' => __('Corner Radius', 'elementor'),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => ['px'],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+            $this->add_responsive_control(
+                'thmv_divider_spacing',
+                [
+                    'label' => __('Spacing', 'elementor'),
+                    'type' => Controls_Manager::SLIDER,
+                    'size_units' => ['px'],
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 30,
+                            'step' => 1,
+                        ],
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-header-wrap .th-header-divider' => 'margin-top: {{SIZE}}{{UNIT}}; margin-bottom: {{SIZE}}{{UNIT}};',
+                    ],
+                    'condition' => [
+                        'title_divider' => 'yes'
+                    ],
+                ]
+            );
+        //}
 		$this->add_control(
 			'heading_description',
 			[
@@ -615,16 +759,12 @@ class Themo_Widget_Header extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => __( 'Description Color', 'th-widget-pack' ),
+				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a' => 'color: {{VALUE}};',
-				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
 				],
 			]
 		);
@@ -634,15 +774,141 @@ class Themo_Widget_Header extends Widget_Base {
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
+
+        //if(defined('THEMO_CURRENT_THEME') && 'bellevue' == THEMO_CURRENT_THEME) {
+            $this->add_control(
+                'heading_span',
+                [
+                    'label' => __('Span', 'th-widget-pack'),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                    'description' => 'HELLO this is some text.'
+                ]
+            );
+            $this->add_control(
+                'span_note',
+                [
+                    //'label' => __( 'Note', 'th-widget-pack' ),
+                    'type' => Controls_Manager::RAW_HTML,
+                    'raw' => __( '<p style="line-height: 17px;">Span tags can be added to Title and Description for additional styling. E.G.: My title has &lt;span&gt;blue text&lt;/span&gt;.</p>', 'th-widget-pack' ),
+                    'content_classes' => 'themo-elem-html-control',
+                ]
+            );
+            $this->add_control(
+                'span_color',
+                [
+                    'label' => __('Color', 'th-widget-pack'),
+                    'type' => Controls_Manager::COLOR,
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span' => 'color: {{VALUE}};',
+                        '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description a span' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'name' => 'span_typography',
+                    'selector' => '{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title span, 
+                    {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span,
+                    {{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description span a',
+                    
+                ]
+            );
+
+            $this->add_control(
+                'section_button_1_heading',
+                [
+                    'label' => __( 'Button 1', 'elementor' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'button_1_text_color',
+                [
+                    'label' => __( 'Text Color', 'th-widget-pack' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-btn-wrap .btn-1' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'label' => __( 'Typography', 'elementor' ),
+                    'name' => 'section_button_1_typography',
+                    'selector' => '{{WRAPPER}} .th-btn-wrap .btn-1',
+                ]
+            );
+
+            $this->add_responsive_control(
+                'section_button_1_padding',
+                [
+                    'label' => __( 'Padding', 'elementor' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-btn-wrap .btn-1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'section_button_2_heading',
+                [
+                    'label' => __( 'Button 2', 'elementor' ),
+                    'type' => Controls_Manager::HEADING,
+                    'separator' => 'before',
+                ]
+            );
+
+            $this->add_control(
+                'button_2_text_color',
+                [
+                    'label' => __( 'Text Color', 'th-widget-pack' ),
+                    'type' => Controls_Manager::COLOR,
+                    'selectors' => [
+                        '{{WRAPPER}} .th-btn-wrap .btn-2' => 'color: {{VALUE}};',
+                    ],
+                ]
+            );
+
+            $this->add_group_control(
+                Group_Control_Typography::get_type(),
+                [
+                    'label' => __( 'Typography', 'elementor' ),
+                    'name' => 'section_button_2_typography',
+                    'selector' => '{{WRAPPER}} .th-btn-wrap .btn-2',
+                ]
+            );
+
+            $this->add_responsive_control(
+                'section_button_2_padding',
+                [
+                    'label' => __( 'Padding', 'elementor' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .th-btn-wrap .btn-2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+        //}
 
 		$this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $elm_animation = false;
         if ( ! empty( $settings['hover_animation'] ) ) {
@@ -652,22 +918,20 @@ class Themo_Widget_Header extends Widget_Base {
 
 		$icon_tag = 'span';
 
-		if ( ! empty( $settings['link']['url'] ) ) {
+		/*if ( ! empty( $settings['link']['url'] ) ) {
 			$this->add_render_attribute( 'link', 'href', esc_url( $settings['link']['url'] ) );
 			$icon_tag = 'a';
 
 			if ( ! empty( $settings['link']['is_external'] ) ) {
 				$this->add_render_attribute( 'link', 'target', '_blank' );
 			}
-		}
-
-		$this->add_render_attribute( 'i', 'class', esc_attr( $settings['icon'] ) );
+		}*/
 
         $this->add_render_attribute( 'th-icon-size', 'class', 'elementor-icon-box-icon' );
         $this->add_render_attribute( 'th-icon-size', 'class', 'th-icon-size-' . esc_attr( $settings['icon_size'] ) );
 
 		$icon_attributes = $this->get_render_attribute_string( 'icon' );
-		$link_attributes = $this->get_render_attribute_string( 'link' );
+		//$link_attributes = $this->get_render_attribute_string( 'link' );
 
         // BUTTON 1
 
@@ -753,17 +1017,26 @@ class Themo_Widget_Header extends Widget_Base {
 
 		?>
 		<div class="th-header-wrap">
-            <div class="elementor-icon-box-wrapper <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ echo "th-show-icon"; } ?>">
-                <?php if ( isset($settings['icon'] ) && $settings['icon'] > "" ){ ?>
+        <div class="elementor-icon-box-wrapper <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ echo "th-show-icon"; } ?>">
+            <?php if ( ( isset($settings['icon'] ) && $settings['icon'] > "" ) || (is_array( $settings['new_icon'] ) && !empty($settings['new_icon']['value'])) ){ ?>
                 <div <?php echo $this->get_render_attribute_string( 'th-icon-size' ); ?>>
-                    <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes, $link_attributes ] )); ?>>
-                        <i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
+                    <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $icon_attributes ] )); ?>>
+                        <?php
+                        // new icon render
+                        $migrated = isset( $settings['__fa4_migrated']['new_icon'] );
+                        $is_new = empty( $settings['icon'] );
+                        if ( $is_new || $migrated ) {
+                            \Elementor\Icons_Manager::render_icon( $settings['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+                        } else {
+                            ?><i class="<?php echo $settings['icon']; ?>" aria-hidden="true" fff></i><?php
+                        }
+                        ?>
                     </<?php echo esc_attr( $icon_tag ); ?>>
                 </div>
                 <?php } ?>
                 <div class="elementor-icon-box-content">
                     <<?php echo esc_attr($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'th-header-class' );?>>
-                        <<?php echo wp_kses_post(implode( ' ', [ $icon_tag, $link_attributes ] )); ?>><?php echo esc_html( $settings['title_text'] ); ?></<?php echo wp_kses_post($icon_tag); ?>>
+                        <?php echo wp_kses_post( $settings['title_text'] ); ?>
                     </<?php echo esc_attr( $settings['title_size'] ); ?>>
                     <?php if ( isset($settings['title_divider']) && 'yes' == $settings['title_divider'] ) {?>
                         <span <?php echo $this->get_render_attribute_string( 'th_divider_span' ); ?>></span>
@@ -813,10 +1086,12 @@ class Themo_Widget_Header extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 
 		<#
+        iconHTML = elementor.helpers.renderIcon( view, settings.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+        migrated = elementor.helpers.isIconMigrated( settings, 'new_icon' );
         var link = '',
         iconTag = 'span';
         icon_size = '';
@@ -830,20 +1105,24 @@ class Themo_Widget_Header extends Widget_Base {
         }
 
         if ( settings.icon_size ) { var icon_size = 'th-icon-size-'+settings.icon_size }
-        if ( settings.icon ) { var icon_show = 'th-show-icon'}
+        if ( settings.icon || settings.new_icon) { var icon_show = 'th-show-icon'}
                 #>
         <div class="th-header-wrap">
             <div class="elementor-icon-box-wrapper {{ icon_show }}">
-                <# if ( settings.icon ) { #>
+                <# if ( settings.icon || ( iconHTML.rendered && ( ! settings.icon || migrated ) ) ) { #>
                 <div class="elementor-icon-box-icon {{ icon_size }}">
-                    <{{{ iconTag + ' ' + link }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
-                        <i class="{{ settings.icon }}"></i>
+                    <{{{ iconTag }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}">
+                        <# if ( iconHTML.rendered && ( ! settings.icon || migrated ) ) { #>
+					        {{{ iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+				        <# } #>
                     </{{{ iconTag }}}>
                 </div>
                 <# } #>
                 <div class="elementor-icon-box-content">
                     <{{{ settings.title_size }}} class="{{{th_header_class}}}">
-                        <{{{ iconTag + ' ' + link }}}>{{{ settings.title_text }}}</{{{ iconTag }}}>
+                        {{{ settings.title_text }}}
                     </{{{ settings.title_size }}}>
                     {{{th_divder_span}}}
                     <p class="elementor-icon-box-description">{{{ settings.description_text }}}</p>
@@ -939,4 +1218,4 @@ class Themo_Widget_Header extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Header() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Header() );

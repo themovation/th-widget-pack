@@ -14,7 +14,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-site-search';
+        return 'th-editor-icon-calendar-1';
     }
 
     public function get_categories() {
@@ -29,7 +29,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         // Check that the class exists before trying to use it
 
@@ -128,27 +128,6 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         );
 
         $this->add_control(
-            'button_1_style',
-            [
-                'label' => __( 'Button Style', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'standard-primary',
-                'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
-                ],
-            ]
-        );
-
-        $this->add_control(
             'slide_text_align',
             [
                 'label' => __( 'Align', 'th-widget-pack' ),
@@ -169,22 +148,6 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                     ],
                 ],
                 'default' => 'center',
-            ]
-        );
-
-
-        $this->add_control(
-            'hide_required_notices',
-            [
-                'label' => __( 'Hide Required Tips', 'th-widget-pack' ),
-                'type' => Controls_Manager::SWITCHER,
-                'default' => 'label_on',
-                'label_on' => __( 'Yes', 'th-widget-pack' ),
-                'label_off' => __( 'No', 'th-widget-pack' ),
-                'selectors' => [
-                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-required-fields-tip' => 'display:none;',
-                    '{{WRAPPER}} .mphb_sc_search-wrapper label abbr' => 'display:none;',
-                ],
             ]
         );
 
@@ -225,30 +188,28 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'tip_color',
-            [
-                'label' => __( 'Required Tips Colour', 'th-widget-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'default' => '',
-                'selectors' => [
-                    '{{WRAPPER}} .mphb-required-fields-tip small' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
 
+        $this->add_control(
+            'section_heading_form_labels',
+            [
+                'label' => __( 'Form Labels', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
+        $this->add_control(
+            'hide_form_lables',
             [
-                'name' => 'tip_color_typography',
-                'selector' => '{{WRAPPER}} .mphb-required-fields-tip small',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-
+                'label' => __( 'Hide Field Labels', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper p:not(.mphb_sc_search-children):not(.mphb_sc_search-adults) label, 
+                    {{WRAPPER}} .mphb_sc_search-wrapper .frm_form_field:not(.mphb_sc_search-children):not(.mphb_sc_search-adults) br' => 'display:none;',
+                ],
             ]
         );
 
@@ -260,12 +221,13 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_search-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-reserve-room-section p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-errors-wrapper p' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
-                'separator' => 'before',
+                
+                /*'condition' => [
+                    'hide_form_lables' => '',
+                ],*/
             ]
         );
 
@@ -275,9 +237,200 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
             [
                 'name' => 'title_color_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper label',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
+                /*'condition' => [
+                    'hide_form_lables' => '',
+                ],*/
             ]
         );
+
+        $this->add_control(
+            'hide_required_notices',
+            [
+                'label' => __( 'Hide Required Tips', 'th-widget-pack' ),
+                'type' => Controls_Manager::SWITCHER,
+                'default' => '',
+                'label_on' => __( 'Yes', 'th-widget-pack' ),
+                'label_off' => __( 'No', 'th-widget-pack' ),
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb-required-fields-tip' => 'display:none;',
+                    '{{WRAPPER}} .mphb_sc_search-wrapper label abbr' => 'display:none;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tip_color',
+            [
+                'label' => __( 'Required Tips Colour', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb-required-fields-tip small' => 'color: {{VALUE}};',
+                ],
+                
+                'condition' => [
+                    'hide_required_notices' => '',
+                ],
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'tip_color_typography',
+                'selector' => '{{WRAPPER}} .mphb-required-fields-tip small',
+                
+                'condition' => [
+                    'hide_required_notices' => '',
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'section_heading_form_fields',
+            [
+                'label' => __( 'Form Fields', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'form_field_text',
+            [
+                'label' => __( 'Text', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text],
+                    {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select' => 'color: {{VALUE}} !important;',
+
+                ],
+                
+            ]
+        );
+
+        $this->add_control(
+            'form_field_placeholder_text',
+            [
+                'label' => __( 'Placeholder', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text]::placeholder,
+                    {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select::placeholder' => 'color: {{VALUE}}; opacity: 1;',
+                    '{{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style input[type=text]:-ms-input-placeholder,
+                    {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text]::-ms-input-placeholder,
+                    {{WRAPPER}} .mphb_sc_booking_form-wrapper.frm_forms.with_frm_style select:-ms-input-placeholder
+                    {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select::-ms-input-placeholder' => 'color: {{VALUE}};',
+
+                ],
+                
+            ]
+        );
+
+        $this->add_control(
+            'form_field_bg_colour',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text],
+                    .mphb_sc_search-wrapper.frm_forms.with_frm_style select' => 'background-color: {{VALUE}};',
+                ],
+                
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'border',
+                'label' => __( 'Border', 'plugin-domain' ),
+                'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style input[type=text],
+                {{WRAPPER}} .mphb_sc_search-wrapper.frm_forms.with_frm_style select',
+            ]
+        );
+
+        $this->add_control(
+            'section_heading_form_button',
+            [
+                'label' => __( 'Form Button', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'button_1_style',
+            [
+                'label' => __( 'Button Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_text_colour',
+            [
+                'label' => __( 'Button Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]' => 'color: {{VALUE}};',
+                ],
+                
+
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_text_typography',
+                'selector' => '{{WRAPPER}} .mphb_sc_search-wrapper .mphb_sc_search-submit-button-wrapper.frm_submit input[type=submit]',
+                
+            ]
+        );
+
+
+        $this->add_control(
+            'section_heading_form',
+            [
+                'label' => __( 'Form', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'form_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-form-stacked' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
 
         $this->end_controls_section();
     }
@@ -286,7 +439,7 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
 
         global $post;
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         // Include MPHB hook
         do_action('mphbe_before_search_form_widget_render', $settings);
@@ -376,8 +529,8 @@ class Themo_Widget_MPHB_Search_Form extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Search_Form() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Search_Form() );

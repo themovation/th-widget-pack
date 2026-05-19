@@ -14,7 +14,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-vertical';
+		return 'th-editor-icon-bricks';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_price',
@@ -71,6 +71,34 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 			]
 		);
 
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+			'new_icon', [
+			'fa4compatibility' => 'icon',
+			'label' => __( 'Icon', 'th-widget-pack' ),
+			'type' => Controls_Manager::ICONS,
+			'label_block' => true,
+			'default' => [
+				'value' => 'fas fa-star',
+				'library' => 'fa-solid',
+			],
+			]
+        );
+        
+        $repeater->add_control(
+            'text',[
+            'label' => __( 'Text', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => 'Feature',
+            'label_block' => true,
+            'default' => 'Feature',
+            'dynamic' => [
+                'active' => true,
+            ],
+            ]
+        );
+
 		$this->add_control(
 			'items',
 			[
@@ -78,42 +106,33 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'th-linea icon-basic-magic-mouse', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-linea icon-basic-magic-mouse', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-linea icon-basic-magic-mouse',
+							'library' => 'th-linea',  
+                        ],
                         'text' => __( 'One Click Install', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-linea icon-software-vector-box', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-linea icon-software-vector-box', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-linea icon-software-vector-box',
+							'library' => 'th-linea',  
+                        ],
                         'text' => __( 'Drag & Drop Builder', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-linea icon-basic-elaboration-message-happy', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-linea icon-basic-elaboration-message-happy', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-linea icon-basic-elaboration-message-happy',
+							'library' => 'th-linea',  
+                        ],
                         'text' => __( 'Amazing Support', 'th-widget-pack' ),
                     ],
 
                 ],
-				'fields' => [
-					[
-						'name' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICON,
-						'default' => '',
-						'label_block' => true,
-						'options' => themo_icons(),
-						'include' => themo_fa_icons()
-					],
-					[
-						'name' => 'text',
-						'label' => __( 'Text', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
-						'placeholder' => 'Feature',
-						'label_block' => true,
-                        'default' => 'Feature',
-                        'dynamic' => [
-                            'active' => true,
-                        ]
-					],
-				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
+                'fields' => $repeater->get_controls(),
+				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ text }}}',
 			]
 		);
 
@@ -211,10 +230,6 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price' => 'color: {{VALUE}};',
@@ -227,7 +242,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'name' => 'price_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -245,10 +260,6 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price span' => 'color: {{VALUE}};',
@@ -261,7 +272,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'name' => 'price_text_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price span',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -285,6 +296,23 @@ class Themo_Widget_Feature_bar extends Widget_Base {
                 'default' => '#1b1b1b',
 			]
 		);
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 300,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_control(
             'section_icon_text_heading',
@@ -312,14 +340,14 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'name' => 'price_icon_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-item span',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
         $this->add_control(
             'section_button_text_heading',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -328,7 +356,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
         $this->add_control(
             'button_text_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-btn .btn-1' => 'color: {{VALUE}};',
@@ -341,25 +369,118 @@ class Themo_Widget_Feature_bar extends Widget_Base {
             [
                 'name' => 'button_text_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-btn .btn-1',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_text_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-btn .btn-1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+
+
+		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_padding_content',
+            [
+                'label' => __( 'Padding', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_background_content',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'section_background',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_group_control(
-            Group_Control_Text_Shadow::get_type(),
+            Group_Control_Border::get_type(),
             [
-                'name' => 'button_text_shadow',
-                'selector' => '{{WRAPPER}} .th-tour-nav-btn .btn-1',
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+                'separator' => 'before',
             ]
         );
 
-		$this->end_controls_section();
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-        $items = $this->get_settings( 'items' );
+        $items = $this->get_settings_for_display( 'items' );
 
         // Graphic Button
         $button_1_image = false;
@@ -432,7 +553,16 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 				$counter = 1; ?>
                 <?php foreach ( $items as $item ) : ?>
 					<span class="th-tour-nav-item">
-						<i class="<?php echo esc_attr( $item['icon'] ); ?>" aria-hidden="true"></i>
+                        <?php
+                        // new icon render
+						$migrated = isset( $item['__fa4_migrated']['new_icon'] );
+						$is_new = empty( $item['icon'] );
+						if ( $is_new || $migrated ) {
+							\Elementor\Icons_Manager::render_icon( $item['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+						} else {
+							?><i class="<?php echo $item['icon']; ?>" aria-hidden="true"></i><?php
+                        }
+                        ?>
 						<span><?php echo esc_html( $item['text'] ); ?></span>
 					</span>
                     <?php
@@ -443,7 +573,7 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#
 
@@ -477,13 +607,19 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 
             <div class="th-tour-nav-items">
             <# if ( settings.items ) {
-                    _.each(settings.items, function( item ) { #>
+                    _.each(settings.items, function( item ) { 
+                        item.iconHTML = elementor.helpers.renderIcon( view, item.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+                        item.migrated = elementor.helpers.isIconMigrated( item, 'new_icon' );
+                        #>
                     <span class="th-tour-nav-item">
-                        <i class="{{{ item.icon }}}" aria-hidden="true"></i>
+                        <# if ( item.iconHTML.rendered && ( ! item.icon || item.migrated ) ) { #>
+					        {{{ item.iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ item.icon }}" aria-hidden="true"></i>
+				        <# } #>
                         <span>{{{ item.text }}}</span>
                     </span>
-
-                <#  } );
+                <# } );
                 } #>
             </div>
         </div>
@@ -526,4 +662,4 @@ class Themo_Widget_Feature_bar extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Feature_bar() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Feature_bar() );
