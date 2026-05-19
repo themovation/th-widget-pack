@@ -52,11 +52,11 @@ if ( ! function_exists( 'sync_ot_and_elem_page_settings' ) ) {
 
             if ( $page ) {
 
-                $elm_trans_header = $page->get_settings('themo_transparent_header');
-                $elm_page_layout = $page->get_settings('themo_page_layout');
-                $elm_hide_title = $page->get_settings('hide_title');
-                $elm_header_content_style = $page->get_settings('themo_header_content_style');
-                $elm_alt_logo = $page->get_settings('themo_alt_logo');
+                $elm_trans_header = $page->get_settings_for_display('themo_transparent_header');
+                $elm_page_layout = $page->get_settings_for_display('themo_page_layout');
+                $elm_hide_title = $page->get_settings_for_display('hide_title');
+                $elm_header_content_style = $page->get_settings_for_display('themo_header_content_style');
+                $elm_alt_logo = $page->get_settings_for_display('themo_alt_logo');
 
                 if (empty($elm_trans_header)) {
                     $elm_trans_header = 'off';

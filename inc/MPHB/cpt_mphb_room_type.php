@@ -47,10 +47,35 @@ function th_register_mphb_room_type_meta_boxes()
                 'desc' => __('Displayed below the title. e.g.: $99', 'bellevue'),
             ),
             array(
+                'id'    => "th_room_price_before",
+                'label'  =>  'Price before',
+                'type'  => 'text',
+                'desc' => __('Displayed before the price. e.g.: Starting from', 'bellevue'),
+            ),
+            array(
                 'id'    => "th_room_price_per",
                 'label'  =>  'Price per',
                 'type'  => 'text',
                 'desc' => __('Displayed after the price. e.g.: /night', 'bellevue'),
+            ),
+            array(
+                'id'    => "th_room_location",
+                'label'  =>  'Location',
+                'type'  => 'text',
+                'desc' => __('e.g.: 2 km away from the center', 'bellevue'),
+            ),
+            array(
+                'id'    => "th_room_location_link",
+                'label'  =>  'Location Link',
+                'type'  => 'text',
+                'desc' => __('e.g.: A google maps link', 'bellevue'),
+            ),
+            array(
+                'id'          => 'th_room_rating',
+                'label'       => __( 'Rating', 'bellevue' ),
+                'desc'        => __( 'e.g: 4.5', 'bellevue' ),
+                'type'        => 'numeric-slider',
+                'min_max_step'=> '0,5,0.5',
             ),
             array(
                 'id' => 'th_room_button_text',
@@ -65,6 +90,24 @@ function th_register_mphb_room_type_meta_boxes()
                 'class'       => 'ot-upload-attachment-id',
                 'desc' => 'Helpful when using the "Image Format". The theme will use the Alternative Image for the room grid and the Featured Image for the lightbox.',
             ),
+            array(
+                'id'          => 'th_gallery',
+                'label'       => __( 'Gallery', 'bellevue'),
+                'desc'        => __( 'This will replace the featured image', 'bellevue'),
+                'type'        => 'gallery',
+            ),
+            array(
+                'id'          => 'th_room_icons_ordering',
+                'label'       => __( 'Icons Ordering', 'bellevue'),
+                'type'        => 'text',
+                'class'       => 'icon-hidden',
+            ),
+            array(
+                'id'          => 'th_room_icons',
+                'label'       => __( 'Icons', 'bellevue'),
+                'desc'        => 'Add icons for the listings',
+                'type'        => 'th_room_icons',
+           ),
             // END PAGE LAYOUT META BOX
         )
     );
