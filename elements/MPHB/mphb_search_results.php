@@ -14,18 +14,22 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-post-list';
+        return 'th-editor-icon-search-results';
     }
 
     public function get_categories() {
         return [ 'themo-elements' ];
     }
 
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
     public function is_reload_preview_required() {
         return true;
     }
 
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'section_counter_block',
@@ -266,10 +270,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb_sc_search_results-info' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
 
             ]
@@ -280,7 +281,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'info_color_typography',
                 'selector' => '{{WRAPPER}} .mphb_sc_search_results-info',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
 
             ]
         );
@@ -343,10 +344,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} h2.mphb-recommendation-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
 
             ]
@@ -357,7 +355,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'recommendation_heading_typography',
                 'selector' => '{{WRAPPER}} h2.mphb-recommendation-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -371,10 +369,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} ul.mphb-recommendation-details-list li' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
                 'separator' => 'before',
 
@@ -386,7 +381,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'recommendation_list_typography',
                 'selector' => '{{WRAPPER}} ul.mphb-recommendation-details-list li',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -399,10 +394,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-recommendation-total-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
                 'separator' => 'before',
 
@@ -414,7 +406,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'recommendation_price_typography',
                 'selector' => '{{WRAPPER}} .mphb-recommendation-total-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -460,10 +452,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-cart-message' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
 
             ]
@@ -474,7 +463,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'cart_text_typography',
                 'selector' => '{{WRAPPER}} .mphb-cart-message',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -487,10 +476,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-cart-total-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
                 'separator' => 'before',
 
@@ -502,7 +488,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'cart_price_typography',
                 'selector' => '{{WRAPPER}} .mphb-cart-total-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -549,10 +535,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
 
             ]
@@ -563,7 +546,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .mphb-room-type-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -576,10 +559,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type p' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'label_block'=>true,
                 'separator' => 'before'
 
@@ -591,7 +571,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
             [
                 'name' => 'excerpt_details_typography',
                 'selector' => '{{WRAPPER}} .mphb-room-type p',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -606,10 +586,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li:before' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before'
             ]
         );
@@ -620,7 +597,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'icon_details_typography',
                 'label' => __( 'Size', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li:before',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 'exclude' => [ 'font_family','font_weight','text_transform','font_style','text_decoration','letter_spacing'],
             ]
         );
@@ -635,10 +612,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-title' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'condition' => [
                     'show_icon_titles' => 'yes',
                 ],
@@ -652,7 +626,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'icon_title_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
                 'condition' => [
                     'show_icon_titles' => 'yes',
                 ],
@@ -668,10 +642,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before'
             ]
         );
@@ -682,7 +653,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'value_details_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -696,10 +667,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                     '{{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value a,
                     {{WRAPPER}} .mphb-room-type .mphb-loop-room-type-attributes li .mphb-attribute-value a:link' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
 
             ]
         );
@@ -713,10 +681,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-regular-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before'
             ]
         );
@@ -727,7 +692,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'search_result_price_description_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-regular-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -740,10 +705,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-regular-price .mphb-price' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before'
             ]
         );
@@ -754,7 +716,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'search_result_price_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-regular-price .mphb-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -767,10 +729,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .mphb-room-type .mphb-view-details-button' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
+                
                 'separator' => 'before'
             ]
         );
@@ -781,7 +740,7 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
                 'name' => 'search_result_view_link_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
                 'selector' => '{{WRAPPER}} .mphb-room-type .mphb-view-details-button',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -814,8 +773,8 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
 
     protected function render() {
 
-        $settings = $this->get_settings();
-        $atts = $this->get_settings();
+        $settings = $this->get_settings_for_display();
+        $atts = $this->get_settings_for_display();
 
 
             $themo_form_styling = false;
@@ -883,8 +842,8 @@ class Themo_Widget_MPHB_Search_Results extends Widget_Base {
         echo $this->get_settings( 'shortcode' );
     }
 
-    protected function _content_template() {}
+    protected function content_template() {}
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_MPHB_Search_Results() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_MPHB_Search_Results() );

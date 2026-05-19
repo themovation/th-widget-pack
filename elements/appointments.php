@@ -14,14 +14,18 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-countdown';
+		return 'th-editor-icon-appointment-calendar';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_tooltip',
 			[
@@ -48,10 +52,6 @@ class Themo_Widget_Appointments extends Widget_Base {
 			[
 				'label' => __( 'Tooltip Background', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .th-cal-tooltip' => 'background-color: {{VALUE}};',
@@ -125,10 +125,6 @@ class Themo_Widget_Appointments extends Widget_Base {
 			[
 				'label' => __( 'Tooltip Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '#FFFFFF',
 				'selectors' => [
 					'{{WRAPPER}} .th-cal-tooltip h3' => 'color: {{VALUE}};',
@@ -141,7 +137,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-book-cal-' . esc_attr( $settings['calendar_size'] ) );
         $this->add_render_attribute( 'th-cal-wrap', 'class', 'th-' . esc_attr( $settings['calendar_align'] ) );
@@ -157,7 +153,7 @@ class Themo_Widget_Appointments extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -183,4 +179,4 @@ class Themo_Widget_Appointments extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Appointments() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Appointments() );

@@ -1,0 +1,237 @@
+@import "variables";
+$contentpadding: 80px;
+.thmv-tabs{
+    font-size: 16px;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    &.style_1{
+        .thmv-tab-title{
+            color: #0F0F0F;
+            padding: 10px 15px;
+            font-size: 20px;
+            margin-bottom: 5px;
+            cursor: pointer;
+
+            @media(max-width: $sm-max){
+                width: 100%;
+                background: #EAEAEA;
+            }
+            @media(min-width: $md){
+                margin-right: 10px;
+                color: rgba(15, 15, 15, 0.2);
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+            &.active, &:hover{
+                background-color: #0F0F0F;
+                color: #fff;
+
+            }
+        }
+    }
+    .thmv-tab-price{
+        font-size: 18px;
+        line-height: 23px;
+        margin: 0;
+        font-weight: 600;
+        color: #0F0F0F;
+
+        text-transform: uppercase;
+        @media(min-width: $md){
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+    .thmv-tab-text{
+        p {
+            margin: 1em 0;
+            font-size: 16px;
+            line-height: 32px;
+            color: rgba(28, 23, 21, 0.5);
+        }
+    }
+    .price-phone{
+        @media(min-width: $md){
+            display: none;
+        }
+    }
+    .price-tablet{
+
+        @media(max-width: $sm-max){
+            display: none;
+        }
+    }
+    .thmv-tab-heading{
+        font-size: 18px;
+        line-height: 23px;
+        margin: 0;
+        font-weight: 600;
+        color: #0F0F0F;
+
+        text-transform: uppercase;
+        @media(min-width: $md){
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+
+    $paddingCol: 10px;
+
+    .thmv-tab-content{
+        width: 100%;//calc(100% + #{$paddingCol*2});
+        /*        margin-left: -$paddingCol;
+                margin-right: -$paddingCol;*/
+
+        &:not(.active){
+            display: none;
+        }
+        &.active{
+            @include d-flex;
+
+        }
+    }
+    .thmv-content-block{
+        flex: 0 0 auto;
+        /*        padding: 0 $paddingCol;*/
+        width: 100%;
+        max-width: 100%;
+        /*        margin: 30px 0;*/
+        &[data-no-text]{
+            //when no text is there
+            @include d-flex;
+            @include justify-content-between;
+            .thmv-title-price-block{
+                padding-right: 10px;
+            }
+        }
+
+    }
+    .margin-wrap{
+        margin: 0 $paddingCol 30px $paddingCol;
+        @media(min-width: $md){
+            margin-top: 50px;
+        }
+    }
+    .thmv-title-price-block{
+        @include d-flex;
+        @include justify-content-between;
+    }
+
+    .thmv-tabs-wrapper{
+        @media(max-width: $sm-max){
+            display: none;
+        }
+
+        @media(min-width: $md){
+            @include d-flex;
+        }
+
+    }
+    .thmv-tab-mobile-title{
+        @media(min-width: $md){
+            display: none;
+        }
+    }
+
+    &.style_2{
+        $widthBar: 69px;
+        $padding: 30px;
+        @media(min-width: $lg){
+            /*            width: calc(100% + 60px);
+                        margin: 0 -30px;*/
+            @include d-flex;
+            @include flex-nowrap;
+
+        }
+
+        .thmv-tabs-wrapper{
+            display: block;
+            padding-top: 45px;
+            padding-bottom: 45px;
+            padding-left: 15px;
+            @media(min-width: $md){
+                padding-left: 50px;
+            }
+            @media(min-width: $lg){
+                padding-left: 15px;
+            }
+            @media(max-width: $md-max){
+                width: calc(100% + #{$padding*2});
+                margin: 0 #{-$padding};
+            }
+            @media(min-width: $lg){
+                @include d-flex;
+                @include flex-column;
+                padding-top: 0;
+                background-color: #fbe946;
+                content: "";
+                width: 100%;
+                height: 100%;
+                margin-left: -75%;
+                padding-bottom: $contentpadding;
+                padding-top: $contentpadding;
+                @include align-items-end;
+                .thmv-tab-title{
+                    width: 25%;
+                }
+            }
+
+        }
+        .thmv-tabs-content-wrapper{
+            &.has-bg{
+                @media(max-width: $md-max){
+                    margin-left: #{-$padding};
+                    width: calc(100% + #{$padding*2});
+                    padding-left: $padding;
+                    padding-right: $padding;
+                }
+
+                @media(min-width: $lg){
+                    padding-bottom: $contentpadding;
+                    padding-top: $contentpadding;
+                }
+
+            }
+            @media(min-width: $lg){
+                padding-left: 100px;
+                padding-right: 100px;
+                width: 75%;
+                @include align-items-end;
+            }
+        }
+        .thmv-tab-title{
+            padding: 15px 0;
+            padding-left: 0;
+            font-size: 18px;
+            width: 100%;
+            color: #0F0F0F;
+            font-weight: normal;
+            padding-right: $widthBar+15px;
+            @include d-flex;
+            @media(min-width: $md){
+                font-size: 30px;
+            }
+            @media(min-width: $lg){
+                width: 45%;
+            }
+            &.active, &:hover{
+                position: relative;
+                cursor: pointer;
+                font-weight: 500;
+                &:after {
+                    content: "";
+                    width: $widthBar;
+                    height: 4px;
+                    background-color: #171818;
+                    right: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
