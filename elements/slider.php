@@ -14,13 +14,17 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-slideshow';
+		return 'th-editor-icon-slider';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
 	public static function get_button_sizes() {
 		return [
 			'xs' => __( 'Extra Small', 'elementor-pro' ),
@@ -31,7 +35,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		];
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_slides',
 			[
@@ -52,7 +56,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4A4A4A',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -66,7 +70,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'active' => true,
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}})',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-image: url({{URL}});',
 				],
 			]
 		);
@@ -79,15 +83,6 @@ class Themo_Widget_Slider extends Widget_Base {
                 'separator' => 'before',
             ]
         );
-
-		$th_repeater->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'css_filters',
-				'label'	=> __( 'CSS Filters', 'elementor' ),
-				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg',
-			]
-		);
 
 		$th_repeater->add_responsive_control(
 			'slide_bg_repeat',
@@ -102,7 +97,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'repeat-y' => __( 'Repeat Vertically ', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-repeat: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -127,7 +122,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'scroll' => __( 'Scroll', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-attachment: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -159,7 +154,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'right bottom' =>  __( 'Right Bottom', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-position: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -184,7 +179,7 @@ class Themo_Widget_Slider extends Widget_Base {
 					'auto' => __( 'Auto', 'th-widget-pack' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'background-size: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -227,7 +222,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => 'rgba(0, 0, 0, 0.5)',
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .has-image-bg.th-slider-overlay' => 'background-color: {{VALUE}};',
 				],
 				'conditions' => [
 					'terms' => [
@@ -676,9 +671,9 @@ class Themo_Widget_Slider extends Widget_Base {
                     '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .th-slide-content' => '{{VALUE}}',
                 ],
                 'selectors_dictionary' => [
-                    'left' => 'margin-right: auto',
+                    'left' => 'margin-right: auto; margin-left:0;',
                     'center' => 'margin: 0 auto',
-                    'right' => 'margin-left: auto',
+                    'right' => 'margin-left: auto; margin-right:0;',
                 ],
                 'default' => 'center',
             ]
@@ -717,7 +712,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-		$th_repeater->add_responsive_control(
+		$th_repeater->add_control(
 			'slide_text_align',
 			[
 				'label' => __( 'Text Align', 'th-widget-pack' ),
@@ -737,7 +732,6 @@ class Themo_Widget_Slider extends Widget_Base {
 						'icon' => 'fa fa-align-right',
 					],
 				],
-
                 'default' => 'center',
 			]
 		);
@@ -761,15 +755,16 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'slide_title_typo',
 				'label' => __( 'Title Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 			]
 		);
 
 		$th_repeater->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
+			Group_Control_Text_Shadow::get_type(),
 			[
 				'name' => 'slide_title_shadow',
+				'label'	=> 'Text Shadow',
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 			]
 		);
@@ -788,15 +783,12 @@ class Themo_Widget_Slider extends Widget_Base {
 			]
 		);
 
-
-
-
 		$th_repeater->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'slide_content_typo',
 				'label' => __( 'Content Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p',
 			]
 		);
@@ -833,11 +825,11 @@ class Themo_Widget_Slider extends Widget_Base {
                         'slide_bg_color' => __( '#7A85E8', 'th-widget-pack' ),
                         'inline_form' => __( 'inline', 'th-widget-pack' ),
                         'slide_button_text_1_show' => __( 'no', 'th-widget-pack' ),
-                        'slide_shortcode' => __( '[formidable id="3"]', 'th-widget-pack' ),
+                        'slide_shortcode' => __( '[formidable id="2"]', 'th-widget-pack' ),
                     ],
 
                 ],
-				'fields' => array_values( $th_repeater->get_controls() ),
+				'fields' => $th_repeater->get_controls(),
 				'title_field' => '{{{ slide_title }}}',
 			]
 		);
@@ -863,7 +855,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 				'dynamic' => [
@@ -1102,7 +1094,7 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['slides'] ) ) {
 			return;
@@ -1374,7 +1366,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			jQuery( function ( $ ) {
 
 				themo_start_flex_slider(
-					'#main-flex-slider',
+					'.flexslider',
                     <?php echo esc_attr( $settings['autoplay'] ) ? 'true' : 'false'; ?>,
 					'<?php echo esc_attr( $settings['th_animation'] ); ?>',
 					'<?php echo esc_attr( $settings['easing'] ); ?>',
@@ -1393,7 +1385,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -1409,4 +1401,4 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Slider() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Slider() );

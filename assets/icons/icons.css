@@ -14,7 +14,7 @@
     url("linea/linea-arrows-10.svg#linea-arrows-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-arrows-"]:before,
@@ -451,7 +451,7 @@
   url("linea/linea-basic-10.svg#linea-basic-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-basic-"]:before,
@@ -885,7 +885,7 @@
   url("linea/linea-basic-elaboration-10.svg#linea-basic-elaboration-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-basic-elab"]:before,
@@ -1349,7 +1349,7 @@
   url("linea/linea-ecommerce-10.svg#linea-ecommerce-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-ecommerce-"]:before,
@@ -1633,7 +1633,7 @@
   url("linea/linea-music-10.svg#linea-music-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-music-"]:before,
@@ -1752,7 +1752,7 @@
   url("linea/linea-software-10.svg#linea-software-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-software-"]:before,
@@ -2081,7 +2081,7 @@
   url("linea/linea-weather-10.svg#linea-weather-10") format("svg");
   font-weight: normal;
   font-style: normal;
-
+  font-display: swap;
 }
 
 [class^="icon-weather-"]:before,
@@ -2365,12 +2365,14 @@
   url("travelpack/travelpack.svg#travelpack") format("svg");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "travelpack";
     src: url("travelpack/travelpack.svg#travelpack") format("svg");
+    font-display: swap;
   }
 }
 

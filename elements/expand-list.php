@@ -14,14 +14,18 @@ class Themo_Widget_Expand_list extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-toggle';
+		return 'th-editor-icon-expand-list';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+	
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_toggles',
 			[
@@ -159,14 +163,6 @@ class Themo_Widget_Expand_list extends Widget_Base {
             ]
         );
 
-        $this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'section_content_title_shadow',
-				'selector' => '{{WRAPPER}} .th-itin-title',
-			]
-		);
-
         $this->add_control(
             'section_content_content_heading',
             [
@@ -183,6 +179,7 @@ class Themo_Widget_Expand_list extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-itin-content *' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-itin-content' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -192,24 +189,47 @@ class Themo_Widget_Expand_list extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_content_typography',
-                'selector' => '{{WRAPPER}} .th-itin-content *',
+                'selector' => '{{WRAPPER}} .th-itin-content *, {{WRAPPER}} .th-itin-content',
             ]
         );
 
-        $this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'section_content_content_shadow',
-				'selector' => '{{WRAPPER}} .th-itin-title',
-			]
-		);
+        $this->add_control(
+            'section_vertical_line_heading',
+            [
+                'label' => __( 'Vertical line', 'elementor' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'vertical_line_color',
+            [
+                'label' => __( 'Vertical Line Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-itin-content' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dot_color',
+            [
+                'label' => __( 'Dot Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .th-itin-icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
 
 		$this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
-		$tabs = $this->get_settings( 'tabs' );
+		$settings = $this->get_settings_for_display();
+		$tabs = $this->get_settings_for_display( 'tabs' );
 
 		$this->add_render_attribute( 'itin-main', 'class', 'th-itinerary' );
 		$this->add_render_attribute( 'itin-main', 'class', esc_attr( $settings['width'] ) );
@@ -235,7 +255,7 @@ class Themo_Widget_Expand_list extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 		<div class="th-itinerary {{settings.width}} {{settings.alignment}}">
 			<#
@@ -271,4 +291,4 @@ class Themo_Widget_Expand_list extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Expand_list() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Expand_list() );

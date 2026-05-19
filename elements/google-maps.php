@@ -14,14 +14,18 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-google-maps';
+		return 'th-editor-icon-google-maps';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+	public function get_help_url() {
+		return 'https://help.themovation.com/' . $this->get_name();
+	}
+
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_map',
 			[
@@ -356,7 +360,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .map-info .th-gmap-address' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .map-info .th-gmap-address p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -366,7 +370,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_address_typography',
-                'selector' => '{{WRAPPER}} .map-info .th-gmap-address',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-address p',
             ]
         );
 
@@ -385,7 +389,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .map-info .th-gmap-hoursop' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .map-info .th-gmap-hoursop p' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -395,7 +399,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             [
                 'label' => __( 'Typography', 'elementor' ),
                 'name' => 'section_content_hours_typography',
-                'selector' => '{{WRAPPER}} .map-info .th-gmap-hoursop',
+                'selector' => '{{WRAPPER}} .map-info .th-gmap-hoursop p',
             ]
         );
 
@@ -413,10 +417,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             [
                 'label' => __( 'Link Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .map-info .th-gmap-links a' => 'color: {{VALUE}};',
@@ -433,15 +434,16 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'section_content_map_heading',
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_css_map',
             [
-                'label' => __( 'Map', 'elementor' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'before',
+                'label' => __( 'Map', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
-
+        
         $this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
 			[
@@ -452,10 +454,108 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		);
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_gmap_border',
+            [
+                'label' => __( 'Appearance', 'th-widget-pack' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'blog_section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-gmap-wrap .map-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_title_space_above',
+            [
+                'label' => __( 'Space Above', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-gmap-wrap .map-info' => 'top: {{SIZE}}{{UNIT}}',
+                ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+
+        // Add colour bg here
+
+        $this->add_control(
+            'bg_colour',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .map-info' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'map_border',
+                'selector' => '{{WRAPPER}} .th-gmap-wrap .map-info',
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'map_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-gmap-wrap .map-info' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'map_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-gmap-wrap .map-info',
+            ]
+        );
+        
+        $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 		global $th_map_id;
 		$map_id = 'th-map-' .  ++$th_map_id;
 
@@ -551,7 +651,7 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -605,4 +705,4 @@ class Themo_Widget_GoogleMaps extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_GoogleMaps() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_GoogleMaps() );

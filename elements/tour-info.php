@@ -14,14 +14,18 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-vertical';
+		return 'th-editor-icon-details';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	protected function _register_controls() {
+    public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
+    
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_price',
@@ -65,7 +69,35 @@ class Themo_Widget_TourInfo extends Widget_Base {
 			[
 				'label' => __( 'Items', 'th-widget-pack' ),
 			]
-		);
+        );
+        
+        $repeater = new Repeater();
+
+        $repeater->add_control(
+            'new_icon', [
+            'fa4compatibility' => 'icon',
+            'label' => __( 'Icon', 'th-widget-pack' ),
+            'type' => Controls_Manager::ICONS,
+            'label_block' => true,
+            'default' => [
+                'value' => 'fas fa-star',
+                'library' => 'fa-solid',
+            ],
+            ]
+        );    
+
+        $repeater->add_control(
+            'text', [
+            'label' => __( 'Text', 'th-widget-pack' ),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => 'Feature',
+            'label_block' => true,
+            'default' => 'Feature',
+            'dynamic' => [
+                'active' => true,
+            ]
+            ]
+        );   
 
 		$this->add_control(
 			'items',
@@ -74,43 +106,32 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				'type' => Controls_Manager::REPEATER,
                 'default' => [
                     [
-                        'icon' => __( 'th-trip travelpack-compass', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip travelpack-compass', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip travelpack-compass',
+							'library' => 'th-trip',  
+                        ],
                         'text' => __( '4.5 Miles', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-trip travelpack-clock-time', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip travelpack-clock-time', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip travelpack-clock-time',
+							'library' => 'th-linea',  
+                        ],
                         'text' => __( '3 Hours', 'th-widget-pack' ),
                     ],
                     [
-                        'icon' => __( 'th-trip th-prsn travelpack-person-plus', 'th-widget-pack' ),
+                        // 'icon' => __( 'th-trip th-prsn travelpack-person-plus', 'th-widget-pack' ),
+                        'new_icon' => [
+                            'value' => 'th-trip th-prsn travelpack-person-plus',
+							'library' => 'th-trip',  
+                        ],
                         'text' => __( '3+ People', 'th-widget-pack' ),
                     ],
-
                 ],
-				'fields' => [
-					[
-						'name' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICON,
-						'default' => '',
-						'label_block' => true,
-						'options' => themo_icons(),
-						'include' => themo_fa_icons(),
-					],
-					[
-						'name' => 'text',
-						'label' => __( 'Text', 'th-widget-pack' ),
-						'type' => Controls_Manager::TEXT,
-						'placeholder' => 'Feature',
-						'label_block' => true,
-                        'default' => 'Feature',
-                        'dynamic' => [
-                            'active' => true,
-                        ],
-					],
-				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
-
+                'fields' => $repeater->get_controls(),
+				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ text }}}',
 			]
 		);
 
@@ -182,7 +203,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		);
 
         $this->add_control(
-            'section_content_price_heading',
+            'section_price_heading',
             [
                 'label' => __( 'Price', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
@@ -194,10 +215,6 @@ class Themo_Widget_TourInfo extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price' => 'color: {{VALUE}};',
@@ -208,8 +225,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_content_price_typography',
+                'name' => 'price_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price',
             ]
         );
@@ -228,16 +244,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price span' => 'color: {{VALUE}};',
-                ],
-                'dynamic' => [
-                    'active' => true,
                 ],
             ]
         );
@@ -245,9 +254,9 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_price_text_typography',
+                'name' => 'price_text_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price span',
+                
             ]
         );
 
@@ -261,7 +270,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
         );
 
 		$this->add_control(
-			'icon',
+			'icon_color',
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
@@ -269,14 +278,28 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
-                'dynamic' => [
-                    'active' => true,
-                ],
 			]
 		);
 
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => __( 'Size', 'elementor' ),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 6,
+                        'max' => 300,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_control(
-            'section_text_heading',
+            'section_icon_text_heading',
             [
                 'label' => __( 'Text', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
@@ -293,25 +316,22 @@ class Themo_Widget_TourInfo extends Widget_Base {
 					'{{WRAPPER}} .th-tour-nav-item span' => 'color: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
-                'dynamic' => [
-                    'active' => true,
-                ],
 			]
 		);
 
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_text_typography',
+                'name' => 'price_icon_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-item span',
+                
             ]
         );
 
         $this->add_control(
             'section_button_text_heading',
             [
-                'label' => __( 'Button Text', 'elementor' ),
+                'label' => __( 'Button', 'elementor' ),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -320,13 +340,10 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_control(
             'button_text_color',
             [
-                'label' => __( 'Color', 'th-widget-pack' ),
+                'label' => __( 'Text Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .th-tour-nav-btn .th-btn' => 'color: {{VALUE}};',
-                ],
-                'dynamic' => [
-                    'active' => true,
+                    '{{WRAPPER}} .th-tour-nav-btn .btn' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -334,27 +351,120 @@ class Themo_Widget_TourInfo extends Widget_Base {
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
-                'label' => __( 'Typography', 'elementor' ),
-                'name' => 'section_button_text_typography',
-                'selector' => '{{WRAPPER}} .th-tour-nav-btn .th-btn',
+                'name' => 'button_text_typography',
+                'selector' => '{{WRAPPER}} .th-tour-nav-btn .btn',
+                
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_text_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav-btn .btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+
+
+		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_padding_content',
+            [
+                'label' => __( 'Padding', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'section_padding',
+            [
+                'label' => __( 'Padding', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_background_content',
+            [
+                'label' => __( 'Background', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'section_background',
+            [
+                'label' => __( 'Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_border_content',
+            [
+                'label' => __( 'Border', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_group_control(
-            Group_Control_Text_Shadow::get_type(),
+            Group_Control_Border::get_type(),
             [
-                'name' => 'title_shadow',
-                'selector' => '{{WRAPPER}} .th-tour-nav-btn .th-btn',
+                'name' => 'card_border',
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+                'separator' => 'before',
             ]
         );
 
-		$this->end_controls_section();
+        $this->add_responsive_control(
+            'card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'elementor' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .th-tour-nav' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'card_box_shadow',
+                'exclude' => [
+                    'box_shadow_position',
+                ],
+                'selector' => '{{WRAPPER}} .th-tour-nav',
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-        $items = $this->get_settings( 'items' );
+        $items = $this->get_settings_for_display( 'items' );
 
         if ( empty( $settings['button_1_link']['url'] ) ) { $settings['button_1_link']['url'] = '#'; };
 
@@ -395,7 +505,16 @@ class Themo_Widget_TourInfo extends Widget_Base {
 				$counter = 1; ?>
                 <?php foreach ( $items as $item ) : ?>
 					<span class="th-tour-nav-item">
-						<i class="<?php echo esc_attr( $item['icon'] ); ?>" aria-hidden="true"></i>
+                        <?php
+                        // new icon render
+						$migrated = isset( $item['__fa4_migrated']['new_icon'] );
+						$is_new = empty( $item['icon'] );
+						if ( $is_new || $migrated ) {
+							\Elementor\Icons_Manager::render_icon( $item['new_icon'], [ 'aria-hidden' => 'true' ] ); 
+						} else {
+							?><i class="<?php echo $item['icon']; ?>" aria-hidden="true"></i><?php
+                        }
+                        ?>
 						<span><?php echo esc_html( $item['text'] ); ?></span>
 					</span>
                     <?php
@@ -406,7 +525,7 @@ class Themo_Widget_TourInfo extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#  var button_1_link_url = '#';
         if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
@@ -430,9 +549,16 @@ class Themo_Widget_TourInfo extends Widget_Base {
 
             <div class="th-tour-nav-items">
             <# if ( settings.items ) {
-                    _.each(settings.items, function( item ) { #>
+                _.each(settings.items, function( item ) { 
+                        item.iconHTML = elementor.helpers.renderIcon( view, item.new_icon, { 'aria-hidden': true }, 'i' , 'object' ); 
+                        item.migrated = elementor.helpers.isIconMigrated( item, 'new_icon' );
+                        #>
                     <span class="th-tour-nav-item">
-                        <i class="{{{ item.icon }}}" aria-hidden="true"></i>
+                        <# if ( item.iconHTML.rendered && ( ! item.icon || item.migrated ) ) { #>
+					        {{{ item.iconHTML.value }}}
+				        <# } else { #>
+					        <i class="{{ item.icon }}" aria-hidden="true"></i>
+				        <# } #>
                         <span>{{{ item.text }}}</span>
                     </span>
 
@@ -479,4 +605,4 @@ class Themo_Widget_TourInfo extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_TourInfo() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_TourInfo() );
