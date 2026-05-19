@@ -39,7 +39,27 @@
                         $( ".hide-nav-wrap" ).trigger( "click" ); // Hide Nav on Start.
                     }, 2000);
                 }
-            }else{
+            }else if($("#thhf-masthead").length){ // HFE header.
+                $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide/Show Header</div> </div>" ).insertAfter( "#thhf-masthead" );
+                $( ".hide-nav-wrap" ).click(function() {
+                    $( "#thhf-masthead").fadeToggle( "fast", function() {
+                        // Animation complete.
+                    });
+                });
+                setTimeout(function() {
+                    $( ".hide-nav-wrap" ).trigger( "click" ); // Hide Nav on Start.
+                }, 2000);
+            }else if($("#thhf-masthead-sticky").length){ // HFE sticky header.
+                $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide/Show Header</div> </div>" ).insertAfter( "#thhf-masthead-sticky" );
+                $( ".hide-nav-wrap" ).click(function() {
+                    $( "#thhf-masthead-sticky" ).fadeToggle( "fast", function() {
+                        // Animation complete.
+                    });
+                });
+                setTimeout(function() {
+                    $( ".hide-nav-wrap" ).trigger( "click" ); // Hide Nav on Start.
+                }, 2000);
+            }else{ // For Standard Header.
                 $( "<div class='hide-nav-wrap button'><div class='hide-nav'>Hide/Show Header</div> </div>" ).insertAfter( "header[data-transparent-header='true']:not('.headhesive--clone')" );
 
                 $( ".hide-nav-wrap" ).click(function() {
