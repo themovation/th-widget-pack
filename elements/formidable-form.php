@@ -14,18 +14,18 @@ class Themo_Widget_Formidable extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-form-horizontal';
+		return 'th-editor-icon-forms';
 	}
 
 	public function get_categories() {
 		return [ 'themo-elements' ];
 	}
 
-	/*public function is_reload_preview_required() {
-		return true;
-	}*/
+	public function get_help_url() {
+        return 'https://help.themovation.com/' . $this->get_name();
+    }
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_shortcode',
 			[
@@ -39,7 +39,10 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'label' => __( 'Shortcode', 'th-widget-pack' ),
                 'type' => Controls_Manager::TEXT,
                 'placeholder' => __( '[formidable id=3]', 'th-widget-pack' ),
-                'default' => __( '[formidable id=3]', 'th-widget-pack' )
+                'default' => __( '[formidable id=3]', 'th-widget-pack' ),
+                'dynamic' => [
+                    'active' => true,
+                ],
             ]
         );
 
@@ -76,27 +79,6 @@ class Themo_Widget_Formidable extends Widget_Base {
         );
 
         $this->add_control(
-            'button_1_style',
-            [
-                'label' => __( 'Button Style', 'th-widget-pack' ),
-                'type' => Controls_Manager::SELECT,
-                'default' => 'standard-primary',
-                'options' => [
-                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
-                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
-                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
-                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
-                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
-                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
-                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
-                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
-                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
-                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
-                ],
-            ]
-        );
-
-        $this->add_control(
             'slide_text_align',
             [
                 'label' => __( 'Align', 'th-widget-pack' ),
@@ -120,10 +102,10 @@ class Themo_Widget_Formidable extends Widget_Base {
             ]
         );
 
-        $this->add_control(
+        $this->add_responsive_control(
             'content_max_width',
             [
-                'label' => __( 'Content Width', 'th-widget-pack' ),
+                'label' => __( 'Content Width', 'elementor' ),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
@@ -139,15 +121,70 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-fo-form' => 'max-width: {{SIZE}}{{UNIT}};',
                 ],
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+        
+		$this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_content',
+            [
+                'label' => __( 'Button', 'th-widget-pack' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
 
-		$this->end_controls_section();
+        $this->add_control(
+            'button_1_style',
+            [
+                'label' => __( 'Style', 'th-widget-pack' ),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'standard-primary',
+                'options' => [
+                    'standard-primary' => __( 'Standard Primary', 'th-widget-pack' ),
+                    'standard-accent' => __( 'Standard Accent', 'th-widget-pack' ),
+                    'standard-light' => __( 'Standard Light', 'th-widget-pack' ),
+                    'standard-dark' => __( 'Standard Dark', 'th-widget-pack' ),
+                    'ghost-primary' => __( 'Ghost Primary', 'th-widget-pack' ),
+                    'ghost-accent' => __( 'Ghost Accent', 'th-widget-pack' ),
+                    'ghost-light' => __( 'Ghost Light', 'th-widget-pack' ),
+                    'ghost-dark' => __( 'Ghost Dark', 'th-widget-pack' ),
+                    'cta-primary' => __( 'CTA Primary', 'th-widget-pack' ),
+                    'cta-accent' => __( 'CTA Accent', 'th-widget-pack' ),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_text_colour',
+            [
+                'label' => __( 'Text Color', 'th-widget-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} form .frm_submit input[type=submit]' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_text_typography',
+                'selector' => '{{WRAPPER}} form .frm_submit input[type=submit]',
+                
+            ]
+        );
+
+        $this->end_controls_section();
 	}
 
 	protected function render() {
 
-        $settings = $this->get_settings();
+        $settings = $this->get_settings_for_display();
 
         if ( isset( $settings['shortcode'] ) && ! empty( $settings['shortcode'] ) ) {
             $th_shortcode = sanitize_text_field( $settings['shortcode'] );
@@ -204,7 +241,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 		echo sanitize_text_field($this->get_settings( 'shortcode' ));
 	}*/
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -225,4 +262,4 @@ class Themo_Widget_Formidable extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Formidable() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Formidable() );

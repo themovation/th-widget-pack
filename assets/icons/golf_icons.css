@@ -27,57 +27,107 @@
   font-style: normal;
 }
 
-.golfpack-001-trophy:before { content: "\f100"; }
-.golfpack-002-scoring:before { content: "\f101"; }
-.golfpack-003-towel:before { content: "\f102"; }
-.golfpack-004-umbrella:before { content: "\f103"; }
-.golfpack-005-shoe:before { content: "\f104"; }
-.golfpack-006-shorts:before { content: "\f105"; }
-.golfpack-007-polo-shirt:before { content: "\f106"; }
-.golfpack-008-vest:before { content: "\f107"; }
-.golfpack-009-cap:before { content: "\f108"; }
-.golfpack-010-gloves:before { content: "\f109"; }
-.golfpack-011-placeholder:before { content: "\f10a"; }
-.golfpack-012-gps:before { content: "\f10b"; }
-.golfpack-013-golf-3:before { content: "\f10c"; }
-.golfpack-014-tee:before { content: "\f10d"; }
-.golfpack-015-hotel:before { content: "\f10e"; }
-.golfpack-016-scotland:before { content: "\f10f"; }
-.golfpack-017-lawn-mower:before { content: "\f110"; }
-.golfpack-018-golf-2:before { content: "\f111"; }
-.golfpack-019-golf-1:before { content: "\f112"; }
-.golfpack-020-golf-ball-15:before { content: "\f113"; }
-.golfpack-021-golf-ball-14:before { content: "\f114"; }
-.golfpack-022-golf-ball-13:before { content: "\f115"; }
-.golfpack-023-golf-ball-12:before { content: "\f116"; }
-.golfpack-024-golf:before { content: "\f117"; }
-.golfpack-025-map:before { content: "\f118"; }
-.golfpack-026-birdie-1:before { content: "\f119"; }
-.golfpack-027-golf-cart:before { content: "\f11a"; }
-.golfpack-028-golf-bag-1:before { content: "\f11b"; }
-.golfpack-029-golf-bag:before { content: "\f11c"; }
-.golfpack-030-iron-3:before { content: "\f11d"; }
-.golfpack-031-iron-2:before { content: "\f11e"; }
-.golfpack-032-iron-1:before { content: "\f11f"; }
-.golfpack-033-iron:before { content: "\f120"; }
-.golfpack-034-golf-ball-11:before { content: "\f121"; }
-.golfpack-035-birdie:before { content: "\f122"; }
-.golfpack-036-golf-ball-10:before { content: "\f123"; }
-.golfpack-037-golf-ball-9:before { content: "\f124"; }
-.golfpack-038-golf-ball-8:before { content: "\f125"; }
-.golfpack-039-golf-ball-7:before { content: "\f126"; }
-.golfpack-040-wind-sign:before { content: "\f127"; }
-.golfpack-041-golf-ball-6:before { content: "\f128"; }
-.golfpack-042-golf-ball-5:before { content: "\f129"; }
-.golfpack-043-golf-ball-4:before { content: "\f12a"; }
-.golfpack-044-golf-ball-3:before { content: "\f12b"; }
-.golfpack-045-golfer:before { content: "\f12c"; }
-.golfpack-046-net:before { content: "\f12d"; }
-.golfpack-047-mat:before { content: "\f12e"; }
-.golfpack-048-golf-ball-2:before { content: "\f12f"; }
-.golfpack-049-golf-ball-1:before { content: "\f130"; }
-.golfpack-050-golf-ball:before { content: "\f131"; }
-
+.golfpack-trophy:before { content: "\f100"; }
+.golfpack-scoring:before { content: "\f101"; }
+.golfpack-towel:before { content: "\f102"; }
+.golfpack-umbrella:before { content: "\f103"; }
+.golfpack-shoe:before { content: "\f104"; }
+.golfpack-shorts:before { content: "\f105"; }
+.golfpack-polo-shirt:before { content: "\f106"; }
+.golfpack-vest:before { content: "\f107"; }
+.golfpack-cap:before { content: "\f108"; }
+.golfpack-gloves:before { content: "\f109"; }
+.golfpack-placeholder:before { content: "\f10a"; }
+.golfpack-gps:before { content: "\f10b"; }
+.golfpack-golf-3:before { content: "\f10c"; }
+.golfpack-tee:before { content: "\f10d"; }
+.golfpack-hotel:before { content: "\f10e"; }
+.golfpack-scotland:before { content: "\f10f"; }
+.golfpack-lawn-mower:before { content: "\f110"; }
+.golfpack-golf-2:before { content: "\f111"; }
+.golfpack-golf-1:before { content: "\f112"; }
+.golfpack-golf-ball-15:before { content: "\f113"; }
+.golfpack-golf-ball-14:before { content: "\f114"; }
+.golfpack-golf-ball-13:before { content: "\f115"; }
+.golfpack-golf-ball-12:before { content: "\f116"; }
+.golfpack-golf:before { content: "\f117"; }
+.golfpack-map:before { content: "\f118"; }
+.golfpack-birdie-1:before { content: "\f119"; }
+.golfpack-golf-cart:before { content: "\f11a"; }
+.golfpack-golf-bag-1:before { content: "\f11b"; }
+.golfpack-golf-bag:before { content: "\f11c"; }
+.golfpack-iron-3:before { content: "\f11d"; }
+.golfpack-iron-2:before { content: "\f11e"; }
+.golfpack-iron-1:before { content: "\f11f"; }
+.golfpack-iron:before { content: "\f120"; }
+.golfpack-golf-ball-11:before { content: "\f121"; }
+.golfpack-birdie:before { content: "\f122"; }
+.golfpack-golf-ball-10:before { content: "\f123"; }
+.golfpack-golf-ball-9:before { content: "\f124"; }
+.golfpack-golf-ball-8:before { content: "\f125"; }
+.golfpack-golf-ball-7:before { content: "\f126"; }
+.golfpack-wind-sign:before { content: "\f127"; }
+.golfpack-golf-ball-6:before { content: "\f128"; }
+.golfpack-golf-ball-5:before { content: "\f129"; }
+.golfpack-golf-ball-4:before { content: "\f12a"; }
+.golfpack-golf-ball-3:before { content: "\f12b"; }
+.golfpack-golfer:before { content: "\f12c"; }
+.golfpack-net:before { content: "\f12d"; }
+.golfpack-mat:before { content: "\f12e"; }
+.golfpack-golf-ball-2:before { content: "\f12f"; }
+.golfpack-golf-ball-1:before { content: "\f130"; }
+.golfpack-golf-ball:before { content: "\f131"; }
+  /* golf pack backwards copatibility */ 
+  .golfpack-001-trophy:before { content: "\f100"; }
+  .golfpack-002-scoring:before { content: "\f101"; }
+  .golfpack-003-towel:before { content: "\f102"; }
+  .golfpack-004-umbrella:before { content: "\f103"; }
+  .golfpack-005-shoe:before { content: "\f104"; }
+  .golfpack-006-shorts:before { content: "\f105"; }
+  .golfpack-007-polo-shirt:before { content: "\f106"; }
+  .golfpack-008-vest:before { content: "\f107"; }
+  .golfpack-009-cap:before { content: "\f108"; }
+  .golfpack-010-gloves:before { content: "\f109"; }
+  .golfpack-011-placeholder:before { content: "\f10a"; }
+  .golfpack-012-gps:before { content: "\f10b"; }
+  .golfpack-013-golf-3:before { content: "\f10c"; }
+  .golfpack-014-tee:before { content: "\f10d"; }
+  .golfpack-015-hotel:before { content: "\f10e"; }
+  .golfpack-016-scotland:before { content: "\f10f"; }
+  .golfpack-017-lawn-mower:before { content: "\f110"; }
+  .golfpack-018-golf-2:before { content: "\f111"; }
+  .golfpack-019-golf-1:before { content: "\f112"; }
+  .golfpack-020-golf-ball-15:before { content: "\f113"; }
+  .golfpack-021-golf-ball-14:before { content: "\f114"; }
+  .golfpack-022-golf-ball-13:before { content: "\f115"; }
+  .golfpack-023-golf-ball-12:before { content: "\f116"; }
+  .golfpack-024-golf:before { content: "\f117"; }
+  .golfpack-025-map:before { content: "\f118"; }
+  .golfpack-026-birdie-1:before { content: "\f119"; }
+  .golfpack-027-golf-cart:before { content: "\f11a"; }
+  .golfpack-028-golf-bag-1:before { content: "\f11b"; }
+  .golfpack-029-golf-bag:before { content: "\f11c"; }
+  .golfpack-030-iron-3:before { content: "\f11d"; }
+  .golfpack-031-iron-2:before { content: "\f11e"; }
+  .golfpack-032-iron-1:before { content: "\f11f"; }
+  .golfpack-033-iron:before { content: "\f120"; }
+  .golfpack-034-golf-ball-11:before { content: "\f121"; }
+  .golfpack-035-birdie:before { content: "\f122"; }
+  .golfpack-036-golf-ball-10:before { content: "\f123"; }
+  .golfpack-037-golf-ball-9:before { content: "\f124"; }
+  .golfpack-038-golf-ball-8:before { content: "\f125"; }
+  .golfpack-039-golf-ball-7:before { content: "\f126"; }
+  .golfpack-040-wind-sign:before { content: "\f127"; }
+  .golfpack-041-golf-ball-6:before { content: "\f128"; }
+  .golfpack-042-golf-ball-5:before { content: "\f129"; }
+  .golfpack-043-golf-ball-4:before { content: "\f12a"; }
+  .golfpack-044-golf-ball-3:before { content: "\f12b"; }
+  .golfpack-045-golfer:before { content: "\f12c"; }
+  .golfpack-046-net:before { content: "\f12d"; }
+  .golfpack-047-mat:before { content: "\f12e"; }
+  .golfpack-048-golf-ball-2:before { content: "\f12f"; }
+  .golfpack-049-golf-ball-1:before { content: "\f130"; }
+  .golfpack-050-golf-ball:before { content: "\f131"; }
 
 /* Travel Pack */
 
