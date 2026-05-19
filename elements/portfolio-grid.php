@@ -914,7 +914,7 @@ class Themo_Widget_Portfolio_Grid extends Widget_Base {
         );
 
         $this->add_control(
-            'filter_bar_text_color',
+            'filter_bar_sort_label_color',
             [
                 'label' => __( 'Sort Label', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
