@@ -124,7 +124,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 			$css_uri = BSF_ANALYTICS_URI . '/assets/css/' . $dir_name . '/style' . $file_rtl . $css_ext;
 
-			wp_enqueue_style( 'bsf-analytics-admin-style', $css_uri, false, BSF_ANALYTICS_VERSION, 'all' );
+			wp_enqueue_style( 'bsf-analytics-admin-style', $css_uri, array(), BSF_ANALYTICS_VERSION, 'all' );
 		}
 
 		/**

@@ -22,7 +22,7 @@ class Block_Library_Manager {
 	}
 
 	public static function enqueue_preview_styles() {
-		wp_enqueue_style( 'thmv-template-preview-style', THEMO_URL . 'css/th-preview.css', THEMO_VERSION );
+		wp_enqueue_style( 'thmv-template-preview-style', THEMO_URL . 'css/th-preview.css', array(), THEMO_VERSION );
 	}
 
 	/**
