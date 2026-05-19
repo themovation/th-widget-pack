@@ -14,7 +14,7 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-slides';
+		return 'th-editor-icon-slider';
 	}
 
 	public function get_categories() {
@@ -35,7 +35,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		];
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_slides',
 			[
@@ -755,7 +755,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'slide_title_typo',
 				'label' => __( 'Title Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-title',
 			]
 		);
@@ -788,7 +788,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			[
 				'name' => 'slide_content_typo',
 				'label' => __( 'Content Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				
 				'selector' => '{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg .slider-subtitle p',
 			]
 		);
@@ -829,7 +829,7 @@ class Themo_Widget_Slider extends Widget_Base {
                     ],
 
                 ],
-				'fields' => array_values( $th_repeater->get_controls() ),
+				'fields' => $th_repeater->get_controls(),
 				'title_field' => '{{{ slide_title }}}',
 			]
 		);
@@ -855,7 +855,7 @@ class Themo_Widget_Slider extends Widget_Base {
 				],
 				'size_units' => [ 'px', 'vh', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} #main-flex-slider {{CURRENT_ITEM}} .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} #main-flex-slider .slider-bg' => 'min-height: {{SIZE}}{{UNIT}};',
 				],
 				'separator' => 'before',
 				'dynamic' => [
@@ -1366,7 +1366,7 @@ class Themo_Widget_Slider extends Widget_Base {
 			jQuery( function ( $ ) {
 
 				themo_start_flex_slider(
-					'#main-flex-slider',
+					'.flexslider',
                     <?php echo esc_attr( $settings['autoplay'] ) ? 'true' : 'false'; ?>,
 					'<?php echo esc_attr( $settings['th_animation'] ); ?>',
 					'<?php echo esc_attr( $settings['easing'] ); ?>',
@@ -1385,7 +1385,7 @@ class Themo_Widget_Slider extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -1401,4 +1401,4 @@ class Themo_Widget_Slider extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Slider() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Slider() );

@@ -14,7 +14,7 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-person';
+		return 'th-editor-icon-team-member';
 	}
 
 	public function get_categories() {
@@ -25,7 +25,7 @@ class Themo_Widget_Team extends Widget_Base {
 		return 'https://help.themovation.com/' . $this->get_name();
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_about',
 			[
@@ -142,50 +142,56 @@ class Themo_Widget_Team extends Widget_Base {
 			]
 		);
 
+
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'new_icon', [
+			'fa4compatibility' => 'icon',
+			'label' => __( 'Icon', 'th-widget-pack' ),
+			'type' => Controls_Manager::ICONS,
+			'label_block' => true,
+			'default' => [
+				'value' => 'fab fa-facebook',
+				'library' => 'fa-brands',
+			],
+			]
+		);
+
+		$repeater->add_control(
+			'url', [
+			'label' => __( 'Link URL', 'th-widget-pack' ),
+			'type' => Controls_Manager::URL,
+			'placeholder' => 'http://your-link.com',
+			'default' => [
+				'url' => '',
+			],
+			'dynamic' => [
+				'active' => true,
+			],
+			'separator' => 'before',
+			'label_block' => true,
+			]
+		);	
+
 		$this->add_control(
 			'social',
 			[
-				'label' => __( 'Social Icons', 'th-widget-pack' ),
+				'label' => __( 'Social Icons', 'plugin-domain' ),
 				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
 				'default' => [
-					[
-						'url' => 'http://your-link.com'
-					]
-				],
-				'fields' => [
-					// [
-					// 	'name' => 'icon',
-					// 	'label' => __( 'Icon', 'th-widget-pack' ),
-					// 	'type' => Controls_Manager::ICON,
-               //          'label_block' => true,
-               //          'default' => 'fa fa-facebook',
-					// 	'options' => themo_icons(),
-					// 	'include' => themo_fa_icons()
-					// ],
-					[
-						'name' => 'new_icon',
-						'fa4compatibility' => 'icon',
-						'label' => __( 'Icon', 'th-widget-pack' ),
-						'type' => Controls_Manager::ICONS,
-						'label_block' => true,
-						'default' => [
+					[ 'new_icon' => [
 							'value' => 'fab fa-facebook',
 							'library' => 'fa-brands',
+							],
+					'url' => __( '#', 'plugin-domain' ),
+					],
+					[ 'new_icon' => [
+						'value' => 'fab fa-facebook',
+						'library' => 'fa-brands',
 						],
-					],					
-					[
-						'name' => 'url',
-						'label' => __( 'Link URL', 'th-widget-pack' ),
-						'type' => Controls_Manager::URL,
-						'placeholder' => 'http://your-link.com',
-						'default' => [
-							'url' => '',
-						],
-						'dynamic' => [
-		                    'active' => true,
-		                ],
-						'separator' => 'before',
-						'label_block' => true,
+					'url' => __( '#', 'plugin-domain' ),
 					],
 				],
 				'title_field' => '<i class="{{ new_icon.value }}"></i> {{{ url.url }}}',
@@ -248,10 +254,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Name Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h4' => 'color: {{VALUE}};',
@@ -282,10 +285,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h5' => 'color: {{VALUE}};',
@@ -316,10 +316,7 @@ class Themo_Widget_Team extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member-text' => 'color: {{VALUE}};',
@@ -350,10 +347,7 @@ class Themo_Widget_Team extends Widget_Base {
             [
                 'label' => __( 'Icon Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'alpha' => false,
                 'default' => '',
                 'selectors' => [
@@ -545,7 +539,7 @@ class Themo_Widget_Team extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	/*
 	 * <div class="th-team-member">
@@ -627,4 +621,4 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Team() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Team() );
