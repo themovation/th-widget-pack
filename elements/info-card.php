@@ -25,7 +25,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_align',
@@ -242,10 +242,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-info-card-wrap' => 'background-color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
             ]
         );
 
@@ -275,10 +271,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-title' => 'color: {{VALUE}};',
-				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
 				],
 			]
 		);
@@ -318,10 +310,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon-box-content .elementor-icon-box-description' => 'color: {{VALUE}};',
 				],
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 			]
 		);
 
@@ -352,10 +340,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .th-btn-wrap a.th-btn-1' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
             ]
         );
 
@@ -385,10 +369,6 @@ class Themo_Widget_Info_Card extends Widget_Base {
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-btn-wrap a.th-btn-2' => 'color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
                 ],
             ]
         );
@@ -526,7 +506,7 @@ class Themo_Widget_Info_Card extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
 
 		<#
@@ -616,4 +596,4 @@ class Themo_Widget_Info_Card extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Info_Card() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Info_Card() );

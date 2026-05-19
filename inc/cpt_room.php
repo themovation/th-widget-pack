@@ -97,11 +97,11 @@ if ( ! function_exists( 'themo_room_type' ) ) {
         $rewrite = array(
             'slug'                       => 'room-type',
             'with_front'                 => true,
-            'hierarchical'               => false,
+            'hierarchical'               => true,
         );
         $args = array(
             'labels'                     => $labels,
-            'hierarchical'               => false,
+            'hierarchical'               => true,
             'public'                     => true,
             'show_ui'                    => true,
             'show_admin_column'          => true,
@@ -167,7 +167,7 @@ function th_register_room_meta_boxes()
                 'desc' => __('Displayed before the price. e.g.: Starting from', 'bellevue'),
             ),
             array(
-                'id'    => "th_room_price_per",
+                    'id'    => "th_room_price_per",
                 'label'  =>  'Price per',
                 'type'  => 'text',
                 'desc' => __('Displayed after the price. e.g.: /night', 'bellevue'),
@@ -199,7 +199,7 @@ function th_register_room_meta_boxes()
                 'desc' => __('Displayed below the intro.', 'bellevue'),
             ),
             array(
-                'id'          => "th_room_thumb",
+                    'id'          => "th_room_thumb",
                 'label'       => __( 'Alternative Grid Image', 'bellevue'),
                 'type'        => 'upload',
                 'class'       => 'ot-upload-attachment-id',

@@ -275,6 +275,21 @@ class Themo_Widget_Tabs extends Widget_Base {
             ]
         );
 
+        $this->add_responsive_control(
+            'thmv_tab_radius',
+            [
+                'label' => __('Radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px'],
+                'selectors' => [
+                    '{{WRAPPER}} .thmv-tab-title' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'thmv_style' => 'style_1',
+                ],
+            ]
+        );
+
         $this->add_control(
             'border_heading',
             [
@@ -294,7 +309,7 @@ class Themo_Widget_Tabs extends Widget_Base {
                 'label' => __('Color', 'elementor'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .thmv-tab-title:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .thmv-tabs.style_2 .thmv-tab-title:after' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'thmv_style' => 'style_2',
@@ -724,4 +739,4 @@ class Themo_Widget_Tabs extends Widget_Base {
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new Themo_Widget_Tabs());
+Plugin::instance()->widgets_manager->register(new Themo_Widget_Tabs());

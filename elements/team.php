@@ -25,7 +25,7 @@ class Themo_Widget_Team extends Widget_Base {
 		return 'https://help.themovation.com/' . $this->get_name();
 	}
 	
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_about',
 			[
@@ -254,10 +254,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Name Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h4' => 'color: {{VALUE}};',
@@ -288,10 +285,7 @@ class Themo_Widget_Team extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
+				
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} h5' => 'color: {{VALUE}};',
@@ -322,10 +316,7 @@ class Themo_Widget_Team extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .th-team-member-text' => 'color: {{VALUE}};',
@@ -356,10 +347,7 @@ class Themo_Widget_Team extends Widget_Base {
             [
                 'label' => __( 'Icon Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
+                
                 'alpha' => false,
                 'default' => '',
                 'selectors' => [
@@ -551,7 +539,7 @@ class Themo_Widget_Team extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	/*
 	 * <div class="th-team-member">
@@ -633,4 +621,4 @@ class Themo_Widget_Team extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Team() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Team() );

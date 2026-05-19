@@ -25,7 +25,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
     
-	protected function _register_controls() {
+	protected function register_controls() {
 
         $this->start_controls_section(
             'section_price',
@@ -217,10 +217,6 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price' => 'color: {{VALUE}};',
@@ -233,7 +229,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'name' => 'price_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -251,10 +247,6 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '#1b1b1b',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-price span' => 'color: {{VALUE}};',
@@ -267,7 +259,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'name' => 'price_text_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-price span',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -287,6 +279,8 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .th-tour-nav-item i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .th-tour-nav-item svg path' => 'fill: {{VALUE}};',
 				],
                 'default' => '#1b1b1b',
 			]
@@ -305,6 +299,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav-item i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .th-tour-nav-item svg' => 'height:auto; width: {{SIZE}}px;',
                 ],
             ]
         );
@@ -335,7 +330,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'name' => 'price_icon_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-item span',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -364,7 +359,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
             [
                 'name' => 'button_text_typography',
                 'selector' => '{{WRAPPER}} .th-tour-nav-btn .btn',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -423,10 +418,6 @@ class Themo_Widget_RoomInfo extends Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .th-tour-nav' => 'background-color: {{VALUE}};',
-                ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
                 ],
             ]
         );
@@ -540,7 +531,7 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 		<?php
 	}
 
-	protected function _content_template() {
+	protected function content_template() {
 		?>
         <#  var button_1_link_url = '#';
         if ( settings.button_1_link.url ) { var button_1_link_url = settings.button_1_link.url }
@@ -620,4 +611,4 @@ class Themo_Widget_RoomInfo extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_RoomInfo() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_RoomInfo() );

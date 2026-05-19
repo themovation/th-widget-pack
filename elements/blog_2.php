@@ -61,7 +61,7 @@ class Themo_Widget_Blog extends Widget_Base {
 		return $categories;
 	}
 
-	protected function _register_controls() {
+	protected function register_controls() {
             $this->start_controls_section(
                 'thmv_section_data',
                 [
@@ -608,10 +608,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .post-title a' => 'color: {{VALUE}};',
@@ -627,7 +623,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .post-title a',
                 'condition' => [
                     'thmv_hide_title' => '',
@@ -653,10 +649,6 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .entry-content p' => 'color: {{VALUE}};',
@@ -672,7 +664,7 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'name' => 'excerpt_typography',
                 'label' => __( 'Typography', 'th-widget-pack' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                
                 'selector' => '{{WRAPPER}} .entry-content p',
                 'condition' => [
                     'thmv_hide_excerpt' => '',
@@ -695,10 +687,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Author Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .thmv-author a' => 'color: {{VALUE}};',
@@ -714,7 +702,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'author_typography',
 				'label' => __( 'Author Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .thmv-author',
                 'condition' => [
                     'thmv_hide_author' => '',
@@ -727,10 +715,6 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Date Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .thmv-date' => 'color: {{VALUE}};',
@@ -746,7 +730,7 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'name' => 'date_typography',
                 'label' => __( 'Date Typography', 'th-widget-pack' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                
                 'selector' => '{{WRAPPER}} .thmv-date',
                 'condition' => [
                     'thmv_hide_date' => '',
@@ -758,10 +742,6 @@ class Themo_Widget_Blog extends Widget_Base {
                 [
                     'label' => __('Divider Color', 'th-widget-pack'),
                     'type' => Controls_Manager::COLOR,
-                    'scheme' => [
-                        'type' => Scheme_Color::get_type(),
-                        'value' => Scheme_Color::COLOR_3,
-                    ],
                     'default' => '',
                     'selectors' => [
                         '{{WRAPPER}} .thmv-separator' => 'border-color: {{VALUE}};',
@@ -777,10 +757,6 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Category Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .elementors' => 'color: {{VALUE}};',
@@ -797,7 +773,7 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'name' => 'category_typography',
                 'label' => __( 'Category Typography', 'th-widget-pack' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                
                 'selector' => '{{WRAPPER}} .post-elementors',
                 'condition' => [
                     'thmv_hide_category' => '',
@@ -811,10 +787,6 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'label' => __( 'Comments Color', 'th-widget-pack' ),
                 'type' => Controls_Manager::COLOR,
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_3,
-                ],
                 'default' => '',
                 'selectors' => [
                     '{{WRAPPER}} .elementors' => 'color: {{VALUE}};',
@@ -831,7 +803,7 @@ class Themo_Widget_Blog extends Widget_Base {
             [
                 'name' => 'comments_typography',
                 'label' => __( 'Comments Typography', 'th-widget-pack' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                
                 'selector' => '{{WRAPPER}} .post-elementors',
                 'condition' => [
                     'thmv_hide_comments' => '',
@@ -859,10 +831,6 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'label' => __( 'Color', 'th-widget-pack' ),
 				'type' => Controls_Manager::COLOR,
-				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
-				],
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .thmv-learn-btn' => 'color: {{VALUE}};',
@@ -879,7 +847,7 @@ class Themo_Widget_Blog extends Widget_Base {
 			[
 				'name' => 'read_more_typography',
 				'label' => __( 'Typography', 'th-widget-pack' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				
 				'selector' => '{{WRAPPER}} .thmv-learn-btn',
                 'condition' => [
                     'thmv_hide_read_more' => '',
@@ -991,6 +959,7 @@ class Themo_Widget_Blog extends Widget_Base {
             $args = array(
                 'post_type' => array('post'),
                 'post_status' => array('publish'),
+                'fields' => 'ids'
             );
 
             if ($settings['post_categories'] != 'all') {
@@ -1031,8 +1000,9 @@ class Themo_Widget_Blog extends Widget_Base {
                 //$args['offset'] = $th_offset;
             }
 
-            
-            return get_posts($args);
+            $posts = new \WP_Query($args);
+          
+            return $posts;
         }
 	protected function render() {
         $settings = $this->get_settings_for_display();
@@ -1044,14 +1014,23 @@ class Themo_Widget_Blog extends Widget_Base {
         }
         
         if ($dataSource) {  
-            $posts = $this->getPosts($settings);
+            $widget_wp_query = $this->getPosts($settings);
 
-            if (!$posts || !count($posts)) {
+            if (!$widget_wp_query || !count($widget_wp_query->posts)) {
                 echo '<div class="alert">';
                 _e('Sorry, no results were found.', 'th-widget-pack');
                 echo '</div>';
                 return;
             }
+           global $wp_query;
+           $temp_query = $wp_query;
+           $wp_query   = $widget_wp_query; 
+           $args = ['post__in'=> $wp_query->posts];
+           if(isset($settings['post_count'])){
+               $args['posts_per_page'] = $settings['post_count'];
+           }
+           $posts = get_posts($args);
+           
         } else {
             
             if($settings['thmv_style']==='style_3'){
@@ -1153,10 +1132,6 @@ class Themo_Widget_Blog extends Widget_Base {
                         </div>
                         <?php
                         }
-                        // Reset postdata
-                             if ($dataSource) {
-                                wp_reset_postdata();
-                             }
                         ?>
                     </div>
                     <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
@@ -1225,22 +1200,14 @@ class Themo_Widget_Blog extends Widget_Base {
                             <?php foreach($posts as $post) { 
                             setup_postdata( $GLOBALS['post'] =& $post );
                             ?>
-
                                 <?php $format = get_post_format() ? get_post_format() : 'standard';?>
-
                                 <div <?php $th_post_classes = "mas-blog-post " . esc_attr( $th_post_classes ); post_class( esc_attr( $th_post_classes ) ); ?>>
-                                    <?php get_template_part( 'templates/content', $format ); ?>
+                                    <?php get_template_part( 'templates/content', $format, array(
+                                        'thmv_blog_widget' => true
+                                        )); ?>
                                 </div>
 
                             <?php } ?>
-
-                            <?php
-                            // Reset postdata
-                             if ($dataSource) {
-                                wp_reset_postdata();
-                             }
-                            ?>
-
                         </div>
                         <?php if ( isset( $settings['pagination'] ) &&  $settings['pagination'] == 'yes' && $widget_wp_query->max_num_pages > 1 ) { ?>
                             <div class="row">
@@ -1248,7 +1215,7 @@ class Themo_Widget_Blog extends Widget_Base {
                                     <ul class="pager">
                                         <?php
                                         if( $use_bittersweet_pagination ) {
-                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
+//                                            th_bittersweet_pagination($widget_wp_query->max_num_pages);
                                         } else { ?>
                                             <li class="previous"><?php next_posts_link( esc_html__( '&larr; Older posts', 'th-widget-pack' ), $widget_wp_query->max_num_pages); ?></li>
                                             <li class="next"><?php previous_posts_link( esc_html__( 'Newer posts &rarr;', 'th-widget-pack' ) ); ?></li>
@@ -1263,11 +1230,18 @@ class Themo_Widget_Blog extends Widget_Base {
                     break;
             }
 		
+            // Reset postdata
+            if ($dataSource) {
+                // Reset main query object
+               $wp_query = NULL;
+               $wp_query = $temp_query;
+               wp_reset_postdata();
 
+            }
 
 	}
 
-	protected function _content_template() {}
+	protected function content_template() {}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Blog() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Blog() );

@@ -25,7 +25,7 @@ class Themo_Widget_Formidable extends Widget_Base {
         return 'https://help.themovation.com/' . $this->get_name();
     }
 
-	protected function _register_controls() {
+	protected function register_controls() {
 		$this->start_controls_section(
 			'section_shortcode',
 			[
@@ -167,10 +167,6 @@ class Themo_Widget_Formidable extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} form .frm_submit input[type=submit]' => 'color: {{VALUE}};',
                 ],
-                'scheme' => [
-                    'type' => Scheme_Color::get_type(),
-                    'value' => Scheme_Color::COLOR_1,
-                ],
             ]
         );
 
@@ -179,7 +175,7 @@ class Themo_Widget_Formidable extends Widget_Base {
             [
                 'name' => 'button_text_typography',
                 'selector' => '{{WRAPPER}} form .frm_submit input[type=submit]',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                
             ]
         );
 
@@ -245,7 +241,7 @@ class Themo_Widget_Formidable extends Widget_Base {
 		echo sanitize_text_field($this->get_settings( 'shortcode' ));
 	}*/
 
-	protected function _content_template() {}
+	protected function content_template() {}
 
 	public function add_wpml_support() {
 		add_filter( 'wpml_elementor_widgets_to_translate', [ $this, 'wpml_widgets_to_translate_filter' ] );
@@ -266,4 +262,4 @@ class Themo_Widget_Formidable extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Themo_Widget_Formidable() );
+Plugin::instance()->widgets_manager->register( new Themo_Widget_Formidable() );
